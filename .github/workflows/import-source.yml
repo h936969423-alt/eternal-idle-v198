@@ -1,0 +1,45 @@
+name: Import Yongye v198 source
+on:
+  push:
+    paths:
+      - source-upload.zip
+  workflow_dispatch:
+permissions:
+  contents: write
+jobs:
+  import:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - name: Extract source package safely
+        run: |
+          python3 - <<'PY'
+          import zipfile, pathlib
+          archive = pathlib.Path("source-upload.zip")
+          if not archive.is_file():
+              raise SystemExit("Please upload source-upload.zip first")
+          root = pathlib.Path.cwd().resolve()
+          with zipfile.ZipFile(archive) as z:
+              for i in z.infolist():
+                  relative = pathlib.PurePosixPath(i.filename)
+                  if relative.is_absolute() or ".." in relative.parts:
+                      raise ValueError("Unsafe ZIP member: " + i.filename)
+                  out = (root / i.filename).resolve()
+                  if not out.is_relative_to(root):
+                      raise ValueError("ZIP path escapes repository")
+                  if i.is_dir():
+                      out.mkdir(parents=True, exist_ok=True)
+                  else:
+                      out.parent.mkdir(parents=True, exist_ok=True)
+                      with z.open(i) as src, out.open("wb") as dst:
+                          import shutil
+                          shutil.copyfileobj(src, dst)
+          archive.unlink()
+          PY
+      - name: Commit imported project
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add -A
+          git diff --cached --quiet || git commit -m "Import Eternal Idle v198 source"
+          git push
