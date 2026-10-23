@@ -1,0 +1,28 @@
+name: Inspect test R2 objects
+on:
+  workflow_dispatch:
+permissions:
+  contents: read
+jobs:
+  inspect:
+    runs-on: ubuntu-latest
+    steps:
+      - name: List objects and verify four archives
+        env:
+          AWS_ACCESS_KEY_ID: ${{ secrets.R2_ACCESS_KEY_ID }}
+          AWS_SECRET_ACCESS_KEY: ${{ secrets.R2_SECRET_ACCESS_KEY }}
+          AWS_DEFAULT_REGION: auto
+          AWS_EC2_METADATA_DISABLED: 'true'
+        run: |
+          python3 - <<'PY'
+          import json, subprocess, urllib.parse
+          endpoint='https://9bf17726da5739f20d3e5ec454ae3d91.r2.cloudflarestorage.com'
+          bucket='eternal-idle-v198-test-assets'
+          p=subprocess.run(['aws','--endpoint-url',endpoint,'s3api','list-objects-v2','--bucket',bucket,'--output','json'],capture_output=True,text=True,check=True)
+          items=json.loads(p.stdout).get('Contents',[])
+          print('Objects:',len(items))
+          for item in items:
+              print('Key:',repr(item['Key']),'Decoded:',repr(urllib.parse.unquote(item['Key'])),'Size:',item['Size'])
+          if len(items) < 4:
+              raise SystemExit('Expected at least four R2 archives')
+          PY
