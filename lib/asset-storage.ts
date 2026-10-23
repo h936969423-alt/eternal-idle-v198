@@ -24,38 +24,8 @@ export async function assetStorageFetch(request: Request, bucket?: Bucket): Prom
   const pathname = new URL(request.url).pathname;
   // This write endpoint relies on the Site's verified owner-only access policy.
   // Never make the Site public/shared without adding explicit upload authorization.
-  if (pathname.startsWith(UPLOAD)) {
-    // Standalone Cloudflare tests have no Sites owner-only upload policy.
-    // Disable the mutation endpoint until explicit authenticated upload authorization is implemented.
-    return new Response('Asset upload disabled in standalone test', { status: 403 });
-    if (!bucket) return new Response('Storage unavailable', { status: 503 });
-    if (request.method !== 'PUT') return new Response('Method not allowed', { status: 405 });
-    const digest = pathname.slice(UPLOAD.length);
-    if (!/^[a-f0-9]{64}$/.test(digest)) return new Response('Invalid object key', { status: 400 });
-    const length = Number(request.headers.get('content-length'));
-    if (!length || length > MAX_UPLOAD) return new Response('Invalid upload size', { status: 413 });
-    const key = PREFIX + digest;
-    if (await bucket.head(key)) return Response.json({ key, existing: true });
-    const reader = request.body?.getReader();
-    if (!reader) return new Response('Missing body', { status: 400 });
-    const chunks: Uint8Array[] = [];
-    let bytes = 0;
-    while (true) {
-      const chunk = await reader.read();
-      if (chunk.done) break;
-      bytes += chunk.value.byteLength;
-      if (bytes > MAX_UPLOAD) { await reader.cancel(); return new Response('Upload too large', { status: 413 }); }
-      chunks.push(chunk.value);
-    }
-    if (bytes !== length) return new Response('Length mismatch', { status: 400 });
-    const body = new Uint8Array(bytes);
-    let offset = 0;
-    for (const chunk of chunks) { body.set(chunk, offset); offset += chunk.byteLength; }
-    const actual = Array.from(new Uint8Array(await crypto.subtle.digest('SHA-256', body)), b => b.toString(16).padStart(2, '0')).join('');
-    if (actual !== digest) return new Response('Checksum mismatch', { status: 400 });
-    await bucket.put(key, body, { httpMetadata: { contentType: 'application/octet-stream' }, customMetadata: { sha256: digest } });
-    return Response.json({ key, bytes, sha256: actual });
-  }
+  // Standalone Cloudflare testing does not inherit Sites owner-only upload authorization.
+  if (pathname.startsWith(UPLOAD)) return new Response('Asset upload disabled', { status: 403 });
   if (!pathname.startsWith('/assets/') || !config.indexKey || !['GET', 'HEAD'].includes(request.method)) return null;
   if (!bucket) return new Response('Asset storage unavailable', { status: 503 });
   let entry: Entry | undefined;
