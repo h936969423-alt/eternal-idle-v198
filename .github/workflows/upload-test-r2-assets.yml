@@ -1,0 +1,95 @@
+name: Prepare and upload test R2 assets
+
+on:
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+concurrency:
+  group: eternal-idle-test-r2-upload
+  cancel-in-progress: false
+
+jobs:
+  upload:
+    runs-on: ubuntu-latest
+    timeout-minutes: 60
+    steps:
+      - name: Checkout private game repository
+        uses: actions/checkout@v4
+
+      - name: Validate source assets and required secrets
+        env:
+          R2_ACCESS_KEY_ID: ${{ secrets.R2_ACCESS_KEY_ID }}
+          R2_SECRET_ACCESS_KEY: ${{ secrets.R2_SECRET_ACCESS_KEY }}
+        run: |
+          test -n "$R2_ACCESS_KEY_ID" || { echo "::error::Missing R2_ACCESS_KEY_ID"; exit 1; }
+          test -n "$R2_SECRET_ACCESS_KEY" || { echo "::error::Missing R2_SECRET_ACCESS_KEY"; exit 1; }
+          test -s public/assets/dragon381/definitions.json || { echo "::error::Missing source assets: public/assets/dragon381/definitions.json. Restore complete v198 converted assets before running."; exit 1; }
+          test -d public/assets/dragon381/sprites || { echo "::error::Missing dragon381 sprite directory"; exit 1; }
+          test -f pnpm-lock.yaml || { echo "::error::Missing pnpm lockfile"; exit 1; }
+
+      - uses: pnpm/action-setup@v4
+        with:
+          version: 11.25.0
+
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '22'
+          cache: pnpm
+
+      - name: Install dependencies
+        run: pnpm install --frozen-lockfile
+
+      - name: Build game assets without publishing
+        run: ASSET_STORAGE_PREPARE=1 pnpm run build
+
+      - name: Create immutable R2 asset packs and manifest
+        run: node scripts/prepare-asset-storage.mjs
+
+      - name: Verify upload plan
+        run: |
+          python3 - <<'PY'
+          import json, pathlib, hashlib
+          root=pathlib.Path('.asset-storage')
+          p=json.loads((root/'upload-plan.json').read_text())
+          assert p['fileCount']>0 and p['objects']
+          assert p['indexKey'].startswith('eternal-assets/v1/')
+          for item in p['objects']:
+              f=root/item['sha256']
+              assert f.is_file() and f.stat().st_size == item['bytes']
+              assert hashlib.sha256(f.read_bytes()).hexdigest()==item['sha256']
+              assert item['key']=='eternal-assets/v1/'+item['sha256']
+          print(f"Verified {len(p['objects'])} objects, {p['fileCount']} asset URLs")
+          PY
+
+      - name: Configure temporary R2 credentials
+        env:
+          AWS_ACCESS_KEY_ID: ${{ secrets.R2_ACCESS_KEY_ID }}
+          AWS_SECRET_ACCESS_KEY: ${{ secrets.R2_SECRET_ACCESS_KEY }}
+        run: |
+          echo "AWS_ACCESS_KEY_ID=$AWS_ACCESS_KEY_ID" >> "$GITHUB_ENV"
+          echo "AWS_SECRET_ACCESS_KEY=$AWS_SECRET_ACCESS_KEY" >> "$GITHUB_ENV"
+          echo "AWS_DEFAULT_REGION=auto" >> "$GITHUB_ENV"
+
+      - name: Upload immutable packs to test R2 bucket
+        env:
+          R2_ENDPOINT: https://9bf17726da5739f20d3e5ec454ae3d91.r2.cloudflarestorage.com
+        run: |
+          python3 - <<'PY'
+          import json,subprocess
+          p=json.load(open('.asset-storage/upload-plan.json'))
+          for item in p['objects']:
+              args=['aws','--endpoint-url', 'https://9bf17726da5739f20d3e5ec454ae3d91.r2.cloudflarestorage.com',
+                    's3','cp','.asset-storage/'+item['sha256'],
+                    's3://eternal-idle-v198-test-assets/'+item['key'],'--no-progress']
+              subprocess.run(args,check=True)
+          print('Uploaded immutable R2 objects. Deployment/manifest pinning is a separate verified step.')
+          PY
+
+      - name: Save new index key for deployment review
+        uses: actions/upload-artifact@v4
+        with:
+          name: eternal-idle-r2-upload-plan
+          path: .asset-storage/upload-plan.json
+          retention-days: 7
