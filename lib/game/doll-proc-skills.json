@@ -1,0 +1,47 @@
+{
+  "sk_blaze": {
+    "n": "烈炎術",
+    "type": "atk",
+    "tier": 6,
+    "reqM": 24,
+    "reqE": 48,
+    "mp": 30,
+    "dmgType": "magic",
+    "ele": "fire",
+    "dmgDice": [
+      16,
+      5
+    ],
+    "dmgBase": 40
+  },
+  "sk_earthquake": {
+    "n": "地裂術",
+    "type": "atk",
+    "tier": 6,
+    "reqM": 24,
+    "reqE": 48,
+    "mp": 25,
+    "dmgType": "magic",
+    "ele": "earth",
+    "dmgDice": [
+      5,
+      3
+    ],
+    "dmgBase": 50
+  },
+  "sk_thunder": {
+    "n": "極道落雷",
+    "type": "atk",
+    "tier": 5,
+    "reqM": 20,
+    "reqE": 40,
+    "mp": 25,
+    "dmgType": "magic",
+    "ele": "wind",
+    "dmgDice": [
+      5,
+      8
+    ],
+    "dmgBase": 40
+  }
+}

@@ -1,0 +1,3 @@
+import {env} from 'cloudflare:workers';
+import {defaultDolls,type DollConfig} from './doll-config';
+export async function getDollConfig():Promise<DollConfig>{if(!env.DB)throw Error('doll storage unavailable');const initial={definitions:defaultDolls(),history:[]};await env.DB.prepare('INSERT INTO world_settings (id,payload,revision,updated_at) VALUES (?,?,0,?) ON CONFLICT(id) DO NOTHING').bind('dolls',JSON.stringify(initial),Date.now()).run();const row=await env.DB.prepare('SELECT payload,revision FROM world_settings WHERE id=?').bind('dolls').first<{payload:string;revision:number}>();if(!row)throw Error('doll storage unavailable');const stored=JSON.parse(row.payload);return {...stored,definitions:{...defaultDolls(),...stored.definitions},revision:row.revision};}

@@ -1,0 +1,33 @@
+{
+  "result": "PASS",
+  "imported": 47,
+  "existing": 4,
+  "total": 51,
+  "stages": 194,
+  "procRows": 214,
+  "skills": [
+    "lw_chaos_assault",
+    "lw_dispel_barrier",
+    "lw_reveal",
+    "lw_gaia_assault",
+    "lw_lightning_assault",
+    "lw_holy_magic",
+    "lw_hl_mythic_guard",
+    "lw_hl_mythic_osiris",
+    "lw_hl_mythic_eva"
+  ],
+  "retired": 5,
+  "mapped": 2,
+  "checks": [
+    "all194 stages",
+    "all214 proc boundaries",
+    "all9 real combat procs and SVGs",
+    "all47 details SSR",
+    "caps, original icons, GM, acquisition",
+    "all prior definitions preserved except exact5 archive",
+    "quantities, bank, enhancement, worn, affixes, locks",
+    "pure, atomic CAS retry, backups, idempotence",
+    "water erosion/healing/crit/MR/resistance",
+    "actual incoming overkill and Eva healing order"
+  ]
+}

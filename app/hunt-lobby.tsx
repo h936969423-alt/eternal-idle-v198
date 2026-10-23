@@ -1,0 +1,5 @@
+'use client';
+import {useEffect,useState} from 'react';
+import {playableBoss,bossWait} from '@/lib/game/boss-respawn';
+import type {Character} from '@/lib/game/engine';
+export default function HuntLobby({c,st,onBattle}:{c:Character;st:Record<string,number>;onBattle:()=>void}){const [now,setNow]=useState(Date.now()),until=playableBoss(c.zone)?c.bossRooms?.[c.zone]?.respawnAt||0:0,waiting=until>now;useEffect(()=>{if(!until)return;setNow(Date.now());const timer=setInterval(()=>setNow(Date.now()),1000);return()=>clearInterval(timer);},[until]);return <section className="reference-lobby" aria-label="狩獵大廳"><button className="lobby-battle-link" disabled={waiting} onClick={()=>{if(until<=Date.now())onBattle();}}>{waiting?`等待重生 ${bossWait(until,now)}`:c.running?'查看戰鬥':'進入戰鬥'}</button><div className="lobby-information"><h2>－ 大　廳 －</h2><p>當前掉寶倍率：<strong>1.0</strong></p><p>當前金幣倍率：<strong>{(1+(st.goldPct||0)/100).toFixed(2)}</strong></p><div className="lobby-server"><p>當前遊玩人數：<strong>1</strong> 人 <small>（私人）</small></p><p>目前角色等級：<strong>{c.lv}</strong> <span>（經驗 +{st.expPct||0}%）</span></p></div></div></section>;}

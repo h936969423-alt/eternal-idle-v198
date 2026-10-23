@@ -1,0 +1,200 @@
+[
+  {
+    "npcId": 71026,
+    "mobId": "ap381_71026",
+    "zone": "wb_dragon381_71026",
+    "name": "法利昂(一)",
+    "family": "法利昂",
+    "gfx": 7864,
+    "primary": false
+  },
+  {
+    "npcId": 71027,
+    "mobId": "ap381_71027",
+    "zone": "wb_dragon381_71027",
+    "name": "法利昂(二)",
+    "family": "法利昂",
+    "gfx": 7869,
+    "primary": false
+  },
+  {
+    "npcId": 71028,
+    "mobId": "ap381_71028",
+    "zone": "wb_dragon381_71028",
+    "name": "法利昂(三)",
+    "family": "法利昂",
+    "gfx": 7870,
+    "primary": false
+  },
+  {
+    "npcId": 45681,
+    "mobId": "lindvior",
+    "zone": "wb_lindvior_381",
+    "name": "林德拜爾",
+    "family": "林德拜爾",
+    "gfx": 2544,
+    "primary": true
+  },
+  {
+    "npcId": 45682,
+    "mobId": "antaras",
+    "zone": "wb_antaras_381",
+    "name": "安塔瑞斯",
+    "family": "安塔瑞斯",
+    "gfx": 1245,
+    "primary": true
+  },
+  {
+    "npcId": 45683,
+    "mobId": "fafurion",
+    "zone": "wb_fafurion_381",
+    "name": "法利昂",
+    "family": "法利昂",
+    "gfx": 1590,
+    "primary": true
+  },
+  {
+    "npcId": 45684,
+    "mobId": "valakas",
+    "zone": "wb_valakas_381",
+    "name": "巴拉卡斯",
+    "family": "巴拉卡斯",
+    "gfx": 2001,
+    "primary": true
+  },
+  {
+    "npcId": 97204,
+    "mobId": "ap381_97204",
+    "zone": "wb_dragon381_97204",
+    "name": "林德拜爾(一)",
+    "family": "林德拜爾",
+    "gfx": 8036,
+    "primary": false
+  },
+  {
+    "npcId": 97205,
+    "mobId": "ap381_97205",
+    "zone": "wb_dragon381_97205",
+    "name": "林德拜爾(三)",
+    "family": "林德拜爾",
+    "gfx": 8054,
+    "primary": false
+  },
+  {
+    "npcId": 97206,
+    "mobId": "ap381_97206",
+    "zone": "wb_dragon381_97206",
+    "name": "林德拜爾(四)",
+    "family": "林德拜爾",
+    "gfx": 8055,
+    "primary": false
+  },
+  {
+    "npcId": 97207,
+    "mobId": "ap381_97207",
+    "zone": "wb_dragon381_97207",
+    "name": "林德拜爾(二)",
+    "family": "林德拜爾",
+    "gfx": 8047,
+    "primary": false
+  },
+  {
+    "npcId": 97208,
+    "mobId": "ap381_97208",
+    "zone": "wb_dragon381_97208",
+    "name": "林德拜爾(二)",
+    "family": "林德拜爾",
+    "gfx": 8056,
+    "primary": false
+  },
+  {
+    "npcId": 97209,
+    "mobId": "ap381_97209",
+    "zone": "wb_dragon381_97209",
+    "name": "林德拜爾(二)",
+    "family": "林德拜爾",
+    "gfx": 8057,
+    "primary": false
+  },
+  {
+    "npcId": 71014,
+    "mobId": "ap381_71014",
+    "zone": "wb_dragon381_71014",
+    "name": "安塔瑞斯(一)",
+    "family": "安塔瑞斯",
+    "gfx": 7539,
+    "primary": false
+  },
+  {
+    "npcId": 71015,
+    "mobId": "ap381_71015",
+    "zone": "wb_dragon381_71015",
+    "name": "安塔瑞斯(二)",
+    "family": "安塔瑞斯",
+    "gfx": 7557,
+    "primary": false
+  },
+  {
+    "npcId": 71016,
+    "mobId": "ap381_71016",
+    "zone": "wb_dragon381_71016",
+    "name": "安塔瑞斯(三)",
+    "family": "安塔瑞斯",
+    "gfx": 7558,
+    "primary": false
+  },
+  {
+    "npcId": 230267,
+    "mobId": "ap381_230267",
+    "zone": "wb_dragon381_230267",
+    "name": "巴拉卡斯",
+    "family": "巴拉卡斯",
+    "gfx": 2001,
+    "primary": false
+  },
+  {
+    "npcId": 230753,
+    "mobId": "ap381_230753",
+    "zone": "wb_dragon381_230753",
+    "name": "恐怖的 巴拉卡斯",
+    "family": "巴拉卡斯",
+    "gfx": 15492,
+    "primary": false
+  },
+  {
+    "npcId": 55408,
+    "mobId": "ap381_55408",
+    "zone": "wb_dragon381_55408",
+    "name": "恐怖的 安塔瑞斯",
+    "family": "安塔瑞斯",
+    "gfx": 7558,
+    "primary": false
+  },
+  {
+    "npcId": 55436,
+    "mobId": "ap381_55436",
+    "zone": "wb_dragon381_55436",
+    "name": "恐怖的 林德拜爾",
+    "family": "林德拜爾",
+    "gfx": 8036,
+    "primary": false
+  },
+  {
+    "npcId": 56163,
+    "mobId": "ap381_56163",
+    "zone": "wb_dragon381_56163",
+    "name": "法利昂",
+    "family": "法利昂",
+    "gfx": 7864,
+    "primary": false
+  },
+  {
+    "npcId": 56295,
+    "mobId": "ap381_56295",
+    "zone": "wb_dragon381_56295",
+    "name": "巴拉卡斯",
+    "family": "巴拉卡斯",
+    "gfx": 15492,
+    "primary": false
+  }
+]

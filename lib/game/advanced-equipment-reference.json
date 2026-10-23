@@ -1,0 +1,732 @@
+{
+  "version": 1,
+  "checkedAt": "2026-10-21",
+  "sources": [
+    "https://6sword.com/zh-TW/lw/items?type=1&grade=2",
+    "https://6sword.com/zh-TW/lw/items?type=2&grade=2",
+    "https://6sword.com/zh-TW/lw/items?type=3&grade=2"
+  ],
+  "weapons": [
+    "米索莉匕首",
+    "鎖子甲破壞者",
+    "血色儀式用匕首",
+    "大馬士革刀",
+    "紅騎士劍",
+    "武士刀",
+    "細劍",
+    "魔物獵人的太刀",
+    "銀色大劍",
+    "紅騎士大劍",
+    "紅騎士鬼劍",
+    "魔力鬼劍",
+    "尤米弓",
+    "紅騎士弓",
+    "十字弓",
+    "復活的靈魂石之弓",
+    "深紅長矛",
+    "貝卡合金",
+    "被雷劈的枯木槍",
+    "巨斧",
+    "戰斧",
+    "銀斧",
+    "狂戰士斧",
+    "紅騎士斧頭",
+    "繁榮雙手斧",
+    "力量魔法杖",
+    "紅騎士魔杖",
+    "巫術魔法杖",
+    "瑪那魔杖",
+    "純血統血石魔杖",
+    "水晶法杖",
+    "紅騎士鋼爪",
+    "幽暗鋼爪",
+    "幽暗雙刀",
+    "血色雙刀",
+    "紅騎士機關砲",
+    "灰色機關砲",
+    "紅騎士魔手",
+    "詛咒的魔手",
+    "紅騎士聖劍",
+    "雷鳴聖劍",
+    "悲鳴聖劍",
+    "紅騎士環刃",
+    "使者環刃",
+    "紅騎士鐮刀",
+    "魔力鐮刀"
+  ],
+  "armor": [
+    "老舊的鬥士T恤",
+    "老舊的神射T恤",
+    "老舊的賢者T恤",
+    "抗魔法頭盔",
+    "鋼鐵頭盔",
+    "騎士頭盔",
+    "繁榮皮革頭盔",
+    "抗魔法鏈甲",
+    "鋼鐵金屬盔甲",
+    "綿質長袍",
+    "水晶盔甲",
+    "鐵脛甲",
+    "抗魔法脛甲",
+    "繁榮脛甲",
+    "鎖鏈脛甲",
+    "復活的靈魂石脛甲",
+    "背叛者脛甲",
+    "抗魔法斗篷",
+    "保護者斗篷",
+    "瑪那斗篷",
+    "魔法斗篷",
+    "蛇鱗斗篷",
+    "受傷的翅膀",
+    "鋼鐵手套",
+    "腕甲",
+    "水晶手套",
+    "石製手套 (商店)",
+    "純血統血石手套",
+    "鋼鐵長靴",
+    "綿質鞋",
+    "鋼鐵盾牌",
+    "反射之盾",
+    "體力臂甲",
+    "魔力書",
+    "精靈盾牌",
+    "魔物獵人的匕首",
+    "血色魔法書",
+    "繁榮臂甲",
+    "紅騎士頭盔",
+    "紅騎士盔甲",
+    "紅騎士手套",
+    "紅騎士長靴",
+    "紅騎士脛甲",
+    "影子面具",
+    "影子披肩",
+    "影子斗篷",
+    "影子手套",
+    "影子長靴",
+    "獵人頭盔",
+    "獵人盔甲",
+    "獵人斗篷",
+    "獵人手套",
+    "獵人長靴",
+    "守衛頭盔",
+    "守衛盔甲",
+    "守衛斗篷",
+    "守衛手套",
+    "守衛長靴",
+    "熊獵人皮鞋",
+    "熊獵人皮革斗篷",
+    "熊獵人皮手套",
+    "砲兵頭盔",
+    "砲兵盔甲",
+    "砲兵斗篷",
+    "砲兵手套",
+    "砲兵長靴",
+    "格鬥家的頭盔",
+    "格鬥家的盔甲",
+    "格鬥家的斗篷",
+    "格鬥家的手套",
+    "格鬥家的長靴",
+    "高潔頭盔",
+    "高潔盔甲",
+    "高潔斗篷",
+    "高潔手套",
+    "高潔長靴",
+    "死者頭盔",
+    "死者盔甲",
+    "死者斗篷",
+    "死者手套",
+    "死者長靴",
+    "妖怪頭箍",
+    "妖怪妖衣",
+    "妖怪斗篷",
+    "妖怪手套",
+    "妖怪長靴",
+    "血統頭盔",
+    "血統盔甲",
+    "血統斗篷",
+    "血統手套",
+    "血統鞋子"
+  ],
+  "accessories": [
+    "騎士項鍊",
+    "力量項鍊",
+    "智力項鍊",
+    "敏捷項鍊",
+    "血色項鍊",
+    "靈魂耳環",
+    "戰士耳環",
+    "繁榮耳環",
+    "冰水晶耳環",
+    "抗魔戒指",
+    "守護戒指",
+    "青銅戒指",
+    "血盟徽章 : 勇猛",
+    "血盟徽章 : 守護",
+    "血盟徽章 : 智慧",
+    "大將軍的標幟",
+    "奴隸的標幟",
+    "根源標幟",
+    "龍的標幟",
+    "卡爾圖蘭的標幟"
+  ],
+  "belts": [
+    "多羅皮帶",
+    "精神皮帶",
+    "身體皮帶",
+    "忘卻皮帶"
+  ],
+  "items": {
+    "ap381_weapon_8": {
+      "name": "米索莉匕首",
+      "previousName": "米索莉短劍",
+      "type": "wpn",
+      "group": "weapons",
+      "kind": "dagger",
+      "match": "alias"
+    },
+    "ap381_weapon_22": {
+      "name": "鎖子甲破壞者",
+      "previousName": "鎖子甲破壞者",
+      "type": "wpn",
+      "group": "weapons",
+      "kind": "sword",
+      "match": "exact"
+    },
+    "ap381_weapon_30": {
+      "name": "紅騎士劍",
+      "previousName": "紅騎士之劍",
+      "type": "wpn",
+      "group": "weapons",
+      "kind": "sword",
+      "match": "alias"
+    },
+    "ap381_weapon_37": {
+      "name": "大馬士革刀",
+      "previousName": "大馬士革刀",
+      "type": "wpn",
+      "group": "weapons",
+      "kind": "sword",
+      "match": "exact"
+    },
+    "ap381_weapon_41": {
+      "name": "武士刀",
+      "previousName": "武士刀",
+      "type": "wpn",
+      "group": "weapons",
+      "kind": "sword",
+      "match": "exact"
+    },
+    "ap381_weapon_42": {
+      "name": "細劍",
+      "previousName": "細劍",
+      "type": "wpn",
+      "group": "weapons",
+      "kind": "sword",
+      "match": "exact"
+    },
+    "ap381_weapon_81": {
+      "name": "幽暗雙刀",
+      "previousName": "幽暗雙刀",
+      "type": "wpn",
+      "group": "weapons",
+      "kind": "edoryu",
+      "match": "exact"
+    },
+    "ap381_weapon_106": {
+      "name": "貝卡合金",
+      "previousName": "貝卡合金",
+      "type": "wpn",
+      "group": "weapons",
+      "kind": "spear",
+      "match": "exact"
+    },
+    "ap381_weapon_107": {
+      "name": "深紅長矛",
+      "previousName": "深紅長矛",
+      "type": "wpn",
+      "group": "weapons",
+      "kind": "spear",
+      "match": "exact"
+    },
+    "ap381_weapon_125": {
+      "name": "巫術魔法杖",
+      "previousName": "巫術魔法杖",
+      "type": "wpn",
+      "group": "weapons",
+      "kind": "staff",
+      "match": "exact"
+    },
+    "ap381_weapon_126": {
+      "name": "瑪那魔杖",
+      "previousName": "瑪那魔杖",
+      "type": "wpn",
+      "group": "weapons",
+      "kind": "staff",
+      "match": "exact"
+    },
+    "ap381_weapon_131": {
+      "name": "力量魔法杖",
+      "previousName": "力量魔法杖",
+      "type": "wpn",
+      "group": "weapons",
+      "kind": "staff",
+      "match": "exact"
+    },
+    "ap381_weapon_142": {
+      "name": "銀斧",
+      "previousName": "銀斧",
+      "type": "wpn",
+      "group": "weapons",
+      "kind": "tohandblunt",
+      "match": "exact"
+    },
+    "ap381_weapon_143": {
+      "name": "戰斧",
+      "previousName": "戰斧",
+      "type": "wpn",
+      "group": "weapons",
+      "kind": "tohandblunt",
+      "match": "exact"
+    },
+    "ap381_weapon_145": {
+      "name": "狂戰士斧",
+      "previousName": "狂戰士斧",
+      "type": "wpn",
+      "group": "weapons",
+      "kind": "tohandblunt",
+      "match": "exact"
+    },
+    "ap381_weapon_148": {
+      "name": "巨斧",
+      "previousName": "巨斧",
+      "type": "wpn",
+      "group": "weapons",
+      "kind": "tohandblunt",
+      "match": "exact"
+    },
+    "ap381_weapon_162": {
+      "name": "幽暗鋼爪",
+      "previousName": "幽暗鋼爪",
+      "type": "wpn",
+      "group": "weapons",
+      "kind": "claw",
+      "match": "exact"
+    },
+    "ap381_weapon_180": {
+      "name": "十字弓",
+      "previousName": "十字弓",
+      "type": "wpn",
+      "group": "weapons",
+      "kind": "bow",
+      "match": "exact"
+    },
+    "ap381_weapon_181": {
+      "name": "尤米弓",
+      "previousName": "尤米弓",
+      "type": "wpn",
+      "group": "weapons",
+      "kind": "bow",
+      "match": "exact"
+    },
+    "ap381_weapon_100008": {
+      "name": "米索莉匕首",
+      "previousName": "米索莉短劍",
+      "type": "wpn",
+      "group": "weapons",
+      "kind": "dagger",
+      "match": "alias"
+    },
+    "ap381_weapon_100037": {
+      "name": "大馬士革刀",
+      "previousName": "大馬士革刀",
+      "type": "wpn",
+      "group": "weapons",
+      "kind": "sword",
+      "match": "exact"
+    },
+    "ap381_weapon_100042": {
+      "name": "細劍",
+      "previousName": "細劍",
+      "type": "wpn",
+      "group": "weapons",
+      "kind": "sword",
+      "match": "exact"
+    },
+    "ap381_weapon_100143": {
+      "name": "戰斧",
+      "previousName": "戰斧",
+      "type": "wpn",
+      "group": "weapons",
+      "kind": "tohandblunt",
+      "match": "exact"
+    },
+    "ap381_weapon_100180": {
+      "name": "十字弓",
+      "previousName": "十字弓",
+      "type": "wpn",
+      "group": "weapons",
+      "kind": "bow",
+      "match": "exact"
+    },
+    "ap381_weapon_100181": {
+      "name": "尤米弓",
+      "previousName": "尤米弓",
+      "type": "wpn",
+      "group": "weapons",
+      "kind": "bow",
+      "match": "exact"
+    },
+    "ap381_weapon_200041": {
+      "name": "武士刀",
+      "previousName": "武士刀",
+      "type": "wpn",
+      "group": "weapons",
+      "kind": "sword",
+      "match": "exact"
+    },
+    "ap381_weapon_100131": {
+      "name": "力量魔法杖",
+      "previousName": "力量魔法杖",
+      "type": "wpn",
+      "group": "weapons",
+      "kind": "staff",
+      "match": "exact"
+    },
+    "ap381_weapon_410319": {
+      "name": "銀色大劍",
+      "previousName": "銀色的大劍",
+      "type": "wpn",
+      "group": "weapons",
+      "kind": "tohandsword",
+      "match": "alias"
+    },
+    "ap381_armor_20003": {
+      "name": "鋼鐵頭盔",
+      "previousName": "鋼鐵頭盔",
+      "type": "arm",
+      "group": "armor",
+      "kind": "helm",
+      "match": "exact"
+    },
+    "ap381_armor_20004": {
+      "name": "影子面具",
+      "previousName": "影子面具",
+      "type": "arm",
+      "group": "armor",
+      "kind": "helm",
+      "match": "exact"
+    },
+    "ap381_armor_20011": {
+      "name": "抗魔法頭盔",
+      "previousName": "抗魔法頭盔",
+      "type": "arm",
+      "group": "armor",
+      "kind": "helm",
+      "match": "exact"
+    },
+    "ap381_armor_20055": {
+      "name": "瑪那斗篷",
+      "previousName": "瑪那斗篷",
+      "type": "arm",
+      "group": "armor",
+      "kind": "cloak",
+      "match": "exact"
+    },
+    "ap381_armor_20056": {
+      "name": "抗魔法斗篷",
+      "previousName": "抗魔法斗篷",
+      "type": "arm",
+      "group": "armor",
+      "kind": "cloak",
+      "match": "exact"
+    },
+    "ap381_armor_20063": {
+      "name": "保護者斗篷",
+      "previousName": "保護者斗篷",
+      "type": "arm",
+      "group": "armor",
+      "kind": "cloak",
+      "match": "exact"
+    },
+    "ap381_armor_20091": {
+      "name": "鋼鐵金屬盔甲",
+      "previousName": "鋼鐵金屬盔甲",
+      "type": "arm",
+      "group": "armor",
+      "kind": "armor",
+      "match": "exact"
+    },
+    "ap381_armor_20110": {
+      "name": "抗魔法鏈甲",
+      "previousName": "抗魔法鏈甲",
+      "type": "arm",
+      "group": "armor",
+      "kind": "armor",
+      "match": "exact"
+    },
+    "ap381_armor_20114": {
+      "name": "綿質長袍",
+      "previousName": "綿質長袍",
+      "type": "arm",
+      "group": "armor",
+      "kind": "armor",
+      "match": "exact"
+    },
+    "ap381_armor_20128": {
+      "name": "水晶盔甲",
+      "previousName": "水晶盔甲",
+      "type": "arm",
+      "group": "armor",
+      "kind": "armor",
+      "match": "exact"
+    },
+    "ap381_armor_20163": {
+      "name": "鋼鐵手套",
+      "previousName": "鋼鐵手套",
+      "type": "arm",
+      "group": "armor",
+      "kind": "glove",
+      "match": "exact"
+    },
+    "ap381_armor_20164": {
+      "name": "影子手套",
+      "previousName": "影子手套",
+      "type": "arm",
+      "group": "armor",
+      "kind": "glove",
+      "match": "exact"
+    },
+    "ap381_armor_20175": {
+      "name": "水晶手套",
+      "previousName": "水晶手套",
+      "type": "arm",
+      "group": "armor",
+      "kind": "glove",
+      "match": "exact"
+    },
+    "ap381_armor_20191": {
+      "name": "腕甲",
+      "previousName": "腕甲",
+      "type": "arm",
+      "group": "armor",
+      "kind": "glove",
+      "match": "exact"
+    },
+    "ap381_armor_20194": {
+      "name": "鋼鐵長靴",
+      "previousName": "鋼鐵長靴",
+      "type": "arm",
+      "group": "armor",
+      "kind": "boots",
+      "match": "exact"
+    },
+    "ap381_armor_20195": {
+      "name": "影子長靴",
+      "previousName": "影子長靴",
+      "type": "arm",
+      "group": "armor",
+      "kind": "boots",
+      "match": "exact"
+    },
+    "ap381_armor_20220": {
+      "name": "鋼鐵盾牌",
+      "previousName": "鋼鐵盾牌",
+      "type": "arm",
+      "group": "armor",
+      "kind": "shield",
+      "match": "exact"
+    },
+    "ap381_armor_20229": {
+      "name": "反射之盾",
+      "previousName": "反射之盾",
+      "type": "arm",
+      "group": "armor",
+      "kind": "shield",
+      "match": "exact"
+    },
+    "ap381_armor_20236": {
+      "name": "精靈盾牌",
+      "previousName": "精靈盾牌",
+      "type": "arm",
+      "group": "armor",
+      "kind": "shield",
+      "match": "exact"
+    },
+    "ap381_armor_20256": {
+      "name": "敏捷項鍊",
+      "previousName": "敏捷項鍊",
+      "type": "acc",
+      "group": "accessories",
+      "kind": "amulet",
+      "match": "exact"
+    },
+    "ap381_armor_20264": {
+      "name": "力量項鍊",
+      "previousName": "力量項鍊",
+      "type": "acc",
+      "group": "accessories",
+      "kind": "amulet",
+      "match": "exact"
+    },
+    "ap381_armor_20266": {
+      "name": "智力項鍊",
+      "previousName": "智力項鍊",
+      "type": "acc",
+      "group": "accessories",
+      "kind": "amulet",
+      "match": "exact"
+    },
+    "ap381_armor_20303": {
+      "name": "抗魔戒指",
+      "previousName": "抗魔戒指",
+      "type": "acc",
+      "group": "accessories",
+      "kind": "ring",
+      "match": "exact"
+    },
+    "ap381_armor_20312": {
+      "name": "身體皮帶",
+      "previousName": "身體腰帶",
+      "type": "acc",
+      "group": "belts",
+      "kind": "belt",
+      "match": "alias"
+    },
+    "ap381_armor_20319": {
+      "name": "精神皮帶",
+      "previousName": "精神腰帶",
+      "type": "acc",
+      "group": "belts",
+      "kind": "belt",
+      "match": "alias"
+    },
+    "ap381_armor_20321": {
+      "name": "多羅皮帶",
+      "previousName": "多羅皮帶",
+      "type": "acc",
+      "group": "belts",
+      "kind": "belt",
+      "match": "exact"
+    },
+    "ap381_armor_20377": {
+      "name": "騎士項鍊",
+      "previousName": "騎士項鍊",
+      "type": "acc",
+      "group": "accessories",
+      "kind": "amulet",
+      "match": "exact"
+    },
+    "ap381_armor_20385": {
+      "name": "騎士頭盔",
+      "previousName": "騎士頭盔",
+      "type": "arm",
+      "group": "armor",
+      "kind": "helm",
+      "match": "exact"
+    },
+    "ap381_armor_21004": {
+      "name": "戰士耳環",
+      "previousName": "戰士耳環",
+      "type": "acc",
+      "group": "accessories",
+      "kind": "earring",
+      "match": "exact"
+    },
+    "ap381_armor_21006": {
+      "name": "靈魂耳環",
+      "previousName": "靈魂耳環",
+      "type": "acc",
+      "group": "accessories",
+      "kind": "earring",
+      "match": "exact"
+    },
+    "ap381_armor_21007": {
+      "name": "靈魂耳環",
+      "previousName": "靈魂耳環",
+      "type": "acc",
+      "group": "accessories",
+      "kind": "earring",
+      "match": "exact"
+    },
+    "ap381_armor_21014": {
+      "name": "靈魂耳環",
+      "previousName": "靈魂耳環",
+      "type": "acc",
+      "group": "accessories",
+      "kind": "earring",
+      "match": "exact"
+    },
+    "ap381_armor_120011": {
+      "name": "抗魔法頭盔",
+      "previousName": "抗魔法頭盔",
+      "type": "arm",
+      "group": "armor",
+      "kind": "helm",
+      "match": "exact"
+    },
+    "ap381_armor_120056": {
+      "name": "抗魔法斗篷",
+      "previousName": "抗魔法斗篷",
+      "type": "arm",
+      "group": "armor",
+      "kind": "cloak",
+      "match": "exact"
+    },
+    "ap381_armor_120128": {
+      "name": "水晶盔甲",
+      "previousName": "水晶盔甲",
+      "type": "arm",
+      "group": "armor",
+      "kind": "armor",
+      "match": "exact"
+    },
+    "ap381_armor_120312": {
+      "name": "身體皮帶",
+      "previousName": "身體腰帶",
+      "type": "acc",
+      "group": "belts",
+      "kind": "belt",
+      "match": "alias"
+    },
+    "ap381_armor_120319": {
+      "name": "精神皮帶",
+      "previousName": "精神腰帶",
+      "type": "acc",
+      "group": "belts",
+      "kind": "belt",
+      "match": "alias"
+    },
+    "ap381_armor_220056": {
+      "name": "抗魔法斗篷",
+      "previousName": "抗魔法斗篷",
+      "type": "arm",
+      "group": "armor",
+      "kind": "cloak",
+      "match": "exact"
+    },
+    "ap381_armor_300429": {
+      "name": "體力臂甲",
+      "previousName": "體力臂甲",
+      "type": "arm",
+      "group": "armor",
+      "kind": "guarder",
+      "match": "exact"
+    },
+    "ap381_armor_120110": {
+      "name": "抗魔法鏈甲",
+      "previousName": "抗魔法鏈甲",
+      "type": "arm",
+      "group": "armor",
+      "kind": "armor",
+      "match": "exact"
+    },
+    "ap381_armor_120063": {
+      "name": "保護者斗篷",
+      "previousName": "保護者斗篷",
+      "type": "arm",
+      "group": "armor",
+      "kind": "cloak",
+      "match": "exact"
+    }
+  }
+}

@@ -1,0 +1,507 @@
+{
+  "source": "https://6sword.com/zh-TW/lw",
+  "matchedCount": 55,
+  "renamedCount": 9,
+  "items": {
+    "ap381_weapon_1": {
+      "name": "妖魔族匕首",
+      "previousName": "歐西斯匕首",
+      "type": "wpn",
+      "kind": "dagger",
+      "match": "alias"
+    },
+    "ap381_weapon_4": {
+      "name": "匕首",
+      "previousName": "匕首",
+      "type": "wpn",
+      "kind": "dagger",
+      "match": "exact"
+    },
+    "ap381_weapon_21": {
+      "name": "妖魔族劍",
+      "previousName": "歐西斯短劍",
+      "type": "wpn",
+      "kind": "sword",
+      "match": "alias"
+    },
+    "ap381_weapon_27": {
+      "name": "彎刀",
+      "previousName": "彎刀",
+      "type": "wpn",
+      "kind": "sword",
+      "match": "exact"
+    },
+    "ap381_weapon_29": {
+      "name": "銀長劍",
+      "previousName": "銀長劍",
+      "type": "wpn",
+      "kind": "sword",
+      "match": "exact"
+    },
+    "ap381_weapon_31": {
+      "name": "長劍",
+      "previousName": "長劍",
+      "type": "wpn",
+      "kind": "sword",
+      "match": "exact"
+    },
+    "ap381_weapon_32": {
+      "name": "侵略者之劍",
+      "previousName": "侵略者之劍",
+      "type": "wpn",
+      "kind": "sword",
+      "match": "exact"
+    },
+    "ap381_weapon_52": {
+      "name": "雙手劍",
+      "previousName": "雙手劍",
+      "type": "wpn",
+      "kind": "tohandsword",
+      "match": "exact"
+    },
+    "ap381_weapon_91": {
+      "name": "妖魔族槍",
+      "previousName": "歐西斯之矛",
+      "type": "wpn",
+      "kind": "singlespear",
+      "match": "alias"
+    },
+    "ap381_weapon_102": {
+      "name": "露西錘",
+      "previousName": "露西錘",
+      "type": "wpn",
+      "kind": "spear",
+      "match": "exact"
+    },
+    "ap381_weapon_143": {
+      "name": "戰斧",
+      "previousName": "戰斧",
+      "type": "wpn",
+      "kind": "tohandblunt",
+      "match": "exact"
+    },
+    "ap381_weapon_154": {
+      "name": "暗影鋼爪",
+      "previousName": "暗影鋼爪",
+      "type": "wpn",
+      "kind": "claw",
+      "match": "exact"
+    },
+    "ap381_weapon_157": {
+      "name": "銀光鋼爪",
+      "previousName": "銀光鋼爪",
+      "type": "wpn",
+      "kind": "claw",
+      "match": "exact"
+    },
+    "ap381_weapon_169": {
+      "name": "獵人之弓",
+      "previousName": "獵人之弓",
+      "type": "wpn",
+      "kind": "bow",
+      "match": "exact"
+    },
+    "ap381_weapon_170": {
+      "name": "精靈弓",
+      "previousName": "精靈弓",
+      "type": "wpn",
+      "kind": "bow",
+      "match": "exact"
+    },
+    "ap381_weapon_172": {
+      "name": "弓",
+      "previousName": "弓",
+      "type": "wpn",
+      "kind": "bow",
+      "match": "exact"
+    },
+    "ap381_weapon_100004": {
+      "name": "匕首",
+      "previousName": "匕首",
+      "type": "wpn",
+      "kind": "dagger",
+      "match": "exact"
+    },
+    "ap381_weapon_100027": {
+      "name": "彎刀",
+      "previousName": "彎刀",
+      "type": "wpn",
+      "kind": "sword",
+      "match": "exact"
+    },
+    "ap381_weapon_100029": {
+      "name": "銀長劍",
+      "previousName": "銀長劍",
+      "type": "wpn",
+      "kind": "sword",
+      "match": "exact"
+    },
+    "ap381_weapon_100052": {
+      "name": "雙手劍",
+      "previousName": "雙手劍",
+      "type": "wpn",
+      "kind": "tohandsword",
+      "match": "exact"
+    },
+    "ap381_weapon_100102": {
+      "name": "露西錘",
+      "previousName": "露西錘",
+      "type": "wpn",
+      "kind": "spear",
+      "match": "exact"
+    },
+    "ap381_weapon_100143": {
+      "name": "戰斧",
+      "previousName": "戰斧",
+      "type": "wpn",
+      "kind": "tohandblunt",
+      "match": "exact"
+    },
+    "ap381_weapon_100157": {
+      "name": "銀光鋼爪",
+      "previousName": "銀光鋼爪",
+      "type": "wpn",
+      "kind": "claw",
+      "match": "exact"
+    },
+    "ap381_weapon_100169": {
+      "name": "獵人之弓",
+      "previousName": "獵人之弓",
+      "type": "wpn",
+      "kind": "bow",
+      "match": "exact"
+    },
+    "ap381_weapon_100170": {
+      "name": "精靈弓",
+      "previousName": "精靈弓",
+      "type": "wpn",
+      "kind": "bow",
+      "match": "exact"
+    },
+    "ap381_weapon_100172": {
+      "name": "弓",
+      "previousName": "弓",
+      "type": "wpn",
+      "kind": "bow",
+      "match": "exact"
+    },
+    "ap381_weapon_200001": {
+      "name": "妖魔族匕首",
+      "previousName": "歐西斯匕首",
+      "type": "wpn",
+      "kind": "dagger",
+      "match": "alias"
+    },
+    "ap381_weapon_200027": {
+      "name": "彎刀",
+      "previousName": "彎刀",
+      "type": "wpn",
+      "kind": "sword",
+      "match": "exact"
+    },
+    "ap381_weapon_200032": {
+      "name": "侵略者之劍",
+      "previousName": "侵略者之劍",
+      "type": "wpn",
+      "kind": "sword",
+      "match": "exact"
+    },
+    "ap381_weapon_200052": {
+      "name": "雙手劍",
+      "previousName": "雙手劍",
+      "type": "wpn",
+      "kind": "tohandsword",
+      "match": "exact"
+    },
+    "ap381_armor_20032": {
+      "name": "黑暗頭飾",
+      "previousName": "黑暗頭飾",
+      "type": "arm",
+      "kind": "helm",
+      "match": "exact"
+    },
+    "ap381_armor_20034": {
+      "name": "妖魔族頭盔",
+      "previousName": "歐西斯頭盔",
+      "type": "arm",
+      "kind": "helm",
+      "match": "alias"
+    },
+    "ap381_armor_20045": {
+      "name": "骷髏頭盔",
+      "previousName": "骷髏頭盔",
+      "type": "arm",
+      "kind": "helm",
+      "match": "exact"
+    },
+    "ap381_armor_20070": {
+      "name": "黑暗斗篷",
+      "previousName": "黑暗斗篷",
+      "type": "arm",
+      "kind": "cloak",
+      "match": "exact"
+    },
+    "ap381_armor_20072": {
+      "name": "妖魔族斗篷",
+      "previousName": "歐西斯斗篷",
+      "type": "arm",
+      "kind": "cloak",
+      "match": "alias"
+    },
+    "ap381_armor_20085": {
+      "name": "T恤",
+      "previousName": "T恤",
+      "type": "arm",
+      "kind": "T",
+      "match": "exact"
+    },
+    "ap381_armor_20124": {
+      "name": "骷髏盔甲",
+      "previousName": "骷髏盔甲",
+      "type": "arm",
+      "kind": "armor",
+      "match": "exact"
+    },
+    "ap381_armor_20125": {
+      "name": "鏈甲",
+      "previousName": "鏈甲",
+      "type": "arm",
+      "kind": "armor",
+      "match": "exact"
+    },
+    "ap381_armor_20132": {
+      "name": "黑暗披肩",
+      "previousName": "黑暗披肩",
+      "type": "arm",
+      "kind": "armor",
+      "match": "exact"
+    },
+    "ap381_armor_20135": {
+      "name": "妖魔族環甲",
+      "previousName": "歐西斯環甲",
+      "type": "arm",
+      "kind": "armor",
+      "match": "alias"
+    },
+    "ap381_armor_20147": {
+      "name": "銀釘皮甲",
+      "previousName": "銀釘皮甲",
+      "type": "arm",
+      "kind": "armor",
+      "match": "exact"
+    },
+    "ap381_armor_20180": {
+      "name": "黑暗手套",
+      "previousName": "黑暗手套",
+      "type": "arm",
+      "kind": "glove",
+      "match": "exact"
+    },
+    "ap381_armor_20182": {
+      "name": "手套",
+      "previousName": "手套",
+      "type": "arm",
+      "kind": "glove",
+      "match": "exact"
+    },
+    "ap381_armor_20205": {
+      "name": "長靴",
+      "previousName": "長靴",
+      "type": "arm",
+      "kind": "boots",
+      "match": "exact"
+    },
+    "ap381_armor_20210": {
+      "name": "黑暗長靴",
+      "previousName": "黑暗長靴",
+      "type": "arm",
+      "kind": "boots",
+      "match": "exact"
+    },
+    "ap381_armor_20221": {
+      "name": "骷髏盾牌",
+      "previousName": "骷髏盾牌",
+      "type": "arm",
+      "kind": "shield",
+      "match": "exact"
+    },
+    "ap381_armor_20231": {
+      "name": "塔盾",
+      "previousName": "塔盾",
+      "type": "arm",
+      "kind": "shield",
+      "match": "exact"
+    },
+    "ap381_armor_20237": {
+      "name": "阿克海盾牌",
+      "previousName": "阿克海盾牌",
+      "type": "arm",
+      "kind": "shield",
+      "match": "exact"
+    },
+    "ap381_armor_120085": {
+      "name": "T恤",
+      "previousName": "T恤",
+      "type": "arm",
+      "kind": "T",
+      "match": "exact"
+    },
+    "ap381_armor_120182": {
+      "name": "手套",
+      "previousName": "手套",
+      "type": "arm",
+      "kind": "glove",
+      "match": "exact"
+    },
+    "ap381_armor_220034": {
+      "name": "妖魔族頭盔",
+      "previousName": "歐西斯頭盔",
+      "type": "arm",
+      "kind": "helm",
+      "match": "alias"
+    },
+    "ap381_armor_220125": {
+      "name": "鏈甲",
+      "previousName": "鏈甲",
+      "type": "arm",
+      "kind": "armor",
+      "match": "exact"
+    },
+    "ap381_armor_220135": {
+      "name": "妖魔族環甲",
+      "previousName": "歐西斯環甲",
+      "type": "arm",
+      "kind": "armor",
+      "match": "alias"
+    },
+    "ap381_armor_220147": {
+      "name": "銀釘皮甲",
+      "previousName": "銀釘皮甲",
+      "type": "arm",
+      "kind": "armor",
+      "match": "exact"
+    },
+    "ap381_armor_220237": {
+      "name": "阿克海盾牌",
+      "previousName": "阿克海盾牌",
+      "type": "arm",
+      "kind": "shield",
+      "match": "exact"
+    }
+  },
+  "missingWeapons": [
+    "猛獸的尖牙",
+    "太刀",
+    "大劍",
+    "鬼劍",
+    "銀光鬼劍",
+    "晨星錘",
+    "鐵匠之斧",
+    "魔法師魔杖",
+    "聖水魔杖",
+    "微光法杖",
+    "燻黑的雙刀",
+    "銀色斧頭",
+    "機關砲",
+    "銀機關砲",
+    "魔手",
+    "銀光魔手",
+    "聖劍",
+    "銀光聖劍",
+    "環刃",
+    "銀光環刃",
+    "血之鐮刀",
+    "銀光鐮刀",
+    "慶典用水球手套 (活動)",
+    "[傳統] 武士刀",
+    "[傳統] 雙手劍",
+    "[傳統] 十字弓",
+    "[傳統] 巫術魔法杖"
+  ],
+  "missingArmor": [
+    "鐵盔",
+    "皮脛甲",
+    "舊斗篷",
+    "圓盾",
+    "阿克海臂甲",
+    "短靴",
+    "匕首",
+    "亡者的血色盔甲",
+    "融化的智力脛甲",
+    "融化的敏捷脛甲",
+    "融化的力量脛甲",
+    "結實的布手套",
+    "磨損的頭盔",
+    "見習紅騎士頭盔",
+    "見習紅騎士盔甲",
+    "見習紅騎士手套",
+    "見習紅騎士長靴",
+    "見習紅騎士脛甲",
+    "魔物頭盔",
+    "魔物盔甲",
+    "魔物斗篷",
+    "魔物手套",
+    "魔物長靴",
+    "戰士頭盔",
+    "戰士盔甲",
+    "戰士斗篷",
+    "戰士手套",
+    "戰士長靴",
+    "槍手頭盔",
+    "槍手盔甲",
+    "槍手斗篷",
+    "槍手手套",
+    "槍手長靴",
+    "魔鬥士的頭盔",
+    "魔鬥士的盔甲",
+    "魔鬥士的斗篷",
+    "魔鬥士的手套",
+    "魔鬥士的長靴",
+    "審判者頭盔",
+    "審判者盔甲",
+    "審判者斗篷",
+    "審判者手套",
+    "審判者長靴",
+    "修行者頭盔",
+    "修行者盔甲",
+    "修行者斗篷",
+    "修行者手套",
+    "修行者長靴",
+    "劍鬼頭箍",
+    "劍鬼妖衣",
+    "劍鬼斗篷",
+    "劍鬼手套",
+    "劍鬼長靴",
+    "血法師頭盔",
+    "血法師盔甲",
+    "血法師斗篷",
+    "血法師手套",
+    "血法師鞋子",
+    "不知主人的面具",
+    "不知主人的斗篷",
+    "不知主人的手套",
+    "不知主人的長靴",
+    "無名者的面具",
+    "無名者的斗篷",
+    "無名者的手套",
+    "無名者的長靴",
+    "蘊含死亡的頭盔",
+    "蘊含死亡的斗篷",
+    "蘊含死亡的手套",
+    "蘊含死亡的長靴",
+    "特克爾戰士面具",
+    "特克爾戰士斗篷",
+    "特克爾戰士手套",
+    "特克爾戰士長靴",
+    "[傳統] 骷髏頭盔",
+    "[傳統] 骷髏盾牌",
+    "[傳統] 骷髏盔甲",
+    "[傳統] 皮頭盔",
+    "[傳統] 小藤甲",
+    "[傳統] 皮長靴",
+    "[傳統] 鋼鐵面甲",
+    "[傳統] 鋼鐵金屬盔甲",
+    "[傳統] 鋼鐵長靴"
+  ],
+  "note": "傳統與一般版本分開；未新增物品；僅修改已對應的名稱與品質。"
+}

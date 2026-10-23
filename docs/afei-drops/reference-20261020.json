@@ -1,0 +1,3796 @@
+{
+  "source": "https://zxc518zxc.github.io/monsters.html",
+  "dataSource": "https://zxc518zxc.github.io/data.js?v=96a0ad9f",
+  "retrievedAt": "2026-10-20",
+  "sha256": "f3380f02632dafad60e22b3039a1da8a9ecfac60a93419bc6f472910df6bb81c",
+  "probabilitiesPublished": false,
+  "equipmentTypesExcluded": [
+    "武器",
+    "防具",
+    "飾品"
+  ],
+  "mobs": {
+    "orc": {
+      "name": "妖魔",
+      "items": [
+        "new_item_179"
+      ]
+    },
+    "goblin": {
+      "name": "哥布林",
+      "items": [
+        "potion_heal"
+      ]
+    },
+    "gremlin": {
+      "name": "地靈",
+      "items": [
+        "new_item_179"
+      ]
+    },
+    "orc_archer": {
+      "name": "妖魔弓箭手",
+      "items": [
+        "new_item_179"
+      ]
+    },
+    "nm_003": {
+      "name": "狼",
+      "items": [
+        "new_item_195",
+        "new_item_179"
+      ]
+    },
+    "nm_002": {
+      "name": "蘑菇",
+      "items": [
+        "new_item_166"
+      ]
+    },
+    "侏儒": {
+      "name": "侏儒",
+      "items": [
+        "new_item_169",
+        "scroll_poly",
+        "new_item_180",
+        "mat_silverore"
+      ]
+    },
+    "nm_035": {
+      "name": "牧羊犬",
+      "items": [
+        "new_item_143",
+        "new_item_179"
+      ]
+    },
+    "nm_004": {
+      "name": "哈士奇",
+      "items": [
+        "new_item_143",
+        "new_item_179"
+      ]
+    },
+    "nm_005": {
+      "name": "熊",
+      "items": [
+        "new_item_179"
+      ]
+    },
+    "zombie": {
+      "name": "人形殭屍",
+      "items": [
+        "bk_vampire",
+        "bk_dark_shadow"
+      ]
+    },
+    "nm_006": {
+      "name": "安普長老",
+      "items": [
+        "new_item_150",
+        "new_item_154",
+        "new_item_179",
+        "new_item_182",
+        "potion_blue",
+        "bk_rock_prison"
+      ]
+    },
+    "nm_007": {
+      "name": "污染的安特",
+      "items": [
+        "new_item_141",
+        "new_item_237"
+      ]
+    },
+    "doberman": {
+      "name": "杜賓狗",
+      "items": [
+        "new_item_143",
+        "new_item_179"
+      ]
+    },
+    "floating_eye": {
+      "name": "漂浮之眼",
+      "items": [
+        "new_item_143",
+        "new_item_150"
+      ]
+    },
+    "ice_wolf": {
+      "name": "冰原狼人",
+      "items": [
+        "new_item_150",
+        "new_item_151",
+        "new_item_154",
+        "new_item_157",
+        "new_item_160"
+      ]
+    },
+    "fighter": {
+      "name": "妖魔鬥士",
+      "items": []
+    },
+    "nm_008": {
+      "name": "怪手",
+      "items": [
+        "new_item_150"
+      ]
+    },
+    "gnome_warrior": {
+      "name": "侏儒戰士",
+      "items": [
+        "potion_haste",
+        "new_item_180",
+        "mat_silverore"
+      ]
+    },
+    "wolf": {
+      "name": "狼人",
+      "items": [
+        "bk_dex_up",
+        "bk_vampire"
+      ]
+    },
+    "gandi_orc": {
+      "name": "甘地妖魔",
+      "items": [
+        "potion_heal",
+        "new_item_148",
+        "new_item_150",
+        "new_item_201",
+        "item_orc_amulet"
+      ]
+    },
+    "ice_maid": {
+      "name": "冰之女王侍女",
+      "items": [
+        "bk_thunder_storm",
+        "bk_cancel"
+      ]
+    },
+    "nm_009": {
+      "name": "污染的潘",
+      "items": [
+        "new_item_163"
+      ]
+    },
+    "orc_zombie": {
+      "name": "妖魔殭屍",
+      "items": []
+    },
+    "skeleton": {
+      "name": "骷髏",
+      "items": [
+        "potion_haste",
+        "new_item_150",
+        "bk_dex_up",
+        "new_item_183",
+        "new_item_203",
+        "new_item_214"
+      ]
+    },
+    "croc": {
+      "name": "鱷魚",
+      "items": [
+        "new_item_154",
+        "bk_thunder",
+        "potion_brave"
+      ]
+    },
+    "ant": {
+      "name": "巨蟻",
+      "items": [
+        "potion_haste",
+        "new_item_154",
+        "potion_brave"
+      ]
+    },
+    "orc_mage": {
+      "name": "妖魔法師",
+      "items": [
+        "new_item_150",
+        "bk_heal2",
+        "potion_blue",
+        "bk_blaze",
+        "item_orc_elder_head"
+      ]
+    },
+    "skel_archer": {
+      "name": "骷髏弓箭手",
+      "items": [
+        "potion_haste",
+        "new_item_150",
+        "bk_dex_up",
+        "new_item_183"
+      ]
+    },
+    "roach": {
+      "name": "蟑螂人",
+      "items": [
+        "potion_haste",
+        "new_item_158"
+      ]
+    },
+    "stone_golem": {
+      "name": "石頭高崙",
+      "items": [
+        "new_item_150",
+        "new_item_159",
+        "new_item_164",
+        "potion_blue",
+        "bk_rock_prison",
+        "new_item_207",
+        "mat_silverore"
+      ]
+    },
+    "skel_axe": {
+      "name": "骷髏斧手",
+      "items": [
+        "potion_haste",
+        "new_item_150",
+        "new_item_183"
+      ]
+    },
+    "skel_spear": {
+      "name": "骷髏槍兵",
+      "items": [
+        "potion_haste",
+        "new_item_150",
+        "bk_dex_up",
+        "new_item_183"
+      ]
+    },
+    "rova_orc": {
+      "name": "羅孚妖魔",
+      "items": [
+        "potion_haste",
+        "new_item_149",
+        "new_item_157",
+        "item_orc_amulet"
+      ]
+    },
+    "orc_scout": {
+      "name": "妖魔巡守",
+      "items": [
+        "scroll_acc"
+      ]
+    },
+    "hobgoblin": {
+      "name": "哈柏哥布林",
+      "items": [
+        "potion_haste",
+        "new_item_180",
+        "mat_silverore"
+      ]
+    },
+    "spider": {
+      "name": "夏洛伯",
+      "items": [
+        "bk_slow",
+        "bk_earthquake",
+        "scroll_acc",
+        "new_item_144"
+      ]
+    },
+    "troglodyte": {
+      "name": "穴居人",
+      "items": [
+        "scroll_acc"
+      ]
+    },
+    "atuba_orc": {
+      "name": "阿吐巴妖魔",
+      "items": [
+        "new_item_145",
+        "new_item_157",
+        "new_item_202",
+        "item_orc_amulet"
+      ]
+    },
+    "duda_orc": {
+      "name": "都達瑪拉妖魔",
+      "items": [
+        "potion_haste",
+        "new_item_147",
+        "new_item_150",
+        "new_item_158",
+        "new_item_199",
+        "scroll_acc",
+        "item_orc_amulet"
+      ]
+    },
+    "lizardman": {
+      "name": "蜥蜴人",
+      "items": [
+        "new_item_160",
+        "scroll_acc",
+        "mat_silverore"
+      ]
+    },
+    "bear": {
+      "name": "歐熊",
+      "items": [
+        "potion_brave",
+        "new_item_182",
+        "scroll_acc"
+      ]
+    },
+    "mermaid": {
+      "name": "人魚",
+      "items": [
+        "scroll_acc",
+        "new_item_mermaid_scale"
+      ]
+    },
+    "sparto": {
+      "name": "史巴托",
+      "items": [
+        "scroll_acc",
+        "new_item_150"
+      ]
+    },
+    "ghoul": {
+      "name": "食屍鬼",
+      "items": [
+        "scroll_weapon",
+        "bk_berserk",
+        "new_item_204",
+        "new_item_205"
+      ]
+    },
+    "b_knight": {
+      "name": "黑騎士",
+      "items": [
+        "new_item_151",
+        "new_item_154",
+        "new_item_157",
+        "new_item_160",
+        "potion_blue",
+        "new_item_196",
+        "new_item_198",
+        "mat_silverore"
+      ]
+    },
+    "nm_011": {
+      "name": "黑騎士搜索隊",
+      "items": [
+        "new_item_151",
+        "new_item_154",
+        "new_item_157",
+        "new_item_160",
+        "potion_blue",
+        "new_item_197"
+      ]
+    },
+    "nm_010": {
+      "name": "鯊魚",
+      "items": [
+        "potion_haste",
+        "new_item_160",
+        "new_item_161",
+        "new_item_162"
+      ]
+    },
+    "neruga_orc": {
+      "name": "那魯加妖魔",
+      "items": [
+        "potion_haste",
+        "new_item_146",
+        "new_item_157",
+        "new_item_200",
+        "item_orc_amulet"
+      ]
+    },
+    "lycan": {
+      "name": "萊肯",
+      "items": [
+        "new_item_151",
+        "bk_dex_up",
+        "bk_vampire",
+        "bk_slow",
+        "new_item_195"
+      ]
+    },
+    "ungoliant": {
+      "name": "楊果里恩",
+      "items": [
+        "scroll_weapon",
+        "scroll_armor",
+        "scroll_acc",
+        "bk_slow",
+        "bk_charm",
+        "bk_rock_prison"
+      ]
+    },
+    "crabman": {
+      "name": "蟹人",
+      "items": [
+        "scroll_armor",
+        "bk_break",
+        "bk_str_up"
+      ]
+    },
+    "giant_ant": {
+      "name": "巨大兵蟻",
+      "items": [
+        "potion_haste",
+        "new_item_154",
+        "new_item_155",
+        "new_item_156",
+        "new_item_157",
+        "new_item_158",
+        "new_item_159",
+        "potion_brave"
+      ]
+    },
+    "starfish": {
+      "name": "海星",
+      "items": [
+        "potion_haste",
+        "bk_ice_spike",
+        "scroll_acc"
+      ]
+    },
+    "ratman": {
+      "name": "鼠人",
+      "items": [
+        "potion_haste",
+        "bk_dex_up",
+        "bk_haste_spell"
+      ]
+    },
+    "obli_lizardman": {
+      "name": "遺忘之島蜥蜴人",
+      "items": [
+        "item_forgotten_robe"
+      ]
+    },
+    "obli_croc": {
+      "name": "遺忘之島鱷魚",
+      "items": []
+    },
+    "gaster": {
+      "name": "卡司特",
+      "items": [
+        "new_item_154",
+        "new_item_155",
+        "bk_summon",
+        "potion_blue",
+        "item_death_oath"
+      ]
+    },
+    "elder": {
+      "name": "長老",
+      "items": [
+        "new_item_150",
+        "bk_thunder",
+        "bk_heal2",
+        "scroll_acc",
+        "potion_blue",
+        "new_item_234"
+      ]
+    },
+    "ogre": {
+      "name": "食人妖精",
+      "items": [
+        "scroll_weapon",
+        "scroll_armor",
+        "bk_fireball",
+        "bk_break",
+        "bk_elf_release",
+        "new_item_217",
+        "bk_blaze"
+      ]
+    },
+    "lamia": {
+      "name": "蛇女",
+      "items": [
+        "scroll_weapon",
+        "scroll_acc",
+        "bk_break",
+        "new_item_221",
+        "new_item_208"
+      ]
+    },
+    "cerberus": {
+      "name": "地獄犬",
+      "items": [
+        "scroll_acc",
+        "new_item_150",
+        "new_item_157",
+        "new_item_158",
+        "new_item_159",
+        "bk_fireball",
+        "bk_break",
+        "bk_holy_barrier",
+        "new_item_195"
+      ]
+    },
+    "sildeis": {
+      "name": "希爾黛斯",
+      "items": [
+        "new_item_160",
+        "new_item_161",
+        "new_item_162",
+        "bk_slow",
+        "bk_ice_lance",
+        "potion_blue",
+        "bk_ice_spike",
+        "bk_elf_lifespring",
+        "bk_elf_lifebless",
+        "new_item_213"
+      ]
+    },
+    "dragon_turtle": {
+      "name": "龍龜",
+      "items": [
+        "bk_cancel",
+        "scroll_acc",
+        "bk_ice_spike",
+        "new_item_206"
+      ]
+    },
+    "harpy": {
+      "name": "哈維",
+      "items": [
+        "new_item_150",
+        "bk_haste_spell",
+        "bk_holy_dash",
+        "potion_blue",
+        "bk_greater_haste",
+        "new_item_195",
+        "bk_elf_stormeye"
+      ]
+    },
+    "scorpion": {
+      "name": "毒蠍",
+      "items": [
+        "potion_haste",
+        "bk_thunder",
+        "bk_cancel",
+        "bk_rock_prison",
+        "bk_quake"
+      ]
+    },
+    "dark_elf": {
+      "name": "黑暗精靈",
+      "items": [
+        "bk_tornado",
+        "bk_invisible",
+        "potion_blue",
+        "new_item_195",
+        "bk_elf_release",
+        "bk_meditation",
+        "item_blueflute"
+      ]
+    },
+    "skel_sniper": {
+      "name": "骷髏神射手",
+      "items": [
+        "potion_haste",
+        "new_item_150",
+        "bk_dex_up",
+        "bk_charm",
+        "new_item_212"
+      ]
+    },
+    "skel_guard": {
+      "name": "骷髏警衛",
+      "items": [
+        "potion_haste",
+        "new_item_150",
+        "bk_dex_up",
+        "bk_charm",
+        "new_item_212"
+      ]
+    },
+    "electon": {
+      "name": "伊萊克頓",
+      "items": [
+        "scroll_armor",
+        "new_item_151",
+        "new_item_152",
+        "new_item_153",
+        "bk_thunder",
+        "bk_summon",
+        "bk_thunder_storm",
+        "potion_blue",
+        "bk_ice_spike",
+        "bk_elf_lifespring"
+      ]
+    },
+    "troll": {
+      "name": "多羅",
+      "items": [
+        "bk_heal2",
+        "bk_regen",
+        "potion_brave"
+      ]
+    },
+    "nm_013": {
+      "name": "紙人",
+      "items": [
+        "scroll_poly",
+        "scroll_acc"
+      ]
+    },
+    "bandit": {
+      "name": "強盜",
+      "items": [
+        "potion_heal",
+        "potion_strong",
+        "potion_haste",
+        "potion_ult",
+        "new_item_225",
+        "item_death_oath"
+      ]
+    },
+    "nm_012": {
+      "name": "雪人",
+      "items": [
+        "bk_elf_release",
+        "scroll_acc"
+      ]
+    },
+    "ogre_warrior": {
+      "name": "歐吉",
+      "items": [
+        "scroll_weapon",
+        "scroll_armor",
+        "new_item_167",
+        "potion_brave"
+      ]
+    },
+    "crustacean": {
+      "name": "奎斯坦修",
+      "items": [
+        "scroll_weapon",
+        "scroll_armor",
+        "scroll_acc",
+        "new_item_151",
+        "new_item_152",
+        "new_item_153",
+        "bk_weaken"
+      ]
+    },
+    "skel_fighter": {
+      "name": "骷髏鬥士",
+      "items": [
+        "potion_haste",
+        "new_item_150",
+        "bk_dex_up",
+        "bk_haste_spell",
+        "bk_solid_shield"
+      ]
+    },
+    "bomb_flower": {
+      "name": "爆彈花",
+      "items": [
+        "bk_sleep_mist",
+        "scroll_acc"
+      ]
+    },
+    "nm_046": {
+      "name": "冰人",
+      "items": [
+        "potion_haste",
+        "new_item_150",
+        "potion_blue",
+        "new_item_195"
+      ]
+    },
+    "nm_014": {
+      "name": "艾爾摩士兵",
+      "items": [
+        "scroll_armor",
+        "scroll_acc",
+        "potion_brave"
+      ]
+    },
+    "ogre_king": {
+      "name": "食人妖精王",
+      "items": [
+        "scroll_weapon",
+        "scroll_armor",
+        "new_item_158",
+        "bk_fireball",
+        "bk_break",
+        "bk_holy_light",
+        "potion_blue",
+        "bk_disease",
+        "bk_shock_stun",
+        "bk_dark_burn"
+      ]
+    },
+    "monia": {
+      "name": "莫妮亞",
+      "items": [
+        "scroll_weapon",
+        "scroll_armor",
+        "bk_slow",
+        "bk_heal2",
+        "bk_holy_light",
+        "scroll_poly",
+        "potion_blue"
+      ]
+    },
+    "nm_039": {
+      "name": "夢幻之島鬼火",
+      "items": [
+        "scroll_weapon",
+        "scroll_armor",
+        "scroll_poly"
+      ]
+    },
+    "nm_038": {
+      "name": "夢幻之島蘑菇",
+      "items": [
+        "potion_haste",
+        "scroll_weapon",
+        "scroll_armor",
+        "potion_blue"
+      ]
+    },
+    "nm_015": {
+      "name": "艾爾摩法師",
+      "items": [
+        "scroll_weapon",
+        "bk_full_heal",
+        "potion_blue",
+        "bk_ice_spike",
+        "bk_bless_wpn"
+      ]
+    },
+    "griffon": {
+      "name": "格利芬",
+      "items": [
+        "potion_haste",
+        "new_item_150",
+        "new_item_152",
+        "new_item_155",
+        "new_item_158",
+        "new_item_161",
+        "bk_tornado",
+        "bk_elf_release",
+        "bk_elf_winddash",
+        "bk_elf_stormeye",
+        "bk_magic_shield"
+      ]
+    },
+    "nm_016": {
+      "name": "密密",
+      "items": [
+        "potion_strong",
+        "potion_haste",
+        "potion_blue"
+      ]
+    },
+    "giant_croc": {
+      "name": "巨大鱷魚",
+      "items": [
+        "scroll_armor",
+        "scroll_acc",
+        "new_item_154",
+        "bk_thunder",
+        "potion_brave"
+      ]
+    },
+    "nm_017": {
+      "name": "冰石高崙",
+      "items": [
+        "bk_ice_lance",
+        "bk_ice_spike",
+        "bk_elf_lifespring"
+      ]
+    },
+    "gaster_king": {
+      "name": "卡司特王",
+      "items": [
+        "scroll_weapon",
+        "scroll_armor",
+        "new_item_155",
+        "new_item_156",
+        "potion_blue",
+        "bk_disease"
+      ]
+    },
+    "nm_019": {
+      "name": "冰原老虎",
+      "items": [
+        "potion_haste",
+        "scroll_acc",
+        "new_item_150",
+        "new_item_195"
+      ]
+    },
+    "beholder": {
+      "name": "多眼怪",
+      "items": [
+        "scroll_weapon",
+        "new_item_160",
+        "new_item_161",
+        "new_item_162",
+        "bk_mummy_curse",
+        "bk_cancel",
+        "bk_elf_release",
+        "bk_weaken",
+        "bk_disease",
+        "bk_elf_triple"
+      ]
+    },
+    "nm_018": {
+      "name": "活鎧甲",
+      "items": [
+        "potion_heal",
+        "potion_strong",
+        "potion_ult",
+        "bk_holy_barrier",
+        "bk_weaken"
+      ]
+    },
+    "nm_020": {
+      "name": "雪怪",
+      "items": [
+        "scroll_acc",
+        "new_item_195",
+        "item_yeti_head"
+      ]
+    },
+    "dragon_fly": {
+      "name": "龍蠅",
+      "items": [
+        "scroll_weapon",
+        "scroll_armor",
+        "bk_vampire",
+        "new_item_192"
+      ]
+    },
+    "doppelganger": {
+      "name": "變形怪",
+      "items": [
+        "scroll_poly",
+        "scroll_acc",
+        "potion_blue",
+        "new_item_240"
+      ]
+    },
+    "arian": {
+      "name": "亞力安",
+      "items": [
+        "potion_haste",
+        "scroll_weapon",
+        "scroll_armor",
+        "scroll_acc",
+        "bk_slow",
+        "bk_mummy_curse",
+        "bk_heal2",
+        "bk_holy_light",
+        "bk_haste_spell",
+        "bk_earthquake",
+        "bk_rock_prison",
+        "bk_greater_haste",
+        "bk_quake",
+        "bk_elf_groundtrap"
+      ]
+    },
+    "obli_sharlob": {
+      "name": "遺忘之島夏洛伯",
+      "items": [
+        "item_forgotten_scale",
+        "bk_sleep_mist"
+      ]
+    },
+    "obli_werewolf": {
+      "name": "遺忘之島狼人",
+      "items": [
+        "item_forgotten_scale"
+      ]
+    },
+    "fire_warrior": {
+      "name": "火焰戰士",
+      "items": [
+        "potion_haste",
+        "new_item_192"
+      ]
+    },
+    "nm_021": {
+      "name": "艾爾摩將軍",
+      "items": [
+        "potion_haste",
+        "scroll_weapon",
+        "scroll_armor",
+        "scroll_acc",
+        "bk_shock_stun",
+        "bk_reduction_armor",
+        "bk_spike_armor"
+      ]
+    },
+    "aruba": {
+      "name": "阿魯巴",
+      "items": [
+        "bk_str_up",
+        "bk_haste_spell",
+        "bk_earthquake",
+        "bk_rock_prison",
+        "bk_greater_haste",
+        "bk_quake"
+      ]
+    },
+    "bandit_boss": {
+      "name": "強盜頭目",
+      "items": [
+        "scroll_acc",
+        "potion_heal",
+        "potion_strong",
+        "potion_haste",
+        "potion_ult",
+        "new_item_152",
+        "new_item_153",
+        "new_item_155",
+        "new_item_156",
+        "new_item_158",
+        "new_item_159",
+        "new_item_161",
+        "new_item_162",
+        "item_nightvision"
+      ]
+    },
+    "obli_darkelf": {
+      "name": "遺忘之島黑暗精靈",
+      "items": [
+        "item_forgotten_leather",
+        "mat_black_mithril"
+      ]
+    },
+    "obli_bear": {
+      "name": "遺忘之島歐熊",
+      "items": [
+        "item_forgotten_leather"
+      ]
+    },
+    "nm_022": {
+      "name": "鋼鐵高崙",
+      "items": [
+        "scroll_weapon",
+        "scroll_armor",
+        "bk_str_up",
+        "new_item_164",
+        "new_item_180",
+        "potion_blue",
+        "bk_elf_soul",
+        "bk_elf_steelguard",
+        "bk_weaken",
+        "item_ancientkey",
+        "bk_dark_double"
+      ]
+    },
+    "fire_archer": {
+      "name": "火焰弓箭手",
+      "items": [
+        "bk_dex_up",
+        "bk_slow",
+        "new_item_192"
+      ]
+    },
+    "evil_lizard": {
+      "name": "邪惡蜥蜴",
+      "items": [
+        "scroll_weapon",
+        "scroll_armor",
+        "scroll_acc",
+        "new_item_151",
+        "new_item_152",
+        "new_item_153",
+        "bk_slow",
+        "bk_heal2",
+        "bk_holy_light",
+        "bk_cancel",
+        "bk_earthquake",
+        "bk_rock_prison",
+        "bk_quake",
+        "bk_elf_release",
+        "new_item_232",
+        "item_lizard_horn"
+      ]
+    },
+    "obli_kasta": {
+      "name": "遺忘之島卡司特",
+      "items": [
+        "item_forgotten_leather",
+        "new_item_191"
+      ]
+    },
+    "succubus": {
+      "name": "思克巴",
+      "items": [
+        "bk_ice_lance",
+        "bk_summon",
+        "bk_blizzard",
+        "potion_blue",
+        "bk_ice_spike",
+        "bk_elf_release",
+        "bk_elf_lifespring",
+        "bk_elf_triple",
+        "new_item_226",
+        "bk_dark_double"
+      ]
+    },
+    "obli_axetaurus": {
+      "name": "遺忘之島巨斧牛人",
+      "items": [
+        "item_forgotten_scale",
+        "item_ancient_scroll",
+        "new_item_191"
+      ]
+    },
+    "obli_troll": {
+      "name": "遺忘之島食人妖精",
+      "items": [
+        "item_forgotten_robe"
+      ]
+    },
+    "obli_lamia": {
+      "name": "遺忘之島蛇女",
+      "items": [
+        "item_forgotten_robe",
+        "item_forgotten_scale",
+        "new_item_221"
+      ]
+    },
+    "obli_lycan": {
+      "name": "遺忘之島萊肯",
+      "items": [
+        "item_forgotten_leather"
+      ]
+    },
+    "salamander": {
+      "name": "火蜥蜴",
+      "items": [
+        "potion_haste",
+        "new_item_155",
+        "new_item_158",
+        "new_item_192",
+        "bk_fire_storm",
+        "bk_elf_magicerase",
+        "bk_elf_stormeye",
+        "bk_shock_stun"
+      ]
+    },
+    "nm_040": {
+      "name": "夢幻之島火蜥蜴",
+      "items": [
+        "scroll_weapon",
+        "scroll_armor",
+        "bk_fire_storm"
+      ]
+    },
+    "nm_036": {
+      "name": "夢幻之島冰人",
+      "items": [
+        "potion_haste",
+        "scroll_weapon",
+        "scroll_armor",
+        "potion_blue"
+      ]
+    },
+    "nm_041": {
+      "name": "夢幻之島殺人蜂",
+      "items": [
+        "scroll_weapon",
+        "scroll_armor"
+      ]
+    },
+    "nm_042": {
+      "name": "夢幻之島暴走兔",
+      "items": [
+        "scroll_weapon",
+        "scroll_armor"
+      ]
+    },
+    "obli_ungoliant": {
+      "name": "遺忘之島楊果里恩",
+      "items": [
+        "item_forgotten_leather"
+      ]
+    },
+    "fire_egg": {
+      "name": "火炎蛋",
+      "items": [
+        "scroll_weapon",
+        "scroll_armor",
+        "bk_fireball",
+        "bk_holy_light",
+        "scroll_poly",
+        "new_item_192",
+        "potion_blue"
+      ]
+    },
+    "nm_043": {
+      "name": "夢幻之島火炎蛋",
+      "items": [
+        "scroll_weapon",
+        "scroll_armor",
+        "bk_holy_light",
+        "scroll_poly"
+      ]
+    },
+    "nm_044": {
+      "name": "夢幻之島冰石高崙",
+      "items": [
+        "scroll_weapon",
+        "scroll_armor",
+        "scroll_revive",
+        "bk_elf_soul"
+      ]
+    },
+    "nm_023": {
+      "name": "夢幻之島閃電球",
+      "items": [
+        "scroll_weapon",
+        "scroll_armor",
+        "bk_thunder_storm"
+      ]
+    },
+    "nm_024": {
+      "name": "夢幻之島鎧甲守衛",
+      "items": [
+        "potion_haste",
+        "scroll_weapon",
+        "scroll_armor",
+        "bk_spike_armor"
+      ]
+    },
+    "ohm": {
+      "name": "歐姆",
+      "items": [
+        "scroll_revive"
+      ]
+    },
+    "ohm_rage": {
+      "name": "狂暴的歐姆",
+      "items": [
+        "scroll_revive"
+      ]
+    },
+    "de_remnant_bow": {
+      "name": "黑暗妖精殘兵(弓)",
+      "items": []
+    },
+    "nm_045": {
+      "name": "夢幻之島大鬼火",
+      "items": [
+        "potion_haste",
+        "scroll_weapon",
+        "scroll_armor",
+        "potion_blue"
+      ]
+    },
+    "nm_037": {
+      "name": "夢魘",
+      "items": [
+        "potion_haste",
+        "scroll_weapon",
+        "scroll_armor",
+        "potion_blue",
+        "panacea_wis",
+        "bk_elf_triple"
+      ]
+    },
+    "ohm_armor": {
+      "name": "歐姆裝甲兵",
+      "items": [
+        "scroll_acc"
+      ]
+    },
+    "cyclops": {
+      "name": "獨眼巨人",
+      "items": [
+        "scroll_weapon",
+        "scroll_armor",
+        "scroll_acc",
+        "bk_str_up",
+        "bk_summon",
+        "bk_rock_prison",
+        "bk_quake",
+        "bk_elf_groundtrap",
+        "bk_elf_earthbless",
+        "bk_weaken",
+        "bk_seal",
+        "new_item_227"
+      ]
+    },
+    "ohm_armor_rage": {
+      "name": "狂暴的歐姆裝甲兵",
+      "items": [
+        "scroll_weapon",
+        "scroll_armor"
+      ]
+    },
+    "succubus_queen": {
+      "name": "思克巴女皇",
+      "items": [
+        "scroll_acc",
+        "bk_ice_lance",
+        "bk_summon",
+        "potion_blue",
+        "bk_ice_spike",
+        "bk_elf_lifespring",
+        "bk_mana_drain",
+        "new_item_235"
+      ]
+    },
+    "de_remnant_xbow": {
+      "name": "黑暗妖精殘兵(十字弓)",
+      "items": [
+        "bk_holy_dash",
+        "bk_dark_crit",
+        "bk_dark_erup"
+      ]
+    },
+    "de_remnant_mage": {
+      "name": "黑暗妖精殘兵(法師)",
+      "items": []
+    },
+    "de_remnant_sword": {
+      "name": "黑暗妖精殘兵(劍)",
+      "items": [
+        "scroll_weapon",
+        "scroll_armor",
+        "bk_berserk",
+        "bk_dark_burn",
+        "bk_dark_erup"
+      ]
+    },
+    "de_gate_apprentice": {
+      "name": "黑暗妖精魔法學徒",
+      "items": []
+    },
+    "nm_025": {
+      "name": "影魔",
+      "items": [
+        "potion_heal",
+        "potion_strong",
+        "potion_ult",
+        "potion_blue",
+        "bk_ice_spike",
+        "bk_magic_shield",
+        "bk_dark_shadow"
+      ]
+    },
+    "obli_harpy": {
+      "name": "遺忘之島哈維",
+      "items": []
+    },
+    "obli_griffon": {
+      "name": "遺忘之島格利芬",
+      "items": [
+        "item_forgotten_xbow",
+        "item_forgotten_robe",
+        "new_item_193",
+        "mat_griffon_feather"
+      ]
+    },
+    "obli_hammertaurus": {
+      "name": "遺忘之島鏈鎚牛人",
+      "items": [
+        "item_forgotten_plate",
+        "item_ancient_scroll",
+        "new_item_191"
+      ]
+    },
+    "sema": {
+      "name": "西瑪",
+      "items": [
+        "scroll_weapon",
+        "scroll_armor",
+        "scroll_acc",
+        "new_item_150",
+        "new_item_151",
+        "new_item_152",
+        "new_item_153",
+        "bk_dex_up",
+        "bk_haste_spell",
+        "potion_blue",
+        "bk_greater_haste",
+        "bk_elf_stormeye",
+        "bk_weaken",
+        "scroll_weapon_b",
+        "scroll_armor_b",
+        "mat_boss_crystal"
+      ]
+    },
+    "necromancer": {
+      "name": "巫師",
+      "items": [
+        "scroll_weapon",
+        "scroll_armor",
+        "scroll_acc",
+        "new_item_151",
+        "new_item_152",
+        "new_item_153",
+        "bk_dex_up",
+        "bk_haste_spell",
+        "potion_blue",
+        "bk_greater_haste",
+        "bk_elf_stormeye",
+        "bk_weaken",
+        "item_crystal_ball"
+      ]
+    },
+    "nm_026": {
+      "name": "鬼魂",
+      "items": [
+        "potion_heal",
+        "potion_strong",
+        "potion_haste",
+        "potion_ult",
+        "bk_elf_seal",
+        "bk_magic_shield",
+        "bk_weaken"
+      ]
+    },
+    "de_train_summoner": {
+      "name": "喚獸師",
+      "items": []
+    },
+    "de_remnant_2h": {
+      "name": "黑暗妖精殘兵(雙手劍)",
+      "items": []
+    },
+    "de_gate_xbow": {
+      "name": "黑暗妖精警衛(十字弓)",
+      "items": [
+        "bk_holy_dash",
+        "bk_dark_burn"
+      ]
+    },
+    "obli_kastaking": {
+      "name": "遺忘之島卡司特王",
+      "items": [
+        "item_forgotten_leather"
+      ]
+    },
+    "obli_bigcroc": {
+      "name": "遺忘之島巨大鱷魚",
+      "items": [
+        "item_forgotten_plate"
+      ]
+    },
+    "obli_shapeshifter": {
+      "name": "遺忘之島變形怪",
+      "items": [
+        "item_ancient_scroll"
+      ]
+    },
+    "batus": {
+      "name": "巴土瑟",
+      "items": [
+        "scroll_weapon",
+        "scroll_armor",
+        "scroll_acc",
+        "new_item_150",
+        "new_item_154",
+        "new_item_155",
+        "new_item_156",
+        "bk_cancel",
+        "potion_blue",
+        "bk_quake",
+        "bk_elf_groundtrap",
+        "bk_elf_earthbless",
+        "scroll_weapon_b",
+        "scroll_armor_b",
+        "mat_boss_crystal"
+      ]
+    },
+    "nm_029": {
+      "name": "水精靈王",
+      "items": [
+        "potion_haste",
+        "scroll_weapon",
+        "scroll_armor",
+        "scroll_revive",
+        "potion_blue",
+        "panacea_int"
+      ]
+    },
+    "nm_028": {
+      "name": "火精靈王",
+      "items": [
+        "potion_haste",
+        "scroll_weapon",
+        "scroll_armor",
+        "scroll_revive",
+        "potion_blue",
+        "panacea_str"
+      ]
+    },
+    "nm_031": {
+      "name": "地精靈王",
+      "items": [
+        "potion_haste",
+        "scroll_weapon",
+        "scroll_armor",
+        "scroll_revive",
+        "potion_blue",
+        "panacea_con"
+      ]
+    },
+    "de_train_tamer": {
+      "name": "拉斯塔巴德馴獸師",
+      "items": []
+    },
+    "nm_027": {
+      "name": "紅鬼魂",
+      "items": [
+        "potion_heal",
+        "potion_strong",
+        "potion_ult",
+        "potion_blue",
+        "bk_elf_seal",
+        "bk_dark_shadow"
+      ]
+    },
+    "nm_030": {
+      "name": "風精靈王",
+      "items": [
+        "potion_haste",
+        "scroll_weapon",
+        "scroll_armor",
+        "scroll_revive",
+        "potion_blue",
+        "panacea_dex"
+      ]
+    },
+    "de_train_blacktiger": {
+      "name": "黑虎",
+      "items": []
+    },
+    "de_gate_patrol": {
+      "name": "黑暗妖精巡守",
+      "items": []
+    },
+    "de_gate_spear": {
+      "name": "黑暗妖精警衛(矛)",
+      "items": []
+    },
+    "lava_golem": {
+      "name": "熔岩高崙",
+      "items": [
+        "bk_slow",
+        "bk_str_up",
+        "scroll_acc",
+        "new_item_192",
+        "bk_elf_triple"
+      ]
+    },
+    "nm_032": {
+      "name": "獨角獸",
+      "items": [
+        "scroll_weapon",
+        "scroll_armor",
+        "scroll_poly",
+        "panacea_cha"
+      ]
+    },
+    "obli_doro": {
+      "name": "遺忘之島多羅",
+      "items": [
+        "item_forgotten_scale"
+      ]
+    },
+    "casper": {
+      "name": "卡士柏",
+      "items": [
+        "scroll_weapon",
+        "scroll_armor",
+        "scroll_acc",
+        "new_item_150",
+        "new_item_157",
+        "new_item_158",
+        "new_item_159",
+        "bk_fireball",
+        "potion_blue",
+        "bk_elf_dancefire",
+        "bk_elf_earthshield",
+        "bk_blaze",
+        "scroll_weapon_b",
+        "scroll_armor_b",
+        "mat_boss_crystal"
+      ]
+    },
+    "de_train_hellhound": {
+      "name": "地獄束縛犬",
+      "items": []
+    },
+    "de_train_gatekeeper": {
+      "name": "拉斯塔巴德守門人",
+      "items": []
+    },
+    "de_lab_blackmage": {
+      "name": "黑法師",
+      "items": [
+        "scroll_acc"
+      ]
+    },
+    "de_gate_soldier": {
+      "name": "黑暗妖精士兵",
+      "items": [
+        "scroll_armor",
+        "scroll_weapon",
+        "bk_dark_burn"
+      ]
+    },
+    "ifrit": {
+      "name": "伊弗利特",
+      "items": [
+        "scroll_weapon",
+        "scroll_armor",
+        "scroll_acc",
+        "new_item_152",
+        "new_item_153",
+        "new_item_155",
+        "new_item_156",
+        "new_item_158",
+        "new_item_159",
+        "new_item_161",
+        "new_item_162",
+        "bk_fireball",
+        "bk_dex_up",
+        "bk_str_up",
+        "bk_cancel",
+        "potion_blue",
+        "bk_fire_storm",
+        "bk_elf_magicerase",
+        "bk_elf_triple",
+        "bk_blaze",
+        "bk_elf_attrfire",
+        "scroll_weapon_b",
+        "scroll_armor_b",
+        "mat_boss_crystal"
+      ]
+    },
+    "nm_033": {
+      "name": "死神",
+      "items": [
+        "scroll_weapon",
+        "scroll_armor",
+        "scroll_acc",
+        "potion_blue",
+        "bk_elf_stormshot",
+        "bk_disease"
+      ]
+    },
+    "de_train_cursetamer": {
+      "name": "受詛咒的馴獸師",
+      "items": []
+    },
+    "ashitakio": {
+      "name": "阿西塔基奧",
+      "items": [
+        "potion_haste",
+        "scroll_weapon",
+        "scroll_armor",
+        "scroll_acc",
+        "bk_fireball",
+        "bk_dex_up",
+        "bk_str_up",
+        "bk_haste_spell",
+        "bk_earthquake",
+        "new_item_192",
+        "new_item_194"
+      ]
+    },
+    "marcus": {
+      "name": "馬庫爾",
+      "items": [
+        "scroll_weapon",
+        "scroll_armor",
+        "scroll_acc",
+        "new_item_150",
+        "new_item_160",
+        "new_item_161",
+        "new_item_162",
+        "potion_blue",
+        "bk_elf_soul",
+        "bk_elf_lifespring",
+        "scroll_weapon_b",
+        "scroll_armor_b",
+        "mat_boss_crystal"
+      ]
+    },
+    "de_lab_mage": {
+      "name": "黑暗妖精法師",
+      "items": [
+        "bk_tornado",
+        "bk_ice_spike",
+        "bk_soul_up"
+      ]
+    },
+    "de_gate_general": {
+      "name": "黑暗妖精將軍",
+      "items": [
+        "scroll_acc",
+        "scroll_armor",
+        "scroll_weapon",
+        "bk_reduction_armor",
+        "bk_meteor",
+        "bk_dark_burn",
+        "bk_dark_double"
+      ]
+    },
+    "de_necro_omwarrior": {
+      "name": "歐姆戰士",
+      "items": []
+    },
+    "obli_aruba": {
+      "name": "遺忘之島阿魯巴",
+      "items": [
+        "item_forgotten_greatsword",
+        "item_forgotten_scale"
+      ]
+    },
+    "obli_trollking": {
+      "name": "遺忘之島食人妖精王",
+      "items": [
+        "item_forgotten_plate",
+        "new_item_192"
+      ]
+    },
+    "de_lab_water": {
+      "name": "水元素守護者",
+      "items": []
+    },
+    "de_lab_fire": {
+      "name": "火元素守護者",
+      "items": []
+    },
+    "de_lab_earth": {
+      "name": "地元素守護者",
+      "items": []
+    },
+    "de_necro_warlock": {
+      "name": "血色術士",
+      "items": []
+    },
+    "de_elder_guard": {
+      "name": "拉斯塔巴德近衛隊",
+      "items": []
+    },
+    "de_lab_wind": {
+      "name": "風元素守護者",
+      "items": []
+    },
+    "de_necro_avenger": {
+      "name": "黑暗復仇者",
+      "items": []
+    },
+    "dark_spirit_caller": {
+      "name": "黑暗精靈使",
+      "items": [
+        "scroll_acc",
+        "scroll_weapon",
+        "scroll_armor",
+        "bk_holy_barrier",
+        "bk_dark_burn",
+        "bk_dark_double",
+        "bk_dark_crit"
+      ]
+    },
+    "de_train_soulknight": {
+      "name": "魂騎士",
+      "items": [
+        "scroll_acc"
+      ]
+    },
+    "dark_spirit_king": {
+      "name": "闇精靈王",
+      "items": [
+        "scroll_weapon",
+        "scroll_armor",
+        "bk_bless_wpn",
+        "bk_berserk",
+        "bk_soul_up",
+        "bk_elf_blazewpn",
+        "bk_dark_burn",
+        "bk_dark_double"
+      ]
+    },
+    "de_necro_bloodknight": {
+      "name": "血騎士",
+      "items": []
+    },
+    "de_elder_follower": {
+      "name": "長老隨從",
+      "items": []
+    },
+    "de_necro_omheavy": {
+      "name": "重裝歐姆戰士",
+      "items": []
+    },
+    "obli_arian": {
+      "name": "遺忘之島亞力安",
+      "items": [
+        "item_forgotten_sword",
+        "item_forgotten_plate",
+        "item_ancient_scroll"
+      ]
+    },
+    "de_necro_darklord": {
+      "name": "闇黑君王",
+      "items": []
+    },
+    "wyvern": {
+      "name": "飛龍",
+      "items": [
+        "item_dragon_claw",
+        "potion_haste",
+        "scroll_weapon",
+        "scroll_armor",
+        "scroll_acc",
+        "new_item_150",
+        "new_item_151",
+        "new_item_152",
+        "new_item_153",
+        "new_item_154",
+        "new_item_155",
+        "new_item_156",
+        "new_item_157",
+        "new_item_158",
+        "new_item_159",
+        "new_item_160",
+        "new_item_161",
+        "new_item_162",
+        "bk_holy_dash",
+        "potion_blue",
+        "bk_quake",
+        "bk_elf_magicerase",
+        "bk_elf_stormeye",
+        "bk_elf_triple",
+        "bk_elf_attrfire",
+        "scroll_weapon_b",
+        "scroll_armor_b",
+        "mat_boss_crystal"
+      ]
+    },
+    "fire_beast": {
+      "name": "烈炎獸",
+      "items": [
+        "scroll_weapon",
+        "scroll_armor",
+        "bk_holy_barrier",
+        "scroll_acc",
+        "new_item_192",
+        "bk_elf_magicerase",
+        "bk_shock_stun"
+      ]
+    },
+    "obli_evillizard": {
+      "name": "遺忘之島邪惡蜥蜴",
+      "items": [
+        "item_forgotten_sword",
+        "item_forgotten_robe",
+        "item_ancient_scroll"
+      ]
+    },
+    "de_elder_captain": {
+      "name": "拉斯塔巴德近衛隊隊長",
+      "items": [
+        "bk_elf_flamesoul",
+        "bk_elf_attrfire"
+      ]
+    },
+    "baphomet": {
+      "name": "巴風特",
+      "items": [
+        "potion_haste",
+        "scroll_weapon",
+        "scroll_armor",
+        "scroll_acc",
+        "new_item_150",
+        "new_item_151",
+        "new_item_152",
+        "new_item_153",
+        "new_item_154",
+        "new_item_155",
+        "new_item_156",
+        "new_item_161",
+        "new_item_162",
+        "bk_charm",
+        "bk_earthquake",
+        "bk_summon",
+        "bk_rock_prison",
+        "bk_quake",
+        "new_item_195",
+        "bk_elf_dancefire",
+        "bk_magic_shield",
+        "bk_weaken",
+        "bk_bless_wpn",
+        "scroll_armor_b",
+        "scroll_weapon_b",
+        "mat_boss_crystal"
+      ]
+    },
+    "giant": {
+      "name": "巨人",
+      "items": [
+        "item_pride_unseal"
+      ]
+    },
+    "blackelder": {
+      "name": "黑長者",
+      "items": [
+        "scroll_weapon",
+        "scroll_armor",
+        "scroll_acc",
+        "new_item_150",
+        "bk_thunder",
+        "bk_charm",
+        "bk_str_up",
+        "potion_blue",
+        "bk_ice_spike",
+        "new_item_195",
+        "bk_elf_soul",
+        "bk_elf_lifespring",
+        "scroll_weapon_b",
+        "scroll_armor_b",
+        "mat_boss_crystal"
+      ]
+    },
+    "obli_cyclops": {
+      "name": "遺忘之島獨眼巨人",
+      "items": [
+        "item_forgotten_greatsword",
+        "item_forgotten_plate"
+      ]
+    },
+    "doppel_boss": {
+      "name": "變形怪首領",
+      "items": [
+        "scroll_weapon",
+        "scroll_armor",
+        "scroll_acc",
+        "bk_summon",
+        "bk_elf_magicerase",
+        "bk_shock_stun",
+        "bk_reduction_armor",
+        "bk_spike_armor",
+        "bk_solid_shield",
+        "new_item_240",
+        "scroll_weapon_b",
+        "scroll_armor_b",
+        "mat_boss_crystal"
+      ]
+    },
+    "kurt": {
+      "name": "克特",
+      "items": [
+        "scroll_weapon",
+        "scroll_armor",
+        "scroll_acc",
+        "potion_blue",
+        "bk_berserk",
+        "bk_shock_stun",
+        "bk_reduction_armor",
+        "bk_spike_armor",
+        "bk_solid_shield",
+        "scroll_armor_b",
+        "scroll_weapon_b",
+        "mat_boss_crystal"
+      ]
+    },
+    "dk": {
+      "name": "死亡騎士",
+      "items": [
+        "scroll_weapon",
+        "scroll_armor",
+        "scroll_acc",
+        "new_item_152",
+        "new_item_153",
+        "bk_zombie",
+        "bk_tornado",
+        "bk_resurrection",
+        "bk_disease",
+        "bk_solid_shield",
+        "bk_blaze",
+        "bk_elf_flamesoul",
+        "scroll_armor_b",
+        "scroll_weapon_b",
+        "bk_dark_double",
+        "mat_boss_crystal"
+      ]
+    },
+    "obli_wyvern": {
+      "name": "遺忘之島飛龍",
+      "items": [
+        "item_forgotten_xbow",
+        "item_forgotten_leather",
+        "new_item_192",
+        "item_ancient_scroll"
+      ]
+    },
+    "giant_warrior": {
+      "name": "巨人戰士",
+      "items": [
+        "item_pride_unseal"
+      ]
+    },
+    "pride_lamia": {
+      "name": "變種蛇女",
+      "items": [
+        "scroll_acc",
+        "scroll_weapon"
+      ]
+    },
+    "pride_ungoliant": {
+      "name": "變種楊果里恩",
+      "items": [
+        "scroll_weapon",
+        "scroll_armor"
+      ]
+    },
+    "ice_queen": {
+      "name": "冰之女王",
+      "items": [
+        "potion_haste",
+        "scroll_weapon",
+        "scroll_armor",
+        "scroll_revive",
+        "new_item_150",
+        "new_item_151",
+        "new_item_152",
+        "bk_summon",
+        "bk_invisible",
+        "new_item_140",
+        "potion_blue",
+        "bk_fire_storm",
+        "new_item_195",
+        "bk_elf_winddash",
+        "bk_elf_lifespring",
+        "bk_elf_lifebless",
+        "bk_elf_steelguard",
+        "bk_magic_shield",
+        "bk_dark_shadow",
+        "bk_seal",
+        "scroll_weapon_b",
+        "scroll_armor_b",
+        "mat_boss_crystal"
+      ]
+    },
+    "ant_queen": {
+      "name": "巨蟻女皇",
+      "items": [
+        "potion_haste",
+        "scroll_weapon",
+        "scroll_armor",
+        "scroll_acc",
+        "new_item_150",
+        "new_item_154",
+        "new_item_155",
+        "new_item_156",
+        "new_item_157",
+        "new_item_158",
+        "new_item_159",
+        "bk_heal2",
+        "bk_charm",
+        "bk_earthquake",
+        "bk_regen",
+        "potion_blue",
+        "bk_rock_prison",
+        "bk_greater_haste",
+        "new_item_195",
+        "bk_elf_magicerase",
+        "bk_dark_shadow",
+        "scroll_weapon_b",
+        "scroll_armor_b",
+        "mat_boss_crystal"
+      ]
+    },
+    "pride_chimera": {
+      "name": "奇美拉",
+      "items": [
+        "mat_chimera_snake",
+        "mat_chimera_dragon",
+        "mat_chimera_goat",
+        "mat_chimera_lion",
+        "new_item_191"
+      ]
+    },
+    "phoenix": {
+      "name": "不死鳥",
+      "items": [
+        "potion_haste",
+        "scroll_weapon",
+        "scroll_armor",
+        "scroll_acc",
+        "new_item_159",
+        "bk_sleep_mist",
+        "bk_holy_barrier",
+        "bk_meteor",
+        "potion_blue",
+        "bk_fire_storm",
+        "bk_elf_dancefire",
+        "bk_blaze",
+        "scroll_weapon_b",
+        "scroll_armor_b",
+        "mat_boss_crystal"
+      ]
+    },
+    "giant_elder": {
+      "name": "巨人長老",
+      "items": [
+        "item_pride_unseal"
+      ]
+    },
+    "pride_medusa": {
+      "name": "梅杜莎",
+      "items": [
+        "scroll_weapon",
+        "scroll_armor",
+        "bk_cancel",
+        "bk_weaken",
+        "bk_holy_barrier",
+        "bk_resurrection",
+        "new_item_190",
+        "bk_dark_double",
+        "bk_dark_burn"
+      ]
+    },
+    "pride_arian": {
+      "name": "變種亞力安",
+      "items": [
+        "scroll_weapon",
+        "scroll_armor",
+        "scroll_acc",
+        "bk_slow",
+        "bk_mummy_curse",
+        "bk_heal2",
+        "bk_holy_light",
+        "bk_haste_spell",
+        "bk_earthquake",
+        "bk_rock_prison",
+        "bk_greater_haste",
+        "bk_quake",
+        "bk_elf_groundtrap",
+        "bk_dark_burn"
+      ]
+    }
+  },
+  "worldBosses": {
+    "wb_sema": {
+      "name": "西瑪",
+      "items": [
+        "scroll_weapon",
+        "scroll_armor",
+        "scroll_acc",
+        "new_item_150",
+        "new_item_151",
+        "new_item_152",
+        "new_item_153",
+        "bk_dex_up",
+        "bk_haste_spell",
+        "potion_blue",
+        "bk_greater_haste",
+        "bk_elf_stormeye",
+        "bk_weaken",
+        "scroll_weapon_b",
+        "scroll_armor_b",
+        "mat_boss_crystal"
+      ]
+    },
+    "wb_batus": {
+      "name": "巴土瑟",
+      "items": [
+        "scroll_weapon",
+        "scroll_armor",
+        "scroll_acc",
+        "new_item_150",
+        "new_item_154",
+        "new_item_155",
+        "new_item_156",
+        "bk_cancel",
+        "potion_blue",
+        "bk_quake",
+        "bk_elf_groundtrap",
+        "bk_elf_earthbless",
+        "scroll_weapon_b",
+        "scroll_armor_b",
+        "mat_boss_crystal"
+      ]
+    },
+    "wb_casper": {
+      "name": "卡士柏",
+      "items": [
+        "scroll_weapon",
+        "scroll_armor",
+        "scroll_acc",
+        "new_item_150",
+        "new_item_157",
+        "new_item_158",
+        "new_item_159",
+        "bk_fireball",
+        "potion_blue",
+        "bk_elf_dancefire",
+        "bk_elf_earthshield",
+        "bk_blaze",
+        "scroll_weapon_b",
+        "scroll_armor_b",
+        "mat_boss_crystal"
+      ]
+    },
+    "wb_marcus": {
+      "name": "馬庫爾",
+      "items": [
+        "scroll_weapon",
+        "scroll_armor",
+        "scroll_acc",
+        "new_item_150",
+        "new_item_160",
+        "new_item_161",
+        "new_item_162",
+        "potion_blue",
+        "bk_elf_soul",
+        "bk_elf_lifespring",
+        "scroll_weapon_b",
+        "scroll_armor_b",
+        "mat_boss_crystal"
+      ]
+    },
+    "wb_ifrit": {
+      "name": "伊弗利特",
+      "items": [
+        "scroll_weapon",
+        "scroll_armor",
+        "scroll_acc",
+        "new_item_152",
+        "new_item_153",
+        "new_item_155",
+        "new_item_156",
+        "new_item_158",
+        "new_item_159",
+        "new_item_161",
+        "new_item_162",
+        "bk_fireball",
+        "bk_dex_up",
+        "bk_str_up",
+        "bk_cancel",
+        "potion_blue",
+        "bk_fire_storm",
+        "bk_elf_magicerase",
+        "bk_elf_triple",
+        "bk_blaze",
+        "bk_elf_attrfire",
+        "scroll_weapon_b",
+        "scroll_armor_b",
+        "mat_boss_crystal"
+      ]
+    },
+    "wb_fourcolor": {
+      "name": "歐林你這個背叛者",
+      "items": [
+        "scroll_weapon",
+        "scroll_armor",
+        "scroll_acc",
+        "new_item_150",
+        "new_item_151",
+        "new_item_152",
+        "new_item_153",
+        "bk_dex_up",
+        "bk_haste_spell",
+        "potion_blue",
+        "bk_greater_haste",
+        "bk_elf_stormeye",
+        "bk_weaken",
+        "scroll_weapon_b",
+        "scroll_armor_b",
+        "mat_boss_crystal",
+        "new_item_154",
+        "new_item_155",
+        "new_item_156",
+        "bk_cancel",
+        "bk_quake",
+        "bk_elf_groundtrap",
+        "bk_elf_earthbless",
+        "new_item_157",
+        "new_item_158",
+        "new_item_159",
+        "bk_fireball",
+        "bk_elf_dancefire",
+        "bk_elf_earthshield",
+        "bk_blaze",
+        "new_item_160",
+        "new_item_161",
+        "new_item_162",
+        "bk_elf_soul",
+        "bk_elf_lifespring"
+      ]
+    },
+    "wb_wyvern": {
+      "name": "飛龍",
+      "items": [
+        "item_dragon_claw",
+        "potion_haste",
+        "scroll_weapon",
+        "scroll_armor",
+        "scroll_acc",
+        "new_item_150",
+        "new_item_151",
+        "new_item_152",
+        "new_item_153",
+        "new_item_154",
+        "new_item_155",
+        "new_item_156",
+        "new_item_157",
+        "new_item_158",
+        "new_item_159",
+        "new_item_160",
+        "new_item_161",
+        "new_item_162",
+        "bk_holy_dash",
+        "potion_blue",
+        "bk_quake",
+        "bk_elf_magicerase",
+        "bk_elf_stormeye",
+        "bk_elf_triple",
+        "bk_elf_attrfire",
+        "scroll_weapon_b",
+        "scroll_armor_b",
+        "mat_boss_crystal"
+      ]
+    },
+    "wb_twinwyvern": {
+      "name": "龍之谷雙龍",
+      "items": [
+        "item_dragon_claw",
+        "potion_haste",
+        "scroll_weapon",
+        "scroll_armor",
+        "scroll_acc",
+        "new_item_150",
+        "new_item_151",
+        "new_item_152",
+        "new_item_153",
+        "new_item_154",
+        "new_item_155",
+        "new_item_156",
+        "new_item_157",
+        "new_item_158",
+        "new_item_159",
+        "new_item_160",
+        "new_item_161",
+        "new_item_162",
+        "bk_holy_dash",
+        "potion_blue",
+        "bk_quake",
+        "bk_elf_magicerase",
+        "bk_elf_stormeye",
+        "bk_elf_triple",
+        "bk_elf_attrfire",
+        "scroll_weapon_b",
+        "scroll_armor_b",
+        "mat_boss_crystal"
+      ]
+    },
+    "wb_blackelder": {
+      "name": "黑長者",
+      "items": [
+        "scroll_weapon",
+        "scroll_armor",
+        "scroll_acc",
+        "new_item_150",
+        "bk_thunder",
+        "bk_charm",
+        "bk_str_up",
+        "potion_blue",
+        "bk_ice_spike",
+        "new_item_195",
+        "bk_elf_soul",
+        "bk_elf_lifespring",
+        "scroll_weapon_b",
+        "scroll_armor_b",
+        "mat_boss_crystal"
+      ]
+    },
+    "wb_doppel": {
+      "name": "變形怪首領",
+      "items": [
+        "scroll_weapon",
+        "scroll_armor",
+        "scroll_acc",
+        "bk_summon",
+        "bk_elf_magicerase",
+        "bk_shock_stun",
+        "bk_reduction_armor",
+        "bk_spike_armor",
+        "bk_solid_shield",
+        "new_item_240",
+        "scroll_weapon_b",
+        "scroll_armor_b",
+        "mat_boss_crystal"
+      ]
+    },
+    "wb_baphomet": {
+      "name": "巴風特",
+      "items": [
+        "potion_haste",
+        "scroll_weapon",
+        "scroll_armor",
+        "scroll_acc",
+        "new_item_150",
+        "new_item_151",
+        "new_item_152",
+        "new_item_153",
+        "new_item_154",
+        "new_item_155",
+        "new_item_156",
+        "new_item_161",
+        "new_item_162",
+        "bk_charm",
+        "bk_earthquake",
+        "bk_summon",
+        "bk_rock_prison",
+        "bk_quake",
+        "new_item_195",
+        "bk_elf_dancefire",
+        "bk_magic_shield",
+        "bk_weaken",
+        "bk_bless_wpn",
+        "scroll_armor_b",
+        "scroll_weapon_b",
+        "mat_boss_crystal"
+      ]
+    },
+    "wb_kurt": {
+      "name": "克特",
+      "items": [
+        "scroll_weapon",
+        "scroll_armor",
+        "scroll_acc",
+        "potion_blue",
+        "bk_berserk",
+        "bk_shock_stun",
+        "bk_reduction_armor",
+        "bk_spike_armor",
+        "bk_solid_shield",
+        "scroll_armor_b",
+        "scroll_weapon_b",
+        "mat_boss_crystal"
+      ]
+    },
+    "wb_dk": {
+      "name": "死亡騎士",
+      "items": [
+        "scroll_weapon",
+        "scroll_armor",
+        "scroll_acc",
+        "new_item_152",
+        "new_item_153",
+        "bk_zombie",
+        "bk_tornado",
+        "bk_resurrection",
+        "bk_disease",
+        "bk_solid_shield",
+        "bk_blaze",
+        "bk_elf_flamesoul",
+        "scroll_armor_b",
+        "scroll_weapon_b",
+        "bk_dark_double",
+        "mat_boss_crystal"
+      ]
+    },
+    "wb_castle": {
+      "name": "城堡守護者",
+      "items": [
+        "scroll_weapon",
+        "scroll_armor",
+        "scroll_acc",
+        "new_item_152",
+        "new_item_153",
+        "bk_zombie",
+        "bk_tornado",
+        "bk_resurrection",
+        "bk_disease",
+        "bk_solid_shield",
+        "bk_blaze",
+        "bk_elf_flamesoul",
+        "scroll_armor_b",
+        "scroll_weapon_b",
+        "bk_dark_double",
+        "mat_boss_crystal"
+      ]
+    },
+    "wb_ice": {
+      "name": "冰之女王",
+      "items": [
+        "potion_haste",
+        "scroll_weapon",
+        "scroll_armor",
+        "scroll_revive",
+        "new_item_150",
+        "new_item_151",
+        "new_item_152",
+        "bk_summon",
+        "bk_invisible",
+        "new_item_140",
+        "potion_blue",
+        "bk_fire_storm",
+        "new_item_195",
+        "bk_elf_winddash",
+        "bk_elf_lifespring",
+        "bk_elf_lifebless",
+        "bk_elf_steelguard",
+        "bk_magic_shield",
+        "bk_dark_shadow",
+        "bk_seal",
+        "scroll_weapon_b",
+        "scroll_armor_b",
+        "mat_boss_crystal"
+      ]
+    },
+    "wb_antqueen": {
+      "name": "巨蟻女皇",
+      "items": [
+        "potion_haste",
+        "scroll_weapon",
+        "scroll_armor",
+        "scroll_acc",
+        "new_item_150",
+        "new_item_154",
+        "new_item_155",
+        "new_item_156",
+        "new_item_157",
+        "new_item_158",
+        "new_item_159",
+        "bk_heal2",
+        "bk_charm",
+        "bk_earthquake",
+        "bk_regen",
+        "potion_blue",
+        "bk_rock_prison",
+        "bk_greater_haste",
+        "new_item_195",
+        "bk_elf_magicerase",
+        "bk_dark_shadow",
+        "scroll_weapon_b",
+        "scroll_armor_b",
+        "mat_boss_crystal"
+      ]
+    },
+    "wb_phoenix": {
+      "name": "不死鳥",
+      "items": [
+        "potion_haste",
+        "scroll_weapon",
+        "scroll_armor",
+        "scroll_acc",
+        "new_item_159",
+        "bk_sleep_mist",
+        "bk_holy_barrier",
+        "bk_meteor",
+        "potion_blue",
+        "bk_fire_storm",
+        "bk_elf_dancefire",
+        "bk_blaze",
+        "scroll_weapon_b",
+        "scroll_armor_b",
+        "mat_boss_crystal"
+      ]
+    }
+  },
+  "items": {
+    "mat_blackstone1": {
+      "name": "一級黑魔石",
+      "type": "其他"
+    },
+    "mat_blackstone2": {
+      "name": "二級黑魔石",
+      "type": "其他"
+    },
+    "new_item_mermaid_scale": {
+      "name": "人魚之鱗",
+      "type": "其他"
+    },
+    "mat_blackstone3": {
+      "name": "三級黑魔石",
+      "type": "其他"
+    },
+    "new_item_212": {
+      "name": "不死族的骨頭",
+      "type": "其他"
+    },
+    "new_item_214": {
+      "name": "不死族的鑰匙",
+      "type": "其他"
+    },
+    "item_unknown_spear": {
+      "name": "不為人知的矛",
+      "type": "其他"
+    },
+    "pack_moon_box": {
+      "name": "中秋禮盒",
+      "type": "道具"
+    },
+    "item_moon_key": {
+      "name": "中秋鑰匙",
+      "type": "道具"
+    },
+    "mat_blackstone5": {
+      "name": "五級黑魔石",
+      "type": "其他"
+    },
+    "new_item_165": {
+      "name": "元素石",
+      "type": "其他"
+    },
+    "month_card": {
+      "name": "月卡",
+      "type": "道具"
+    },
+    "pack_monthcard": {
+      "name": "月卡禮包",
+      "type": "道具"
+    },
+    "mat_moon_shard": {
+      "name": "月光碎片",
+      "type": "道具"
+    },
+    "item_crystal_ball": {
+      "name": "水晶球",
+      "type": "其他"
+    },
+    "new_item_190": {
+      "name": "水龍鱗",
+      "type": "其他"
+    },
+    "new_item_192": {
+      "name": "火龍鱗",
+      "type": "其他"
+    },
+    "new_item_241": {
+      "name": "王族搜索狀",
+      "type": "其他"
+    },
+    "item_ancient_scroll": {
+      "name": "古代的卷軸",
+      "type": "其他"
+    },
+    "item_ancientkey": {
+      "name": "古代鑰匙",
+      "type": "其他"
+    },
+    "new_item_196": {
+      "name": "古老的交易文件",
+      "type": "其他"
+    },
+    "mat_blackstone4": {
+      "name": "四級黑魔石",
+      "type": "其他"
+    },
+    "new_item_201": {
+      "name": "甘地妖魔魔法書",
+      "type": "其他"
+    },
+    "new_item_148": {
+      "name": "甘地圖騰",
+      "type": "其他"
+    },
+    "new_item_207": {
+      "name": "生命的卷軸",
+      "type": "其他"
+    },
+    "new_item_189": {
+      "name": "白色布料",
+      "type": "其他"
+    },
+    "potion_ult": {
+      "name": "白色藥水",
+      "type": "藥水"
+    },
+    "doll_contract_1": {
+      "name": "白娃娃契約書",
+      "type": "道具"
+    },
+    "new_item_179": {
+      "name": "皮革",
+      "type": "其他"
+    },
+    "new_item_181": {
+      "name": "皮帶",
+      "type": "其他"
+    },
+    "new_item_221": {
+      "name": "光明的鱗片",
+      "type": "其他"
+    },
+    "candle": {
+      "name": "回憶蠟燭",
+      "type": "道具"
+    },
+    "scroll_nd_hdk": {
+      "name": "地獄死亡騎士變身卷軸",
+      "type": "scroll"
+    },
+    "new_item_191": {
+      "name": "地龍鱗",
+      "type": "其他"
+    },
+    "new_item_141": {
+      "name": "安特的水果",
+      "type": "藥水"
+    },
+    "new_item_172": {
+      "name": "安特的樹皮",
+      "type": "其他"
+    },
+    "new_item_237": {
+      "name": "安特的樹枝",
+      "type": "其他"
+    },
+    "item_death_oath": {
+      "name": "死亡誓約",
+      "type": "其他"
+    },
+    "new_item_228": {
+      "name": "污染的精靈水晶(水)",
+      "type": "其他"
+    },
+    "new_item_229": {
+      "name": "污染的精靈水晶(火)",
+      "type": "其他"
+    },
+    "new_item_230": {
+      "name": "污染的精靈水晶(地)",
+      "type": "其他"
+    },
+    "new_item_231": {
+      "name": "污染的精靈水晶(風)",
+      "type": "其他"
+    },
+    "new_item_177": {
+      "name": "米索莉金屬板",
+      "type": "其他"
+    },
+    "new_item_174": {
+      "name": "米索莉線",
+      "type": "其他"
+    },
+    "new_item_143": {
+      "name": "肉",
+      "type": "藥水"
+    },
+    "potion_haste": {
+      "name": "自我加速藥水",
+      "type": "藥水"
+    },
+    "item_orc_elder_head": {
+      "name": "妖魔長老首級",
+      "type": "其他"
+    },
+    "item_orc_amulet": {
+      "name": "妖魔戰士護身符",
+      "type": "其他"
+    },
+    "bk_spike_armor": {
+      "name": "技術書(尖刺盔甲)",
+      "type": "技能書"
+    },
+    "bk_solid_shield": {
+      "name": "技術書(堅固防護)",
+      "type": "技能書"
+    },
+    "bk_reduction_armor": {
+      "name": "技術書(增幅防禦)",
+      "type": "技能書"
+    },
+    "bk_shock_stun": {
+      "name": "技術書(衝擊之暈)",
+      "type": "技能書"
+    },
+    "rename_card": {
+      "name": "更名卡",
+      "type": "道具"
+    },
+    "new_item_211": {
+      "name": "村民的遺物",
+      "type": "其他"
+    },
+    "new_item_200": {
+      "name": "那魯加妖魔魔法書",
+      "type": "其他"
+    },
+    "new_item_146": {
+      "name": "那魯加圖騰",
+      "type": "其他"
+    },
+    "new_item_232": {
+      "name": "邪惡蜥蜴之鱗",
+      "type": "其他"
+    },
+    "item_forgotten_greatsword": {
+      "name": "受封印 被遺忘的巨劍",
+      "type": "其他"
+    },
+    "item_forgotten_xbow": {
+      "name": "受封印 被遺忘的弩槍",
+      "type": "其他"
+    },
+    "item_forgotten_sword": {
+      "name": "受封印 被遺忘的劍",
+      "type": "其他"
+    },
+    "new_item_213": {
+      "name": "受詛咒的精靈書",
+      "type": "其他"
+    },
+    "item_nightvision": {
+      "name": "夜之視野",
+      "type": "其他"
+    },
+    "mat_chimera_goat": {
+      "name": "奇美拉之皮(山羊)",
+      "type": "其他"
+    },
+    "mat_chimera_snake": {
+      "name": "奇美拉之皮(蛇)",
+      "type": "其他"
+    },
+    "mat_chimera_lion": {
+      "name": "奇美拉之皮(獅子)",
+      "type": "其他"
+    },
+    "mat_chimera_dragon": {
+      "name": "奇美拉之皮(龍)",
+      "type": "其他"
+    },
+    "wm_transfer_card": {
+      "name": "武器精通轉移卡",
+      "type": "道具"
+    },
+    "mat_flame_heart": {
+      "name": "炎魔之心",
+      "type": "其他"
+    },
+    "mat_flame_claw": {
+      "name": "炎魔之爪",
+      "type": "其他"
+    },
+    "mat_flame_sword": {
+      "name": "炎魔之劍",
+      "type": "其他"
+    },
+    "new_item_175": {
+      "name": "芮克妮的蛻皮",
+      "type": "其他"
+    },
+    "new_item_171": {
+      "name": "芮克妮的網",
+      "type": "其他"
+    },
+    "new_item_209": {
+      "name": "返生藥水",
+      "type": "其他"
+    },
+    "new_item_180": {
+      "name": "金屬塊",
+      "type": "其他"
+    },
+    "new_item_202": {
+      "name": "阿吐巴妖魔魔法書",
+      "type": "其他"
+    },
+    "new_item_145": {
+      "name": "阿吐巴圖騰",
+      "type": "其他"
+    },
+    "new_item_194": {
+      "name": "阿西塔基奧的灰燼",
+      "type": "其他"
+    },
+    "potion_brave": {
+      "name": "勇敢藥水",
+      "type": "藥水"
+    },
+    "new_item_158": {
+      "name": "品質紅寶石",
+      "type": "其他"
+    },
+    "new_item_155": {
+      "name": "品質綠寶石",
+      "type": "其他"
+    },
+    "new_item_161": {
+      "name": "品質藍寶石",
+      "type": "其他"
+    },
+    "new_item_152": {
+      "name": "品質鑽石",
+      "type": "其他"
+    },
+    "scroll_nd_hadin": {
+      "name": "哈汀之魂變身卷軸",
+      "type": "scroll"
+    },
+    "doll_blindbox": {
+      "name": "娃娃盲盒",
+      "type": "道具"
+    },
+    "new_item_235": {
+      "name": "思克巴女皇的神祕魔杖",
+      "type": "其他"
+    },
+    "new_item_188": {
+      "name": "紅色布料",
+      "type": "其他"
+    },
+    "potion_heal": {
+      "name": "紅色藥水",
+      "type": "藥水"
+    },
+    "new_item_157": {
+      "name": "紅寶石",
+      "type": "其他"
+    },
+    "new_item_193": {
+      "name": "風龍鱗",
+      "type": "其他"
+    },
+    "item_dragon_claw": {
+      "name": "飛龍的爪子",
+      "type": "其他"
+    },
+    "new_item_167": {
+      "name": "食人巨魔的血",
+      "type": "其他"
+    },
+    "new_item_205": {
+      "name": "食屍鬼的牙齒",
+      "type": "其他"
+    },
+    "new_item_204": {
+      "name": "食屍鬼的指甲",
+      "type": "其他"
+    },
+    "pw_card": {
+      "name": "修改密碼卡",
+      "type": "道具"
+    },
+    "new_item_142": {
+      "name": "哨子",
+      "type": "藥水"
+    },
+    "new_item_144": {
+      "name": "夏洛伯之爪",
+      "type": "其他"
+    },
+    "sherine_crystal": {
+      "name": "席琳結晶",
+      "type": "其他"
+    },
+    "mat_griffon_feather": {
+      "name": "格利芬羽毛",
+      "type": "其他"
+    },
+    "scroll_weapon_b": {
+      "name": "祝福的 對武器施法的卷軸",
+      "type": "其他"
+    },
+    "scroll_armor_b": {
+      "name": "祝福的 對盔甲施法的卷軸",
+      "type": "其他"
+    },
+    "new_item_218": {
+      "name": "神秘水晶球",
+      "type": "其他"
+    },
+    "new_item_234": {
+      "name": "神秘慎重藥水",
+      "type": "其他"
+    },
+    "new_item_233": {
+      "name": "神秘魔力恢復藥水",
+      "type": "其他"
+    },
+    "new_item_219": {
+      "name": "神秘魔杖",
+      "type": "其他"
+    },
+    "panacea_white": {
+      "name": "純白的萬能藥",
+      "type": "道具"
+    },
+    "new_item_169": {
+      "name": "純粹的米索莉塊",
+      "type": "其他"
+    },
+    "new_item_183": {
+      "name": "骨頭碎片",
+      "type": "其他"
+    },
+    "new_item_159": {
+      "name": "高品質紅寶石",
+      "type": "其他"
+    },
+    "new_item_156": {
+      "name": "高品質綠寶石",
+      "type": "其他"
+    },
+    "new_item_162": {
+      "name": "高品質藍寶石",
+      "type": "其他"
+    },
+    "new_item_153": {
+      "name": "高品質鑽石",
+      "type": "其他"
+    },
+    "new_item_182": {
+      "name": "高級皮革",
+      "type": "其他"
+    },
+    "peek_card": {
+      "name": "偷窺卡",
+      "type": "道具"
+    },
+    "new_item_217": {
+      "name": "密室鑰匙",
+      "type": "其他"
+    },
+    "pack_promo": {
+      "name": "推廣禮包",
+      "type": "道具"
+    },
+    "new_item_222": {
+      "name": "畢克斯的羽毛",
+      "type": "其他"
+    },
+    "new_item_223": {
+      "name": "畢克斯的沙漏",
+      "type": "其他"
+    },
+    "new_item_164": {
+      "name": "粗糙的米索莉塊",
+      "type": "其他"
+    },
+    "new_item_208": {
+      "name": "蛇女之鱗",
+      "type": "其他"
+    },
+    "new_item_220": {
+      "name": "蛇女房間鑰匙",
+      "type": "其他"
+    },
+    "new_item_226": {
+      "name": "被偷的戒指",
+      "type": "其他"
+    },
+    "new_item_225": {
+      "name": "被偷的項鍊",
+      "type": "其他"
+    },
+    "item_forgotten_leather": {
+      "name": "被遺忘的皮盔甲",
+      "type": "其他"
+    },
+    "item_forgotten_plate": {
+      "name": "被遺忘的金屬盔甲",
+      "type": "其他"
+    },
+    "item_forgotten_robe": {
+      "name": "被遺忘的長袍",
+      "type": "其他"
+    },
+    "item_forgotten_scale": {
+      "name": "被遺忘的鱗甲",
+      "type": "其他"
+    },
+    "new_item_199": {
+      "name": "都達瑪拉妖魔魔法書",
+      "type": "其他"
+    },
+    "new_item_147": {
+      "name": "都達瑪拉圖騰",
+      "type": "其他"
+    },
+    "item_yeti_head": {
+      "name": "雪怪首級",
+      "type": "其他"
+    },
+    "scroll_revive": {
+      "name": "復活卷軸",
+      "type": "scroll"
+    },
+    "scroll_nd_qtd": {
+      "name": "棄天帝變身卷軸",
+      "type": "scroll"
+    },
+    "scroll_nd_guard": {
+      "name": "紫警衛(弓)隊長變身卷軸",
+      "type": "scroll"
+    },
+    "mat_cursed_leather_water": {
+      "name": "詛咒的皮革(水)",
+      "type": "其他"
+    },
+    "mat_cursed_leather_fire": {
+      "name": "詛咒的皮革(火)",
+      "type": "其他"
+    },
+    "mat_cursed_leather_earth": {
+      "name": "詛咒的皮革(地)",
+      "type": "其他"
+    },
+    "mat_cursed_leather_wind": {
+      "name": "詛咒的皮革(風)",
+      "type": "其他"
+    },
+    "new_item_184": {
+      "name": "項圈 (杜賓狗)",
+      "type": "其他"
+    },
+    "new_item_238": {
+      "name": "項圈 (牧羊犬)",
+      "type": "其他"
+    },
+    "new_item_collar_husky": {
+      "name": "項圈 (哈士奇)",
+      "type": "其他"
+    },
+    "new_item_185": {
+      "name": "項圈 (狼)",
+      "type": "其他"
+    },
+    "mat_black_mithril": {
+      "name": "黑色米索莉",
+      "type": "其他"
+    },
+    "bk_dark_str": {
+      "name": "黑暗精靈水晶(力量提升)",
+      "type": "技能書"
+    },
+    "bk_dark_walkhaste": {
+      "name": "黑暗精靈水晶(行走加速)",
+      "type": "技能書"
+    },
+    "bk_dark_poison": {
+      "name": "黑暗精靈水晶(附加劇毒)",
+      "type": "技能書"
+    },
+    "bk_dark_poisonres": {
+      "name": "黑暗精靈水晶(毒性抵抗)",
+      "type": "技能書"
+    },
+    "bk_dark_armorbreak": {
+      "name": "黑暗精靈水晶(破壞盔甲)",
+      "type": "技能書"
+    },
+    "bk_dark_erup": {
+      "name": "黑暗精靈水晶(迴避提升)",
+      "type": "技能書"
+    },
+    "bk_dark_dex": {
+      "name": "黑暗精靈水晶(敏捷提升)",
+      "type": "技能書"
+    },
+    "bk_dark_refine": {
+      "name": "黑暗精靈水晶(提煉魔石)",
+      "type": "技能書"
+    },
+    "bk_dark_fang": {
+      "name": "黑暗精靈水晶(暗影之牙)",
+      "type": "技能書"
+    },
+    "bk_dark_dodge": {
+      "name": "黑暗精靈水晶(暗影閃避)",
+      "type": "技能書"
+    },
+    "bk_dark_stealth": {
+      "name": "黑暗精靈水晶(暗隱術)",
+      "type": "技能書"
+    },
+    "bk_dark_crit": {
+      "name": "黑暗精靈水晶(會心一擊)",
+      "type": "技能書"
+    },
+    "bk_dark_mrup": {
+      "name": "黑暗精靈水晶(影之防護)",
+      "type": "技能書"
+    },
+    "bk_dark_burn": {
+      "name": "黑暗精靈水晶(燃燒鬥志)",
+      "type": "技能書"
+    },
+    "bk_dark_double": {
+      "name": "黑暗精靈水晶(雙重破壞)",
+      "type": "技能書"
+    },
+    "new_item_198": {
+      "name": "黑騎士的誓約",
+      "type": "其他"
+    },
+    "new_item_173": {
+      "name": "奧里哈魯根",
+      "type": "其他"
+    },
+    "new_item_178": {
+      "name": "奧里哈魯根金屬板",
+      "type": "其他"
+    },
+    "new_item_210": {
+      "name": "感謝信",
+      "type": "其他"
+    },
+    "new_item_140": {
+      "name": "慎重藥水",
+      "type": "藥水"
+    },
+    "new_item_197": {
+      "name": "搜索狀",
+      "type": "其他"
+    },
+    "panacea_cha": {
+      "name": "萬能藥(CHA)",
+      "type": "道具"
+    },
+    "panacea_con": {
+      "name": "萬能藥(CON)",
+      "type": "道具"
+    },
+    "panacea_dex": {
+      "name": "萬能藥(DEX)",
+      "type": "道具"
+    },
+    "panacea_int": {
+      "name": "萬能藥(INT)",
+      "type": "道具"
+    },
+    "panacea_str": {
+      "name": "萬能藥(STR)",
+      "type": "道具"
+    },
+    "panacea_wis": {
+      "name": "萬能藥(WIS)",
+      "type": "道具"
+    },
+    "item_pride_unseal": {
+      "name": "解除天罰封印",
+      "type": "道具"
+    },
+    "new_item_uncurse": {
+      "name": "解除詛咒的卷軸",
+      "type": "道具"
+    },
+    "scroll_weapon": {
+      "name": "對武器施法的卷軸",
+      "type": "其他"
+    },
+    "scroll_armor": {
+      "name": "對盔甲施法的卷軸",
+      "type": "其他"
+    },
+    "scroll_acc": {
+      "name": "對飾品施法的卷軸",
+      "type": "其他"
+    },
+    "item_mastery_proof": {
+      "name": "精通之證",
+      "type": "其他"
+    },
+    "mastery_reset_card": {
+      "name": "精通洗鍊卡",
+      "type": "道具"
+    },
+    "scroll_weapon_s": {
+      "name": "精煉的 對武器施法的卷軸",
+      "type": "其他"
+    },
+    "scroll_armor_s": {
+      "name": "精煉的 對盔甲施法的卷軸",
+      "type": "其他"
+    },
+    "scroll_acc_s": {
+      "name": "精煉的 對飾品施法的卷軸",
+      "type": "其他"
+    },
+    "bk_elf_triple": {
+      "name": "精靈水晶(三重矢)",
+      "type": "技能書"
+    },
+    "bk_elf_earthguard": {
+      "name": "精靈水晶(大地防護)",
+      "type": "技能書"
+    },
+    "bk_elf_earthbless": {
+      "name": "精靈水晶(大地的祝福)",
+      "type": "技能書"
+    },
+    "bk_elf_earthshield": {
+      "name": "精靈水晶(大地屏障)",
+      "type": "技能書"
+    },
+    "bk_elf_mind": {
+      "name": "精靈水晶(心靈轉換)",
+      "type": "技能書"
+    },
+    "bk_elf_firewpn": {
+      "name": "精靈水晶(火焰武器)",
+      "type": "技能書"
+    },
+    "bk_elf_worldtree": {
+      "name": "精靈水晶(世界樹的呼喚)",
+      "type": "技能書"
+    },
+    "bk_elf_summon2": {
+      "name": "精靈水晶(召喚強力屬性精靈)",
+      "type": "技能書"
+    },
+    "bk_elf_summon": {
+      "name": "精靈水晶(召喚屬性精靈)",
+      "type": "技能書"
+    },
+    "bk_elf_lifespring": {
+      "name": "精靈水晶(生命之泉)",
+      "type": "技能書"
+    },
+    "bk_elf_lifebless": {
+      "name": "精靈水晶(生命的祝福)",
+      "type": "技能書"
+    },
+    "bk_elf_groundtrap": {
+      "name": "精靈水晶(地面障礙)",
+      "type": "技能書"
+    },
+    "bk_elf_seal": {
+      "name": "精靈水晶(封印禁地)",
+      "type": "技能書"
+    },
+    "bk_elf_winddash": {
+      "name": "精靈水晶(風之疾走)",
+      "type": "技能書"
+    },
+    "bk_elf_windshot": {
+      "name": "精靈水晶(風之神射)",
+      "type": "技能書"
+    },
+    "bk_elf_blazewpn": {
+      "name": "精靈水晶(烈炎武器)",
+      "type": "技能書"
+    },
+    "bk_elf_flamesoul": {
+      "name": "精靈水晶(烈焰之魂)",
+      "type": "技能書"
+    },
+    "bk_elf_purify": {
+      "name": "精靈水晶(淨化精神)",
+      "type": "技能書"
+    },
+    "bk_elf_singleres": {
+      "name": "精靈水晶(單屬性防禦)",
+      "type": "技能書"
+    },
+    "bk_elf_dancefire": {
+      "name": "精靈水晶(舞躍之火)",
+      "type": "技能書"
+    },
+    "bk_elf_soul": {
+      "name": "精靈水晶(魂體轉換)",
+      "type": "技能書"
+    },
+    "bk_elf_stormeye": {
+      "name": "精靈水晶(暴風之眼)",
+      "type": "技能書"
+    },
+    "bk_elf_stormshot": {
+      "name": "精靈水晶(暴風神射)",
+      "type": "技能書"
+    },
+    "bk_elf_steelguard": {
+      "name": "精靈水晶(鋼鐵防護)",
+      "type": "技能書"
+    },
+    "bk_elf_release": {
+      "name": "精靈水晶(釋放元素)",
+      "type": "技能書"
+    },
+    "bk_elf_attrfire": {
+      "name": "精靈水晶(屬性之火)",
+      "type": "技能書"
+    },
+    "bk_elf_eleres": {
+      "name": "精靈水晶(屬性防禦)",
+      "type": "技能書"
+    },
+    "bk_elf_mr": {
+      "name": "精靈水晶(魔法防禦)",
+      "type": "技能書"
+    },
+    "bk_elf_magicerase": {
+      "name": "精靈水晶(魔法消除)",
+      "type": "技能書"
+    },
+    "new_item_195": {
+      "name": "精靈玉",
+      "type": "其他"
+    },
+    "new_item_elfwing": {
+      "name": "精靈羽翼",
+      "type": "其他"
+    },
+    "new_item_170": {
+      "name": "精靈粉末",
+      "type": "其他"
+    },
+    "new_item_139": {
+      "name": "精靈餅乾",
+      "type": "藥水"
+    },
+    "doll_contract_2": {
+      "name": "綠娃娃契約書",
+      "type": "道具"
+    },
+    "new_item_154": {
+      "name": "綠寶石",
+      "type": "其他"
+    },
+    "item_lizard_horn": {
+      "name": "蜥蜴的角",
+      "type": "其他"
+    },
+    "new_item_236": {
+      "name": "說話之島的回憶",
+      "type": "其他"
+    },
+    "mat_silver": {
+      "name": "銀",
+      "type": "其他"
+    },
+    "mat_silverore": {
+      "name": "銀礦石",
+      "type": "其他"
+    },
+    "item_fallen_key": {
+      "name": "墮落鑰匙",
+      "type": "其他"
+    },
+    "new_item_239": {
+      "name": "潘朵拉抽獎卷",
+      "type": "其他"
+    },
+    "new_item_163": {
+      "name": "潘的鬃毛",
+      "type": "其他"
+    },
+    "new_item_168": {
+      "name": "線",
+      "type": "其他"
+    },
+    "new_item_bless_wpn": {
+      "name": "賦予武器祝福卷軸",
+      "type": "道具"
+    },
+    "new_item_bless_arm": {
+      "name": "賦予盔甲祝福卷軸",
+      "type": "道具"
+    },
+    "new_item_bless_acc": {
+      "name": "賦予飾品祝福卷軸",
+      "type": "道具"
+    },
+    "new_item_203": {
+      "name": "骷髏頭",
+      "type": "其他"
+    },
+    "new_item_216": {
+      "name": "骷髏鑰匙",
+      "type": "其他"
+    },
+    "potion_strong": {
+      "name": "橙色藥水",
+      "type": "藥水"
+    },
+    "new_item_227": {
+      "name": "獨眼巨人的血",
+      "type": "其他"
+    },
+    "new_item_186": {
+      "name": "糖果",
+      "type": "其他"
+    },
+    "pack_promo_video": {
+      "name": "錄影推廣禮包",
+      "type": "道具"
+    },
+    "pack_promo_video2": {
+      "name": "錄影推廣禮包II",
+      "type": "道具"
+    },
+    "pack_promo_video3": {
+      "name": "錄影推廣禮包III",
+      "type": "道具"
+    },
+    "pack_promo_video4": {
+      "name": "錄影推廣禮包IV",
+      "type": "道具"
+    },
+    "scroll_nd_dragon": {
+      "name": "龍鬥士變身卷軸",
+      "type": "scroll"
+    },
+    "new_item_206": {
+      "name": "龍龜甲",
+      "type": "其他"
+    },
+    "new_item_215": {
+      "name": "殭屍鑰匙",
+      "type": "其他"
+    },
+    "scroll_teleport": {
+      "name": "瞬間移動卷軸",
+      "type": "scroll"
+    },
+    "item_wyvern_blood": {
+      "name": "翼龍之血",
+      "type": "其他"
+    },
+    "new_item_187": {
+      "name": "藍色布料",
+      "type": "其他"
+    },
+    "item_blueflute": {
+      "name": "藍色長笛",
+      "type": "其他"
+    },
+    "potion_blue": {
+      "name": "藍色藥水",
+      "type": "藥水"
+    },
+    "doll_contract_3": {
+      "name": "藍娃娃契約書",
+      "type": "道具"
+    },
+    "new_item_160": {
+      "name": "藍寶石",
+      "type": "其他"
+    },
+    "blue_diamond": {
+      "name": "藍鑽",
+      "type": "道具"
+    },
+    "pack_nd67": {
+      "name": "雙十國慶福袋",
+      "type": "道具"
+    },
+    "new_item_149": {
+      "name": "羅孚圖騰",
+      "type": "其他"
+    },
+    "new_item_166": {
+      "name": "蘑菇汁",
+      "type": "其他"
+    },
+    "scroll_magicbarrier": {
+      "name": "魔法卷軸(魔法屏障)",
+      "type": "scroll"
+    },
+    "bk_heal_mid": {
+      "name": "魔法書(中級治癒術)",
+      "type": "技能書"
+    },
+    "bk_sunlight": {
+      "name": "魔法書(日光術)",
+      "type": "技能書"
+    },
+    "bk_mummy_curse": {
+      "name": "魔法書(木乃伊的詛咒)",
+      "type": "技能書"
+    },
+    "bk_fire_storm": {
+      "name": "魔法書(火風暴)",
+      "type": "技能書"
+    },
+    "bk_firearrow": {
+      "name": "魔法書(火箭)",
+      "type": "技能書"
+    },
+    "bk_haste_spell": {
+      "name": "魔法書(加速術)",
+      "type": "技能書"
+    },
+    "bk_summon": {
+      "name": "魔法書(召喚術)",
+      "type": "技能書"
+    },
+    "bk_lightarrow": {
+      "name": "魔法書(光箭)",
+      "type": "技能書"
+    },
+    "bk_full_heal": {
+      "name": "魔法書(全部治癒術)",
+      "type": "技能書"
+    },
+    "bk_ice_lance": {
+      "name": "魔法書(冰矛圍籬)",
+      "type": "技能書"
+    },
+    "bk_blizzard": {
+      "name": "魔法書(冰雪暴)",
+      "type": "技能書"
+    },
+    "bk_icearrow": {
+      "name": "魔法書(冰箭)",
+      "type": "技能書"
+    },
+    "bk_ice_spike": {
+      "name": "魔法書(冰錐)",
+      "type": "技能書"
+    },
+    "bk_earthquake": {
+      "name": "魔法書(地裂術)",
+      "type": "技能書"
+    },
+    "bk_hell_fang": {
+      "name": "魔法書(地獄之牙)",
+      "type": "技能書"
+    },
+    "bk_heal1": {
+      "name": "魔法書(初級治癒術)",
+      "type": "技能書"
+    },
+    "bk_vampire": {
+      "name": "魔法書(吸血鬼之吻)",
+      "type": "技能書"
+    },
+    "bk_sleep_mist": {
+      "name": "魔法書(沉睡之霧)",
+      "type": "技能書"
+    },
+    "bk_berserk": {
+      "name": "魔法書(狂暴術)",
+      "type": "技能書"
+    },
+    "bk_disintegrate": {
+      "name": "魔法書(究極光裂術)",
+      "type": "技能書"
+    },
+    "bk_rock_prison": {
+      "name": "魔法書(岩牢)",
+      "type": "技能書"
+    },
+    "bk_resurrection": {
+      "name": "魔法書(返生術)",
+      "type": "技能書"
+    },
+    "bk_shield": {
+      "name": "魔法書(保護罩)",
+      "type": "技能書"
+    },
+    "bk_teleport": {
+      "name": "魔法書(指定傳送)",
+      "type": "技能書"
+    },
+    "bk_poison_curse": {
+      "name": "魔法書(毒咒)",
+      "type": "技能書"
+    },
+    "bk_meteor": {
+      "name": "魔法書(流星雨)",
+      "type": "技能書"
+    },
+    "bk_load_up": {
+      "name": "魔法書(負重強化)",
+      "type": "技能書"
+    },
+    "bk_windblade": {
+      "name": "魔法書(風刃)",
+      "type": "技能書"
+    },
+    "bk_meditation": {
+      "name": "魔法書(冥想術)",
+      "type": "技能書"
+    },
+    "bk_weaken": {
+      "name": "魔法書(弱化術)",
+      "type": "技能書"
+    },
+    "bk_blaze": {
+      "name": "魔法書(烈炎術)",
+      "type": "技能書"
+    },
+    "bk_disease": {
+      "name": "魔法書(疾病術)",
+      "type": "技能書"
+    },
+    "bk_bless_wpn": {
+      "name": "魔法書(祝福魔法武器)",
+      "type": "技能書"
+    },
+    "bk_holy_wpn": {
+      "name": "魔法書(神聖武器)",
+      "type": "技能書"
+    },
+    "bk_holy_dash": {
+      "name": "魔法書(神聖疾走)",
+      "type": "技能書"
+    },
+    "bk_energy_sense": {
+      "name": "魔法書(能量感測)",
+      "type": "技能書"
+    },
+    "bk_undead_bane": {
+      "name": "魔法書(起死回生術)",
+      "type": "技能書"
+    },
+    "bk_charm": {
+      "name": "魔法書(迷魅術)",
+      "type": "技能書"
+    },
+    "bk_heal2": {
+      "name": "魔法書(高級治癒術)",
+      "type": "技能書"
+    },
+    "bk_greater_haste": {
+      "name": "魔法書(強力加速術)",
+      "type": "技能書"
+    },
+    "bk_dex_up": {
+      "name": "魔法書(通暢氣脈術)",
+      "type": "技能書"
+    },
+    "bk_zombie": {
+      "name": "魔法書(造屍術)",
+      "type": "技能書"
+    },
+    "bk_chill": {
+      "name": "魔法書(寒冰氣息)",
+      "type": "技能書"
+    },
+    "bk_cold_shiver": {
+      "name": "魔法書(寒冷戰慄)",
+      "type": "技能書"
+    },
+    "bk_reveal": {
+      "name": "魔法書(無所遁形術)",
+      "type": "技能書"
+    },
+    "bk_dark_shadow": {
+      "name": "魔法書(黑闇之影)",
+      "type": "技能書"
+    },
+    "bk_aurora": {
+      "name": "魔法書(極光雷電)",
+      "type": "技能書"
+    },
+    "bk_thunder": {
+      "name": "魔法書(極道落雷)",
+      "type": "技能書"
+    },
+    "bk_holy_barrier": {
+      "name": "魔法書(聖結界)",
+      "type": "技能書"
+    },
+    "bk_holy_light": {
+      "name": "魔法書(聖潔之光)",
+      "type": "技能書"
+    },
+    "bk_antidote": {
+      "name": "魔法書(解毒術)",
+      "type": "技能書"
+    },
+    "bk_thunder_storm": {
+      "name": "魔法書(雷霆風暴)",
+      "type": "技能書"
+    },
+    "bk_slow": {
+      "name": "魔法書(緩速術)",
+      "type": "技能書"
+    },
+    "bk_quake": {
+      "name": "魔法書(震裂術)",
+      "type": "技能書"
+    },
+    "bk_fireball": {
+      "name": "魔法書(燃燒的火球)",
+      "type": "技能書"
+    },
+    "bk_tornado": {
+      "name": "魔法書(龍捲風)",
+      "type": "技能書"
+    },
+    "bk_ench_wpn": {
+      "name": "魔法書(擬似魔法武器)",
+      "type": "技能書"
+    },
+    "bk_dark_blind": {
+      "name": "魔法書(闇盲咒術)",
+      "type": "技能書"
+    },
+    "bk_invisible": {
+      "name": "魔法書(隱身術)",
+      "type": "技能書"
+    },
+    "bk_shield2": {
+      "name": "魔法書(鎧甲護持)",
+      "type": "技能書"
+    },
+    "bk_break": {
+      "name": "魔法書(壞物術)",
+      "type": "技能書"
+    },
+    "bk_mana_drain": {
+      "name": "魔法書(魔力奪取)",
+      "type": "技能書"
+    },
+    "bk_seal": {
+      "name": "魔法書(魔法封印)",
+      "type": "技能書"
+    },
+    "bk_magic_shield": {
+      "name": "魔法書(魔法屏障)",
+      "type": "技能書"
+    },
+    "bk_cancel": {
+      "name": "魔法書(魔法相消術)",
+      "type": "技能書"
+    },
+    "bk_regen": {
+      "name": "魔法書(體力回復術)",
+      "type": "技能書"
+    },
+    "bk_str_up": {
+      "name": "魔法書(體魄強健術)",
+      "type": "技能書"
+    },
+    "bk_soul_up": {
+      "name": "魔法書(靈魂昇華)",
+      "type": "技能書"
+    },
+    "new_item_176": {
+      "name": "魔法笛子",
+      "type": "其他"
+    },
+    "new_item_150": {
+      "name": "魔法寶石",
+      "type": "其他"
+    },
+    "new_item_224": {
+      "name": "贖罪聖書",
+      "type": "其他"
+    },
+    "scroll_poly": {
+      "name": "變形卷軸",
+      "type": "scroll"
+    },
+    "new_item_240": {
+      "name": "變形怪的血",
+      "type": "其他"
+    },
+    "pack_nd_morphbox": {
+      "name": "變身卷軸指定箱",
+      "type": "道具"
+    },
+    "new_item_151": {
+      "name": "鑽石",
+      "type": "其他"
+    },
+    "mat_boss_crystal": {
+      "name": "BOSS結晶",
+      "type": "道具"
+    }
+  }
+}

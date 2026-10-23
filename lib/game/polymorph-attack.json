@@ -1,0 +1,1788 @@
+{
+  "morph_0": {
+    "0": {
+      "source": "assets/morphanim/巴列斯2",
+      "body": [
+        "/assets/polymorph-cast/morphanim/巴列斯2/attack_0.png",
+        "/assets/polymorph-cast/morphanim/巴列斯2/attack_1.png",
+        "/assets/polymorph-cast/morphanim/巴列斯2/attack_2.png",
+        "/assets/polymorph-cast/morphanim/巴列斯2/attack_3.png",
+        "/assets/polymorph-cast/morphanim/巴列斯2/attack_4.png"
+      ],
+      "shadow": [
+        "/assets/polymorph-cast/morphanim/巴列斯2/attack_s_0.png",
+        "/assets/polymorph-cast/morphanim/巴列斯2/attack_s_1.png",
+        "/assets/polymorph-cast/morphanim/巴列斯2/attack_s_2.png",
+        "/assets/polymorph-cast/morphanim/巴列斯2/attack_s_3.png",
+        "/assets/polymorph-cast/morphanim/巴列斯2/attack_s_4.png"
+      ],
+      "weapon": [
+        "/assets/polymorph-cast/morphanim/巴列斯2/attack_w_0.png",
+        "/assets/polymorph-cast/morphanim/巴列斯2/attack_w_1.png",
+        "/assets/polymorph-cast/morphanim/巴列斯2/attack_w_2.png",
+        "/assets/polymorph-cast/morphanim/巴列斯2/attack_w_3.png",
+        "/assets/polymorph-cast/morphanim/巴列斯2/attack_w_4.png"
+      ],
+      "layout": {
+        "viewBox": [
+          120,
+          96
+        ],
+        "x": -45.20833333333333,
+        "y": -34.66666666666666,
+        "width": 174.41666666666666,
+        "height": 176.58333333333331
+      }
+    },
+    "1": {
+      "source": "assets/morphanim/巴列斯F",
+      "body": [
+        "/assets/polymorph-cast/morphanim/巴列斯F/attack_0.png",
+        "/assets/polymorph-cast/morphanim/巴列斯F/attack_1.png",
+        "/assets/polymorph-cast/morphanim/巴列斯F/attack_2.png",
+        "/assets/polymorph-cast/morphanim/巴列斯F/attack_3.png",
+        "/assets/polymorph-cast/morphanim/巴列斯F/attack_4.png"
+      ],
+      "shadow": [
+        "/assets/polymorph-cast/morphanim/巴列斯F/attack_s_0.png",
+        "/assets/polymorph-cast/morphanim/巴列斯F/attack_s_1.png",
+        "/assets/polymorph-cast/morphanim/巴列斯F/attack_s_2.png",
+        "/assets/polymorph-cast/morphanim/巴列斯F/attack_s_3.png",
+        "/assets/polymorph-cast/morphanim/巴列斯F/attack_s_4.png"
+      ],
+      "weapon": [
+        "/assets/polymorph-cast/morphanim/巴列斯F/attack_w_0.png",
+        "/assets/polymorph-cast/morphanim/巴列斯F/attack_w_1.png",
+        "/assets/polymorph-cast/morphanim/巴列斯F/attack_w_2.png",
+        "/assets/polymorph-cast/morphanim/巴列斯F/attack_w_3.png",
+        "/assets/polymorph-cast/morphanim/巴列斯F/attack_w_4.png"
+      ],
+      "layout": {
+        "viewBox": [
+          120,
+          96
+        ],
+        "x": -45.20833333333333,
+        "y": -34.66666666666666,
+        "width": 174.41666666666666,
+        "height": 176.58333333333331
+      }
+    },
+    "2": {
+      "source": "assets/morphanim/巴列斯",
+      "body": [
+        "/assets/polymorph-cast/morphanim/巴列斯/attack_0.png",
+        "/assets/polymorph-cast/morphanim/巴列斯/attack_1.png",
+        "/assets/polymorph-cast/morphanim/巴列斯/attack_2.png",
+        "/assets/polymorph-cast/morphanim/巴列斯/attack_3.png",
+        "/assets/polymorph-cast/morphanim/巴列斯/attack_4.png"
+      ],
+      "shadow": [
+        "/assets/polymorph-cast/morphanim/巴列斯/attack_s_0.png",
+        "/assets/polymorph-cast/morphanim/巴列斯/attack_s_1.png",
+        "/assets/polymorph-cast/morphanim/巴列斯/attack_s_2.png",
+        "/assets/polymorph-cast/morphanim/巴列斯/attack_s_3.png",
+        "/assets/polymorph-cast/morphanim/巴列斯/attack_s_4.png"
+      ],
+      "weapon": [
+        "/assets/polymorph-cast/morphanim/巴列斯/attack_w_0.png",
+        "/assets/polymorph-cast/morphanim/巴列斯/attack_w_1.png",
+        "/assets/polymorph-cast/morphanim/巴列斯/attack_w_2.png",
+        "/assets/polymorph-cast/morphanim/巴列斯/attack_w_3.png",
+        "/assets/polymorph-cast/morphanim/巴列斯/attack_w_4.png"
+      ],
+      "layout": {
+        "viewBox": [
+          120,
+          96
+        ],
+        "x": -45.20833333333333,
+        "y": -34.66666666666666,
+        "width": 174.41666666666666,
+        "height": 176.58333333333331
+      }
+    }
+  },
+  "morph_1": {
+    "0": {
+      "source": "assets/morphanim/黑騎士2",
+      "body": [
+        "/assets/polymorph-cast/morphanim/黑騎士2/attack_0.png",
+        "/assets/polymorph-cast/morphanim/黑騎士2/attack_1.png",
+        "/assets/polymorph-cast/morphanim/黑騎士2/attack_2.png",
+        "/assets/polymorph-cast/morphanim/黑騎士2/attack_3.png",
+        "/assets/polymorph-cast/morphanim/黑騎士2/attack_4.png"
+      ],
+      "shadow": [
+        "/assets/polymorph-cast/morphanim/黑騎士2/attack_s_0.png",
+        "/assets/polymorph-cast/morphanim/黑騎士2/attack_s_1.png",
+        "/assets/polymorph-cast/morphanim/黑騎士2/attack_s_2.png",
+        "/assets/polymorph-cast/morphanim/黑騎士2/attack_s_3.png",
+        "/assets/polymorph-cast/morphanim/黑騎士2/attack_s_4.png"
+      ],
+      "weapon": [
+        null,
+        null,
+        null,
+        null,
+        null
+      ],
+      "layout": {
+        "viewBox": [
+          223,
+          152
+        ],
+        "x": 0.0,
+        "y": 0.0,
+        "width": 223.0,
+        "height": 152.0
+      }
+    },
+    "1": {
+      "source": "assets/morphanim/黑騎士F",
+      "body": [
+        "/assets/polymorph-cast/morphanim/黑騎士F/attack_0.png",
+        "/assets/polymorph-cast/morphanim/黑騎士F/attack_1.png",
+        "/assets/polymorph-cast/morphanim/黑騎士F/attack_2.png",
+        "/assets/polymorph-cast/morphanim/黑騎士F/attack_3.png",
+        "/assets/polymorph-cast/morphanim/黑騎士F/attack_4.png"
+      ],
+      "shadow": [
+        "/assets/polymorph-cast/morphanim/黑騎士F/attack_s_0.png",
+        "/assets/polymorph-cast/morphanim/黑騎士F/attack_s_1.png",
+        "/assets/polymorph-cast/morphanim/黑騎士F/attack_s_2.png",
+        "/assets/polymorph-cast/morphanim/黑騎士F/attack_s_3.png",
+        "/assets/polymorph-cast/morphanim/黑騎士F/attack_s_4.png"
+      ],
+      "weapon": [
+        null,
+        null,
+        null,
+        null,
+        null
+      ],
+      "layout": {
+        "viewBox": [
+          223,
+          152
+        ],
+        "x": 0.0,
+        "y": 0.0,
+        "width": 223.0,
+        "height": 152.0
+      }
+    },
+    "2": {
+      "source": "assets/morphanim/黑騎士",
+      "body": [
+        "/assets/polymorph-cast/morphanim/黑騎士/attack_0.png",
+        "/assets/polymorph-cast/morphanim/黑騎士/attack_1.png",
+        "/assets/polymorph-cast/morphanim/黑騎士/attack_2.png",
+        "/assets/polymorph-cast/morphanim/黑騎士/attack_3.png",
+        "/assets/polymorph-cast/morphanim/黑騎士/attack_4.png"
+      ],
+      "shadow": [
+        "/assets/polymorph-cast/morphanim/黑騎士/attack_s_0.png",
+        "/assets/polymorph-cast/morphanim/黑騎士/attack_s_1.png",
+        "/assets/polymorph-cast/morphanim/黑騎士/attack_s_2.png",
+        "/assets/polymorph-cast/morphanim/黑騎士/attack_s_3.png",
+        "/assets/polymorph-cast/morphanim/黑騎士/attack_s_4.png"
+      ],
+      "weapon": [
+        null,
+        null,
+        null,
+        null,
+        null
+      ],
+      "layout": {
+        "viewBox": [
+          223,
+          152
+        ],
+        "x": 0.0,
+        "y": 0.0,
+        "width": 223.0,
+        "height": 152.0
+      }
+    }
+  },
+  "morph_4": {
+    "0": {
+      "source": "assets/morphanim/狼人2",
+      "body": [
+        "/assets/polymorph-cast/morphanim/狼人2/attack_0.png",
+        "/assets/polymorph-cast/morphanim/狼人2/attack_1.png",
+        "/assets/polymorph-cast/morphanim/狼人2/attack_2.png",
+        "/assets/polymorph-cast/morphanim/狼人2/attack_3.png",
+        "/assets/polymorph-cast/morphanim/狼人2/attack_4.png"
+      ],
+      "shadow": [
+        "/assets/polymorph-cast/morphanim/狼人2/attack_s_0.png",
+        "/assets/polymorph-cast/morphanim/狼人2/attack_s_1.png",
+        "/assets/polymorph-cast/morphanim/狼人2/attack_s_2.png",
+        "/assets/polymorph-cast/morphanim/狼人2/attack_s_3.png",
+        "/assets/polymorph-cast/morphanim/狼人2/attack_s_4.png"
+      ],
+      "weapon": [
+        null,
+        null,
+        null,
+        null,
+        null
+      ],
+      "layout": {
+        "viewBox": [
+          72,
+          72
+        ],
+        "x": -73.77499999999999,
+        "y": -2.8333333333333286,
+        "width": 182.89999999999998,
+        "height": 119.96666666666665
+      }
+    },
+    "1": {
+      "source": "assets/morphanim/狼人F",
+      "body": [
+        "/assets/polymorph-cast/morphanim/狼人F/attack_0.png",
+        "/assets/polymorph-cast/morphanim/狼人F/attack_1.png",
+        "/assets/polymorph-cast/morphanim/狼人F/attack_2.png",
+        "/assets/polymorph-cast/morphanim/狼人F/attack_3.png",
+        "/assets/polymorph-cast/morphanim/狼人F/attack_4.png"
+      ],
+      "shadow": [
+        "/assets/polymorph-cast/morphanim/狼人F/attack_s_0.png",
+        "/assets/polymorph-cast/morphanim/狼人F/attack_s_1.png",
+        "/assets/polymorph-cast/morphanim/狼人F/attack_s_2.png",
+        "/assets/polymorph-cast/morphanim/狼人F/attack_s_3.png",
+        "/assets/polymorph-cast/morphanim/狼人F/attack_s_4.png"
+      ],
+      "weapon": [
+        null,
+        null,
+        null,
+        null,
+        null
+      ],
+      "layout": {
+        "viewBox": [
+          72,
+          72
+        ],
+        "x": -73.77499999999999,
+        "y": -2.8333333333333286,
+        "width": 182.89999999999998,
+        "height": 119.96666666666665
+      }
+    },
+    "2": {
+      "source": "assets/morphanim/狼人",
+      "body": [
+        "/assets/polymorph-cast/morphanim/狼人/attack_0.png",
+        "/assets/polymorph-cast/morphanim/狼人/attack_1.png",
+        "/assets/polymorph-cast/morphanim/狼人/attack_2.png",
+        "/assets/polymorph-cast/morphanim/狼人/attack_3.png",
+        "/assets/polymorph-cast/morphanim/狼人/attack_4.png"
+      ],
+      "shadow": [
+        "/assets/polymorph-cast/morphanim/狼人/attack_s_0.png",
+        "/assets/polymorph-cast/morphanim/狼人/attack_s_1.png",
+        "/assets/polymorph-cast/morphanim/狼人/attack_s_2.png",
+        "/assets/polymorph-cast/morphanim/狼人/attack_s_3.png",
+        "/assets/polymorph-cast/morphanim/狼人/attack_s_4.png"
+      ],
+      "weapon": [
+        null,
+        null,
+        null,
+        null,
+        null
+      ],
+      "layout": {
+        "viewBox": [
+          72,
+          72
+        ],
+        "x": -73.77499999999999,
+        "y": -2.8333333333333286,
+        "width": 182.89999999999998,
+        "height": 119.96666666666665
+      }
+    }
+  },
+  "morph_6": {
+    "0": {
+      "source": "assets/morphanim/紙人2",
+      "body": [
+        "/assets/polymorph-cast/morphanim/紙人2/attack_0.png",
+        "/assets/polymorph-cast/morphanim/紙人2/attack_1.png"
+      ],
+      "shadow": [
+        "/assets/polymorph-cast/morphanim/紙人2/attack_s_0.png",
+        "/assets/polymorph-cast/morphanim/紙人2/attack_s_1.png"
+      ],
+      "weapon": [
+        null,
+        null
+      ],
+      "layout": {
+        "viewBox": [
+          48,
+          72
+        ],
+        "x": -30.935185185185183,
+        "y": -12.481481481481481,
+        "width": 105.01851851851852,
+        "height": 103.05555555555556
+      }
+    },
+    "1": {
+      "source": "assets/morphanim/紙人F",
+      "body": [
+        "/assets/polymorph-cast/morphanim/紙人F/attack_0.png",
+        "/assets/polymorph-cast/morphanim/紙人F/attack_1.png"
+      ],
+      "shadow": [
+        "/assets/polymorph-cast/morphanim/紙人F/attack_s_0.png",
+        "/assets/polymorph-cast/morphanim/紙人F/attack_s_1.png"
+      ],
+      "weapon": [
+        null,
+        null
+      ],
+      "layout": {
+        "viewBox": [
+          48,
+          72
+        ],
+        "x": -30.935185185185183,
+        "y": -12.481481481481481,
+        "width": 105.01851851851852,
+        "height": 103.05555555555556
+      }
+    },
+    "2": {
+      "source": "assets/morphanim/紙人",
+      "body": [
+        "/assets/polymorph-cast/morphanim/紙人/attack_0.png",
+        "/assets/polymorph-cast/morphanim/紙人/attack_1.png"
+      ],
+      "shadow": [
+        "/assets/polymorph-cast/morphanim/紙人/attack_s_0.png",
+        "/assets/polymorph-cast/morphanim/紙人/attack_s_1.png"
+      ],
+      "weapon": [
+        null,
+        null
+      ],
+      "layout": {
+        "viewBox": [
+          48,
+          72
+        ],
+        "x": -30.935185185185183,
+        "y": -12.481481481481481,
+        "width": 105.01851851851852,
+        "height": 103.05555555555556
+      }
+    }
+  },
+  "morph_9": {
+    "0": {
+      "source": "assets/morphanim/萊肯2",
+      "body": [
+        "/assets/polymorph-cast/morphanim/萊肯2/attack_0.png",
+        "/assets/polymorph-cast/morphanim/萊肯2/attack_1.png",
+        "/assets/polymorph-cast/morphanim/萊肯2/attack_2.png",
+        "/assets/polymorph-cast/morphanim/萊肯2/attack_3.png",
+        "/assets/polymorph-cast/morphanim/萊肯2/attack_4.png"
+      ],
+      "shadow": [
+        "/assets/polymorph-cast/morphanim/萊肯2/attack_s_0.png",
+        "/assets/polymorph-cast/morphanim/萊肯2/attack_s_1.png",
+        "/assets/polymorph-cast/morphanim/萊肯2/attack_s_2.png",
+        "/assets/polymorph-cast/morphanim/萊肯2/attack_s_3.png",
+        "/assets/polymorph-cast/morphanim/萊肯2/attack_s_4.png"
+      ],
+      "weapon": [
+        null,
+        null,
+        null,
+        null,
+        null
+      ],
+      "layout": {
+        "viewBox": [
+          72,
+          72
+        ],
+        "x": -71.0,
+        "y": -23.0,
+        "width": 186.0,
+        "height": 141.0
+      }
+    },
+    "1": {
+      "source": "assets/morphanim/萊肯F",
+      "body": [
+        "/assets/polymorph-cast/morphanim/萊肯F/attack_0.png",
+        "/assets/polymorph-cast/morphanim/萊肯F/attack_1.png",
+        "/assets/polymorph-cast/morphanim/萊肯F/attack_2.png",
+        "/assets/polymorph-cast/morphanim/萊肯F/attack_3.png",
+        "/assets/polymorph-cast/morphanim/萊肯F/attack_4.png"
+      ],
+      "shadow": [
+        "/assets/polymorph-cast/morphanim/萊肯F/attack_s_0.png",
+        "/assets/polymorph-cast/morphanim/萊肯F/attack_s_1.png",
+        "/assets/polymorph-cast/morphanim/萊肯F/attack_s_2.png",
+        "/assets/polymorph-cast/morphanim/萊肯F/attack_s_3.png",
+        "/assets/polymorph-cast/morphanim/萊肯F/attack_s_4.png"
+      ],
+      "weapon": [
+        null,
+        null,
+        null,
+        null,
+        null
+      ],
+      "layout": {
+        "viewBox": [
+          72,
+          72
+        ],
+        "x": -71.0,
+        "y": -23.0,
+        "width": 186.0,
+        "height": 141.0
+      }
+    },
+    "2": {
+      "source": "assets/morphanim/萊肯",
+      "body": [
+        "/assets/polymorph-cast/morphanim/萊肯/attack_0.png",
+        "/assets/polymorph-cast/morphanim/萊肯/attack_1.png",
+        "/assets/polymorph-cast/morphanim/萊肯/attack_2.png",
+        "/assets/polymorph-cast/morphanim/萊肯/attack_3.png",
+        "/assets/polymorph-cast/morphanim/萊肯/attack_4.png"
+      ],
+      "shadow": [
+        "/assets/polymorph-cast/morphanim/萊肯/attack_s_0.png",
+        "/assets/polymorph-cast/morphanim/萊肯/attack_s_1.png",
+        "/assets/polymorph-cast/morphanim/萊肯/attack_s_2.png",
+        "/assets/polymorph-cast/morphanim/萊肯/attack_s_3.png",
+        "/assets/polymorph-cast/morphanim/萊肯/attack_s_4.png"
+      ],
+      "weapon": [
+        null,
+        null,
+        null,
+        null,
+        null
+      ],
+      "layout": {
+        "viewBox": [
+          72,
+          72
+        ],
+        "x": -71.0,
+        "y": -23.0,
+        "width": 186.0,
+        "height": 141.0
+      }
+    }
+  },
+  "morph_11": {
+    "0": {
+      "source": "assets/morphanim/克特2",
+      "body": [
+        "/assets/polymorph-cast/morphanim/克特2/attack_0.png",
+        "/assets/polymorph-cast/morphanim/克特2/attack_1.png",
+        "/assets/polymorph-cast/morphanim/克特2/attack_2.png",
+        "/assets/polymorph-cast/morphanim/克特2/attack_3.png"
+      ],
+      "shadow": [
+        "/assets/polymorph-cast/morphanim/克特2/attack_s_0.png",
+        "/assets/polymorph-cast/morphanim/克特2/attack_s_1.png",
+        "/assets/polymorph-cast/morphanim/克特2/attack_s_2.png",
+        "/assets/polymorph-cast/morphanim/克特2/attack_s_3.png"
+      ],
+      "weapon": [
+        null,
+        null,
+        null,
+        null
+      ],
+      "layout": {
+        "viewBox": [
+          219,
+          141
+        ],
+        "x": 0.0,
+        "y": 0.0,
+        "width": 219.0,
+        "height": 141.0
+      }
+    },
+    "1": {
+      "source": "assets/morphanim/克特F",
+      "body": [
+        "/assets/polymorph-cast/morphanim/克特F/attack_0.png",
+        "/assets/polymorph-cast/morphanim/克特F/attack_1.png",
+        "/assets/polymorph-cast/morphanim/克特F/attack_2.png",
+        "/assets/polymorph-cast/morphanim/克特F/attack_3.png"
+      ],
+      "shadow": [
+        "/assets/polymorph-cast/morphanim/克特F/attack_s_0.png",
+        "/assets/polymorph-cast/morphanim/克特F/attack_s_1.png",
+        "/assets/polymorph-cast/morphanim/克特F/attack_s_2.png",
+        "/assets/polymorph-cast/morphanim/克特F/attack_s_3.png"
+      ],
+      "weapon": [
+        null,
+        null,
+        null,
+        null
+      ],
+      "layout": {
+        "viewBox": [
+          219,
+          141
+        ],
+        "x": 0.0,
+        "y": 0.0,
+        "width": 219.0,
+        "height": 141.0
+      }
+    },
+    "2": {
+      "source": "assets/morphanim/克特",
+      "body": [
+        "/assets/polymorph-cast/morphanim/克特/attack_0.png",
+        "/assets/polymorph-cast/morphanim/克特/attack_1.png",
+        "/assets/polymorph-cast/morphanim/克特/attack_2.png",
+        "/assets/polymorph-cast/morphanim/克特/attack_3.png"
+      ],
+      "shadow": [
+        "/assets/polymorph-cast/morphanim/克特/attack_s_0.png",
+        "/assets/polymorph-cast/morphanim/克特/attack_s_1.png",
+        "/assets/polymorph-cast/morphanim/克特/attack_s_2.png",
+        "/assets/polymorph-cast/morphanim/克特/attack_s_3.png"
+      ],
+      "weapon": [
+        null,
+        null,
+        null,
+        null
+      ],
+      "layout": {
+        "viewBox": [
+          219,
+          141
+        ],
+        "x": 0.0,
+        "y": 0.0,
+        "width": 219.0,
+        "height": 141.0
+      }
+    }
+  },
+  "morph_13": {
+    "0": {
+      "source": "assets/morphanim/亞力安2",
+      "body": [
+        "/assets/polymorph-cast/morphanim/亞力安2/attack_0.png",
+        "/assets/polymorph-cast/morphanim/亞力安2/attack_1.png",
+        "/assets/polymorph-cast/morphanim/亞力安2/attack_2.png",
+        "/assets/polymorph-cast/morphanim/亞力安2/attack_3.png",
+        "/assets/polymorph-cast/morphanim/亞力安2/attack_4.png"
+      ],
+      "shadow": [
+        "/assets/polymorph-cast/morphanim/亞力安2/attack_s_0.png",
+        "/assets/polymorph-cast/morphanim/亞力安2/attack_s_1.png",
+        "/assets/polymorph-cast/morphanim/亞力安2/attack_s_2.png",
+        "/assets/polymorph-cast/morphanim/亞力安2/attack_s_3.png",
+        "/assets/polymorph-cast/morphanim/亞力安2/attack_s_4.png"
+      ],
+      "weapon": [
+        null,
+        null,
+        null,
+        null,
+        null
+      ],
+      "layout": {
+        "viewBox": [
+          120,
+          84
+        ],
+        "x": 19.916666666666664,
+        "y": -12.3888888888889,
+        "width": 120.55555555555556,
+        "height": 103.33333333333334
+      }
+    },
+    "1": {
+      "source": "assets/morphanim/亞力安F",
+      "body": [
+        "/assets/polymorph-cast/morphanim/亞力安F/attack_0.png",
+        "/assets/polymorph-cast/morphanim/亞力安F/attack_1.png",
+        "/assets/polymorph-cast/morphanim/亞力安F/attack_2.png",
+        "/assets/polymorph-cast/morphanim/亞力安F/attack_3.png",
+        "/assets/polymorph-cast/morphanim/亞力安F/attack_4.png"
+      ],
+      "shadow": [
+        "/assets/polymorph-cast/morphanim/亞力安F/attack_s_0.png",
+        "/assets/polymorph-cast/morphanim/亞力安F/attack_s_1.png",
+        "/assets/polymorph-cast/morphanim/亞力安F/attack_s_2.png",
+        "/assets/polymorph-cast/morphanim/亞力安F/attack_s_3.png",
+        "/assets/polymorph-cast/morphanim/亞力安F/attack_s_4.png"
+      ],
+      "weapon": [
+        null,
+        null,
+        null,
+        null,
+        null
+      ],
+      "layout": {
+        "viewBox": [
+          120,
+          84
+        ],
+        "x": 19.916666666666664,
+        "y": -12.3888888888889,
+        "width": 120.55555555555556,
+        "height": 103.33333333333334
+      }
+    },
+    "2": {
+      "source": "assets/morphanim/亞力安",
+      "body": [
+        "/assets/polymorph-cast/morphanim/亞力安/attack_0.png",
+        "/assets/polymorph-cast/morphanim/亞力安/attack_1.png",
+        "/assets/polymorph-cast/morphanim/亞力安/attack_2.png",
+        "/assets/polymorph-cast/morphanim/亞力安/attack_3.png",
+        "/assets/polymorph-cast/morphanim/亞力安/attack_4.png"
+      ],
+      "shadow": [
+        "/assets/polymorph-cast/morphanim/亞力安/attack_s_0.png",
+        "/assets/polymorph-cast/morphanim/亞力安/attack_s_1.png",
+        "/assets/polymorph-cast/morphanim/亞力安/attack_s_2.png",
+        "/assets/polymorph-cast/morphanim/亞力安/attack_s_3.png",
+        "/assets/polymorph-cast/morphanim/亞力安/attack_s_4.png"
+      ],
+      "weapon": [
+        null,
+        null,
+        null,
+        null,
+        null
+      ],
+      "layout": {
+        "viewBox": [
+          120,
+          84
+        ],
+        "x": 19.916666666666664,
+        "y": -12.3888888888889,
+        "width": 120.55555555555556,
+        "height": 103.33333333333334
+      }
+    }
+  },
+  "morph_15": {
+    "0": {
+      "source": "assets/morphanim/妖魔鬥士2",
+      "body": [
+        "/assets/polymorph-cast/morphanim/妖魔鬥士2/attack_0.png",
+        "/assets/polymorph-cast/morphanim/妖魔鬥士2/attack_1.png",
+        "/assets/polymorph-cast/morphanim/妖魔鬥士2/attack_2.png",
+        "/assets/polymorph-cast/morphanim/妖魔鬥士2/attack_3.png"
+      ],
+      "shadow": [
+        null,
+        null,
+        null,
+        null
+      ],
+      "weapon": [
+        null,
+        null,
+        null,
+        null
+      ],
+      "layout": {
+        "viewBox": [
+          48,
+          96
+        ],
+        "x": -34.0,
+        "y": 6.0,
+        "width": 111.0,
+        "height": 87.0
+      }
+    },
+    "1": {
+      "source": "assets/morphanim/妖魔鬥士F",
+      "body": [
+        "/assets/polymorph-cast/morphanim/妖魔鬥士F/attack_0.png",
+        "/assets/polymorph-cast/morphanim/妖魔鬥士F/attack_1.png",
+        "/assets/polymorph-cast/morphanim/妖魔鬥士F/attack_2.png",
+        "/assets/polymorph-cast/morphanim/妖魔鬥士F/attack_3.png"
+      ],
+      "shadow": [
+        null,
+        null,
+        null,
+        null
+      ],
+      "weapon": [
+        null,
+        null,
+        null,
+        null
+      ],
+      "layout": {
+        "viewBox": [
+          48,
+          96
+        ],
+        "x": -34.0,
+        "y": 6.0,
+        "width": 111.0,
+        "height": 87.0
+      }
+    },
+    "2": {
+      "source": "assets/morphanim/妖魔鬥士",
+      "body": [
+        "/assets/polymorph-cast/morphanim/妖魔鬥士/attack_0.png",
+        "/assets/polymorph-cast/morphanim/妖魔鬥士/attack_1.png",
+        "/assets/polymorph-cast/morphanim/妖魔鬥士/attack_2.png",
+        "/assets/polymorph-cast/morphanim/妖魔鬥士/attack_3.png"
+      ],
+      "shadow": [
+        null,
+        null,
+        null,
+        null
+      ],
+      "weapon": [
+        null,
+        null,
+        null,
+        null
+      ],
+      "layout": {
+        "viewBox": [
+          48,
+          96
+        ],
+        "x": -34.0,
+        "y": 6.0,
+        "width": 111.0,
+        "height": 87.0
+      }
+    }
+  },
+  "morph_16": {
+    "0": {
+      "source": "assets/morphanim/黑長者2",
+      "body": [
+        "/assets/polymorph-cast/morphanim/黑長者2/attack_0.png",
+        "/assets/polymorph-cast/morphanim/黑長者2/attack_1.png",
+        "/assets/polymorph-cast/morphanim/黑長者2/attack_2.png",
+        "/assets/polymorph-cast/morphanim/黑長者2/attack_3.png",
+        "/assets/polymorph-cast/morphanim/黑長者2/attack_4.png",
+        "/assets/polymorph-cast/morphanim/黑長者2/attack_5.png"
+      ],
+      "shadow": [
+        "/assets/polymorph-cast/morphanim/黑長者2/attack_s_0.png",
+        "/assets/polymorph-cast/morphanim/黑長者2/attack_s_1.png",
+        "/assets/polymorph-cast/morphanim/黑長者2/attack_s_2.png",
+        "/assets/polymorph-cast/morphanim/黑長者2/attack_s_3.png",
+        "/assets/polymorph-cast/morphanim/黑長者2/attack_s_4.png",
+        "/assets/polymorph-cast/morphanim/黑長者2/attack_s_5.png"
+      ],
+      "weapon": [
+        "/assets/polymorph-cast/morphanim/黑長者2/attack_w_0.png",
+        "/assets/polymorph-cast/morphanim/黑長者2/attack_w_1.png",
+        "/assets/polymorph-cast/morphanim/黑長者2/attack_w_2.png",
+        "/assets/polymorph-cast/morphanim/黑長者2/attack_w_3.png",
+        "/assets/polymorph-cast/morphanim/黑長者2/attack_w_4.png",
+        "/assets/polymorph-cast/morphanim/黑長者2/attack_w_5.png"
+      ],
+      "layout": {
+        "viewBox": [
+          72,
+          96
+        ],
+        "x": -37.096385542168676,
+        "y": -4.698795180722897,
+        "width": 121.25301204819277,
+        "height": 95.39759036144578
+      }
+    },
+    "1": {
+      "source": "assets/morphanim/黑長者F",
+      "body": [
+        "/assets/polymorph-cast/morphanim/黑長者F/attack_0.png",
+        "/assets/polymorph-cast/morphanim/黑長者F/attack_1.png",
+        "/assets/polymorph-cast/morphanim/黑長者F/attack_2.png",
+        "/assets/polymorph-cast/morphanim/黑長者F/attack_3.png",
+        "/assets/polymorph-cast/morphanim/黑長者F/attack_4.png",
+        "/assets/polymorph-cast/morphanim/黑長者F/attack_5.png"
+      ],
+      "shadow": [
+        "/assets/polymorph-cast/morphanim/黑長者F/attack_s_0.png",
+        "/assets/polymorph-cast/morphanim/黑長者F/attack_s_1.png",
+        "/assets/polymorph-cast/morphanim/黑長者F/attack_s_2.png",
+        "/assets/polymorph-cast/morphanim/黑長者F/attack_s_3.png",
+        "/assets/polymorph-cast/morphanim/黑長者F/attack_s_4.png",
+        "/assets/polymorph-cast/morphanim/黑長者F/attack_s_5.png"
+      ],
+      "weapon": [
+        "/assets/polymorph-cast/morphanim/黑長者F/attack_w_0.png",
+        "/assets/polymorph-cast/morphanim/黑長者F/attack_w_1.png",
+        "/assets/polymorph-cast/morphanim/黑長者F/attack_w_2.png",
+        "/assets/polymorph-cast/morphanim/黑長者F/attack_w_3.png",
+        "/assets/polymorph-cast/morphanim/黑長者F/attack_w_4.png",
+        "/assets/polymorph-cast/morphanim/黑長者F/attack_w_5.png"
+      ],
+      "layout": {
+        "viewBox": [
+          72,
+          96
+        ],
+        "x": -37.096385542168676,
+        "y": -4.698795180722897,
+        "width": 121.25301204819277,
+        "height": 95.39759036144578
+      }
+    },
+    "2": {
+      "source": "assets/morphanim/黑長者",
+      "body": [
+        "/assets/polymorph-cast/morphanim/黑長者/attack_0.png",
+        "/assets/polymorph-cast/morphanim/黑長者/attack_1.png",
+        "/assets/polymorph-cast/morphanim/黑長者/attack_2.png",
+        "/assets/polymorph-cast/morphanim/黑長者/attack_3.png",
+        "/assets/polymorph-cast/morphanim/黑長者/attack_4.png",
+        "/assets/polymorph-cast/morphanim/黑長者/attack_5.png"
+      ],
+      "shadow": [
+        "/assets/polymorph-cast/morphanim/黑長者/attack_s_0.png",
+        "/assets/polymorph-cast/morphanim/黑長者/attack_s_1.png",
+        "/assets/polymorph-cast/morphanim/黑長者/attack_s_2.png",
+        "/assets/polymorph-cast/morphanim/黑長者/attack_s_3.png",
+        "/assets/polymorph-cast/morphanim/黑長者/attack_s_4.png",
+        "/assets/polymorph-cast/morphanim/黑長者/attack_s_5.png"
+      ],
+      "weapon": [
+        "/assets/polymorph-cast/morphanim/黑長者/attack_w_0.png",
+        "/assets/polymorph-cast/morphanim/黑長者/attack_w_1.png",
+        "/assets/polymorph-cast/morphanim/黑長者/attack_w_2.png",
+        "/assets/polymorph-cast/morphanim/黑長者/attack_w_3.png",
+        "/assets/polymorph-cast/morphanim/黑長者/attack_w_4.png",
+        "/assets/polymorph-cast/morphanim/黑長者/attack_w_5.png"
+      ],
+      "layout": {
+        "viewBox": [
+          72,
+          96
+        ],
+        "x": -37.096385542168676,
+        "y": -4.698795180722897,
+        "width": 121.25301204819277,
+        "height": 95.39759036144578
+      }
+    }
+  },
+  "morph_18": {
+    "0": {
+      "source": "assets/morphanim/食人妖精2",
+      "body": [
+        "/assets/polymorph-cast/morphanim/食人妖精2/attack_0.png",
+        "/assets/polymorph-cast/morphanim/食人妖精2/attack_1.png",
+        "/assets/polymorph-cast/morphanim/食人妖精2/attack_2.png",
+        "/assets/polymorph-cast/morphanim/食人妖精2/attack_3.png",
+        "/assets/polymorph-cast/morphanim/食人妖精2/attack_4.png"
+      ],
+      "shadow": [
+        "/assets/polymorph-cast/morphanim/食人妖精2/attack_s_0.png",
+        "/assets/polymorph-cast/morphanim/食人妖精2/attack_s_1.png",
+        "/assets/polymorph-cast/morphanim/食人妖精2/attack_s_2.png",
+        "/assets/polymorph-cast/morphanim/食人妖精2/attack_s_3.png",
+        "/assets/polymorph-cast/morphanim/食人妖精2/attack_s_4.png"
+      ],
+      "weapon": [
+        null,
+        null,
+        null,
+        null,
+        null
+      ],
+      "layout": {
+        "viewBox": [
+          48,
+          84
+        ],
+        "x": -69.47692307692309,
+        "y": -14.523076923076928,
+        "width": 184.12307692307692,
+        "height": 145.72307692307692
+      }
+    },
+    "1": {
+      "source": "assets/morphanim/食人妖精F",
+      "body": [
+        "/assets/polymorph-cast/morphanim/食人妖精F/attack_0.png",
+        "/assets/polymorph-cast/morphanim/食人妖精F/attack_1.png",
+        "/assets/polymorph-cast/morphanim/食人妖精F/attack_2.png",
+        "/assets/polymorph-cast/morphanim/食人妖精F/attack_3.png",
+        "/assets/polymorph-cast/morphanim/食人妖精F/attack_4.png"
+      ],
+      "shadow": [
+        "/assets/polymorph-cast/morphanim/食人妖精F/attack_s_0.png",
+        "/assets/polymorph-cast/morphanim/食人妖精F/attack_s_1.png",
+        "/assets/polymorph-cast/morphanim/食人妖精F/attack_s_2.png",
+        "/assets/polymorph-cast/morphanim/食人妖精F/attack_s_3.png",
+        "/assets/polymorph-cast/morphanim/食人妖精F/attack_s_4.png"
+      ],
+      "weapon": [
+        null,
+        null,
+        null,
+        null,
+        null
+      ],
+      "layout": {
+        "viewBox": [
+          48,
+          84
+        ],
+        "x": -69.47692307692309,
+        "y": -14.523076923076928,
+        "width": 184.12307692307692,
+        "height": 145.72307692307692
+      }
+    },
+    "2": {
+      "source": "assets/morphanim/食人妖精",
+      "body": [
+        "/assets/polymorph-cast/morphanim/食人妖精/attack_0.png",
+        "/assets/polymorph-cast/morphanim/食人妖精/attack_1.png",
+        "/assets/polymorph-cast/morphanim/食人妖精/attack_2.png",
+        "/assets/polymorph-cast/morphanim/食人妖精/attack_3.png",
+        "/assets/polymorph-cast/morphanim/食人妖精/attack_4.png"
+      ],
+      "shadow": [
+        "/assets/polymorph-cast/morphanim/食人妖精/attack_s_0.png",
+        "/assets/polymorph-cast/morphanim/食人妖精/attack_s_1.png",
+        "/assets/polymorph-cast/morphanim/食人妖精/attack_s_2.png",
+        "/assets/polymorph-cast/morphanim/食人妖精/attack_s_3.png",
+        "/assets/polymorph-cast/morphanim/食人妖精/attack_s_4.png"
+      ],
+      "weapon": [
+        null,
+        null,
+        null,
+        null,
+        null
+      ],
+      "layout": {
+        "viewBox": [
+          48,
+          84
+        ],
+        "x": -69.47692307692309,
+        "y": -14.523076923076928,
+        "width": 184.12307692307692,
+        "height": 145.72307692307692
+      }
+    }
+  },
+  "morph_19": {
+    "0": {
+      "source": "assets/morphanim/妖魔弓箭手2",
+      "body": [
+        "/assets/polymorph-cast/morphanim/妖魔弓箭手2/attack_0.png",
+        "/assets/polymorph-cast/morphanim/妖魔弓箭手2/attack_1.png",
+        "/assets/polymorph-cast/morphanim/妖魔弓箭手2/attack_2.png",
+        "/assets/polymorph-cast/morphanim/妖魔弓箭手2/attack_3.png",
+        "/assets/polymorph-cast/morphanim/妖魔弓箭手2/attack_4.png"
+      ],
+      "shadow": [
+        null,
+        null,
+        null,
+        null,
+        null
+      ],
+      "weapon": [
+        null,
+        null,
+        null,
+        null,
+        null
+      ],
+      "layout": {
+        "viewBox": [
+          72,
+          84
+        ],
+        "x": -18.126984126984127,
+        "y": -1.9682539682539755,
+        "width": 110.87301587301587,
+        "height": 88.17460317460318
+      }
+    },
+    "1": {
+      "source": "assets/morphanim/妖魔弓箭手F",
+      "body": [
+        "/assets/polymorph-cast/morphanim/妖魔弓箭手F/attack_0.png",
+        "/assets/polymorph-cast/morphanim/妖魔弓箭手F/attack_1.png",
+        "/assets/polymorph-cast/morphanim/妖魔弓箭手F/attack_2.png",
+        "/assets/polymorph-cast/morphanim/妖魔弓箭手F/attack_3.png",
+        "/assets/polymorph-cast/morphanim/妖魔弓箭手F/attack_4.png"
+      ],
+      "shadow": [
+        null,
+        null,
+        null,
+        null,
+        null
+      ],
+      "weapon": [
+        null,
+        null,
+        null,
+        null,
+        null
+      ],
+      "layout": {
+        "viewBox": [
+          72,
+          84
+        ],
+        "x": -18.126984126984127,
+        "y": -1.9682539682539755,
+        "width": 110.87301587301587,
+        "height": 88.17460317460318
+      }
+    },
+    "2": {
+      "source": "assets/morphanim/妖魔弓箭手",
+      "body": [
+        "/assets/polymorph-cast/morphanim/妖魔弓箭手/attack_0.png",
+        "/assets/polymorph-cast/morphanim/妖魔弓箭手/attack_1.png",
+        "/assets/polymorph-cast/morphanim/妖魔弓箭手/attack_2.png",
+        "/assets/polymorph-cast/morphanim/妖魔弓箭手/attack_3.png",
+        "/assets/polymorph-cast/morphanim/妖魔弓箭手/attack_4.png"
+      ],
+      "shadow": [
+        null,
+        null,
+        null,
+        null,
+        null
+      ],
+      "weapon": [
+        null,
+        null,
+        null,
+        null,
+        null
+      ],
+      "layout": {
+        "viewBox": [
+          72,
+          84
+        ],
+        "x": -18.126984126984127,
+        "y": -1.9682539682539755,
+        "width": 110.87301587301587,
+        "height": 88.17460317460318
+      }
+    }
+  },
+  "morph_21": {
+    "0": {
+      "source": "assets/morphanim/思克巴2",
+      "body": [
+        "/assets/polymorph-cast/morphanim/思克巴2/attack_0.png",
+        "/assets/polymorph-cast/morphanim/思克巴2/attack_1.png",
+        "/assets/polymorph-cast/morphanim/思克巴2/attack_2.png",
+        "/assets/polymorph-cast/morphanim/思克巴2/attack_3.png",
+        "/assets/polymorph-cast/morphanim/思克巴2/attack_4.png"
+      ],
+      "shadow": [
+        "/assets/polymorph-cast/morphanim/思克巴2/attack_s_0.png",
+        "/assets/polymorph-cast/morphanim/思克巴2/attack_s_1.png",
+        "/assets/polymorph-cast/morphanim/思克巴2/attack_s_2.png",
+        "/assets/polymorph-cast/morphanim/思克巴2/attack_s_3.png",
+        "/assets/polymorph-cast/morphanim/思克巴2/attack_s_4.png"
+      ],
+      "weapon": [
+        "/assets/polymorph-cast/morphanim/思克巴2/attack_w_0.png",
+        "/assets/polymorph-cast/morphanim/思克巴2/attack_w_1.png",
+        "/assets/polymorph-cast/morphanim/思克巴2/attack_w_2.png",
+        "/assets/polymorph-cast/morphanim/思克巴2/attack_w_3.png",
+        "/assets/polymorph-cast/morphanim/思克巴2/attack_w_4.png"
+      ],
+      "layout": {
+        "viewBox": [
+          48,
+          96
+        ],
+        "x": -63.50757575757575,
+        "y": -33.772727272727266,
+        "width": 192.45454545454544,
+        "height": 173.65151515151513
+      }
+    },
+    "1": {
+      "source": "assets/morphanim/思克巴F",
+      "body": [
+        "/assets/polymorph-cast/morphanim/思克巴F/attack_0.png",
+        "/assets/polymorph-cast/morphanim/思克巴F/attack_1.png",
+        "/assets/polymorph-cast/morphanim/思克巴F/attack_2.png",
+        "/assets/polymorph-cast/morphanim/思克巴F/attack_3.png",
+        "/assets/polymorph-cast/morphanim/思克巴F/attack_4.png"
+      ],
+      "shadow": [
+        "/assets/polymorph-cast/morphanim/思克巴F/attack_s_0.png",
+        "/assets/polymorph-cast/morphanim/思克巴F/attack_s_1.png",
+        "/assets/polymorph-cast/morphanim/思克巴F/attack_s_2.png",
+        "/assets/polymorph-cast/morphanim/思克巴F/attack_s_3.png",
+        "/assets/polymorph-cast/morphanim/思克巴F/attack_s_4.png"
+      ],
+      "weapon": [
+        "/assets/polymorph-cast/morphanim/思克巴F/attack_w_0.png",
+        "/assets/polymorph-cast/morphanim/思克巴F/attack_w_1.png",
+        "/assets/polymorph-cast/morphanim/思克巴F/attack_w_2.png",
+        "/assets/polymorph-cast/morphanim/思克巴F/attack_w_3.png",
+        "/assets/polymorph-cast/morphanim/思克巴F/attack_w_4.png"
+      ],
+      "layout": {
+        "viewBox": [
+          48,
+          96
+        ],
+        "x": -63.50757575757575,
+        "y": -33.772727272727266,
+        "width": 192.45454545454544,
+        "height": 173.65151515151513
+      }
+    },
+    "2": {
+      "source": "assets/morphanim/思克巴",
+      "body": [
+        "/assets/polymorph-cast/morphanim/思克巴/attack_0.png",
+        "/assets/polymorph-cast/morphanim/思克巴/attack_1.png",
+        "/assets/polymorph-cast/morphanim/思克巴/attack_2.png",
+        "/assets/polymorph-cast/morphanim/思克巴/attack_3.png",
+        "/assets/polymorph-cast/morphanim/思克巴/attack_4.png"
+      ],
+      "shadow": [
+        "/assets/polymorph-cast/morphanim/思克巴/attack_s_0.png",
+        "/assets/polymorph-cast/morphanim/思克巴/attack_s_1.png",
+        "/assets/polymorph-cast/morphanim/思克巴/attack_s_2.png",
+        "/assets/polymorph-cast/morphanim/思克巴/attack_s_3.png",
+        "/assets/polymorph-cast/morphanim/思克巴/attack_s_4.png"
+      ],
+      "weapon": [
+        "/assets/polymorph-cast/morphanim/思克巴/attack_w_0.png",
+        "/assets/polymorph-cast/morphanim/思克巴/attack_w_1.png",
+        "/assets/polymorph-cast/morphanim/思克巴/attack_w_2.png",
+        "/assets/polymorph-cast/morphanim/思克巴/attack_w_3.png",
+        "/assets/polymorph-cast/morphanim/思克巴/attack_w_4.png"
+      ],
+      "layout": {
+        "viewBox": [
+          48,
+          96
+        ],
+        "x": -63.50757575757575,
+        "y": -33.772727272727266,
+        "width": 192.45454545454544,
+        "height": 173.65151515151513
+      }
+    }
+  },
+  "morph_23": {
+    "0": {
+      "source": "assets/morphanim/食人妖精王2",
+      "body": [
+        "/assets/polymorph-cast/morphanim/食人妖精王2/attack_0.png",
+        "/assets/polymorph-cast/morphanim/食人妖精王2/attack_1.png",
+        "/assets/polymorph-cast/morphanim/食人妖精王2/attack_2.png",
+        "/assets/polymorph-cast/morphanim/食人妖精王2/attack_3.png",
+        "/assets/polymorph-cast/morphanim/食人妖精王2/attack_4.png"
+      ],
+      "shadow": [
+        "/assets/polymorph-cast/morphanim/食人妖精王2/attack_s_0.png",
+        "/assets/polymorph-cast/morphanim/食人妖精王2/attack_s_1.png",
+        "/assets/polymorph-cast/morphanim/食人妖精王2/attack_s_2.png",
+        "/assets/polymorph-cast/morphanim/食人妖精王2/attack_s_3.png",
+        "/assets/polymorph-cast/morphanim/食人妖精王2/attack_s_4.png"
+      ],
+      "weapon": [
+        null,
+        null,
+        null,
+        null,
+        null
+      ],
+      "layout": {
+        "viewBox": [
+          72,
+          84
+        ],
+        "x": -65.68333333333334,
+        "y": -24.83333333333333,
+        "width": 179.8,
+        "height": 142.1
+      }
+    },
+    "1": {
+      "source": "assets/morphanim/食人妖精王F",
+      "body": [
+        "/assets/polymorph-cast/morphanim/食人妖精王F/attack_0.png",
+        "/assets/polymorph-cast/morphanim/食人妖精王F/attack_1.png",
+        "/assets/polymorph-cast/morphanim/食人妖精王F/attack_2.png",
+        "/assets/polymorph-cast/morphanim/食人妖精王F/attack_3.png",
+        "/assets/polymorph-cast/morphanim/食人妖精王F/attack_4.png"
+      ],
+      "shadow": [
+        "/assets/polymorph-cast/morphanim/食人妖精王F/attack_s_0.png",
+        "/assets/polymorph-cast/morphanim/食人妖精王F/attack_s_1.png",
+        "/assets/polymorph-cast/morphanim/食人妖精王F/attack_s_2.png",
+        "/assets/polymorph-cast/morphanim/食人妖精王F/attack_s_3.png",
+        "/assets/polymorph-cast/morphanim/食人妖精王F/attack_s_4.png"
+      ],
+      "weapon": [
+        null,
+        null,
+        null,
+        null,
+        null
+      ],
+      "layout": {
+        "viewBox": [
+          72,
+          84
+        ],
+        "x": -65.68333333333334,
+        "y": -24.83333333333333,
+        "width": 179.8,
+        "height": 142.1
+      }
+    },
+    "2": {
+      "source": "assets/morphanim/食人妖精王",
+      "body": [
+        "/assets/polymorph-cast/morphanim/食人妖精王/attack_0.png",
+        "/assets/polymorph-cast/morphanim/食人妖精王/attack_1.png",
+        "/assets/polymorph-cast/morphanim/食人妖精王/attack_2.png",
+        "/assets/polymorph-cast/morphanim/食人妖精王/attack_3.png",
+        "/assets/polymorph-cast/morphanim/食人妖精王/attack_4.png"
+      ],
+      "shadow": [
+        "/assets/polymorph-cast/morphanim/食人妖精王/attack_s_0.png",
+        "/assets/polymorph-cast/morphanim/食人妖精王/attack_s_1.png",
+        "/assets/polymorph-cast/morphanim/食人妖精王/attack_s_2.png",
+        "/assets/polymorph-cast/morphanim/食人妖精王/attack_s_3.png",
+        "/assets/polymorph-cast/morphanim/食人妖精王/attack_s_4.png"
+      ],
+      "weapon": [
+        null,
+        null,
+        null,
+        null,
+        null
+      ],
+      "layout": {
+        "viewBox": [
+          72,
+          84
+        ],
+        "x": -65.68333333333334,
+        "y": -24.83333333333333,
+        "width": 179.8,
+        "height": 142.1
+      }
+    }
+  },
+  "morph_25": {
+    "0": {
+      "source": "assets/morphanim/巴風特2",
+      "body": [
+        "/assets/polymorph-cast/morphanim/巴風特2/attack_0.png",
+        "/assets/polymorph-cast/morphanim/巴風特2/attack_1.png",
+        "/assets/polymorph-cast/morphanim/巴風特2/attack_2.png",
+        "/assets/polymorph-cast/morphanim/巴風特2/attack_3.png",
+        "/assets/polymorph-cast/morphanim/巴風特2/attack_4.png"
+      ],
+      "shadow": [
+        "/assets/polymorph-cast/morphanim/巴風特2/attack_s_0.png",
+        "/assets/polymorph-cast/morphanim/巴風特2/attack_s_1.png",
+        "/assets/polymorph-cast/morphanim/巴風特2/attack_s_2.png",
+        "/assets/polymorph-cast/morphanim/巴風特2/attack_s_3.png",
+        "/assets/polymorph-cast/morphanim/巴風特2/attack_s_4.png"
+      ],
+      "weapon": [
+        null,
+        null,
+        null,
+        null,
+        null
+      ],
+      "layout": {
+        "viewBox": [
+          96,
+          96
+        ],
+        "x": -66.67391304347825,
+        "y": -6.753623188405783,
+        "width": 225.3478260869565,
+        "height": 169.78260869565216
+      }
+    },
+    "1": {
+      "source": "assets/morphanim/巴風特F",
+      "body": [
+        "/assets/polymorph-cast/morphanim/巴風特F/attack_0.png",
+        "/assets/polymorph-cast/morphanim/巴風特F/attack_1.png",
+        "/assets/polymorph-cast/morphanim/巴風特F/attack_2.png",
+        "/assets/polymorph-cast/morphanim/巴風特F/attack_3.png",
+        "/assets/polymorph-cast/morphanim/巴風特F/attack_4.png"
+      ],
+      "shadow": [
+        "/assets/polymorph-cast/morphanim/巴風特F/attack_s_0.png",
+        "/assets/polymorph-cast/morphanim/巴風特F/attack_s_1.png",
+        "/assets/polymorph-cast/morphanim/巴風特F/attack_s_2.png",
+        "/assets/polymorph-cast/morphanim/巴風特F/attack_s_3.png",
+        "/assets/polymorph-cast/morphanim/巴風特F/attack_s_4.png"
+      ],
+      "weapon": [
+        null,
+        null,
+        null,
+        null,
+        null
+      ],
+      "layout": {
+        "viewBox": [
+          96,
+          96
+        ],
+        "x": -66.67391304347825,
+        "y": -6.753623188405783,
+        "width": 225.3478260869565,
+        "height": 169.78260869565216
+      }
+    },
+    "2": {
+      "source": "assets/morphanim/巴風特",
+      "body": [
+        "/assets/polymorph-cast/morphanim/巴風特/attack_0.png",
+        "/assets/polymorph-cast/morphanim/巴風特/attack_1.png",
+        "/assets/polymorph-cast/morphanim/巴風特/attack_2.png",
+        "/assets/polymorph-cast/morphanim/巴風特/attack_3.png",
+        "/assets/polymorph-cast/morphanim/巴風特/attack_4.png"
+      ],
+      "shadow": [
+        "/assets/polymorph-cast/morphanim/巴風特/attack_s_0.png",
+        "/assets/polymorph-cast/morphanim/巴風特/attack_s_1.png",
+        "/assets/polymorph-cast/morphanim/巴風特/attack_s_2.png",
+        "/assets/polymorph-cast/morphanim/巴風特/attack_s_3.png",
+        "/assets/polymorph-cast/morphanim/巴風特/attack_s_4.png"
+      ],
+      "weapon": [
+        null,
+        null,
+        null,
+        null,
+        null
+      ],
+      "layout": {
+        "viewBox": [
+          96,
+          96
+        ],
+        "x": -66.67391304347825,
+        "y": -6.753623188405783,
+        "width": 225.3478260869565,
+        "height": 169.78260869565216
+      }
+    }
+  },
+  "morph_26": {
+    "0": {
+      "source": "assets/morphanim/小惡魔2",
+      "body": [
+        "/assets/polymorph-cast/morphanim/小惡魔2/attack_0.png",
+        "/assets/polymorph-cast/morphanim/小惡魔2/attack_1.png",
+        "/assets/polymorph-cast/morphanim/小惡魔2/attack_2.png",
+        "/assets/polymorph-cast/morphanim/小惡魔2/attack_3.png",
+        "/assets/polymorph-cast/morphanim/小惡魔2/attack_4.png",
+        "/assets/polymorph-cast/morphanim/小惡魔2/attack_5.png",
+        "/assets/polymorph-cast/morphanim/小惡魔2/attack_6.png"
+      ],
+      "shadow": [
+        "/assets/polymorph-cast/morphanim/小惡魔2/attack_s_0.png",
+        "/assets/polymorph-cast/morphanim/小惡魔2/attack_s_1.png",
+        "/assets/polymorph-cast/morphanim/小惡魔2/attack_s_2.png",
+        "/assets/polymorph-cast/morphanim/小惡魔2/attack_s_3.png",
+        "/assets/polymorph-cast/morphanim/小惡魔2/attack_s_4.png",
+        "/assets/polymorph-cast/morphanim/小惡魔2/attack_s_5.png",
+        "/assets/polymorph-cast/morphanim/小惡魔2/attack_s_6.png"
+      ],
+      "weapon": [
+        null,
+        null,
+        null,
+        null,
+        null,
+        null,
+        null
+      ],
+      "layout": {
+        "viewBox": [
+          72,
+          84
+        ],
+        "x": -27.82352941176471,
+        "y": -2.39705882352942,
+        "width": 147.22058823529412,
+        "height": 93.97058823529413
+      }
+    },
+    "1": {
+      "source": "assets/morphanim/小惡魔F",
+      "body": [
+        "/assets/polymorph-cast/morphanim/小惡魔F/attack_0.png",
+        "/assets/polymorph-cast/morphanim/小惡魔F/attack_1.png",
+        "/assets/polymorph-cast/morphanim/小惡魔F/attack_2.png",
+        "/assets/polymorph-cast/morphanim/小惡魔F/attack_3.png",
+        "/assets/polymorph-cast/morphanim/小惡魔F/attack_4.png",
+        "/assets/polymorph-cast/morphanim/小惡魔F/attack_5.png",
+        "/assets/polymorph-cast/morphanim/小惡魔F/attack_6.png"
+      ],
+      "shadow": [
+        "/assets/polymorph-cast/morphanim/小惡魔F/attack_s_0.png",
+        "/assets/polymorph-cast/morphanim/小惡魔F/attack_s_1.png",
+        "/assets/polymorph-cast/morphanim/小惡魔F/attack_s_2.png",
+        "/assets/polymorph-cast/morphanim/小惡魔F/attack_s_3.png",
+        "/assets/polymorph-cast/morphanim/小惡魔F/attack_s_4.png",
+        "/assets/polymorph-cast/morphanim/小惡魔F/attack_s_5.png",
+        "/assets/polymorph-cast/morphanim/小惡魔F/attack_s_6.png"
+      ],
+      "weapon": [
+        null,
+        null,
+        null,
+        null,
+        null,
+        null,
+        null
+      ],
+      "layout": {
+        "viewBox": [
+          72,
+          84
+        ],
+        "x": -27.82352941176471,
+        "y": -2.39705882352942,
+        "width": 147.22058823529412,
+        "height": 93.97058823529413
+      }
+    },
+    "2": {
+      "source": "assets/morphanim/小惡魔",
+      "body": [
+        "/assets/polymorph-cast/morphanim/小惡魔/attack_0.png",
+        "/assets/polymorph-cast/morphanim/小惡魔/attack_1.png",
+        "/assets/polymorph-cast/morphanim/小惡魔/attack_2.png",
+        "/assets/polymorph-cast/morphanim/小惡魔/attack_3.png",
+        "/assets/polymorph-cast/morphanim/小惡魔/attack_4.png",
+        "/assets/polymorph-cast/morphanim/小惡魔/attack_5.png",
+        "/assets/polymorph-cast/morphanim/小惡魔/attack_6.png"
+      ],
+      "shadow": [
+        "/assets/polymorph-cast/morphanim/小惡魔/attack_s_0.png",
+        "/assets/polymorph-cast/morphanim/小惡魔/attack_s_1.png",
+        "/assets/polymorph-cast/morphanim/小惡魔/attack_s_2.png",
+        "/assets/polymorph-cast/morphanim/小惡魔/attack_s_3.png",
+        "/assets/polymorph-cast/morphanim/小惡魔/attack_s_4.png",
+        "/assets/polymorph-cast/morphanim/小惡魔/attack_s_5.png",
+        "/assets/polymorph-cast/morphanim/小惡魔/attack_s_6.png"
+      ],
+      "weapon": [
+        null,
+        null,
+        null,
+        null,
+        null,
+        null,
+        null
+      ],
+      "layout": {
+        "viewBox": [
+          72,
+          84
+        ],
+        "x": -27.82352941176471,
+        "y": -2.39705882352942,
+        "width": 147.22058823529412,
+        "height": 93.97058823529413
+      }
+    }
+  },
+  "deathknight": {
+    "0": {
+      "source": "assets/morphanim/死亡騎士2",
+      "body": [
+        "/assets/polymorph-cast/morphanim/死亡騎士2/attack_0.png",
+        "/assets/polymorph-cast/morphanim/死亡騎士2/attack_1.png",
+        "/assets/polymorph-cast/morphanim/死亡騎士2/attack_2.png",
+        "/assets/polymorph-cast/morphanim/死亡騎士2/attack_3.png",
+        "/assets/polymorph-cast/morphanim/死亡騎士2/attack_4.png",
+        "/assets/polymorph-cast/morphanim/死亡騎士2/attack_5.png"
+      ],
+      "shadow": [
+        "/assets/polymorph-cast/morphanim/死亡騎士2/attack_s_0.png",
+        "/assets/polymorph-cast/morphanim/死亡騎士2/attack_s_1.png",
+        "/assets/polymorph-cast/morphanim/死亡騎士2/attack_s_2.png",
+        "/assets/polymorph-cast/morphanim/死亡騎士2/attack_s_3.png",
+        "/assets/polymorph-cast/morphanim/死亡騎士2/attack_s_4.png",
+        "/assets/polymorph-cast/morphanim/死亡騎士2/attack_s_5.png"
+      ],
+      "weapon": [
+        "/assets/polymorph-cast/morphanim/死亡騎士2/attack_w_0.png",
+        "/assets/polymorph-cast/morphanim/死亡騎士2/attack_w_1.png",
+        "/assets/polymorph-cast/morphanim/死亡騎士2/attack_w_2.png",
+        "/assets/polymorph-cast/morphanim/死亡騎士2/attack_w_3.png",
+        "/assets/polymorph-cast/morphanim/死亡騎士2/attack_w_4.png",
+        "/assets/polymorph-cast/morphanim/死亡騎士2/attack_w_5.png"
+      ],
+      "layout": {
+        "viewBox": [
+          113,
+          102
+        ],
+        "x": -36.27419354838709,
+        "y": -8.225806451612897,
+        "width": 177.74193548387095,
+        "height": 145.0
+      }
+    },
+    "1": {
+      "source": "assets/morphanim/死亡騎士F",
+      "body": [
+        "/assets/polymorph-cast/morphanim/死亡騎士F/attack_0.png",
+        "/assets/polymorph-cast/morphanim/死亡騎士F/attack_1.png",
+        "/assets/polymorph-cast/morphanim/死亡騎士F/attack_2.png",
+        "/assets/polymorph-cast/morphanim/死亡騎士F/attack_3.png",
+        "/assets/polymorph-cast/morphanim/死亡騎士F/attack_4.png",
+        "/assets/polymorph-cast/morphanim/死亡騎士F/attack_5.png"
+      ],
+      "shadow": [
+        "/assets/polymorph-cast/morphanim/死亡騎士F/attack_s_0.png",
+        "/assets/polymorph-cast/morphanim/死亡騎士F/attack_s_1.png",
+        "/assets/polymorph-cast/morphanim/死亡騎士F/attack_s_2.png",
+        "/assets/polymorph-cast/morphanim/死亡騎士F/attack_s_3.png",
+        "/assets/polymorph-cast/morphanim/死亡騎士F/attack_s_4.png",
+        "/assets/polymorph-cast/morphanim/死亡騎士F/attack_s_5.png"
+      ],
+      "weapon": [
+        "/assets/polymorph-cast/morphanim/死亡騎士F/attack_w_0.png",
+        "/assets/polymorph-cast/morphanim/死亡騎士F/attack_w_1.png",
+        "/assets/polymorph-cast/morphanim/死亡騎士F/attack_w_2.png",
+        "/assets/polymorph-cast/morphanim/死亡騎士F/attack_w_3.png",
+        "/assets/polymorph-cast/morphanim/死亡騎士F/attack_w_4.png",
+        "/assets/polymorph-cast/morphanim/死亡騎士F/attack_w_5.png"
+      ],
+      "layout": {
+        "viewBox": [
+          113,
+          102
+        ],
+        "x": -36.27419354838709,
+        "y": -8.225806451612897,
+        "width": 177.74193548387095,
+        "height": 145.0
+      }
+    },
+    "2": {
+      "source": "assets/morphanim/死亡騎士",
+      "body": [
+        "/assets/polymorph-cast/morphanim/死亡騎士/attack_0.png",
+        "/assets/polymorph-cast/morphanim/死亡騎士/attack_1.png",
+        "/assets/polymorph-cast/morphanim/死亡騎士/attack_2.png",
+        "/assets/polymorph-cast/morphanim/死亡騎士/attack_3.png",
+        "/assets/polymorph-cast/morphanim/死亡騎士/attack_4.png",
+        "/assets/polymorph-cast/morphanim/死亡騎士/attack_5.png"
+      ],
+      "shadow": [
+        "/assets/polymorph-cast/morphanim/死亡騎士/attack_s_0.png",
+        "/assets/polymorph-cast/morphanim/死亡騎士/attack_s_1.png",
+        "/assets/polymorph-cast/morphanim/死亡騎士/attack_s_2.png",
+        "/assets/polymorph-cast/morphanim/死亡騎士/attack_s_3.png",
+        "/assets/polymorph-cast/morphanim/死亡騎士/attack_s_4.png",
+        "/assets/polymorph-cast/morphanim/死亡騎士/attack_s_5.png"
+      ],
+      "weapon": [
+        "/assets/polymorph-cast/morphanim/死亡騎士/attack_w_0.png",
+        "/assets/polymorph-cast/morphanim/死亡騎士/attack_w_1.png",
+        "/assets/polymorph-cast/morphanim/死亡騎士/attack_w_2.png",
+        "/assets/polymorph-cast/morphanim/死亡騎士/attack_w_3.png",
+        "/assets/polymorph-cast/morphanim/死亡騎士/attack_w_4.png",
+        "/assets/polymorph-cast/morphanim/死亡騎士/attack_w_5.png"
+      ],
+      "layout": {
+        "viewBox": [
+          113,
+          102
+        ],
+        "x": -36.27419354838709,
+        "y": -8.225806451612897,
+        "width": 177.74193548387095,
+        "height": 145.0
+      }
+    }
+  },
+  "darkelf": {
+    "0": {
+      "source": "assets/morphanim/黑暗精靈2",
+      "body": [
+        "/assets/polymorph-cast/morphanim/黑暗精靈2/attack_0.png",
+        "/assets/polymorph-cast/morphanim/黑暗精靈2/attack_1.png",
+        "/assets/polymorph-cast/morphanim/黑暗精靈2/attack_2.png",
+        "/assets/polymorph-cast/morphanim/黑暗精靈2/attack_3.png",
+        "/assets/polymorph-cast/morphanim/黑暗精靈2/attack_4.png",
+        "/assets/polymorph-cast/morphanim/黑暗精靈2/attack_5.png",
+        "/assets/polymorph-cast/morphanim/黑暗精靈2/attack_6.png",
+        "/assets/polymorph-cast/morphanim/黑暗精靈2/attack_7.png"
+      ],
+      "shadow": [
+        "/assets/polymorph-cast/morphanim/黑暗精靈2/attack_s_0.png",
+        "/assets/polymorph-cast/morphanim/黑暗精靈2/attack_s_1.png",
+        "/assets/polymorph-cast/morphanim/黑暗精靈2/attack_s_2.png",
+        "/assets/polymorph-cast/morphanim/黑暗精靈2/attack_s_3.png",
+        "/assets/polymorph-cast/morphanim/黑暗精靈2/attack_s_4.png",
+        "/assets/polymorph-cast/morphanim/黑暗精靈2/attack_s_5.png",
+        "/assets/polymorph-cast/morphanim/黑暗精靈2/attack_s_6.png",
+        "/assets/polymorph-cast/morphanim/黑暗精靈2/attack_s_7.png"
+      ],
+      "weapon": [
+        null,
+        null,
+        null,
+        null,
+        null,
+        null,
+        null,
+        null
+      ],
+      "layout": {
+        "viewBox": [
+          59,
+          66
+        ],
+        "x": -70.32456140350877,
+        "y": -12.68421052631578,
+        "width": 187.64912280701753,
+        "height": 129.68421052631578
+      }
+    },
+    "1": {
+      "source": "assets/morphanim/黑暗精靈F",
+      "body": [
+        "/assets/polymorph-cast/morphanim/黑暗精靈F/attack_0.png",
+        "/assets/polymorph-cast/morphanim/黑暗精靈F/attack_1.png",
+        "/assets/polymorph-cast/morphanim/黑暗精靈F/attack_2.png",
+        "/assets/polymorph-cast/morphanim/黑暗精靈F/attack_3.png",
+        "/assets/polymorph-cast/morphanim/黑暗精靈F/attack_4.png",
+        "/assets/polymorph-cast/morphanim/黑暗精靈F/attack_5.png",
+        "/assets/polymorph-cast/morphanim/黑暗精靈F/attack_6.png",
+        "/assets/polymorph-cast/morphanim/黑暗精靈F/attack_7.png"
+      ],
+      "shadow": [
+        "/assets/polymorph-cast/morphanim/黑暗精靈F/attack_s_0.png",
+        "/assets/polymorph-cast/morphanim/黑暗精靈F/attack_s_1.png",
+        "/assets/polymorph-cast/morphanim/黑暗精靈F/attack_s_2.png",
+        "/assets/polymorph-cast/morphanim/黑暗精靈F/attack_s_3.png",
+        "/assets/polymorph-cast/morphanim/黑暗精靈F/attack_s_4.png",
+        "/assets/polymorph-cast/morphanim/黑暗精靈F/attack_s_5.png",
+        "/assets/polymorph-cast/morphanim/黑暗精靈F/attack_s_6.png",
+        "/assets/polymorph-cast/morphanim/黑暗精靈F/attack_s_7.png"
+      ],
+      "weapon": [
+        null,
+        null,
+        null,
+        null,
+        null,
+        null,
+        null,
+        null
+      ],
+      "layout": {
+        "viewBox": [
+          59,
+          66
+        ],
+        "x": -70.32456140350877,
+        "y": -12.68421052631578,
+        "width": 187.64912280701753,
+        "height": 129.68421052631578
+      }
+    },
+    "2": {
+      "source": "assets/morphanim/黑暗精靈",
+      "body": [
+        "/assets/polymorph-cast/morphanim/黑暗精靈/attack_0.png",
+        "/assets/polymorph-cast/morphanim/黑暗精靈/attack_1.png",
+        "/assets/polymorph-cast/morphanim/黑暗精靈/attack_2.png",
+        "/assets/polymorph-cast/morphanim/黑暗精靈/attack_3.png",
+        "/assets/polymorph-cast/morphanim/黑暗精靈/attack_4.png",
+        "/assets/polymorph-cast/morphanim/黑暗精靈/attack_5.png",
+        "/assets/polymorph-cast/morphanim/黑暗精靈/attack_6.png",
+        "/assets/polymorph-cast/morphanim/黑暗精靈/attack_7.png"
+      ],
+      "shadow": [
+        "/assets/polymorph-cast/morphanim/黑暗精靈/attack_s_0.png",
+        "/assets/polymorph-cast/morphanim/黑暗精靈/attack_s_1.png",
+        "/assets/polymorph-cast/morphanim/黑暗精靈/attack_s_2.png",
+        "/assets/polymorph-cast/morphanim/黑暗精靈/attack_s_3.png",
+        "/assets/polymorph-cast/morphanim/黑暗精靈/attack_s_4.png",
+        "/assets/polymorph-cast/morphanim/黑暗精靈/attack_s_5.png",
+        "/assets/polymorph-cast/morphanim/黑暗精靈/attack_s_6.png",
+        "/assets/polymorph-cast/morphanim/黑暗精靈/attack_s_7.png"
+      ],
+      "weapon": [
+        null,
+        null,
+        null,
+        null,
+        null,
+        null,
+        null,
+        null
+      ],
+      "layout": {
+        "viewBox": [
+          59,
+          66
+        ],
+        "x": -70.32456140350877,
+        "y": -12.68421052631578,
+        "width": 187.64912280701753,
+        "height": 129.68421052631578
+      }
+    }
+  }
+}

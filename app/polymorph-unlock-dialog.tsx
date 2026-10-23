@@ -1,0 +1,11 @@
+'use client';
+import {useRef,useState} from 'react';
+import {AlertDialog,AlertDialogContent,AlertDialogTitle,AlertDialogDescription,AlertDialogFooter,AlertDialogCancel,AlertDialogAction} from '@/components/ui/alert-dialog';
+import {POLYMORPH,hasPolyControl,polymorphUnlockError,type PolyForm} from '@/lib/game/polymorph';
+import DATA from '@/lib/game/gamedata.json';
+import type {Character} from '@/lib/game/engine';
+export default function PolymorphUnlockDialog({c,form,busy,act,close}:{c:Character;form:PolyForm|null;busy:boolean;act:(a:any)=>Promise<any>;close:()=>void}){
+ const pending=useRef(false),[saving,setSaving]=useState(false),[failure,setFailure]=useState('');
+ const error=form?polymorphUnlockError(c,form.id):null,working=busy||saving;
+ return <AlertDialog open={!!form} onOpenChange={open=>{if(!open&&!working){setFailure('');close();}}}><AlertDialogContent className="game-dialog poly-unlock-dialog"><AlertDialogTitle>永久開啟 {form?.name}</AlertDialogTitle><AlertDialogDescription>每種變身分別解鎖，同帳號角色永久共用。確認成功才扣除以下金幣與材料；使用變身另需 1 張變形卷軸。</AlertDialogDescription><div className="poly-unlock-requirements"><p>等級：Lv.{c.lv}／需要 Lv.{form?.level||55}</p><p>變形控制戒指：{hasPolyControl(c)?'已持有':'尚未持有'}</p><table><thead><tr><th>開啟條件</th><th>持有／需要</th></tr></thead><tbody><tr><td>金幣</td><td>{c.gold.toLocaleString('zh-TW')}／{POLYMORPH.unlockCost.gold.toLocaleString('zh-TW')}</td></tr>{Object.entries(POLYMORPH.unlockCost.items).map(([id,count])=><tr key={id}><td>{(DATA.items as Record<string,{n:string}>)[id]?.n||id}{c.locked?.includes(id)&&'（已鎖定）'}</td><td>{c.bag[id]||0}／{count}</td></tr>)}</tbody></table></div>{error&&<p role="status">{error}</p>}{failure&&<p role="alert">{failure}</p>}<AlertDialogFooter><AlertDialogCancel disabled={working}>取消</AlertDialogCancel><AlertDialogAction disabled={working||!!error||!form} onClick={async e=>{e.preventDefault();if(!form||error||pending.current)return;pending.current=true;setSaving(true);setFailure('');try{if(await act({type:'polyUnlock',id:form.id}))close();else setFailure('解鎖未完成，請確認連線與材料後重試。');}catch{setFailure('解鎖未完成，請稍後重試。');}finally{pending.current=false;setSaving(false);}}}>{saving?'開啟中…':'確認開啟'}</AlertDialogAction></AlertDialogFooter></AlertDialogContent></AlertDialog>;
+}

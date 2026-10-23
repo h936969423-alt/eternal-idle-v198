@@ -1,0 +1,7 @@
+'use client';
+import type {Character} from '@/lib/game/engine';
+function affixText(a:any){if(!a)return '';return [a.name&&a.key!=='families'?`${a.name} ${a.value||0}`:'',a.blessing?({blessed:'祝福',cursed:'詛咒'} as Record<string,string>)[a.blessing]||a.blessing:'',a.ancient?({ancient:'遠古',eternal:'永恆',immortal:'不朽',primordial:'太初'} as Record<string,string>)[a.ancient]||a.ancient:'',a.element?`${({fire:'火',water:'水',wind:'風',earth:'地'} as Record<string,string>)[a.element.element]||a.element.element}屬性第 ${a.element.tier} 階`:'',a.attrMagic?'保留原附加魔法':''].filter(Boolean).join('、');}
+export default function RetiredEquipment({c}:{c:Character}){
+ const rows=c.retiredEquipment||[];
+ return <section><h3>舊裝保留</h3><p className="section-hint">找不到可靠對應或詞綴不相容的舊裝完整保留於此，不能穿戴、販售或作為材料。原始存檔另有完整備份。</p>{!rows.length?<p>目前沒有待處理的舊裝。</p>:rows.map((r,n)=><details key={r.key+':'+n}><summary>+{r.enhancement} {r.name} · 背包 {r.bag}／倉庫 {r.bank}{r.locked?' · 🔒':''}</summary><p>{r.reason}</p>{Object.keys(r.equipped).length>0&&<p>原穿戴欄位：{Object.keys(r.equipped).map(s=>({weapon:'武器',armor:'盔甲',helm:'頭盔',cloak:'斗篷',gloves:'手套',boots:'鞋',pants:'脛甲',shield:'盾牌',tshirt:'內衣',ring:'戒指一',ring2:'戒指二',amulet:'項鍊',belt:'腰帶'} as Record<string,string>)[s]||s).join('、')}</p>}{r.affix&&<p>原詞綴：{affixText(r.affix)}</p>}{r.darkAffixes?.length>0&&<p>原暗黑詞綴：{r.darkAffixes.map((a:any)=>`${a.name} +${a.value}`).join('、')}</p>}</details>)}</section>;
+}

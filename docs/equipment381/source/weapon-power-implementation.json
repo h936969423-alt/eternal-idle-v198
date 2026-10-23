@@ -1,0 +1,3091 @@
+{
+  "edition": "阿胖3.81",
+  "notice": "Exact Java methods included; summaries never replace source. randInt(a,b) inclusive in summaries. Original SQL raw values preserved in table JSONs.",
+  "powerIdsActuallyBound": [
+    "1",
+    "2",
+    "4",
+    "7",
+    "8",
+    "9",
+    "10",
+    "11",
+    "12",
+    "13",
+    "14",
+    "15",
+    "16",
+    "17",
+    "18",
+    "19",
+    "20",
+    "21",
+    "22",
+    "23",
+    "24",
+    "25",
+    "26",
+    "27",
+    "28",
+    "29",
+    "30",
+    "31",
+    "32",
+    "34",
+    "35",
+    "36",
+    "37",
+    "39",
+    "40",
+    "42",
+    "43",
+    "50",
+    "51",
+    "52",
+    "56",
+    "58",
+    "59",
+    "60",
+    "61",
+    "67",
+    "68",
+    "175",
+    "178",
+    "179",
+    "180",
+    "181",
+    "182",
+    "183",
+    "184"
+  ],
+  "unresolvedPowers": [
+    "175"
+  ],
+  "selection": {
+    "source": "WeaponSkillStart.start_weapon_skill",
+    "rule": "Choose uniformly one list entry from weapon_skill_in.powers, preserving duplicate entries, then boss_holdout check, then chosen class rolls its own chance; not independent rolls."
+  },
+  "powers": [
+    {
+      "id": "1",
+      "boundCount": 2,
+      "parameters": {
+        "id": "1",
+        "classname": "W_SK001",
+        "level": "0",
+        "type1": "2",
+        "type2": "3",
+        "type3": "0",
+        "attr": "0",
+        "ac_mr": "0",
+        "gfxid1": "0",
+        "gfxid2": "0",
+        "gfxid3": "0",
+        "gfxid4": "0",
+        "gfxid4_count": "0",
+        "power": "0",
+        "srcdmg": "0",
+        "addsrcdmg": "0",
+        "random1": "10",
+        "random2": "0",
+        "boss_holdout": "1",
+        "CounterMagic_Mode": "1",
+        "note": "武器毀滅性攻擊 傷害 = 目標現有hp * 2 / 3"
+      },
+      "weapons": [
+        "2",
+        "200002"
+      ]
+    },
+    {
+      "id": "12",
+      "boundCount": 2,
+      "parameters": {
+        "id": "12",
+        "classname": "W_SK008",
+        "level": "0",
+        "type1": "40",
+        "type2": "1",
+        "type3": "0",
+        "attr": "4",
+        "ac_mr": "2",
+        "gfxid1": "0",
+        "gfxid2": "1804",
+        "gfxid3": "0",
+        "gfxid4": "0",
+        "gfxid4_count": "0",
+        "power": "1",
+        "srcdmg": "0",
+        "addsrcdmg": "0",
+        "random1": "10",
+        "random2": "10",
+        "boss_holdout": "0",
+        "CounterMagic_Mode": "1",
+        "note": "酷寒之矛「冰寒之錐」"
+      },
+      "weapons": [
+        "410133",
+        "263"
+      ]
+    },
+    {
+      "id": "2",
+      "boundCount": 2,
+      "parameters": {
+        "id": "2",
+        "classname": "W_SK002",
+        "level": "0",
+        "type1": "3",
+        "type2": "30",
+        "type3": "0",
+        "attr": "0",
+        "ac_mr": "0",
+        "gfxid1": "0",
+        "gfxid2": "0",
+        "gfxid3": "0",
+        "gfxid4": "0",
+        "gfxid4_count": "0",
+        "power": "0",
+        "srcdmg": "0",
+        "addsrcdmg": "0",
+        "random1": "100",
+        "random2": "0",
+        "boss_holdout": "0",
+        "CounterMagic_Mode": "0",
+        "note": "武器附加毒性攻擊(10%) 每3秒 傷害30"
+      },
+      "weapons": [
+        "13",
+        "44"
+      ]
+    },
+    {
+      "id": "3",
+      "boundCount": 0,
+      "parameters": {
+        "id": "3",
+        "classname": "W_SK003",
+        "level": "0",
+        "type1": "1",
+        "type2": "2",
+        "type3": "1",
+        "attr": "0",
+        "ac_mr": "0",
+        "gfxid1": "0",
+        "gfxid2": "0",
+        "gfxid3": "0",
+        "gfxid4": "0",
+        "gfxid4_count": "0",
+        "power": "0",
+        "srcdmg": "0",
+        "addsrcdmg": "0",
+        "random1": "500",
+        "random2": "0",
+        "boss_holdout": "0",
+        "CounterMagic_Mode": "0",
+        "note": "HP奪取(50%) 吸血量 = 最小type1 + 隨機值type2 + 武器強化值隨機值(type3 = 1}"
+      },
+      "weapons": []
+    },
+    {
+      "id": "4",
+      "boundCount": 2,
+      "parameters": {
+        "id": "4",
+        "classname": "W_SK003",
+        "level": "0",
+        "type1": "1",
+        "type2": "3",
+        "type3": "2",
+        "attr": "0",
+        "ac_mr": "0",
+        "gfxid1": "0",
+        "gfxid2": "0",
+        "gfxid3": "0",
+        "gfxid4": "0",
+        "gfxid4_count": "0",
+        "power": "0",
+        "srcdmg": "0",
+        "addsrcdmg": "0",
+        "random1": "1000",
+        "random2": "0",
+        "boss_holdout": "0",
+        "CounterMagic_Mode": "0",
+        "note": "HP奪取(100%) 吸血量 = 最小type1 + 隨機值type2 + 武器強化值固定值(type3 = 2}"
+      },
+      "weapons": [
+        "410157",
+        "12"
+      ]
+    },
+    {
+      "id": "5",
+      "boundCount": 0,
+      "parameters": {
+        "id": "5",
+        "classname": "W_SK004",
+        "level": "0",
+        "type1": "1",
+        "type2": "2",
+        "type3": "1",
+        "attr": "0",
+        "ac_mr": "0",
+        "gfxid1": "0",
+        "gfxid2": "0",
+        "gfxid3": "0",
+        "gfxid4": "0",
+        "gfxid4_count": "0",
+        "power": "0",
+        "srcdmg": "0",
+        "addsrcdmg": "0",
+        "random1": "1000",
+        "random2": "0",
+        "boss_holdout": "0",
+        "CounterMagic_Mode": "0",
+        "note": "MP奪取(50%) 吸魔量 = 最小type1 + 隨機值type2 + 武器強化值隨機值(type3 = 1}"
+      },
+      "weapons": []
+    },
+    {
+      "id": "6",
+      "boundCount": 0,
+      "parameters": {
+        "id": "6",
+        "classname": "W_SK004",
+        "level": "0",
+        "type1": "1",
+        "type2": "4",
+        "type3": "2",
+        "attr": "0",
+        "ac_mr": "0",
+        "gfxid1": "0",
+        "gfxid2": "0",
+        "gfxid3": "0",
+        "gfxid4": "0",
+        "gfxid4_count": "0",
+        "power": "0",
+        "srcdmg": "0",
+        "addsrcdmg": "0",
+        "random1": "1000",
+        "random2": "0",
+        "boss_holdout": "0",
+        "CounterMagic_Mode": "0",
+        "note": "MP奪取(100%) 吸魔量 = 最小type1 + 隨機值type2 + 武器強化值固定值(type3 = 2}"
+      },
+      "weapons": []
+    },
+    {
+      "id": "7",
+      "boundCount": 5,
+      "parameters": {
+        "id": "7",
+        "classname": "W_SK005",
+        "level": "0",
+        "type1": "4",
+        "type2": "3",
+        "type3": "0",
+        "attr": "4",
+        "ac_mr": "2",
+        "gfxid1": "0",
+        "gfxid2": "8152",
+        "gfxid3": "0",
+        "gfxid4": "0",
+        "gfxid4_count": "0",
+        "power": "0",
+        "srcdmg": "0",
+        "addsrcdmg": "0",
+        "random1": "100",
+        "random2": "0",
+        "boss_holdout": "0",
+        "CounterMagic_Mode": "0",
+        "note": "[一般] 藍惡靈奪魔  單次吸收量 = type1 + 武器加成*2 吸收3次 = type2"
+      },
+      "weapons": [
+        "340",
+        "341",
+        "344",
+        "346",
+        "347"
+      ]
+    },
+    {
+      "id": "8",
+      "boundCount": 4,
+      "parameters": {
+        "id": "8",
+        "classname": "W_SK006",
+        "level": "0",
+        "type1": "4",
+        "type2": "3",
+        "type3": "0",
+        "attr": "4",
+        "ac_mr": "2",
+        "gfxid1": "0",
+        "gfxid2": "8150",
+        "gfxid3": "0",
+        "gfxid4": "0",
+        "gfxid4_count": "0",
+        "power": "0",
+        "srcdmg": "0",
+        "addsrcdmg": "0",
+        "random1": "100",
+        "random2": "0",
+        "boss_holdout": "0",
+        "CounterMagic_Mode": "0",
+        "note": "[一般] 紅惡靈逆襲  單次吸收量 = type1 + 武器加成*2 吸收3次 = type2"
+      },
+      "weapons": [
+        "338",
+        "339",
+        "342",
+        "343"
+      ]
+    },
+    {
+      "id": "13",
+      "boundCount": 2,
+      "parameters": {
+        "id": "13",
+        "classname": "W_SK008",
+        "level": "200",
+        "type1": "100",
+        "type2": "40",
+        "type3": "0",
+        "attr": "8",
+        "ac_mr": "2",
+        "gfxid1": "0",
+        "gfxid2": "11736",
+        "gfxid3": "0",
+        "gfxid4": "0",
+        "gfxid4_count": "0",
+        "power": "0",
+        "srcdmg": "0",
+        "addsrcdmg": "0",
+        "random1": "10",
+        "random2": "10",
+        "boss_holdout": "0",
+        "CounterMagic_Mode": "1",
+        "note": "雷雨之劍「雷電」"
+      },
+      "weapons": [
+        "410134",
+        "264"
+      ]
+    },
+    {
+      "id": "14",
+      "boundCount": 1,
+      "parameters": {
+        "id": "14",
+        "classname": "W_SK008",
+        "level": "0",
+        "type1": "40",
+        "type2": "63",
+        "type3": "0",
+        "attr": "0",
+        "ac_mr": "2",
+        "gfxid1": "0",
+        "gfxid2": "9361",
+        "gfxid3": "0",
+        "gfxid4": "0",
+        "gfxid4_count": "0",
+        "power": "0",
+        "srcdmg": "0",
+        "addsrcdmg": "0",
+        "random1": "10",
+        "random2": "10",
+        "boss_holdout": "0",
+        "CounterMagic_Mode": "1",
+        "note": "弒神者之弓「精靈之箭」"
+      },
+      "weapons": [
+        "410135"
+      ]
+    },
+    {
+      "id": "9",
+      "boundCount": 2,
+      "parameters": {
+        "id": "9",
+        "classname": "W_SK006",
+        "level": "0",
+        "type1": "4",
+        "type2": "3",
+        "type3": "0",
+        "attr": "4",
+        "ac_mr": "2",
+        "gfxid1": "0",
+        "gfxid2": "8981",
+        "gfxid3": "0",
+        "gfxid4": "0",
+        "gfxid4_count": "0",
+        "power": "0",
+        "srcdmg": "30",
+        "addsrcdmg": "15",
+        "random1": "10",
+        "random2": "10",
+        "boss_holdout": "0",
+        "CounterMagic_Mode": "0",
+        "note": "[一般] 白惡靈逆襲  單次吸收量 = type1 + 武器加成*2 吸收3次 = type2"
+      },
+      "weapons": [
+        "345",
+        "348"
+      ]
+    },
+    {
+      "id": "10",
+      "boundCount": 1,
+      "parameters": {
+        "id": "10",
+        "classname": "W_SK007",
+        "level": "0",
+        "type1": "0",
+        "type2": "3",
+        "type3": "0",
+        "attr": "0",
+        "ac_mr": "2",
+        "gfxid1": "0",
+        "gfxid2": "7025",
+        "gfxid3": "0",
+        "gfxid4": "0",
+        "gfxid4_count": "0",
+        "power": "0",
+        "srcdmg": "40",
+        "addsrcdmg": "20",
+        "random1": "10",
+        "random2": "10",
+        "boss_holdout": "0",
+        "CounterMagic_Mode": "1",
+        "note": "底比斯武器魔法 惡魔之吻 傷害3次（智力）"
+      },
+      "weapons": [
+        "268"
+      ]
+    },
+    {
+      "id": "11",
+      "boundCount": 2,
+      "parameters": {
+        "id": "11",
+        "classname": "W_SK008",
+        "level": "0",
+        "type1": "40",
+        "type2": "1",
+        "type3": "0",
+        "attr": "8",
+        "ac_mr": "2",
+        "gfxid1": "0",
+        "gfxid2": "758",
+        "gfxid3": "0",
+        "gfxid4": "0",
+        "gfxid4_count": "0",
+        "power": "0",
+        "srcdmg": "0",
+        "addsrcdmg": "0",
+        "random1": "10",
+        "random2": "10",
+        "boss_holdout": "0",
+        "CounterMagic_Mode": "1",
+        "note": "狂風之斧「龍卷風」"
+      },
+      "weapons": [
+        "410132",
+        "260"
+      ]
+    },
+    {
+      "id": "17",
+      "boundCount": 1,
+      "parameters": {
+        "id": "17",
+        "classname": "W_SK008",
+        "level": "0",
+        "type1": "42",
+        "type2": "63",
+        "type3": "0",
+        "attr": "1",
+        "ac_mr": "2",
+        "gfxid1": "0",
+        "gfxid2": "15896",
+        "gfxid3": "0",
+        "gfxid4": "0",
+        "gfxid4_count": "0",
+        "power": "0",
+        "srcdmg": "0",
+        "addsrcdmg": "0",
+        "random1": "10",
+        "random2": "20",
+        "boss_holdout": "0",
+        "CounterMagic_Mode": "1",
+        "note": "巴風特魔杖「熾焰地裂術」"
+      },
+      "weapons": [
+        "124"
+      ]
+    },
+    {
+      "id": "18",
+      "boundCount": 1,
+      "parameters": {
+        "id": "18",
+        "classname": "W_SK008",
+        "level": "0",
+        "type1": "55",
+        "type2": "42",
+        "type3": "0",
+        "attr": "8",
+        "ac_mr": "2",
+        "gfxid1": "0",
+        "gfxid2": "13991",
+        "gfxid3": "0",
+        "gfxid4": "0",
+        "gfxid4_count": "0",
+        "power": "0",
+        "srcdmg": "0",
+        "addsrcdmg": "0",
+        "random1": "10",
+        "random2": "10",
+        "boss_holdout": "0",
+        "CounterMagic_Mode": "1",
+        "note": "克特之劍「極道落雷」"
+      },
+      "weapons": [
+        "54"
+      ]
+    },
+    {
+      "id": "19",
+      "boundCount": 1,
+      "parameters": {
+        "id": "19",
+        "classname": "W_SK008",
+        "level": "0",
+        "type1": "58",
+        "type2": "38",
+        "type3": "0",
+        "attr": "2",
+        "ac_mr": "2",
+        "gfxid1": "7300",
+        "gfxid2": "0",
+        "gfxid3": "0",
+        "gfxid4": "0",
+        "gfxid4_count": "0",
+        "power": "0",
+        "srcdmg": "0",
+        "addsrcdmg": "0",
+        "random1": "10",
+        "random2": "10",
+        "boss_holdout": "0",
+        "CounterMagic_Mode": "1",
+        "note": "死亡騎士的烈炎之劍「烈炎術」"
+      },
+      "weapons": [
+        "58"
+      ]
+    },
+    {
+      "id": "20",
+      "boundCount": 1,
+      "parameters": {
+        "id": "20",
+        "classname": "W_SK008",
+        "level": "0",
+        "type1": "45",
+        "type2": "42",
+        "type3": "0",
+        "attr": "1",
+        "ac_mr": "2",
+        "gfxid1": "0",
+        "gfxid2": "11752",
+        "gfxid3": "0",
+        "gfxid4": "0",
+        "gfxid4_count": "0",
+        "power": "0",
+        "srcdmg": "0",
+        "addsrcdmg": "0",
+        "random1": "10",
+        "random2": "10",
+        "boss_holdout": "0",
+        "CounterMagic_Mode": "1",
+        "note": "倫德雙刀「地裂」"
+      },
+      "weapons": [
+        "76"
+      ]
+    },
+    {
+      "id": "21",
+      "boundCount": 1,
+      "parameters": {
+        "id": "21",
+        "classname": "W_SK008",
+        "level": "0",
+        "type1": "33",
+        "type2": "35",
+        "type3": "0",
+        "attr": "4",
+        "ac_mr": "2",
+        "gfxid1": "0",
+        "gfxid2": "0",
+        "gfxid3": "0",
+        "gfxid4": "1810",
+        "gfxid4_count": "0",
+        "power": "0",
+        "srcdmg": "0",
+        "addsrcdmg": "0",
+        "random1": "10",
+        "random2": "10",
+        "boss_holdout": "0",
+        "CounterMagic_Mode": "1",
+        "note": "冰之女王魔杖「冰錐」"
+      },
+      "weapons": [
+        "121"
+      ]
+    },
+    {
+      "id": "22",
+      "boundCount": 1,
+      "parameters": {
+        "id": "22",
+        "classname": "W_SK008",
+        "level": "0",
+        "type1": "33",
+        "type2": "63",
+        "type3": "0",
+        "attr": "2",
+        "ac_mr": "2",
+        "gfxid1": "0",
+        "gfxid2": "12248",
+        "gfxid3": "0",
+        "gfxid4": "0",
+        "gfxid4_count": "0",
+        "power": "0",
+        "srcdmg": "0",
+        "addsrcdmg": "0",
+        "random1": "10",
+        "random2": "10",
+        "boss_holdout": "0",
+        "CounterMagic_Mode": "1",
+        "note": "炎魔的雙手劍「流星雨」"
+      },
+      "weapons": [
+        "203"
+      ]
+    },
+    {
+      "id": "23",
+      "boundCount": 1,
+      "parameters": {
+        "id": "23",
+        "classname": "W_SK008",
+        "level": "0",
+        "type1": "38",
+        "type2": "68",
+        "type3": "0",
+        "attr": "0",
+        "ac_mr": "2",
+        "gfxid1": "0",
+        "gfxid2": "0",
+        "gfxid3": "0",
+        "gfxid4": "6288",
+        "gfxid4_count": "0",
+        "power": "0",
+        "srcdmg": "0",
+        "addsrcdmg": "0",
+        "random1": "10",
+        "random2": "10",
+        "boss_holdout": "0",
+        "CounterMagic_Mode": "1",
+        "note": "熾炎天使弓「光暴術」"
+      },
+      "weapons": [
+        "205"
+      ]
+    },
+    {
+      "id": "24",
+      "boundCount": 2,
+      "parameters": {
+        "id": "24",
+        "classname": "W_SK002",
+        "level": "0",
+        "type1": "3",
+        "type2": "20",
+        "type3": "0",
+        "attr": "0",
+        "ac_mr": "1",
+        "gfxid1": "0",
+        "gfxid2": "0",
+        "gfxid3": "0",
+        "gfxid4": "0",
+        "gfxid4_count": "0",
+        "power": "0",
+        "srcdmg": "0",
+        "addsrcdmg": "0",
+        "random1": "10",
+        "random2": "10",
+        "boss_holdout": "0",
+        "CounterMagic_Mode": "0",
+        "note": "破壞雙刀、破壞鋼爪「猛爆劇毒」(武器附加毒性攻擊(1%) 每3秒 傷害20)"
+      },
+      "weapons": [
+        "410161",
+        "410162"
+      ]
+    },
+    {
+      "id": "36",
+      "boundCount": 7,
+      "parameters": {
+        "id": "36",
+        "classname": "W_SK008",
+        "level": "0",
+        "type1": "25",
+        "type2": "16",
+        "type3": "0",
+        "attr": "1",
+        "ac_mr": "2",
+        "gfxid1": "0",
+        "gfxid2": "123",
+        "gfxid3": "0",
+        "gfxid4": "0",
+        "gfxid4_count": "0",
+        "power": "0",
+        "srcdmg": "0",
+        "addsrcdmg": "0",
+        "random1": "10",
+        "random2": "10",
+        "boss_holdout": "0",
+        "CounterMagic_Mode": "1",
+        "note": "馬爾斯系列 地裂"
+      },
+      "weapons": [
+        "410181",
+        "410182",
+        "410183",
+        "410184",
+        "410185",
+        "410186",
+        "410187"
+      ]
+    },
+    {
+      "id": "26",
+      "boundCount": 7,
+      "parameters": {
+        "id": "26",
+        "classname": "W_SK008",
+        "level": "0",
+        "type1": "45",
+        "type2": "20",
+        "type3": "0",
+        "attr": "1",
+        "ac_mr": "2",
+        "gfxid1": "0",
+        "gfxid2": "7985",
+        "gfxid3": "0",
+        "gfxid4": "0",
+        "gfxid4_count": "0",
+        "power": "0",
+        "srcdmg": "0",
+        "addsrcdmg": "0",
+        "random1": "10",
+        "random2": "10",
+        "boss_holdout": "0",
+        "CounterMagic_Mode": "1",
+        "note": "戰神馬爾斯系列 地裂"
+      },
+      "weapons": [
+        "410166",
+        "410167",
+        "410168",
+        "410169",
+        "410170",
+        "410171",
+        "410172"
+      ]
+    },
+    {
+      "id": "28",
+      "boundCount": 1,
+      "parameters": {
+        "id": "28",
+        "classname": "W_SK008",
+        "level": "0",
+        "type1": "100",
+        "type2": "200",
+        "type3": "0",
+        "attr": "8",
+        "ac_mr": "0",
+        "gfxid1": "0",
+        "gfxid2": "10405",
+        "gfxid3": "0",
+        "gfxid4": "0",
+        "gfxid4_count": "0",
+        "power": "0",
+        "srcdmg": "0",
+        "addsrcdmg": "0",
+        "random1": "100",
+        "random2": "10",
+        "boss_holdout": "0",
+        "CounterMagic_Mode": "1",
+        "note": "聖晶魔杖「致命落雷」"
+      },
+      "weapons": [
+        "134"
+      ]
+    },
+    {
+      "id": "32",
+      "boundCount": 2,
+      "parameters": {
+        "id": "32",
+        "classname": "W_SK0010",
+        "level": "0",
+        "type1": "0",
+        "type2": "3",
+        "type3": "0",
+        "attr": "4",
+        "ac_mr": "2",
+        "gfxid1": "0",
+        "gfxid2": "7179",
+        "gfxid3": "0",
+        "gfxid4": "0",
+        "gfxid4_count": "0",
+        "power": "0",
+        "srcdmg": "40",
+        "addsrcdmg": "20",
+        "random1": "10",
+        "random2": "10",
+        "boss_holdout": "0",
+        "CounterMagic_Mode": "1",
+        "note": "提卡爾庫庫爾坎系列 詛咒稻草人 傷害3次"
+      },
+      "weapons": [
+        "510",
+        "511"
+      ]
+    },
+    {
+      "id": "31",
+      "boundCount": 3,
+      "parameters": {
+        "id": "31",
+        "classname": "W_SK009",
+        "level": "0",
+        "type1": "5",
+        "type2": "10",
+        "type3": "0",
+        "attr": "0",
+        "ac_mr": "0",
+        "gfxid1": "0",
+        "gfxid2": "2171",
+        "gfxid3": "0",
+        "gfxid4": "0",
+        "gfxid4_count": "0",
+        "power": "0",
+        "srcdmg": "0",
+        "addsrcdmg": "0",
+        "random1": "10",
+        "random2": "10",
+        "boss_holdout": "0",
+        "CounterMagic_Mode": "0",
+        "note": "魔力奪取 吸魔量 = type1 + 隨機type2 +智力/2"
+      },
+      "weapons": [
+        "410177",
+        "410178",
+        "410179"
+      ]
+    },
+    {
+      "id": "30",
+      "boundCount": 3,
+      "parameters": {
+        "id": "30",
+        "classname": "W_SK008",
+        "level": "0",
+        "type1": "30",
+        "type2": "15",
+        "type3": "0",
+        "attr": "8",
+        "ac_mr": "2",
+        "gfxid1": "0",
+        "gfxid2": "0",
+        "gfxid3": "0",
+        "gfxid4": "11738",
+        "gfxid4_count": "0",
+        "power": "0",
+        "srcdmg": "0",
+        "addsrcdmg": "0",
+        "random1": "10",
+        "random2": "10",
+        "boss_holdout": "0",
+        "CounterMagic_Mode": "1",
+        "note": "玉兔雙爪 后羿長劍 月光鎖鏈劍 冰錐"
+      },
+      "weapons": [
+        "410180",
+        "410176",
+        "410175"
+      ]
+    },
+    {
+      "id": "27",
+      "boundCount": 5,
+      "parameters": {
+        "id": "27",
+        "classname": "W_SK008",
+        "level": "0",
+        "type1": "43",
+        "type2": "18",
+        "type3": "0",
+        "attr": "1",
+        "ac_mr": "2",
+        "gfxid1": "0",
+        "gfxid2": "123",
+        "gfxid3": "0",
+        "gfxid4": "0",
+        "gfxid4_count": "0",
+        "power": "0",
+        "srcdmg": "0",
+        "addsrcdmg": "0",
+        "random1": "10",
+        "random2": "10",
+        "boss_holdout": "0",
+        "CounterMagic_Mode": "1",
+        "note": "超特製耀武「地裂術」"
+      },
+      "weapons": [
+        "311",
+        "312",
+        "313",
+        "314",
+        "315"
+      ]
+    },
+    {
+      "id": "34",
+      "boundCount": 2,
+      "parameters": {
+        "id": "34",
+        "classname": "W_SK008",
+        "level": "0",
+        "type1": "40",
+        "type2": "65",
+        "type3": "0",
+        "attr": "2",
+        "ac_mr": "2",
+        "gfxid1": "0",
+        "gfxid2": "11760",
+        "gfxid3": "0",
+        "gfxid4": "0",
+        "gfxid4_count": "0",
+        "power": "0",
+        "srcdmg": "0",
+        "addsrcdmg": "0",
+        "random1": "90",
+        "random2": "10",
+        "boss_holdout": "0",
+        "CounterMagic_Mode": "1",
+        "note": "傑羅斯的魔杖「爆擊烈炎」"
+      },
+      "weapons": [
+        "801",
+        "100801"
+      ]
+    },
+    {
+      "id": "35",
+      "boundCount": 8,
+      "parameters": {
+        "id": "35",
+        "classname": "W_SK008",
+        "level": "0",
+        "type1": "55",
+        "type2": "52",
+        "type3": "0",
+        "attr": "4",
+        "ac_mr": "2",
+        "gfxid1": "0",
+        "gfxid2": "4611",
+        "gfxid3": "0",
+        "gfxid4": "0",
+        "gfxid4_count": "0",
+        "power": "0",
+        "srcdmg": "0",
+        "addsrcdmg": "0",
+        "random1": "10",
+        "random2": "10",
+        "boss_holdout": "0",
+        "CounterMagic_Mode": "1",
+        "note": "圓月武器「鏡花水月」"
+      },
+      "weapons": [
+        "410191",
+        "410192",
+        "410193",
+        "410194",
+        "410195",
+        "410196",
+        "410197",
+        "410198"
+      ]
+    },
+    {
+      "id": "39",
+      "boundCount": 1,
+      "parameters": {
+        "id": "39",
+        "classname": "W_SK008",
+        "level": "0",
+        "type1": "32",
+        "type2": "22",
+        "type3": "0",
+        "attr": "8",
+        "ac_mr": "2",
+        "gfxid1": "0",
+        "gfxid2": "5893",
+        "gfxid3": "0",
+        "gfxid4": "0",
+        "gfxid4_count": "0",
+        "power": "0",
+        "srcdmg": "0",
+        "addsrcdmg": "0",
+        "random1": "10",
+        "random2": "10",
+        "boss_holdout": "0",
+        "CounterMagic_Mode": "1",
+        "note": "疾風斧頭 龍捲風"
+      },
+      "weapons": [
+        "907"
+      ]
+    },
+    {
+      "id": "40",
+      "boundCount": 8,
+      "parameters": {
+        "id": "40",
+        "classname": "W_SK008",
+        "level": "0",
+        "type1": "50",
+        "type2": "50",
+        "type3": "0",
+        "attr": "2",
+        "ac_mr": "2",
+        "gfxid1": "0",
+        "gfxid2": "4162",
+        "gfxid3": "0",
+        "gfxid4": "0",
+        "gfxid4_count": "0",
+        "power": "0",
+        "srcdmg": "0",
+        "addsrcdmg": "0",
+        "random1": "10",
+        "random2": "10",
+        "boss_holdout": "0",
+        "CounterMagic_Mode": "1",
+        "note": "幻想系列武器"
+      },
+      "weapons": [
+        "410300",
+        "410301",
+        "410302",
+        "410303",
+        "410304",
+        "410305",
+        "410306",
+        "410307"
+      ]
+    },
+    {
+      "id": "41",
+      "boundCount": 0,
+      "parameters": {
+        "id": "41",
+        "classname": "W_SK008",
+        "level": "0",
+        "type1": "45",
+        "type2": "15",
+        "type3": "0",
+        "attr": "0",
+        "ac_mr": "2",
+        "gfxid1": "0",
+        "gfxid2": "7457",
+        "gfxid3": "0",
+        "gfxid4": "0",
+        "gfxid4_count": "0",
+        "power": "0",
+        "srcdmg": "0",
+        "addsrcdmg": "0",
+        "random1": "10",
+        "random2": "10",
+        "boss_holdout": "0",
+        "CounterMagic_Mode": "1",
+        "note": "海柏利昂的絕望"
+      },
+      "weapons": []
+    },
+    {
+      "id": "42",
+      "boundCount": 9,
+      "parameters": {
+        "id": "42",
+        "classname": "W_SK008",
+        "level": "0",
+        "type1": "17",
+        "type2": "20",
+        "type3": "0",
+        "attr": "0",
+        "ac_mr": "2",
+        "gfxid1": "0",
+        "gfxid2": "1798",
+        "gfxid3": "0",
+        "gfxid4": "0",
+        "gfxid4_count": "0",
+        "power": "0",
+        "srcdmg": "0",
+        "addsrcdmg": "0",
+        "random1": "70",
+        "random2": "0",
+        "boss_holdout": "0",
+        "CounterMagic_Mode": "1",
+        "note": "潘朵拉系列武器 潘朵拉的良知"
+      },
+      "weapons": [
+        "904",
+        "950",
+        "951",
+        "952",
+        "953",
+        "954",
+        "955",
+        "956",
+        "957"
+      ]
+    },
+    {
+      "id": "43",
+      "boundCount": 8,
+      "parameters": {
+        "id": "43",
+        "classname": "W_SK008",
+        "level": "0",
+        "type1": "65",
+        "type2": "60",
+        "type3": "0",
+        "attr": "4",
+        "ac_mr": "2",
+        "gfxid1": "0",
+        "gfxid2": "9886",
+        "gfxid3": "0",
+        "gfxid4": "0",
+        "gfxid4_count": "0",
+        "power": "0",
+        "srcdmg": "0",
+        "addsrcdmg": "0",
+        "random1": "10",
+        "random2": "10",
+        "boss_holdout": "0",
+        "CounterMagic_Mode": "1",
+        "note": "亞瓦隆系列武器 魔法效果"
+      },
+      "weapons": [
+        "410320",
+        "410321",
+        "410322",
+        "410323",
+        "410324",
+        "410325",
+        "410326",
+        "410335"
+      ]
+    },
+    {
+      "id": "45",
+      "boundCount": 0,
+      "parameters": {
+        "id": "45",
+        "classname": "W_SK005",
+        "level": "0",
+        "type1": "10",
+        "type2": "3",
+        "type3": "0",
+        "attr": "4",
+        "ac_mr": "2",
+        "gfxid1": "0",
+        "gfxid2": "8152",
+        "gfxid3": "0",
+        "gfxid4": "0",
+        "gfxid4_count": "0",
+        "power": "0",
+        "srcdmg": "0",
+        "addsrcdmg": "0",
+        "random1": "10",
+        "random2": "10",
+        "boss_holdout": "0",
+        "CounterMagic_Mode": "0",
+        "note": "[祝福] 藍惡靈奪魔  單次吸收量 = type1 + 武器加成*2 吸收3次 = type2"
+      },
+      "weapons": []
+    },
+    {
+      "id": "46",
+      "boundCount": 0,
+      "parameters": {
+        "id": "46",
+        "classname": "W_SK006",
+        "level": "0",
+        "type1": "10",
+        "type2": "3",
+        "type3": "0",
+        "attr": "4",
+        "ac_mr": "2",
+        "gfxid1": "0",
+        "gfxid2": "8150",
+        "gfxid3": "0",
+        "gfxid4": "0",
+        "gfxid4_count": "0",
+        "power": "0",
+        "srcdmg": "0",
+        "addsrcdmg": "0",
+        "random1": "10",
+        "random2": "10",
+        "boss_holdout": "0",
+        "CounterMagic_Mode": "0",
+        "note": "[祝福] 紅惡靈逆襲  單次吸收量 = type1 + 武器加成*2 吸收3次 = type2"
+      },
+      "weapons": []
+    },
+    {
+      "id": "47",
+      "boundCount": 0,
+      "parameters": {
+        "id": "47",
+        "classname": "W_SK006",
+        "level": "0",
+        "type1": "10",
+        "type2": "3",
+        "type3": "0",
+        "attr": "4",
+        "ac_mr": "2",
+        "gfxid1": "0",
+        "gfxid2": "8981",
+        "gfxid3": "0",
+        "gfxid4": "0",
+        "gfxid4_count": "0",
+        "power": "0",
+        "srcdmg": "0",
+        "addsrcdmg": "0",
+        "random1": "10",
+        "random2": "10",
+        "boss_holdout": "0",
+        "CounterMagic_Mode": "0",
+        "note": "[祝福] 白惡靈逆襲  單次吸收量 = type1 + 武器加成*2 吸收3次 = type2"
+      },
+      "weapons": []
+    },
+    {
+      "id": "50",
+      "boundCount": 5,
+      "parameters": {
+        "id": "50",
+        "classname": "W_SK0016",
+        "level": "0",
+        "type1": "10",
+        "type2": "0",
+        "type3": "10",
+        "attr": "0",
+        "ac_mr": "1",
+        "gfxid1": "0",
+        "gfxid2": "0",
+        "gfxid3": "0",
+        "gfxid4": "5889",
+        "gfxid4_count": "4",
+        "power": "0",
+        "srcdmg": "0",
+        "addsrcdmg": "0",
+        "random1": "10",
+        "random2": "10",
+        "boss_holdout": "0",
+        "CounterMagic_Mode": "0",
+        "note": "惡魔王系列武器 [隨機施展：疾病術]　 type1:力量+敏捷隨機直倍率／type2:無／type3:傷害倍率"
+      },
+      "weapons": [
+        "370",
+        "371",
+        "372",
+        "373",
+        "374"
+      ]
+    },
+    {
+      "id": "51",
+      "boundCount": 3,
+      "parameters": {
+        "id": "51",
+        "classname": "W_SK0017",
+        "level": "0",
+        "type1": "0",
+        "type2": "0",
+        "type3": "2",
+        "attr": "0",
+        "ac_mr": "1",
+        "gfxid1": "0",
+        "gfxid2": "0",
+        "gfxid3": "0",
+        "gfxid4": "0",
+        "gfxid4_count": "0",
+        "power": "0",
+        "srcdmg": "0",
+        "addsrcdmg": "0",
+        "random1": "10",
+        "random2": "10",
+        "boss_holdout": "0",
+        "CounterMagic_Mode": "0",
+        "note": "束縛         TYPE1=隨機傷害值 / TYPE2=固定傷害值 / TYPE3=時間 / random1=固定機率 / random2=強化機率加成(強化值*random2)"
+      },
+      "weapons": [
+        "204",
+        "100204",
+        "86"
+      ]
+    },
+    {
+      "id": "52",
+      "boundCount": 1,
+      "parameters": {
+        "id": "52",
+        "classname": "W_SK0018",
+        "level": "0",
+        "type1": "0",
+        "type2": "0",
+        "type3": "16",
+        "attr": "0",
+        "ac_mr": "1",
+        "gfxid1": "0",
+        "gfxid2": "0",
+        "gfxid3": "0",
+        "gfxid4": "0",
+        "gfxid4_count": "0",
+        "power": "0",
+        "srcdmg": "0",
+        "addsrcdmg": "0",
+        "random1": "10",
+        "random2": "10",
+        "boss_holdout": "0",
+        "CounterMagic_Mode": "0",
+        "note": "封印         TYPE1=隨機傷害值 / TYPE2=固定傷害值 / TYPE3=時間 / random1=固定機率 / random2=強化機率加成(強化值*random2)"
+      },
+      "weapons": [
+        "47"
+      ]
+    },
+    {
+      "id": "53",
+      "boundCount": 0,
+      "parameters": {
+        "id": "53",
+        "classname": "W_SK0019",
+        "level": "0",
+        "type1": "0",
+        "type2": "0",
+        "type3": "20",
+        "attr": "0",
+        "ac_mr": "0",
+        "gfxid1": "0",
+        "gfxid2": "3685",
+        "gfxid3": "0",
+        "gfxid4": "0",
+        "gfxid4_count": "0",
+        "power": "0",
+        "srcdmg": "0",
+        "addsrcdmg": "0",
+        "random1": "10",
+        "random2": "10",
+        "boss_holdout": "0",
+        "CounterMagic_Mode": "0",
+        "note": "心靈破壞 TYPE1=隨機傷害值 / TYPE2=固定傷害值 / TYPE3=時間 / random1=固定機率 / random2=強化機率加成(強化值*random2)"
+      },
+      "weapons": []
+    },
+    {
+      "id": "54",
+      "boundCount": 0,
+      "parameters": {
+        "id": "54",
+        "classname": "W_SK0020",
+        "level": "0",
+        "type1": "2",
+        "type2": "2",
+        "type3": "50",
+        "attr": "0",
+        "ac_mr": "2",
+        "gfxid1": "0",
+        "gfxid2": "0",
+        "gfxid3": "0",
+        "gfxid4": "0",
+        "gfxid4_count": "0",
+        "power": "0",
+        "srcdmg": "0",
+        "addsrcdmg": "0",
+        "random1": "10",
+        "random2": "10",
+        "boss_holdout": "0",
+        "CounterMagic_Mode": "0",
+        "note": "[遠攻類型]　　計算方式：【體質隨機數】*2+ 【敏捷+智慧】*2 +【浮動0-50】"
+      },
+      "weapons": []
+    },
+    {
+      "id": "55",
+      "boundCount": 0,
+      "parameters": {
+        "id": "55",
+        "classname": "W_SK0021",
+        "level": "0",
+        "type1": "2",
+        "type2": "2",
+        "type3": "50",
+        "attr": "0",
+        "ac_mr": "2",
+        "gfxid1": "0",
+        "gfxid2": "0",
+        "gfxid3": "0",
+        "gfxid4": "0",
+        "gfxid4_count": "0",
+        "power": "0",
+        "srcdmg": "0",
+        "addsrcdmg": "0",
+        "random1": "10",
+        "random2": "10",
+        "boss_holdout": "0",
+        "CounterMagic_Mode": "0",
+        "note": "[近攻類型]　　計算方式：【體質隨機數】*2+ 【力量+智慧】*2 +【浮動0-50】"
+      },
+      "weapons": []
+    },
+    {
+      "id": "56",
+      "boundCount": 1,
+      "parameters": {
+        "id": "56",
+        "classname": "W_SK0022",
+        "level": "0",
+        "type1": "0",
+        "type2": "0",
+        "type3": "0",
+        "attr": "0",
+        "ac_mr": "0",
+        "gfxid1": "0",
+        "gfxid2": "0",
+        "gfxid3": "0",
+        "gfxid4": "0",
+        "gfxid4_count": "0",
+        "power": "0",
+        "srcdmg": "0",
+        "addsrcdmg": "0",
+        "random1": "30",
+        "random2": "0",
+        "boss_holdout": "0",
+        "CounterMagic_Mode": "0",
+        "note": "起死回生  random1=固定機率 / random2=強化機率加成(強化值*random2)"
+      },
+      "weapons": [
+        "410131"
+      ]
+    },
+    {
+      "id": "57",
+      "boundCount": 0,
+      "parameters": {
+        "id": "57",
+        "classname": "W_SK0017",
+        "level": "0",
+        "type1": "0",
+        "type2": "0",
+        "type3": "2",
+        "attr": "0",
+        "ac_mr": "0",
+        "gfxid1": "6512",
+        "gfxid2": "0",
+        "gfxid3": "0",
+        "gfxid4": "0",
+        "gfxid4_count": "0",
+        "power": "0",
+        "srcdmg": "0",
+        "addsrcdmg": "0",
+        "random1": "10",
+        "random2": "10",
+        "boss_holdout": "0",
+        "CounterMagic_Mode": "0",
+        "note": "奪命之雷 TYPE1=隨機傷害值 / TYPE2=固定傷害值 / TYPE3=時間 / random1=固定機率 / random2=強化機率加成(強化值*random2)"
+      },
+      "weapons": []
+    },
+    {
+      "id": "58",
+      "boundCount": 2,
+      "parameters": {
+        "id": "58",
+        "classname": "W_SK0019",
+        "level": "0",
+        "type1": "0",
+        "type2": "0",
+        "type3": "20",
+        "attr": "0",
+        "ac_mr": "0",
+        "gfxid1": "0",
+        "gfxid2": "6553",
+        "gfxid3": "0",
+        "gfxid4": "0",
+        "gfxid4_count": "0",
+        "power": "0",
+        "srcdmg": "0",
+        "addsrcdmg": "0",
+        "random1": "10",
+        "random2": "10",
+        "boss_holdout": "0",
+        "CounterMagic_Mode": "0",
+        "note": "寒冰奇古獸 心靈破壞 附加傷害：TYPE1隨機傷害值=1-150 / TYPE2固定傷害值=30 / TYPE3負面時間=20秒"
+      },
+      "weapons": [
+        "410129",
+        "100369"
+      ]
+    },
+    {
+      "id": "59",
+      "boundCount": 2,
+      "parameters": {
+        "id": "59",
+        "classname": "W_SK008",
+        "level": "0",
+        "type1": "78",
+        "type2": "47",
+        "type3": "0",
+        "attr": "4",
+        "ac_mr": "2",
+        "gfxid1": "0",
+        "gfxid2": "3685",
+        "gfxid3": "0",
+        "gfxid4": "0",
+        "gfxid4_count": "0",
+        "power": "0",
+        "srcdmg": "0",
+        "addsrcdmg": "0",
+        "random1": "10",
+        "random2": "10",
+        "boss_holdout": "0",
+        "CounterMagic_Mode": "1",
+        "note": "寒冰鎖鏈劍「冰裂術」"
+      },
+      "weapons": [
+        "410130",
+        "100366"
+      ]
+    },
+    {
+      "id": "60",
+      "boundCount": 1,
+      "parameters": {
+        "id": "60",
+        "classname": "W_SK008",
+        "level": "0",
+        "type1": "53",
+        "type2": "22",
+        "type3": "0",
+        "attr": "4",
+        "ac_mr": "2",
+        "gfxid1": "0",
+        "gfxid2": "10966",
+        "gfxid3": "0",
+        "gfxid4": "0",
+        "gfxid4_count": "0",
+        "power": "0",
+        "srcdmg": "0",
+        "addsrcdmg": "0",
+        "random1": "10",
+        "random2": "10",
+        "boss_holdout": "0",
+        "CounterMagic_Mode": "1",
+        "note": "共鳴鎖鏈劍「共鳴衝擊」"
+      },
+      "weapons": [
+        "410174"
+      ]
+    },
+    {
+      "id": "61",
+      "boundCount": 1,
+      "parameters": {
+        "id": "61",
+        "classname": "W_SK008",
+        "level": "0",
+        "type1": "43",
+        "type2": "12",
+        "type3": "0",
+        "attr": "4",
+        "ac_mr": "2",
+        "gfxid1": "0",
+        "gfxid2": "10966",
+        "gfxid3": "0",
+        "gfxid4": "0",
+        "gfxid4_count": "0",
+        "power": "0",
+        "srcdmg": "0",
+        "addsrcdmg": "0",
+        "random1": "10",
+        "random2": "10",
+        "boss_holdout": "0",
+        "CounterMagic_Mode": "1",
+        "note": "共鳴奇古獸「共鳴衝擊」"
+      },
+      "weapons": [
+        "410173"
+      ]
+    },
+    {
+      "id": "64",
+      "boundCount": 0,
+      "parameters": {
+        "id": "64",
+        "classname": "W_SK002",
+        "level": "0",
+        "type1": "3",
+        "type2": "15",
+        "type3": "0",
+        "attr": "0",
+        "ac_mr": "0",
+        "gfxid1": "0",
+        "gfxid2": "0",
+        "gfxid3": "0",
+        "gfxid4": "0",
+        "gfxid4_count": "0",
+        "power": "0",
+        "srcdmg": "0",
+        "addsrcdmg": "0",
+        "random1": "10",
+        "random2": "10",
+        "boss_holdout": "0",
+        "CounterMagic_Mode": "0",
+        "note": "武器附加毒性攻擊(3%) 每3秒 傷害15"
+      },
+      "weapons": []
+    },
+    {
+      "id": "67",
+      "boundCount": 1,
+      "parameters": {
+        "id": "67",
+        "classname": "W_SK004",
+        "level": "0",
+        "type1": "3",
+        "type2": "10",
+        "type3": "1",
+        "attr": "0",
+        "ac_mr": "0",
+        "gfxid1": "0",
+        "gfxid2": "0",
+        "gfxid3": "0",
+        "gfxid4": "0",
+        "gfxid4_count": "0",
+        "power": "0",
+        "srcdmg": "0",
+        "addsrcdmg": "0",
+        "random1": "200",
+        "random2": "0",
+        "boss_holdout": "0",
+        "CounterMagic_Mode": "0",
+        "note": "魔力短劍 MP奪取(20%) 吸魔量 = 最小type1 + 隨機值type2 + 武器強化值隨隨機值(type3 = 1}"
+      },
+      "weapons": [
+        "259"
+      ]
+    },
+    {
+      "id": "68",
+      "boundCount": 1,
+      "parameters": {
+        "id": "68",
+        "classname": "W_SK003",
+        "level": "0",
+        "type1": "3",
+        "type2": "10",
+        "type3": "1",
+        "attr": "0",
+        "ac_mr": "0",
+        "gfxid1": "0",
+        "gfxid2": "0",
+        "gfxid3": "0",
+        "gfxid4": "0",
+        "gfxid4_count": "0",
+        "power": "0",
+        "srcdmg": "0",
+        "addsrcdmg": "0",
+        "random1": "150",
+        "random2": "0",
+        "boss_holdout": "0",
+        "CounterMagic_Mode": "0",
+        "note": "毀滅巨劍 HP奪取(20%) 吸血量 = 最小type1 + 隨機值type2 + 武器強化值隨機值(type3 = 1}"
+      },
+      "weapons": [
+        "262"
+      ]
+    },
+    {
+      "id": "171",
+      "boundCount": 0,
+      "parameters": {
+        "id": "171",
+        "classname": "W_SK008",
+        "level": "0",
+        "type1": "40",
+        "type2": "60",
+        "type3": "0",
+        "attr": "0",
+        "ac_mr": "2",
+        "gfxid1": "0",
+        "gfxid2": "15926",
+        "gfxid3": "0",
+        "gfxid4": "0",
+        "gfxid4_count": "0",
+        "power": "0",
+        "srcdmg": "0",
+        "addsrcdmg": "0",
+        "random1": "10",
+        "random2": "10",
+        "boss_holdout": "0",
+        "CounterMagic_Mode": "1",
+        "note": "屠龍刀"
+      },
+      "weapons": []
+    },
+    {
+      "id": "173",
+      "boundCount": 0,
+      "parameters": {
+        "id": "173",
+        "classname": "W_SK0012",
+        "level": "0",
+        "type1": "50",
+        "type2": "22",
+        "type3": "2",
+        "attr": "4",
+        "ac_mr": "2",
+        "gfxid1": "0",
+        "gfxid2": "6553",
+        "gfxid3": "0",
+        "gfxid4": "0",
+        "gfxid4_count": "0",
+        "power": "0",
+        "srcdmg": "0",
+        "addsrcdmg": "0",
+        "random1": "10",
+        "random2": "10",
+        "boss_holdout": "0",
+        "CounterMagic_Mode": "1",
+        "note": "寒冰奇古獸 心靈破壞 (魔攻 * 3.8D) + 智力加成 （未使用）"
+      },
+      "weapons": []
+    },
+    {
+      "id": "174",
+      "boundCount": 0,
+      "parameters": {
+        "id": "174",
+        "classname": "W_SK0011",
+        "level": "0",
+        "type1": "0",
+        "type2": "1",
+        "type3": "0",
+        "attr": "4",
+        "ac_mr": "2",
+        "gfxid1": "0",
+        "gfxid2": "3685",
+        "gfxid3": "0",
+        "gfxid4": "0",
+        "gfxid4_count": "0",
+        "power": "0",
+        "srcdmg": "0",
+        "addsrcdmg": "0",
+        "random1": "10",
+        "random2": "10",
+        "boss_holdout": "0",
+        "CounterMagic_Mode": "1",
+        "note": "寒冰鎖鏈劍 吸血冰裂術 （未使用）"
+      },
+      "weapons": []
+    },
+    {
+      "id": "181",
+      "boundCount": 2,
+      "parameters": {
+        "id": "181",
+        "classname": "W_SK007",
+        "level": "0",
+        "type1": "0",
+        "type2": "3",
+        "type3": "0",
+        "attr": "0",
+        "ac_mr": "2",
+        "gfxid1": "0",
+        "gfxid2": "7025",
+        "gfxid3": "0",
+        "gfxid4": "0",
+        "gfxid4_count": "0",
+        "power": "0",
+        "srcdmg": "100",
+        "addsrcdmg": "60",
+        "random1": "1000",
+        "random2": "10",
+        "boss_holdout": "0",
+        "CounterMagic_Mode": "1",
+        "note": "火神赫發斯特斯神弓 惡魔之吻 傷害3次"
+      },
+      "weapons": [
+        "115206",
+        "410213"
+      ]
+    },
+    {
+      "id": "15",
+      "boundCount": 4,
+      "parameters": {
+        "id": "15",
+        "classname": "W_SK008",
+        "level": "0",
+        "type1": "30",
+        "type2": "15",
+        "type3": "0",
+        "attr": "2",
+        "ac_mr": "2",
+        "gfxid1": "0",
+        "gfxid2": "17559",
+        "gfxid3": "0",
+        "gfxid4": "0",
+        "gfxid4_count": "0",
+        "power": "0",
+        "srcdmg": "0",
+        "addsrcdmg": "0",
+        "random1": "10",
+        "random2": "10",
+        "boss_holdout": "0",
+        "CounterMagic_Mode": "1",
+        "note": "隱藏武器系列附加魔法傷害(力量)"
+      },
+      "weapons": [
+        "338",
+        "339",
+        "342",
+        "343"
+      ]
+    },
+    {
+      "id": "16",
+      "boundCount": 1,
+      "parameters": {
+        "id": "16",
+        "classname": "W_SK008",
+        "level": "0",
+        "type1": "30",
+        "type2": "15",
+        "type3": "0",
+        "attr": "2",
+        "ac_mr": "2",
+        "gfxid1": "0",
+        "gfxid2": "17559",
+        "gfxid3": "0",
+        "gfxid4": "0",
+        "gfxid4_count": "0",
+        "power": "0",
+        "srcdmg": "0",
+        "addsrcdmg": "0",
+        "random1": "10",
+        "random2": "10",
+        "boss_holdout": "0",
+        "CounterMagic_Mode": "1",
+        "note": "隱藏武器系列附加魔法傷害(敏捷)"
+      },
+      "weapons": [
+        "340"
+      ]
+    },
+    {
+      "id": "37",
+      "boundCount": 2,
+      "parameters": {
+        "id": "37",
+        "classname": "W_SK008",
+        "level": "0",
+        "type1": "30",
+        "type2": "15",
+        "type3": "0",
+        "attr": "2",
+        "ac_mr": "2",
+        "gfxid1": "0",
+        "gfxid2": "17559",
+        "gfxid3": "0",
+        "gfxid4": "0",
+        "gfxid4_count": "0",
+        "power": "0",
+        "srcdmg": "0",
+        "addsrcdmg": "0",
+        "random1": "10",
+        "random2": "10",
+        "boss_holdout": "0",
+        "CounterMagic_Mode": "1",
+        "note": "隱藏武器系列附加魔法傷害(智力)"
+      },
+      "weapons": [
+        "341",
+        "344"
+      ]
+    },
+    {
+      "id": "25",
+      "boundCount": 2,
+      "parameters": {
+        "id": "25",
+        "classname": "W_SK007",
+        "level": "0",
+        "type1": "0",
+        "type2": "3",
+        "type3": "0",
+        "attr": "0",
+        "ac_mr": "2",
+        "gfxid1": "0",
+        "gfxid2": "7025",
+        "gfxid3": "0",
+        "gfxid4": "0",
+        "gfxid4_count": "0",
+        "power": "0",
+        "srcdmg": "40",
+        "addsrcdmg": "20",
+        "random1": "40",
+        "random2": "10",
+        "boss_holdout": "0",
+        "CounterMagic_Mode": "1",
+        "note": "底比斯武器魔法 惡魔之吻 傷害3次（力量）"
+      },
+      "weapons": [
+        "265",
+        "266"
+      ]
+    },
+    {
+      "id": "29",
+      "boundCount": 1,
+      "parameters": {
+        "id": "29",
+        "classname": "W_SK007",
+        "level": "0",
+        "type1": "0",
+        "type2": "3",
+        "type3": "0",
+        "attr": "0",
+        "ac_mr": "2",
+        "gfxid1": "0",
+        "gfxid2": "7025",
+        "gfxid3": "0",
+        "gfxid4": "0",
+        "gfxid4_count": "0",
+        "power": "0",
+        "srcdmg": "40",
+        "addsrcdmg": "20",
+        "random1": "40",
+        "random2": "10",
+        "boss_holdout": "0",
+        "CounterMagic_Mode": "1",
+        "note": "底比斯武器魔法 惡魔之吻 傷害3次（敏捷）"
+      },
+      "weapons": [
+        "267"
+      ]
+    },
+    {
+      "id": "176",
+      "boundCount": 0,
+      "parameters": {
+        "id": "176",
+        "classname": "W_SK0023",
+        "level": "100",
+        "type1": "0",
+        "type2": "0",
+        "type3": "0",
+        "attr": "0",
+        "ac_mr": "0",
+        "gfxid1": "0",
+        "gfxid2": "6553",
+        "gfxid3": "0",
+        "gfxid4": "0",
+        "gfxid4_count": "0",
+        "power": "0",
+        "srcdmg": "0",
+        "addsrcdmg": "0",
+        "random1": "50",
+        "random2": "10",
+        "boss_holdout": "0",
+        "CounterMagic_Mode": "1",
+        "note": "寒冰奇古獸  (魔攻 * 3.8) "
+      },
+      "weapons": []
+    },
+    {
+      "id": "179",
+      "boundCount": 10,
+      "parameters": {
+        "id": "179",
+        "classname": "W_SK003",
+        "level": "0",
+        "type1": "20",
+        "type2": "40",
+        "type3": "2",
+        "attr": "0",
+        "ac_mr": "0",
+        "gfxid1": "0",
+        "gfxid2": "0",
+        "gfxid3": "0",
+        "gfxid4": "0",
+        "gfxid4_count": "0",
+        "power": "0",
+        "srcdmg": "0",
+        "addsrcdmg": "0",
+        "random1": "100",
+        "random2": "10",
+        "boss_holdout": "0",
+        "CounterMagic_Mode": "0",
+        "note": "火神武器系列 HP奪取(10%) 吸血量 = 最小type1 + 隨機值type2 + 武器強化值固定值(type3 = 2}"
+      },
+      "weapons": [
+        "115207",
+        "115203",
+        "115201",
+        "115200",
+        "115204",
+        "410207",
+        "410208",
+        "410210",
+        "410211",
+        "410214"
+      ]
+    },
+    {
+      "id": "178",
+      "boundCount": 4,
+      "parameters": {
+        "id": "178",
+        "classname": "W_SK004",
+        "level": "0",
+        "type1": "5",
+        "type2": "5",
+        "type3": "2",
+        "attr": "0",
+        "ac_mr": "0",
+        "gfxid1": "0",
+        "gfxid2": "8150",
+        "gfxid3": "0",
+        "gfxid4": "0",
+        "gfxid4_count": "0",
+        "power": "0",
+        "srcdmg": "0",
+        "addsrcdmg": "0",
+        "random1": "100",
+        "random2": "10",
+        "boss_holdout": "0",
+        "CounterMagic_Mode": "0",
+        "note": "火神武器系列 MP奪取(101%) 吸魔量 = 最小type1 + 隨機值type2 + 武器強化值固定值(type3 = 2}"
+      },
+      "weapons": [
+        "115202",
+        "115205",
+        "410209",
+        "410212"
+      ]
+    },
+    {
+      "id": "180",
+      "boundCount": 2,
+      "parameters": {
+        "id": "180",
+        "classname": "W_SK003",
+        "level": "0",
+        "type1": "25",
+        "type2": "50",
+        "type3": "2",
+        "attr": "0",
+        "ac_mr": "0",
+        "gfxid1": "0",
+        "gfxid2": "0",
+        "gfxid3": "0",
+        "gfxid4": "0",
+        "gfxid4_count": "0",
+        "power": "0",
+        "srcdmg": "0",
+        "addsrcdmg": "0",
+        "random1": "150",
+        "random2": "10",
+        "boss_holdout": "0",
+        "CounterMagic_Mode": "0",
+        "note": "寒冰鎖鍊劍 HP奪取(15%) 吸血量 = 最小type1 + 隨機值type2 + 武器強化值固定值(type3 = 1}"
+      },
+      "weapons": [
+        "410130",
+        "100366"
+      ]
+    },
+    {
+      "id": "182",
+      "boundCount": 1,
+      "parameters": {
+        "id": "182",
+        "classname": "W_SK003",
+        "level": "0",
+        "type1": "15",
+        "type2": "30",
+        "type3": "2",
+        "attr": "0",
+        "ac_mr": "0",
+        "gfxid1": "0",
+        "gfxid2": "0",
+        "gfxid3": "0",
+        "gfxid4": "0",
+        "gfxid4_count": "0",
+        "power": "0",
+        "srcdmg": "0",
+        "addsrcdmg": "0",
+        "random1": "100",
+        "random2": "10",
+        "boss_holdout": "0",
+        "CounterMagic_Mode": "0",
+        "note": "嗜血者鎖鏈劍 HP奪取(10%) 吸血量 = 最小type1 + 隨機值type2 + 武器強化值固定值(type3 = 1}"
+      },
+      "weapons": [
+        "410164"
+      ]
+    },
+    {
+      "id": "183",
+      "boundCount": 2,
+      "parameters": {
+        "id": "183",
+        "classname": "W_SK024",
+        "level": "0",
+        "type1": "2",
+        "type2": "4",
+        "type3": "1",
+        "attr": "0",
+        "ac_mr": "0",
+        "gfxid1": "0",
+        "gfxid2": "0",
+        "gfxid3": "0",
+        "gfxid4": "0",
+        "gfxid4_count": "0",
+        "power": "0",
+        "srcdmg": "0",
+        "addsrcdmg": "0",
+        "random1": "1000",
+        "random2": "0",
+        "boss_holdout": "0",
+        "CounterMagic_Mode": "0",
+        "note": "MP奪取(100%) 吸魔量 = 最小type1 + 隨機值type2 + 武器強化值隨機值(type3 = 1} 吸取上限40MP"
+      },
+      "weapons": [
+        "126",
+        "373"
+      ]
+    },
+    {
+      "id": "184",
+      "boundCount": 2,
+      "parameters": {
+        "id": "184",
+        "classname": "W_SK024",
+        "level": "0",
+        "type1": "3",
+        "type2": "6",
+        "type3": "2",
+        "attr": "0",
+        "ac_mr": "0",
+        "gfxid1": "0",
+        "gfxid2": "0",
+        "gfxid3": "0",
+        "gfxid4": "0",
+        "gfxid4_count": "0",
+        "power": "0",
+        "srcdmg": "0",
+        "addsrcdmg": "0",
+        "random1": "1000",
+        "random2": "0",
+        "boss_holdout": "0",
+        "CounterMagic_Mode": "0",
+        "note": "MP奪取(100%) 吸魔量 = 最小type1 + 隨機值type2 + 武器強化值固定值(type3 = 2} 吸取上限40MP"
+      },
+      "weapons": [
+        "127",
+        "100127"
+      ]
+    }
+  ],
+  "classes": {
+    "W_SK001": {
+      "summary": {
+        "effect": "consumes weapon on proc; computed HP-fraction damage applies only to PC target; NPC receives no damage",
+        "damage": "target.currentHp*type1/type2 + dmg1()+dmg2(srcdmg)+dmg3(pc)",
+        "requires": [
+          "inventory consume",
+          "PVP PC target"
+        ]
+      },
+      "parametersReferenced": [
+        "_type1",
+        "_type2"
+      ],
+      "methods": [
+        {
+          "method": "get",
+          "line": 20,
+          "source": "public static L1WeaponSkillType get() {\n\t\treturn new W_SK001();\n\t}"
+        },
+        {
+          "method": "start_weapon_skill",
+          "line": 27,
+          "source": "public double start_weapon_skill(L1PcInstance pc, L1Character target, L1ItemInstance weapon, double srcdmg) {\n\t\ttry {\n\t\t\tif (mode2(pc,target)) {\n\t\t\t\treturn 0.0D;\n\t\t\t}\n\t\t\tint chance = _random.nextInt(1000);\n\t\t\tint random = random(weapon);\n\t\t\tif (random >= chance) {\n\t\t\t\tif (mode1(pc,target)) {\n\t\t\t\t\treturn 0.0D;\n\t\t\t\t}\n\t\t\t\tdouble dmg = target.getCurrentHp() * _type1 / _type2;\n\t\t\t\tpc.sendPackets(new S_ServerMessage(158, weapon.getLogName()));\n\t\t\t\tpc.getInventory().removeItem(weapon, 1L);\n\n\t\t\t\tdouble outdmg = dmg1() + dmg2(srcdmg) + dmg3(pc) + dmg;\n\n\t\t\t\tif ((target instanceof L1PcInstance)) {\n\t\t\t\t\tL1PcInstance tgpc = (L1PcInstance) target;\n\t\t\t\t\ttgpc.sendPacketsAll(new S_DoActionGFX(tgpc.getId(), 2));\n\t\t\t\t\ttgpc.receiveDamage(pc, outdmg, false, true);\n\n\t\t\t\t}\n\t\t\t}\n\t\t\treturn 0.0D;\n\n\t\t} catch (Exception e) {\n\t\t\t_log.error(e.getLocalizedMessage(), e);\n\t\t}\n\t\treturn 0.0D;\n\t}"
+        }
+      ],
+      "path": "equipment381-prepared/source/java/src胖哥/com/lineage/server/model/weaponskill/W_SK001.java",
+      "sha256": "a9b48c6f2a374f70c3d3fafa75767610465c40d57c00dd437cd93e6a9199fabf",
+      "lines": 58,
+      "source": "package com.lineage.server.model.weaponskill;\n\nimport java.util.Random;\n\nimport org.apache.commons.logging.Log;\nimport org.apache.commons.logging.LogFactory;\n\nimport com.lineage.server.model.L1Character;\nimport com.lineage.server.model.Instance.L1ItemInstance;\nimport com.lineage.server.model.Instance.L1PcInstance;\nimport com.lineage.server.serverpackets.S_DoActionGFX;\nimport com.lineage.server.serverpackets.S_ServerMessage;\n\npublic class W_SK001 extends L1WeaponSkillType {\n\t\n\tprivate static final Log _log = LogFactory.getLog(W_SK001.class);\n\n\tprivate static final Random _random = new Random();\n\n\tpublic static L1WeaponSkillType get() {\n\t\treturn new W_SK001();\n\t}\n\n\t/**\n\t * 武器毀滅性攻擊 (骰子匕首類型)\n\t */\n\tpublic double start_weapon_skill(L1PcInstance pc, L1Character target, L1ItemInstance weapon, double srcdmg) {\n\t\ttry {\n\t\t\tif (mode2(pc,target)) {\n\t\t\t\treturn 0.0D;\n\t\t\t}\n\t\t\tint chance = _random.nextInt(1000);\n\t\t\tint random = random(weapon);\n\t\t\tif (random >= chance) {\n\t\t\t\tif (mode1(pc,target)) {\n\t\t\t\t\treturn 0.0D;\n\t\t\t\t}\n\t\t\t\tdouble dmg = target.getCurrentHp() * _type1 / _type2;\n\t\t\t\tpc.sendPackets(new S_ServerMessage(158, weapon.getLogName()));\n\t\t\t\tpc.getInventory().removeItem(weapon, 1L);\n\n\t\t\t\tdouble outdmg = dmg1() + dmg2(srcdmg) + dmg3(pc) + dmg;\n\n\t\t\t\tif ((target instanceof L1PcInstance)) {\n\t\t\t\t\tL1PcInstance tgpc = (L1PcInstance) target;\n\t\t\t\t\ttgpc.sendPacketsAll(new S_DoActionGFX(tgpc.getId(), 2));\n\t\t\t\t\ttgpc.receiveDamage(pc, outdmg, false, true);\n\n\t\t\t\t}\n\t\t\t}\n\t\t\treturn 0.0D;\n\n\t\t} catch (Exception e) {\n\t\t\t_log.error(e.getLocalizedMessage(), e);\n\t\t}\n\t\treturn 0.0D;\n\t}\n}"
+    },
+    "W_SK0010": {
+      "summary": {
+        "effect": "Tikal timed damage type2 ticks; BEINGLICKING lock",
+        "requires": [
+          "periodic task",
+          "skill lock"
+        ]
+      },
+      "parametersReferenced": [
+        "_srcdmg",
+        "_type2",
+        "_type3"
+      ],
+      "methods": [
+        {
+          "method": "get",
+          "line": 24,
+          "source": "public static L1WeaponSkillType get() {\n\t\treturn new W_SK0010();\n\t}"
+        },
+        {
+          "method": "start_weapon_skill",
+          "line": 31,
+          "source": "public double start_weapon_skill(L1PcInstance pc, L1Character target, L1ItemInstance weapon, double srcdmg) {\n\t\ttry {\n\t\t\tif (mode2(pc,target)) {\n\t\t\t\treturn 0.0D;\n\t\t\t}\n\t\t\tint chance = _random.nextInt(1000);\n\t\t\tif (random(weapon) >= chance) {\n\t\t\t\tif (mode1(pc,target)) {\n\t\t\t\t\treturn 0.0D;\n\t\t\t\t}\n\t\t\t\tDmgSet dmgSet = new DmgSet(pc, target, weapon, srcdmg);\n\t\t\t\tdmgSet.begin();\n\t\t\t\treturn 0.0D;\n\t\t\t}\n\t\t\treturn 0.0D;\n\t\t\t\n\t\t} catch (Exception e) {\n\t\t\t_log.error(e.getLocalizedMessage(), e);\n\t\t}\n\t\treturn 0.0D;\n\t}"
+        },
+        {
+          "method": "run",
+          "line": 68,
+          "source": "public void run() {\n\t\t\ttry {\n\t\t\t\tif (_cha.hasSkillEffect(BEINGLICKING)) {// 身上有三段式魔武攻擊狀態\n\t\t\t\t\treturn;\n\t\t\t\t}\n\n\t\t\t\tif (_cha.hasSkillEffect(COUNTER_MAGIC)) {\n\t\t\t\t\t_cha.removeSkillEffect(COUNTER_MAGIC);\n\t\t\t\t\tint castgfx2 = SkillsTable.get().getTemplate(COUNTER_MAGIC).getCastGfx2();\n\t\t\t\t\t_cha.broadcastPacketAll(new S_SkillSound(_cha.getId(), castgfx2));\n\t\t\t\t\tif ((_cha instanceof L1PcInstance)) {\n\t\t\t\t\t\tL1PcInstance tgpc = (L1PcInstance) _cha;\n\t\t\t\t\t\ttgpc.sendPacketsAll(new S_SkillSound(tgpc.getId(), castgfx2));\n\t\t\t\t\t}\n\t\t\t\t\treturn;\n\t\t\t\t}\n\n\t\t\t\tif (_cha.hasSkillEffect(ERASE_MAGIC)) {// 魔法消除\n\t\t\t\t\t_cha.removeSkillEffect(ERASE_MAGIC);\n\t\t\t\t}\n\n\t\t\t\tshow(_pc, _cha);\n\n\t\t\t\twhile (_timeCounter < _type2) {\n\t\t\t\t\tif ((_cha == null) || (_cha.isDead())) {\n\t\t\t\t\t\tbreak;\n\t\t\t\t\t}\n\t\t\t\t\tattack();\n\t\t\t\t\t_timeCounter += 1;\n\t\t\t\t\tThread.sleep(1000L);\n\t\t\t\t}\n\n\t\t\t} catch (Throwable e) {\n\t\t\t\tW_SK0010._log.error(e.getLocalizedMessage(), e);\n\t\t\t}\n\t\t}"
+        },
+        {
+          "method": "begin",
+          "line": 105,
+          "source": "private void begin() {\n\t\t\tGeneralThreadPool.get().schedule(this, 100L);\n\t\t}"
+        },
+        {
+          "method": "attack",
+          "line": 109,
+          "source": "private void attack() {\n\n\t\t\t_cha.setSkillEffect(BEINGLICKING, _type2 * 1000);// 給予三段式魔法攻擊狀態\n\n\t\t\tdouble damage = DmgAcMr.getDamage(_pc);\n\n\t\t\t/*\n\t\t\t * if ((_cha.getCurrentHp() - damage <= 0) && (_cha.getCurrentHp()\n\t\t\t * != 1)) { damage = _cha.getCurrentHp() - 1; } else if\n\t\t\t * (_cha.getCurrentHp() == 1) { damage = 0.0D; }\n\t\t\t */\n\n\t\t\tdouble outdmg = dmg1() + dmg2(_srcdmg) + dmg3(_pc) + damage;\n\n\t\t\toutdmg = calc_dmg(_pc, _cha, outdmg, _weapon);\n\n\t\t\tif (_type3 > 0) {\n\t\t\t\toutdmg *= _type3 / 100.0D;\n\t\t\t}\n\n\t\t\tif ((_cha instanceof L1PcInstance)) {\n\t\t\t\tL1PcInstance pc = (L1PcInstance) _cha;\n\t\t\t\tpc.receiveDamage(_pc, outdmg, true, true);\n\n\t\t\t} else if ((_cha instanceof L1NpcInstance)) {\n\t\t\t\tL1NpcInstance npc = (L1NpcInstance) _cha;\n\t\t\t\tnpc.receiveDamage(_pc, (int) outdmg);\n\t\t\t}\n\t\t}"
+        }
+      ],
+      "path": "equipment381-prepared/source/java/src胖哥/com/lineage/server/model/weaponskill/W_SK0010.java",
+      "sha256": "a6c8fd6972ca1c353013dc9bc6d9a0e51baa8166560a4165d524a7c2194558c5",
+      "lines": 139,
+      "source": "package com.lineage.server.model.weaponskill;\n\nimport java.util.Random;\n\nimport org.apache.commons.logging.Log;\nimport org.apache.commons.logging.LogFactory;\n\nimport com.lineage.server.datatables.SkillsTable;\nimport com.lineage.server.model.L1Character;\nimport com.lineage.server.model.Instance.L1ItemInstance;\nimport com.lineage.server.model.Instance.L1NpcInstance;\nimport com.lineage.server.model.Instance.L1PcInstance;\nimport com.lineage.server.serverpackets.S_SkillSound;\nimport com.lineage.server.thread.GeneralThreadPool;\n\nimport static com.lineage.server.model.skill.L1SkillId.*;\n\npublic class W_SK0010 extends L1WeaponSkillType {\n\n\tprivate static final Log _log = LogFactory.getLog(W_SK0010.class);\n\n\tprivate static final Random _random = new Random();\n\n\tpublic static L1WeaponSkillType get() {\n\t\treturn new W_SK0010();\n\t}\n\n\t/**\n\t * 提卡爾庫庫爾坎系列 詛咒稻草人 傷害3次\n\t */\n\tpublic double start_weapon_skill(L1PcInstance pc, L1Character target, L1ItemInstance weapon, double srcdmg) {\n\t\ttry {\n\t\t\tif (mode2(pc,target)) {\n\t\t\t\treturn 0.0D;\n\t\t\t}\n\t\t\tint chance = _random.nextInt(1000);\n\t\t\tif (random(weapon) >= chance) {\n\t\t\t\tif (mode1(pc,target)) {\n\t\t\t\t\treturn 0.0D;\n\t\t\t\t}\n\t\t\t\tDmgSet dmgSet = new DmgSet(pc, target, weapon, srcdmg);\n\t\t\t\tdmgSet.begin();\n\t\t\t\treturn 0.0D;\n\t\t\t}\n\t\t\treturn 0.0D;\n\t\t\t\n\t\t} catch (Exception e) {\n\t\t\t_log.error(e.getLocalizedMessage(), e);\n\t\t}\n\t\treturn 0.0D;\n\t}\n\n\tprivate class DmgSet implements Runnable {\n\t\tprivate int _timeCounter = 0;\n\n\t\tprivate double _srcdmg = 0.0D;\n\t\tprivate final L1PcInstance _pc;\n\t\tprivate final L1Character _cha;\n\t\tprivate final L1ItemInstance _weapon;\n\n\t\tprivate DmgSet(L1PcInstance pc, L1Character cha, L1ItemInstance weapon, double srcdmg) {\n\t\t\t_cha = cha;\n\t\t\t_pc = pc;\n\t\t\t_srcdmg = srcdmg;\n\t\t\t_weapon = weapon;\n\t\t}\n\n\t\tpublic void run() {\n\t\t\ttry {\n\t\t\t\tif (_cha.hasSkillEffect(BEINGLICKING)) {// 身上有三段式魔武攻擊狀態\n\t\t\t\t\treturn;\n\t\t\t\t}\n\n\t\t\t\tif (_cha.hasSkillEffect(COUNTER_MAGIC)) {\n\t\t\t\t\t_cha.removeSkillEffect(COUNTER_MAGIC);\n\t\t\t\t\tint castgfx2 = SkillsTable.get().getTemplate(COUNTER_MAGIC).getCastGfx2();\n\t\t\t\t\t_cha.broadcastPacketAll(new S_SkillSound(_cha.getId(), castgfx2));\n\t\t\t\t\tif ((_cha instanceof L1PcInstance)) {\n\t\t\t\t\t\tL1PcInstance tgpc = (L1PcInstance) _cha;\n\t\t\t\t\t\ttgpc.sendPacketsAll(new S_SkillSound(tgpc.getId(), castgfx2));\n\t\t\t\t\t}\n\t\t\t\t\treturn;\n\t\t\t\t}\n\n\t\t\t\tif (_cha.hasSkillEffect(ERASE_MAGIC)) {// 魔法消除\n\t\t\t\t\t_cha.removeSkillEffect(ERASE_MAGIC);\n\t\t\t\t}\n\n\t\t\t\tshow(_pc, _cha);\n\n\t\t\t\twhile (_timeCounter < _type2) {\n\t\t\t\t\tif ((_cha == null) || (_cha.isDead())) {\n\t\t\t\t\t\tbreak;\n\t\t\t\t\t}\n\t\t\t\t\tattack();\n\t\t\t\t\t_timeCounter += 1;\n\t\t\t\t\tThread.sleep(1000L);\n\t\t\t\t}\n\n\t\t\t} catch (Throwable e) {\n\t\t\t\tW_SK0010._log.error(e.getLocalizedMessage(), e);\n\t\t\t}\n\t\t}\n\n\t\tprivate void begin() {\n\t\t\tGeneralThreadPool.get().schedule(this, 100L);\n\t\t}\n\n\t\tprivate void attack() {\n\n\t\t\t_cha.setSkillEffect(BEINGLICKING, _type2 * 1000);// 給予三段式魔法攻擊狀態\n\n\t\t\tdouble damage = DmgAcMr.getDamage(_pc);\n\n\t\t\t/*\n\t\t\t * if ((_cha.getCurrentHp() - damage <= 0) && (_cha.getCurrentHp()\n\t\t\t * != 1)) { damage = _cha.getCurrentHp() - 1; } else if\n\t\t\t * (_cha.getCurrentHp() == 1) { damage = 0.0D; }\n\t\t\t */\n\n\t\t\tdouble outdmg = dmg1() + dmg2(_srcdmg) + dmg3(_pc) + damage;\n\n\t\t\toutdmg = calc_dmg(_pc, _cha, outdmg, _weapon);\n\n\t\t\tif (_type3 > 0) {\n\t\t\t\toutdmg *= _type3 / 100.0D;\n\t\t\t}\n\n\t\t\tif ((_cha instanceof L1PcInstance)) {\n\t\t\t\tL1PcInstance pc = (L1PcInstance) _cha;\n\t\t\t\tpc.receiveDamage(_pc, outdmg, true, true);\n\n\t\t\t} else if ((_cha instanceof L1NpcInstance)) {\n\t\t\t\tL1NpcInstance npc = (L1NpcInstance) _cha;\n\t\t\t\tnpc.receiveDamage(_pc, (int) outdmg);\n\t\t\t}\n\t\t}\n\t}\n}"
+    },
+    "W_SK0016": {
+      "summary": {
+        "effect": "DemonKing; enchant-specific chance plus independently rolled disease chance",
+        "damage": "damage=(randInt(1,STR+DEX)*type1+dmg1)*(type3>0?type3/100:1); out=int(dmg2(src)+dmg3+damage); IF target.currentHP-out<0, replace out=1 (not max(1,out)); calc_dmg4(out)",
+        "requires": [
+          "disease skill",
+          "enchant chance table",
+          "stats"
+        ]
+      },
+      "parametersReferenced": [
+        "_ac_mr",
+        "_random1",
+        "_type1",
+        "_type2",
+        "_type3"
+      ],
+      "methods": [
+        {
+          "method": "get",
+          "line": 30,
+          "source": "public static L1WeaponSkillType get() {\n\t\treturn new W_SK0016();\n\t}"
+        },
+        {
+          "method": "start_weapon_skill",
+          "line": 35,
+          "source": "public double start_weapon_skill(final L1PcInstance pc, final L1Character target, final L1ItemInstance weapon,\n\t\t\tfinal double srcdmg) {\n\t\ttry {\n\t\t\tif (mode2(pc,target)) {\n\t\t\t\treturn 0.0D;\n\t\t\t}\n\t\t\tfinal int ev = weapon.getEnchantLevel();\n\t\t\tif (ev < 0) {\n\t\t\t\treturn 0;\n\t\t\t}\n\t\t\tint random = 0;\n\t\t\tint random2 = 10;\n\n\t\t\tswitch (ev) {\n\t\t\tcase 1:\n\t\t\tcase 2:\n\t\t\tcase 3:\n\t\t\tcase 4:\n\t\t\tcase 5:\n\t\t\tcase 6:\n\t\t\tcase 7:\n\t\t\t\trandom = _random1;\n\t\t\t\tbreak;\n\t\t\tcase 8:\n\t\t\t\trandom = _random1 + 20;\n\t\t\t\tbreak;\n\t\t\tcase 9:\n\t\t\t\trandom = _random1 + 30;\n\t\t\t\trandom2 = 20;\n\t\t\t\tbreak;\n\t\t\tcase 10:\n\t\t\t\trandom = _random1 + 50;\n\t\t\t\trandom2 = 20;\n\t\t\t\tbreak;\n\t\t\tcase 11:\n\t\t\t\trandom = _random1 + 70;\n\t\t\t\trandom2 = 20;\n\t\t\t\tbreak;\n\t\t\tdefault:\n\t\t\t\trandom = _random1 + (ev * 10);\n\t\t\t\trandom2 = 20;\n\t\t\t\tbreak;\n\t\t\t}\n\n\t\t\tswitch (_ac_mr) {\n\t\t\tcase 1:// 1:防禦\n\t\t\t\trandom -= (target.getAc() * -1) >> 3;// AC / 8\n\t\t\t\tbreak;\n\t\t\tcase 2:// 2:抗魔\n\t\t\t\trandom -= target.getMr() >> 6;// MR / 8\n\t\t\t\tbreak;\n\t\t\t}\n\n\t\t\t// 疾病術施展機率計算\n\t\t\tfinal int chance2 = _random.nextInt(1000);\n\t\t\tif (random2 >= chance2) {\n\t\t\t\tfinal L1SkillUse l1skilluse = new L1SkillUse();\n\t\t\t\tl1skilluse.handleCommands(pc, L1SkillId.DISEASE, target.getId(), target.getX(), target.getY(), 0,\n\t\t\t\t\t\tL1SkillUse.TYPE_GMBUFF);\n\t\t\t}\n\n\t\t\tfinal int chance = _random.nextInt(1000);\n\t\t\tif (random >= chance) {\n\t\t\t\tif (mode1(pc,target)) {\n\t\t\t\t\treturn 0.0D;\n\t\t\t\t}\n\t\t\t\t// 【力量+敏捷】*2 +【浮動0-50】\n\t\t\t\tdouble damage = ((_random.nextInt(pc.getStr() + pc.getDex()) + 1) * _type1) + +dmg1();\n\n\t\t\t\tif (_type3 > 0) {\n\t\t\t\t\tdamage *= (_type3 / 100D);\n\t\t\t\t}\n\t\t\t\t// 輸出動畫\n\t\t\t\tshow(pc, target);\n\n\t\t\t\tint outdmg = (int) (dmg2(srcdmg) + dmg3(pc) + damage);\n\t\t\t\tif ((target.getCurrentHp() - outdmg) < 0) {\n\t\t\t\t\toutdmg = 1;\n\t\t\t\t}\n\t\t\t\treturn calc_dmg(pc, target, outdmg,weapon);\n\t\t\t}\n\t\t\treturn 0;\n\n\t\t} catch (final Exception e) {\n\t\t\t_log.error(e.getLocalizedMessage(), e);\n\t\t}\n\t\treturn 0;\n\t}"
+        }
+      ],
+      "path": "equipment381-prepared/source/java/src胖哥/com/lineage/server/model/weaponskill/W_SK0016.java",
+      "sha256": "df82d5def54f0d2d6fa932bc95302ff742535bad203f23552a3b2ad15ae775ca",
+      "lines": 123,
+      "source": "package com.lineage.server.model.weaponskill;\n\nimport java.util.Random;\n\nimport org.apache.commons.logging.Log;\nimport org.apache.commons.logging.LogFactory;\n\nimport com.lineage.server.model.L1Character;\nimport com.lineage.server.model.Instance.L1ItemInstance;\nimport com.lineage.server.model.Instance.L1PcInstance;\nimport com.lineage.server.model.skill.L1SkillId;\nimport com.lineage.server.model.skill.L1SkillUse;\n\n/**\n * 惡魔王系列武器傷害公式 【力量+敏捷】*2 +【浮動0-50】 發動機率：基礎機率3% 隨武器加成提高增加+8=5% 9=6% 10=8% +11=\n * 10% 之後每多1+1% 隨機施展「疾病術」機率1% +9 2% _type1:力量+敏捷隨機直倍率 _type2:無 _type3:傷害倍率\n * 計算後數字加入傷害\n * \n * @author daien\n */\npublic class W_SK0016 extends L1WeaponSkillType {\n\n\tprivate static final Log _log = LogFactory.getLog(W_SK0016.class);\n\n\tprivate static final Random _random = new Random();\n\n\tpublic W_SK0016() {\n\t}\n\n\tpublic static L1WeaponSkillType get() {\n\t\treturn new W_SK0016();\n\t}\n\n\t@Override\n\tpublic double start_weapon_skill(final L1PcInstance pc, final L1Character target, final L1ItemInstance weapon,\n\t\t\tfinal double srcdmg) {\n\t\ttry {\n\t\t\tif (mode2(pc,target)) {\n\t\t\t\treturn 0.0D;\n\t\t\t}\n\t\t\tfinal int ev = weapon.getEnchantLevel();\n\t\t\tif (ev < 0) {\n\t\t\t\treturn 0;\n\t\t\t}\n\t\t\tint random = 0;\n\t\t\tint random2 = 10;\n\n\t\t\tswitch (ev) {\n\t\t\tcase 1:\n\t\t\tcase 2:\n\t\t\tcase 3:\n\t\t\tcase 4:\n\t\t\tcase 5:\n\t\t\tcase 6:\n\t\t\tcase 7:\n\t\t\t\trandom = _random1;\n\t\t\t\tbreak;\n\t\t\tcase 8:\n\t\t\t\trandom = _random1 + 20;\n\t\t\t\tbreak;\n\t\t\tcase 9:\n\t\t\t\trandom = _random1 + 30;\n\t\t\t\trandom2 = 20;\n\t\t\t\tbreak;\n\t\t\tcase 10:\n\t\t\t\trandom = _random1 + 50;\n\t\t\t\trandom2 = 20;\n\t\t\t\tbreak;\n\t\t\tcase 11:\n\t\t\t\trandom = _random1 + 70;\n\t\t\t\trandom2 = 20;\n\t\t\t\tbreak;\n\t\t\tdefault:\n\t\t\t\trandom = _random1 + (ev * 10);\n\t\t\t\trandom2 = 20;\n\t\t\t\tbreak;\n\t\t\t}\n\n\t\t\tswitch (_ac_mr) {\n\t\t\tcase 1:// 1:防禦\n\t\t\t\trandom -= (target.getAc() * -1) >> 3;// AC / 8\n\t\t\t\tbreak;\n\t\t\tcase 2:// 2:抗魔\n\t\t\t\trandom -= target.getMr() >> 6;// MR / 8\n\t\t\t\tbreak;\n\t\t\t}\n\n\t\t\t// 疾病術施展機率計算\n\t\t\tfinal int chance2 = _random.nextInt(1000);\n\t\t\tif (random2 >= chance2) {\n\t\t\t\tfinal L1SkillUse l1skilluse = new L1SkillUse();\n\t\t\t\tl1skilluse.handleCommands(pc, L1SkillId.DISEASE, target.getId(), target.getX(), target.getY(), 0,\n\t\t\t\t\t\tL1SkillUse.TYPE_GMBUFF);\n\t\t\t}\n\n\t\t\tfinal int chance = _random.nextInt(1000);\n\t\t\tif (random >= chance) {\n\t\t\t\tif (mode1(pc,target)) {\n\t\t\t\t\treturn 0.0D;\n\t\t\t\t}\n\t\t\t\t// 【力量+敏捷】*2 +【浮動0-50】\n\t\t\t\tdouble damage = ((_random.nextInt(pc.getStr() + pc.getDex()) + 1) * _type1) + +dmg1();\n\n\t\t\t\tif (_type3 > 0) {\n\t\t\t\t\tdamage *= (_type3 / 100D);\n\t\t\t\t}\n\t\t\t\t// 輸出動畫\n\t\t\t\tshow(pc, target);\n\n\t\t\t\tint outdmg = (int) (dmg2(srcdmg) + dmg3(pc) + damage);\n\t\t\t\tif ((target.getCurrentHp() - outdmg) < 0) {\n\t\t\t\t\toutdmg = 1;\n\t\t\t\t}\n\t\t\t\treturn calc_dmg(pc, target, outdmg,weapon);\n\t\t\t}\n\t\t\treturn 0;\n\n\t\t} catch (final Exception e) {\n\t\t\t_log.error(e.getLocalizedMessage(), e);\n\t\t}\n\t\treturn 0;\n\t}\n}\n"
+    },
+    "W_SK0017": {
+      "summary": {
+        "effect": "root MOVE_STOP type3 seconds if target not already rooted",
+        "damage": "calc_dmg4(type2 + (type1!=0?randInt(0,type1-1):0))",
+        "chance": "randInt(1,1000)<=random(weapon,pc)",
+        "requires": [
+          "root",
+          "movement freeze"
+        ]
+      },
+      "parametersReferenced": [
+        "_type1",
+        "_type2",
+        "_type3"
+      ],
+      "methods": [
+        {
+          "method": "get",
+          "line": 36,
+          "source": "public static L1WeaponSkillType get() {\n\t\treturn new W_SK0017();\n\t}"
+        },
+        {
+          "method": "start_weapon_skill",
+          "line": 41,
+          "source": "public double start_weapon_skill(final L1PcInstance pc, final L1Character target, \n\t\t\tfinal L1ItemInstance weapon, final double srcdmg) {\n\t\ttry {\n\t\t\tif (mode2(pc,target)) {\n\t\t\t\treturn 0.0D;\n\t\t\t}\n\t\t\tfinal int fettersTime = _type3;\n\t\t\tint outdmg = 0 ;\n\t\t\tfinal int random = random(weapon);\n\t\t\tif ((_random.nextInt(1000) + 1) <= random) {\n\t\t\t\tif (mode1(pc,target)) {\n\t\t\t\t\treturn 0.0D;\n\t\t\t\t}\n\t\t\t\tL1SpawnUtil.spawnEffect(81182, fettersTime, target.getX(), \n\t\t\t\t\t\ttarget.getY(), target.getMapId(), target, 0);\n\t\t\t\tif (target instanceof L1PcInstance) {\n\t\t\t\t\tfinal L1PcInstance targetPc = (L1PcInstance) target;\n\t\t\t\t\t\n\t\t\t\t\ttargetPc.setSkillEffect(MOVE_STOP, fettersTime * 1000);\n\t\t\t\t\ttargetPc.sendPacketsX8(new S_SkillSound(targetPc.getId(), 4184));\n\t\t\t\t\ttargetPc.sendPackets(new S_Paralysis(S_Paralysis.TYPE_BIND, true));\n\t\t\t\t\tshow(pc, targetPc);\n\t\t\t\t\tif (_type1 != 0) {\n\t\t\t\t\t\toutdmg += _random.nextInt(_type1) + _type2;\n\t\t\t\t\t} else {\n\t\t\t\t\t\toutdmg += _type2;\n\t\t\t\t\t}\n\t\t\t\t\treturn calc_dmg(pc, target, outdmg, weapon);\n\t\t\t\t} else if ((target instanceof L1MonsterInstance) || \n\t\t\t\t\t\t(target instanceof L1SummonInstance) || \n\t\t\t\t\t\t(target instanceof L1PetInstance)) {\n\t\t\t\t\tfinal L1NpcInstance npc = (L1NpcInstance) target;\n\t\t\t\t\tnpc.setSkillEffect(MOVE_STOP, fettersTime * 1000);\n\t\t\t\t\tnpc.broadcastPacketX8(new S_SkillSound(npc.getId(), 4184));\n\t\t\t\t\tnpc.setParalyzed(true);\n\t\t\t\t\tshow(pc, npc);\n\t\t\t\t\tif (_type1 != 0) {\n\t\t\t\t\t\toutdmg += _random.nextInt(_type1) + _type2;\n\t\t\t\t\t} else {\n\t\t\t\t\t\toutdmg += _type2;\n\t\t\t\t\t}\n\t\t\t\t\treturn calc_dmg(pc, target, outdmg, weapon);\n\t\t\t\t}\n\t\t\t\t\n\t\t\t}\n\t\t\treturn 0;\n\t\t} catch (final Exception e) {\n\t\t\t_log.error(e.getLocalizedMessage(), e);\n\t\t}\n\t\treturn 0;\n\t}"
+        }
+      ],
+      "path": "equipment381-prepared/source/java/src胖哥/com/lineage/server/model/weaponskill/W_SK0017.java",
+      "sha256": "9bd7d58b5e2e318fefc5ffe04081269fd549682ee2045eaedeb266b45ccd22b1",
+      "lines": 92,
+      "source": "package com.lineage.server.model.weaponskill;\n\nimport static com.lineage.server.model.skill.L1SkillId.MOVE_STOP;\n\nimport java.util.Random;\n\nimport org.apache.commons.logging.Log;\nimport org.apache.commons.logging.LogFactory;\n\nimport com.lineage.server.model.L1Character;\nimport com.lineage.server.model.Instance.L1ItemInstance;\nimport com.lineage.server.model.Instance.L1MonsterInstance;\nimport com.lineage.server.model.Instance.L1NpcInstance;\nimport com.lineage.server.model.Instance.L1PcInstance;\nimport com.lineage.server.model.Instance.L1PetInstance;\nimport com.lineage.server.model.Instance.L1SummonInstance;\nimport com.lineage.server.serverpackets.S_Paralysis;\nimport com.lineage.server.serverpackets.S_SkillSound;\nimport com.lineage.server.utils.L1SpawnUtil;\n\n/**\n * 武器毀滅性攻擊 使用這項技能武器將會毀滅並造成設定的傷害 _type1:對方HP殘留值等份量 _type2:對方HP殘留值等份 計算後數字加入傷害質\n * 範例: _type1 = 2 _type2 = 3 取回對方殘留HP的1/3 後 * 2次 也就是殘留HP 2/3的意思\n * \n * @author daien\n */\npublic class W_SK0017 extends L1WeaponSkillType {\n\n\tprivate static final Log _log = LogFactory.getLog(W_SK0017.class);\n\n\tprivate static final Random _random = new Random();\n\n\tpublic W_SK0017() {\n\t}\n\n\tpublic static L1WeaponSkillType get() {\n\t\treturn new W_SK0017();\n\t}\n\n\t@Override\n\tpublic double start_weapon_skill(final L1PcInstance pc, final L1Character target, \n\t\t\tfinal L1ItemInstance weapon, final double srcdmg) {\n\t\ttry {\n\t\t\tif (mode2(pc,target)) {\n\t\t\t\treturn 0.0D;\n\t\t\t}\n\t\t\tfinal int fettersTime = _type3;\n\t\t\tint outdmg = 0 ;\n\t\t\tfinal int random = random(weapon);\n\t\t\tif ((_random.nextInt(1000) + 1) <= random) {\n\t\t\t\tif (mode1(pc,target)) {\n\t\t\t\t\treturn 0.0D;\n\t\t\t\t}\n\t\t\t\tL1SpawnUtil.spawnEffect(81182, fettersTime, target.getX(), \n\t\t\t\t\t\ttarget.getY(), target.getMapId(), target, 0);\n\t\t\t\tif (target instanceof L1PcInstance) {\n\t\t\t\t\tfinal L1PcInstance targetPc = (L1PcInstance) target;\n\t\t\t\t\t\n\t\t\t\t\ttargetPc.setSkillEffect(MOVE_STOP, fettersTime * 1000);\n\t\t\t\t\ttargetPc.sendPacketsX8(new S_SkillSound(targetPc.getId(), 4184));\n\t\t\t\t\ttargetPc.sendPackets(new S_Paralysis(S_Paralysis.TYPE_BIND, true));\n\t\t\t\t\tshow(pc, targetPc);\n\t\t\t\t\tif (_type1 != 0) {\n\t\t\t\t\t\toutdmg += _random.nextInt(_type1) + _type2;\n\t\t\t\t\t} else {\n\t\t\t\t\t\toutdmg += _type2;\n\t\t\t\t\t}\n\t\t\t\t\treturn calc_dmg(pc, target, outdmg, weapon);\n\t\t\t\t} else if ((target instanceof L1MonsterInstance) || \n\t\t\t\t\t\t(target instanceof L1SummonInstance) || \n\t\t\t\t\t\t(target instanceof L1PetInstance)) {\n\t\t\t\t\tfinal L1NpcInstance npc = (L1NpcInstance) target;\n\t\t\t\t\tnpc.setSkillEffect(MOVE_STOP, fettersTime * 1000);\n\t\t\t\t\tnpc.broadcastPacketX8(new S_SkillSound(npc.getId(), 4184));\n\t\t\t\t\tnpc.setParalyzed(true);\n\t\t\t\t\tshow(pc, npc);\n\t\t\t\t\tif (_type1 != 0) {\n\t\t\t\t\t\toutdmg += _random.nextInt(_type1) + _type2;\n\t\t\t\t\t} else {\n\t\t\t\t\t\toutdmg += _type2;\n\t\t\t\t\t}\n\t\t\t\t\treturn calc_dmg(pc, target, outdmg, weapon);\n\t\t\t\t}\n\t\t\t\t\n\t\t\t}\n\t\t\treturn 0;\n\t\t} catch (final Exception e) {\n\t\t\t_log.error(e.getLocalizedMessage(), e);\n\t\t}\n\t\treturn 0;\n\t}\n}\n"
+    },
+    "W_SK0018": {
+      "summary": {
+        "effect": "SILENCE type3 seconds if not already silenced",
+        "damage": "same damage as W_SK0017",
+        "chance": "randInt(1,1000)<=random(weapon,pc)",
+        "requires": [
+          "silence"
+        ]
+      },
+      "parametersReferenced": [
+        "_type1",
+        "_type2",
+        "_type3"
+      ],
+      "methods": [
+        {
+          "method": "get",
+          "line": 34,
+          "source": "public static L1WeaponSkillType get() {\n\t\treturn new W_SK0018();\n\t}"
+        },
+        {
+          "method": "start_weapon_skill",
+          "line": 39,
+          "source": "public double start_weapon_skill(final L1PcInstance pc, final L1Character target, \n\t\t\tfinal L1ItemInstance weapon, final double srcdmg) {\n\t\ttry {\n\t\t\tif (mode2(pc,target)) {\n\t\t\t\treturn 0.0D;\n\t\t\t}\n\t\t\tfinal int timeSec = _type3;\n\t\t\tint outdmg = 0 ;\n\t\t\tfinal int random = random(weapon);\n\t\t\tif ((_random.nextInt(1000) + 1) <= random) {\n\t\t\t\tif (mode1(pc,target)) {\n\t\t\t\t\treturn 0.0D;\n\t\t\t\t}\n\t\t\t\tif (target instanceof L1PcInstance) {\n\t\t\t\t\tfinal L1PcInstance targetPc = (L1PcInstance) target;\n\t\t\t\t\tif (!targetPc.hasSkillEffect(SILENCE)) {\n\t\t\t\t\t\ttargetPc.setSkillEffect(SILENCE, timeSec * 1000);\n\t\t\t\t\t\ttargetPc.broadcastPacketX8(new S_SkillSound(targetPc.getId(), 2177));\n\t\t\t\t\t\ttargetPc.sendPackets(new S_SkillSound(targetPc.getId(), 2177, timeSec));\n\t\t\t\t\t\tshow(pc, targetPc);\n\t\t\t\t\t}\n\t\t\t\t\tif (_type1 != 0) {\n\t\t\t\t\t\toutdmg += _random.nextInt(_type1) + _type2;\n\t\t\t\t\t} else {\n\t\t\t\t\t\toutdmg += _type2;\n\t\t\t\t\t}\n\t\t\t\t\treturn calc_dmg(pc, target, outdmg, weapon);\n\t\t\t\t} else if ((target instanceof L1MonsterInstance) || \n\t\t\t\t\t\t(target instanceof L1SummonInstance) || \n\t\t\t\t\t\t(target instanceof L1PetInstance)) {\n\t\t\t\t\tfinal L1NpcInstance npc = (L1NpcInstance) target;\n\t\t\t\t\tnpc.setSkillEffect(SILENCE, timeSec * 1000);\n\t\t\t\t\tnpc.broadcastPacketX8(new S_SkillSound(npc.getId(), 2177));\n\t\t\t\t\tshow(pc, npc);\n\t\t\t\t\tif (_type1 != 0) {\n\t\t\t\t\t\toutdmg += _random.nextInt(_type1) + _type2;\n\t\t\t\t\t} else {\n\t\t\t\t\t\toutdmg += _type2;\n\t\t\t\t\t}\n\t\t\t\t\treturn calc_dmg(pc, target, outdmg, weapon);\n\t\t\t\t}\n\t\t\t\t\n\t\t\t}\n\t\t\treturn 0;\n\t\t} catch (final Exception e) {\n\t\t\t_log.error(e.getLocalizedMessage(), e);\n\t\t}\n\t\treturn 0;\n\t}"
+        }
+      ],
+      "path": "equipment381-prepared/source/java/src胖哥/com/lineage/server/model/weaponskill/W_SK0018.java",
+      "sha256": "13b123e7ea64c9c9000edae845851b379e0eda55d92d3711602439b576c03fc1",
+      "lines": 88,
+      "source": "package com.lineage.server.model.weaponskill;\n\nimport static com.lineage.server.model.skill.L1SkillId.SILENCE;\n\nimport java.util.Random;\n\nimport org.apache.commons.logging.Log;\nimport org.apache.commons.logging.LogFactory;\n\nimport com.lineage.server.model.L1Character;\nimport com.lineage.server.model.Instance.L1ItemInstance;\nimport com.lineage.server.model.Instance.L1MonsterInstance;\nimport com.lineage.server.model.Instance.L1NpcInstance;\nimport com.lineage.server.model.Instance.L1PcInstance;\nimport com.lineage.server.model.Instance.L1PetInstance;\nimport com.lineage.server.model.Instance.L1SummonInstance;\nimport com.lineage.server.serverpackets.S_SkillSound;\n\n/**\n * 武器毀滅性攻擊 使用這項技能武器將會毀滅並造成設定的傷害 _type1:對方HP殘留值等份量 _type2:對方HP殘留值等份 計算後數字加入傷害質\n * 範例: _type1 = 2 _type2 = 3 取回對方殘留HP的1/3 後 * 2次 也就是殘留HP 2/3的意思\n * \n * @author daien\n */\npublic class W_SK0018 extends L1WeaponSkillType {\n\n\tprivate static final Log _log = LogFactory.getLog(W_SK0018.class);\n\n\tprivate static final Random _random = new Random();\n\n\tpublic W_SK0018() {\n\t}\n\n\tpublic static L1WeaponSkillType get() {\n\t\treturn new W_SK0018();\n\t}\n\n\t@Override\n\tpublic double start_weapon_skill(final L1PcInstance pc, final L1Character target, \n\t\t\tfinal L1ItemInstance weapon, final double srcdmg) {\n\t\ttry {\n\t\t\tif (mode2(pc,target)) {\n\t\t\t\treturn 0.0D;\n\t\t\t}\n\t\t\tfinal int timeSec = _type3;\n\t\t\tint outdmg = 0 ;\n\t\t\tfinal int random = random(weapon);\n\t\t\tif ((_random.nextInt(1000) + 1) <= random) {\n\t\t\t\tif (mode1(pc,target)) {\n\t\t\t\t\treturn 0.0D;\n\t\t\t\t}\n\t\t\t\tif (target instanceof L1PcInstance) {\n\t\t\t\t\tfinal L1PcInstance targetPc = (L1PcInstance) target;\n\t\t\t\t\tif (!targetPc.hasSkillEffect(SILENCE)) {\n\t\t\t\t\t\ttargetPc.setSkillEffect(SILENCE, timeSec * 1000);\n\t\t\t\t\t\ttargetPc.broadcastPacketX8(new S_SkillSound(targetPc.getId(), 2177));\n\t\t\t\t\t\ttargetPc.sendPackets(new S_SkillSound(targetPc.getId(), 2177, timeSec));\n\t\t\t\t\t\tshow(pc, targetPc);\n\t\t\t\t\t}\n\t\t\t\t\tif (_type1 != 0) {\n\t\t\t\t\t\toutdmg += _random.nextInt(_type1) + _type2;\n\t\t\t\t\t} else {\n\t\t\t\t\t\toutdmg += _type2;\n\t\t\t\t\t}\n\t\t\t\t\treturn calc_dmg(pc, target, outdmg, weapon);\n\t\t\t\t} else if ((target instanceof L1MonsterInstance) || \n\t\t\t\t\t\t(target instanceof L1SummonInstance) || \n\t\t\t\t\t\t(target instanceof L1PetInstance)) {\n\t\t\t\t\tfinal L1NpcInstance npc = (L1NpcInstance) target;\n\t\t\t\t\tnpc.setSkillEffect(SILENCE, timeSec * 1000);\n\t\t\t\t\tnpc.broadcastPacketX8(new S_SkillSound(npc.getId(), 2177));\n\t\t\t\t\tshow(pc, npc);\n\t\t\t\t\tif (_type1 != 0) {\n\t\t\t\t\t\toutdmg += _random.nextInt(_type1) + _type2;\n\t\t\t\t\t} else {\n\t\t\t\t\t\toutdmg += _type2;\n\t\t\t\t\t}\n\t\t\t\t\treturn calc_dmg(pc, target, outdmg, weapon);\n\t\t\t\t}\n\t\t\t\t\n\t\t\t}\n\t\t\treturn 0;\n\t\t} catch (final Exception e) {\n\t\t\t_log.error(e.getLocalizedMessage(), e);\n\t\t}\n\t\treturn 0;\n\t}\n}\n"
+    },
+    "W_SK0019": {
+      "summary": {
+        "effect": "deletes type3 target MP, then damage",
+        "damage": "same damage as W_SK0017",
+        "chance": "randInt(1,1000)<=random(weapon,pc)",
+        "requires": [
+          "MP"
+        ]
+      },
+      "parametersReferenced": [
+        "_type1",
+        "_type2",
+        "_type3"
+      ],
+      "methods": [
+        {
+          "method": "get",
+          "line": 31,
+          "source": "public static L1WeaponSkillType get() {\n\t\treturn new W_SK0019();\n\t}"
+        },
+        {
+          "method": "start_weapon_skill",
+          "line": 36,
+          "source": "public double start_weapon_skill(final L1PcInstance pc, final L1Character target, \n\t\t\tfinal L1ItemInstance weapon, final double srcdmg) {\n\t\ttry {\n\t\t\tif (mode2(pc,target)) {\n\t\t\t\treturn 0.0D;\n\t\t\t}\n\t\t\tfinal int reMp = _type3;\n\t\t\tint outdmg = 0 ;\n\t\t\tfinal int random = random(weapon);\n\t\t\tif ((_random.nextInt(1000) + 1) <= random) {\n\t\t\t\tif (mode1(pc,target)) {\n\t\t\t\t\treturn 0.0D;\n\t\t\t\t}\n\t\t\t\tif (target instanceof L1PcInstance) {\n\t\t\t\t\tfinal L1PcInstance targetPc = (L1PcInstance) target;\n\t\t\t\t\tint newMp = targetPc.getCurrentMp() - reMp;\n\t\t\t\t\tif (newMp < 0) {\n\t\t\t\t\t\tnewMp = 0;\n\t\t\t\t\t}\n\t\t\t\t\ttargetPc.setCurrentMp(newMp);\n\t\t\t\t\tif (_type1 != 0) {\n\t\t\t\t\t\toutdmg += _random.nextInt(_type1) + _type2;\n\t\t\t\t\t} else {\n\t\t\t\t\t\toutdmg += _type2;\n\t\t\t\t\t}\n\t\t\t\t\tshow(pc, targetPc);\n\t\t\t\t\treturn calc_dmg(pc, target, outdmg, weapon);\n\t\t\t\t} else if ((target instanceof L1MonsterInstance) || \n\t\t\t\t\t\t(target instanceof L1SummonInstance) || \n\t\t\t\t\t\t(target instanceof L1PetInstance)) {\n\t\t\t\t\tfinal L1NpcInstance npc = (L1NpcInstance) target;\n\t\t\t\t\tint newMp = npc.getCurrentMp() - reMp;\n\t\t\t\t\tif (newMp < 0) {\n\t\t\t\t\t\tnewMp = 0;\n\t\t\t\t\t}\n\t\t\t\t\tnpc.setCurrentMp(newMp);\n\t\t\t\t\tshow(pc, npc);\n\t\t\t\t\tif (_type1 != 0) {\n\t\t\t\t\t\toutdmg += _random.nextInt(_type1) + _type2;\n\t\t\t\t\t} else {\n\t\t\t\t\t\toutdmg += _type2;\n\t\t\t\t\t}\n\t\t\t\t\treturn calc_dmg(pc, target, outdmg, weapon);\n\t\t\t\t}\n\t\t\t}\n\t\t\treturn 0;\n\t\t} catch (final Exception e) {\n\t\t\t_log.error(e.getLocalizedMessage(), e);\n\t\t}\n\t\treturn 0;\n\t}"
+        }
+      ],
+      "path": "equipment381-prepared/source/java/src胖哥/com/lineage/server/model/weaponskill/W_SK0019.java",
+      "sha256": "43d054ef8e735af5354ecd28f5768dc2e663b8436a5e9c45f98cd62931d129ad",
+      "lines": 87,
+      "source": "package com.lineage.server.model.weaponskill;\n\nimport java.util.Random;\n\nimport org.apache.commons.logging.Log;\nimport org.apache.commons.logging.LogFactory;\n\nimport com.lineage.server.model.L1Character;\nimport com.lineage.server.model.Instance.L1ItemInstance;\nimport com.lineage.server.model.Instance.L1MonsterInstance;\nimport com.lineage.server.model.Instance.L1NpcInstance;\nimport com.lineage.server.model.Instance.L1PcInstance;\nimport com.lineage.server.model.Instance.L1PetInstance;\nimport com.lineage.server.model.Instance.L1SummonInstance;\n\n/**\n * 武器毀滅性攻擊 使用這項技能武器將會毀滅並造成設定的傷害 _type1:對方HP殘留值等份量 _type2:對方HP殘留值等份 計算後數字加入傷害質\n * 範例: _type1 = 2 _type2 = 3 取回對方殘留HP的1/3 後 * 2次 也就是殘留HP 2/3的意思\n * \n * @author daien\n */\npublic class W_SK0019 extends L1WeaponSkillType {\n\n\tprivate static final Log _log = LogFactory.getLog(W_SK0019.class);\n\n\tprivate static final Random _random = new Random();\n\n\tpublic W_SK0019() {\n\t}\n\n\tpublic static L1WeaponSkillType get() {\n\t\treturn new W_SK0019();\n\t}\n\n\t@Override\n\tpublic double start_weapon_skill(final L1PcInstance pc, final L1Character target, \n\t\t\tfinal L1ItemInstance weapon, final double srcdmg) {\n\t\ttry {\n\t\t\tif (mode2(pc,target)) {\n\t\t\t\treturn 0.0D;\n\t\t\t}\n\t\t\tfinal int reMp = _type3;\n\t\t\tint outdmg = 0 ;\n\t\t\tfinal int random = random(weapon);\n\t\t\tif ((_random.nextInt(1000) + 1) <= random) {\n\t\t\t\tif (mode1(pc,target)) {\n\t\t\t\t\treturn 0.0D;\n\t\t\t\t}\n\t\t\t\tif (target instanceof L1PcInstance) {\n\t\t\t\t\tfinal L1PcInstance targetPc = (L1PcInstance) target;\n\t\t\t\t\tint newMp = targetPc.getCurrentMp() - reMp;\n\t\t\t\t\tif (newMp < 0) {\n\t\t\t\t\t\tnewMp = 0;\n\t\t\t\t\t}\n\t\t\t\t\ttargetPc.setCurrentMp(newMp);\n\t\t\t\t\tif (_type1 != 0) {\n\t\t\t\t\t\toutdmg += _random.nextInt(_type1) + _type2;\n\t\t\t\t\t} else {\n\t\t\t\t\t\toutdmg += _type2;\n\t\t\t\t\t}\n\t\t\t\t\tshow(pc, targetPc);\n\t\t\t\t\treturn calc_dmg(pc, target, outdmg, weapon);\n\t\t\t\t} else if ((target instanceof L1MonsterInstance) || \n\t\t\t\t\t\t(target instanceof L1SummonInstance) || \n\t\t\t\t\t\t(target instanceof L1PetInstance)) {\n\t\t\t\t\tfinal L1NpcInstance npc = (L1NpcInstance) target;\n\t\t\t\t\tint newMp = npc.getCurrentMp() - reMp;\n\t\t\t\t\tif (newMp < 0) {\n\t\t\t\t\t\tnewMp = 0;\n\t\t\t\t\t}\n\t\t\t\t\tnpc.setCurrentMp(newMp);\n\t\t\t\t\tshow(pc, npc);\n\t\t\t\t\tif (_type1 != 0) {\n\t\t\t\t\t\toutdmg += _random.nextInt(_type1) + _type2;\n\t\t\t\t\t} else {\n\t\t\t\t\t\toutdmg += _type2;\n\t\t\t\t\t}\n\t\t\t\t\treturn calc_dmg(pc, target, outdmg, weapon);\n\t\t\t\t}\n\t\t\t}\n\t\t\treturn 0;\n\t\t} catch (final Exception e) {\n\t\t\t_log.error(e.getLocalizedMessage(), e);\n\t\t}\n\t\treturn 0;\n\t}\n}\n"
+    },
+    "W_SK002": {
+      "summary": {
+        "effect": "L1DamagePoison infection interval type1 seconds, damage type2",
+        "requires": [
+          "periodic poison",
+          "poison immunity"
+        ]
+      },
+      "parametersReferenced": [
+        "_type1",
+        "_type2"
+      ],
+      "methods": [
+        {
+          "method": "get",
+          "line": 16,
+          "source": "public static L1WeaponSkillType get() {\n\t\treturn new W_SK002();\n\t}"
+        },
+        {
+          "method": "start_weapon_skill",
+          "line": 23,
+          "source": "public double start_weapon_skill(L1PcInstance pc, L1Character target, L1ItemInstance weapon, double srcdmg) {\n\t\ttry {\n\t\t\tif (mode2(pc,target)) {\n\t\t\t\treturn 0.0D;\n\t\t\t}\n\t\t\tif (target.getPoison() != null) {\n\t\t\t\treturn 0.0D;\n\t\t\t}\n\t\t\tint chance = _random.nextInt(1000);\n\t\t\tint random = random(weapon);\n\t\t\tif (random >= chance) {\n\t\t\t\tif (mode1(pc,target)) {\n\t\t\t\t\treturn 0.0D;\n\t\t\t\t}\n\t\t\t\tL1DamagePoison.doInfection(pc, target, _type1 * 1000, _type2);\n\t\t\t\treturn 0.0D;\n\t\t\t}\n\t\t\treturn 0.0D;\n\t\t} catch (Exception e) {\n\t\t\t_log.error(e.getLocalizedMessage(), e);\n\t\t}\n\t\treturn 0.0D;\n\t}"
+        }
+      ],
+      "path": "equipment381-prepared/source/java/src胖哥/com/lineage/server/model/weaponskill/W_SK002.java",
+      "sha256": "e025967625bea885e24499dadd79cb54b984f112c0f6cde0c9871f36ea91294b",
+      "lines": 46,
+      "source": "package com.lineage.server.model.weaponskill;\n\nimport com.lineage.server.model.Instance.L1ItemInstance;\nimport com.lineage.server.model.Instance.L1PcInstance;\nimport com.lineage.server.model.L1Character;\nimport com.lineage.server.model.poison.L1DamagePoison;\nimport java.util.Random;\nimport org.apache.commons.logging.Log;\nimport org.apache.commons.logging.LogFactory;\n\npublic class W_SK002 extends L1WeaponSkillType {\n\tprivate static final Log _log = LogFactory.getLog(W_SK002.class);\n\n\tprivate static final Random _random = new Random();\n\n\tpublic static L1WeaponSkillType get() {\n\t\treturn new W_SK002();\n\t}\n\n\t/**\n\t * 武器附加毒性攻擊\n\t */\n\tpublic double start_weapon_skill(L1PcInstance pc, L1Character target, L1ItemInstance weapon, double srcdmg) {\n\t\ttry {\n\t\t\tif (mode2(pc,target)) {\n\t\t\t\treturn 0.0D;\n\t\t\t}\n\t\t\tif (target.getPoison() != null) {\n\t\t\t\treturn 0.0D;\n\t\t\t}\n\t\t\tint chance = _random.nextInt(1000);\n\t\t\tint random = random(weapon);\n\t\t\tif (random >= chance) {\n\t\t\t\tif (mode1(pc,target)) {\n\t\t\t\t\treturn 0.0D;\n\t\t\t\t}\n\t\t\t\tL1DamagePoison.doInfection(pc, target, _type1 * 1000, _type2);\n\t\t\t\treturn 0.0D;\n\t\t\t}\n\t\t\treturn 0.0D;\n\t\t} catch (Exception e) {\n\t\t\t_log.error(e.getLocalizedMessage(), e);\n\t\t}\n\t\treturn 0.0D;\n\t}\n}"
+    },
+    "W_SK0022": {
+      "summary": {
+        "effect": "NPC-only currentHP magic, skips PC; explicit NPC IDs excluded in source",
+        "damage": "calc_dmg4(target.currentHP)",
+        "chance": "randInt(1,1000)<=random(weapon,pc)",
+        "requires": [
+          "NPC ID exclusions",
+          "isBoss"
+        ]
+      },
+      "parametersReferenced": [
+        "_type1",
+        "_type2"
+      ],
+      "methods": [
+        {
+          "method": "get",
+          "line": 31,
+          "source": "public static L1WeaponSkillType get() {\n\t\treturn new W_SK0022();\n\t}"
+        },
+        {
+          "method": "start_weapon_skill",
+          "line": 36,
+          "source": "public double start_weapon_skill(final L1PcInstance pc, final L1Character target, \n\t\t\tfinal L1ItemInstance weapon, final double srcdmg) {\n\t\ttry {\n\t\t\tif (mode2(pc,target)) {\n\t\t\t\treturn 0.0D;\n\t\t\t}\n\t\t\tfinal int random = random(weapon);\n\t\t\tif ((_random.nextInt(1000) + 1) <= random) {\n\t\t\t\tif (mode1(pc,target)) {\n\t\t\t\t\treturn 0.0D;\n\t\t\t\t}\n\t\t\t\tif ((target instanceof L1MonsterInstance) || \n\t\t\t\t\t\t(target instanceof L1SummonInstance) || \n\t\t\t\t\t\t(target instanceof L1PetInstance)) {\n\t\t\t\t\t\n\t\t\t\t\tint undeadType = 0;\n\t\t\t\t\tundeadType = ((L1MonsterInstance) target).getNpcTemplate().get_undead();\n\t\t\t\t\tif ((undeadType == 1) || (undeadType == 3)) {\n\t\t\t\t\t\tfinal L1NpcInstance npc = (L1NpcInstance) target;\n\t\t\t\t\t\tshow(pc, npc);\n\t\t\t\t\t\tint outdmg = npc.getCurrentHp();\n\t\t\t\t\t\treturn calc_dmg(pc, target, outdmg, weapon);\n\t\t\t\t\t}\n\t\t\t\t}\n\t\t\t}\n\t\t\treturn 0;\n\t\t} catch (final Exception e) {\n\t\t\t_log.error(e.getLocalizedMessage(), e);\n\t\t}\n\t\treturn 0;\n\t}"
+        }
+      ],
+      "path": "equipment381-prepared/source/java/src胖哥/com/lineage/server/model/weaponskill/W_SK0022.java",
+      "sha256": "2c1f37dedf741bbef103b73b2dc156c498eadbc98933e0196fa8955e408c95d0",
+      "lines": 67,
+      "source": "package com.lineage.server.model.weaponskill;\n\nimport java.util.Random;\n\nimport org.apache.commons.logging.Log;\nimport org.apache.commons.logging.LogFactory;\n\nimport com.lineage.server.model.L1Character;\nimport com.lineage.server.model.Instance.L1ItemInstance;\nimport com.lineage.server.model.Instance.L1MonsterInstance;\nimport com.lineage.server.model.Instance.L1NpcInstance;\nimport com.lineage.server.model.Instance.L1PcInstance;\nimport com.lineage.server.model.Instance.L1PetInstance;\nimport com.lineage.server.model.Instance.L1SummonInstance;\n\n/**\n * 武器毀滅性攻擊 使用這項技能武器將會毀滅並造成設定的傷害 _type1:對方HP殘留值等份量 _type2:對方HP殘留值等份 計算後數字加入傷害質\n * 範例: _type1 = 2 _type2 = 3 取回對方殘留HP的1/3 後 * 2次 也就是殘留HP 2/3的意思\n * \n * @author daien\n */\npublic class W_SK0022 extends L1WeaponSkillType {\n\n\tprivate static final Log _log = LogFactory.getLog(W_SK0022.class);\n\n\tprivate static final Random _random = new Random();\n\n\tpublic W_SK0022() {\n\t}\n\n\tpublic static L1WeaponSkillType get() {\n\t\treturn new W_SK0022();\n\t}\n\n\t@Override\n\tpublic double start_weapon_skill(final L1PcInstance pc, final L1Character target, \n\t\t\tfinal L1ItemInstance weapon, final double srcdmg) {\n\t\ttry {\n\t\t\tif (mode2(pc,target)) {\n\t\t\t\treturn 0.0D;\n\t\t\t}\n\t\t\tfinal int random = random(weapon);\n\t\t\tif ((_random.nextInt(1000) + 1) <= random) {\n\t\t\t\tif (mode1(pc,target)) {\n\t\t\t\t\treturn 0.0D;\n\t\t\t\t}\n\t\t\t\tif ((target instanceof L1MonsterInstance) || \n\t\t\t\t\t\t(target instanceof L1SummonInstance) || \n\t\t\t\t\t\t(target instanceof L1PetInstance)) {\n\t\t\t\t\t\n\t\t\t\t\tint undeadType = 0;\n\t\t\t\t\tundeadType = ((L1MonsterInstance) target).getNpcTemplate().get_undead();\n\t\t\t\t\tif ((undeadType == 1) || (undeadType == 3)) {\n\t\t\t\t\t\tfinal L1NpcInstance npc = (L1NpcInstance) target;\n\t\t\t\t\t\tshow(pc, npc);\n\t\t\t\t\t\tint outdmg = npc.getCurrentHp();\n\t\t\t\t\t\treturn calc_dmg(pc, target, outdmg, weapon);\n\t\t\t\t\t}\n\t\t\t\t}\n\t\t\t}\n\t\t\treturn 0;\n\t\t} catch (final Exception e) {\n\t\t\t_log.error(e.getLocalizedMessage(), e);\n\t\t}\n\t\treturn 0;\n\t}\n}\n"
+    },
+    "W_SK003": {
+      "summary": {
+        "effect": "heals caster only; does NOT subtract target HP",
+        "amount": "type1 + randInt(0,type2) + (positiveEnchant && type3==1 ? randInt(0,enchant) : positiveEnchant && type3==2 ? enchant : 0)",
+        "requires": [
+          "HP clamp",
+          "Java short cast"
+        ]
+      },
+      "parametersReferenced": [
+        "_type1",
+        "_type2",
+        "_type3"
+      ],
+      "methods": [
+        {
+          "method": "get",
+          "line": 17,
+          "source": "public static L1WeaponSkillType get() {\n\t\treturn new W_SK003();\n\t}"
+        },
+        {
+          "method": "start_weapon_skill",
+          "line": 24,
+          "source": "public double start_weapon_skill(L1PcInstance pc, L1Character target, L1ItemInstance weapon, double srcdmg) {\n\t\ttry {\n\t\t\t\n\t\t\tif (mode2(pc,target)) {\n\t\t\t\treturn 0.0D;\n\t\t\t}\n\t\t\tint chance = _random.nextInt(1000);\n\t\t\tint random = random(weapon);\n\n\t\t\tif (random >= chance) {\n\t\t\t\tif (mode1(pc,target)) {\n\t\t\t\t\treturn 0.0D;\n\t\t\t\t}\n\t\t\t\tint hpadd = _type1;// 最小值\n\n\t\t\t\tif (_type2 > 0) {// 隨機值\n\t\t\t\t\thpadd += _random.nextInt(_type2 + 1);\n\t\t\t\t}\n\n\t\t\t\tif ((_type3 == 1) && (weapon.getEnchantLevel() > 0)) {\n\t\t\t\t\thpadd += _random.nextInt(weapon.getEnchantLevel() + 1);// 武器強化值隨機值\n\t\t\t\t}\n\n\t\t\t\tif ((_type3 == 2) && (weapon.getEnchantLevel() > 0)) {\n\t\t\t\t\thpadd += weapon.getEnchantLevel();// 武器強化值固定值\n\t\t\t\t}\n\n\t\t\t\tshort newHp = (short) (pc.getCurrentHp() + hpadd);\n\t\t\t\tpc.setCurrentHp(newHp);\n\t\t\t\treturn 0.0D;\n\t\t\t}\n\t\t\treturn 0.0D;\n\t\t} catch (Exception e) {\n\t\t\t_log.error(e.getLocalizedMessage(), e);\n\t\t}\n\t\treturn 0.0D;\n\t}"
+        }
+      ],
+      "path": "equipment381-prepared/source/java/src胖哥/com/lineage/server/model/weaponskill/W_SK003.java",
+      "sha256": "0c478b64783a65fbbceebbd543b5c38844a3f4966e2a789919c196ff45ba27d3",
+      "lines": 66,
+      "source": "package com.lineage.server.model.weaponskill;\n\nimport java.util.Random;\n\nimport org.apache.commons.logging.Log;\nimport org.apache.commons.logging.LogFactory;\n\nimport com.lineage.server.model.L1Character;\nimport com.lineage.server.model.Instance.L1ItemInstance;\nimport com.lineage.server.model.Instance.L1PcInstance;\n\npublic class W_SK003 extends L1WeaponSkillType {\n\tprivate static final Log _log = LogFactory.getLog(W_SK003.class);\n\n\tprivate static final Random _random = new Random();\n\n\tpublic static L1WeaponSkillType get() {\n\t\treturn new W_SK003();\n\t}\n\n\t/**\n\t * HP奪取\n\t */\n\tpublic double start_weapon_skill(L1PcInstance pc, L1Character target, L1ItemInstance weapon, double srcdmg) {\n\t\ttry {\n\t\t\t\n\t\t\tif (mode2(pc,target)) {\n\t\t\t\treturn 0.0D;\n\t\t\t}\n\t\t\tint chance = _random.nextInt(1000);\n\t\t\tint random = random(weapon);\n\n\t\t\tif (random >= chance) {\n\t\t\t\tif (mode1(pc,target)) {\n\t\t\t\t\treturn 0.0D;\n\t\t\t\t}\n\t\t\t\tint hpadd = _type1;// 最小值\n\n\t\t\t\tif (_type2 > 0) {// 隨機值\n\t\t\t\t\thpadd += _random.nextInt(_type2 + 1);\n\t\t\t\t}\n\n\t\t\t\tif ((_type3 == 1) && (weapon.getEnchantLevel() > 0)) {\n\t\t\t\t\thpadd += _random.nextInt(weapon.getEnchantLevel() + 1);// 武器強化值隨機值\n\t\t\t\t}\n\n\t\t\t\tif ((_type3 == 2) && (weapon.getEnchantLevel() > 0)) {\n\t\t\t\t\thpadd += weapon.getEnchantLevel();// 武器強化值固定值\n\t\t\t\t}\n\n\t\t\t\tshort newHp = (short) (pc.getCurrentHp() + hpadd);\n\t\t\t\tpc.setCurrentHp(newHp);\n\t\t\t\treturn 0.0D;\n\t\t\t}\n\t\t\treturn 0.0D;\n\t\t} catch (Exception e) {\n\t\t\t_log.error(e.getLocalizedMessage(), e);\n\t\t}\n\t\treturn 0.0D;\n\t}\n}\n\n/*\n * Location: C:\\Users\\kenny\\Downloads\\奧茲之戰\\Server_Game.jar Qualified Name:\n * com.lineage.server.model.weaponskill.W_SK003 JD-Core Version: 0.6.2\n */"
+    },
+    "W_SK004": {
+      "summary": {
+        "effect": "L1Magic.commit(0,mpadd), actual drain target MP then give attacker",
+        "amount": "same scalar formula as W_SK003 with MP",
+        "requires": [
+          "target MP",
+          "magic commit target class rules"
+        ]
+      },
+      "parametersReferenced": [
+        "_type1",
+        "_type2",
+        "_type3"
+      ],
+      "methods": [
+        {
+          "method": "get",
+          "line": 18,
+          "source": "public static L1WeaponSkillType get() {\n\t\treturn new W_SK004();\n\t}"
+        },
+        {
+          "method": "start_weapon_skill",
+          "line": 25,
+          "source": "public double start_weapon_skill(L1PcInstance pc, L1Character target, L1ItemInstance weapon, double srcdmg) {\n\t\ttry {\n\t\t\tif (mode2(pc,target)) {\n\t\t\t\treturn 0.0D;\n\t\t\t}\n\t\t\tif (target.getCurrentMp() <= 0) {\n\t\t\t\treturn 0.0D;\n\t\t\t}\n\t\t\tint chance = _random.nextInt(1000);\n\t\t\tint random = random(weapon);\n\n\t\t\tif (random >= chance) {\n\t\t\t\tif (mode1(pc,target)) {\n\t\t\t\t\treturn 0.0D;\n\t\t\t\t}\n\t\t\t\tint mpadd = _type1;// 最小值\n\t\t\t\tif (_type2 > 0) {// 隨機值\n\t\t\t\t\tmpadd += _random.nextInt(_type2 + 1);\n\t\t\t\t}\n\n\t\t\t\tif ((_type3 == 1) && (weapon.getEnchantLevel() > 0)) {\n\t\t\t\t\tmpadd += _random.nextInt(weapon.getEnchantLevel() + 1);// 武器強化值隨機值\n\t\t\t\t}\n\n\t\t\t\tif ((_type3 == 2) && (weapon.getEnchantLevel() > 0)) {\n\t\t\t\t\tmpadd += weapon.getEnchantLevel();// 武器強化值固定值\n\t\t\t\t}\n\n\t\t\t\tL1Magic magic = new L1Magic(pc, target);\n\t\t\t\tmagic.commit(0, mpadd);\n\t\t\t\treturn 0.0D;\n\t\t\t}\n\t\t\treturn 0.0D;\n\t\t} catch (Exception e) {\n\t\t\t_log.error(e.getLocalizedMessage(), e);\n\t\t}\n\t\treturn 0.0D;\n\t}"
+        }
+      ],
+      "path": "equipment381-prepared/source/java/src胖哥/com/lineage/server/model/weaponskill/W_SK004.java",
+      "sha256": "944b751ac1fcb9a1e77250a960288d2780cf46ece1f39a6ac9432657986b28b9",
+      "lines": 63,
+      "source": "package com.lineage.server.model.weaponskill;\n\nimport com.lineage.server.model.Instance.L1ItemInstance;\nimport com.lineage.server.model.Instance.L1PcInstance;\nimport com.lineage.server.model.L1Character;\nimport com.lineage.server.model.L1Magic;\n\nimport java.util.Random;\nimport org.apache.commons.logging.Log;\nimport org.apache.commons.logging.LogFactory;\n\npublic class W_SK004 extends L1WeaponSkillType {\n\t\n\tprivate static final Log _log = LogFactory.getLog(W_SK004.class);\n\n\tprivate static final Random _random = new Random();\n\n\tpublic static L1WeaponSkillType get() {\n\t\treturn new W_SK004();\n\t}\n\n\t/**\n\t * MP奪取\n\t */\n\tpublic double start_weapon_skill(L1PcInstance pc, L1Character target, L1ItemInstance weapon, double srcdmg) {\n\t\ttry {\n\t\t\tif (mode2(pc,target)) {\n\t\t\t\treturn 0.0D;\n\t\t\t}\n\t\t\tif (target.getCurrentMp() <= 0) {\n\t\t\t\treturn 0.0D;\n\t\t\t}\n\t\t\tint chance = _random.nextInt(1000);\n\t\t\tint random = random(weapon);\n\n\t\t\tif (random >= chance) {\n\t\t\t\tif (mode1(pc,target)) {\n\t\t\t\t\treturn 0.0D;\n\t\t\t\t}\n\t\t\t\tint mpadd = _type1;// 最小值\n\t\t\t\tif (_type2 > 0) {// 隨機值\n\t\t\t\t\tmpadd += _random.nextInt(_type2 + 1);\n\t\t\t\t}\n\n\t\t\t\tif ((_type3 == 1) && (weapon.getEnchantLevel() > 0)) {\n\t\t\t\t\tmpadd += _random.nextInt(weapon.getEnchantLevel() + 1);// 武器強化值隨機值\n\t\t\t\t}\n\n\t\t\t\tif ((_type3 == 2) && (weapon.getEnchantLevel() > 0)) {\n\t\t\t\t\tmpadd += weapon.getEnchantLevel();// 武器強化值固定值\n\t\t\t\t}\n\n\t\t\t\tL1Magic magic = new L1Magic(pc, target);\n\t\t\t\tmagic.commit(0, mpadd);\n\t\t\t\treturn 0.0D;\n\t\t\t}\n\t\t\treturn 0.0D;\n\t\t} catch (Exception e) {\n\t\t\t_log.error(e.getLocalizedMessage(), e);\n\t\t}\n\t\treturn 0.0D;\n\t}\n}"
+    },
+    "W_SK005": {
+      "summary": {
+        "effect": "BEINGLICKING nonstacking periodic mana drain type2 ticks, 1 second per tick",
+        "amount": "type1+enchant*2 each tick; transfer capped to available target MP",
+        "requires": [
+          "periodic task",
+          "maxMP/targetMP",
+          "BEINGLICKING lock"
+        ]
+      },
+      "parametersReferenced": [
+        "_type1",
+        "_type2"
+      ],
+      "methods": [
+        {
+          "method": "get",
+          "line": 24,
+          "source": "public static L1WeaponSkillType get() {\n\t\treturn new W_SK005();\n\t}"
+        },
+        {
+          "method": "start_weapon_skill",
+          "line": 31,
+          "source": "public double start_weapon_skill(L1PcInstance pc, L1Character target, L1ItemInstance weapon, double srcdmg) {\n\t\ttry {\n\t\t\tif (mode2(pc,target)) {\n\t\t\t\treturn 0.0D;\n\t\t\t}\n\t\t\tint chance = _random.nextInt(1000);\n\n\t\t\tif (random(weapon) >= chance) {\n\t\t\t\tif (mode1(pc,target)) {\n\t\t\t\t\treturn 0.0D;\n\t\t\t\t}\n\t\t\t\tDmgSet dmgSet = new DmgSet(pc, target, weapon);\n\t\t\t\tdmgSet.begin();\n\t\t\t\treturn 0.0D;\n\t\t\t}\n\n\t\t\treturn 0.0D;\n\t\t} catch (Exception e) {\n\t\t\t_log.error(e.getLocalizedMessage(), e);\n\t\t}\n\t\treturn 0.0D;\n\t}"
+        },
+        {
+          "method": "run",
+          "line": 66,
+          "source": "public void run() {\n\t\t\ttry {\n\t\t\t\tif (_cha.hasSkillEffect(BEINGLICKING)) {// 身上有三段式魔武攻擊狀態\n\t\t\t\t\treturn;\n\t\t\t\t}\n\n\t\t\t\tif (_cha.hasSkillEffect(COUNTER_MAGIC)) {\n\t\t\t\t\t_cha.removeSkillEffect(COUNTER_MAGIC);\n\t\t\t\t\tint castgfx2 = SkillsTable.get().getTemplate(COUNTER_MAGIC).getCastGfx2();\n\t\t\t\t\t_cha.broadcastPacketAll(new S_SkillSound(_cha.getId(), castgfx2));\n\t\t\t\t\tif ((_cha instanceof L1PcInstance)) {\n\t\t\t\t\t\tL1PcInstance tgpc = (L1PcInstance) _cha;\n\t\t\t\t\t\ttgpc.sendPacketsAll(new S_SkillSound(tgpc.getId(), castgfx2));\n\t\t\t\t\t}\n\t\t\t\t\treturn;\n\t\t\t\t}\n\n\t\t\t\tif (_cha.hasSkillEffect(ERASE_MAGIC)) {// 魔法消除\n\t\t\t\t\t_cha.removeSkillEffect(ERASE_MAGIC);\n\t\t\t\t}\n\n\t\t\t\tshow(_pc, _cha);\n\n\t\t\t\twhile (_timeCounter < _type2) {\n\t\t\t\t\tif ((_cha == null) || (_cha.isDead())) {\n\t\t\t\t\t\tbreak;\n\t\t\t\t\t}\n\t\t\t\t\tattack();\n\t\t\t\t\t_timeCounter += 1;\n\t\t\t\t\tThread.sleep(1000L);\n\t\t\t\t}\n\t\t\t} catch (Throwable e) {\n\t\t\t\tW_SK005._log.error(e.getLocalizedMessage(), e);\n\t\t\t}\n\t\t}"
+        },
+        {
+          "method": "begin",
+          "line": 102,
+          "source": "private void begin() {\n\t\t\tGeneralThreadPool.get().schedule(this, 100L);\n\t\t}"
+        },
+        {
+          "method": "attack",
+          "line": 106,
+          "source": "private void attack() {\n\t\t\t_cha.setSkillEffect(BEINGLICKING, _type2 * 1000);// 給予三段式魔法攻擊狀態\n\t\t\tif (_cha.getCurrentMp() > 0) {\n\t\t\t\tint evel = _weapon.getEnchantLevel() * 2;\n\t\t\t\tint mpadd = _type1 + evel;\n\t\t\t\tif (_cha.getCurrentMp() > 0) {\n\t\t\t\t\tshort newMp = (short) (_pc.getCurrentMp() + mpadd);\n\t\t\t\t\tshort chaMp = (short) (_cha.getCurrentMp() - mpadd);\n\t\t\t\t\tif (chaMp <= 0) {\n\t\t\t\t\t\tshort a1 = (short) (_cha.getCurrentMp());\n\t\t\t\t\t\tshort b1 = (short) (_pc.getCurrentMp() + a1);\n\t\t\t\t\t\tif (b1 >=  _pc.getMaxMp()) {\n\t\t\t\t\t\t\t_pc.setCurrentMp(_pc.getMaxMp());\n\t\t\t\t\t\t} else {\n\t\t\t\t\t\t\t_pc.setCurrentMp(b1);\n\t\t\t\t\t\t}\n\t\t\t\t\t\t_cha.setCurrentMp(0);\n\t\t\t\t\t} else {\n\t\t\t\t\t\t_cha.setCurrentMp(chaMp);\n\t\t\t\t\t\tif (newMp >=  _pc.getMaxMp()) {\n\t\t\t\t\t\t\t_pc.setCurrentMp(_pc.getMaxMp());\n\t\t\t\t\t\t} else {\n\t\t\t\t\t\t\t_pc.setCurrentMp(newMp);\n\t\t\t\t\t\t}\n\t\t\t\t\t}\n\t\t\t\t}\n\t\t\t}\n\t\t}"
+        }
+      ],
+      "path": "equipment381-prepared/source/java/src胖哥/com/lineage/server/model/weaponskill/W_SK005.java",
+      "sha256": "a7196b7cee0ac2be5c14fdc746e23823c508651daccc43456ba95a58e4c565cc",
+      "lines": 135,
+      "source": "package com.lineage.server.model.weaponskill;\n\nimport static com.lineage.server.model.skill.L1SkillId.BEINGLICKING;\nimport static com.lineage.server.model.skill.L1SkillId.COUNTER_MAGIC;\nimport static com.lineage.server.model.skill.L1SkillId.ERASE_MAGIC;\n\nimport java.util.Random;\n\nimport org.apache.commons.logging.Log;\nimport org.apache.commons.logging.LogFactory;\n\nimport com.lineage.server.datatables.SkillsTable;\nimport com.lineage.server.model.L1Character;\nimport com.lineage.server.model.Instance.L1ItemInstance;\nimport com.lineage.server.model.Instance.L1PcInstance;\nimport com.lineage.server.serverpackets.S_SkillSound;\nimport com.lineage.server.thread.GeneralThreadPool;\n\npublic class W_SK005 extends L1WeaponSkillType {\n\tprivate static final Log _log = LogFactory.getLog(W_SK005.class);\n\n\tprivate static final Random _random = new Random();\n\n\tpublic static L1WeaponSkillType get() {\n\t\treturn new W_SK005();\n\t}\n\n\t/**\n\t * 武器攻擊附加MP奪取 傷害3次 藍惡靈奪魔\n\t */\n\tpublic double start_weapon_skill(L1PcInstance pc, L1Character target, L1ItemInstance weapon, double srcdmg) {\n\t\ttry {\n\t\t\tif (mode2(pc,target)) {\n\t\t\t\treturn 0.0D;\n\t\t\t}\n\t\t\tint chance = _random.nextInt(1000);\n\n\t\t\tif (random(weapon) >= chance) {\n\t\t\t\tif (mode1(pc,target)) {\n\t\t\t\t\treturn 0.0D;\n\t\t\t\t}\n\t\t\t\tDmgSet dmgSet = new DmgSet(pc, target, weapon);\n\t\t\t\tdmgSet.begin();\n\t\t\t\treturn 0.0D;\n\t\t\t}\n\n\t\t\treturn 0.0D;\n\t\t} catch (Exception e) {\n\t\t\t_log.error(e.getLocalizedMessage(), e);\n\t\t}\n\t\treturn 0.0D;\n\t}\n\n\tprivate class DmgSet implements Runnable {\n\t\tprivate int _timeCounter = 0;\n\t\tprivate final L1PcInstance _pc;\n\t\tprivate final L1Character _cha;\n\t\tprivate final L1ItemInstance _weapon;\n\n\t\tprivate DmgSet(L1PcInstance pc, L1Character cha, L1ItemInstance weapon) {\n\t\t\t_cha = cha;\n\t\t\t_pc = pc;\n\t\t\t_weapon = weapon;\n\t\t}\n\n\t\tpublic void run() {\n\t\t\ttry {\n\t\t\t\tif (_cha.hasSkillEffect(BEINGLICKING)) {// 身上有三段式魔武攻擊狀態\n\t\t\t\t\treturn;\n\t\t\t\t}\n\n\t\t\t\tif (_cha.hasSkillEffect(COUNTER_MAGIC)) {\n\t\t\t\t\t_cha.removeSkillEffect(COUNTER_MAGIC);\n\t\t\t\t\tint castgfx2 = SkillsTable.get().getTemplate(COUNTER_MAGIC).getCastGfx2();\n\t\t\t\t\t_cha.broadcastPacketAll(new S_SkillSound(_cha.getId(), castgfx2));\n\t\t\t\t\tif ((_cha instanceof L1PcInstance)) {\n\t\t\t\t\t\tL1PcInstance tgpc = (L1PcInstance) _cha;\n\t\t\t\t\t\ttgpc.sendPacketsAll(new S_SkillSound(tgpc.getId(), castgfx2));\n\t\t\t\t\t}\n\t\t\t\t\treturn;\n\t\t\t\t}\n\n\t\t\t\tif (_cha.hasSkillEffect(ERASE_MAGIC)) {// 魔法消除\n\t\t\t\t\t_cha.removeSkillEffect(ERASE_MAGIC);\n\t\t\t\t}\n\n\t\t\t\tshow(_pc, _cha);\n\n\t\t\t\twhile (_timeCounter < _type2) {\n\t\t\t\t\tif ((_cha == null) || (_cha.isDead())) {\n\t\t\t\t\t\tbreak;\n\t\t\t\t\t}\n\t\t\t\t\tattack();\n\t\t\t\t\t_timeCounter += 1;\n\t\t\t\t\tThread.sleep(1000L);\n\t\t\t\t}\n\t\t\t} catch (Throwable e) {\n\t\t\t\tW_SK005._log.error(e.getLocalizedMessage(), e);\n\t\t\t}\n\t\t}\n\n\t\tprivate void begin() {\n\t\t\tGeneralThreadPool.get().schedule(this, 100L);\n\t\t}\n\n\t\tprivate void attack() {\n\t\t\t_cha.setSkillEffect(BEINGLICKING, _type2 * 1000);// 給予三段式魔法攻擊狀態\n\t\t\tif (_cha.getCurrentMp() > 0) {\n\t\t\t\tint evel = _weapon.getEnchantLevel() * 2;\n\t\t\t\tint mpadd = _type1 + evel;\n\t\t\t\tif (_cha.getCurrentMp() > 0) {\n\t\t\t\t\tshort newMp = (short) (_pc.getCurrentMp() + mpadd);\n\t\t\t\t\tshort chaMp = (short) (_cha.getCurrentMp() - mpadd);\n\t\t\t\t\tif (chaMp <= 0) {\n\t\t\t\t\t\tshort a1 = (short) (_cha.getCurrentMp());\n\t\t\t\t\t\tshort b1 = (short) (_pc.getCurrentMp() + a1);\n\t\t\t\t\t\tif (b1 >=  _pc.getMaxMp()) {\n\t\t\t\t\t\t\t_pc.setCurrentMp(_pc.getMaxMp());\n\t\t\t\t\t\t} else {\n\t\t\t\t\t\t\t_pc.setCurrentMp(b1);\n\t\t\t\t\t\t}\n\t\t\t\t\t\t_cha.setCurrentMp(0);\n\t\t\t\t\t} else {\n\t\t\t\t\t\t_cha.setCurrentMp(chaMp);\n\t\t\t\t\t\tif (newMp >=  _pc.getMaxMp()) {\n\t\t\t\t\t\t\t_pc.setCurrentMp(_pc.getMaxMp());\n\t\t\t\t\t\t} else {\n\t\t\t\t\t\t\t_pc.setCurrentMp(newMp);\n\t\t\t\t\t\t}\n\t\t\t\t\t}\n\t\t\t\t}\n\t\t\t}\n\t\t}\n\t}\n}"
+    },
+    "W_SK006": {
+      "summary": {
+        "effect": "BEINGLICKING nonstacking periodic HP healing type2 ticks, 1 second per tick",
+        "amount": "type1+enchant*2 HP healing each tick; no damage to target in attack()",
+        "requires": [
+          "periodic task",
+          "BEINGLICKING lock"
+        ]
+      },
+      "parametersReferenced": [
+        "_type1",
+        "_type2"
+      ],
+      "methods": [
+        {
+          "method": "get",
+          "line": 24,
+          "source": "public static L1WeaponSkillType get() {\n\t\treturn new W_SK006();\n\t}"
+        },
+        {
+          "method": "start_weapon_skill",
+          "line": 31,
+          "source": "public double start_weapon_skill(L1PcInstance pc, L1Character target, L1ItemInstance weapon, double srcdmg) {\n\t\ttry {\n\t\t\tif (mode2(pc,target)) {\n\t\t\t\treturn 0.0D;\n\t\t\t}\n\t\t\tint chance = _random.nextInt(1000);\n\n\t\t\tif (random(weapon) >= chance) {\n\t\t\t\tif (mode1(pc,target)) {\n\t\t\t\t\treturn 0.0D;\n\t\t\t\t}\n\t\t\t\tDmgSet dmgSet = new DmgSet(pc, target, weapon);\n\t\t\t\tdmgSet.begin();\n\t\t\t\treturn 0.0D;\n\t\t\t}\n\n\t\t\treturn 0.0D;\n\t\t} catch (Exception e) {\n\t\t\t_log.error(e.getLocalizedMessage(), e);\n\t\t}\n\t\treturn 0.0D;\n\t}"
+        },
+        {
+          "method": "run",
+          "line": 66,
+          "source": "public void run() {\n\t\t\ttry {\n\n\t\t\t\tif (_cha.hasSkillEffect(BEINGLICKING)) {// 身上有三段式魔武攻擊狀態\n\t\t\t\t\treturn;\n\t\t\t\t}\n\n\t\t\t\tif (_cha.hasSkillEffect(COUNTER_MAGIC)) {\n\t\t\t\t\t_cha.removeSkillEffect(COUNTER_MAGIC);\n\t\t\t\t\tint castgfx2 = SkillsTable.get().getTemplate(COUNTER_MAGIC).getCastGfx2();\n\t\t\t\t\t_cha.broadcastPacketAll(new S_SkillSound(_cha.getId(), castgfx2));\n\t\t\t\t\tif ((_cha instanceof L1PcInstance)) {\n\t\t\t\t\t\tL1PcInstance tgpc = (L1PcInstance) _cha;\n\t\t\t\t\t\ttgpc.sendPacketsAll(new S_SkillSound(tgpc.getId(), castgfx2));\n\t\t\t\t\t}\n\t\t\t\t\treturn;\n\t\t\t\t}\n\n\t\t\t\tif (_cha.hasSkillEffect(ERASE_MAGIC)) {// 魔法消除\n\t\t\t\t\t_cha.removeSkillEffect(ERASE_MAGIC);\n\t\t\t\t}\n\n\t\t\t\tshow(_pc, _cha);\n\n\t\t\t\twhile (_timeCounter < _type2) {\n\t\t\t\t\tif ((_cha == null) || (_cha.isDead())) {\n\t\t\t\t\t\tbreak;\n\t\t\t\t\t}\n\t\t\t\t\tattack();\n\t\t\t\t\t_timeCounter += 1;\n\t\t\t\t\tThread.sleep(1000L);\n\t\t\t\t}\n\n\t\t\t} catch (Throwable e) {\n\t\t\t\tW_SK006._log.error(e.getLocalizedMessage(), e);\n\t\t\t}\n\t\t}"
+        },
+        {
+          "method": "begin",
+          "line": 104,
+          "source": "private void begin() {\n\t\t\tGeneralThreadPool.get().schedule(this, 100L);\n\t\t}"
+        },
+        {
+          "method": "attack",
+          "line": 108,
+          "source": "private void attack() {\n\t\t\t_cha.setSkillEffect(BEINGLICKING, _type2 * 1000);// 給予三段式魔法攻擊狀態\n\t\t\tint evel = _weapon.getEnchantLevel() * 2;\n\t\t\tint hpadd = _type1 + evel;\n\t\t\tshort newHp = (short) (_pc.getCurrentHp() + hpadd);\n\t\t\t_pc.setCurrentHp(newHp);\n\n\t\t}"
+        }
+      ],
+      "path": "equipment381-prepared/source/java/src胖哥/com/lineage/server/model/weaponskill/W_SK006.java",
+      "sha256": "b562622815224e1610afdcc31e2725c06db400eafcfc67b975415b2e23a2b857",
+      "lines": 117,
+      "source": "package com.lineage.server.model.weaponskill;\n\nimport static com.lineage.server.model.skill.L1SkillId.BEINGLICKING;\nimport static com.lineage.server.model.skill.L1SkillId.COUNTER_MAGIC;\nimport static com.lineage.server.model.skill.L1SkillId.ERASE_MAGIC;\n\nimport java.util.Random;\n\nimport org.apache.commons.logging.Log;\nimport org.apache.commons.logging.LogFactory;\n\nimport com.lineage.server.datatables.SkillsTable;\nimport com.lineage.server.model.L1Character;\nimport com.lineage.server.model.Instance.L1ItemInstance;\nimport com.lineage.server.model.Instance.L1PcInstance;\nimport com.lineage.server.serverpackets.S_SkillSound;\nimport com.lineage.server.thread.GeneralThreadPool;\n\npublic class W_SK006 extends L1WeaponSkillType {\n\tprivate static final Log _log = LogFactory.getLog(W_SK006.class);\n\n\tprivate static final Random _random = new Random();\n\n\tpublic static L1WeaponSkillType get() {\n\t\treturn new W_SK006();\n\t}\n\n\t/**\n\t * 武器攻擊附加HP奪取 傷害3次 白惡靈逆襲 紅惡靈逆襲\n\t */\n\tpublic double start_weapon_skill(L1PcInstance pc, L1Character target, L1ItemInstance weapon, double srcdmg) {\n\t\ttry {\n\t\t\tif (mode2(pc,target)) {\n\t\t\t\treturn 0.0D;\n\t\t\t}\n\t\t\tint chance = _random.nextInt(1000);\n\n\t\t\tif (random(weapon) >= chance) {\n\t\t\t\tif (mode1(pc,target)) {\n\t\t\t\t\treturn 0.0D;\n\t\t\t\t}\n\t\t\t\tDmgSet dmgSet = new DmgSet(pc, target, weapon);\n\t\t\t\tdmgSet.begin();\n\t\t\t\treturn 0.0D;\n\t\t\t}\n\n\t\t\treturn 0.0D;\n\t\t} catch (Exception e) {\n\t\t\t_log.error(e.getLocalizedMessage(), e);\n\t\t}\n\t\treturn 0.0D;\n\t}\n\n\tprivate class DmgSet implements Runnable {\n\t\tprivate int _timeCounter = 0;\n\t\tprivate final L1PcInstance _pc;\n\t\tprivate final L1Character _cha;\n\t\tprivate final L1ItemInstance _weapon;\n\n\t\tprivate DmgSet(L1PcInstance pc, L1Character cha, L1ItemInstance weapon) {\n\t\t\t_cha = cha;\n\t\t\t_pc = pc;\n\t\t\t_weapon = weapon;\n\t\t}\n\n\t\tpublic void run() {\n\t\t\ttry {\n\n\t\t\t\tif (_cha.hasSkillEffect(BEINGLICKING)) {// 身上有三段式魔武攻擊狀態\n\t\t\t\t\treturn;\n\t\t\t\t}\n\n\t\t\t\tif (_cha.hasSkillEffect(COUNTER_MAGIC)) {\n\t\t\t\t\t_cha.removeSkillEffect(COUNTER_MAGIC);\n\t\t\t\t\tint castgfx2 = SkillsTable.get().getTemplate(COUNTER_MAGIC).getCastGfx2();\n\t\t\t\t\t_cha.broadcastPacketAll(new S_SkillSound(_cha.getId(), castgfx2));\n\t\t\t\t\tif ((_cha instanceof L1PcInstance)) {\n\t\t\t\t\t\tL1PcInstance tgpc = (L1PcInstance) _cha;\n\t\t\t\t\t\ttgpc.sendPacketsAll(new S_SkillSound(tgpc.getId(), castgfx2));\n\t\t\t\t\t}\n\t\t\t\t\treturn;\n\t\t\t\t}\n\n\t\t\t\tif (_cha.hasSkillEffect(ERASE_MAGIC)) {// 魔法消除\n\t\t\t\t\t_cha.removeSkillEffect(ERASE_MAGIC);\n\t\t\t\t}\n\n\t\t\t\tshow(_pc, _cha);\n\n\t\t\t\twhile (_timeCounter < _type2) {\n\t\t\t\t\tif ((_cha == null) || (_cha.isDead())) {\n\t\t\t\t\t\tbreak;\n\t\t\t\t\t}\n\t\t\t\t\tattack();\n\t\t\t\t\t_timeCounter += 1;\n\t\t\t\t\tThread.sleep(1000L);\n\t\t\t\t}\n\n\t\t\t} catch (Throwable e) {\n\t\t\t\tW_SK006._log.error(e.getLocalizedMessage(), e);\n\t\t\t}\n\t\t}\n\n\t\tprivate void begin() {\n\t\t\tGeneralThreadPool.get().schedule(this, 100L);\n\t\t}\n\n\t\tprivate void attack() {\n\t\t\t_cha.setSkillEffect(BEINGLICKING, _type2 * 1000);// 給予三段式魔法攻擊狀態\n\t\t\tint evel = _weapon.getEnchantLevel() * 2;\n\t\t\tint hpadd = _type1 + evel;\n\t\t\tshort newHp = (short) (_pc.getCurrentHp() + hpadd);\n\t\t\t_pc.setCurrentHp(newHp);\n\n\t\t}\n\t}\n}"
+    },
+    "W_SK007": {
+      "summary": {
+        "effect": "Thebes timed damage type2 ticks each 1 second, BEINGLICKING nonstacking",
+        "damage": "calc_dmg4(dmg1+dmg2(src)+dmg3+DmgAcMr.getDamage(pc)) * (type3>0?type3/100:1)",
+        "requires": [
+          "periodic task",
+          "BEINGLICKING lock",
+          "INT/SP calculation"
+        ]
+      },
+      "parametersReferenced": [
+        "_srcdmg",
+        "_type2",
+        "_type3"
+      ],
+      "methods": [
+        {
+          "method": "get",
+          "line": 22,
+          "source": "public static L1WeaponSkillType get() {\n\t\treturn new W_SK007();\n\t}"
+        },
+        {
+          "method": "start_weapon_skill",
+          "line": 29,
+          "source": "public double start_weapon_skill(L1PcInstance pc, L1Character target, L1ItemInstance weapon, double srcdmg) {\n\t\ttry {\n\t\t\tif (mode2(pc,target)) {\n\t\t\t\treturn 0.0D;\n\t\t\t}\n\t\t\tint chance = _random.nextInt(1000);\n\t\t\tif (random(weapon) >= chance) {\n\t\t\t\tif (mode1(pc,target)) {\n\t\t\t\t\treturn 0.0D;\n\t\t\t\t}\n\t\t\t\tDmgSet dmgSet = new DmgSet(pc, target, weapon, srcdmg);\n\t\t\t\tdmgSet.begin();\n\t\t\t\treturn 0.0D;\n\t\t\t}\n\t\t\treturn 0.0D;\n\t\t\t\n\t\t} catch (Exception e) {\n\t\t\t_log.error(e.getLocalizedMessage(), e);\n\t\t}\n\t\treturn 0.0D;\n\t}"
+        },
+        {
+          "method": "run",
+          "line": 66,
+          "source": "public void run() {\n\t\t\ttry {\n\t\t\t\tif (_cha.hasSkillEffect(BEINGLICKING)) {// 身上有三段式魔武攻擊狀態\n\t\t\t\t\treturn;\n\t\t\t\t}\n\n\t\t\t\tif (_cha.hasSkillEffect(COUNTER_MAGIC)) {\n\t\t\t\t\t_cha.removeSkillEffect(COUNTER_MAGIC);\n\t\t\t\t\tint castgfx2 = SkillsTable.get().getTemplate(COUNTER_MAGIC).getCastGfx2();\n\t\t\t\t\t_cha.broadcastPacketAll(new S_SkillSound(_cha.getId(), castgfx2));\n\t\t\t\t\tif ((_cha instanceof L1PcInstance)) {\n\t\t\t\t\t\tL1PcInstance tgpc = (L1PcInstance) _cha;\n\t\t\t\t\t\ttgpc.sendPacketsAll(new S_SkillSound(tgpc.getId(), castgfx2));\n\t\t\t\t\t}\n\t\t\t\t\treturn;\n\t\t\t\t}\n\n\t\t\t\tif (_cha.hasSkillEffect(ERASE_MAGIC)) {// 魔法消除\n\t\t\t\t\t_cha.removeSkillEffect(ERASE_MAGIC);\n\t\t\t\t}\n\n\t\t\t\twhile (_timeCounter < _type2) {\n\t\t\t\t\tif ((_cha == null) || (_cha.isDead())) {\n\t\t\t\t\t\tbreak;\n\t\t\t\t\t}\n\t\t\t\t\tattack();\n\t\t\t\t\t_timeCounter += 1;\n\t\t\t\t\tThread.sleep(1000L);\n\t\t\t\t}\n\n\t\t\t} catch (Throwable e) {\n\t\t\t\tW_SK007._log.error(e.getLocalizedMessage(), e);\n\t\t\t}\n\t\t}"
+        },
+        {
+          "method": "begin",
+          "line": 101,
+          "source": "private void begin() {\n\t\t\tGeneralThreadPool.get().schedule(this, 100L);\n\t\t}"
+        },
+        {
+          "method": "attack",
+          "line": 105,
+          "source": "private void attack() {\n\n\t\t\t_cha.setSkillEffect(BEINGLICKING, _type2 * 1000);// 給予三段式魔法攻擊狀態\n\n\t\t\tdouble damage = DmgAcMr.getDamage(_pc);// 智力魔攻加成傷害計算\n\n\t\t\t/*\n\t\t\t * if ((_cha.getCurrentHp() - damage <= 0) && (_cha.getCurrentHp()\n\t\t\t * != 1)) { damage = _cha.getCurrentHp() - 1; } else if\n\t\t\t * (_cha.getCurrentHp() == 1) { damage = 0.0D; }\n\t\t\t */\n\n\t\t\tdouble outdmg = dmg1() + dmg2(_srcdmg) + dmg3(_pc) + damage;\n\n\t\t\toutdmg = calc_dmg(_pc, _cha, outdmg, _weapon);\n\n\t\t\tshow(_pc, _cha);\n\n\t\t\tif (_type3 > 0) {\n\t\t\t\toutdmg *= _type3 / 100.0D;\n\t\t\t}\n\n\t\t\tif ((_cha instanceof L1PcInstance)) {\n\t\t\t\tL1PcInstance pc = (L1PcInstance) _cha;\n\t\t\t\tpc.sendPacketsAll(new S_DoActionGFX(pc.getId(), 2));\n\t\t\t\tpc.receiveDamage(_pc, outdmg, true, true);\n\n\t\t\t} else if ((_cha instanceof L1NpcInstance)) {\n\t\t\t\tL1NpcInstance npc = (L1NpcInstance) _cha;\n\t\t\t\tnpc.broadcastPacketAll(new S_DoActionGFX(npc.getId(), 2));\n\t\t\t\tnpc.receiveDamage(_pc, (int) outdmg);\n\t\t\t}\n\t\t}"
+        }
+      ],
+      "path": "equipment381-prepared/source/java/src胖哥/com/lineage/server/model/weaponskill/W_SK007.java",
+      "sha256": "df0d4cf3eb1d08f8fcaf43239e19e6305cd6431302ee66f7c3e573804cdbf22c",
+      "lines": 139,
+      "source": "package com.lineage.server.model.weaponskill;\n\nimport com.lineage.server.datatables.SkillsTable;\nimport com.lineage.server.model.Instance.L1ItemInstance;\nimport com.lineage.server.model.Instance.L1NpcInstance;\nimport com.lineage.server.model.Instance.L1PcInstance;\nimport com.lineage.server.model.L1Character;\nimport com.lineage.server.serverpackets.S_DoActionGFX;\nimport com.lineage.server.serverpackets.S_SkillSound;\nimport com.lineage.server.thread.GeneralThreadPool;\nimport java.util.Random;\nimport org.apache.commons.logging.Log;\nimport org.apache.commons.logging.LogFactory;\nimport static com.lineage.server.model.skill.L1SkillId.*;\n\npublic class W_SK007 extends L1WeaponSkillType {\n\t\n\tprivate static final Log _log = LogFactory.getLog(W_SK007.class);\n\n\tprivate static final Random _random = new Random();\n\n\tpublic static L1WeaponSkillType get() {\n\t\treturn new W_SK007();\n\t}\n\n\t/**\n\t * 底比斯武器魔法 惡魔之吻 傷害3次\n\t */\n\tpublic double start_weapon_skill(L1PcInstance pc, L1Character target, L1ItemInstance weapon, double srcdmg) {\n\t\ttry {\n\t\t\tif (mode2(pc,target)) {\n\t\t\t\treturn 0.0D;\n\t\t\t}\n\t\t\tint chance = _random.nextInt(1000);\n\t\t\tif (random(weapon) >= chance) {\n\t\t\t\tif (mode1(pc,target)) {\n\t\t\t\t\treturn 0.0D;\n\t\t\t\t}\n\t\t\t\tDmgSet dmgSet = new DmgSet(pc, target, weapon, srcdmg);\n\t\t\t\tdmgSet.begin();\n\t\t\t\treturn 0.0D;\n\t\t\t}\n\t\t\treturn 0.0D;\n\t\t\t\n\t\t} catch (Exception e) {\n\t\t\t_log.error(e.getLocalizedMessage(), e);\n\t\t}\n\t\treturn 0.0D;\n\t}\n\n\tprivate class DmgSet implements Runnable {\n\t\tprivate int _timeCounter = 0;\n\n\t\tprivate double _srcdmg = 0.0D;\n\t\tprivate final L1PcInstance _pc;\n\t\tprivate final L1Character _cha;\n\t\tprivate final L1ItemInstance _weapon;\n\n\t\tprivate DmgSet(L1PcInstance pc, L1Character cha, L1ItemInstance weapon, double srcdmg) {\n\t\t\t_cha = cha;\n\t\t\t_pc = pc;\n\t\t\t_srcdmg = srcdmg;\n\t\t\t_weapon = weapon;\n\t\t}\n\n\t\tpublic void run() {\n\t\t\ttry {\n\t\t\t\tif (_cha.hasSkillEffect(BEINGLICKING)) {// 身上有三段式魔武攻擊狀態\n\t\t\t\t\treturn;\n\t\t\t\t}\n\n\t\t\t\tif (_cha.hasSkillEffect(COUNTER_MAGIC)) {\n\t\t\t\t\t_cha.removeSkillEffect(COUNTER_MAGIC);\n\t\t\t\t\tint castgfx2 = SkillsTable.get().getTemplate(COUNTER_MAGIC).getCastGfx2();\n\t\t\t\t\t_cha.broadcastPacketAll(new S_SkillSound(_cha.getId(), castgfx2));\n\t\t\t\t\tif ((_cha instanceof L1PcInstance)) {\n\t\t\t\t\t\tL1PcInstance tgpc = (L1PcInstance) _cha;\n\t\t\t\t\t\ttgpc.sendPacketsAll(new S_SkillSound(tgpc.getId(), castgfx2));\n\t\t\t\t\t}\n\t\t\t\t\treturn;\n\t\t\t\t}\n\n\t\t\t\tif (_cha.hasSkillEffect(ERASE_MAGIC)) {// 魔法消除\n\t\t\t\t\t_cha.removeSkillEffect(ERASE_MAGIC);\n\t\t\t\t}\n\n\t\t\t\twhile (_timeCounter < _type2) {\n\t\t\t\t\tif ((_cha == null) || (_cha.isDead())) {\n\t\t\t\t\t\tbreak;\n\t\t\t\t\t}\n\t\t\t\t\tattack();\n\t\t\t\t\t_timeCounter += 1;\n\t\t\t\t\tThread.sleep(1000L);\n\t\t\t\t}\n\n\t\t\t} catch (Throwable e) {\n\t\t\t\tW_SK007._log.error(e.getLocalizedMessage(), e);\n\t\t\t}\n\t\t}\n\n\t\tprivate void begin() {\n\t\t\tGeneralThreadPool.get().schedule(this, 100L);\n\t\t}\n\n\t\tprivate void attack() {\n\n\t\t\t_cha.setSkillEffect(BEINGLICKING, _type2 * 1000);// 給予三段式魔法攻擊狀態\n\n\t\t\tdouble damage = DmgAcMr.getDamage(_pc);// 智力魔攻加成傷害計算\n\n\t\t\t/*\n\t\t\t * if ((_cha.getCurrentHp() - damage <= 0) && (_cha.getCurrentHp()\n\t\t\t * != 1)) { damage = _cha.getCurrentHp() - 1; } else if\n\t\t\t * (_cha.getCurrentHp() == 1) { damage = 0.0D; }\n\t\t\t */\n\n\t\t\tdouble outdmg = dmg1() + dmg2(_srcdmg) + dmg3(_pc) + damage;\n\n\t\t\toutdmg = calc_dmg(_pc, _cha, outdmg, _weapon);\n\n\t\t\tshow(_pc, _cha);\n\n\t\t\tif (_type3 > 0) {\n\t\t\t\toutdmg *= _type3 / 100.0D;\n\t\t\t}\n\n\t\t\tif ((_cha instanceof L1PcInstance)) {\n\t\t\t\tL1PcInstance pc = (L1PcInstance) _cha;\n\t\t\t\tpc.sendPacketsAll(new S_DoActionGFX(pc.getId(), 2));\n\t\t\t\tpc.receiveDamage(_pc, outdmg, true, true);\n\n\t\t\t} else if ((_cha instanceof L1NpcInstance)) {\n\t\t\t\tL1NpcInstance npc = (L1NpcInstance) _cha;\n\t\t\t\tnpc.broadcastPacketAll(new S_DoActionGFX(npc.getId(), 2));\n\t\t\t\tnpc.receiveDamage(_pc, (int) outdmg);\n\t\t\t}\n\t\t}\n\t}\n}"
+    },
+    "W_SK008": {
+      "summary": {
+        "effect": "direct magic; removes skill 153 ERASURE on proc",
+        "damage": "calc_dmg4((dmg1+dmg2(src)+dmg3+DmgAcMr.getDamage(pc)+type1+randInt(0,type2-1))*(type3>0?type3/100:1))",
+        "requires": [
+          "INT/SP",
+          "ERASURE",
+          "MR/element"
+        ]
+      },
+      "parametersReferenced": [
+        "_type1",
+        "_type2",
+        "_type3"
+      ],
+      "methods": [
+        {
+          "method": "get",
+          "line": 16,
+          "source": "public static L1WeaponSkillType get() {\n\t\treturn new W_SK008();\n\t}"
+        },
+        {
+          "method": "start_weapon_skill",
+          "line": 23,
+          "source": "public double start_weapon_skill(L1PcInstance pc, L1Character target, L1ItemInstance weapon, double srcdmg) {\n\t\ttry {\n\t\t\tif (mode2(pc,target)) {\n\t\t\t\treturn 0.0D;\n\t\t\t}\n\t\t\tint chance = _random.nextInt(1000);\n\t\t\tif (random(weapon) >= chance) {\n\t\t\t\tif (mode1(pc,target)) {\n\t\t\t\t\treturn 0.0D;\n\t\t\t\t}\n\t\t\t\tif (target.hasSkillEffect(153)) {// 魔法消除\n\t\t\t\t\ttarget.removeSkillEffect(153);\n\t\t\t\t}\n\n\t\t\t\tdouble damage = DmgAcMr.getDamage(pc);\n\n\t\t\t\tdamage += _type1 + _random.nextInt(_type2);\n  \n\t\t\t\tdouble outdmg = dmg1() + dmg2(srcdmg) + dmg3(pc) + damage;\n\n\t\t\t\tif (_type3 > 0) {\n\t\t\t\t\toutdmg *= _type3 / 100.0D;\n\t\t\t\t}\n\n\t\t\t\tshow(pc, target);\n\n\t\t\t\treturn calc_dmg(pc, target, outdmg, weapon);\n\t\t\t}\n\t\t\treturn 0.0D;\n\t\t\t\n\t\t} catch (Exception e) {\n\t\t\t_log.error(e.getLocalizedMessage(), e);\n\t\t}\n\t\treturn 0.0D;\n\t}"
+        }
+      ],
+      "path": "equipment381-prepared/source/java/src胖哥/com/lineage/server/model/weaponskill/W_SK008.java",
+      "sha256": "44b72e9151517361c836ad760671f5057139d827a8345768480d31d7221253fd",
+      "lines": 58,
+      "source": "package com.lineage.server.model.weaponskill;\n\nimport com.lineage.server.model.Instance.L1ItemInstance;\nimport com.lineage.server.model.Instance.L1PcInstance;\nimport com.lineage.server.model.L1Character;\n\nimport java.util.Random;\nimport org.apache.commons.logging.Log;\nimport org.apache.commons.logging.LogFactory;\n\npublic class W_SK008 extends L1WeaponSkillType {\n\tprivate static final Log _log = LogFactory.getLog(W_SK008.class);\n\n\tprivate static final Random _random = new Random();\n\n\tpublic static L1WeaponSkillType get() {\n\t\treturn new W_SK008();\n\t}\n\n\t/**\n\t * 一般魔法武器附加魔法\n\t */\n\tpublic double start_weapon_skill(L1PcInstance pc, L1Character target, L1ItemInstance weapon, double srcdmg) {\n\t\ttry {\n\t\t\tif (mode2(pc,target)) {\n\t\t\t\treturn 0.0D;\n\t\t\t}\n\t\t\tint chance = _random.nextInt(1000);\n\t\t\tif (random(weapon) >= chance) {\n\t\t\t\tif (mode1(pc,target)) {\n\t\t\t\t\treturn 0.0D;\n\t\t\t\t}\n\t\t\t\tif (target.hasSkillEffect(153)) {// 魔法消除\n\t\t\t\t\ttarget.removeSkillEffect(153);\n\t\t\t\t}\n\n\t\t\t\tdouble damage = DmgAcMr.getDamage(pc);\n\n\t\t\t\tdamage += _type1 + _random.nextInt(_type2);\n  \n\t\t\t\tdouble outdmg = dmg1() + dmg2(srcdmg) + dmg3(pc) + damage;\n\n\t\t\t\tif (_type3 > 0) {\n\t\t\t\t\toutdmg *= _type3 / 100.0D;\n\t\t\t\t}\n\n\t\t\t\tshow(pc, target);\n\n\t\t\t\treturn calc_dmg(pc, target, outdmg, weapon);\n\t\t\t}\n\t\t\treturn 0.0D;\n\t\t\t\n\t\t} catch (Exception e) {\n\t\t\t_log.error(e.getLocalizedMessage(), e);\n\t\t}\n\t\treturn 0.0D;\n\t}\n}"
+    },
+    "W_SK009": {
+      "summary": {
+        "effect": "mana drain uses magic.commit; exact source below",
+        "requires": [
+          "target MP"
+        ]
+      },
+      "parametersReferenced": [
+        "_type1",
+        "_type2"
+      ],
+      "methods": [
+        {
+          "method": "get",
+          "line": 18,
+          "source": "public static L1WeaponSkillType get() {\n\t\treturn new W_SK009();\n\t}"
+        },
+        {
+          "method": "start_weapon_skill",
+          "line": 25,
+          "source": "public double start_weapon_skill(L1PcInstance pc, L1Character target, L1ItemInstance weapon, double srcdmg) {\n\t\ttry {\n\t\t\tif (mode2(pc,target)) {\n\t\t\t\treturn 0.0D;\n\t\t\t}\n\t\t\tint chance = _random.nextInt(1000);\n\t\t\tif (random(weapon) >= chance) {\n\t\t\t\tif (mode1(pc,target)) {\n\t\t\t\t\treturn 0.0D;\n\t\t\t\t}if (target.hasSkillEffect(153)) {// 魔法消除\n\t\t\t\t\ttarget.removeSkillEffect(153);\n\t\t\t\t}\n\n\t\t\t\tif (target.getCurrentMp() > 0) {\n\t\t\t\t\tfinal int mana = _type1 + _random.nextInt(_type2);\n\t\t\t\t\tint drainMana = mana + (pc.getInt() / 2);\n\t\t\t\t\tif (target.getCurrentMp() < drainMana) {\n\t\t\t\t\t\tdrainMana = target.getCurrentMp();\n\t\t\t\t\t}\n\t\t\t\t\tL1Magic magic = new L1Magic(pc, target);\n\t\t\t\t\tmagic.commit(0, drainMana);\n\n\t\t\t\t\tshow(pc, target);\n\t\t\t\t}\n\t\t\t}\n\t\t\treturn 0.0D;\n\t\t\t\n\t\t} catch (Exception e) {\n\t\t\t_log.error(e.getLocalizedMessage(), e);\n\t\t}\n\t\treturn 0.0D;\n\t}"
+        }
+      ],
+      "path": "equipment381-prepared/source/java/src胖哥/com/lineage/server/model/weaponskill/W_SK009.java",
+      "sha256": "119be751f115d94fcae6e8a96bd166b49807b5b39d1c0da8a3a4a6ea91bd4530",
+      "lines": 62,
+      "source": "package com.lineage.server.model.weaponskill;\n\nimport java.util.Random;\n\nimport org.apache.commons.logging.Log;\nimport org.apache.commons.logging.LogFactory;\n\nimport com.lineage.server.model.L1Character;\nimport com.lineage.server.model.L1Magic;\nimport com.lineage.server.model.Instance.L1ItemInstance;\nimport com.lineage.server.model.Instance.L1PcInstance;\n\npublic class W_SK009 extends L1WeaponSkillType {\n\tprivate static final Log _log = LogFactory.getLog(W_SK009.class);\n\n\tprivate static final Random _random = new Random();\n\n\tpublic static L1WeaponSkillType get() {\n\t\treturn new W_SK009();\n\t}\n\n\t/**\n\t * 魔法武器魔力奪取\n\t */\n\tpublic double start_weapon_skill(L1PcInstance pc, L1Character target, L1ItemInstance weapon, double srcdmg) {\n\t\ttry {\n\t\t\tif (mode2(pc,target)) {\n\t\t\t\treturn 0.0D;\n\t\t\t}\n\t\t\tint chance = _random.nextInt(1000);\n\t\t\tif (random(weapon) >= chance) {\n\t\t\t\tif (mode1(pc,target)) {\n\t\t\t\t\treturn 0.0D;\n\t\t\t\t}if (target.hasSkillEffect(153)) {// 魔法消除\n\t\t\t\t\ttarget.removeSkillEffect(153);\n\t\t\t\t}\n\n\t\t\t\tif (target.getCurrentMp() > 0) {\n\t\t\t\t\tfinal int mana = _type1 + _random.nextInt(_type2);\n\t\t\t\t\tint drainMana = mana + (pc.getInt() / 2);\n\t\t\t\t\tif (target.getCurrentMp() < drainMana) {\n\t\t\t\t\t\tdrainMana = target.getCurrentMp();\n\t\t\t\t\t}\n\t\t\t\t\tL1Magic magic = new L1Magic(pc, target);\n\t\t\t\t\tmagic.commit(0, drainMana);\n\n\t\t\t\t\tshow(pc, target);\n\t\t\t\t}\n\t\t\t}\n\t\t\treturn 0.0D;\n\t\t\t\n\t\t} catch (Exception e) {\n\t\t\t_log.error(e.getLocalizedMessage(), e);\n\t\t}\n\t\treturn 0.0D;\n\t}\n}\n\n/*\n * Location: C:\\Users\\kenny\\Downloads\\奧茲之戰\\Server_Game.jar Qualified Name:\n * com.lineage.server.model.weaponskill.W_SK005 JD-Core Version: 0.6.2\n */"
+    },
+    "W_SK024": {
+      "summary": {
+        "effect": "MP drain, target identity-scoped cumulative counter; below1000 commit, crossing above1000 commits full current mpadd; exactly1000 commits nothing. Already above1000 commits nothing. Switchingtarget resets counter.",
+        "amount": "type1+randInt(0,type2)+(positiveEnchant && type3==1?randInt(0,enchant):positiveEnchant&&type3==2?enchant:0)",
+        "requires": [
+          "target MP",
+          "caster last target object ID",
+          "caster cumulative MP counter"
+        ]
+      },
+      "parametersReferenced": [
+        "_type1",
+        "_type2",
+        "_type3"
+      ],
+      "methods": [
+        {
+          "method": "get",
+          "line": 18,
+          "source": "public static L1WeaponSkillType get() {\n\t\treturn new W_SK024();\n\t}"
+        },
+        {
+          "method": "start_weapon_skill",
+          "line": 25,
+          "source": "public double start_weapon_skill(L1PcInstance pc, L1Character target, L1ItemInstance weapon, double srcdmg) {\n\t\ttry {\n\t\t\tif (mode2(pc,target)) {\n\t\t\t\treturn 0.0D;\n\t\t\t}\n\t\t\tif (target.getCurrentMp() <= 0) {\n\t\t\t\treturn 0.0D;\n\t\t\t}\n\t\t\tint chance = _random.nextInt(1000);\n\t\t\tint random = random(weapon);\n\t\t\t\n\t\t\t//L1Magic magic = new L1Magic(pc, target);\n\t\t\t\n\t\t\tif (random >= chance) {\n\t\t\t\tif (mode1(pc,target)) {\n\t\t\t\t\treturn 0.0D;\n\t\t\t\t}\n\t\t\t\tint mpadd = _type1;// 最小值\n\t\t\t\tif (_type2 > 0) {// 隨機值\n\t\t\t\t\tmpadd += _random.nextInt(_type2 + 1);\n\t\t\t\t}\n\n\t\t\t\tif ((_type3 == 1) && (weapon.getEnchantLevel() > 0)) {\n\t\t\t\t\tmpadd += _random.nextInt(weapon.getEnchantLevel() + 1);// 武器強化值隨機值\n\t\t\t\t}\n\n\t\t\t\tif ((_type3 == 2) && (weapon.getEnchantLevel() > 0)) {\n\t\t\t\t\tmpadd += weapon.getEnchantLevel();// 武器強化值固定值\n\t\t\t\t}\n\t\t\t\t\n\t\t\t\t//magic.commit(0, mpadd);\n\t\t\t\t\n\t\t\t\tif (pc.getMpObjid() != target.getId()) {\n\t\t\t\t\tpc.setMpS(0);\n\t\t\t\t}\n\t\t\t\t//37  5  42\n\t\t\t\tpc.setMpObjid(target.getId());\n\t\t\t\tint beMp = pc.getMpS(); // 37\n\t\t\t\tpc.setMpS(pc.getMpS() + mpadd);\n\t\t\t\tfinal int NowMpS = pc.getMpS();// 42\n\t\t\t\tif (NowMpS < 1000) {\n\t\t\t\t\tL1Magic magic = new L1Magic(pc, target);\n\t\t\t\t\tmagic.commit(0, mpadd);\n\t\t\t\t} else if (NowMpS > 1000 && beMp <= 1000) {\n\t\t\t\t\tmpadd = NowMpS - beMp;\n\t\t\t\t\tL1Magic magic = new L1Magic(pc, target);\n\t\t\t\t\tmagic.commit(0, mpadd);\n\t\t\t\t\tbeMp = NowMpS;\n\t\t\t\t}\n\t\t\t\t\t\n\t\t\t\treturn 0.0D;\n\t\t\t}\n\t\t\treturn 0.0D;\n\t\t} catch (Exception e) {\n\t\t\t_log.error(e.getLocalizedMessage(), e);\n\t\t}\n\t\treturn 0.0D;\n\t}"
+        }
+      ],
+      "path": "equipment381-prepared/source/java/src胖哥/com/lineage/server/model/weaponskill/W_SK024.java",
+      "sha256": "6188bf242ff43680c7a499bd0cdf12acfce82d3c9602aec0b0c64e57ace0ecfb",
+      "lines": 83,
+      "source": "package com.lineage.server.model.weaponskill;\n\nimport com.lineage.server.model.Instance.L1ItemInstance;\nimport com.lineage.server.model.Instance.L1PcInstance;\nimport com.lineage.server.model.L1Character;\nimport com.lineage.server.model.L1Magic;\n\nimport java.util.Random;\nimport org.apache.commons.logging.Log;\nimport org.apache.commons.logging.LogFactory;\n\npublic class W_SK024 extends L1WeaponSkillType {\n\t\n\tprivate static final Log _log = LogFactory.getLog(W_SK024.class);\n\n\tprivate static final Random _random = new Random();\n\n\tpublic static L1WeaponSkillType get() {\n\t\treturn new W_SK024();\n\t}\n\n\t/**\n\t * MP奪取\n\t */\n\tpublic double start_weapon_skill(L1PcInstance pc, L1Character target, L1ItemInstance weapon, double srcdmg) {\n\t\ttry {\n\t\t\tif (mode2(pc,target)) {\n\t\t\t\treturn 0.0D;\n\t\t\t}\n\t\t\tif (target.getCurrentMp() <= 0) {\n\t\t\t\treturn 0.0D;\n\t\t\t}\n\t\t\tint chance = _random.nextInt(1000);\n\t\t\tint random = random(weapon);\n\t\t\t\n\t\t\t//L1Magic magic = new L1Magic(pc, target);\n\t\t\t\n\t\t\tif (random >= chance) {\n\t\t\t\tif (mode1(pc,target)) {\n\t\t\t\t\treturn 0.0D;\n\t\t\t\t}\n\t\t\t\tint mpadd = _type1;// 最小值\n\t\t\t\tif (_type2 > 0) {// 隨機值\n\t\t\t\t\tmpadd += _random.nextInt(_type2 + 1);\n\t\t\t\t}\n\n\t\t\t\tif ((_type3 == 1) && (weapon.getEnchantLevel() > 0)) {\n\t\t\t\t\tmpadd += _random.nextInt(weapon.getEnchantLevel() + 1);// 武器強化值隨機值\n\t\t\t\t}\n\n\t\t\t\tif ((_type3 == 2) && (weapon.getEnchantLevel() > 0)) {\n\t\t\t\t\tmpadd += weapon.getEnchantLevel();// 武器強化值固定值\n\t\t\t\t}\n\t\t\t\t\n\t\t\t\t//magic.commit(0, mpadd);\n\t\t\t\t\n\t\t\t\tif (pc.getMpObjid() != target.getId()) {\n\t\t\t\t\tpc.setMpS(0);\n\t\t\t\t}\n\t\t\t\t//37  5  42\n\t\t\t\tpc.setMpObjid(target.getId());\n\t\t\t\tint beMp = pc.getMpS(); // 37\n\t\t\t\tpc.setMpS(pc.getMpS() + mpadd);\n\t\t\t\tfinal int NowMpS = pc.getMpS();// 42\n\t\t\t\tif (NowMpS < 1000) {\n\t\t\t\t\tL1Magic magic = new L1Magic(pc, target);\n\t\t\t\t\tmagic.commit(0, mpadd);\n\t\t\t\t} else if (NowMpS > 1000 && beMp <= 1000) {\n\t\t\t\t\tmpadd = NowMpS - beMp;\n\t\t\t\t\tL1Magic magic = new L1Magic(pc, target);\n\t\t\t\t\tmagic.commit(0, mpadd);\n\t\t\t\t\tbeMp = NowMpS;\n\t\t\t\t}\n\t\t\t\t\t\n\t\t\t\treturn 0.0D;\n\t\t\t}\n\t\t\treturn 0.0D;\n\t\t} catch (Exception e) {\n\t\t\t_log.error(e.getLocalizedMessage(), e);\n\t\t}\n\t\treturn 0.0D;\n\t}\n}"
+    },
+    "L1WeaponSkillType": {
+      "methods": [
+        {
+          "method": "start_weapon_skill",
+          "line": 100,
+          "source": "public double start_weapon_skill(final L1PcInstance pc,\n\t\t\tfinal L1Character target, final L1ItemInstance weapon,\n\t\t\tfinal double srcdmg) {\n\t\treturn 0;\n\t}"
+        },
+        {
+          "method": "get_level",
+          "line": 106,
+          "source": "public double get_level() {\n\t\treturn _level;\n\t}"
+        },
+        {
+          "method": "set_level",
+          "line": 110,
+          "source": "public void set_level(int level) {\n\t\tthis._level = (level / 100D);\n\t}"
+        },
+        {
+          "method": "get_type1",
+          "line": 114,
+          "source": "public int get_type1() {\n\t\treturn _type1;\n\t}"
+        },
+        {
+          "method": "set_type1",
+          "line": 118,
+          "source": "public void set_type1(int _type1) {\n\t\tthis._type1 = _type1;\n\t}"
+        },
+        {
+          "method": "get_type2",
+          "line": 122,
+          "source": "public int get_type2() {\n\t\treturn _type2;\n\t}"
+        },
+        {
+          "method": "set_type2",
+          "line": 126,
+          "source": "public void set_type2(int _type2) {\n\t\tthis._type2 = _type2;\n\t}"
+        },
+        {
+          "method": "get_type3",
+          "line": 130,
+          "source": "public int get_type3() {\n\t\treturn _type3;\n\t}"
+        },
+        {
+          "method": "set_type3",
+          "line": 134,
+          "source": "public void set_type3(int _type3) {\n\t\tthis._type3 = _type3;\n\t}"
+        },
+        {
+          "method": "get_attr",
+          "line": 138,
+          "source": "public int get_attr() {\n\t\treturn _attr;\n\t}"
+        },
+        {
+          "method": "set_attr",
+          "line": 142,
+          "source": "public void set_attr(int _attr) {\n\t\tthis._attr = _attr;\n\t}"
+        },
+        {
+          "method": "get_ac_mr",
+          "line": 146,
+          "source": "public int get_ac_mr() {\n\t\treturn _ac_mr;\n\t}"
+        },
+        {
+          "method": "set_ac_mr",
+          "line": 150,
+          "source": "public void set_ac_mr(int _ac_mr) {\n\t\tthis._ac_mr = _ac_mr;\n\t}"
+        },
+        {
+          "method": "get_gfxid1",
+          "line": 154,
+          "source": "public int get_gfxid1() {\n\t\treturn _gfxid1;\n\t}"
+        },
+        {
+          "method": "set_gfxid1",
+          "line": 158,
+          "source": "public void set_gfxid1(int _gfxid1) {\n\t\tthis._gfxid1 = _gfxid1;\n\t}"
+        },
+        {
+          "method": "get_gfxid2",
+          "line": 162,
+          "source": "public int get_gfxid2() {\n\t\treturn _gfxid2;\n\t}"
+        },
+        {
+          "method": "set_gfxid2",
+          "line": 166,
+          "source": "public void set_gfxid2(int _gfxid2) {\n\t\tthis._gfxid2 = _gfxid2;\n\t}"
+        },
+        {
+          "method": "get_gfxid3",
+          "line": 170,
+          "source": "public int get_gfxid3() {\n\t\treturn _gfxid3;\n\t}"
+        },
+        {
+          "method": "set_gfxid3",
+          "line": 174,
+          "source": "public void set_gfxid3(int _gfxid3) {\n\t\tthis._gfxid3 = _gfxid3;\n\t}"
+        },
+        {
+          "method": "get_gfxid4",
+          "line": 178,
+          "source": "public int get_gfxid4() {\n\t\treturn _gfxid4;\n\t}"
+        },
+        {
+          "method": "set_gfxid4",
+          "line": 182,
+          "source": "public void set_gfxid4(int _gfxid4) {\n\t\tthis._gfxid4 = _gfxid4;\n\t}"
+        },
+        {
+          "method": "get_gfxid4_count",
+          "line": 186,
+          "source": "public int get_gfxid4_count() {\n\t\treturn _gfxid4_count;\n\t}"
+        },
+        {
+          "method": "set_gfxid4_count",
+          "line": 190,
+          "source": "public void set_gfxid4_count(int _gfxid4_count) {\n\t\tthis._gfxid4_count = _gfxid4_count;\n\t}"
+        },
+        {
+          "method": "get_power",
+          "line": 199,
+          "source": "public int get_power() {\n\t\treturn _power;\n\t}"
+        },
+        {
+          "method": "set_power",
+          "line": 208,
+          "source": "public void set_power(int _power) {\n\t\tthis._power = _power;\n\t}"
+        },
+        {
+          "method": "get_srcdmg",
+          "line": 217,
+          "source": "public int get_srcdmg() {\n\t\treturn _srcdmg;\n\t}"
+        },
+        {
+          "method": "set_srcdmg",
+          "line": 226,
+          "source": "public void set_srcdmg(int _srcdmg) {\n\t\tthis._srcdmg = _srcdmg;\n\t}"
+        },
+        {
+          "method": "get_addsrcdmg",
+          "line": 235,
+          "source": "public int get_addsrcdmg() {\n\t\treturn _addsrcdmg;\n\t}"
+        },
+        {
+          "method": "set_addsrcdmg",
+          "line": 244,
+          "source": "public void set_addsrcdmg(int _addsrcdmg) {\n\t\tif (_addsrcdmg > 100) {\n\t\t\t_addsrcdmg = 100;\n\t\t}\n\t\tthis._addsrcdmg = _addsrcdmg;\n\t}"
+        },
+        {
+          "method": "get_random1",
+          "line": 256,
+          "source": "public int get_random1() {\n\t\treturn _random1;\n\t}"
+        },
+        {
+          "method": "set_random1",
+          "line": 265,
+          "source": "public void set_random1(int _random1) {\n\t\tif (_random1 > 1000) {\n\t\t\t_random1 = 1000;\n\t\t}\n\t\tthis._random1 = _random1;\n\t}"
+        },
+        {
+          "method": "get_random2",
+          "line": 277,
+          "source": "public int get_random2() {\n\t\treturn _random2;\n\t}"
+        },
+        {
+          "method": "set_random2",
+          "line": 286,
+          "source": "public void set_random2(int _random2) {\n\t\tif (_random2 > 1000) {\n\t\t\t_random2 = 1000;\n\t\t}\n\t\tthis._random2 = _random2;\n\t}"
+        },
+        {
+          "method": "set_boss_holdout",
+          "line": 293,
+          "source": "public void set_boss_holdout(boolean boss_holdout) {\n\t\tthis._boss_holdout = boss_holdout;\n\t}"
+        },
+        {
+          "method": "get_boss_holdout",
+          "line": 297,
+          "source": "public boolean get_boss_holdout() {\n\t\treturn _boss_holdout;\n\t}"
+        },
+        {
+          "method": "random",
+          "line": 304,
+          "source": "protected int random(final L1ItemInstance weapon) {\n\t\ttry {\n\t\t\tint int1 = _random1;\n\t\t\tif (_random2 != 0) {\n\t\t\t\tif (weapon.getEnchantLevel() > 0) {\n\t\t\t\t\tint1 += weapon.getEnchantLevel() * _random2;\n\t\t\t\t}\n\t\t\t}\n\t\t\treturn int1;\n\n\t\t} catch (final Exception e) {\n\t\t\t_log.error(e.getLocalizedMessage(), e);\n\t\t}\n\t\treturn 0;\n\t}"
+        },
+        {
+          "method": "mode1",
+          "line": 326,
+          "source": "protected boolean mode1(L1PcInstance pc, L1Character target) {\n\t\ttry {\n//\t\t\tif (_c == 1) {// 動畫出現在自己身上\n\t\t\t\tif (target.hasSkillEffect(31)) {\n\t\t\t\t\ttarget.removeSkillEffect(31);\n\t\t\t\t\tint castgfx2 = SkillsTable.get().getTemplate(31).getCastGfx2();\n\t\t\t\t\ttarget.broadcastPacketAll(new S_SkillSound(target.getId(), castgfx2));\n\t\t\t\t\tif (target instanceof L1PcInstance) {\n\t\t\t\t\t\tL1PcInstance tgpc = (L1PcInstance) target;\n\t\t\t\t\t\ttgpc.sendPacketsAll(new S_SkillSound(tgpc.getId(), castgfx2));\n\t\t\t\t\t}\n\t\t\t\t\treturn true;\n\t\t\t\t}\n//\t\t\t}\n\t\t} catch (Exception e) {\n\t\t\t_log.error(e.getLocalizedMessage(), e);\n\t\t}\n\t\treturn false;\n\t}"
+        },
+        {
+          "method": "mode2",
+          "line": 352,
+          "source": "protected boolean mode2(L1PcInstance pc, L1Character target) {\n\t\ttry {\n\t\t//\tif (_c == 2) {// 動畫出現在自己身上\n\t\t\t\tif (target.hasSkillEffect(31)) {\n\t\t\t\t\ttarget.removeSkillEffect(31);\n\t\t\t\t\tint castgfx2 = SkillsTable.get().getTemplate(31).getCastGfx2();\n\t\t\t\t\ttarget.broadcastPacketAll(new S_SkillSound(target.getId(), castgfx2));\n\t\t\t\t\tif (target instanceof L1PcInstance) {\n\t\t\t\t\t\tL1PcInstance tgpc = (L1PcInstance) target;\n\t\t\t\t\t\ttgpc.sendPacketsAll(new S_SkillSound(tgpc.getId(), castgfx2));\n\t\t\t\t\t}\n\t\t\t\t\treturn true;\n\t\t\t\t}\n\t//\t\t}\n\t\t} catch (Exception e) {\n\t\t\t_log.error(e.getLocalizedMessage(), e);\n\t\t}\n\t\treturn false;\n\t}"
+        },
+        {
+          "method": "dmg1",
+          "line": 376,
+          "source": "protected int dmg1() {\n\t\ttry {\n\t\t\tif (_srcdmg != 0) {\n\t\t\t\tfinal int int1 = _random.nextInt(_srcdmg) + 1;\n\t\t\t\treturn int1;\n\t\t\t}\n\n\t\t} catch (final Exception e) {\n\t\t\t_log.error(e.getLocalizedMessage(), e);\n\t\t}\n\t\treturn 0;\n\t}"
+        },
+        {
+          "method": "dmg2",
+          "line": 393,
+          "source": "protected double dmg2(final double srcdmg) {\n\t\ttry {\n\t\t\tif (_addsrcdmg != 0) {\n\t\t\t\tfinal double double1 = (srcdmg * _addsrcdmg) / 100;\n\t\t\t\treturn double1;\n\t\t\t}\n\n\t\t} catch (final Exception e) {\n\t\t\t_log.error(e.getLocalizedMessage(), e);\n\t\t}\n\t\treturn 0;\n\t}"
+        },
+        {
+          "method": "dmg3",
+          "line": 409,
+          "source": "protected int dmg3(final L1PcInstance pc) {\n\t\ttry {\n\t\t\tif (_power > 0) {// （所需角色能力值-5）* leveldmg\n\t\t\t\tint int1 = 0;\n\t\t\t\tint tmp = _power;\n\t\t\t\tint i = 0;\n\t\t\t\tif (tmp >= 32) {// 32:體\n\t\t\t\t\ti += 1;\n\t\t\t\t\ttmp -= 32;\n\t\t\t\t\tint1 += pc.getCon();\n\t\t\t\t}\n\t\t\t\tif (tmp >= 16) {// 16:魅\n\t\t\t\t\ti += 1;\n\t\t\t\t\ttmp -= 16;\n\t\t\t\t\tint1 += pc.getCha();\n\t\t\t\t}\n\t\t\t\tif (tmp >= 8) {// 8:精\n\t\t\t\t\ti += 1;\n\t\t\t\t\ttmp -= 8;\n\t\t\t\t\tint1 += pc.getWis();\n\t\t\t\t}\n\t\t\t\tif (tmp >= 4) {// 4:智\n\t\t\t\t\ti += 1;\n\t\t\t\t\ttmp -= 4;\n\t\t\t\t\tint1 += pc.getInt();\n\t\t\t\t}\n\t\t\t\tif (tmp >= 2) {// 2:敏\n\t\t\t\t\ti += 1;\n\t\t\t\t\ttmp -= 2;\n\t\t\t\t\tint1 += pc.getDex();\n\t\t\t\t}\n\t\t\t\tif (tmp >= 1) {// 1:力\n\t\t\t\t\ti += 1;\n\t\t\t\t\ttmp -= 1;\n\t\t\t\t\tint1 += pc.getStr();\n\t\t\t\t}\n\t\t\t\tint1 = (int1 / i) >> 1;// (>> 1: 除) (<< 1: 乘)\n\t\t\t\treturn int1;\n\t\t\t}\n\n\t\t} catch (final Exception e) {\n\t\t\t_log.error(e.getLocalizedMessage(), e);\n\t\t}\n\t\treturn 0;\n\t}"
+        },
+        {
+          "method": "calc_dmg",
+          "line": 462,
+          "source": "protected double calc_dmg(final L1PcInstance pc, final L1Character target,\n\t\t\tfinal double srcdmg) {\n\t\ttry {\n\t\t\tdouble dmg = srcdmg;\n\t\t\tswitch (_ac_mr) {\n\t\t\tcase 0:// 無視\n\t\t\t\tbreak;\n\n\t\t\tcase 1:// 防禦\n\t\t\t\tdmg -= DmgAcMr.calcDefense(target);// 被攻擊者防禦力傷害減低\n\t\t\t\tbreak;\n\n\t\t\tcase 2:// 抗魔\n\t\t\t\tdmg = DmgAcMr.calcMrDefense(pc, target, srcdmg);// 被攻擊者防禦力傷害減低\n\t\t\t\tbreak;\n\n\t\t\tcase 3:// 防禦 + 抗魔\n\t\t\t\tdmg -= DmgAcMr.calcDefense(target);// 被攻擊者防禦力傷害減低\n\t\t\t\tdmg = DmgAcMr.calcMrDefense(pc, target, srcdmg);// 被攻擊者防禦力傷害減低\n\t\t\t\tbreak;\n\t\t\t}\n\n\t\t\t// 屬性影響\n\t\t\tint resist = 0;\n\t\t\tswitch (_attr) {\n\t\t\tcase L1Skills.ATTR_EARTH:// 地\n\t\t\t\tresist = target.getEarth();\n\t\t\t\tbreak;\n\n\t\t\tcase L1Skills.ATTR_FIRE:// 火\n\t\t\t\tresist = target.getFire();\n\t\t\t\tbreak;\n\n\t\t\tcase L1Skills.ATTR_WATER:// 水\n\t\t\t\tresist = target.getWater();\n\t\t\t\tbreak;\n\n\t\t\tcase L1Skills.ATTR_WIND:// 風\n\t\t\t\tresist = target.getWind();\n\t\t\t\tbreak;\n\t\t\t}\n\t\t\tif (resist != 0) {\n\t\t\t\tint resistFloor = (int) (0.32 * Math.abs(resist));\n\t\t\t\tif (resist >= 0) {\n\t\t\t\t\tresistFloor *= 1;\n\t\t\t\t} else {\n\t\t\t\t\tresistFloor *= -1;\n\t\t\t\t}\n\t\t\t\t// (>> 1: 除) (<< 1: 乘)\n\t\t\t\tfinal double attrDeffence = resistFloor >> 5;// / 32.0\n\t\t\t\tdmg = (1.0 - attrDeffence) * dmg;\n\t\t\t}\n\t\t\treturn dmg * _level;\n\n\t\t} catch (final Exception e) {\n\t\t\t_log.error(e.getLocalizedMessage(), e);\n\t\t}\n\t\treturn 0;\n\t}"
+        },
+        {
+          "method": "show",
+          "line": 525,
+          "source": "protected void show(final L1PcInstance pc, final L1Character target) {\n\t\ttry {\n\t\t\tif (_gfxid1 != 0) {// 第一個出現的動畫 設置為0無作用 這個動畫出現在施展者身上\n\t\t\t\tif (pc.is_send_weapon_gfxid()) {\n\t\t\t\t\tpc.sendPackets(new S_SkillSound(pc.getId(), _gfxid1));// single\n\t\t\t\t}\n\t\t\t\tpc.broadcastPacketForWeapon(new S_SkillSound(pc.getId(), _gfxid1));// other\n\t\t\t}\n\n\t\t\tif (_gfxid2 != 0) {// 第二個出現的動畫 設置為0無作用 這個動畫出現在被攻擊者身上\n\t\t\t\ttarget.broadcastPacketForWeapon(new S_SkillSound(target.getId(),\n\t\t\t\t\t\t_gfxid2));\n\t\t\t\tif (target instanceof L1PcInstance) {\n\t\t\t\t\tL1PcInstance targetPc = (L1PcInstance) target;\n\t\t\t\t\tif (targetPc.is_send_weapon_gfxid()){\n\t\t\t\t\ttargetPc.sendPackets(new S_SkillSound(target.getId(),\n\t\t\t\t\t\t\t_gfxid2));\n\t\t\t\t\t}\n\t\t\t\t}\n\t\t\t}\n\n\t\t\tif (_gfxid3 != 0) {// 第三個出現的動畫 設置為0無作用 這個動畫由施展者往被攻擊者\n\t\t\t\tif (pc.is_send_weapon_gfxid()) {\n\t\t\t\t\tpc.sendPackets(new S_UseAttackSkill(pc, target.getId(),\n\t\t\t\t\t\t\t_gfxid3, target.getX(), target.getY(), 0, 0x0a));// single\n\t\t\t\t}\n\t\t\t\tpc.broadcastPacketForWeapon(new S_UseAttackSkill(pc, target.getId(),\n\t\t\t\t\t\t_gfxid3, target.getX(), target.getY(), 0, 0x0a));// other\n\t\t\t}\n\n\t\t\tif (_gfxid4 != 0) {\n\t\t\t\tif (_gfxid4_count > 0) {\n\t\t\t\t\tfinal WanponSkill wanponSkill = new WanponSkill(pc);\n\t\t\t\t\twanponSkill.start_skill();\n\t\t\t\t}\n\t\t\t}\n\n\t\t} catch (final Exception e) {\n\t\t\t_log.error(e.getLocalizedMessage(), e);\n\t\t}\n\t}"
+        },
+        {
+          "method": "start_skill",
+          "line": 575,
+          "source": "public void start_skill() {\n\t\t\tPcOtherThreadPool.get().execute(this);\n\t\t}"
+        },
+        {
+          "method": "run",
+          "line": 580,
+          "source": "public void run() {\n\t\t\ttry {\n\t\t\t\tfinal int x = _pc.getX();\n\t\t\t\tfinal int y = _pc.getY();\n\t\t\t\tfinal int mapId = _pc.getMapId();\n\t\t\t\tfor (int i = 0; i < _gfxid4_count; i++) {\n\t\t\t\t\tThread.sleep(30);\n\t\t\t\t\tfinal int i1 = _random.nextInt(4);\n\t\t\t\t\tfinal int i2 = _random.nextInt(4);\n\n\t\t\t\t\tswitch (_random.nextInt(4)) {\n\t\t\t\t\tcase 0:\n\t\t\t\t\t\tif (_pc.is_send_weapon_gfxid()) {\n\t\t\t\t\t\t\t_pc.sendPackets(new S_EffectLocation(new L1Location(\n\t\t\t\t\t\t\t\t\tx + i1, y - i2, mapId), _gfxid4));// single\n\t\t\t\t\t\t}\n\t\t\t\t\t\t_pc.broadcastPacketForWeapon(new S_EffectLocation(new L1Location(\n\t\t\t\t\t\t\t\tx + i1, y - i2, mapId), _gfxid4));// other\n\t\t\t\t\t\tbreak;\n\n\t\t\t\t\tcase 1:\n\t\t\t\t\t\tif (_pc.is_send_weapon_gfxid()) {\n\t\t\t\t\t\t\t_pc.sendPackets(new S_EffectLocation(new L1Location(\n\t\t\t\t\t\t\t\t\tx - i1, y + i2, mapId), _gfxid4));// single\n\t\t\t\t\t\t}\n\t\t\t\t\t\t_pc.broadcastPacketForWeapon(new S_EffectLocation(new L1Location(\n\t\t\t\t\t\t\t\tx - i1, y + i2, mapId), _gfxid4));// other\n\t\t\t\t\t\tbreak;\n\n\t\t\t\t\tcase 2:\n\t\t\t\t\t\tif (_pc.is_send_weapon_gfxid()) {\n\t\t\t\t\t\t\t_pc.sendPackets(new S_EffectLocation(new L1Location(\n\t\t\t\t\t\t\t\t\tx + i1, y + i2, mapId), _gfxid4));// single\n\t\t\t\t\t\t}\n\t\t\t\t\t\t_pc.broadcastPacketForWeapon(new S_EffectLocation(new L1Location(\n\t\t\t\t\t\t\t\tx + i1, y + i2, mapId), _gfxid4));// other\n\t\t\t\t\t\tbreak;\n\n\t\t\t\t\tcase 3:\n\t\t\t\t\t\tif (_pc.is_send_weapon_gfxid()) {\n\t\t\t\t\t\t\t_pc.sendPackets(new S_EffectLocation(new L1Location(\n\t\t\t\t\t\t\t\t\tx - i1, y - i2, mapId), _gfxid4));// single\n\t\t\t\t\t\t}\n\t\t\t\t\t\t_pc.broadcastPacketForWeapon(new S_EffectLocation(new L1Location(\n\t\t\t\t\t\t\t\tx - i1, y - i2, mapId), _gfxid4));// other\n\t\t\t\t\t\tbreak;\n\t\t\t\t\t}\n\t\t\t\t}\n\n\t\t\t} catch (final Exception e) {\n\t\t\t\t_log.error(e.getLocalizedMessage(), e);\n\t\t\t}\n\t\t}"
+        },
+        {
+          "method": "random",
+          "line": 641,
+          "source": "protected int random(L1ItemInstance weapon, L1PcInstance pc) {\n\t\ttry {\n\t\t\tif (_random2 != 0 && weapon.getEnchantLevel() > 0) {\n\t\t\t\treturn _random1 + weapon.getEnchantLevel() * _random2;\n\t\t\t} else {\n\t\t\t\treturn _random1;\n\t\t\t}\n\t\t} catch (Exception e) {\n\t\t\t_log.error(e.getLocalizedMessage(), e);\n\t\t}\n\t\treturn 0;\n\t}"
+        },
+        {
+          "method": "calc_dmg",
+          "line": 663,
+          "source": "protected double calc_dmg\n\t(L1PcInstance pc, L1Character target, double srcdmg, L1ItemInstance weapon) {\n\t\t\n\t\tif (target.hasSkillEffect(IMMUNE_TO_HARM)) {// 對手身上有聖界效果\n\t\t\tsrcdmg /= 2.0D;\n\t\t}\n\n\t\ttry {\n\t\t\tswitch (_ac_mr) {\n\t\t\tcase 0:\n\t\t\t\tbreak;\n\t\t\tcase 1:\n\t\t\t\tsrcdmg -= DmgAcMr.calcDefense(target);\n\t\t\t\tbreak;\n\t\t\tcase 2:\n\t\t\t\tsrcdmg = DmgAcMr.calcMrDefense(pc, target, srcdmg, weapon);\n\t\t\t\tbreak;\n\t\t\tcase 3:\n\t\t\t\tsrcdmg -= DmgAcMr.calcDefense(target);\n\t\t\t\tsrcdmg = DmgAcMr.calcMrDefense(pc, target, srcdmg, weapon);\n\t\t\t}\n\n\t\t\tint resist = 0;\n\t\t\tswitch (_attr) {\n\t\t\tcase 1:\n\t\t\t\tresist = target.getEarth();\n\t\t\t\tbreak;\n\t\t\tcase 2:\n\t\t\t\tresist = target.getFire();\n\t\t\t\tbreak;\n\t\t\tcase 4:\n\t\t\t\tresist = target.getWater();\n\t\t\t\tbreak;\n\t\t\tcase 8:\n\t\t\t\tresist = target.getWind();\n\t\t\t\tbreak;\n\t\t\t}\n\n\t\t\tint resistFloor = (int) (0.16 * Math.abs(resist));\n\n\t\t\tif (resist >= 0) {\n\t\t\t\tresistFloor *= 1;\n\t\t\t} else {\n\t\t\t\tresistFloor *= -1;\n\t\t\t}\n\n\t\t\tdouble attrDeffence = resistFloor / 32.0;\n\n\t\t\tsrcdmg = (1.0D - attrDeffence) * srcdmg;\n\n\t\t\treturn srcdmg * _level;// 最終傷害係數計算\n\n\t\t} catch (Exception e) {\n\t\t\t_log.error(e.getLocalizedMessage(), e);\n\t\t}\n\n\t\treturn 0.0D;\n\t}"
+        }
+      ],
+      "path": "equipment381-prepared/source/java/src胖哥/com/lineage/server/model/weaponskill/L1WeaponSkillType.java",
+      "sha256": "c7ae0a4f50375c97a111a8183a72dde3946d5c193432f462b87fe76a6a816a3e",
+      "lines": 721,
+      "source": "package com.lineage.server.model.weaponskill;\n\nimport static com.lineage.server.model.skill.L1SkillId.IMMUNE_TO_HARM;\n\nimport java.util.Random;\n\nimport org.apache.commons.logging.Log;\nimport org.apache.commons.logging.LogFactory;\n\nimport com.lineage.server.datatables.SkillsTable;\nimport com.lineage.server.model.L1Character;\nimport com.lineage.server.model.L1Location;\nimport com.lineage.server.model.Instance.L1ItemInstance;\nimport com.lineage.server.model.Instance.L1PcInstance;\nimport com.lineage.server.serverpackets.S_EffectLocation;\nimport com.lineage.server.serverpackets.S_SkillSound;\nimport com.lineage.server.serverpackets.S_UseAttackSkill;\nimport com.lineage.server.templates.L1Skills;\nimport com.lineage.server.thread.PcOtherThreadPool;\n\n/**\n * 武器技能接口 _level 內容: 發動等級<BR>\n * <BR>\n * _type1 數值1<BR>\n * <BR>\n * _type2 數值2<BR>\n * <BR>\n * _type3 數值3<BR>\n * <BR>\n * _attr 內容: 具備攻擊屬性 0:無属性 1:地 2:火 4:水 8:風<BR>\n * <BR>\n * _ac_mr 內容: 受到抗魔或是防禦力影響 0:無視 1:防禦 2:抗魔<BR>\n * <BR>\n * _gfxid1 內容: 第一個出現的動畫 設置為0無作用 這個動畫出現在施展者身上<BR>\n * <BR>\n * _gfxid2 內容: 第二個出現的動畫 設置為0無作用 這個動畫出現在被攻擊者身上<BR>\n * <BR>\n * _gfxid3 內容: 第三個出現的動畫 設置為0無作用 這個動畫由施展者往被攻擊者<BR>\n * <BR>\n * _gfxid4 內容: 第四個出現的動畫 設置為0無作用 這個動畫由施展者周邊隨機座標出現指定次數<BR>\n * <BR>\n * _gfxid4_count GFXID4 指定次數 設置0 GFXID4無作用<BR>\n * <BR>\n * _power 內容: 受影響的人物屬性 1:力 2:敏 4:智 8:精 16:魅 32:體(傷害會增加 指定屬性總合平均後/2的數字)<BR>\n * 範例:power設置3 受到力敏影響 假設力為20 敏為18 得到的數字為 ((力20 + 敏18) / 2種屬性) /2<BR>\n * <BR>\n * _srcdmg 內容: 基礎攻擊質(隨機) 設置50 則隨機質為 1~50之間<BR>\n * <BR>\n * _addsrcdmg 內容: 是否加入武器產生的物理傷害質(1~100) 0:無作用 設置為10 加入武器產生的物理傷害質 10/100<BR>\n * <BR>\n * _random1 內容: 發動機率(1/1000)<BR>\n * <BR>\n * _random2 內容: 受到強化質的機率影響(1/1000)<BR>\n * <BR>\n * _boss_holdout 內容: 設置為1該技能對spawnlist_boss召喚表內怪物不起作用<BR>\n * \n * @author daien\n */\npublic abstract class L1WeaponSkillType {\n\n\tprivate static final Log _log = LogFactory.getLog(L1WeaponSkillType.class);\n\n\tprivate static final Random _random = new Random();\n\n\tprivate double _level = 1.0D;// 內容: 發動等級(最終傷害值會在乘上這倍率)\n\n\tprotected int _type1;// 數值1\n\n\tprotected int _type2;// 數值2\n\n\tprotected int _type3;// 數值3\n\n\tprivate int _attr;// 內容: 具備攻擊屬性 0:無属性 1:地 2:火 4:水 8:風\n\n\tprotected int _ac_mr;// 內容: 受到抗魔或是防禦力影響 0:無視 1:防禦 2:抗魔\n\n\tprivate int _gfxid1;// 內容: 第一個出現的動畫 設置為0無作用 這個動畫出現在施展者身上\n\n\tprivate int _gfxid2;// 內容: 第二個出現的動畫 設置為0無作用 這個動畫出現在被攻擊者身上\n\n\tprivate int _gfxid3;// 內容: 第三個出現的動畫 設置為0無作用 這個動畫由施展者往被攻擊者\n\n\tprivate int _gfxid4;// 內容: 第四個出現的動畫 設置為0無作用 這個動畫由施展者周邊隨機座標出現指定次數\n\n\tprivate int _gfxid4_count;// 內容: GFXID4 指定次數 設置0 GFXID4無作用\n\n\tprivate int _power;// 內容: 受影響的人物屬性 1:力 2:敏 4:智 8:精 16:魅 32:體\n\n\tprivate int _srcdmg;// 內容: 基礎攻擊質(隨機) 設置50 則隨機質為 1~50之間\n\n\tprivate int _addsrcdmg;// 內容: 是否加入武器產生的物理傷害質(1~100) 0:無作用 設置為10 加入武器產生的物理傷害質\n\t\t\t\t\t\t\t// 10/100\n\n\tprotected int _random1;// 內容: 發動機率(1/1000)\n\n\tprotected int _random2;// 內容: 受到強化質的機率影響(1/1000) 假設武器強化+2 增加設定質 * 2\n\n\tprotected boolean _boss_holdout;// 內容: 設置為1該技能對spawnlist_boss召喚表內怪物不起作用\n\n\tpublic double start_weapon_skill(final L1PcInstance pc,\n\t\t\tfinal L1Character target, final L1ItemInstance weapon,\n\t\t\tfinal double srcdmg) {\n\t\treturn 0;\n\t}\n\n\tpublic double get_level() {\n\t\treturn _level;\n\t}\n\n\tpublic void set_level(int level) {\n\t\tthis._level = (level / 100D);\n\t}\n\n\tpublic int get_type1() {\n\t\treturn _type1;\n\t}\n\n\tpublic void set_type1(int _type1) {\n\t\tthis._type1 = _type1;\n\t}\n\n\tpublic int get_type2() {\n\t\treturn _type2;\n\t}\n\n\tpublic void set_type2(int _type2) {\n\t\tthis._type2 = _type2;\n\t}\n\n\tpublic int get_type3() {\n\t\treturn _type3;\n\t}\n\n\tpublic void set_type3(int _type3) {\n\t\tthis._type3 = _type3;\n\t}\n\n\tpublic int get_attr() {\n\t\treturn _attr;\n\t}\n\n\tpublic void set_attr(int _attr) {\n\t\tthis._attr = _attr;\n\t}\n\n\tpublic int get_ac_mr() {\n\t\treturn _ac_mr;\n\t}\n\n\tpublic void set_ac_mr(int _ac_mr) {\n\t\tthis._ac_mr = _ac_mr;\n\t}\n\n\tpublic int get_gfxid1() {\n\t\treturn _gfxid1;\n\t}\n\n\tpublic void set_gfxid1(int _gfxid1) {\n\t\tthis._gfxid1 = _gfxid1;\n\t}\n\n\tpublic int get_gfxid2() {\n\t\treturn _gfxid2;\n\t}\n\n\tpublic void set_gfxid2(int _gfxid2) {\n\t\tthis._gfxid2 = _gfxid2;\n\t}\n\n\tpublic int get_gfxid3() {\n\t\treturn _gfxid3;\n\t}\n\n\tpublic void set_gfxid3(int _gfxid3) {\n\t\tthis._gfxid3 = _gfxid3;\n\t}\n\n\tpublic int get_gfxid4() {\n\t\treturn _gfxid4;\n\t}\n\n\tpublic void set_gfxid4(int _gfxid4) {\n\t\tthis._gfxid4 = _gfxid4;\n\t}\n\n\tpublic int get_gfxid4_count() {\n\t\treturn _gfxid4_count;\n\t}\n\n\tpublic void set_gfxid4_count(int _gfxid4_count) {\n\t\tthis._gfxid4_count = _gfxid4_count;\n\t}\n\n\t/**\n\t * 內容: 受影響的人物屬性 1:力 2:敏 4:智 8:精 16:魅 32:體\n\t * \n\t * @return\n\t */\n\tpublic int get_power() {\n\t\treturn _power;\n\t}\n\n\t/**\n\t * 內容: 受影響的人物屬性 1:力 2:敏 4:智 8:精 16:魅 32:體\n\t * \n\t * @param _power\n\t */\n\tpublic void set_power(int _power) {\n\t\tthis._power = _power;\n\t}\n\n\t/**\n\t * 內容: 基礎攻擊質(隨機) 設置50 則隨機質為 1~50之間\n\t * \n\t * @return\n\t */\n\tpublic int get_srcdmg() {\n\t\treturn _srcdmg;\n\t}\n\n\t/**\n\t * 內容: 基礎攻擊質(隨機) 設置50 則隨機質為 1~50之間\n\t * \n\t * @param _srcdmg\n\t */\n\tpublic void set_srcdmg(int _srcdmg) {\n\t\tthis._srcdmg = _srcdmg;\n\t}\n\n\t/**\n\t * 內容: 是否加入武器產生的物理傷害質(1~100) 0:無作用 設置為10 加入武器產生的物理傷害質 10/100\n\t * \n\t * @return\n\t */\n\tpublic int get_addsrcdmg() {\n\t\treturn _addsrcdmg;\n\t}\n\n\t/**\n\t * 內容: 是否加入武器產生的物理傷害質(1~100) 0:無作用 設置為10 加入武器產生的物理傷害質 10/100\n\t * \n\t * @param _addsrcdmg\n\t */\n\tpublic void set_addsrcdmg(int _addsrcdmg) {\n\t\tif (_addsrcdmg > 100) {\n\t\t\t_addsrcdmg = 100;\n\t\t}\n\t\tthis._addsrcdmg = _addsrcdmg;\n\t}\n\n\t/**\n\t * 內容: 發動機率(1/1000)\n\t * \n\t * @return\n\t */\n\tpublic int get_random1() {\n\t\treturn _random1;\n\t}\n\n\t/**\n\t * 內容: 發動機率(1/1000)\n\t * \n\t * @param _random1\n\t */\n\tpublic void set_random1(int _random1) {\n\t\tif (_random1 > 1000) {\n\t\t\t_random1 = 1000;\n\t\t}\n\t\tthis._random1 = _random1;\n\t}\n\n\t/**\n\t * 內容: 受到強化質的機率影響(1/1000)\n\t * \n\t * @return\n\t */\n\tpublic int get_random2() {\n\t\treturn _random2;\n\t}\n\n\t/**\n\t * 內容: 受到強化質的機率影響(1/1000)\n\t * \n\t * @param _random2\n\t */\n\tpublic void set_random2(int _random2) {\n\t\tif (_random2 > 1000) {\n\t\t\t_random2 = 1000;\n\t\t}\n\t\tthis._random2 = _random2;\n\t}\n\n\tpublic void set_boss_holdout(boolean boss_holdout) {\n\t\tthis._boss_holdout = boss_holdout;\n\t}\n\n\tpublic boolean get_boss_holdout() {\n\t\treturn _boss_holdout;\n\t}\n\n\t/**\n\t * 傳回發動機率\n\t */\n\tprotected int random(final L1ItemInstance weapon) {\n\t\ttry {\n\t\t\tint int1 = _random1;\n\t\t\tif (_random2 != 0) {\n\t\t\t\tif (weapon.getEnchantLevel() > 0) {\n\t\t\t\t\tint1 += weapon.getEnchantLevel() * _random2;\n\t\t\t\t}\n\t\t\t}\n\t\t\treturn int1;\n\n\t\t} catch (final Exception e) {\n\t\t\t_log.error(e.getLocalizedMessage(), e);\n\t\t}\n\t\treturn 0;\n\t}\n\t\n\t/**\n\t * c = 1\n\t * 發動才會消除魔法屏障\n\t * @param pc\n\t * @param target\n\t */\n\tprotected boolean mode1(L1PcInstance pc, L1Character target) {\n\t\ttry {\n//\t\t\tif (_c == 1) {// 動畫出現在自己身上\n\t\t\t\tif (target.hasSkillEffect(31)) {\n\t\t\t\t\ttarget.removeSkillEffect(31);\n\t\t\t\t\tint castgfx2 = SkillsTable.get().getTemplate(31).getCastGfx2();\n\t\t\t\t\ttarget.broadcastPacketAll(new S_SkillSound(target.getId(), castgfx2));\n\t\t\t\t\tif (target instanceof L1PcInstance) {\n\t\t\t\t\t\tL1PcInstance tgpc = (L1PcInstance) target;\n\t\t\t\t\t\ttgpc.sendPacketsAll(new S_SkillSound(tgpc.getId(), castgfx2));\n\t\t\t\t\t}\n\t\t\t\t\treturn true;\n\t\t\t\t}\n//\t\t\t}\n\t\t} catch (Exception e) {\n\t\t\t_log.error(e.getLocalizedMessage(), e);\n\t\t}\n\t\treturn false;\n\t}\n\t\n\t/**\n\t * c = 2\n\t * 一攻擊就消除魔法屏障\n\t * @param pc\n\t * @param target\n\t */\n\tprotected boolean mode2(L1PcInstance pc, L1Character target) {\n\t\ttry {\n\t\t//\tif (_c == 2) {// 動畫出現在自己身上\n\t\t\t\tif (target.hasSkillEffect(31)) {\n\t\t\t\t\ttarget.removeSkillEffect(31);\n\t\t\t\t\tint castgfx2 = SkillsTable.get().getTemplate(31).getCastGfx2();\n\t\t\t\t\ttarget.broadcastPacketAll(new S_SkillSound(target.getId(), castgfx2));\n\t\t\t\t\tif (target instanceof L1PcInstance) {\n\t\t\t\t\t\tL1PcInstance tgpc = (L1PcInstance) target;\n\t\t\t\t\t\ttgpc.sendPacketsAll(new S_SkillSound(tgpc.getId(), castgfx2));\n\t\t\t\t\t}\n\t\t\t\t\treturn true;\n\t\t\t\t}\n\t//\t\t}\n\t\t} catch (Exception e) {\n\t\t\t_log.error(e.getLocalizedMessage(), e);\n\t\t}\n\t\treturn false;\n\t}\n\n\t/**\n\t * 傷害初始計算<BR>\n\t * 基礎攻擊質(隨機) 設置50 則隨機質為 1~50之間\n\t */\n\tprotected int dmg1() {\n\t\ttry {\n\t\t\tif (_srcdmg != 0) {\n\t\t\t\tfinal int int1 = _random.nextInt(_srcdmg) + 1;\n\t\t\t\treturn int1;\n\t\t\t}\n\n\t\t} catch (final Exception e) {\n\t\t\t_log.error(e.getLocalizedMessage(), e);\n\t\t}\n\t\treturn 0;\n\t}\n\n\t/**\n\t * 傷害結尾計算<BR>\n\t * 是否加入武器產生的物理傷害質(1~100%)\n\t */\n\tprotected double dmg2(final double srcdmg) {\n\t\ttry {\n\t\t\tif (_addsrcdmg != 0) {\n\t\t\t\tfinal double double1 = (srcdmg * _addsrcdmg) / 100;\n\t\t\t\treturn double1;\n\t\t\t}\n\n\t\t} catch (final Exception e) {\n\t\t\t_log.error(e.getLocalizedMessage(), e);\n\t\t}\n\t\treturn 0;\n\t}\n\n\t/**\n\t * 傷害受影響的人物屬性 1:力 2:敏 4:智 8:精 16:魅 32:體\n\t */\n\tprotected int dmg3(final L1PcInstance pc) {\n\t\ttry {\n\t\t\tif (_power > 0) {// （所需角色能力值-5）* leveldmg\n\t\t\t\tint int1 = 0;\n\t\t\t\tint tmp = _power;\n\t\t\t\tint i = 0;\n\t\t\t\tif (tmp >= 32) {// 32:體\n\t\t\t\t\ti += 1;\n\t\t\t\t\ttmp -= 32;\n\t\t\t\t\tint1 += pc.getCon();\n\t\t\t\t}\n\t\t\t\tif (tmp >= 16) {// 16:魅\n\t\t\t\t\ti += 1;\n\t\t\t\t\ttmp -= 16;\n\t\t\t\t\tint1 += pc.getCha();\n\t\t\t\t}\n\t\t\t\tif (tmp >= 8) {// 8:精\n\t\t\t\t\ti += 1;\n\t\t\t\t\ttmp -= 8;\n\t\t\t\t\tint1 += pc.getWis();\n\t\t\t\t}\n\t\t\t\tif (tmp >= 4) {// 4:智\n\t\t\t\t\ti += 1;\n\t\t\t\t\ttmp -= 4;\n\t\t\t\t\tint1 += pc.getInt();\n\t\t\t\t}\n\t\t\t\tif (tmp >= 2) {// 2:敏\n\t\t\t\t\ti += 1;\n\t\t\t\t\ttmp -= 2;\n\t\t\t\t\tint1 += pc.getDex();\n\t\t\t\t}\n\t\t\t\tif (tmp >= 1) {// 1:力\n\t\t\t\t\ti += 1;\n\t\t\t\t\ttmp -= 1;\n\t\t\t\t\tint1 += pc.getStr();\n\t\t\t\t}\n\t\t\t\tint1 = (int1 / i) >> 1;// (>> 1: 除) (<< 1: 乘)\n\t\t\t\treturn int1;\n\t\t\t}\n\n\t\t} catch (final Exception e) {\n\t\t\t_log.error(e.getLocalizedMessage(), e);\n\t\t}\n\t\treturn 0;\n\t}\n\n\t/**\n\t * 傷害最終計算\n\t * \n\t * @param target\n\t * @param srcdmg\n\t * @return\n\t */\n\tprotected double calc_dmg(final L1PcInstance pc, final L1Character target,\n\t\t\tfinal double srcdmg) {\n\t\ttry {\n\t\t\tdouble dmg = srcdmg;\n\t\t\tswitch (_ac_mr) {\n\t\t\tcase 0:// 無視\n\t\t\t\tbreak;\n\n\t\t\tcase 1:// 防禦\n\t\t\t\tdmg -= DmgAcMr.calcDefense(target);// 被攻擊者防禦力傷害減低\n\t\t\t\tbreak;\n\n\t\t\tcase 2:// 抗魔\n\t\t\t\tdmg = DmgAcMr.calcMrDefense(pc, target, srcdmg);// 被攻擊者防禦力傷害減低\n\t\t\t\tbreak;\n\n\t\t\tcase 3:// 防禦 + 抗魔\n\t\t\t\tdmg -= DmgAcMr.calcDefense(target);// 被攻擊者防禦力傷害減低\n\t\t\t\tdmg = DmgAcMr.calcMrDefense(pc, target, srcdmg);// 被攻擊者防禦力傷害減低\n\t\t\t\tbreak;\n\t\t\t}\n\n\t\t\t// 屬性影響\n\t\t\tint resist = 0;\n\t\t\tswitch (_attr) {\n\t\t\tcase L1Skills.ATTR_EARTH:// 地\n\t\t\t\tresist = target.getEarth();\n\t\t\t\tbreak;\n\n\t\t\tcase L1Skills.ATTR_FIRE:// 火\n\t\t\t\tresist = target.getFire();\n\t\t\t\tbreak;\n\n\t\t\tcase L1Skills.ATTR_WATER:// 水\n\t\t\t\tresist = target.getWater();\n\t\t\t\tbreak;\n\n\t\t\tcase L1Skills.ATTR_WIND:// 風\n\t\t\t\tresist = target.getWind();\n\t\t\t\tbreak;\n\t\t\t}\n\t\t\tif (resist != 0) {\n\t\t\t\tint resistFloor = (int) (0.32 * Math.abs(resist));\n\t\t\t\tif (resist >= 0) {\n\t\t\t\t\tresistFloor *= 1;\n\t\t\t\t} else {\n\t\t\t\t\tresistFloor *= -1;\n\t\t\t\t}\n\t\t\t\t// (>> 1: 除) (<< 1: 乘)\n\t\t\t\tfinal double attrDeffence = resistFloor >> 5;// / 32.0\n\t\t\t\tdmg = (1.0 - attrDeffence) * dmg;\n\t\t\t}\n\t\t\treturn dmg * _level;\n\n\t\t} catch (final Exception e) {\n\t\t\t_log.error(e.getLocalizedMessage(), e);\n\t\t}\n\t\treturn 0;\n\t}\n\n\t/**\n\t * 動畫發送\n\t */\n\tprotected void show(final L1PcInstance pc, final L1Character target) {\n\t\ttry {\n\t\t\tif (_gfxid1 != 0) {// 第一個出現的動畫 設置為0無作用 這個動畫出現在施展者身上\n\t\t\t\tif (pc.is_send_weapon_gfxid()) {\n\t\t\t\t\tpc.sendPackets(new S_SkillSound(pc.getId(), _gfxid1));// single\n\t\t\t\t}\n\t\t\t\tpc.broadcastPacketForWeapon(new S_SkillSound(pc.getId(), _gfxid1));// other\n\t\t\t}\n\n\t\t\tif (_gfxid2 != 0) {// 第二個出現的動畫 設置為0無作用 這個動畫出現在被攻擊者身上\n\t\t\t\ttarget.broadcastPacketForWeapon(new S_SkillSound(target.getId(),\n\t\t\t\t\t\t_gfxid2));\n\t\t\t\tif (target instanceof L1PcInstance) {\n\t\t\t\t\tL1PcInstance targetPc = (L1PcInstance) target;\n\t\t\t\t\tif (targetPc.is_send_weapon_gfxid()){\n\t\t\t\t\ttargetPc.sendPackets(new S_SkillSound(target.getId(),\n\t\t\t\t\t\t\t_gfxid2));\n\t\t\t\t\t}\n\t\t\t\t}\n\t\t\t}\n\n\t\t\tif (_gfxid3 != 0) {// 第三個出現的動畫 設置為0無作用 這個動畫由施展者往被攻擊者\n\t\t\t\tif (pc.is_send_weapon_gfxid()) {\n\t\t\t\t\tpc.sendPackets(new S_UseAttackSkill(pc, target.getId(),\n\t\t\t\t\t\t\t_gfxid3, target.getX(), target.getY(), 0, 0x0a));// single\n\t\t\t\t}\n\t\t\t\tpc.broadcastPacketForWeapon(new S_UseAttackSkill(pc, target.getId(),\n\t\t\t\t\t\t_gfxid3, target.getX(), target.getY(), 0, 0x0a));// other\n\t\t\t}\n\n\t\t\tif (_gfxid4 != 0) {\n\t\t\t\tif (_gfxid4_count > 0) {\n\t\t\t\t\tfinal WanponSkill wanponSkill = new WanponSkill(pc);\n\t\t\t\t\twanponSkill.start_skill();\n\t\t\t\t}\n\t\t\t}\n\n\t\t} catch (final Exception e) {\n\t\t\t_log.error(e.getLocalizedMessage(), e);\n\t\t}\n\t}\n\n\tprivate class WanponSkill implements Runnable {\n\n\t\tprivate L1PcInstance _pc;\n\n\t\tprivate WanponSkill(final L1PcInstance pc) {\n\t\t\t_pc = pc;\n\t\t}\n\n\t\tpublic void start_skill() {\n\t\t\tPcOtherThreadPool.get().execute(this);\n\t\t}\n\n\t\t@Override\n\t\tpublic void run() {\n\t\t\ttry {\n\t\t\t\tfinal int x = _pc.getX();\n\t\t\t\tfinal int y = _pc.getY();\n\t\t\t\tfinal int mapId = _pc.getMapId();\n\t\t\t\tfor (int i = 0; i < _gfxid4_count; i++) {\n\t\t\t\t\tThread.sleep(30);\n\t\t\t\t\tfinal int i1 = _random.nextInt(4);\n\t\t\t\t\tfinal int i2 = _random.nextInt(4);\n\n\t\t\t\t\tswitch (_random.nextInt(4)) {\n\t\t\t\t\tcase 0:\n\t\t\t\t\t\tif (_pc.is_send_weapon_gfxid()) {\n\t\t\t\t\t\t\t_pc.sendPackets(new S_EffectLocation(new L1Location(\n\t\t\t\t\t\t\t\t\tx + i1, y - i2, mapId), _gfxid4));// single\n\t\t\t\t\t\t}\n\t\t\t\t\t\t_pc.broadcastPacketForWeapon(new S_EffectLocation(new L1Location(\n\t\t\t\t\t\t\t\tx + i1, y - i2, mapId), _gfxid4));// other\n\t\t\t\t\t\tbreak;\n\n\t\t\t\t\tcase 1:\n\t\t\t\t\t\tif (_pc.is_send_weapon_gfxid()) {\n\t\t\t\t\t\t\t_pc.sendPackets(new S_EffectLocation(new L1Location(\n\t\t\t\t\t\t\t\t\tx - i1, y + i2, mapId), _gfxid4));// single\n\t\t\t\t\t\t}\n\t\t\t\t\t\t_pc.broadcastPacketForWeapon(new S_EffectLocation(new L1Location(\n\t\t\t\t\t\t\t\tx - i1, y + i2, mapId), _gfxid4));// other\n\t\t\t\t\t\tbreak;\n\n\t\t\t\t\tcase 2:\n\t\t\t\t\t\tif (_pc.is_send_weapon_gfxid()) {\n\t\t\t\t\t\t\t_pc.sendPackets(new S_EffectLocation(new L1Location(\n\t\t\t\t\t\t\t\t\tx + i1, y + i2, mapId), _gfxid4));// single\n\t\t\t\t\t\t}\n\t\t\t\t\t\t_pc.broadcastPacketForWeapon(new S_EffectLocation(new L1Location(\n\t\t\t\t\t\t\t\tx + i1, y + i2, mapId), _gfxid4));// other\n\t\t\t\t\t\tbreak;\n\n\t\t\t\t\tcase 3:\n\t\t\t\t\t\tif (_pc.is_send_weapon_gfxid()) {\n\t\t\t\t\t\t\t_pc.sendPackets(new S_EffectLocation(new L1Location(\n\t\t\t\t\t\t\t\t\tx - i1, y - i2, mapId), _gfxid4));// single\n\t\t\t\t\t\t}\n\t\t\t\t\t\t_pc.broadcastPacketForWeapon(new S_EffectLocation(new L1Location(\n\t\t\t\t\t\t\t\tx - i1, y - i2, mapId), _gfxid4));// other\n\t\t\t\t\t\tbreak;\n\t\t\t\t\t}\n\t\t\t\t}\n\n\t\t\t} catch (final Exception e) {\n\t\t\t\t_log.error(e.getLocalizedMessage(), e);\n\t\t\t}\n\t\t}\n\t}\n\t\n\t/**\n\t * 計算發動機率\n\t * \n\t * @param weapon\n\t * @return\n\t */\n\tprotected int random(L1ItemInstance weapon, L1PcInstance pc) {\n\t\ttry {\n\t\t\tif (_random2 != 0 && weapon.getEnchantLevel() > 0) {\n\t\t\t\treturn _random1 + weapon.getEnchantLevel() * _random2;\n\t\t\t} else {\n\t\t\t\treturn _random1;\n\t\t\t}\n\t\t} catch (Exception e) {\n\t\t\t_log.error(e.getLocalizedMessage(), e);\n\t\t}\n\t\treturn 0;\n\t}\n\t\n\t/**\n\t * 最終傷害計算(包含聖界減傷)\n\t * \n\t * @param pc\n\t * @param target\n\t * @param srcdmg\n\t * @param weapon\n\t * @return\n\t */\n\tprotected double calc_dmg\n\t(L1PcInstance pc, L1Character target, double srcdmg, L1ItemInstance weapon) {\n\t\t\n\t\tif (target.hasSkillEffect(IMMUNE_TO_HARM)) {// 對手身上有聖界效果\n\t\t\tsrcdmg /= 2.0D;\n\t\t}\n\n\t\ttry {\n\t\t\tswitch (_ac_mr) {\n\t\t\tcase 0:\n\t\t\t\tbreak;\n\t\t\tcase 1:\n\t\t\t\tsrcdmg -= DmgAcMr.calcDefense(target);\n\t\t\t\tbreak;\n\t\t\tcase 2:\n\t\t\t\tsrcdmg = DmgAcMr.calcMrDefense(pc, target, srcdmg, weapon);\n\t\t\t\tbreak;\n\t\t\tcase 3:\n\t\t\t\tsrcdmg -= DmgAcMr.calcDefense(target);\n\t\t\t\tsrcdmg = DmgAcMr.calcMrDefense(pc, target, srcdmg, weapon);\n\t\t\t}\n\n\t\t\tint resist = 0;\n\t\t\tswitch (_attr) {\n\t\t\tcase 1:\n\t\t\t\tresist = target.getEarth();\n\t\t\t\tbreak;\n\t\t\tcase 2:\n\t\t\t\tresist = target.getFire();\n\t\t\t\tbreak;\n\t\t\tcase 4:\n\t\t\t\tresist = target.getWater();\n\t\t\t\tbreak;\n\t\t\tcase 8:\n\t\t\t\tresist = target.getWind();\n\t\t\t\tbreak;\n\t\t\t}\n\n\t\t\tint resistFloor = (int) (0.16 * Math.abs(resist));\n\n\t\t\tif (resist >= 0) {\n\t\t\t\tresistFloor *= 1;\n\t\t\t} else {\n\t\t\t\tresistFloor *= -1;\n\t\t\t}\n\n\t\t\tdouble attrDeffence = resistFloor / 32.0;\n\n\t\t\tsrcdmg = (1.0D - attrDeffence) * srcdmg;\n\n\t\t\treturn srcdmg * _level;// 最終傷害係數計算\n\n\t\t} catch (Exception e) {\n\t\t\t_log.error(e.getLocalizedMessage(), e);\n\t\t}\n\n\t\treturn 0.0D;\n\t}\n}"
+    },
+    "DmgAcMr": {
+      "methods": [
+        {
+          "method": "calcMrDefense",
+          "line": 35,
+          "source": "public static double calcMrDefense(L1PcInstance pc, L1Character target, double dmg, L1ItemInstance weapon) {\n\t\tif (weapon.getItem().getType1() == 20) {// 弓類型武器\n\t\t\treturn dmg;// 直接返回不計算魔防減傷\n\t\t}\n\n\t\tint TotalMagicHit = 0;\n\t\t\n\t\tif (pc.getBaseInt() >= 25 && pc.getBaseInt() <= 44) {// 純智力25~44\n\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t// 每10級增加1命中\n\t\t\tTotalMagicHit += (pc.getBaseInt() - 15) / 10;// 取商數\n\n\t\t} else if (pc.getBaseInt() >= 45) {// 純智力45以上 共增加5命中\n\t\t\tTotalMagicHit += 5;\n\t\t}\n\n\t\tTotalMagicHit += pc.getOriginalMagicHit();// 其他魔法命中增加\n\n\t\tint mr = getTargetMr(target);\n\t\tdouble mrFloor = 0.0D;\n\n\t\tif (mr < 100) {\n\t\t\tmrFloor = Math.floor((mr - TotalMagicHit) / 2);\n\n\t\t} else if (mr >= 100) {\n\t\t\tmrFloor = Math.floor((mr - TotalMagicHit) / 10);\n\t\t}\n\n\t\tdouble mrCoefficient = 0.0D;\n\t\tif (mr < 100) {\n\t\t\tmrCoefficient = 1.0D - 0.01D * mrFloor;\n\n\t\t} else if (mr >= 100) {\n\t\t\tmrCoefficient = 0.6D - 0.01D * mrFloor;\n\t\t}\n\n\t\tdmg *= mrCoefficient;\n\n\t\treturn dmg;\n\t}"
+        },
+        {
+          "method": "calcDefense",
+          "line": 80,
+          "source": "public static int calcDefense(final L1Character target) {\n\t\ttry {\n\t\t\tif (target instanceof L1PcInstance) {\n\t\t\t\tfinal L1PcInstance targetPc = (L1PcInstance) target;\n\t\t\t\tfinal int ac = Math.max(0, 10 - targetPc.getAc());\n\t\t\t\tfinal int acDefMax = targetPc.getClassFeature()\n\t\t\t\t\t\t.getAcDefenseMax(ac);\n\t\t\t\tif (acDefMax != 0) {\n\t\t\t\t\t// (>> 1: 除) (<< 1: 乘)\n\t\t\t\t\tfinal int srcacd = Math.max(1, (acDefMax >> 3));// /8\n\t\t\t\t\tfinal int acdown = _random.nextInt(acDefMax) + srcacd;\n\t\t\t\t\treturn acdown;\n\t\t\t\t}\n\n\t\t\t} else if (target instanceof L1MonsterInstance) {\n\t\t\t\tfinal L1MonsterInstance targetNpc = (L1MonsterInstance) target;\n\t\t\t\tfinal int damagereduction = targetNpc.getNpcTemplate()\n\t\t\t\t\t\t.get_damagereduction();// 額外傷害減低\n\t\t\t\tfinal int srcac = targetNpc.getAc();\n\t\t\t\tfinal int ac = Math.max(0, 10 - srcac);\n\n\t\t\t\tfinal int acDefMax = ac / 7;// 防禦力傷害減免降低1/7\n\t\t\t\tif (acDefMax != 0) {\n\t\t\t\t\tfinal int srcacd = Math.max(1, acDefMax);\n\t\t\t\t\treturn _random.nextInt(acDefMax) + srcacd + damagereduction;\n\t\t\t\t}\n\t\t\t}\n\n\t\t} catch (final Exception e) {\n\t\t\t_log.error(e.getLocalizedMessage(), e);\n\t\t}\n\t\treturn 0;\n\t}"
+        },
+        {
+          "method": "calcMrDefense",
+          "line": 120,
+          "source": "public static double calcMrDefense(final L1PcInstance pc,\n\t\t\tfinal L1Character target, double dmg) {\n\t\t// 取回目標抗魔\n\t\tfinal int mr = getTargetMr(target);\n\n\t\tdouble mrFloor = 0;\n\t\tdouble mrCoefficient = 0;\n\t\tfinal Double[] mrF = L1AttackList.MRDMG.get(new Integer(mr));\n\t\tif (mrF != null) {\n\t\t\tmrFloor = mrF[0].doubleValue();\n\t\t\tmrCoefficient = mrF[1].doubleValue();\n\n\t\t} else {\n\t\t\tmrFloor = 11;\n\t\t\tmrCoefficient = 0.5;\n\t\t}\n\n\t\t// 計算減低的傷害\n\t\tdmg *= (mrCoefficient - (0.01 * Math.floor((mr - pc\n\t\t\t\t.getOriginalMagicHit()) / mrFloor)));\n\t\treturn dmg;\n\t}"
+        },
+        {
+          "method": "getTargetMr",
+          "line": 148,
+          "source": "private static int getTargetMr(final L1Character target) {\n\t\tint mr = 0;\n\t\tif (target instanceof L1PcInstance) {\n\t\t\tfinal L1PcInstance targetPc = (L1PcInstance) target;\n\t\t\tmr = targetPc.getMr();\n\t\t\tswitch (targetPc.guardianEncounter()) {\n\t\t\tcase 0:// 正義的守護 Lv.1\n\t\t\t\tmr += 3;\n\t\t\t\tbreak;\n\n\t\t\tcase 1:// 正義的守護 Lv.2\n\t\t\t\tmr += 6;\n\t\t\t\tbreak;\n\n\t\t\tcase 2:// 正義的守護 Lv.3\n\t\t\t\tmr += 9;\n\t\t\t\tbreak;\n\t\t\t}\n\n\t\t} else if (target instanceof L1MonsterInstance) {\n\t\t\tfinal L1MonsterInstance targetNpc = (L1MonsterInstance) target;\n\t\t\tmr = targetNpc.getMr();\n\t\t}\n\t\treturn mr;\n\t}"
+        },
+        {
+          "method": "getDamage",
+          "line": 181,
+          "source": "public static double getDamage(final L1PcInstance pc) {\n\t\tdouble dmg = 0;\n\t\tfinal int spByItem = pc.getSp() - pc.getTrueSp();\n\t\tfinal int intel = pc.getInt();\n\t\tfinal int charaIntelligence = pc.getInt() + spByItem - 12;\n\n\t\tdouble coefficientA = 1 + 3.0 / 32.0 * charaIntelligence;\n\t\tif (coefficientA < 1) {\n\t\t\tcoefficientA = 1;\n\t\t}\n\n\t\tdouble coefficientB = 0;\n\t\tif (intel > 25) {\n\t\t\tcoefficientB = 25 * 0.065;\n\n\t\t} else if (intel <= 12) {\n\t\t\tcoefficientB = 12 * 0.065;\n\n\t\t} else {\n\t\t\tcoefficientB = intel * 0.065;\n\t\t}\n\t\tdouble coefficientC = 0;\n\t\tif (intel > 25) {\n\t\t\tcoefficientC = 25;\n\n\t\t} else if (intel <= 12) {\n\t\t\tcoefficientC = 12;\n\n\t\t} else {\n\t\t\tcoefficientC = intel;\n\t\t}\n\t\tdouble bsk = 0;\n\t\tif (pc.hasSkillEffect(BERSERKERS)) {\n\t\t\tbsk = 0.1;\n\t\t}\n\t\tdmg = (_random.nextInt(6) + 1 + 7) * (1 + bsk) * coefficientA\n\t\t\t\t* coefficientB / 10.5 * coefficientC * 2.0;\n\t\treturn dmg;\n\t}"
+        }
+      ],
+      "path": "equipment381-prepared/source/java/src胖哥/com/lineage/server/model/weaponskill/DmgAcMr.java",
+      "sha256": "680684fad69f8eefb9b5c9e51fe16054d5c97b61e3faaf4bd6d779237827f800",
+      "lines": 220,
+      "source": "package com.lineage.server.model.weaponskill;\n\nimport static com.lineage.server.model.skill.L1SkillId.BERSERKERS;\n\nimport java.util.Random;\n\nimport org.apache.commons.logging.Log;\nimport org.apache.commons.logging.LogFactory;\n\nimport com.lineage.server.model.L1AttackList;\nimport com.lineage.server.model.L1Character;\nimport com.lineage.server.model.Instance.L1ItemInstance;\nimport com.lineage.server.model.Instance.L1MonsterInstance;\nimport com.lineage.server.model.Instance.L1PcInstance;\n\n/**\n * \n * @author daien\n * \n */\npublic class DmgAcMr {\n\n\tprivate static final Log _log = LogFactory.getLog(DmgAcMr.class);\n\n\tprivate static final Random _random = new Random();\n\t\n\t/**\n\t * 魔防減傷\n\t * \n\t * @param pc\n\t * @param target\n\t * @param dmg\n\t * @return\n\t */\n\tpublic static double calcMrDefense(L1PcInstance pc, L1Character target, double dmg, L1ItemInstance weapon) {\n\t\tif (weapon.getItem().getType1() == 20) {// 弓類型武器\n\t\t\treturn dmg;// 直接返回不計算魔防減傷\n\t\t}\n\n\t\tint TotalMagicHit = 0;\n\t\t\n\t\tif (pc.getBaseInt() >= 25 && pc.getBaseInt() <= 44) {// 純智力25~44\n\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t// 每10級增加1命中\n\t\t\tTotalMagicHit += (pc.getBaseInt() - 15) / 10;// 取商數\n\n\t\t} else if (pc.getBaseInt() >= 45) {// 純智力45以上 共增加5命中\n\t\t\tTotalMagicHit += 5;\n\t\t}\n\n\t\tTotalMagicHit += pc.getOriginalMagicHit();// 其他魔法命中增加\n\n\t\tint mr = getTargetMr(target);\n\t\tdouble mrFloor = 0.0D;\n\n\t\tif (mr < 100) {\n\t\t\tmrFloor = Math.floor((mr - TotalMagicHit) / 2);\n\n\t\t} else if (mr >= 100) {\n\t\t\tmrFloor = Math.floor((mr - TotalMagicHit) / 10);\n\t\t}\n\n\t\tdouble mrCoefficient = 0.0D;\n\t\tif (mr < 100) {\n\t\t\tmrCoefficient = 1.0D - 0.01D * mrFloor;\n\n\t\t} else if (mr >= 100) {\n\t\t\tmrCoefficient = 0.6D - 0.01D * mrFloor;\n\t\t}\n\n\t\tdmg *= mrCoefficient;\n\n\t\treturn dmg;\n\t}\n\n\t/**\n\t * 防禦力傷害減低\n\t * \n\t * @return\n\t */\n\tpublic static int calcDefense(final L1Character target) {\n\t\ttry {\n\t\t\tif (target instanceof L1PcInstance) {\n\t\t\t\tfinal L1PcInstance targetPc = (L1PcInstance) target;\n\t\t\t\tfinal int ac = Math.max(0, 10 - targetPc.getAc());\n\t\t\t\tfinal int acDefMax = targetPc.getClassFeature()\n\t\t\t\t\t\t.getAcDefenseMax(ac);\n\t\t\t\tif (acDefMax != 0) {\n\t\t\t\t\t// (>> 1: 除) (<< 1: 乘)\n\t\t\t\t\tfinal int srcacd = Math.max(1, (acDefMax >> 3));// /8\n\t\t\t\t\tfinal int acdown = _random.nextInt(acDefMax) + srcacd;\n\t\t\t\t\treturn acdown;\n\t\t\t\t}\n\n\t\t\t} else if (target instanceof L1MonsterInstance) {\n\t\t\t\tfinal L1MonsterInstance targetNpc = (L1MonsterInstance) target;\n\t\t\t\tfinal int damagereduction = targetNpc.getNpcTemplate()\n\t\t\t\t\t\t.get_damagereduction();// 額外傷害減低\n\t\t\t\tfinal int srcac = targetNpc.getAc();\n\t\t\t\tfinal int ac = Math.max(0, 10 - srcac);\n\n\t\t\t\tfinal int acDefMax = ac / 7;// 防禦力傷害減免降低1/7\n\t\t\t\tif (acDefMax != 0) {\n\t\t\t\t\tfinal int srcacd = Math.max(1, acDefMax);\n\t\t\t\t\treturn _random.nextInt(acDefMax) + srcacd + damagereduction;\n\t\t\t\t}\n\t\t\t}\n\n\t\t} catch (final Exception e) {\n\t\t\t_log.error(e.getLocalizedMessage(), e);\n\t\t}\n\t\treturn 0;\n\t}\n\n\t/**\n\t * ＭＲ魔法傷害減輕\n\t * \n\t * @param dmg\n\t * @return\n\t */\n\tpublic static double calcMrDefense(final L1PcInstance pc,\n\t\t\tfinal L1Character target, double dmg) {\n\t\t// 取回目標抗魔\n\t\tfinal int mr = getTargetMr(target);\n\n\t\tdouble mrFloor = 0;\n\t\tdouble mrCoefficient = 0;\n\t\tfinal Double[] mrF = L1AttackList.MRDMG.get(new Integer(mr));\n\t\tif (mrF != null) {\n\t\t\tmrFloor = mrF[0].doubleValue();\n\t\t\tmrCoefficient = mrF[1].doubleValue();\n\n\t\t} else {\n\t\t\tmrFloor = 11;\n\t\t\tmrCoefficient = 0.5;\n\t\t}\n\n\t\t// 計算減低的傷害\n\t\tdmg *= (mrCoefficient - (0.01 * Math.floor((mr - pc\n\t\t\t\t.getOriginalMagicHit()) / mrFloor)));\n\t\treturn dmg;\n\t}\n\n\t/**\n\t * 目標魔防\n\t * \n\t * @return\n\t */\n\tprivate static int getTargetMr(final L1Character target) {\n\t\tint mr = 0;\n\t\tif (target instanceof L1PcInstance) {\n\t\t\tfinal L1PcInstance targetPc = (L1PcInstance) target;\n\t\t\tmr = targetPc.getMr();\n\t\t\tswitch (targetPc.guardianEncounter()) {\n\t\t\tcase 0:// 正義的守護 Lv.1\n\t\t\t\tmr += 3;\n\t\t\t\tbreak;\n\n\t\t\tcase 1:// 正義的守護 Lv.2\n\t\t\t\tmr += 6;\n\t\t\t\tbreak;\n\n\t\t\tcase 2:// 正義的守護 Lv.3\n\t\t\t\tmr += 9;\n\t\t\t\tbreak;\n\t\t\t}\n\n\t\t} else if (target instanceof L1MonsterInstance) {\n\t\t\tfinal L1MonsterInstance targetNpc = (L1MonsterInstance) target;\n\t\t\tmr = targetNpc.getMr();\n\t\t}\n\t\treturn mr;\n\t}\n\n\t/**\n\t * 底比斯武器傷害公式\n\t * \n\t * @param pc\n\t * @param cha\n\t * @return\n\t */\n\tpublic static double getDamage(final L1PcInstance pc) {\n\t\tdouble dmg = 0;\n\t\tfinal int spByItem = pc.getSp() - pc.getTrueSp();\n\t\tfinal int intel = pc.getInt();\n\t\tfinal int charaIntelligence = pc.getInt() + spByItem - 12;\n\n\t\tdouble coefficientA = 1 + 3.0 / 32.0 * charaIntelligence;\n\t\tif (coefficientA < 1) {\n\t\t\tcoefficientA = 1;\n\t\t}\n\n\t\tdouble coefficientB = 0;\n\t\tif (intel > 25) {\n\t\t\tcoefficientB = 25 * 0.065;\n\n\t\t} else if (intel <= 12) {\n\t\t\tcoefficientB = 12 * 0.065;\n\n\t\t} else {\n\t\t\tcoefficientB = intel * 0.065;\n\t\t}\n\t\tdouble coefficientC = 0;\n\t\tif (intel > 25) {\n\t\t\tcoefficientC = 25;\n\n\t\t} else if (intel <= 12) {\n\t\t\tcoefficientC = 12;\n\n\t\t} else {\n\t\t\tcoefficientC = intel;\n\t\t}\n\t\tdouble bsk = 0;\n\t\tif (pc.hasSkillEffect(BERSERKERS)) {\n\t\t\tbsk = 0.1;\n\t\t}\n\t\tdmg = (_random.nextInt(6) + 1 + 7) * (1 + bsk) * coefficientA\n\t\t\t\t* coefficientB / 10.5 * coefficientC * 2.0;\n\t\treturn dmg;\n\t}\n}"
+    },
+    "WeaponSkillStart": {
+      "methods": [
+        {
+          "method": "start_weapon_skill",
+          "line": 31,
+          "source": "public static double start_weapon_skill(final L1PcInstance pc,\n\t\t\tfinal L1Character target, final L1ItemInstance weapon,\n\t\t\tfinal double srcdmg) {\n\t\ttry {\n\t\t\tif (weapon == null) {\n\t\t\t\treturn 0;\n\t\t\t}\n\n\t\t\t// 魔法屏障作用中\n\n\t\t\tfinal ArrayList<L1WeaponSkillType> list = WeaponSkillPowerTable\n\t\t\t\t\t.get().getTemplate(weapon.getItemId());\n\t\t\tif (list != null) {\n\t\t\t\tfinal L1WeaponSkillType tmp = list.get(_random.nextInt(list\n\t\t\t\t\t\t.size()));\n\t\t\t\tif (tmp != null) {\n\t\t\t\t\tif (tmp.get_boss_holdout()) {// 技能對BOSS無效\n\t\t\t\t\t\tif (target instanceof L1NpcInstance) {\n\t\t\t\t\t\t\tfinal L1NpcInstance npc = (L1NpcInstance) target;\n\t\t\t\t\t\t\tif (npc.getNpcTemplate().is_boss()) {\n\t\t\t\t\t\t\t\treturn 0;\n\t\t\t\t\t\t\t}\n\t\t\t\t\t\t}\n\t\t\t\t\t}\n\n\t\t\t\t\tfinal double dmg = tmp.start_weapon_skill(pc, target,\n\t\t\t\t\t\t\tweapon, srcdmg);\n\t\t\t\t\tif (target.hasSkillEffect(COUNTER_MAGIC)) {\n\t\t\t\t\t\ttarget.removeSkillEffect(COUNTER_MAGIC);// 移除技能\n\t\t\t\t\t\tfinal int castgfx = SkillsTable.get()\n\t\t\t\t\t\t\t\t.getTemplate(COUNTER_MAGIC).getCastGfx2();\n\t\t\t\t\t\ttarget.broadcastPacketX8(new S_SkillSound(target.getId(),\n\t\t\t\t\t\t\t\tcastgfx));\n\t\t\t\t\t\tif (target instanceof L1PcInstance) {\n\t\t\t\t\t\t\tfinal L1PcInstance tgpc = (L1PcInstance) target;\n\t\t\t\t\t\t\ttgpc.sendPacketsX8(new S_SkillSound(tgpc.getId(), castgfx));\n\t\t\t\t\t\t}\n\t\t\t\t\t\treturn 0;\n\t\t\t\t\t}\n\t\t\t\t\treturn dmg;\n\t\t\t\t}\n\t\t\t}\n\t\t\treturn 0;\n\n\t\t} catch (final Exception e) {\n\t\t\t_log.error(e.getLocalizedMessage(), e);\n\t\t}\n\t\treturn 0;\n\t}"
+        }
+      ],
+      "path": "equipment381-prepared/source/java/src胖哥/com/lineage/server/model/weaponskill/WeaponSkillStart.java",
+      "sha256": "3d068d82e7a2155531a2d21e76206c8890706f9d511353dc65bc37f2a9bb6c4a",
+      "lines": 80,
+      "source": "package com.lineage.server.model.weaponskill;\n\nimport static com.lineage.server.model.skill.L1SkillId.COUNTER_MAGIC;\n\nimport java.util.ArrayList;\nimport java.util.Random;\n\nimport org.apache.commons.logging.Log;\nimport org.apache.commons.logging.LogFactory;\n\nimport com.lineage.server.datatables.SkillsTable;\nimport com.lineage.server.datatables.WeaponSkillPowerTable;\nimport com.lineage.server.model.L1Character;\nimport com.lineage.server.model.Instance.L1ItemInstance;\nimport com.lineage.server.model.Instance.L1NpcInstance;\nimport com.lineage.server.model.Instance.L1PcInstance;\nimport com.lineage.server.serverpackets.S_SkillSound;\n\n/**\n * 發動武器技能\n * \n * @author daien\n * 2014/07/24 by Roy修正魔法屏障物理化也會解除的BUG\n */\npublic class WeaponSkillStart {\n\n\tprivate static final Log _log = LogFactory.getLog(WeaponSkillStart.class);\n\n\tprivate static final Random _random = new Random();\n\n\tpublic static double start_weapon_skill(final L1PcInstance pc,\n\t\t\tfinal L1Character target, final L1ItemInstance weapon,\n\t\t\tfinal double srcdmg) {\n\t\ttry {\n\t\t\tif (weapon == null) {\n\t\t\t\treturn 0;\n\t\t\t}\n\n\t\t\t// 魔法屏障作用中\n\n\t\t\tfinal ArrayList<L1WeaponSkillType> list = WeaponSkillPowerTable\n\t\t\t\t\t.get().getTemplate(weapon.getItemId());\n\t\t\tif (list != null) {\n\t\t\t\tfinal L1WeaponSkillType tmp = list.get(_random.nextInt(list\n\t\t\t\t\t\t.size()));\n\t\t\t\tif (tmp != null) {\n\t\t\t\t\tif (tmp.get_boss_holdout()) {// 技能對BOSS無效\n\t\t\t\t\t\tif (target instanceof L1NpcInstance) {\n\t\t\t\t\t\t\tfinal L1NpcInstance npc = (L1NpcInstance) target;\n\t\t\t\t\t\t\tif (npc.getNpcTemplate().is_boss()) {\n\t\t\t\t\t\t\t\treturn 0;\n\t\t\t\t\t\t\t}\n\t\t\t\t\t\t}\n\t\t\t\t\t}\n\n\t\t\t\t\tfinal double dmg = tmp.start_weapon_skill(pc, target,\n\t\t\t\t\t\t\tweapon, srcdmg);\n\t\t\t\t\tif (target.hasSkillEffect(COUNTER_MAGIC)) {\n\t\t\t\t\t\ttarget.removeSkillEffect(COUNTER_MAGIC);// 移除技能\n\t\t\t\t\t\tfinal int castgfx = SkillsTable.get()\n\t\t\t\t\t\t\t\t.getTemplate(COUNTER_MAGIC).getCastGfx2();\n\t\t\t\t\t\ttarget.broadcastPacketX8(new S_SkillSound(target.getId(),\n\t\t\t\t\t\t\t\tcastgfx));\n\t\t\t\t\t\tif (target instanceof L1PcInstance) {\n\t\t\t\t\t\t\tfinal L1PcInstance tgpc = (L1PcInstance) target;\n\t\t\t\t\t\t\ttgpc.sendPacketsX8(new S_SkillSound(tgpc.getId(), castgfx));\n\t\t\t\t\t\t}\n\t\t\t\t\t\treturn 0;\n\t\t\t\t\t}\n\t\t\t\t\treturn dmg;\n\t\t\t\t}\n\t\t\t}\n\t\t\treturn 0;\n\n\t\t} catch (final Exception e) {\n\t\t\t_log.error(e.getLocalizedMessage(), e);\n\t\t}\n\t\treturn 0;\n\t}\n}"
+    }
+  },
+  "commonFormula": {
+    "chance": "Most W_SK: nextInt(1000) in 0..999 <= random1 + max(0,enchant)*random2; setters cap random1/2 individually at1000; therefore threshold0 still1/1000. W_SK0017..23 use nextInt(1000)+1 <= threshold. Custom W_SK0016/20/21/024 have own enchant branch: use methods.",
+    "dmg1": "srcdmg==0?0:randInt(1,srcdmg)",
+    "dmg2": "physicalInput * min(100,addsrcdmg)/100",
+    "dmg3": "Java integer mean of selected STR/DEX/INT/WIS/CHA/CON then arithmetic shift >>1",
+    "calc_dmg4": "IMMUNE_TO_HARM => src/2; ac_mr1 subtract AC reduction;2 MR4;3 subtract AC then MR4; attr sign*int(.16*abs(resist))/32.0; return src*(1-attrFactor)*(level/100)",
+    "MR4": "bow type1==20 skips MR. magicHit=originalMagicHit+(baseINT25..44?int((baseINT-15)/10):baseINT>=45?5:0). mr<100 coeff=1-.01*floor(JavaInt((mr-magicHit)/2));else coeff=.6-.01*floor(JavaInt((mr-magicHit)/10)).",
+    "ACmonster": "acDefMax=int(max(0,10-AC)/7); if !=0 return randInt(0,acDefMax-1)+max(1,acDefMax)+npc.damageReduction; else0",
+    "WARNING": "Three-param calc_dmg is DIFFERENT older overload: 0.32 resistance with integer shift, MR table and ac_mr3 overwrite. Do not substitute."
+  },
+  "nullPowerBehavior": "175 has no definition. load2 appends null to list; uniformly choosing null causes return0. Other entries remain available.",
+  "fallback": "L1AttackPc.weaponSkill calls WeaponSkillStart first. Only nonzero returned damage stops fallback. Zero returns from active side effects still continue legacy weapon-specific switch or weapon_skill table."
+}

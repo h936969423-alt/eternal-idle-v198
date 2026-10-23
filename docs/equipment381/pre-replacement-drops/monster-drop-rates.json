@@ -1,0 +1,6433 @@
+{
+  "source": "https://toudhue.github.io/my-web/怪物掉落圖鑑.html",
+  "retrievedAt": "2026-10-10",
+  "mobs": {
+    "siege_ovi": [],
+    "siege_julian": [],
+    "julian_enemy": [],
+    "esti_enemy": [],
+    "siege_esti": [],
+    "siege_tower": [],
+    "siege_gate": [],
+    "aton_enemy": [],
+    "siege_tros": [],
+    "joe_enemy": [],
+    "ovi_enemy": [],
+    "siege_aton": [],
+    "senis_enemy": [],
+    "siege_grit": [],
+    "siege_senis": [],
+    "siege_joe": [],
+    "orc": [
+      {
+        "item": "new_item_179",
+        "chance": 25
+      },
+      {
+        "item": "wpn_27",
+        "chance": 2.5
+      },
+      {
+        "item": "amr_oasis",
+        "chance": 2.5
+      },
+      {
+        "item": "wpn_dagger1",
+        "chance": 0.5
+      },
+      {
+        "item": "wpn_25",
+        "chance": 0.5
+      },
+      {
+        "item": "hlm_oasis",
+        "chance": 0.5
+      }
+    ],
+    "goblin": [
+      {
+        "item": "arm_42",
+        "chance": 2.5
+      },
+      {
+        "item": "bot_short",
+        "chance": 1.5
+      },
+      {
+        "item": "potion_heal",
+        "chance": 1.5
+      },
+      {
+        "item": "wpn_9",
+        "chance": 0.5
+      },
+      {
+        "item": "wpn_10",
+        "chance": 0.5
+      },
+      {
+        "item": "hlm_mr",
+        "chance": 0.025
+      }
+    ],
+    "gremlin": [
+      {
+        "item": "new_item_179",
+        "chance": 25
+      },
+      {
+        "item": "wpn_10",
+        "chance": 1.5
+      },
+      {
+        "item": "bot_short",
+        "chance": 0.5
+      }
+    ],
+    "nm_001": [],
+    "orc_archer": [
+      {
+        "item": "new_item_179",
+        "chance": 25
+      },
+      {
+        "item": "amr_oasis",
+        "chance": 2.5
+      },
+      {
+        "item": "clk_oasis",
+        "chance": 1.5
+      },
+      {
+        "item": "hlm_oasis",
+        "chance": 1
+      },
+      {
+        "item": "wpn_8",
+        "chance": 0.5
+      },
+      {
+        "item": "arm_64",
+        "chance": 0.5
+      }
+    ],
+    "nm_003": [
+      {
+        "item": "new_item_179",
+        "chance": 50
+      },
+      {
+        "item": "wpn_5",
+        "chance": 0.5
+      },
+      {
+        "item": "new_item_195",
+        "chance": 0.5
+      }
+    ],
+    "nm_002": [
+      {
+        "item": "new_item_166",
+        "chance": 50
+      }
+    ],
+    "侏儒": [
+      {
+        "item": "new_item_180",
+        "chance": 50
+      },
+      {
+        "item": "arm_86",
+        "chance": 2.5
+      },
+      {
+        "item": "shd_gnome",
+        "chance": 1.5
+      },
+      {
+        "item": "hlm_gnome",
+        "chance": 1
+      },
+      {
+        "item": "wpn_26",
+        "chance": 0.5
+      },
+      {
+        "item": "new_item_169",
+        "chance": 0.5
+      },
+      {
+        "item": "scroll_poly",
+        "chance": 0.5
+      }
+    ],
+    "nm_035": [
+      {
+        "item": "new_item_179",
+        "chance": 50
+      },
+      {
+        "item": "new_item_143",
+        "chance": 5
+      }
+    ],
+    "nm_004": [
+      {
+        "item": "new_item_179",
+        "chance": 50
+      },
+      {
+        "item": "new_item_143",
+        "chance": 5
+      }
+    ],
+    "nm_005": [
+      {
+        "item": "new_item_179",
+        "chance": 0.0005
+      }
+    ],
+    "zombie": [
+      {
+        "item": "bk_vampire",
+        "chance": 0.1
+      },
+      {
+        "item": "bk_dark_shadow",
+        "chance": 0.1
+      }
+    ],
+    "nm_006": [
+      {
+        "item": "new_item_179",
+        "chance": 25
+      },
+      {
+        "item": "new_item_154",
+        "chance": 2.5
+      },
+      {
+        "item": "new_item_150",
+        "chance": 0.5
+      },
+      {
+        "item": "new_item_182",
+        "chance": 0.5
+      },
+      {
+        "item": "potion_blue",
+        "chance": 0.5
+      },
+      {
+        "item": "bk_rock_prison",
+        "chance": 0.1
+      }
+    ],
+    "nm_007": [
+      {
+        "item": "new_item_237",
+        "chance": 50
+      },
+      {
+        "item": "new_item_141",
+        "chance": 0.5
+      }
+    ],
+    "doberman": [
+      {
+        "item": "new_item_179",
+        "chance": 50
+      },
+      {
+        "item": "new_item_143",
+        "chance": 5
+      }
+    ],
+    "floating_eye": [
+      {
+        "item": "new_item_143",
+        "chance": 10
+      },
+      {
+        "item": "new_item_150",
+        "chance": 0.5
+      }
+    ],
+    "ice_wolf": [
+      {
+        "item": "new_item_154",
+        "chance": 2.5
+      },
+      {
+        "item": "new_item_157",
+        "chance": 2.5
+      },
+      {
+        "item": "new_item_160",
+        "chance": 2.5
+      },
+      {
+        "item": "new_item_150",
+        "chance": 0.5
+      },
+      {
+        "item": "new_item_151",
+        "chance": 0.5
+      }
+    ],
+    "fighter": [
+      {
+        "item": "amr_oasis",
+        "chance": 1.5
+      },
+      {
+        "item": "hlm_oasis",
+        "chance": 1
+      },
+      {
+        "item": "arm_64",
+        "chance": 1
+      },
+      {
+        "item": "clk_oasis",
+        "chance": 0.5
+      },
+      {
+        "item": "arm_104",
+        "chance": 0.5
+      },
+      {
+        "item": "arm_63",
+        "chance": 0.5
+      },
+      {
+        "item": "arm_69",
+        "chance": 0.05
+      }
+    ],
+    "nm_008": [
+      {
+        "item": "new_item_150",
+        "chance": 0.5
+      },
+      {
+        "item": "glv_glove",
+        "chance": 0.05
+      },
+      {
+        "item": "arm_99",
+        "chance": 0.0005
+      }
+    ],
+    "gnome_warrior": [
+      {
+        "item": "new_item_180",
+        "chance": 50
+      },
+      {
+        "item": "arm_86",
+        "chance": 2.5
+      },
+      {
+        "item": "hlm_gnome",
+        "chance": 1.5
+      },
+      {
+        "item": "shd_gnome",
+        "chance": 1.5
+      },
+      {
+        "item": "wpn_26",
+        "chance": 1
+      },
+      {
+        "item": "potion_haste",
+        "chance": 0.5
+      },
+      {
+        "item": "wpn_23",
+        "chance": 0.25
+      }
+    ],
+    "wolf": [
+      {
+        "item": "wpn_10",
+        "chance": 1.5
+      },
+      {
+        "item": "wpn_13",
+        "chance": 1
+      },
+      {
+        "item": "wpn_2",
+        "chance": 0.5
+      },
+      {
+        "item": "arm_103",
+        "chance": 0.5
+      },
+      {
+        "item": "arm_66",
+        "chance": 0.25
+      },
+      {
+        "item": "bot_short",
+        "chance": 0.25
+      },
+      {
+        "item": "arm_69",
+        "chance": 0.05
+      },
+      {
+        "item": "wpn_longsword",
+        "chance": 0.05
+      },
+      {
+        "item": "bk_vampire",
+        "chance": 0.05
+      },
+      {
+        "item": "bk_dex_up",
+        "chance": 0.01
+      }
+    ],
+    "gandi_orc": [
+      {
+        "item": "potion_heal",
+        "chance": 0.5
+      },
+      {
+        "item": "new_item_148",
+        "chance": 0.5
+      },
+      {
+        "item": "new_item_150",
+        "chance": 0.5
+      },
+      {
+        "item": "new_item_201",
+        "chance": 0.5
+      },
+      {
+        "item": "item_orc_amulet",
+        "chance": 0.005
+      }
+    ],
+    "ice_maid": [
+      {
+        "item": "bk_cancel",
+        "chance": 0.1
+      },
+      {
+        "item": "bk_thunder_storm",
+        "chance": 0.05
+      }
+    ],
+    "nm_009": [
+      {
+        "item": "new_item_163",
+        "chance": 50
+      }
+    ],
+    "orc_zombie": [
+      {
+        "item": "amr_oasis",
+        "chance": 2.5
+      },
+      {
+        "item": "arm_64",
+        "chance": 1.5
+      },
+      {
+        "item": "hlm_oasis",
+        "chance": 1
+      },
+      {
+        "item": "arm_104",
+        "chance": 0.5
+      },
+      {
+        "item": "wpn_33",
+        "chance": 0.05
+      }
+    ],
+    "skeleton": [
+      {
+        "item": "new_item_183",
+        "chance": 25
+      },
+      {
+        "item": "arm_42",
+        "chance": 2.5
+      },
+      {
+        "item": "wpn_scimitar",
+        "chance": 0.5
+      },
+      {
+        "item": "potion_haste",
+        "chance": 0.5
+      },
+      {
+        "item": "new_item_150",
+        "chance": 0.5
+      },
+      {
+        "item": "new_item_203",
+        "chance": 0.5
+      },
+      {
+        "item": "new_item_214",
+        "chance": 0.5
+      },
+      {
+        "item": "arm_105",
+        "chance": 0.25
+      },
+      {
+        "item": "hlm_mr",
+        "chance": 0.05
+      },
+      {
+        "item": "clk_mr",
+        "chance": 0.05
+      },
+      {
+        "item": "bk_dex_up",
+        "chance": 0.01
+      }
+    ],
+    "croc": [
+      {
+        "item": "new_item_154",
+        "chance": 2.5
+      },
+      {
+        "item": "potion_brave",
+        "chance": 0.5
+      },
+      {
+        "item": "arm_45",
+        "chance": 0.005
+      },
+      {
+        "item": "bk_thunder",
+        "chance": 0.005
+      }
+    ],
+    "ant": [
+      {
+        "item": "new_item_154",
+        "chance": 2.5
+      },
+      {
+        "item": "potion_haste",
+        "chance": 0.5
+      },
+      {
+        "item": "potion_brave",
+        "chance": 0.5
+      },
+      {
+        "item": "arm_45",
+        "chance": 0.005
+      }
+    ],
+    "orc_mage": [
+      {
+        "item": "wpn_oakwand",
+        "chance": 0.5
+      },
+      {
+        "item": "new_item_150",
+        "chance": 0.5
+      },
+      {
+        "item": "potion_blue",
+        "chance": 0.5
+      },
+      {
+        "item": "wpn_38",
+        "chance": 0.05
+      },
+      {
+        "item": "bk_heal2",
+        "chance": 0.01
+      },
+      {
+        "item": "wpn_strwand",
+        "chance": 0.005
+      },
+      {
+        "item": "bk_blaze",
+        "chance": 0.001
+      }
+    ],
+    "skel_archer": [
+      {
+        "item": "new_item_183",
+        "chance": 25
+      },
+      {
+        "item": "arm_42",
+        "chance": 1.5
+      },
+      {
+        "item": "wpn_3",
+        "chance": 0.5
+      },
+      {
+        "item": "potion_haste",
+        "chance": 0.5
+      },
+      {
+        "item": "new_item_150",
+        "chance": 0.5
+      },
+      {
+        "item": "hlm_mr",
+        "chance": 0.05
+      },
+      {
+        "item": "clk_mr",
+        "chance": 0.05
+      },
+      {
+        "item": "bk_dex_up",
+        "chance": 0.01
+      }
+    ],
+    "roach": [
+      {
+        "item": "arm_42",
+        "chance": 1.5
+      },
+      {
+        "item": "potion_haste",
+        "chance": 0.5
+      },
+      {
+        "item": "hlm_mr",
+        "chance": 0.15
+      },
+      {
+        "item": "new_item_158",
+        "chance": 0.05
+      }
+    ],
+    "stone_golem": [
+      {
+        "item": "wpn_1",
+        "chance": 2.5
+      },
+      {
+        "item": "wpn_10",
+        "chance": 2.5
+      },
+      {
+        "item": "wpn_alien",
+        "chance": 1.5
+      },
+      {
+        "item": "wpn_13",
+        "chance": 0.5
+      },
+      {
+        "item": "new_item_150",
+        "chance": 0.5
+      },
+      {
+        "item": "new_item_164",
+        "chance": 0.5
+      },
+      {
+        "item": "potion_blue",
+        "chance": 0.5
+      },
+      {
+        "item": "bk_rock_prison",
+        "chance": 0.5
+      },
+      {
+        "item": "new_item_207",
+        "chance": 0.05
+      },
+      {
+        "item": "new_item_159",
+        "chance": 0.025
+      }
+    ],
+    "skel_axe": [
+      {
+        "item": "new_item_183",
+        "chance": 25
+      },
+      {
+        "item": "wpn_1",
+        "chance": 2.5
+      },
+      {
+        "item": "arm_42",
+        "chance": 1.5
+      },
+      {
+        "item": "potion_haste",
+        "chance": 0.5
+      },
+      {
+        "item": "new_item_150",
+        "chance": 0.5
+      },
+      {
+        "item": "clk_mr",
+        "chance": 0.15
+      },
+      {
+        "item": "hlm_mr",
+        "chance": 0.05
+      }
+    ],
+    "skel_spear": [
+      {
+        "item": "new_item_183",
+        "chance": 25
+      },
+      {
+        "item": "wpn_4",
+        "chance": 1.5
+      },
+      {
+        "item": "arm_42",
+        "chance": 1.5
+      },
+      {
+        "item": "potion_haste",
+        "chance": 0.5
+      },
+      {
+        "item": "new_item_150",
+        "chance": 0.5
+      },
+      {
+        "item": "clk_mr",
+        "chance": 0.15
+      },
+      {
+        "item": "hlm_mr",
+        "chance": 0.05
+      },
+      {
+        "item": "bk_dex_up",
+        "chance": 0.01
+      }
+    ],
+    "rova_orc": [
+      {
+        "item": "new_item_157",
+        "chance": 2.5
+      },
+      {
+        "item": "arm_63",
+        "chance": 1.5
+      },
+      {
+        "item": "potion_haste",
+        "chance": 0.5
+      },
+      {
+        "item": "new_item_149",
+        "chance": 0.5
+      },
+      {
+        "item": "arm_69",
+        "chance": 0.1
+      },
+      {
+        "item": "item_orc_amulet",
+        "chance": 0.005
+      }
+    ],
+    "orc_scout": [
+      {
+        "item": "scroll_acc",
+        "chance": 0.0005
+      }
+    ],
+    "hobgoblin": [
+      {
+        "item": "new_item_180",
+        "chance": 50
+      },
+      {
+        "item": "wpn_9",
+        "chance": 1.5
+      },
+      {
+        "item": "arm_42",
+        "chance": 1.5
+      },
+      {
+        "item": "potion_haste",
+        "chance": 0.5
+      },
+      {
+        "item": "hlm_mr",
+        "chance": 0.25
+      }
+    ],
+    "spider": [
+      {
+        "item": "new_item_144",
+        "chance": 0.5
+      },
+      {
+        "item": "bk_slow",
+        "chance": 0.1
+      },
+      {
+        "item": "bk_earthquake",
+        "chance": 0.01
+      },
+      {
+        "item": "scroll_acc",
+        "chance": 0.0005
+      }
+    ],
+    "troglodyte": [
+      {
+        "item": "wpn_battleaxe",
+        "chance": 0.5
+      },
+      {
+        "item": "arm_61",
+        "chance": 0.25
+      },
+      {
+        "item": "wpn_giantaxe",
+        "chance": 0.05
+      },
+      {
+        "item": "scroll_acc",
+        "chance": 0.0005
+      }
+    ],
+    "atuba_orc": [
+      {
+        "item": "arm_42",
+        "chance": 2.5
+      },
+      {
+        "item": "new_item_157",
+        "chance": 2.5
+      },
+      {
+        "item": "arm_64",
+        "chance": 1.5
+      },
+      {
+        "item": "arm_104",
+        "chance": 1.5
+      },
+      {
+        "item": "new_item_145",
+        "chance": 0.5
+      },
+      {
+        "item": "new_item_202",
+        "chance": 0.5
+      },
+      {
+        "item": "hlm_mr",
+        "chance": 0.25
+      },
+      {
+        "item": "arm_60",
+        "chance": 0.25
+      },
+      {
+        "item": "wpn_damascus",
+        "chance": 0.05
+      },
+      {
+        "item": "acc_123",
+        "chance": 0.005
+      },
+      {
+        "item": "item_orc_amulet",
+        "chance": 0.005
+      }
+    ],
+    "duda_orc": [
+      {
+        "item": "arm_42",
+        "chance": 2.5
+      },
+      {
+        "item": "arm_104",
+        "chance": 1.5
+      },
+      {
+        "item": "potion_haste",
+        "chance": 0.5
+      },
+      {
+        "item": "new_item_147",
+        "chance": 0.5
+      },
+      {
+        "item": "new_item_150",
+        "chance": 0.5
+      },
+      {
+        "item": "new_item_199",
+        "chance": 0.5
+      },
+      {
+        "item": "hlm_mr",
+        "chance": 0.25
+      },
+      {
+        "item": "new_item_158",
+        "chance": 0.25
+      },
+      {
+        "item": "acc_123",
+        "chance": 0.005
+      },
+      {
+        "item": "item_orc_amulet",
+        "chance": 0.005
+      },
+      {
+        "item": "scroll_acc",
+        "chance": 0.0005
+      }
+    ],
+    "lizardman": [
+      {
+        "item": "new_item_160",
+        "chance": 2.5
+      },
+      {
+        "item": "arm_42",
+        "chance": 1.5
+      },
+      {
+        "item": "arm_105",
+        "chance": 0.5
+      },
+      {
+        "item": "hlm_mr",
+        "chance": 0.25
+      },
+      {
+        "item": "wpn_37",
+        "chance": 0.25
+      },
+      {
+        "item": "scroll_acc",
+        "chance": 0.0005
+      }
+    ],
+    "bear": [
+      {
+        "item": "new_item_182",
+        "chance": 1.5
+      },
+      {
+        "item": "potion_brave",
+        "chance": 0.5
+      },
+      {
+        "item": "scroll_acc",
+        "chance": 0.0005
+      }
+    ],
+    "mermaid": [
+      {
+        "item": "new_item_mermaid_scale",
+        "chance": 0.5
+      },
+      {
+        "item": "scroll_acc",
+        "chance": 0.005
+      }
+    ],
+    "sparto": [
+      {
+        "item": "arm_42",
+        "chance": 1.5
+      },
+      {
+        "item": "wpn_scimitar",
+        "chance": 0.5
+      },
+      {
+        "item": "arm_60",
+        "chance": 0.5
+      },
+      {
+        "item": "arm_105",
+        "chance": 0.5
+      },
+      {
+        "item": "new_item_150",
+        "chance": 0.5
+      },
+      {
+        "item": "hlm_mr",
+        "chance": 0.25
+      },
+      {
+        "item": "scroll_acc",
+        "chance": 0.0005
+      }
+    ],
+    "ghoul": [
+      {
+        "item": "new_item_204",
+        "chance": 0.5
+      },
+      {
+        "item": "new_item_205",
+        "chance": 0.5
+      },
+      {
+        "item": "scroll_weapon",
+        "chance": 0.1
+      },
+      {
+        "item": "bk_berserk",
+        "chance": 0.01
+      }
+    ],
+    "b_knight": [
+      {
+        "item": "arm_42",
+        "chance": 2.5
+      },
+      {
+        "item": "new_item_151",
+        "chance": 2.5
+      },
+      {
+        "item": "new_item_154",
+        "chance": 2.5
+      },
+      {
+        "item": "new_item_157",
+        "chance": 2.5
+      },
+      {
+        "item": "new_item_160",
+        "chance": 2.5
+      },
+      {
+        "item": "wpn_28",
+        "chance": 1.5
+      },
+      {
+        "item": "wpn_21",
+        "chance": 1
+      },
+      {
+        "item": "bot_short",
+        "chance": 1
+      },
+      {
+        "item": "wpn_16",
+        "chance": 0.5
+      },
+      {
+        "item": "wpn_17",
+        "chance": 0.5
+      },
+      {
+        "item": "arm_60",
+        "chance": 0.5
+      },
+      {
+        "item": "arm_87",
+        "chance": 0.5
+      },
+      {
+        "item": "arm_90",
+        "chance": 0.5
+      },
+      {
+        "item": "potion_blue",
+        "chance": 0.5
+      },
+      {
+        "item": "new_item_196",
+        "chance": 0.5
+      },
+      {
+        "item": "new_item_198",
+        "chance": 0.5
+      },
+      {
+        "item": "hlm_mr",
+        "chance": 0.25
+      },
+      {
+        "item": "wpn_2hsword",
+        "chance": 0.05
+      },
+      {
+        "item": "tsh_tshirt",
+        "chance": 0.05
+      }
+    ],
+    "nm_011": [
+      {
+        "item": "arm_42",
+        "chance": 2.5
+      },
+      {
+        "item": "new_item_151",
+        "chance": 2.5
+      },
+      {
+        "item": "new_item_154",
+        "chance": 2.5
+      },
+      {
+        "item": "new_item_157",
+        "chance": 2.5
+      },
+      {
+        "item": "new_item_160",
+        "chance": 2.5
+      },
+      {
+        "item": "wpn_28",
+        "chance": 1.5
+      },
+      {
+        "item": "wpn_21",
+        "chance": 1
+      },
+      {
+        "item": "bot_short",
+        "chance": 1
+      },
+      {
+        "item": "wpn_16",
+        "chance": 0.5
+      },
+      {
+        "item": "wpn_17",
+        "chance": 0.5
+      },
+      {
+        "item": "arm_60",
+        "chance": 0.5
+      },
+      {
+        "item": "arm_87",
+        "chance": 0.5
+      },
+      {
+        "item": "arm_90",
+        "chance": 0.5
+      },
+      {
+        "item": "potion_blue",
+        "chance": 0.5
+      },
+      {
+        "item": "hlm_mr",
+        "chance": 0.25
+      },
+      {
+        "item": "wpn_2hsword",
+        "chance": 0.05
+      },
+      {
+        "item": "tsh_tshirt",
+        "chance": 0.05
+      },
+      {
+        "item": "new_item_197",
+        "chance": 0.05
+      }
+    ],
+    "nm_010": [
+      {
+        "item": "new_item_160",
+        "chance": 2.5
+      },
+      {
+        "item": "potion_haste",
+        "chance": 0.5
+      },
+      {
+        "item": "new_item_161",
+        "chance": 0.05
+      },
+      {
+        "item": "new_item_162",
+        "chance": 0.05
+      },
+      {
+        "item": "acc_129",
+        "chance": 0.005
+      }
+    ],
+    "neruga_orc": [
+      {
+        "item": "arm_64",
+        "chance": 2.5
+      },
+      {
+        "item": "new_item_157",
+        "chance": 2.5
+      },
+      {
+        "item": "arm_104",
+        "chance": 1.5
+      },
+      {
+        "item": "potion_haste",
+        "chance": 0.5
+      },
+      {
+        "item": "new_item_146",
+        "chance": 0.5
+      },
+      {
+        "item": "new_item_200",
+        "chance": 0.5
+      },
+      {
+        "item": "wpn_invader",
+        "chance": 0.25
+      },
+      {
+        "item": "wpn_damascus",
+        "chance": 0.1
+      },
+      {
+        "item": "wpn_2hsword",
+        "chance": 0.05
+      },
+      {
+        "item": "acc_123",
+        "chance": 0.005
+      },
+      {
+        "item": "item_orc_amulet",
+        "chance": 0.005
+      }
+    ],
+    "lycan": [
+      {
+        "item": "new_item_151",
+        "chance": 2.5
+      },
+      {
+        "item": "wpn_battleaxe",
+        "chance": 1.5
+      },
+      {
+        "item": "arm_105",
+        "chance": 1
+      },
+      {
+        "item": "arm_65",
+        "chance": 0.5
+      },
+      {
+        "item": "arm_66",
+        "chance": 0.5
+      },
+      {
+        "item": "arm_90",
+        "chance": 0.5
+      },
+      {
+        "item": "new_item_195",
+        "chance": 0.5
+      },
+      {
+        "item": "wpn_halberd",
+        "chance": 0.25
+      },
+      {
+        "item": "bk_vampire",
+        "chance": 0.1
+      },
+      {
+        "item": "bk_slow",
+        "chance": 0.1
+      },
+      {
+        "item": "bk_dex_up",
+        "chance": 0.05
+      }
+    ],
+    "ungoliant": [
+      {
+        "item": "bk_rock_prison",
+        "chance": 0.5
+      },
+      {
+        "item": "scroll_armor",
+        "chance": 0.3
+      },
+      {
+        "item": "scroll_weapon",
+        "chance": 0.1
+      },
+      {
+        "item": "bk_slow",
+        "chance": 0.1
+      },
+      {
+        "item": "bk_charm",
+        "chance": 0.05
+      },
+      {
+        "item": "scroll_acc",
+        "chance": 0.005
+      }
+    ],
+    "crabman": [
+      {
+        "item": "scroll_armor",
+        "chance": 0.3
+      },
+      {
+        "item": "bk_break",
+        "chance": 0.1
+      },
+      {
+        "item": "bk_str_up",
+        "chance": 0.01
+      }
+    ],
+    "giant_ant": [
+      {
+        "item": "new_item_154",
+        "chance": 2.5
+      },
+      {
+        "item": "new_item_157",
+        "chance": 2.5
+      },
+      {
+        "item": "potion_haste",
+        "chance": 0.5
+      },
+      {
+        "item": "potion_brave",
+        "chance": 0.5
+      },
+      {
+        "item": "new_item_155",
+        "chance": 0.25
+      },
+      {
+        "item": "new_item_158",
+        "chance": 0.25
+      },
+      {
+        "item": "arm_60",
+        "chance": 0.15
+      },
+      {
+        "item": "new_item_156",
+        "chance": 0.05
+      },
+      {
+        "item": "new_item_159",
+        "chance": 0.05
+      },
+      {
+        "item": "arm_46",
+        "chance": 0.01
+      },
+      {
+        "item": "arm_47",
+        "chance": 0.005
+      }
+    ],
+    "starfish": [
+      {
+        "item": "potion_haste",
+        "chance": 0.5
+      },
+      {
+        "item": "bk_ice_spike",
+        "chance": 0.1
+      },
+      {
+        "item": "scroll_acc",
+        "chance": 0.005
+      }
+    ],
+    "ratman": [
+      {
+        "item": "potion_haste",
+        "chance": 0.5
+      },
+      {
+        "item": "arm_61",
+        "chance": 0.25
+      },
+      {
+        "item": "bk_haste_spell",
+        "chance": 0.1
+      },
+      {
+        "item": "bk_dex_up",
+        "chance": 0.05
+      }
+    ],
+    "obli_lizardman": [
+      {
+        "item": "item_forgotten_robe",
+        "chance": 0.001
+      }
+    ],
+    "obli_croc": [
+      {
+        "item": "arm_95",
+        "chance": 0.01
+      }
+    ],
+    "gaster": [
+      {
+        "item": "new_item_154",
+        "chance": 2.5
+      },
+      {
+        "item": "wpn_battleaxe",
+        "chance": 1.5
+      },
+      {
+        "item": "potion_blue",
+        "chance": 0.5
+      },
+      {
+        "item": "wpn_giantaxe",
+        "chance": 0.25
+      },
+      {
+        "item": "new_item_155",
+        "chance": 0.25
+      },
+      {
+        "item": "bk_summon",
+        "chance": 0.001
+      }
+    ],
+    "elder": [
+      {
+        "item": "new_item_150",
+        "chance": 0.5
+      },
+      {
+        "item": "bk_heal2",
+        "chance": 0.5
+      },
+      {
+        "item": "potion_blue",
+        "chance": 0.5
+      },
+      {
+        "item": "arm_87",
+        "chance": 0.25
+      },
+      {
+        "item": "bk_thunder",
+        "chance": 0.1
+      },
+      {
+        "item": "new_item_234",
+        "chance": 0.05
+      },
+      {
+        "item": "scroll_acc",
+        "chance": 0.005
+      }
+    ],
+    "ogre": [
+      {
+        "item": "wpn_battleaxe",
+        "chance": 1.5
+      },
+      {
+        "item": "wpn_giantaxe",
+        "chance": 0.5
+      },
+      {
+        "item": "scroll_armor",
+        "chance": 0.5
+      },
+      {
+        "item": "bk_break",
+        "chance": 0.5
+      },
+      {
+        "item": "arm_61",
+        "chance": 0.3
+      },
+      {
+        "item": "scroll_weapon",
+        "chance": 0.2
+      },
+      {
+        "item": "bk_fireball",
+        "chance": 0.1
+      },
+      {
+        "item": "bk_elf_release",
+        "chance": 0.05
+      },
+      {
+        "item": "new_item_217",
+        "chance": 0.05
+      },
+      {
+        "item": "bk_blaze",
+        "chance": 0.01
+      }
+    ],
+    "lamia": [
+      {
+        "item": "bk_break",
+        "chance": 0.5
+      },
+      {
+        "item": "new_item_221",
+        "chance": 0.5
+      },
+      {
+        "item": "new_item_208",
+        "chance": 0.5
+      },
+      {
+        "item": "scroll_weapon",
+        "chance": 0.2
+      },
+      {
+        "item": "scroll_acc",
+        "chance": 0.005
+      }
+    ],
+    "cerberus": [
+      {
+        "item": "new_item_157",
+        "chance": 2.5
+      },
+      {
+        "item": "new_item_150",
+        "chance": 0.5
+      },
+      {
+        "item": "bk_fireball",
+        "chance": 0.5
+      },
+      {
+        "item": "bk_break",
+        "chance": 0.5
+      },
+      {
+        "item": "new_item_195",
+        "chance": 0.5
+      },
+      {
+        "item": "wpn_witchwand",
+        "chance": 0.25
+      },
+      {
+        "item": "new_item_158",
+        "chance": 0.25
+      },
+      {
+        "item": "wpn_strwand",
+        "chance": 0.05
+      },
+      {
+        "item": "new_item_159",
+        "chance": 0.05
+      },
+      {
+        "item": "scroll_acc",
+        "chance": 0.005
+      },
+      {
+        "item": "bk_holy_barrier",
+        "chance": 0.001
+      }
+    ],
+    "sildeis": [
+      {
+        "item": "bk_slow",
+        "chance": 0.5
+      },
+      {
+        "item": "potion_blue",
+        "chance": 0.5
+      },
+      {
+        "item": "bk_ice_spike",
+        "chance": 0.5
+      },
+      {
+        "item": "new_item_213",
+        "chance": 0.5
+      },
+      {
+        "item": "new_item_160",
+        "chance": 0.25
+      },
+      {
+        "item": "new_item_161",
+        "chance": 0.25
+      },
+      {
+        "item": "bk_elf_lifespring",
+        "chance": 0.1
+      },
+      {
+        "item": "new_item_162",
+        "chance": 0.05
+      },
+      {
+        "item": "bk_elf_lifebless",
+        "chance": 0.01
+      },
+      {
+        "item": "bk_ice_lance",
+        "chance": 0.001
+      }
+    ],
+    "dragon_turtle": [
+      {
+        "item": "bk_ice_spike",
+        "chance": 0.5
+      },
+      {
+        "item": "new_item_206",
+        "chance": 0.5
+      },
+      {
+        "item": "bk_cancel",
+        "chance": 0.01
+      },
+      {
+        "item": "scroll_acc",
+        "chance": 0.005
+      }
+    ],
+    "harpy": [
+      {
+        "item": "new_item_150",
+        "chance": 0.5
+      },
+      {
+        "item": "bk_haste_spell",
+        "chance": 0.5
+      },
+      {
+        "item": "potion_blue",
+        "chance": 0.5
+      },
+      {
+        "item": "new_item_195",
+        "chance": 0.5
+      },
+      {
+        "item": "arm_62",
+        "chance": 0.25
+      },
+      {
+        "item": "bk_holy_dash",
+        "chance": 0.05
+      },
+      {
+        "item": "bk_greater_haste",
+        "chance": 0.01
+      },
+      {
+        "item": "bk_elf_stormeye",
+        "chance": 0.001
+      }
+    ],
+    "scorpion": [
+      {
+        "item": "potion_haste",
+        "chance": 0.5
+      },
+      {
+        "item": "bk_rock_prison",
+        "chance": 0.5
+      },
+      {
+        "item": "bk_thunder",
+        "chance": 0.01
+      },
+      {
+        "item": "bk_cancel",
+        "chance": 0.01
+      },
+      {
+        "item": "arm_46",
+        "chance": 0.005
+      },
+      {
+        "item": "bk_quake",
+        "chance": 0.001
+      }
+    ],
+    "dark_elf": [
+      {
+        "item": "wpn_30",
+        "chance": 1.5
+      },
+      {
+        "item": "potion_blue",
+        "chance": 0.5
+      },
+      {
+        "item": "new_item_195",
+        "chance": 0.5
+      },
+      {
+        "item": "item_blueflute",
+        "chance": 0.5
+      },
+      {
+        "item": "wpn_elfbow",
+        "chance": 0.25
+      },
+      {
+        "item": "clk_elf",
+        "chance": 0.25
+      },
+      {
+        "item": "arm_71",
+        "chance": 0.15
+      },
+      {
+        "item": "bk_elf_release",
+        "chance": 0.1
+      },
+      {
+        "item": "bk_meditation",
+        "chance": 0.1
+      },
+      {
+        "item": "bk_tornado",
+        "chance": 0.001
+      },
+      {
+        "item": "bk_invisible",
+        "chance": 0.001
+      }
+    ],
+    "skel_sniper": [
+      {
+        "item": "wpn_3",
+        "chance": 1.5
+      },
+      {
+        "item": "arm_42",
+        "chance": 1.5
+      },
+      {
+        "item": "arm_105",
+        "chance": 1
+      },
+      {
+        "item": "clk_mr",
+        "chance": 0.5
+      },
+      {
+        "item": "potion_haste",
+        "chance": 0.5
+      },
+      {
+        "item": "new_item_150",
+        "chance": 0.5
+      },
+      {
+        "item": "new_item_212",
+        "chance": 0.5
+      },
+      {
+        "item": "bk_charm",
+        "chance": 0.1
+      },
+      {
+        "item": "bk_dex_up",
+        "chance": 0.05
+      },
+      {
+        "item": "acc_120",
+        "chance": 0.0005
+      }
+    ],
+    "skel_guard": [
+      {
+        "item": "arm_42",
+        "chance": 1.5
+      },
+      {
+        "item": "wpn_14",
+        "chance": 1
+      },
+      {
+        "item": "arm_105",
+        "chance": 1
+      },
+      {
+        "item": "clk_mr",
+        "chance": 0.5
+      },
+      {
+        "item": "potion_haste",
+        "chance": 0.5
+      },
+      {
+        "item": "new_item_150",
+        "chance": 0.5
+      },
+      {
+        "item": "bk_charm",
+        "chance": 0.1
+      },
+      {
+        "item": "bk_dex_up",
+        "chance": 0.05
+      },
+      {
+        "item": "new_item_212",
+        "chance": 0.05
+      }
+    ],
+    "electon": [
+      {
+        "item": "new_item_151",
+        "chance": 2.5
+      },
+      {
+        "item": "scroll_armor",
+        "chance": 0.5
+      },
+      {
+        "item": "potion_blue",
+        "chance": 0.5
+      },
+      {
+        "item": "bk_ice_spike",
+        "chance": 0.5
+      },
+      {
+        "item": "new_item_152",
+        "chance": 0.25
+      },
+      {
+        "item": "new_item_153",
+        "chance": 0.05
+      },
+      {
+        "item": "bk_thunder",
+        "chance": 0.05
+      },
+      {
+        "item": "bk_elf_lifespring",
+        "chance": 0.05
+      },
+      {
+        "item": "bk_summon",
+        "chance": 0.002
+      },
+      {
+        "item": "bk_thunder_storm",
+        "chance": 0.001
+      },
+      {
+        "item": "acc_127",
+        "chance": 0.0005
+      }
+    ],
+    "troll": [
+      {
+        "item": "wpn_battleaxe",
+        "chance": 1.5
+      },
+      {
+        "item": "bk_heal2",
+        "chance": 0.5
+      },
+      {
+        "item": "potion_brave",
+        "chance": 0.5
+      },
+      {
+        "item": "wpn_giantaxe",
+        "chance": 0.4
+      },
+      {
+        "item": "arm_61",
+        "chance": 0.25
+      },
+      {
+        "item": "arm_45",
+        "chance": 0.025
+      },
+      {
+        "item": "bk_regen",
+        "chance": 0.01
+      },
+      {
+        "item": "wpn_berserker",
+        "chance": 0.005
+      },
+      {
+        "item": "acc_132",
+        "chance": 0.005
+      }
+    ],
+    "nm_013": [
+      {
+        "item": "scroll_poly",
+        "chance": 0.5
+      },
+      {
+        "item": "scroll_acc",
+        "chance": 0.005
+      }
+    ],
+    "bandit": [
+      {
+        "item": "arm_66",
+        "chance": 1.5
+      },
+      {
+        "item": "arm_42",
+        "chance": 1
+      },
+      {
+        "item": "wpn_shortbow",
+        "chance": 0.5
+      },
+      {
+        "item": "arm_49",
+        "chance": 0.5
+      },
+      {
+        "item": "potion_heal",
+        "chance": 0.5
+      },
+      {
+        "item": "potion_strong",
+        "chance": 0.5
+      },
+      {
+        "item": "potion_haste",
+        "chance": 0.5
+      },
+      {
+        "item": "potion_ult",
+        "chance": 0.5
+      },
+      {
+        "item": "wpn_20",
+        "chance": 0.25
+      },
+      {
+        "item": "arm_69",
+        "chance": 0.25
+      },
+      {
+        "item": "hlm_mr",
+        "chance": 0.25
+      },
+      {
+        "item": "arm_98",
+        "chance": 0.05
+      },
+      {
+        "item": "new_item_225",
+        "chance": 0.05
+      },
+      {
+        "item": "wpn_32",
+        "chance": 0.005
+      }
+    ],
+    "nm_012": [
+      {
+        "item": "bk_elf_release",
+        "chance": 0.1
+      },
+      {
+        "item": "scroll_acc",
+        "chance": 0.005
+      }
+    ],
+    "ogre_warrior": [
+      {
+        "item": "wpn_battleaxe",
+        "chance": 2.5
+      },
+      {
+        "item": "wpn_giantaxe",
+        "chance": 0.5
+      },
+      {
+        "item": "scroll_armor",
+        "chance": 0.5
+      },
+      {
+        "item": "potion_brave",
+        "chance": 0.5
+      },
+      {
+        "item": "scroll_weapon",
+        "chance": 0.3
+      },
+      {
+        "item": "arm_61",
+        "chance": 0.25
+      },
+      {
+        "item": "arm_47",
+        "chance": 0.015
+      },
+      {
+        "item": "wpn_berserker",
+        "chance": 0.005
+      },
+      {
+        "item": "new_item_167",
+        "chance": 0.005
+      },
+      {
+        "item": "acc_133",
+        "chance": 0.0005
+      }
+    ],
+    "crustacean": [
+      {
+        "item": "new_item_151",
+        "chance": 2.5
+      },
+      {
+        "item": "bk_weaken",
+        "chance": 1
+      },
+      {
+        "item": "scroll_weapon",
+        "chance": 0.5
+      },
+      {
+        "item": "scroll_armor",
+        "chance": 0.5
+      },
+      {
+        "item": "new_item_152",
+        "chance": 0.25
+      },
+      {
+        "item": "new_item_153",
+        "chance": 0.05
+      },
+      {
+        "item": "acc_128",
+        "chance": 0.005
+      },
+      {
+        "item": "scroll_acc",
+        "chance": 0.005
+      }
+    ],
+    "skel_fighter": [
+      {
+        "item": "wpn_battleaxe",
+        "chance": 1.5
+      },
+      {
+        "item": "arm_42",
+        "chance": 1.5
+      },
+      {
+        "item": "arm_105",
+        "chance": 1
+      },
+      {
+        "item": "clk_mr",
+        "chance": 0.5
+      },
+      {
+        "item": "potion_haste",
+        "chance": 0.5
+      },
+      {
+        "item": "new_item_150",
+        "chance": 0.5
+      },
+      {
+        "item": "bk_haste_spell",
+        "chance": 0.1
+      },
+      {
+        "item": "bk_dex_up",
+        "chance": 0.05
+      },
+      {
+        "item": "bk_solid_shield",
+        "chance": 0.01
+      }
+    ],
+    "bomb_flower": [
+      {
+        "item": "bk_sleep_mist",
+        "chance": 0.01
+      },
+      {
+        "item": "scroll_acc",
+        "chance": 0.005
+      }
+    ],
+    "nm_046": [
+      {
+        "item": "wpn_battleaxe",
+        "chance": 0.5
+      },
+      {
+        "item": "potion_haste",
+        "chance": 0.5
+      },
+      {
+        "item": "new_item_150",
+        "chance": 0.5
+      },
+      {
+        "item": "potion_blue",
+        "chance": 0.5
+      },
+      {
+        "item": "new_item_195",
+        "chance": 0.5
+      }
+    ],
+    "nm_014": [
+      {
+        "item": "arm_66",
+        "chance": 1.5
+      },
+      {
+        "item": "arm_68",
+        "chance": 1
+      },
+      {
+        "item": "bot_short",
+        "chance": 1
+      },
+      {
+        "item": "scroll_armor",
+        "chance": 0.7
+      },
+      {
+        "item": "wpn_4",
+        "chance": 0.5
+      },
+      {
+        "item": "wpn_14",
+        "chance": 0.5
+      },
+      {
+        "item": "potion_brave",
+        "chance": 0.5
+      },
+      {
+        "item": "wpn_halberd",
+        "chance": 0.25
+      },
+      {
+        "item": "glv_glove",
+        "chance": 0.25
+      },
+      {
+        "item": "scroll_acc",
+        "chance": 0.005
+      }
+    ],
+    "ogre_king": [
+      {
+        "item": "wpn_battleaxe",
+        "chance": 1.5
+      },
+      {
+        "item": "wpn_10",
+        "chance": 1
+      },
+      {
+        "item": "scroll_weapon",
+        "chance": 0.5
+      },
+      {
+        "item": "scroll_armor",
+        "chance": 0.5
+      },
+      {
+        "item": "bk_fireball",
+        "chance": 0.5
+      },
+      {
+        "item": "bk_break",
+        "chance": 0.5
+      },
+      {
+        "item": "potion_blue",
+        "chance": 0.5
+      },
+      {
+        "item": "wpn_giantaxe",
+        "chance": 0.25
+      },
+      {
+        "item": "arm_61",
+        "chance": 0.25
+      },
+      {
+        "item": "new_item_158",
+        "chance": 0.25
+      },
+      {
+        "item": "bk_holy_light",
+        "chance": 0.1
+      },
+      {
+        "item": "bk_disease",
+        "chance": 0.1
+      },
+      {
+        "item": "arm_47",
+        "chance": 0.025
+      },
+      {
+        "item": "wpn_berserker",
+        "chance": 0.01
+      },
+      {
+        "item": "bk_shock_stun",
+        "chance": 0.01
+      }
+    ],
+    "monia": [
+      {
+        "item": "arm_87",
+        "chance": 0.5
+      },
+      {
+        "item": "scroll_weapon",
+        "chance": 0.5
+      },
+      {
+        "item": "scroll_armor",
+        "chance": 0.5
+      },
+      {
+        "item": "bk_slow",
+        "chance": 0.5
+      },
+      {
+        "item": "bk_heal2",
+        "chance": 0.5
+      },
+      {
+        "item": "scroll_poly",
+        "chance": 0.5
+      },
+      {
+        "item": "potion_blue",
+        "chance": 0.5
+      },
+      {
+        "item": "bk_holy_light",
+        "chance": 0.1
+      }
+    ],
+    "nm_039": [
+      {
+        "item": "scroll_armor",
+        "chance": 0.7
+      },
+      {
+        "item": "scroll_weapon",
+        "chance": 0.5
+      },
+      {
+        "item": "scroll_poly",
+        "chance": 0.5
+      }
+    ],
+    "nm_038": [
+      {
+        "item": "scroll_armor",
+        "chance": 0.7
+      },
+      {
+        "item": "potion_haste",
+        "chance": 0.5
+      },
+      {
+        "item": "scroll_weapon",
+        "chance": 0.5
+      },
+      {
+        "item": "potion_blue",
+        "chance": 0.5
+      }
+    ],
+    "nm_015": [
+      {
+        "item": "wpn_witchwand",
+        "chance": 0.5
+      },
+      {
+        "item": "scroll_weapon",
+        "chance": 0.5
+      },
+      {
+        "item": "potion_blue",
+        "chance": 0.5
+      },
+      {
+        "item": "bk_ice_spike",
+        "chance": 0.5
+      },
+      {
+        "item": "bk_full_heal",
+        "chance": 0.01
+      },
+      {
+        "item": "bk_bless_wpn",
+        "chance": 0.005
+      }
+    ],
+    "griffon": [
+      {
+        "item": "potion_haste",
+        "chance": 0.5
+      },
+      {
+        "item": "new_item_150",
+        "chance": 0.5
+      },
+      {
+        "item": "arm_62",
+        "chance": 0.25
+      },
+      {
+        "item": "new_item_152",
+        "chance": 0.25
+      },
+      {
+        "item": "new_item_155",
+        "chance": 0.25
+      },
+      {
+        "item": "new_item_158",
+        "chance": 0.25
+      },
+      {
+        "item": "new_item_161",
+        "chance": 0.25
+      },
+      {
+        "item": "bk_elf_release",
+        "chance": 0.1
+      },
+      {
+        "item": "bk_elf_winddash",
+        "chance": 0.05
+      },
+      {
+        "item": "arm_46",
+        "chance": 0.05
+      },
+      {
+        "item": "bk_magic_shield",
+        "chance": 0.01
+      },
+      {
+        "item": "bk_tornado",
+        "chance": 0.001
+      },
+      {
+        "item": "bk_elf_stormeye",
+        "chance": 0.001
+      }
+    ],
+    "nm_016": [
+      {
+        "item": "hlm_mr",
+        "chance": 0.5
+      },
+      {
+        "item": "arm_42",
+        "chance": 0.5
+      },
+      {
+        "item": "potion_strong",
+        "chance": 0.5
+      },
+      {
+        "item": "potion_haste",
+        "chance": 0.5
+      },
+      {
+        "item": "potion_blue",
+        "chance": 0.5
+      }
+    ],
+    "giant_croc": [
+      {
+        "item": "scroll_armor",
+        "chance": 1.5
+      },
+      {
+        "item": "bk_thunder",
+        "chance": 1
+      },
+      {
+        "item": "scroll_acc",
+        "chance": 0.5
+      },
+      {
+        "item": "new_item_154",
+        "chance": 0.5
+      },
+      {
+        "item": "potion_brave",
+        "chance": 0.5
+      }
+    ],
+    "nm_017": [
+      {
+        "item": "wpn_2",
+        "chance": 1.5
+      },
+      {
+        "item": "bk_ice_spike",
+        "chance": 0.5
+      },
+      {
+        "item": "bk_elf_lifespring",
+        "chance": 0.05
+      },
+      {
+        "item": "glv_crystal",
+        "chance": 0.005
+      },
+      {
+        "item": "bk_ice_lance",
+        "chance": 0.001
+      }
+    ],
+    "gaster_king": [
+      {
+        "item": "wpn_battleaxe",
+        "chance": 1
+      },
+      {
+        "item": "scroll_armor",
+        "chance": 0.7
+      },
+      {
+        "item": "scroll_weapon",
+        "chance": 0.5
+      },
+      {
+        "item": "potion_blue",
+        "chance": 0.5
+      },
+      {
+        "item": "wpn_giantaxe",
+        "chance": 0.25
+      },
+      {
+        "item": "new_item_155",
+        "chance": 0.25
+      },
+      {
+        "item": "bk_disease",
+        "chance": 0.1
+      },
+      {
+        "item": "arm_45",
+        "chance": 0.05
+      },
+      {
+        "item": "new_item_156",
+        "chance": 0.025
+      },
+      {
+        "item": "wpn_berserker",
+        "chance": 0.005
+      }
+    ],
+    "nm_019": [
+      {
+        "item": "potion_haste",
+        "chance": 0.5
+      },
+      {
+        "item": "new_item_150",
+        "chance": 0.5
+      },
+      {
+        "item": "new_item_195",
+        "chance": 0.5
+      },
+      {
+        "item": "scroll_acc",
+        "chance": 0.005
+      }
+    ],
+    "beholder": [
+      {
+        "item": "new_item_160",
+        "chance": 2.5
+      },
+      {
+        "item": "scroll_weapon",
+        "chance": 0.5
+      },
+      {
+        "item": "bk_mummy_curse",
+        "chance": 0.5
+      },
+      {
+        "item": "new_item_161",
+        "chance": 0.25
+      },
+      {
+        "item": "bk_elf_release",
+        "chance": 0.1
+      },
+      {
+        "item": "bk_weaken",
+        "chance": 0.1
+      },
+      {
+        "item": "bk_disease",
+        "chance": 0.1
+      },
+      {
+        "item": "new_item_162",
+        "chance": 0.05
+      },
+      {
+        "item": "bk_cancel",
+        "chance": 0.05
+      },
+      {
+        "item": "bk_elf_triple",
+        "chance": 0.01
+      }
+    ],
+    "nm_018": [
+      {
+        "item": "wpn_battleaxe",
+        "chance": 0.5
+      },
+      {
+        "item": "arm_60",
+        "chance": 0.5
+      },
+      {
+        "item": "arm_62",
+        "chance": 0.5
+      },
+      {
+        "item": "potion_heal",
+        "chance": 0.5
+      },
+      {
+        "item": "potion_strong",
+        "chance": 0.5
+      },
+      {
+        "item": "potion_ult",
+        "chance": 0.5
+      },
+      {
+        "item": "bk_weaken",
+        "chance": 0.1
+      },
+      {
+        "item": "bk_holy_barrier",
+        "chance": 0.003
+      }
+    ],
+    "nm_020": [
+      {
+        "item": "wpn_18",
+        "chance": 0.5
+      },
+      {
+        "item": "new_item_195",
+        "chance": 0.5
+      },
+      {
+        "item": "scroll_acc",
+        "chance": 0.005
+      }
+    ],
+    "dragon_fly": [
+      {
+        "item": "scroll_armor",
+        "chance": 0.7
+      },
+      {
+        "item": "scroll_weapon",
+        "chance": 0.5
+      },
+      {
+        "item": "bk_vampire",
+        "chance": 0.5
+      },
+      {
+        "item": "new_item_192",
+        "chance": 0.005
+      }
+    ],
+    "doppelganger": [
+      {
+        "item": "scroll_poly",
+        "chance": 0.5
+      },
+      {
+        "item": "potion_blue",
+        "chance": 0.5
+      },
+      {
+        "item": "new_item_240",
+        "chance": 0.5
+      },
+      {
+        "item": "scroll_acc",
+        "chance": 0.005
+      }
+    ],
+    "arian": [
+      {
+        "item": "scroll_armor",
+        "chance": 0.7
+      },
+      {
+        "item": "potion_haste",
+        "chance": 0.5
+      },
+      {
+        "item": "scroll_weapon",
+        "chance": 0.5
+      },
+      {
+        "item": "bk_slow",
+        "chance": 0.5
+      },
+      {
+        "item": "bk_mummy_curse",
+        "chance": 0.5
+      },
+      {
+        "item": "bk_haste_spell",
+        "chance": 0.5
+      },
+      {
+        "item": "bk_rock_prison",
+        "chance": 0.5
+      },
+      {
+        "item": "bk_heal2",
+        "chance": 0.1
+      },
+      {
+        "item": "bk_holy_light",
+        "chance": 0.1
+      },
+      {
+        "item": "bk_earthquake",
+        "chance": 0.1
+      },
+      {
+        "item": "bk_greater_haste",
+        "chance": 0.1
+      },
+      {
+        "item": "bk_elf_groundtrap",
+        "chance": 0.1
+      },
+      {
+        "item": "scroll_acc",
+        "chance": 0.005
+      },
+      {
+        "item": "bk_quake",
+        "chance": 0.005
+      }
+    ],
+    "obli_sharlob": [
+      {
+        "item": "bk_sleep_mist",
+        "chance": 0.02
+      },
+      {
+        "item": "item_forgotten_scale",
+        "chance": 0.001
+      }
+    ],
+    "obli_werewolf": [
+      {
+        "item": "item_forgotten_scale",
+        "chance": 0.001
+      }
+    ],
+    "fire_warrior": [
+      {
+        "item": "arm_105",
+        "chance": 1.5
+      },
+      {
+        "item": "arm_42",
+        "chance": 1
+      },
+      {
+        "item": "hlm_mr",
+        "chance": 0.5
+      },
+      {
+        "item": "wpn_longsword",
+        "chance": 0.5
+      },
+      {
+        "item": "arm_62",
+        "chance": 0.5
+      },
+      {
+        "item": "potion_haste",
+        "chance": 0.5
+      },
+      {
+        "item": "new_item_192",
+        "chance": 0.005
+      }
+    ],
+    "nm_021": [
+      {
+        "item": "scroll_armor",
+        "chance": 0.7
+      },
+      {
+        "item": "arm_60",
+        "chance": 0.5
+      },
+      {
+        "item": "arm_65",
+        "chance": 0.5
+      },
+      {
+        "item": "arm_90",
+        "chance": 0.5
+      },
+      {
+        "item": "potion_haste",
+        "chance": 0.5
+      },
+      {
+        "item": "scroll_weapon",
+        "chance": 0.5
+      },
+      {
+        "item": "wpn_2hsword",
+        "chance": 0.25
+      },
+      {
+        "item": "glv_glove",
+        "chance": 0.25
+      },
+      {
+        "item": "bk_shock_stun",
+        "chance": 0.05
+      },
+      {
+        "item": "bk_reduction_armor",
+        "chance": 0.01
+      },
+      {
+        "item": "scroll_acc",
+        "chance": 0.005
+      },
+      {
+        "item": "bk_spike_armor",
+        "chance": 0.001
+      }
+    ],
+    "aruba": [
+      {
+        "item": "wpn_18",
+        "chance": 1
+      },
+      {
+        "item": "bk_haste_spell",
+        "chance": 0.5
+      },
+      {
+        "item": "bk_rock_prison",
+        "chance": 0.5
+      },
+      {
+        "item": "bk_earthquake",
+        "chance": 0.1
+      },
+      {
+        "item": "bk_greater_haste",
+        "chance": 0.1
+      },
+      {
+        "item": "bk_str_up",
+        "chance": 0.05
+      },
+      {
+        "item": "bk_quake",
+        "chance": 0.005
+      }
+    ],
+    "bandit_boss": [
+      {
+        "item": "arm_42",
+        "chance": 5
+      },
+      {
+        "item": "item_nightvision",
+        "chance": 5
+      },
+      {
+        "item": "hlm_mr",
+        "chance": 2.5
+      },
+      {
+        "item": "arm_62",
+        "chance": 2.5
+      },
+      {
+        "item": "arm_87",
+        "chance": 2.5
+      },
+      {
+        "item": "wpn_silversword",
+        "chance": 1.5
+      },
+      {
+        "item": "wpn_katana",
+        "chance": 0.5
+      },
+      {
+        "item": "potion_heal",
+        "chance": 0.5
+      },
+      {
+        "item": "potion_strong",
+        "chance": 0.5
+      },
+      {
+        "item": "potion_haste",
+        "chance": 0.5
+      },
+      {
+        "item": "potion_ult",
+        "chance": 0.5
+      },
+      {
+        "item": "new_item_152",
+        "chance": 0.25
+      },
+      {
+        "item": "new_item_155",
+        "chance": 0.25
+      },
+      {
+        "item": "new_item_158",
+        "chance": 0.25
+      },
+      {
+        "item": "new_item_161",
+        "chance": 0.25
+      },
+      {
+        "item": "scroll_acc",
+        "chance": 0.05
+      },
+      {
+        "item": "new_item_153",
+        "chance": 0.05
+      },
+      {
+        "item": "new_item_156",
+        "chance": 0.05
+      },
+      {
+        "item": "new_item_159",
+        "chance": 0.05
+      },
+      {
+        "item": "new_item_162",
+        "chance": 0.05
+      }
+    ],
+    "obli_darkelf": [
+      {
+        "item": "rng_mr",
+        "chance": 0.03
+      },
+      {
+        "item": "hlm_wind",
+        "chance": 0.01
+      },
+      {
+        "item": "mat_black_mithril",
+        "chance": 0.01
+      },
+      {
+        "item": "item_forgotten_leather",
+        "chance": 0.001
+      }
+    ],
+    "obli_bear": [
+      {
+        "item": "item_forgotten_leather",
+        "chance": 0.001
+      }
+    ],
+    "nm_022": [
+      {
+        "item": "new_item_180",
+        "chance": 50
+      },
+      {
+        "item": "scroll_armor",
+        "chance": 0.7
+      },
+      {
+        "item": "scroll_weapon",
+        "chance": 0.5
+      },
+      {
+        "item": "new_item_164",
+        "chance": 0.5
+      },
+      {
+        "item": "potion_blue",
+        "chance": 0.5
+      },
+      {
+        "item": "item_ancientkey",
+        "chance": 0.5
+      },
+      {
+        "item": "bk_weaken",
+        "chance": 0.1
+      },
+      {
+        "item": "bk_str_up",
+        "chance": 0.05
+      },
+      {
+        "item": "bk_elf_soul",
+        "chance": 0.001
+      },
+      {
+        "item": "bk_elf_steelguard",
+        "chance": 0.001
+      }
+    ],
+    "fire_archer": [
+      {
+        "item": "arm_67",
+        "chance": 2
+      },
+      {
+        "item": "arm_42",
+        "chance": 1
+      },
+      {
+        "item": "hlm_mr",
+        "chance": 0.5
+      },
+      {
+        "item": "arm_90",
+        "chance": 0.5
+      },
+      {
+        "item": "bk_slow",
+        "chance": 0.1
+      },
+      {
+        "item": "wpn_32",
+        "chance": 0.05
+      },
+      {
+        "item": "bk_dex_up",
+        "chance": 0.05
+      },
+      {
+        "item": "new_item_192",
+        "chance": 0.005
+      }
+    ],
+    "evil_lizard": [
+      {
+        "item": "new_item_151",
+        "chance": 2.5
+      },
+      {
+        "item": "scroll_armor",
+        "chance": 0.7
+      },
+      {
+        "item": "scroll_weapon",
+        "chance": 0.5
+      },
+      {
+        "item": "bk_slow",
+        "chance": 0.5
+      },
+      {
+        "item": "bk_rock_prison",
+        "chance": 0.5
+      },
+      {
+        "item": "new_item_152",
+        "chance": 0.25
+      },
+      {
+        "item": "bk_heal2",
+        "chance": 0.2
+      },
+      {
+        "item": "bk_holy_light",
+        "chance": 0.1
+      },
+      {
+        "item": "arm_46",
+        "chance": 0.1
+      },
+      {
+        "item": "new_item_153",
+        "chance": 0.05
+      },
+      {
+        "item": "bk_elf_release",
+        "chance": 0.05
+      },
+      {
+        "item": "bk_cancel",
+        "chance": 0.02
+      },
+      {
+        "item": "bk_earthquake",
+        "chance": 0.02
+      },
+      {
+        "item": "scroll_acc",
+        "chance": 0.005
+      },
+      {
+        "item": "bk_quake",
+        "chance": 0.005
+      },
+      {
+        "item": "new_item_232",
+        "chance": 0.005
+      },
+      {
+        "item": "item_lizard_horn",
+        "chance": 0.005
+      }
+    ],
+    "obli_kasta": [
+      {
+        "item": "item_forgotten_leather",
+        "chance": 0.001
+      },
+      {
+        "item": "new_item_191",
+        "chance": 0.0001
+      }
+    ],
+    "succubus": [
+      {
+        "item": "potion_blue",
+        "chance": 0.5
+      },
+      {
+        "item": "bk_ice_spike",
+        "chance": 0.5
+      },
+      {
+        "item": "bk_elf_release",
+        "chance": 0.1
+      },
+      {
+        "item": "bk_elf_lifespring",
+        "chance": 0.1
+      },
+      {
+        "item": "bk_elf_triple",
+        "chance": 0.05
+      },
+      {
+        "item": "bk_ice_lance",
+        "chance": 0.01
+      },
+      {
+        "item": "bk_blizzard",
+        "chance": 0.005
+      },
+      {
+        "item": "new_item_226",
+        "chance": 0.005
+      },
+      {
+        "item": "bk_summon",
+        "chance": 0.002
+      },
+      {
+        "item": "acc_117",
+        "chance": 0.0005
+      }
+    ],
+    "obli_axetaurus": [
+      {
+        "item": "rng_mr",
+        "chance": 0.03
+      },
+      {
+        "item": "item_forgotten_scale",
+        "chance": 0.001
+      },
+      {
+        "item": "new_item_191",
+        "chance": 0.0001
+      },
+      {
+        "item": "item_ancient_scroll",
+        "chance": 1e-05
+      }
+    ],
+    "obli_troll": [
+      {
+        "item": "item_forgotten_robe",
+        "chance": 0.001
+      },
+      {
+        "item": "acc_demonbane",
+        "chance": 0.001
+      }
+    ],
+    "obli_lamia": [
+      {
+        "item": "new_item_221",
+        "chance": 0.3
+      },
+      {
+        "item": "arm_95",
+        "chance": 0.01
+      },
+      {
+        "item": "item_forgotten_robe",
+        "chance": 0.001
+      },
+      {
+        "item": "item_forgotten_scale",
+        "chance": 0.001
+      }
+    ],
+    "obli_lycan": [
+      {
+        "item": "rng_mr",
+        "chance": 0.03
+      },
+      {
+        "item": "hlm_wind",
+        "chance": 0.01
+      },
+      {
+        "item": "item_forgotten_leather",
+        "chance": 0.001
+      }
+    ],
+    "salamander": [
+      {
+        "item": "potion_haste",
+        "chance": 0.5
+      },
+      {
+        "item": "new_item_155",
+        "chance": 0.25
+      },
+      {
+        "item": "new_item_158",
+        "chance": 0.25
+      },
+      {
+        "item": "bk_elf_magicerase",
+        "chance": 0.01
+      },
+      {
+        "item": "bk_elf_stormeye",
+        "chance": 0.01
+      },
+      {
+        "item": "bk_shock_stun",
+        "chance": 0.01
+      },
+      {
+        "item": "new_item_192",
+        "chance": 0.005
+      },
+      {
+        "item": "bk_fire_storm",
+        "chance": 0.001
+      }
+    ],
+    "nm_040": [
+      {
+        "item": "scroll_armor",
+        "chance": 0.7
+      },
+      {
+        "item": "wpn_2hsword",
+        "chance": 0.5
+      },
+      {
+        "item": "wpn_giantaxe",
+        "chance": 0.5
+      },
+      {
+        "item": "scroll_weapon",
+        "chance": 0.5
+      },
+      {
+        "item": "bk_fire_storm",
+        "chance": 0.01
+      }
+    ],
+    "nm_036": [
+      {
+        "item": "scroll_armor",
+        "chance": 0.7
+      },
+      {
+        "item": "potion_haste",
+        "chance": 0.5
+      },
+      {
+        "item": "scroll_weapon",
+        "chance": 0.5
+      },
+      {
+        "item": "potion_blue",
+        "chance": 0.5
+      }
+    ],
+    "nm_041": [
+      {
+        "item": "scroll_armor",
+        "chance": 0.7
+      },
+      {
+        "item": "scroll_weapon",
+        "chance": 0.5
+      }
+    ],
+    "nm_042": [
+      {
+        "item": "scroll_armor",
+        "chance": 0.7
+      },
+      {
+        "item": "scroll_weapon",
+        "chance": 0.5
+      }
+    ],
+    "obli_ungoliant": [
+      {
+        "item": "rng_mr",
+        "chance": 0.03
+      },
+      {
+        "item": "item_forgotten_leather",
+        "chance": 0.001
+      }
+    ],
+    "fire_egg": [
+      {
+        "item": "scroll_armor",
+        "chance": 0.7
+      },
+      {
+        "item": "scroll_weapon",
+        "chance": 0.5
+      },
+      {
+        "item": "scroll_poly",
+        "chance": 0.5
+      },
+      {
+        "item": "potion_blue",
+        "chance": 0.5
+      },
+      {
+        "item": "bk_fireball",
+        "chance": 0.1
+      },
+      {
+        "item": "bk_holy_light",
+        "chance": 0.1
+      },
+      {
+        "item": "new_item_192",
+        "chance": 0.005
+      }
+    ],
+    "nm_043": [
+      {
+        "item": "scroll_armor",
+        "chance": 0.7
+      },
+      {
+        "item": "scroll_weapon",
+        "chance": 0.5
+      },
+      {
+        "item": "bk_holy_light",
+        "chance": 0.5
+      },
+      {
+        "item": "scroll_poly",
+        "chance": 0.5
+      }
+    ],
+    "nm_044": [
+      {
+        "item": "scroll_armor",
+        "chance": 0.7
+      },
+      {
+        "item": "wpn_silveraxe",
+        "chance": 0.5
+      },
+      {
+        "item": "scroll_weapon",
+        "chance": 0.5
+      },
+      {
+        "item": "scroll_revive",
+        "chance": 0.5
+      },
+      {
+        "item": "bk_elf_soul",
+        "chance": 0.1
+      }
+    ],
+    "nm_023": [
+      {
+        "item": "scroll_armor",
+        "chance": 0.7
+      },
+      {
+        "item": "scroll_weapon",
+        "chance": 0.5
+      },
+      {
+        "item": "arm_45",
+        "chance": 0.05
+      },
+      {
+        "item": "bk_thunder_storm",
+        "chance": 0.05
+      }
+    ],
+    "nm_024": [
+      {
+        "item": "scroll_armor",
+        "chance": 0.7
+      },
+      {
+        "item": "arm_60",
+        "chance": 0.5
+      },
+      {
+        "item": "potion_haste",
+        "chance": 0.5
+      },
+      {
+        "item": "scroll_weapon",
+        "chance": 0.5
+      },
+      {
+        "item": "bk_spike_armor",
+        "chance": 0.05
+      }
+    ],
+    "nm_045": [
+      {
+        "item": "scroll_armor",
+        "chance": 0.7
+      },
+      {
+        "item": "potion_haste",
+        "chance": 0.5
+      },
+      {
+        "item": "scroll_weapon",
+        "chance": 0.5
+      },
+      {
+        "item": "potion_blue",
+        "chance": 0.5
+      }
+    ],
+    "nm_037": [
+      {
+        "item": "wpn_2hsword",
+        "chance": 1.5
+      },
+      {
+        "item": "scroll_armor",
+        "chance": 1.5
+      },
+      {
+        "item": "scroll_weapon",
+        "chance": 1
+      },
+      {
+        "item": "potion_haste",
+        "chance": 0.5
+      },
+      {
+        "item": "potion_blue",
+        "chance": 0.5
+      },
+      {
+        "item": "panacea_wis",
+        "chance": 0.2
+      },
+      {
+        "item": "bk_elf_triple",
+        "chance": 0.1
+      }
+    ],
+    "cyclops": [
+      {
+        "item": "scroll_armor",
+        "chance": 0.7
+      },
+      {
+        "item": "arm_62",
+        "chance": 0.5
+      },
+      {
+        "item": "scroll_weapon",
+        "chance": 0.5
+      },
+      {
+        "item": "bk_rock_prison",
+        "chance": 0.5
+      },
+      {
+        "item": "bk_elf_groundtrap",
+        "chance": 0.1
+      },
+      {
+        "item": "bk_weaken",
+        "chance": 0.1
+      },
+      {
+        "item": "bk_str_up",
+        "chance": 0.05
+      },
+      {
+        "item": "bk_seal",
+        "chance": 0.05
+      },
+      {
+        "item": "bk_elf_earthbless",
+        "chance": 0.01
+      },
+      {
+        "item": "arm_47",
+        "chance": 0.005
+      },
+      {
+        "item": "scroll_acc",
+        "chance": 0.005
+      },
+      {
+        "item": "new_item_227",
+        "chance": 0.005
+      },
+      {
+        "item": "bk_quake",
+        "chance": 0.003
+      },
+      {
+        "item": "bk_summon",
+        "chance": 0.002
+      }
+    ],
+    "succubus_queen": [
+      {
+        "item": "potion_blue",
+        "chance": 0.5
+      },
+      {
+        "item": "bk_ice_spike",
+        "chance": 0.5
+      },
+      {
+        "item": "bk_elf_lifespring",
+        "chance": 0.1
+      },
+      {
+        "item": "bk_mana_drain",
+        "chance": 0.1
+      },
+      {
+        "item": "bk_ice_lance",
+        "chance": 0.01
+      },
+      {
+        "item": "scroll_acc",
+        "chance": 0.005
+      },
+      {
+        "item": "new_item_235",
+        "chance": 0.005
+      },
+      {
+        "item": "bk_summon",
+        "chance": 0.003
+      },
+      {
+        "item": "acc_116",
+        "chance": 0.0005
+      }
+    ],
+    "nm_025": [
+      {
+        "item": "potion_heal",
+        "chance": 0.5
+      },
+      {
+        "item": "potion_strong",
+        "chance": 0.5
+      },
+      {
+        "item": "potion_ult",
+        "chance": 0.5
+      },
+      {
+        "item": "potion_blue",
+        "chance": 0.5
+      },
+      {
+        "item": "bk_ice_spike",
+        "chance": 0.5
+      },
+      {
+        "item": "bk_dark_shadow",
+        "chance": 0.1
+      },
+      {
+        "item": "bk_magic_shield",
+        "chance": 0.01
+      },
+      {
+        "item": "acc_129",
+        "chance": 0.0025
+      },
+      {
+        "item": "acc_131",
+        "chance": 0.0005
+      }
+    ],
+    "obli_harpy": [
+      {
+        "item": "arm_95",
+        "chance": 0.01
+      },
+      {
+        "item": "rng_harpy",
+        "chance": 0.0002
+      }
+    ],
+    "obli_griffon": [
+      {
+        "item": "mat_griffon_feather",
+        "chance": 0.02
+      },
+      {
+        "item": "hlm_wind",
+        "chance": 0.01
+      },
+      {
+        "item": "item_forgotten_xbow",
+        "chance": 0.001
+      },
+      {
+        "item": "item_forgotten_robe",
+        "chance": 0.001
+      },
+      {
+        "item": "acc_demonbane",
+        "chance": 0.001
+      },
+      {
+        "item": "new_item_193",
+        "chance": 0.0002
+      }
+    ],
+    "obli_hammertaurus": [
+      {
+        "item": "rng_mr",
+        "chance": 0.03
+      },
+      {
+        "item": "item_forgotten_plate",
+        "chance": 0.001
+      },
+      {
+        "item": "new_item_191",
+        "chance": 0.0001
+      },
+      {
+        "item": "item_ancient_scroll",
+        "chance": 1e-05
+      }
+    ],
+    "sema": [
+      {
+        "item": "scroll_armor",
+        "chance": 100
+      },
+      {
+        "item": "scroll_weapon",
+        "chance": 20
+      },
+      {
+        "item": "arm_90",
+        "chance": 10
+      },
+      {
+        "item": "arm_87",
+        "chance": 5
+      },
+      {
+        "item": "new_item_151",
+        "chance": 5
+      },
+      {
+        "item": "bk_dex_up",
+        "chance": 2
+      },
+      {
+        "item": "arm_57",
+        "chance": 1
+      },
+      {
+        "item": "amu_str",
+        "chance": 1
+      },
+      {
+        "item": "scroll_acc",
+        "chance": 1
+      },
+      {
+        "item": "new_item_150",
+        "chance": 1
+      },
+      {
+        "item": "bk_haste_spell",
+        "chance": 1
+      },
+      {
+        "item": "potion_blue",
+        "chance": 1
+      },
+      {
+        "item": "bk_greater_haste",
+        "chance": 1
+      },
+      {
+        "item": "bk_elf_stormeye",
+        "chance": 1
+      },
+      {
+        "item": "bk_weaken",
+        "chance": 1
+      },
+      {
+        "item": "new_item_152",
+        "chance": 0.5
+      },
+      {
+        "item": "new_item_153",
+        "chance": 0.1
+      },
+      {
+        "item": "scroll_weapon_b",
+        "chance": 0.1
+      },
+      {
+        "item": "scroll_armor_b",
+        "chance": 0.1
+      }
+    ],
+    "necromancer": [
+      {
+        "item": "new_item_151",
+        "chance": 2.5
+      },
+      {
+        "item": "scroll_armor",
+        "chance": 0.7
+      },
+      {
+        "item": "arm_90",
+        "chance": 0.5
+      },
+      {
+        "item": "scroll_weapon",
+        "chance": 0.5
+      },
+      {
+        "item": "potion_blue",
+        "chance": 0.5
+      },
+      {
+        "item": "arm_87",
+        "chance": 0.25
+      },
+      {
+        "item": "new_item_152",
+        "chance": 0.25
+      },
+      {
+        "item": "bk_dex_up",
+        "chance": 0.1
+      },
+      {
+        "item": "bk_haste_spell",
+        "chance": 0.1
+      },
+      {
+        "item": "bk_weaken",
+        "chance": 0.1
+      },
+      {
+        "item": "new_item_153",
+        "chance": 0.05
+      },
+      {
+        "item": "bk_greater_haste",
+        "chance": 0.05
+      },
+      {
+        "item": "bk_elf_stormeye",
+        "chance": 0.05
+      },
+      {
+        "item": "scroll_acc",
+        "chance": 0.005
+      },
+      {
+        "item": "item_crystal_ball",
+        "chance": 0.005
+      },
+      {
+        "item": "amu_str",
+        "chance": 0.0005
+      }
+    ],
+    "nm_026": [
+      {
+        "item": "amr_robe",
+        "chance": 2.5
+      },
+      {
+        "item": "potion_heal",
+        "chance": 0.5
+      },
+      {
+        "item": "potion_strong",
+        "chance": 0.5
+      },
+      {
+        "item": "potion_haste",
+        "chance": 0.5
+      },
+      {
+        "item": "potion_ult",
+        "chance": 0.5
+      },
+      {
+        "item": "bk_weaken",
+        "chance": 0.5
+      },
+      {
+        "item": "bk_elf_seal",
+        "chance": 0.01
+      },
+      {
+        "item": "bk_magic_shield",
+        "chance": 0.01
+      },
+      {
+        "item": "glv_crystal",
+        "chance": 0.005
+      }
+    ],
+    "obli_kastaking": [
+      {
+        "item": "rng_mr",
+        "chance": 0.03
+      },
+      {
+        "item": "item_forgotten_leather",
+        "chance": 0.001
+      }
+    ],
+    "obli_bigcroc": [
+      {
+        "item": "rng_mr",
+        "chance": 0.03
+      },
+      {
+        "item": "arm_95",
+        "chance": 0.01
+      },
+      {
+        "item": "item_forgotten_plate",
+        "chance": 0.001
+      }
+    ],
+    "obli_shapeshifter": [
+      {
+        "item": "acc_demonbane",
+        "chance": 0.001
+      },
+      {
+        "item": "item_ancient_scroll",
+        "chance": 1e-05
+      }
+    ],
+    "batus": [
+      {
+        "item": "scroll_armor",
+        "chance": 100
+      },
+      {
+        "item": "scroll_weapon",
+        "chance": 20
+      },
+      {
+        "item": "arm_90",
+        "chance": 10
+      },
+      {
+        "item": "arm_87",
+        "chance": 5
+      },
+      {
+        "item": "new_item_154",
+        "chance": 5
+      },
+      {
+        "item": "bk_elf_groundtrap",
+        "chance": 5
+      },
+      {
+        "item": "arm_54",
+        "chance": 1
+      },
+      {
+        "item": "scroll_acc",
+        "chance": 1
+      },
+      {
+        "item": "new_item_150",
+        "chance": 1
+      },
+      {
+        "item": "potion_blue",
+        "chance": 1
+      },
+      {
+        "item": "bk_elf_earthbless",
+        "chance": 1
+      },
+      {
+        "item": "new_item_155",
+        "chance": 0.5
+      },
+      {
+        "item": "amu_int",
+        "chance": 0.1
+      },
+      {
+        "item": "new_item_156",
+        "chance": 0.1
+      },
+      {
+        "item": "bk_cancel",
+        "chance": 0.1
+      },
+      {
+        "item": "bk_quake",
+        "chance": 0.1
+      },
+      {
+        "item": "scroll_weapon_b",
+        "chance": 0.1
+      },
+      {
+        "item": "scroll_armor_b",
+        "chance": 0.1
+      },
+      {
+        "item": "acc_117",
+        "chance": 0.01
+      }
+    ],
+    "nm_029": [
+      {
+        "item": "arm_63",
+        "chance": 2.5
+      },
+      {
+        "item": "scroll_armor",
+        "chance": 1.5
+      },
+      {
+        "item": "scroll_weapon",
+        "chance": 1
+      },
+      {
+        "item": "arm_69",
+        "chance": 0.5
+      },
+      {
+        "item": "potion_haste",
+        "chance": 0.5
+      },
+      {
+        "item": "scroll_revive",
+        "chance": 0.5
+      },
+      {
+        "item": "potion_blue",
+        "chance": 0.5
+      },
+      {
+        "item": "panacea_int",
+        "chance": 0.2
+      }
+    ],
+    "nm_028": [
+      {
+        "item": "arm_63",
+        "chance": 2.5
+      },
+      {
+        "item": "scroll_armor",
+        "chance": 1.5
+      },
+      {
+        "item": "scroll_weapon",
+        "chance": 1
+      },
+      {
+        "item": "arm_69",
+        "chance": 0.5
+      },
+      {
+        "item": "potion_haste",
+        "chance": 0.5
+      },
+      {
+        "item": "scroll_revive",
+        "chance": 0.5
+      },
+      {
+        "item": "potion_blue",
+        "chance": 0.5
+      },
+      {
+        "item": "panacea_str",
+        "chance": 0.2
+      }
+    ],
+    "nm_031": [
+      {
+        "item": "arm_63",
+        "chance": 2.5
+      },
+      {
+        "item": "scroll_armor",
+        "chance": 1.5
+      },
+      {
+        "item": "scroll_weapon",
+        "chance": 1
+      },
+      {
+        "item": "arm_69",
+        "chance": 0.5
+      },
+      {
+        "item": "potion_haste",
+        "chance": 0.5
+      },
+      {
+        "item": "scroll_revive",
+        "chance": 0.5
+      },
+      {
+        "item": "potion_blue",
+        "chance": 0.5
+      },
+      {
+        "item": "panacea_con",
+        "chance": 0.2
+      }
+    ],
+    "nm_027": [
+      {
+        "item": "amr_robe",
+        "chance": 1.5
+      },
+      {
+        "item": "potion_heal",
+        "chance": 0.5
+      },
+      {
+        "item": "potion_strong",
+        "chance": 0.5
+      },
+      {
+        "item": "potion_ult",
+        "chance": 0.5
+      },
+      {
+        "item": "potion_blue",
+        "chance": 0.5
+      },
+      {
+        "item": "bk_dark_shadow",
+        "chance": 0.1
+      },
+      {
+        "item": "bk_elf_seal",
+        "chance": 0.05
+      },
+      {
+        "item": "glv_crystal",
+        "chance": 0.005
+      }
+    ],
+    "nm_030": [
+      {
+        "item": "arm_63",
+        "chance": 2.5
+      },
+      {
+        "item": "scroll_armor",
+        "chance": 1.5
+      },
+      {
+        "item": "scroll_weapon",
+        "chance": 1
+      },
+      {
+        "item": "arm_69",
+        "chance": 0.5
+      },
+      {
+        "item": "potion_haste",
+        "chance": 0.5
+      },
+      {
+        "item": "scroll_revive",
+        "chance": 0.5
+      },
+      {
+        "item": "potion_blue",
+        "chance": 0.5
+      },
+      {
+        "item": "panacea_dex",
+        "chance": 0.2
+      }
+    ],
+    "lava_golem": [
+      {
+        "item": "wpn_18",
+        "chance": 0.5
+      },
+      {
+        "item": "bk_slow",
+        "chance": 0.5
+      },
+      {
+        "item": "wpn_2hsword",
+        "chance": 0.25
+      },
+      {
+        "item": "wpn_giantaxe",
+        "chance": 0.25
+      },
+      {
+        "item": "bk_str_up",
+        "chance": 0.05
+      },
+      {
+        "item": "bk_elf_triple",
+        "chance": 0.01
+      },
+      {
+        "item": "scroll_acc",
+        "chance": 0.005
+      },
+      {
+        "item": "new_item_192",
+        "chance": 0.005
+      }
+    ],
+    "nm_032": [
+      {
+        "item": "wpn_18",
+        "chance": 1.5
+      },
+      {
+        "item": "scroll_armor",
+        "chance": 1.5
+      },
+      {
+        "item": "scroll_weapon",
+        "chance": 1
+      },
+      {
+        "item": "scroll_poly",
+        "chance": 0.5
+      },
+      {
+        "item": "panacea_cha",
+        "chance": 0.2
+      }
+    ],
+    "obli_doro": [
+      {
+        "item": "acc_132",
+        "chance": 0.03
+      },
+      {
+        "item": "item_forgotten_scale",
+        "chance": 0.001
+      }
+    ],
+    "casper": [
+      {
+        "item": "scroll_armor",
+        "chance": 100
+      },
+      {
+        "item": "scroll_weapon",
+        "chance": 20
+      },
+      {
+        "item": "arm_90",
+        "chance": 10
+      },
+      {
+        "item": "arm_87",
+        "chance": 5
+      },
+      {
+        "item": "new_item_157",
+        "chance": 5
+      },
+      {
+        "item": "bk_fireball",
+        "chance": 5
+      },
+      {
+        "item": "arm_55",
+        "chance": 1
+      },
+      {
+        "item": "scroll_acc",
+        "chance": 1
+      },
+      {
+        "item": "new_item_150",
+        "chance": 1
+      },
+      {
+        "item": "potion_blue",
+        "chance": 1
+      },
+      {
+        "item": "bk_elf_dancefire",
+        "chance": 1
+      },
+      {
+        "item": "bk_elf_earthshield",
+        "chance": 1
+      },
+      {
+        "item": "bk_blaze",
+        "chance": 1
+      },
+      {
+        "item": "new_item_158",
+        "chance": 0.5
+      },
+      {
+        "item": "amu_str",
+        "chance": 0.1
+      },
+      {
+        "item": "new_item_159",
+        "chance": 0.1
+      },
+      {
+        "item": "scroll_weapon_b",
+        "chance": 0.1
+      },
+      {
+        "item": "scroll_armor_b",
+        "chance": 0.1
+      },
+      {
+        "item": "acc_117",
+        "chance": 0.01
+      }
+    ],
+    "ifrit": [
+      {
+        "item": "scroll_armor",
+        "chance": 100
+      },
+      {
+        "item": "scroll_weapon",
+        "chance": 20
+      },
+      {
+        "item": "arm_69",
+        "chance": 10
+      },
+      {
+        "item": "arm_63",
+        "chance": 10
+      },
+      {
+        "item": "bk_elf_triple",
+        "chance": 7
+      },
+      {
+        "item": "amr_plate",
+        "chance": 5
+      },
+      {
+        "item": "bk_fireball",
+        "chance": 3
+      },
+      {
+        "item": "wpn_katana",
+        "chance": 2
+      },
+      {
+        "item": "scroll_acc",
+        "chance": 1
+      },
+      {
+        "item": "bk_dex_up",
+        "chance": 1
+      },
+      {
+        "item": "bk_str_up",
+        "chance": 1
+      },
+      {
+        "item": "bk_cancel",
+        "chance": 1
+      },
+      {
+        "item": "potion_blue",
+        "chance": 1
+      },
+      {
+        "item": "bk_elf_magicerase",
+        "chance": 1
+      },
+      {
+        "item": "bk_blaze",
+        "chance": 1
+      },
+      {
+        "item": "bk_elf_attrfire",
+        "chance": 1
+      },
+      {
+        "item": "new_item_152",
+        "chance": 0.5
+      },
+      {
+        "item": "new_item_155",
+        "chance": 0.5
+      },
+      {
+        "item": "new_item_158",
+        "chance": 0.5
+      },
+      {
+        "item": "new_item_161",
+        "chance": 0.5
+      },
+      {
+        "item": "scroll_weapon_b",
+        "chance": 0.5
+      },
+      {
+        "item": "scroll_armor_b",
+        "chance": 0.5
+      },
+      {
+        "item": "bk_fire_storm",
+        "chance": 0.2
+      },
+      {
+        "item": "new_item_153",
+        "chance": 0.1
+      },
+      {
+        "item": "new_item_156",
+        "chance": 0.1
+      },
+      {
+        "item": "new_item_159",
+        "chance": 0.1
+      },
+      {
+        "item": "new_item_162",
+        "chance": 0.1
+      }
+    ],
+    "nm_033": [
+      {
+        "item": "scroll_armor",
+        "chance": 0.7
+      },
+      {
+        "item": "wpn_16",
+        "chance": 0.5
+      },
+      {
+        "item": "scroll_weapon",
+        "chance": 0.5
+      },
+      {
+        "item": "potion_blue",
+        "chance": 0.5
+      },
+      {
+        "item": "arm_61",
+        "chance": 0.25
+      },
+      {
+        "item": "bk_disease",
+        "chance": 0.1
+      },
+      {
+        "item": "wpn_giantaxe",
+        "chance": 0.05
+      },
+      {
+        "item": "bk_elf_stormshot",
+        "chance": 0.01
+      },
+      {
+        "item": "scroll_acc",
+        "chance": 0.005
+      },
+      {
+        "item": "wpn_flaming_angel",
+        "chance": 0.0005
+      }
+    ],
+    "ashitakio": [
+      {
+        "item": "scroll_armor",
+        "chance": 0.7
+      },
+      {
+        "item": "potion_haste",
+        "chance": 0.5
+      },
+      {
+        "item": "scroll_weapon",
+        "chance": 0.5
+      },
+      {
+        "item": "bk_fireball",
+        "chance": 0.5
+      },
+      {
+        "item": "new_item_194",
+        "chance": 0.5
+      },
+      {
+        "item": "bk_dex_up",
+        "chance": 0.1
+      },
+      {
+        "item": "bk_haste_spell",
+        "chance": 0.1
+      },
+      {
+        "item": "bk_earthquake",
+        "chance": 0.1
+      },
+      {
+        "item": "bk_str_up",
+        "chance": 0.05
+      },
+      {
+        "item": "scroll_acc",
+        "chance": 0.005
+      },
+      {
+        "item": "new_item_192",
+        "chance": 0.005
+      }
+    ],
+    "marcus": [
+      {
+        "item": "scroll_armor",
+        "chance": 100
+      },
+      {
+        "item": "scroll_weapon",
+        "chance": 20
+      },
+      {
+        "item": "arm_90",
+        "chance": 10
+      },
+      {
+        "item": "arm_87",
+        "chance": 5
+      },
+      {
+        "item": "new_item_160",
+        "chance": 5
+      },
+      {
+        "item": "bk_elf_soul",
+        "chance": 5
+      },
+      {
+        "item": "arm_56",
+        "chance": 1
+      },
+      {
+        "item": "scroll_acc",
+        "chance": 1
+      },
+      {
+        "item": "new_item_150",
+        "chance": 1
+      },
+      {
+        "item": "potion_blue",
+        "chance": 1
+      },
+      {
+        "item": "bk_elf_lifespring",
+        "chance": 1
+      },
+      {
+        "item": "new_item_161",
+        "chance": 0.5
+      },
+      {
+        "item": "amu_str",
+        "chance": 0.1
+      },
+      {
+        "item": "new_item_162",
+        "chance": 0.1
+      },
+      {
+        "item": "scroll_weapon_b",
+        "chance": 0.1
+      },
+      {
+        "item": "scroll_armor_b",
+        "chance": 0.1
+      },
+      {
+        "item": "acc_116",
+        "chance": 0.01
+      }
+    ],
+    "obli_aruba": [
+      {
+        "item": "item_forgotten_scale",
+        "chance": 0.001
+      },
+      {
+        "item": "acc_demonbane",
+        "chance": 0.001
+      },
+      {
+        "item": "item_forgotten_greatsword",
+        "chance": 0.0001
+      }
+    ],
+    "obli_trollking": [
+      {
+        "item": "rng_mr",
+        "chance": 0.03
+      },
+      {
+        "item": "item_forgotten_plate",
+        "chance": 0.001
+      },
+      {
+        "item": "new_item_192",
+        "chance": 1e-05
+      }
+    ],
+    "obli_arian": [
+      {
+        "item": "item_forgotten_sword",
+        "chance": 0.001
+      },
+      {
+        "item": "item_forgotten_plate",
+        "chance": 0.001
+      },
+      {
+        "item": "acc_demonbane",
+        "chance": 0.001
+      },
+      {
+        "item": "glv_dk",
+        "chance": 0.0001
+      },
+      {
+        "item": "item_ancient_scroll",
+        "chance": 1e-05
+      }
+    ],
+    "wyvern": [
+      {
+        "item": "scroll_armor",
+        "chance": 100
+      },
+      {
+        "item": "scroll_weapon",
+        "chance": 20
+      },
+      {
+        "item": "bk_elf_triple",
+        "chance": 10
+      },
+      {
+        "item": "new_item_151",
+        "chance": 5
+      },
+      {
+        "item": "new_item_154",
+        "chance": 5
+      },
+      {
+        "item": "new_item_157",
+        "chance": 5
+      },
+      {
+        "item": "new_item_160",
+        "chance": 5
+      },
+      {
+        "item": "scroll_weapon_b",
+        "chance": 2
+      },
+      {
+        "item": "scroll_armor_b",
+        "chance": 2
+      },
+      {
+        "item": "item_dragon_claw",
+        "chance": 1
+      },
+      {
+        "item": "potion_haste",
+        "chance": 1
+      },
+      {
+        "item": "scroll_acc",
+        "chance": 1
+      },
+      {
+        "item": "new_item_150",
+        "chance": 1
+      },
+      {
+        "item": "bk_holy_dash",
+        "chance": 1
+      },
+      {
+        "item": "potion_blue",
+        "chance": 1
+      },
+      {
+        "item": "bk_quake",
+        "chance": 1
+      },
+      {
+        "item": "bk_elf_magicerase",
+        "chance": 1
+      },
+      {
+        "item": "bk_elf_stormeye",
+        "chance": 1
+      },
+      {
+        "item": "bk_elf_attrfire",
+        "chance": 1
+      },
+      {
+        "item": "new_item_152",
+        "chance": 0.5
+      },
+      {
+        "item": "new_item_155",
+        "chance": 0.5
+      },
+      {
+        "item": "new_item_158",
+        "chance": 0.5
+      },
+      {
+        "item": "new_item_161",
+        "chance": 0.5
+      },
+      {
+        "item": "new_item_153",
+        "chance": 0.1
+      },
+      {
+        "item": "new_item_156",
+        "chance": 0.1
+      },
+      {
+        "item": "new_item_159",
+        "chance": 0.1
+      },
+      {
+        "item": "new_item_162",
+        "chance": 0.1
+      }
+    ],
+    "fire_beast": [
+      {
+        "item": "scroll_armor",
+        "chance": 0.7
+      },
+      {
+        "item": "scroll_weapon",
+        "chance": 0.5
+      },
+      {
+        "item": "bk_elf_magicerase",
+        "chance": 0.1
+      },
+      {
+        "item": "bk_shock_stun",
+        "chance": 0.05
+      },
+      {
+        "item": "scroll_acc",
+        "chance": 0.005
+      },
+      {
+        "item": "new_item_192",
+        "chance": 0.005
+      },
+      {
+        "item": "bk_holy_barrier",
+        "chance": 0.002
+      }
+    ],
+    "obli_evillizard": [
+      {
+        "item": "item_forgotten_sword",
+        "chance": 0.001
+      },
+      {
+        "item": "item_forgotten_robe",
+        "chance": 0.001
+      },
+      {
+        "item": "acc_demonbane",
+        "chance": 0.001
+      },
+      {
+        "item": "glv_demon",
+        "chance": 0.0001
+      },
+      {
+        "item": "item_ancient_scroll",
+        "chance": 2e-05
+      }
+    ],
+    "baphomet": [
+      {
+        "item": "scroll_armor",
+        "chance": 100
+      },
+      {
+        "item": "scroll_weapon",
+        "chance": 20
+      },
+      {
+        "item": "glv_glove",
+        "chance": 10
+      },
+      {
+        "item": "wpn_2hsword",
+        "chance": 5
+      },
+      {
+        "item": "amr_plate",
+        "chance": 5
+      },
+      {
+        "item": "new_item_151",
+        "chance": 5
+      },
+      {
+        "item": "new_item_154",
+        "chance": 5
+      },
+      {
+        "item": "bk_rock_prison",
+        "chance": 5
+      },
+      {
+        "item": "bk_elf_dancefire",
+        "chance": 5
+      },
+      {
+        "item": "bk_magic_shield",
+        "chance": 5
+      },
+      {
+        "item": "wpn_katana",
+        "chance": 2
+      },
+      {
+        "item": "bk_earthquake",
+        "chance": 2
+      },
+      {
+        "item": "bk_summon",
+        "chance": 2
+      },
+      {
+        "item": "potion_haste",
+        "chance": 1
+      },
+      {
+        "item": "scroll_acc",
+        "chance": 1
+      },
+      {
+        "item": "new_item_150",
+        "chance": 1
+      },
+      {
+        "item": "bk_charm",
+        "chance": 1
+      },
+      {
+        "item": "bk_quake",
+        "chance": 1
+      },
+      {
+        "item": "new_item_195",
+        "chance": 1
+      },
+      {
+        "item": "bk_weaken",
+        "chance": 1
+      },
+      {
+        "item": "acc_127",
+        "chance": 0.5
+      },
+      {
+        "item": "acc_129",
+        "chance": 0.5
+      },
+      {
+        "item": "new_item_152",
+        "chance": 0.5
+      },
+      {
+        "item": "new_item_155",
+        "chance": 0.5
+      },
+      {
+        "item": "new_item_161",
+        "chance": 0.5
+      },
+      {
+        "item": "arm_88",
+        "chance": 0.1
+      },
+      {
+        "item": "blt_body",
+        "chance": 0.1
+      },
+      {
+        "item": "acc_131",
+        "chance": 0.1
+      },
+      {
+        "item": "new_item_153",
+        "chance": 0.1
+      },
+      {
+        "item": "new_item_156",
+        "chance": 0.1
+      },
+      {
+        "item": "new_item_162",
+        "chance": 0.1
+      },
+      {
+        "item": "bk_bless_wpn",
+        "chance": 0.1
+      },
+      {
+        "item": "acc_116",
+        "chance": 0.01
+      }
+    ],
+    "giant": [
+      {
+        "item": "acc_127",
+        "chance": 0.05
+      },
+      {
+        "item": "acc_129",
+        "chance": 0.05
+      },
+      {
+        "item": "acc_128",
+        "chance": 0.05
+      },
+      {
+        "item": "arm_110",
+        "chance": 0.01
+      },
+      {
+        "item": "blt_body",
+        "chance": 0.01
+      },
+      {
+        "item": "acc_131",
+        "chance": 0.01
+      },
+      {
+        "item": "acc_130",
+        "chance": 0.01
+      },
+      {
+        "item": "blt_titan",
+        "chance": 0.005
+      }
+    ],
+    "blackelder": [
+      {
+        "item": "scroll_armor",
+        "chance": 100
+      },
+      {
+        "item": "scroll_weapon",
+        "chance": 20
+      },
+      {
+        "item": "clk_mr",
+        "chance": 10
+      },
+      {
+        "item": "bk_elf_soul",
+        "chance": 10
+      },
+      {
+        "item": "glv_glove",
+        "chance": 5
+      },
+      {
+        "item": "bk_ice_spike",
+        "chance": 5
+      },
+      {
+        "item": "bk_thunder",
+        "chance": 3
+      },
+      {
+        "item": "arm_84",
+        "chance": 1
+      },
+      {
+        "item": "arm_96",
+        "chance": 1
+      },
+      {
+        "item": "scroll_acc",
+        "chance": 1
+      },
+      {
+        "item": "new_item_150",
+        "chance": 1
+      },
+      {
+        "item": "bk_charm",
+        "chance": 1
+      },
+      {
+        "item": "bk_str_up",
+        "chance": 1
+      },
+      {
+        "item": "potion_blue",
+        "chance": 1
+      },
+      {
+        "item": "new_item_195",
+        "chance": 1
+      },
+      {
+        "item": "bk_elf_lifespring",
+        "chance": 1
+      },
+      {
+        "item": "scroll_weapon_b",
+        "chance": 1
+      },
+      {
+        "item": "scroll_armor_b",
+        "chance": 1
+      },
+      {
+        "item": "acc_130",
+        "chance": 0.1
+      }
+    ],
+    "obli_cyclops": [
+      {
+        "item": "item_forgotten_greatsword",
+        "chance": 0.001
+      },
+      {
+        "item": "item_forgotten_plate",
+        "chance": 0.001
+      },
+      {
+        "item": "acc_demonbane",
+        "chance": 0.001
+      }
+    ],
+    "doppel_boss": [
+      {
+        "item": "scroll_armor",
+        "chance": 100
+      },
+      {
+        "item": "scroll_weapon",
+        "chance": 20
+      },
+      {
+        "item": "wpn_38",
+        "chance": 10
+      },
+      {
+        "item": "arm_60",
+        "chance": 10
+      },
+      {
+        "item": "clk_mr",
+        "chance": 10
+      },
+      {
+        "item": "new_item_240",
+        "chance": 10
+      },
+      {
+        "item": "wpn_2hsword",
+        "chance": 5
+      },
+      {
+        "item": "bk_shock_stun",
+        "chance": 5
+      },
+      {
+        "item": "bk_reduction_armor",
+        "chance": 5
+      },
+      {
+        "item": "bk_spike_armor",
+        "chance": 5
+      },
+      {
+        "item": "bk_solid_shield",
+        "chance": 5
+      },
+      {
+        "item": "bk_fireball",
+        "chance": 3
+      },
+      {
+        "item": "wpn_strwand",
+        "chance": 1
+      },
+      {
+        "item": "potion_haste",
+        "chance": 1
+      },
+      {
+        "item": "scroll_acc",
+        "chance": 1
+      },
+      {
+        "item": "bk_str_up",
+        "chance": 1
+      },
+      {
+        "item": "bk_haste_spell",
+        "chance": 1
+      },
+      {
+        "item": "scroll_poly",
+        "chance": 1
+      },
+      {
+        "item": "potion_blue",
+        "chance": 1
+      },
+      {
+        "item": "bk_elf_magicerase",
+        "chance": 1
+      },
+      {
+        "item": "bk_summon",
+        "chance": 0.5
+      }
+    ],
+    "kurt": [
+      {
+        "item": "scroll_armor",
+        "chance": 100
+      },
+      {
+        "item": "scroll_weapon",
+        "chance": 20
+      },
+      {
+        "item": "wpn_longsword",
+        "chance": 10
+      },
+      {
+        "item": "arm_87",
+        "chance": 10
+      },
+      {
+        "item": "arm_105",
+        "chance": 10
+      },
+      {
+        "item": "arm_90",
+        "chance": 10
+      },
+      {
+        "item": "arm_60",
+        "chance": 5
+      },
+      {
+        "item": "glv_glove",
+        "chance": 5
+      },
+      {
+        "item": "bk_shock_stun",
+        "chance": 5
+      },
+      {
+        "item": "bk_reduction_armor",
+        "chance": 5
+      },
+      {
+        "item": "bk_spike_armor",
+        "chance": 5
+      },
+      {
+        "item": "bk_solid_shield",
+        "chance": 5
+      },
+      {
+        "item": "wpn_2hsword",
+        "chance": 3
+      },
+      {
+        "item": "tsh_tshirt",
+        "chance": 3
+      },
+      {
+        "item": "wpn_12",
+        "chance": 1
+      },
+      {
+        "item": "wpn_katana",
+        "chance": 1
+      },
+      {
+        "item": "arm_110",
+        "chance": 1
+      },
+      {
+        "item": "arm_101",
+        "chance": 1
+      },
+      {
+        "item": "amr_kurt",
+        "chance": 1
+      },
+      {
+        "item": "arm_97",
+        "chance": 1
+      },
+      {
+        "item": "hlm_kurt",
+        "chance": 1
+      },
+      {
+        "item": "scroll_acc",
+        "chance": 1
+      },
+      {
+        "item": "potion_blue",
+        "chance": 1
+      },
+      {
+        "item": "bk_berserk",
+        "chance": 1
+      },
+      {
+        "item": "arm_106",
+        "chance": 0.5
+      }
+    ],
+    "kari": [
+      {
+        "item": "wpn_dragonslayer",
+        "chance": 50
+      }
+    ],
+    "dk": [
+      {
+        "item": "scroll_armor",
+        "chance": 100
+      },
+      {
+        "item": "scroll_weapon",
+        "chance": 20
+      },
+      {
+        "item": "wpn_2hsword",
+        "chance": 10
+      },
+      {
+        "item": "glv_glove",
+        "chance": 10
+      },
+      {
+        "item": "bk_blaze",
+        "chance": 10
+      },
+      {
+        "item": "wpn_katana",
+        "chance": 5
+      },
+      {
+        "item": "amr_plate",
+        "chance": 5
+      },
+      {
+        "item": "new_item_151",
+        "chance": 5
+      },
+      {
+        "item": "bk_tornado",
+        "chance": 5
+      },
+      {
+        "item": "bk_disease",
+        "chance": 5
+      },
+      {
+        "item": "bk_solid_shield",
+        "chance": 5
+      },
+      {
+        "item": "bk_zombie",
+        "chance": 3
+      },
+      {
+        "item": "wpn_33",
+        "chance": 1
+      },
+      {
+        "item": "glv_dk",
+        "chance": 1
+      },
+      {
+        "item": "amr_dk",
+        "chance": 1
+      },
+      {
+        "item": "bot_dk",
+        "chance": 1
+      },
+      {
+        "item": "hlm_dk",
+        "chance": 1
+      },
+      {
+        "item": "acc_117",
+        "chance": 1
+      },
+      {
+        "item": "amu_str",
+        "chance": 1
+      },
+      {
+        "item": "potion_haste",
+        "chance": 1
+      },
+      {
+        "item": "scroll_acc",
+        "chance": 1
+      },
+      {
+        "item": "new_item_150",
+        "chance": 1
+      },
+      {
+        "item": "bk_elf_flamesoul",
+        "chance": 1
+      },
+      {
+        "item": "acc_128",
+        "chance": 0.5
+      },
+      {
+        "item": "acc_129",
+        "chance": 0.5
+      },
+      {
+        "item": "new_item_152",
+        "chance": 0.5
+      },
+      {
+        "item": "arm_88",
+        "chance": 0.1
+      },
+      {
+        "item": "acc_130",
+        "chance": 0.1
+      },
+      {
+        "item": "acc_131",
+        "chance": 0.1
+      },
+      {
+        "item": "new_item_153",
+        "chance": 0.1
+      },
+      {
+        "item": "bk_resurrection",
+        "chance": 0.1
+      }
+    ],
+    "obli_bigtaurus": [
+      {
+        "item": "wpn_katana",
+        "chance": 3
+      },
+      {
+        "item": "amr_plate",
+        "chance": 3
+      },
+      {
+        "item": "glv_glove",
+        "chance": 3
+      },
+      {
+        "item": "new_item_157",
+        "chance": 3
+      },
+      {
+        "item": "new_item_158",
+        "chance": 3
+      },
+      {
+        "item": "scroll_weapon",
+        "chance": 3
+      },
+      {
+        "item": "scroll_armor",
+        "chance": 3
+      },
+      {
+        "item": "new_item_159",
+        "chance": 1
+      },
+      {
+        "item": "acc_127",
+        "chance": 0.5
+      },
+      {
+        "item": "bk_bless_wpn",
+        "chance": 0.5
+      },
+      {
+        "item": "bk_berserk",
+        "chance": 0.5
+      },
+      {
+        "item": "bk_full_heal",
+        "chance": 0.5
+      },
+      {
+        "item": "bk_elf_blazewpn",
+        "chance": 0.5
+      },
+      {
+        "item": "amu_str",
+        "chance": 0.2
+      },
+      {
+        "item": "wpn_greatsword",
+        "chance": 0.1
+      },
+      {
+        "item": "blt_body",
+        "chance": 0.1
+      },
+      {
+        "item": "bk_elf_stormshot",
+        "chance": 0.1
+      },
+      {
+        "item": "wpn_taurus_axe",
+        "chance": 0.05
+      },
+      {
+        "item": "item_unknown_spear",
+        "chance": 0.01
+      },
+      {
+        "item": "item_ancient_scroll",
+        "chance": 0.005
+      }
+    ],
+    "obli_wyvern": [
+      {
+        "item": "rng_mr",
+        "chance": 0.1
+      },
+      {
+        "item": "hlm_wind",
+        "chance": 0.005
+      },
+      {
+        "item": "glv_dk",
+        "chance": 0.003
+      },
+      {
+        "item": "acc_demonbane",
+        "chance": 0.002
+      },
+      {
+        "item": "item_forgotten_xbow",
+        "chance": 0.001
+      },
+      {
+        "item": "item_forgotten_leather",
+        "chance": 0.001
+      },
+      {
+        "item": "glv_demon",
+        "chance": 0.001
+      },
+      {
+        "item": "new_item_192",
+        "chance": 0.0001
+      },
+      {
+        "item": "item_ancient_scroll",
+        "chance": 5e-05
+      }
+    ],
+    "giant_warrior": [
+      {
+        "item": "acc_127",
+        "chance": 0.08
+      },
+      {
+        "item": "acc_129",
+        "chance": 0.08
+      },
+      {
+        "item": "acc_128",
+        "chance": 0.08
+      },
+      {
+        "item": "blt_body",
+        "chance": 0.03
+      },
+      {
+        "item": "acc_131",
+        "chance": 0.03
+      },
+      {
+        "item": "acc_130",
+        "chance": 0.03
+      },
+      {
+        "item": "arm_110",
+        "chance": 0.02
+      },
+      {
+        "item": "blt_titan",
+        "chance": 0.008
+      }
+    ],
+    "ice_queen": [
+      {
+        "item": "scroll_weapon",
+        "chance": 100
+      },
+      {
+        "item": "scroll_armor",
+        "chance": 100
+      },
+      {
+        "item": "new_item_151",
+        "chance": 50
+      },
+      {
+        "item": "arm_63",
+        "chance": 10
+      },
+      {
+        "item": "glv_crystal",
+        "chance": 5
+      },
+      {
+        "item": "new_item_152",
+        "chance": 5
+      },
+      {
+        "item": "bk_elf_lifebless",
+        "chance": 5
+      },
+      {
+        "item": "bk_elf_lifespring",
+        "chance": 3
+      },
+      {
+        "item": "bk_summon",
+        "chance": 2
+      },
+      {
+        "item": "bk_magic_shield",
+        "chance": 2
+      },
+      {
+        "item": "amu_int",
+        "chance": 1
+      },
+      {
+        "item": "acc_122",
+        "chance": 1
+      },
+      {
+        "item": "potion_haste",
+        "chance": 1
+      },
+      {
+        "item": "scroll_revive",
+        "chance": 1
+      },
+      {
+        "item": "new_item_150",
+        "chance": 1
+      },
+      {
+        "item": "new_item_140",
+        "chance": 1
+      },
+      {
+        "item": "potion_blue",
+        "chance": 1
+      },
+      {
+        "item": "bk_fire_storm",
+        "chance": 1
+      },
+      {
+        "item": "new_item_195",
+        "chance": 1
+      },
+      {
+        "item": "bk_elf_winddash",
+        "chance": 1
+      },
+      {
+        "item": "bk_elf_steelguard",
+        "chance": 1
+      },
+      {
+        "item": "bk_dark_shadow",
+        "chance": 1
+      },
+      {
+        "item": "bk_seal",
+        "chance": 1
+      },
+      {
+        "item": "acc_128",
+        "chance": 0.5
+      },
+      {
+        "item": "acc_129",
+        "chance": 0.5
+      },
+      {
+        "item": "arm_88",
+        "chance": 0.1
+      },
+      {
+        "item": "acc_116",
+        "chance": 0.1
+      },
+      {
+        "item": "acc_130",
+        "chance": 0.1
+      },
+      {
+        "item": "acc_131",
+        "chance": 0.1
+      },
+      {
+        "item": "bk_invisible",
+        "chance": 0.05
+      }
+    ],
+    "ant_queen": [
+      {
+        "item": "scroll_armor",
+        "chance": 100
+      },
+      {
+        "item": "new_item_150",
+        "chance": 50
+      },
+      {
+        "item": "arm_47",
+        "chance": 20
+      },
+      {
+        "item": "scroll_weapon",
+        "chance": 20
+      },
+      {
+        "item": "arm_69",
+        "chance": 10
+      },
+      {
+        "item": "amr_plate",
+        "chance": 5
+      },
+      {
+        "item": "arm_63",
+        "chance": 5
+      },
+      {
+        "item": "blt_body",
+        "chance": 5
+      },
+      {
+        "item": "new_item_154",
+        "chance": 5
+      },
+      {
+        "item": "new_item_157",
+        "chance": 5
+      },
+      {
+        "item": "bk_rock_prison",
+        "chance": 5
+      },
+      {
+        "item": "wpn_katana",
+        "chance": 3
+      },
+      {
+        "item": "acc_127",
+        "chance": 1
+      },
+      {
+        "item": "potion_haste",
+        "chance": 1
+      },
+      {
+        "item": "scroll_acc",
+        "chance": 1
+      },
+      {
+        "item": "bk_heal2",
+        "chance": 1
+      },
+      {
+        "item": "bk_charm",
+        "chance": 1
+      },
+      {
+        "item": "bk_earthquake",
+        "chance": 1
+      },
+      {
+        "item": "potion_blue",
+        "chance": 1
+      },
+      {
+        "item": "bk_greater_haste",
+        "chance": 1
+      },
+      {
+        "item": "new_item_195",
+        "chance": 1
+      },
+      {
+        "item": "bk_elf_magicerase",
+        "chance": 1
+      },
+      {
+        "item": "bk_dark_shadow",
+        "chance": 1
+      },
+      {
+        "item": "new_item_155",
+        "chance": 0.5
+      },
+      {
+        "item": "new_item_158",
+        "chance": 0.5
+      },
+      {
+        "item": "bk_regen",
+        "chance": 0.5
+      },
+      {
+        "item": "acc_121",
+        "chance": 0.1
+      },
+      {
+        "item": "new_item_156",
+        "chance": 0.1
+      },
+      {
+        "item": "new_item_159",
+        "chance": 0.1
+      }
+    ],
+    "phoenix": [
+      {
+        "item": "scroll_armor",
+        "chance": 100
+      },
+      {
+        "item": "potion_haste",
+        "chance": 50
+      },
+      {
+        "item": "scroll_weapon",
+        "chance": 20
+      },
+      {
+        "item": "arm_69",
+        "chance": 10
+      },
+      {
+        "item": "wpn_katana",
+        "chance": 10
+      },
+      {
+        "item": "arm_63",
+        "chance": 10
+      },
+      {
+        "item": "bk_elf_dancefire",
+        "chance": 10
+      },
+      {
+        "item": "bk_blaze",
+        "chance": 10
+      },
+      {
+        "item": "wpn_siruge",
+        "chance": 5
+      },
+      {
+        "item": "amr_plate",
+        "chance": 5
+      },
+      {
+        "item": "amu_str",
+        "chance": 5
+      },
+      {
+        "item": "acc_120",
+        "chance": 5
+      },
+      {
+        "item": "bk_holy_barrier",
+        "chance": 5
+      },
+      {
+        "item": "bk_fire_storm",
+        "chance": 5
+      },
+      {
+        "item": "acc_117",
+        "chance": 1
+      },
+      {
+        "item": "acc_128",
+        "chance": 1
+      },
+      {
+        "item": "acc_129",
+        "chance": 1
+      },
+      {
+        "item": "acc_130",
+        "chance": 1
+      },
+      {
+        "item": "acc_131",
+        "chance": 1
+      },
+      {
+        "item": "scroll_acc",
+        "chance": 1
+      },
+      {
+        "item": "bk_sleep_mist",
+        "chance": 1
+      },
+      {
+        "item": "bk_meteor",
+        "chance": 1
+      },
+      {
+        "item": "potion_blue",
+        "chance": 1
+      },
+      {
+        "item": "arm_88",
+        "chance": 0.1
+      },
+      {
+        "item": "new_item_159",
+        "chance": 0.1
+      }
+    ],
+    "giant_elder": [
+      {
+        "item": "acc_127",
+        "chance": 0.1
+      },
+      {
+        "item": "acc_129",
+        "chance": 0.1
+      },
+      {
+        "item": "acc_128",
+        "chance": 0.1
+      },
+      {
+        "item": "blt_body",
+        "chance": 0.05
+      },
+      {
+        "item": "acc_131",
+        "chance": 0.05
+      },
+      {
+        "item": "acc_130",
+        "chance": 0.05
+      },
+      {
+        "item": "arm_110",
+        "chance": 0.03
+      },
+      {
+        "item": "blt_titan",
+        "chance": 0.01
+      }
+    ],
+    "nm_034": [
+      {
+        "item": "scroll_armor",
+        "chance": 100
+      },
+      {
+        "item": "scroll_weapon",
+        "chance": 20
+      },
+      {
+        "item": "arm_69",
+        "chance": 10
+      },
+      {
+        "item": "wpn_2hsword",
+        "chance": 10
+      },
+      {
+        "item": "arm_63",
+        "chance": 10
+      },
+      {
+        "item": "wpn_katana",
+        "chance": 5
+      },
+      {
+        "item": "wpn_siruge",
+        "chance": 5
+      },
+      {
+        "item": "wpn_flaming_angel",
+        "chance": 5
+      },
+      {
+        "item": "amr_plate",
+        "chance": 5
+      },
+      {
+        "item": "arm_99",
+        "chance": 5
+      },
+      {
+        "item": "amu_str",
+        "chance": 5
+      },
+      {
+        "item": "amu_int",
+        "chance": 5
+      },
+      {
+        "item": "acc_130",
+        "chance": 5
+      },
+      {
+        "item": "acc_131",
+        "chance": 5
+      },
+      {
+        "item": "bk_holy_barrier",
+        "chance": 5
+      },
+      {
+        "item": "bk_fire_storm",
+        "chance": 5
+      },
+      {
+        "item": "bk_elf_blazewpn",
+        "chance": 5
+      },
+      {
+        "item": "wpn_33",
+        "chance": 1
+      },
+      {
+        "item": "acc_128",
+        "chance": 1
+      },
+      {
+        "item": "acc_129",
+        "chance": 1
+      },
+      {
+        "item": "potion_haste",
+        "chance": 1
+      },
+      {
+        "item": "scroll_acc",
+        "chance": 1
+      },
+      {
+        "item": "potion_blue",
+        "chance": 1
+      },
+      {
+        "item": "new_item_152",
+        "chance": 0.5
+      },
+      {
+        "item": "arm_88",
+        "chance": 0.1
+      },
+      {
+        "item": "new_item_153",
+        "chance": 0.1
+      },
+      {
+        "item": "new_item_159",
+        "chance": 0.1
+      },
+      {
+        "item": "acc_117",
+        "chance": 0.01
+      }
+    ],
+    "antaras": [
+      {
+        "item": "scroll_weapon",
+        "chance": 100
+      },
+      {
+        "item": "scroll_armor",
+        "chance": 100
+      },
+      {
+        "item": "new_item_191",
+        "chance": 100
+      },
+      {
+        "item": "scroll_acc",
+        "chance": 50
+      },
+      {
+        "item": "new_item_151",
+        "chance": 50
+      },
+      {
+        "item": "new_item_154",
+        "chance": 50
+      },
+      {
+        "item": "glv_glove",
+        "chance": 20
+      },
+      {
+        "item": "wpn_katana",
+        "chance": 10
+      },
+      {
+        "item": "amr_plate",
+        "chance": 10
+      },
+      {
+        "item": "bk_break",
+        "chance": 10
+      },
+      {
+        "item": "bk_slow",
+        "chance": 10
+      },
+      {
+        "item": "bk_charm",
+        "chance": 10
+      },
+      {
+        "item": "wpn_siruge",
+        "chance": 5
+      },
+      {
+        "item": "acc_127",
+        "chance": 5
+      },
+      {
+        "item": "acc_128",
+        "chance": 5
+      },
+      {
+        "item": "acc_129",
+        "chance": 5
+      },
+      {
+        "item": "new_item_152",
+        "chance": 5
+      },
+      {
+        "item": "new_item_155",
+        "chance": 5
+      },
+      {
+        "item": "bk_str_up",
+        "chance": 5
+      },
+      {
+        "item": "bk_earthquake",
+        "chance": 5
+      },
+      {
+        "item": "bk_regen",
+        "chance": 5
+      },
+      {
+        "item": "bk_summon",
+        "chance": 2
+      },
+      {
+        "item": "arm_88",
+        "chance": 1
+      },
+      {
+        "item": "acc_121",
+        "chance": 1
+      },
+      {
+        "item": "acc_122",
+        "chance": 1
+      },
+      {
+        "item": "blt_body",
+        "chance": 1
+      },
+      {
+        "item": "acc_130",
+        "chance": 1
+      },
+      {
+        "item": "acc_131",
+        "chance": 1
+      },
+      {
+        "item": "potion_haste",
+        "chance": 1
+      },
+      {
+        "item": "new_item_150",
+        "chance": 1
+      },
+      {
+        "item": "new_item_153",
+        "chance": 1
+      },
+      {
+        "item": "new_item_156",
+        "chance": 1
+      },
+      {
+        "item": "bk_resurrection",
+        "chance": 1
+      },
+      {
+        "item": "potion_blue",
+        "chance": 1
+      },
+      {
+        "item": "arm_81",
+        "chance": 0.1
+      },
+      {
+        "item": "acc_116",
+        "chance": 0.1
+      },
+      {
+        "item": "acc_117",
+        "chance": 0.1
+      }
+    ],
+    "fafurion": [
+      {
+        "item": "scroll_weapon",
+        "chance": 100
+      },
+      {
+        "item": "scroll_armor",
+        "chance": 100
+      },
+      {
+        "item": "new_item_190",
+        "chance": 100
+      },
+      {
+        "item": "scroll_acc",
+        "chance": 50
+      },
+      {
+        "item": "new_item_151",
+        "chance": 50
+      },
+      {
+        "item": "new_item_160",
+        "chance": 50
+      },
+      {
+        "item": "glv_glove",
+        "chance": 20
+      },
+      {
+        "item": "wpn_katana",
+        "chance": 10
+      },
+      {
+        "item": "amr_plate",
+        "chance": 10
+      },
+      {
+        "item": "bk_slow",
+        "chance": 10
+      },
+      {
+        "item": "bk_holy_light",
+        "chance": 10
+      },
+      {
+        "item": "wpn_siruge",
+        "chance": 5
+      },
+      {
+        "item": "acc_127",
+        "chance": 5
+      },
+      {
+        "item": "acc_128",
+        "chance": 5
+      },
+      {
+        "item": "acc_129",
+        "chance": 5
+      },
+      {
+        "item": "new_item_152",
+        "chance": 5
+      },
+      {
+        "item": "new_item_161",
+        "chance": 5
+      },
+      {
+        "item": "bk_regen",
+        "chance": 5
+      },
+      {
+        "item": "bk_summon",
+        "chance": 2
+      },
+      {
+        "item": "arm_88",
+        "chance": 1
+      },
+      {
+        "item": "acc_120",
+        "chance": 1
+      },
+      {
+        "item": "blt_body",
+        "chance": 1
+      },
+      {
+        "item": "acc_130",
+        "chance": 1
+      },
+      {
+        "item": "acc_131",
+        "chance": 1
+      },
+      {
+        "item": "potion_haste",
+        "chance": 1
+      },
+      {
+        "item": "new_item_150",
+        "chance": 1
+      },
+      {
+        "item": "new_item_153",
+        "chance": 1
+      },
+      {
+        "item": "new_item_162",
+        "chance": 1
+      },
+      {
+        "item": "bk_blizzard",
+        "chance": 1
+      },
+      {
+        "item": "bk_resurrection",
+        "chance": 1
+      },
+      {
+        "item": "potion_blue",
+        "chance": 1
+      },
+      {
+        "item": "bk_elf_eleres",
+        "chance": 1
+      },
+      {
+        "item": "arm_80",
+        "chance": 0.1
+      },
+      {
+        "item": "acc_116",
+        "chance": 0.1
+      },
+      {
+        "item": "acc_117",
+        "chance": 0.1
+      }
+    ],
+    "valakas": [
+      {
+        "item": "scroll_weapon",
+        "chance": 100
+      },
+      {
+        "item": "scroll_armor",
+        "chance": 100
+      },
+      {
+        "item": "new_item_151",
+        "chance": 100
+      },
+      {
+        "item": "new_item_157",
+        "chance": 100
+      },
+      {
+        "item": "new_item_192",
+        "chance": 100
+      },
+      {
+        "item": "scroll_acc",
+        "chance": 50
+      },
+      {
+        "item": "bk_fireball",
+        "chance": 20
+      },
+      {
+        "item": "bk_slow",
+        "chance": 15
+      },
+      {
+        "item": "bk_charm",
+        "chance": 15
+      },
+      {
+        "item": "wpn_katana",
+        "chance": 10
+      },
+      {
+        "item": "amr_plate",
+        "chance": 10
+      },
+      {
+        "item": "glv_glove",
+        "chance": 10
+      },
+      {
+        "item": "new_item_152",
+        "chance": 10
+      },
+      {
+        "item": "new_item_158",
+        "chance": 10
+      },
+      {
+        "item": "bk_str_up",
+        "chance": 10
+      },
+      {
+        "item": "bk_haste_spell",
+        "chance": 10
+      },
+      {
+        "item": "acc_127",
+        "chance": 6
+      },
+      {
+        "item": "acc_128",
+        "chance": 6
+      },
+      {
+        "item": "acc_129",
+        "chance": 6
+      },
+      {
+        "item": "wpn_siruge",
+        "chance": 5
+      },
+      {
+        "item": "bk_summon",
+        "chance": 3
+      },
+      {
+        "item": "new_item_153",
+        "chance": 2
+      },
+      {
+        "item": "new_item_159",
+        "chance": 2
+      },
+      {
+        "item": "arm_88",
+        "chance": 1
+      },
+      {
+        "item": "blt_body",
+        "chance": 1
+      },
+      {
+        "item": "acc_130",
+        "chance": 1
+      },
+      {
+        "item": "acc_131",
+        "chance": 1
+      },
+      {
+        "item": "potion_haste",
+        "chance": 1
+      },
+      {
+        "item": "new_item_150",
+        "chance": 1
+      },
+      {
+        "item": "bk_invisible",
+        "chance": 1
+      },
+      {
+        "item": "bk_resurrection",
+        "chance": 1
+      },
+      {
+        "item": "potion_blue",
+        "chance": 1
+      },
+      {
+        "item": "acc_116",
+        "chance": 0.2
+      },
+      {
+        "item": "acc_117",
+        "chance": 0.2
+      },
+      {
+        "item": "amu_str",
+        "chance": 0.2
+      },
+      {
+        "item": "amu_int",
+        "chance": 0.2
+      },
+      {
+        "item": "arm_82",
+        "chance": 0.1
+      }
+    ]
+  },
+  "areas": {
+    "zone_15": [
+      {
+        "item": "new_item_164",
+        "chance": 20
+      },
+      {
+        "item": "new_item_195",
+        "chance": 20
+      },
+      {
+        "item": "new_item_165",
+        "chance": 20
+      }
+    ],
+    "zone_16": [
+      {
+        "item": "new_item_164",
+        "chance": 20
+      },
+      {
+        "item": "new_item_195",
+        "chance": 20
+      },
+      {
+        "item": "new_item_165",
+        "chance": 20
+      }
+    ],
+    "zone_17": [
+      {
+        "item": "new_item_164",
+        "chance": 20
+      },
+      {
+        "item": "new_item_195",
+        "chance": 20
+      },
+      {
+        "item": "new_item_165",
+        "chance": 20
+      }
+    ],
+    "zone_01": [
+      {
+        "item": "new_item_164",
+        "chance": 20
+      },
+      {
+        "item": "new_item_195",
+        "chance": 20
+      },
+      {
+        "item": "new_item_165",
+        "chance": 20
+      }
+    ]
+  }
+}

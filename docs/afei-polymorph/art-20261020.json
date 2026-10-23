@@ -1,0 +1,542 @@
+{
+  "source": "https://afei.gg/",
+  "retrievedAt": "2026-10-20",
+  "files": {
+    "assets/morphanim/依詩蒂/attack/0.png": {
+      "sha256": "f1f581d1f0c529f50fd52af0f88137aebb1448f384b9ac22236a402127d79527",
+      "bytes": 3469
+    },
+    "assets/morphanim/依詩蒂/attack/1.png": {
+      "sha256": "1b30d813c586c76c01103084cfc6a5abe855214376979c68342fe6ca0f6a28ee",
+      "bytes": 4259
+    },
+    "assets/morphanim/依詩蒂/attack/2.png": {
+      "sha256": "2f4003886ccbd1f0709c80ae9081bf97976118640fa22549d6e3a2f9dce1a7ac",
+      "bytes": 4231
+    },
+    "assets/morphanim/依詩蒂/attack/3.png": {
+      "sha256": "b20c9e5b63e47e0a0491b634ad8f3dce5b693b8074b7e4309a801a5d37a590f0",
+      "bytes": 3794
+    },
+    "assets/morphanim/依詩蒂/attack/4.png": {
+      "sha256": "683637c79d790e5f96c408114d56ee22b6cc7aa8e8a00f5aa203320be483920e",
+      "bytes": 6303
+    },
+    "assets/morphanim/依詩蒂/attack/5.png": {
+      "sha256": "a12302ba2895c21338f46a15f3f6dc6db26566bcf07cdb611748d08e458c6d57",
+      "bytes": 6036
+    },
+    "assets/morphanim/依詩蒂/hurt/0.png": {
+      "sha256": "f1f581d1f0c529f50fd52af0f88137aebb1448f384b9ac22236a402127d79527",
+      "bytes": 3469
+    },
+    "assets/morphanim/依詩蒂/hurt/1.png": {
+      "sha256": "e197d46f15dc62c3324f8d7cecf99628383de339663add623af1310b36f0babc",
+      "bytes": 4569
+    },
+    "assets/morphanim/依詩蒂/hurt/2.png": {
+      "sha256": "8917609a429542134830b7c72e5e9eaf5c37192ed56d2a568bd4f652531acd58",
+      "bytes": 4478
+    },
+    "assets/morphanim/依詩蒂/idle/0.png": {
+      "sha256": "0d609234a1fb86d8f5eb7b48415187aaf5f5146bec31f2e07fe43a42c28dca2d",
+      "bytes": 4291
+    },
+    "assets/morphanim/依詩蒂/idle/1.png": {
+      "sha256": "aeddefc46084af46493cda973da5b9fc60fc807f5427b11a99479fa32fabdddb",
+      "bytes": 4037
+    },
+    "assets/morphanim/依詩蒂/idle/10.png": {
+      "sha256": "c2142ca544b944dd78ae541856af51a7cd6996733ccbc23431ae1d70d48516cb",
+      "bytes": 5070
+    },
+    "assets/morphanim/依詩蒂/idle/11.png": {
+      "sha256": "75d4949696b0ec1d73a93383931f63ebf7c202531a6a3ab9eac9fdf6ad47dfa8",
+      "bytes": 4821
+    },
+    "assets/morphanim/依詩蒂/idle/2.png": {
+      "sha256": "680bc2a546f17e30d9860adde33ad031a53514db3256edcaba3fa7cdefd691ac",
+      "bytes": 4393
+    },
+    "assets/morphanim/依詩蒂/idle/3.png": {
+      "sha256": "0d74e31031d9b31bc423e88830f0af3438e378062ea42c64affa983b87ead769",
+      "bytes": 5039
+    },
+    "assets/morphanim/依詩蒂/idle/4.png": {
+      "sha256": "10d3da7fdb7160e99d7a58c17cbeba96f1afae7dcad345012d955b50a0833659",
+      "bytes": 5172
+    },
+    "assets/morphanim/依詩蒂/idle/5.png": {
+      "sha256": "c894947ec2bed189c3961e1dd17fbee2ffda2e4fbc07d99e9e9757bc4618f688",
+      "bytes": 5158
+    },
+    "assets/morphanim/依詩蒂/idle/6.png": {
+      "sha256": "bf0eb9e032456f1f5de0dfbaaa93c8f5fbffdef4164e967aa0193c6243b49a45",
+      "bytes": 5221
+    },
+    "assets/morphanim/依詩蒂/idle/7.png": {
+      "sha256": "0f0a14d4c005ffc6bf7982995fbd04d3b74a42c1ae1b79b153aa0df4a9cc9eb5",
+      "bytes": 5124
+    },
+    "assets/morphanim/依詩蒂/idle/8.png": {
+      "sha256": "fd8cbccf9bc19b29de0142e323beef2e7b03631f00fba8e1fd71403155a86f8e",
+      "bytes": 5371
+    },
+    "assets/morphanim/依詩蒂/idle/9.png": {
+      "sha256": "937b7aa4599b026ab5bd53d49c2079ccf733aefbf4e1c90163617e85d3014495",
+      "bytes": 5130
+    },
+    "assets/morphanim/宙斯/attack/0.png": {
+      "sha256": "df750defef4a3fa54fa174b4da7dd627d89b1024111a5ef25843f41b617c6fb6",
+      "bytes": 3181
+    },
+    "assets/morphanim/宙斯/attack/1.png": {
+      "sha256": "de6c274dafd9cb83be9021e09d65ea096b5c2158ca77f208b76671f37c7611d0",
+      "bytes": 3310
+    },
+    "assets/morphanim/宙斯/attack/2.png": {
+      "sha256": "de6c274dafd9cb83be9021e09d65ea096b5c2158ca77f208b76671f37c7611d0",
+      "bytes": 3310
+    },
+    "assets/morphanim/宙斯/attack/3.png": {
+      "sha256": "36625ad6e0700bb5f16c82204ffb7e44c158287cfe504e9f3fb524bf115e6c0b",
+      "bytes": 3455
+    },
+    "assets/morphanim/宙斯/attack/4.png": {
+      "sha256": "f72cead77287701a57db752c243b1837f4bbc1f19f450be11923af2fa9ec7139",
+      "bytes": 3678
+    },
+    "assets/morphanim/宙斯/attack/5.png": {
+      "sha256": "1f4a1705bbaec77c480cd5eedeae9f148fe3827434434990e0c100e842894c1e",
+      "bytes": 4101
+    },
+    "assets/morphanim/宙斯/attack/6.png": {
+      "sha256": "228370374145706165e5cb9f7179b4cce498f44b2da6010691b3933fe4b75fe3",
+      "bytes": 3790
+    },
+    "assets/morphanim/宙斯/hurt/0.png": {
+      "sha256": "df750defef4a3fa54fa174b4da7dd627d89b1024111a5ef25843f41b617c6fb6",
+      "bytes": 3181
+    },
+    "assets/morphanim/宙斯/hurt/1.png": {
+      "sha256": "4f7c4235755bd647d9430432bad1bed98ada1170756ce5a37c082822124b79c5",
+      "bytes": 3672
+    },
+    "assets/morphanim/宙斯/hurt/2.png": {
+      "sha256": "4f7c4235755bd647d9430432bad1bed98ada1170756ce5a37c082822124b79c5",
+      "bytes": 3672
+    },
+    "assets/morphanim/宙斯/hurt/3.png": {
+      "sha256": "43822409e9e0789fc9a22fe72718577e66382138ee3e6a1919f9b05fb9227d10",
+      "bytes": 3527
+    },
+    "assets/morphanim/宙斯/idle/0.png": {
+      "sha256": "495e2d46650e874e23938aa614f1b7c523b357bd0356698e2574edf2f633a855",
+      "bytes": 2604
+    },
+    "assets/morphanim/宙斯/idle/1.png": {
+      "sha256": "0c9ba1017710364c82cb6362e52eb2accb8001fb84cd557eab20e773e1ec6e34",
+      "bytes": 2553
+    },
+    "assets/morphanim/宙斯/idle/10.png": {
+      "sha256": "f0c299b049fa47a1647b1dd01ce09cfe90fc91742aec8841f62f4f0282cf0d23",
+      "bytes": 2614
+    },
+    "assets/morphanim/宙斯/idle/11.png": {
+      "sha256": "d3f1c107ee9f6ceeb4741ffe010f8893b29731d0aa957a78205d139adcdcbdf0",
+      "bytes": 2614
+    },
+    "assets/morphanim/宙斯/idle/2.png": {
+      "sha256": "f125e064ebf8d6ab79f4152c14adcafc89b35e9db5a3141474f5f2472bf0364f",
+      "bytes": 2549
+    },
+    "assets/morphanim/宙斯/idle/3.png": {
+      "sha256": "ee24e90f2fc60fa1bd81096c0ec193f86d72330de6cd7b30825c3e9a2fe618c1",
+      "bytes": 2609
+    },
+    "assets/morphanim/宙斯/idle/4.png": {
+      "sha256": "73eaca9b09ae983a656092b7c6ae9957b1fd31b3a73d06b49c792c8cacb7fc4f",
+      "bytes": 2552
+    },
+    "assets/morphanim/宙斯/idle/5.png": {
+      "sha256": "e0c22a0a7436d5945f2a772610b4fb81e5d9d68340b707fcdf5a3ee36eeffc37",
+      "bytes": 2541
+    },
+    "assets/morphanim/宙斯/idle/6.png": {
+      "sha256": "db0a4b7cd15d8a11d719c5e13401815da5b083c2b5e30cc5cb82f886fff498d5",
+      "bytes": 2569
+    },
+    "assets/morphanim/宙斯/idle/7.png": {
+      "sha256": "610cd3cb9cb059ddf02c2f73c1e5b21e5de011f8f929ed8874356559cf0f1362",
+      "bytes": 2661
+    },
+    "assets/morphanim/宙斯/idle/8.png": {
+      "sha256": "a9b069cd791c0ed3f7a587972f4dbf1c6969e30866ac4ec1270e79171b5c3252",
+      "bytes": 2719
+    },
+    "assets/morphanim/宙斯/idle/9.png": {
+      "sha256": "668b6cb523bacb701ee978a18b6819a52f830ad5e45330fba5f1d67087d55fc3",
+      "bytes": 2686
+    },
+    "assets/morphanim/布雷哲/attack/0.png": {
+      "sha256": "473617a65a83cf43666648f0e6a48e5a3ed46d7f4df38e83d0885b4c5ba026df",
+      "bytes": 2456
+    },
+    "assets/morphanim/布雷哲/attack/1.png": {
+      "sha256": "7e91da9fe37845a5e425db9526719225fa609f715efaccb5aa34e8160bbff602",
+      "bytes": 2541
+    },
+    "assets/morphanim/布雷哲/attack/2.png": {
+      "sha256": "7fe09041dc4f57891908e2fd9ec681f5a25c8a27adcacb026c6b43dcc11b13e5",
+      "bytes": 2702
+    },
+    "assets/morphanim/布雷哲/attack/3.png": {
+      "sha256": "28f213d57d09ad4eabbd19e7a555afc05196d1f192a9e7698365236b8986db67",
+      "bytes": 3462
+    },
+    "assets/morphanim/布雷哲/attack/4.png": {
+      "sha256": "b136419eb082f7ffade23a3001e694315a782a76a7ad0ae19311498637422f8e",
+      "bytes": 3269
+    },
+    "assets/morphanim/布雷哲/attack/5.png": {
+      "sha256": "939948928a1db44657336e42eb80cf1be263eac5ee571accf4e95b165bbde9a2",
+      "bytes": 3018
+    },
+    "assets/morphanim/布雷哲/attack/6.png": {
+      "sha256": "ca76e42b81782a4ce80ab3494c690ed6c46cbccbec5932c48da73d93b1017b41",
+      "bytes": 2777
+    },
+    "assets/morphanim/布雷哲/attack/7.png": {
+      "sha256": "8f3e77683be8ba60edd93c0e38b6b2d98a9c82b16bee2dae2f1e255504e93707",
+      "bytes": 2621
+    },
+    "assets/morphanim/布雷哲/attack/8.png": {
+      "sha256": "d61f4915620b627f858d66d5f06a6cf2e2079d7f765e0e3d6cf24ac2a4b13e8d",
+      "bytes": 2223
+    },
+    "assets/morphanim/布雷哲/hurt/0.png": {
+      "sha256": "959509db50baa9075c48387454e9cd8a82ab3a36632b6c08062479a8be33135e",
+      "bytes": 2228
+    },
+    "assets/morphanim/布雷哲/hurt/1.png": {
+      "sha256": "959509db50baa9075c48387454e9cd8a82ab3a36632b6c08062479a8be33135e",
+      "bytes": 2228
+    },
+    "assets/morphanim/布雷哲/hurt/2.png": {
+      "sha256": "aaea8954d74b8f3fc9421ebfa42775f15bba60aa678cf77decce60f93c08469b",
+      "bytes": 2377
+    },
+    "assets/morphanim/布雷哲/idle/0.png": {
+      "sha256": "0fd100dc719def977db959cc47c81bce143e80f558ac51771a5b450c3d305b01",
+      "bytes": 2136
+    },
+    "assets/morphanim/布雷哲/idle/1.png": {
+      "sha256": "58196358d78610b3813eb9d65b68da81a1e84b7ddf2f08f76be5f94949ebee5c",
+      "bytes": 2123
+    },
+    "assets/morphanim/布雷哲/idle/2.png": {
+      "sha256": "077f0068700b1133888cf52ba54d395936907afd2d3c0f19edcc5f1d6cb17386",
+      "bytes": 2163
+    },
+    "assets/morphanim/布雷哲/idle/3.png": {
+      "sha256": "a92587cd5d2acc25ba56a8524d19a62d6e5c2a2e4067ee4006d7f09d91b88228",
+      "bytes": 2063
+    },
+    "assets/morphanim/布雷哲/idle/4.png": {
+      "sha256": "abb9a78f9f0f93e1ba992403408e3309032cff3086e8da4b7f5d804469e37492",
+      "bytes": 2097
+    },
+    "assets/morphanim/布雷哲/idle/5.png": {
+      "sha256": "e22f187cfe680ff0c1c92de4f1c6c60e6b7c811d358df8ba2a948dda230cacfd",
+      "bytes": 2084
+    },
+    "assets/morphanim/布雷哲/idle/6.png": {
+      "sha256": "95316379e72c4205b0941dce769316b093452a5db3b2562faf2a842e498eae97",
+      "bytes": 2134
+    },
+    "assets/morphanim/布雷哲/idle/7.png": {
+      "sha256": "67f520886ec4ec282d44e14067f8e9e046c67fb937f6014795636aa8ed3b985f",
+      "bytes": 2134
+    },
+    "assets/morphanim/布雷哲/idle/8.png": {
+      "sha256": "6e7c62b9fd19e37877d3ced6048c5e95358d773eae3f865eaf426fce1769a7ff",
+      "bytes": 2143
+    },
+    "assets/morphanim/死亡騎士(焚焰)/attack/0.png": {
+      "sha256": "c0b5a1993dfb732a2250b3cac44780de9626083aec4670b6bcf7058b1cc68c4a",
+      "bytes": 3460
+    },
+    "assets/morphanim/死亡騎士(焚焰)/attack/1.png": {
+      "sha256": "58216febb8faa573fda54581ce39e4faf8a66e384a0249e32a5a0b5557e1ba0e",
+      "bytes": 3918
+    },
+    "assets/morphanim/死亡騎士(焚焰)/attack/2.png": {
+      "sha256": "0b84d904186aa4eb2dc15249ce604dd9ba6fd779c0ec3035d1fc69083971818f",
+      "bytes": 3333
+    },
+    "assets/morphanim/死亡騎士(焚焰)/attack/3.png": {
+      "sha256": "6630b7c34171140aef220556690979feb4b7a5626fde8536892e5ec5c4f93a0c",
+      "bytes": 3279
+    },
+    "assets/morphanim/死亡騎士(焚焰)/attack/4.png": {
+      "sha256": "72f00dea93c6cf47fa07e7218eefb328fe81713f54c3af58df51f3d92c34d134",
+      "bytes": 4253
+    },
+    "assets/morphanim/死亡騎士(焚焰)/attack/5.png": {
+      "sha256": "3536cbb22ff7700313c35b43992a8bdd2e329bfaa6efa7a8f0add2d4ce8db9ea",
+      "bytes": 4656
+    },
+    "assets/morphanim/死亡騎士(焚焰)/hurt/0.png": {
+      "sha256": "4fb67c99ec851e00d685366146ca61f12be5139c6bc5b13359669bbab7f1a624",
+      "bytes": 4264
+    },
+    "assets/morphanim/死亡騎士(焚焰)/hurt/1.png": {
+      "sha256": "354f9e904986bbb786995a8adea758e4550740b7e92381afa767fe6bf597b159",
+      "bytes": 4074
+    },
+    "assets/morphanim/死亡騎士(焚焰)/idle/0.png": {
+      "sha256": "87d51d46a8c2f271559e141d1a4f340cd9258e5bebe48929c9dce5ea8392a067",
+      "bytes": 3352
+    },
+    "assets/morphanim/死亡騎士(焚焰)/idle/1.png": {
+      "sha256": "d9dd4e17446eca97407effe58ca078c7faba3aa86a7cb5bc99284c1a3d195478",
+      "bytes": 3380
+    },
+    "assets/morphanim/死亡騎士(焚焰)/idle/2.png": {
+      "sha256": "c1444ad134c54c5382171842553373700491fcfb9ed4a8dfaca225f7db7d63d2",
+      "bytes": 3322
+    },
+    "assets/morphanim/死亡騎士(焚焰)/idle/3.png": {
+      "sha256": "4dc79b12cf3e22d911311285059fe0a81811c138c05974a27a73cc3d89fc2f17",
+      "bytes": 3426
+    },
+    "assets/morphanim/死亡騎士(焚焰)/idle/4.png": {
+      "sha256": "029d663c932a4aecc80789e7f4b3bb57685ea07716bf279ee45d2aadddf7a4be",
+      "bytes": 3414
+    },
+    "assets/morphanim/死亡騎士(焚焰)/idle/5.png": {
+      "sha256": "02dcec94d4421d12b645dd847d90044ec625a63c3bd1b6278d0bba0a1bc4af89",
+      "bytes": 3440
+    },
+    "assets/morphanim/海露拜/attack/0.png": {
+      "sha256": "4a00ccf01baed53f2d87263c5a34bd29510bba2c786fcf84199d04ef5458c95d",
+      "bytes": 3863
+    },
+    "assets/morphanim/海露拜/attack/1.png": {
+      "sha256": "5647733297df5cbfd414df342b4ca2c0f22e64f78ce432247ef78a46f09dd787",
+      "bytes": 3546
+    },
+    "assets/morphanim/海露拜/attack/2.png": {
+      "sha256": "84a3db8b143389f5c759a26e783b06b0a50e43aa7730f1aa7a3d331b27e33920",
+      "bytes": 3121
+    },
+    "assets/morphanim/海露拜/attack/3.png": {
+      "sha256": "1b4a1188abf82857074044b8a41285fa79f6569caf53350a6a5535ade3e419db",
+      "bytes": 2891
+    },
+    "assets/morphanim/海露拜/attack/4.png": {
+      "sha256": "67bda16d7fbfaac73f879659d4e0b481cb7267f11bf6ff945cd7bfdce91f8541",
+      "bytes": 3527
+    },
+    "assets/morphanim/海露拜/attack/5.png": {
+      "sha256": "45eb481823e89171a2f0f1726d93c6250e92008b467480083932be4b73166909",
+      "bytes": 3451
+    },
+    "assets/morphanim/海露拜/hurt/0.png": {
+      "sha256": "139e3e97bfc85425d4395e9a41717bbc8d8ff84878aeb62989171772be1c0ff1",
+      "bytes": 3899
+    },
+    "assets/morphanim/海露拜/hurt/1.png": {
+      "sha256": "139e3e97bfc85425d4395e9a41717bbc8d8ff84878aeb62989171772be1c0ff1",
+      "bytes": 3899
+    },
+    "assets/morphanim/海露拜/hurt/2.png": {
+      "sha256": "499cb27e3349fc0770a408e79f1464a32818be825d64d97e33e42cbdf1d43a0d",
+      "bytes": 3774
+    },
+    "assets/morphanim/海露拜/idle/0.png": {
+      "sha256": "6f2b8833f8988039370d9e487a1037678d1133f00d63ffb2378e7fb53d99bb2e",
+      "bytes": 2976
+    },
+    "assets/morphanim/海露拜/idle/1.png": {
+      "sha256": "6765540f2b88e5912f06e2f44cb890eb6bfb6cd98fc3d7c4992f3694486db1e0",
+      "bytes": 2814
+    },
+    "assets/morphanim/海露拜/idle/10.png": {
+      "sha256": "128903776429cc0a60454e6b6a4297e192c343874d43e8406395049abb7fd465",
+      "bytes": 2948
+    },
+    "assets/morphanim/海露拜/idle/11.png": {
+      "sha256": "bed2f3747142cc24ab5f76ba4940bb82df95800bc2aeabb3dcb36d529f4cd3b8",
+      "bytes": 2981
+    },
+    "assets/morphanim/海露拜/idle/2.png": {
+      "sha256": "707628444d356e1aaab15af736961412e3f179392cf674d1ba46d1625f0c8134",
+      "bytes": 2920
+    },
+    "assets/morphanim/海露拜/idle/3.png": {
+      "sha256": "00922af3f183131a645e255e60223318f4cca34bf35df7fab0d08c3b97c6ed57",
+      "bytes": 2928
+    },
+    "assets/morphanim/海露拜/idle/4.png": {
+      "sha256": "55aa09105a92aaf9e50fc762181c91c6585f244b1865b6338a3d19a44bbdf83f",
+      "bytes": 2957
+    },
+    "assets/morphanim/海露拜/idle/5.png": {
+      "sha256": "0354466620fb8ffb1672cd1fc508cd6a05f90d361f2cb51b12ef63cf6d7b992b",
+      "bytes": 2979
+    },
+    "assets/morphanim/海露拜/idle/6.png": {
+      "sha256": "5034708f796e09da681086002ab40f5424a0f350297d95cabcd3e1c3b1b12a72",
+      "bytes": 2935
+    },
+    "assets/morphanim/海露拜/idle/7.png": {
+      "sha256": "623a54860277aa59163084d70fc219c70648b8f48a49be13acd29d3e731259b8",
+      "bytes": 3052
+    },
+    "assets/morphanim/海露拜/idle/8.png": {
+      "sha256": "6afa20f7dfb9782e987ac85d3b1358b4570a7ef4a6f70fa3c046f7e3e5545cea",
+      "bytes": 3005
+    },
+    "assets/morphanim/海露拜/idle/9.png": {
+      "sha256": "772c658572c870fade5699c1647a3eb51c7213fb54d955fe85ecfa97703ede57",
+      "bytes": 2969
+    },
+    "assets/morphanim/真死亡騎士(紅)/attack/0.png": {
+      "sha256": "b8957c768148319d28a035075e23a0c6673815058a6bf0086a394b58e18fbaf4",
+      "bytes": 3740
+    },
+    "assets/morphanim/真死亡騎士(紅)/attack/1.png": {
+      "sha256": "1bb5a57bb432422a0332c3e8a20321146ac0a023eb0a787e8e5a9055a4564b41",
+      "bytes": 4316
+    },
+    "assets/morphanim/真死亡騎士(紅)/attack/2.png": {
+      "sha256": "d01c69b2b87689f7857b034d4eed5b490452fccdfe4bdcf95c80a6a43123b28a",
+      "bytes": 3727
+    },
+    "assets/morphanim/真死亡騎士(紅)/attack/3.png": {
+      "sha256": "ac3e1c5c05776e0636f04e3dd86019b214d5c56b00a8b346f917221f344a4d3f",
+      "bytes": 3356
+    },
+    "assets/morphanim/真死亡騎士(紅)/attack/4.png": {
+      "sha256": "c80f5bea5fb940eb15def8c47f720562c49fa880c925aee00f5828a2abf24f93",
+      "bytes": 4391
+    },
+    "assets/morphanim/真死亡騎士(紅)/attack/5.png": {
+      "sha256": "12d27f9bccb327709bc845653f8bb7eddb3ccb0740393e3afc16797a8a2ed851",
+      "bytes": 3462
+    },
+    "assets/morphanim/真死亡騎士(紅)/hurt/0.png": {
+      "sha256": "07fe66b375f60839a68d58fedffc63fbb16e0bc15e3b9dabb1ab37fcf959e78b",
+      "bytes": 4641
+    },
+    "assets/morphanim/真死亡騎士(紅)/hurt/1.png": {
+      "sha256": "e253cdc6661a99c788d029ef1df48216efe7bdbc43ec1dddbd67b74b04023efb",
+      "bytes": 4718
+    },
+    "assets/morphanim/真死亡騎士(紅)/idle/0.png": {
+      "sha256": "4b3a29a711f759200c6202bb7283d98e5f02e81f6ef50b571b0589367f20e9cb",
+      "bytes": 4066
+    },
+    "assets/morphanim/真死亡騎士(紅)/idle/1.png": {
+      "sha256": "4eb213c86cbaebf6786e30d8f55d846cb83a62a5e6b21bc396057ed298c3ad59",
+      "bytes": 4004
+    },
+    "assets/morphanim/真死亡騎士(紅)/idle/2.png": {
+      "sha256": "3e735f3ce84804b8c76755a766b3e31c5678dc03d2fe251aba0bdb7e72a0a0e8",
+      "bytes": 3886
+    },
+    "assets/morphanim/真死亡騎士(紅)/idle/3.png": {
+      "sha256": "adda86a7bee677bbc8008c992f191c464eae4f5f1f5beed4a92fd7cc113c7414",
+      "bytes": 3976
+    },
+    "assets/morphanim/真死亡騎士(紅)/idle/4.png": {
+      "sha256": "c17b10628d2c0da222d9dce278e76ef5a99d614f557b591f9cd9d509d9dc0e0a",
+      "bytes": 3921
+    },
+    "assets/morphanim/真死亡騎士(紅)/idle/5.png": {
+      "sha256": "159a423381b8279accb68c43fac83f21cbc2b02704ada7013d394e729c7e63ce",
+      "bytes": 3978
+    },
+    "assets/morphanim/賞金獵人/attack/0.png": {
+      "sha256": "ac5ab035c4c5aa02bbaecc79ab5299a4913e60094ef12c432888525b0d195465",
+      "bytes": 2410
+    },
+    "assets/morphanim/賞金獵人/attack/1.png": {
+      "sha256": "00eab617649ca6c13283906e35afadf957984ecd59538109be78e5ef4ee1dc90",
+      "bytes": 2358
+    },
+    "assets/morphanim/賞金獵人/attack/2.png": {
+      "sha256": "d3e979efcb94a812e4ecaf8754240fa306e88ef2535dd0c61014aab1345cbd39",
+      "bytes": 3409
+    },
+    "assets/morphanim/賞金獵人/attack/3.png": {
+      "sha256": "44ed2f5996d82e3ff19b2580730bfe55a255cad26c1d044e3f9de323644491ab",
+      "bytes": 3303
+    },
+    "assets/morphanim/賞金獵人/attack/4.png": {
+      "sha256": "3b14d773c5d048b00edc75ec74b83ff42087d95ba9308f2432efa0864311767f",
+      "bytes": 2767
+    },
+    "assets/morphanim/賞金獵人/hurt/0.png": {
+      "sha256": "2ea08a28886c6d85284bd6899fcc2bcd8b6c37c2f47bd8430467bc9c1c421f14",
+      "bytes": 2632
+    },
+    "assets/morphanim/賞金獵人/hurt/1.png": {
+      "sha256": "2ea08a28886c6d85284bd6899fcc2bcd8b6c37c2f47bd8430467bc9c1c421f14",
+      "bytes": 2632
+    },
+    "assets/morphanim/賞金獵人/hurt/2.png": {
+      "sha256": "14559e0902c54d1b0fd1b9977cccf2b4b4617cd8353bc33f19ab538123799539",
+      "bytes": 2623
+    },
+    "assets/morphanim/賞金獵人/idle/0.png": {
+      "sha256": "85e4e988e734b033e5302fde682107759d286556870ed3e942e74cec822aee24",
+      "bytes": 2233
+    },
+    "assets/morphanim/賞金獵人/idle/1.png": {
+      "sha256": "9fe64de453505758068553c4f7fd2897507466327890abd5d99598089fcdfeef",
+      "bytes": 2215
+    },
+    "assets/morphanim/賞金獵人/idle/10.png": {
+      "sha256": "d9831cf7b64e71f88090c5d6a6667eb5f79edcc8b4684886e8e428767b98f448",
+      "bytes": 2206
+    },
+    "assets/morphanim/賞金獵人/idle/11.png": {
+      "sha256": "454533da8b8e49237706ad5e0bf4be03dc5bba94ce56621c8281eb4d18daba7e",
+      "bytes": 2255
+    },
+    "assets/morphanim/賞金獵人/idle/2.png": {
+      "sha256": "b6275c4624ccce2b932086524c939d6a6e19109dc70ccdd8449790da69492cc2",
+      "bytes": 2213
+    },
+    "assets/morphanim/賞金獵人/idle/3.png": {
+      "sha256": "6b7931cb5a65ee1c1a4b8358ea8c795713f9a4e8057ef781ee4e817dbdc63235",
+      "bytes": 2159
+    },
+    "assets/morphanim/賞金獵人/idle/4.png": {
+      "sha256": "d624fda5471a01302b543ceb8c6db537c3fbb1109e246b49a48a07e71e5c8d12",
+      "bytes": 2169
+    },
+    "assets/morphanim/賞金獵人/idle/5.png": {
+      "sha256": "d34169fda90f90ca640e7022d458a9ad7f11a7c60d0625adabd804c14ca9d79c",
+      "bytes": 2174
+    },
+    "assets/morphanim/賞金獵人/idle/6.png": {
+      "sha256": "f63c3b6e1f75d7d94641dc595cbd4d907442ce7a61c71463ddecf2aa3d2c68ea",
+      "bytes": 2179
+    },
+    "assets/morphanim/賞金獵人/idle/7.png": {
+      "sha256": "a14d2da7b3d3573047b4acfd11bd07973e3f59b19ff9139e4f2996dab1b168c8",
+      "bytes": 2191
+    },
+    "assets/morphanim/賞金獵人/idle/8.png": {
+      "sha256": "377bc9ed57b97ee91310a16f1d2f436d43b1f4c5b0bdbf7a41e427e7979e75b4",
+      "bytes": 2192
+    },
+    "assets/morphanim/賞金獵人/idle/9.png": {
+      "sha256": "6369cef298a4ff06262272943fcdd990b0682d529f1a48e6dbb1b6c6d3e2162e",
+      "bytes": 2212
+    }
+  }
+}

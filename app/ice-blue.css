@@ -1,0 +1,2001 @@
+/* Ice-blue palette overrides only: original layout, scene art and combat meters stay in globals.css. */
+body.ice-blue {
+    background: #f5faff !important;
+    color: var(--text) !important
+}
+body.ice-blue button:focus-visible,
+body.ice-blue a:focus-visible {
+    outline: 2px solid var(--gold) !important
+}
+body.ice-blue input:focus {
+    border-color: var(--gold) !important
+}
+body.ice-blue .game-root {
+    background: radial-gradient(ellipse at 0 0,#f5faff 0,transparent 50%) !important
+}
+body.ice-blue .topbar {
+    border-bottom: 1px solid #a8c9e2 !important;
+    background: #f5faff !important
+}
+body.ice-blue .brand-mark {
+    border: 1px solid #a8c9e2 !important;
+    color: var(--gold) !important
+}
+body.ice-blue .brand strong {
+    color: #23435d !important
+}
+body.ice-blue .brand div span {
+    color: #58748a !important
+}
+body.ice-blue .header-right [data-slot=button] {
+    color: #58748a !important
+}
+body.ice-blue .cloud-status {
+    color: #58748a !important
+}
+body.ice-blue .character-panel {
+    background: linear-gradient(180deg,#f5faff,#f5faff) !important;
+    border-left: 1px solid #a8c9e2 !important;
+    border-right: 1px solid #a8c9e2 !important
+}
+body.ice-blue .panel-heading {
+    color: #23435d !important
+}
+body.ice-blue .small-cap {
+    color: #58748a !important
+}
+body.ice-blue .portrait-wrap {
+    border: 1px solid #a8c9e2 !important;
+    box-shadow: 0 0 0 5px #315b7c08 !important
+}
+body.ice-blue .class-seal {
+    background: #f5faff !important;
+    border: 1px solid #a8c9e2 !important;
+    color: #58748a !important
+}
+body.ice-blue .level-medallion {
+    border: 1px solid #a8c9e2 !important;
+    background: #f5faff !important;
+    color: var(--gold) !important
+}
+body.ice-blue .char-title>span {
+    color: #58748a !important
+}
+body.ice-blue .meter-label {
+    color: #58748a !important
+}
+body.ice-blue .meter-track {
+    background: #e4eff8 !important
+}
+body.ice-blue .wealth {
+    color: #58748a !important;
+    border-top: 1px solid #a8c9e2 !important;
+    border-bottom: 1px solid #a8c9e2 !important
+}
+body.ice-blue .wealth>span {
+    color: #58748a !important
+}
+body.ice-blue .combat-stats span {
+    color: #58748a !important
+}
+body.ice-blue .equipped-preview {
+    border-top: 1px solid #a8c9e2 !important
+}
+body.ice-blue .fallback {
+    background: #f5faff !important;
+    color: #58748a !important
+}
+body.ice-blue .item-preview strong {
+    color: #58748a !important
+}
+body.ice-blue .item-preview span {
+    color: #58748a !important
+}
+body.ice-blue .character-slots {
+    border-top: 1px solid #a8c9e2 !important
+}
+body.ice-blue .slot-card {
+    border: 1px solid #a8c9e2 !important
+}
+body.ice-blue .slot-card.active {
+    border-color: #a8c9e2 !important;
+    background: #c4e3f70b !important
+}
+body.ice-blue .slot-card span {
+    color: #58748a !important
+}
+body.ice-blue .slot-card svg {
+    color: var(--gold) !important
+}
+body.ice-blue .new-character {
+    color: #58748a !important
+}
+body.ice-blue .sidebar-foot span {
+    color: #58748a !important
+}
+body.ice-blue .sidebar-foot small {
+    color: #58748a !important
+}
+body.ice-blue .main-nav {
+    border-bottom: 1px solid #a8c9e2 !important
+}
+body.ice-blue .main-nav [data-slot=tabs-trigger] {
+    color: #58748a !important
+}
+body.ice-blue .main-nav [data-state=active] {
+    color: var(--gold) !important
+}
+body.ice-blue .main-nav [data-state=active]:after {
+    background: var(--gold) !important
+}
+body.ice-blue .eyebrow {
+    color: #58748a !important
+}
+body.ice-blue .status-tag {
+    border: 1px solid #a8c9e2 !important;
+    color: #58748a !important
+}
+body.ice-blue .status-tag.running {
+    background: #c4e3f713 !important;
+    color: #58748a !important;
+    border-color: #a8c9e2 !important
+}
+body.ice-blue .scene-top {
+    background: linear-gradient(180deg,#f5faff80,transparent) !important
+}
+body.ice-blue .scene-top svg {
+    color: #58748a !important
+}
+body.ice-blue .scene-top span {
+    color: #23435d !important
+}
+body.ice-blue .scene-top .scene-region {
+    color: #23435d !important
+}
+body.ice-blue .actor-shadow {
+    background: #f5faffae !important
+}
+body.ice-blue .monster-hp [data-slot=progress] {
+    background: #f5faff !important
+}
+body.ice-blue .monster-hp [data-slot=progress-indicator] {
+    background: #c4e3f7 !important
+}
+body.ice-blue .monster-hp>span {
+    color: #23435d !important
+}
+body.ice-blue .versus {
+    color: #58748a75 !important
+}
+body.ice-blue .waiting-target {
+    color: #23435d !important
+}
+body.ice-blue .damage {
+    text-shadow: none !important
+}
+body.ice-blue .damage-monster {
+    color: #23435d !important
+}
+body.ice-blue .damage-player {
+    color: #23435d !important
+}
+body.ice-blue .battle-controls {
+    background: #f5faffc9 !important;
+    border-top: 1px solid #a8c9e22e !important
+}
+body.ice-blue .hunt-context span {
+    color: #23435d !important
+}
+body.ice-blue .hunt-context small {
+    color: #58748a !important
+}
+body.ice-blue .gold-button,
+body.ice-blue .primary-link {
+    background: linear-gradient(180deg,#c4e3f7,#c4e3f7) !important;
+    border: 1px solid #a8c9e2 !important;
+    color: #58748a !important;
+    box-shadow: 0 2px 8px #315b7c33 !important
+}
+body.ice-blue .gold-button:hover,
+body.ice-blue .primary-link:hover {
+    background: #c4e3f7 !important
+}
+body.ice-blue .pause-button {
+    background: #f5faff !important;
+    color: #58748a !important;
+    border: 1px solid #a8c9e2 !important
+}
+body.ice-blue .quick-potions {
+    border: 1px solid #a8c9e2 !important;
+    background: #f5faff !important
+}
+body.ice-blue .quick-potions>span {
+    color: #58748a !important
+}
+body.ice-blue .potion-shortcut strong {
+    color: #23435d !important
+}
+body.ice-blue .potion-shortcut span {
+    color: #58748a !important
+}
+body.ice-blue .configure-potions {
+    color: #58748a !important
+}
+body.ice-blue .zone-panel,
+body.ice-blue .log-panel,
+body.ice-blue .equipment-strip,
+body.ice-blue .attribute-panel,
+body.ice-blue .stat-panel,
+body.ice-blue .buff-panel,
+body.ice-blue .bank-panel,
+body.ice-blue .town-directory {
+    background: #f5faff !important;
+    border: 1px solid #a8c9e2 !important
+}
+body.ice-blue .section-head {
+    border-bottom: 1px solid #a8c9e2 !important
+}
+body.ice-blue .section-head h2 {
+    color: #23435d !important
+}
+body.ice-blue .section-head h2 svg {
+    color: #58748a !important
+}
+body.ice-blue .section-head>span {
+    color: #58748a !important
+}
+body.ice-blue .sub-tabs {
+    background: #f5faff !important
+}
+body.ice-blue .sub-tabs [data-state=active] {
+    color: #58748a !important;
+    background: #e4eff8 !important
+}
+body.ice-blue .zone-row {
+    border-bottom: 1px solid #a8c9e2 !important
+}
+body.ice-blue .zone-row:hover {
+    background: #e4eff8 !important
+}
+body.ice-blue .zone-row.selected {
+    background: #c4e3f70a !important;
+    border-left: 2px solid #a8c9e2 !important
+}
+body.ice-blue .zone-emblem {
+    border: 1px solid #a8c9e2 !important;
+    color: #58748a !important
+}
+body.ice-blue .zone-row strong {
+    color: #23435d !important
+}
+body.ice-blue .zone-row small {
+    color: #58748a !important
+}
+body.ice-blue .zone-row>svg {
+    color: #58748a !important
+}
+body.ice-blue .log-line {
+    border-bottom: 1px solid #a8c9e20b !important
+}
+body.ice-blue .log-line time {
+    color: #58748a !important
+}
+body.ice-blue .log-line span {
+    color: #58748a !important
+}
+body.ice-blue .log-line.loot span,
+body.ice-blue .log-line.level span {
+    color: #58748a !important
+}
+body.ice-blue .log-line.hurt span,
+body.ice-blue .log-line.death span {
+    color: #58748a !important
+}
+body.ice-blue .log-line.heal span {
+    color: #58748a !important
+}
+body.ice-blue .log-line.magic span {
+    color: #23435d !important
+}
+body.ice-blue .game-footer {
+    border-top: 1px solid #a8c9e2 !important;
+    color: #58748a !important
+}
+body.ice-blue .gear-slot {
+    border: 1px solid #a8c9e2 !important
+}
+body.ice-blue .gear-slot>small {
+    color: #58748a !important
+}
+body.ice-blue .text-button {
+    color: #58748a !important
+}
+body.ice-blue .text-button:hover {
+    color: var(--gold) !important
+}
+body.ice-blue .filter-bar>span {
+    color: #58748a !important
+}
+body.ice-blue .search-box {
+    border: 1px solid #a8c9e2 !important;
+    background: #f5faff !important
+}
+body.ice-blue .search-box svg {
+    color: #58748a !important
+}
+body.ice-blue .search-box input {
+    color: #23435d !important
+}
+body.ice-blue .search-box input::placeholder {
+    color: #58748a !important
+}
+body.ice-blue .picker {
+    background: #f5faff !important;
+    border-color: #a8c9e2 !important;
+    color: #23435d !important
+}
+body.ice-blue .picker-menu {
+    border-color: #a8c9e2 !important
+}
+body.ice-blue .inventory-item {
+    border: 1px solid #a8c9e2 !important;
+    background: linear-gradient(145deg,#f5faff,#f5faff) !important
+}
+body.ice-blue .inventory-item:hover {
+    border-color: #a8c9e2 !important
+}
+body.ice-blue .inventory-item.is-equipped {
+    border-color: #a8c9e2 !important
+}
+body.ice-blue .inventory-item strong {
+    color: #23435d !important
+}
+body.ice-blue .inventory-item small {
+    color: #58748a !important
+}
+body.ice-blue .item-count {
+    color: #23435d !important
+}
+body.ice-blue .bank-items button {
+    border: 1px solid #a8c9e2 !important
+}
+body.ice-blue .bank-items button small {
+    color: #58748a !important
+}
+body.ice-blue .attribute-row {
+    border-bottom: 1px solid #a8c9e2 !important
+}
+body.ice-blue .attribute-row small {
+    color: #58748a !important
+}
+body.ice-blue .muted {
+    color: #58748a !important
+}
+body.ice-blue .gold-text {
+    color: var(--gold) !important
+}
+body.ice-blue .full-stats>div {
+    border-bottom: 1px solid #a8c9e2 !important
+}
+body.ice-blue .full-stats dt {
+    color: #58748a !important
+}
+body.ice-blue .full-stats dd {
+    color: #23435d !important
+}
+body.ice-blue .buff-chip {
+    border: 1px solid #a8c9e2 !important;
+    background: #c4e3f70b !important
+}
+body.ice-blue .buff-chip span {
+    color: #58748a !important
+}
+body.ice-blue .section-hint {
+    color: #58748a !important
+}
+body.ice-blue .skill-card {
+    border: 1px solid #a8c9e2 !important;
+    background: #f5faff !important
+}
+body.ice-blue .skill-card.learned {
+    border-color: #a8c9e2 !important
+}
+body.ice-blue .skill-text h3 {
+    color: #23435d !important
+}
+body.ice-blue .skill-text p {
+    color: #58748a !important
+}
+body.ice-blue .skill-text small {
+    color: #58748a !important
+}
+body.ice-blue .skill-actions label {
+    color: #58748a !important
+}
+body.ice-blue .shop-banner {
+    background: linear-gradient(120deg,#e4eff8,#f5faff) !important;
+    border: 1px solid #a8c9e2 !important
+}
+body.ice-blue .shop-banner>svg {
+    color: #58748a !important
+}
+body.ice-blue .shop-banner p {
+    color: #58748a !important
+}
+body.ice-blue .shop-banner>span {
+    color: #58748a !important
+}
+body.ice-blue .shop-list {
+    border: 1px solid #a8c9e2 !important
+}
+body.ice-blue .shop-row {
+    background: #f5faff !important;
+    border-bottom: 1px solid #a8c9e2 !important
+}
+body.ice-blue .shop-row span:not(.price) {
+    color: #58748a !important
+}
+body.ice-blue .price {
+    color: var(--gold) !important
+}
+body.ice-blue .black-market {
+    border: 1px solid #a8c9e2 !important;
+    background: #e4eff81a !important
+}
+body.ice-blue .black-market>svg {
+    color: var(--gold) !important
+}
+body.ice-blue .black-market p {
+    color: #58748a !important
+}
+body.ice-blue .npc-grid article {
+    border: 1px solid #a8c9e2 !important
+}
+body.ice-blue .npc-grid strong {
+    color: #23435d !important
+}
+body.ice-blue .npc-grid span {
+    color: #58748a !important
+}
+body.ice-blue .npc-grid p {
+    color: #58748a !important
+}
+body.ice-blue .npc-grid small {
+    color: #58748a !important
+}
+body.ice-blue .catalog-card {
+    border: 1px solid #a8c9e2 !important;
+    background: #f5faff !important
+}
+body.ice-blue .catalog-card:hover {
+    border-color: #a8c9e2 !important
+}
+body.ice-blue .catalog-card small {
+    color: #58748a !important
+}
+body.ice-blue .no-character {
+    color: #58748a !important
+}
+body.ice-blue .no-character>svg {
+    color: #58748a !important
+}
+body.ice-blue .welcome-stage {
+    border: 1px solid #a8c9e2 !important;
+    background: linear-gradient(180deg,#f5faff61,#f5faffe8),url('/assets/background/forest.jpg') center/cover !important
+}
+body.ice-blue .welcome-content>svg {
+    color: #58748a !important
+}
+body.ice-blue .welcome-content h2 {
+    color: #23435d !important
+}
+body.ice-blue .welcome-content p {
+    color: #58748a !important
+}
+body.ice-blue .welcome-class-line button {
+    color: #58748a !important
+}
+body.ice-blue .welcome-class-line img {
+    border: 1px solid #a8c9e2 !important
+}
+body.ice-blue .error-banner {
+    border: 1px solid #a8c9e2 !important;
+    background: #e4eff820 !important;
+    color: #23435d !important
+}
+body.ice-blue .empty-note {
+    color: #58748a !important
+}
+body.ice-blue .loading-panel {
+    color: #58748a !important;
+    border: 1px solid #a8c9e2 !important;
+    background: #f5faff !important
+}
+body.ice-blue .game-dialog {
+    background: #f5faff !important;
+    color: #23435d !important;
+    border: 1px solid #a8c9e2 !important;
+    box-shadow: 0 30px 100px #315b7cbb !important
+}
+body.ice-blue .game-dialog [data-slot=dialog-title],
+body.ice-blue .game-dialog [data-slot=alert-dialog-title] {
+    color: #23435d !important
+}
+body.ice-blue .game-dialog [data-slot=dialog-description],
+body.ice-blue .game-dialog [data-slot=alert-dialog-description] {
+    color: #58748a !important
+}
+body.ice-blue .class-choice button {
+    background: #f5faff !important;
+    border: 1px solid #a8c9e2 !important
+}
+body.ice-blue .class-choice button.selected {
+    border-color: #a8c9e2 !important;
+    box-shadow: 0 0 0 1px #315b7c40 !important
+}
+body.ice-blue .class-choice strong {
+    color: #23435d !important
+}
+body.ice-blue .class-choice .selected strong {
+    color: #23435d !important
+}
+body.ice-blue .create-fields>label,
+body.ice-blue .create-fields>div {
+    color: #58748a !important
+}
+body.ice-blue .create-fields input {
+    border: 1px solid #a8c9e2 !important;
+    background: #f5faff !important;
+    color: #23435d !important
+}
+body.ice-blue .allocation-heading span {
+    color: var(--gold) !important
+}
+body.ice-blue .allocation-grid>div {
+    border-bottom: 1px solid #a8c9e2 !important
+}
+body.ice-blue .allocation-grid>div>span {
+    color: #58748a !important
+}
+body.ice-blue .create-footer {
+    border-top: 1px solid #a8c9e2 !important
+}
+body.ice-blue .create-footer p {
+    color: #58748a !important
+}
+body.ice-blue .setting-row strong {
+    color: var(--gold) !important
+}
+body.ice-blue .game-dialog [data-slot=switch][data-state=checked] {
+    background: #c4e3f7 !important
+}
+body.ice-blue .game-dialog [data-slot=switch-thumb] {
+    background: #c4e3f7 !important
+}
+body.ice-blue .detail-hero {
+    border-bottom: 1px solid #a8c9e2 !important
+}
+body.ice-blue .detail-hero p {
+    color: #23435d !important
+}
+body.ice-blue .detail-table th {
+    color: #58748a !important
+}
+body.ice-blue .detail-table td {
+    border-bottom: 1px solid #a8c9e2 !important
+}
+body.ice-blue .detail-table td:last-child {
+    color: #23435d !important
+}
+body.ice-blue .detail-actions {
+    border-top: 1px solid #a8c9e2 !important
+}
+body.ice-blue .effect-fields {
+    color: #23435d !important
+}
+body.ice-blue .offline-results>div {
+    border: 1px solid #a8c9e2 !important
+}
+body.ice-blue .offline-results span {
+    color: #58748a !important
+}
+body.ice-blue .offline-results strong {
+    color: var(--gold) !important
+}
+body.ice-blue .rules-scroll h3 {
+    color: #58748a !important;
+    border-bottom: 1px solid #a8c9e2 !important
+}
+body.ice-blue .rules-scroll p {
+    color: #58748a !important
+}
+body.ice-blue .source-note {
+    border-top: 1px solid #a8c9e2 !important;
+    color: #58748a !important
+}
+body.ice-blue ::-webkit-scrollbar-thumb {
+    background: #e4eff8 !important
+}
+body.ice-blue ::-webkit-scrollbar-track {
+    background: #f5faff !important
+}
+@media (min-width:1450px) {
+    body.ice-blue .game-shell {
+        border-right: 1px solid #a8c9e2 !important
+    }
+}
+@media (max-width:540px) {
+    body.ice-blue .slot-card.active {
+        background: #c4e3f71c !important
+    }
+}
+body.ice-blue .gm-access {
+    color: var(--gold) !important;
+    border: 1px solid #a8c9e2 !important
+}
+body.ice-blue .population-status {
+    color: #58748a !important
+}
+body.ice-blue .population-status strong {
+    color: var(--gold) !important
+}
+body.ice-blue .population-status small {
+    color: #58748a !important
+}
+body.ice-blue .gm-root {
+    background: radial-gradient(ellipse at 10% 0,#e4eff8,transparent 60%) !important
+}
+body.ice-blue .gm-heading p {
+    color: #58748a !important
+}
+body.ice-blue .gm-role {
+    color: var(--gold) !important;
+    border: 1px solid #a8c9e2 !important
+}
+body.ice-blue .gm-back {
+    color: var(--gold) !important
+}
+body.ice-blue .gm-overview>div {
+    border: 1px solid #a8c9e2 !important;
+    background: #f5faff !important
+}
+body.ice-blue .gm-overview svg {
+    color: var(--gold) !important
+}
+body.ice-blue .gm-overview>div>span {
+    color: #58748a !important
+}
+body.ice-blue .gm-overview strong small {
+    color: #58748a !important
+}
+body.ice-blue .gm-settings,
+body.ice-blue .gm-map-panel {
+    background: #f5faff !important;
+    border: 1px solid #a8c9e2 !important
+}
+body.ice-blue .gm-setting-grid label {
+    color: #23435d !important
+}
+body.ice-blue .gm-setting-grid p {
+    color: #58748a !important
+}
+body.ice-blue .gm-setting-grid small {
+    color: #58748a !important
+}
+body.ice-blue .gm-savebar {
+    border-top: 1px solid #a8c9e2 !important;
+    background: #c4e3f708 !important
+}
+body.ice-blue .gm-savebar p {
+    color: #23435d !important
+}
+body.ice-blue .gm-savebar p svg {
+    color: #58748a !important
+}
+body.ice-blue .gm-savebar small {
+    color: #58748a !important
+}
+body.ice-blue .gm-table th {
+    color: #58748a !important;
+    background: #f5faff !important
+}
+body.ice-blue .gm-table th,
+body.ice-blue .gm-table td {
+    border-bottom: 1px solid #a8c9e2 !important
+}
+body.ice-blue .gm-table td small {
+    color: #58748a !important
+}
+body.ice-blue .gm-table details {
+    color: #58748a !important
+}
+body.ice-blue .gm-history {
+    border: 1px solid #a8c9e2 !important
+}
+body.ice-blue .gm-history>div {
+    border-top: 1px solid #a8c9e2 !important;
+    color: #58748a !important
+}
+body.ice-blue .gm-history time {
+    color: #58748a !important
+}
+body.ice-blue .gm-history small {
+    color: #58748a !important
+}
+body.ice-blue .gm-note {
+    color: #58748a !important
+}
+body.ice-blue .gm-denied h1 {
+    color: var(--gold) !important
+}
+body.ice-blue .gm-denied>a {
+    color: var(--gold) !important
+}
+body.ice-blue .gm-character-picker {
+    border-bottom: 1px solid var(--border) !important
+}
+body.ice-blue .gm-character-picker p {
+    color: #23435d !important
+}
+body.ice-blue .gm-grants>div {
+    border: 1px solid #a8c9e2 !important;
+    background: #f5faff !important
+}
+body.ice-blue .gm-grants h3 {
+    color: #23435d !important
+}
+body.ice-blue .gm-grants p,
+body.ice-blue .gm-grants small {
+    color: #58748a !important
+}
+body.ice-blue .gm-gold-amount {
+    color: #58748a !important
+}
+body.ice-blue .gm-grant-success {
+    background: #f5faff !important;
+    border: 1px solid #a8c9e2 !important;
+    color: #23435d !important
+}
+body.ice-blue .poly-summary {
+    background: linear-gradient(120deg,#f5faff,#f5faff) !important
+}
+body.ice-blue .poly-current-art {
+    color: var(--gold) !important
+}
+body.ice-blue .poly-current-text h2 {
+    color: var(--gold) !important
+}
+body.ice-blue .poly-control-note {
+    background: #f5faff !important;
+    border: 1px solid #a8c9e2 !important
+}
+body.ice-blue .poly-control-note span {
+    color: var(--gold) !important
+}
+body.ice-blue .poly-card {
+    background: #f5faff !important
+}
+body.ice-blue .poly-card p {
+    color: #c62828 !important
+}
+body.ice-blue .poly-card.selected {
+    border-color: var(--gold) !important;
+    background: #f5faff !important
+}
+body.ice-blue .poly-tier {
+    color: #58748a !important
+}
+body.ice-blue .poly-tier.exclusive {
+    color: #23435d !important
+}
+body.ice-blue .player-float {
+    color: #23435d !important
+}
+body.ice-blue .healing {
+    color: #23435d !important
+}
+body.ice-blue .gear-workshop {
+    background: #f5faff !important
+}
+body.ice-blue .gear-workshop h3 {
+    color: var(--gold) !important
+}
+body.ice-blue .gear-result {
+    color: #23435d !important
+}
+body.ice-blue .login-page {
+    background: linear-gradient(#f5faffb8,#f5faffed),url('/assets/background/village.jpg') center/cover !important
+}
+body.ice-blue .login-card {
+    border: 1px solid #a8c9e255 !important;
+    background: #f5faffee !important;
+    box-shadow: 0 20px 80px #315b7c88 !important
+}
+body.ice-blue .login-card h1 {
+    color: #23435d !important
+}
+body.ice-blue .login-card small {
+    color: #58748a !important
+}
+body.ice-blue .instance-details {
+    border: 1px solid #a8c9e255 !important
+}
+body.ice-blue .source-inventory {
+    border: 1px solid #a8c9e2 !important;
+    background: #f5faff !important
+}
+body.ice-blue .source-eq-slot {
+    background: #f5faff !important;
+    border: 1px solid #a8c9e2 !important
+}
+body.ice-blue .source-eq-slot.filled {
+    border-color: #a8c9e2 !important
+}
+body.ice-blue .source-eq-slot span {
+    color: #58748a !important
+}
+body.ice-blue .source-eq-slot strong {
+    color: #58748a !important
+}
+body.ice-blue .source-bag-cell {
+    border: 1px solid #a8c9e2 !important;
+    background: #f5faff !important
+}
+body.ice-blue .source-bag-cell small {
+    color: #23435d !important
+}
+body.ice-blue .source-bag-cell .enhance {
+    color: #58748a !important
+}
+body.ice-blue .source-bag-cell .worn {
+    color: #58748a !important
+}
+body.ice-blue .scroll-items>div {
+    border: 1px solid #a8c9e2 !important
+}
+body.ice-blue .scroll-items p,
+body.ice-blue .skill-effect-description {
+    color: #58748a !important
+}
+body.ice-blue .quick-magic>button {
+    border: 1px solid #a8c9e2 !important;
+    background: #f5faff !important
+}
+body.ice-blue .quick-magic small {
+    color: #58748a !important
+}
+body.ice-blue .village-npc-grid article {
+    background: #f5faffd1 !important;
+    border: 1px solid #a8c9e2 !important
+}
+body.ice-blue .village-npc-grid article.selected {
+    border-color: #a8c9e2 !important
+}
+body.ice-blue .village-npc-grid h3 {
+    color: #23435d !important
+}
+body.ice-blue .village-npc-grid strong {
+    color: #58748a !important
+}
+body.ice-blue .village-npc-grid p,
+body.ice-blue .village-npc-grid small {
+    color: #58748a !important
+}
+body.ice-blue .item-enhancement {
+    border-top: 1px solid #a8c9e2 !important
+}
+body.ice-blue .item-enhancement p {
+    color: #58748a !important
+}
+body.ice-blue .item-enhancement-modes>div {
+    border: 1px solid #a8c9e2 !important
+}
+body.ice-blue .item-enhancement-modes small {
+    color: #23435d !important
+}
+body.ice-blue {
+    background: #f5faff !important
+}
+body.ice-blue .game-root {
+    background: linear-gradient(135deg,#e4eff8,#f5faff 55%) !important
+}
+body.ice-blue .game-root>.topbar {
+    background: #e4eff8 !important;
+    border-bottom: 1px solid #a8c9e2 !important
+}
+body.ice-blue .game-root .header-right .cloud-status {
+    color: #58748a !important
+}
+body.ice-blue .game-root .gm-access {
+    color: #58748a !important
+}
+body.ice-blue .main-nav {
+    background: linear-gradient(90deg,#e4eff8,#e4eff8) !important;
+    border-top: 1px solid #a8c9e2 !important
+}
+body.ice-blue .main-nav [data-slot=tabs-trigger] {
+    color: #23435d !important
+}
+body.ice-blue .main-nav [data-slot=tabs-trigger][data-state=active] {
+    background: linear-gradient(#c4e3f7,#e4eff8) !important;
+    color: #23435d !important
+}
+body.ice-blue .reference-hud {
+    background: linear-gradient(110deg,#e4eff8,#e4eff8) !important;
+    border-bottom: 1px solid #a8c9e2 !important
+}
+body.ice-blue .hud-avatar {
+    border: 3px solid #a8c9e2 !important;
+    background: #f5faff !important
+}
+body.ice-blue .hud-identity h2 {
+    color: #23435d !important
+}
+body.ice-blue .hud-identity p {
+    color: #23435d !important
+}
+body.ice-blue .hud-config {
+    background: #f5faff !important;
+    border-color: #a8c9e2 !important;
+    color: #58748a !important
+}
+body.ice-blue .hud-currency strong {
+    color: #58748a !important
+}
+body.ice-blue .hud-currency button {
+    color: #58748a !important
+}
+body.ice-blue .hud-currency span {
+    color: #23435d !important
+}
+body.ice-blue .hud-vitals {
+    color: #23435d !important
+}
+body.ice-blue .active-status-bar {
+    background: #f5faff !important;
+    border-top: 1px solid #a8c9e2 !important;
+    border-bottom: 1px solid #a8c9e2 !important
+}
+body.ice-blue .status-caption {
+    color: #58748a !important
+}
+body.ice-blue .active-status-icon {
+    color: #23435d !important;
+    border: 1px solid #a8c9e2 !important;
+    background: #f5faff !important
+}
+body.ice-blue .active-status-icon small {
+    color: #58748a !important
+}
+body.ice-blue .no-active-status {
+    color: #58748a !important
+}
+body.ice-blue .compact-village {
+    background: linear-gradient(#f5faff66,#f5faff88),url('/assets/background/village.jpg') center/cover !important
+}
+body.ice-blue .compact-village .shop-banner {
+    background: #f5faffdd !important
+}
+body.ice-blue .compact-village .shop-banner h2 {
+    color: #58748a !important
+}
+body.ice-blue .compact-village .village-npc-grid article {
+    background: #f5faffe0 !important;
+    border-color: #a8c9e2 !important
+}
+body.ice-blue .compact-village .village-npc-grid h3 {
+    color: #23435d !important
+}
+body.ice-blue .compact-village .village-npc-grid button {
+    color: #58748a !important;
+    border-color: #a8c9e2 !important
+}
+body.ice-blue .zone-panel,
+body.ice-blue .log-panel,
+body.ice-blue .attribute-panel,
+body.ice-blue .stat-panel,
+body.ice-blue .buff-panel,
+body.ice-blue .bank-panel {
+    background: #f5faff !important;
+    border-color: #a8c9e2 !important
+}
+body.ice-blue .zone-panel .sub-tabs {
+    background: #f5faff !important
+}
+body.ice-blue .zone-panel .sub-tabs button {
+    border: 1px solid #a8c9e2 !important;
+    color: #58748a !important;
+    background: #f5faff !important
+}
+body.ice-blue .zone-panel .sub-tabs button[data-state=active] {
+    border-color: #a8c9e2 !important;
+    background: #e4eff8 !important;
+    color: #58748a !important
+}
+body.ice-blue .zone-row {
+    border: 1px solid #a8c9e2 !important;
+    background: #f5faff !important;
+    color: #23435d !important
+}
+body.ice-blue .zone-row:hover,
+body.ice-blue .zone-row.selected {
+    background: #e4eff8 !important;
+    border-color: #a8c9e2 !important
+}
+body.ice-blue .zone-row small {
+    color: #58748a !important
+}
+body.ice-blue .population-status {
+    background: #f5faff !important;
+    border-color: #a8c9e2 !important;
+    color: #23435d !important
+}
+body.ice-blue .quick-potions {
+    background: #f5faff !important;
+    border-color: #a8c9e2 !important
+}
+body.ice-blue .character-config-dialog .character-panel {
+    background: #f5faff !important
+}
+body.ice-blue .reference-hud~.game-shell .main-panel {
+    background: #f5faff77 !important
+}
+body.ice-blue .auto-tabs {
+    background: #f5faff !important
+}
+body.ice-blue .auto-tabs button {
+    border: 1px solid #a8c9e2 !important;
+    color: #23435d !important;
+    background: #f5faff !important
+}
+body.ice-blue .auto-tabs button[data-state=active] {
+    background: #e4eff8 !important;
+    border-color: #a8c9e2 !important;
+    color: #58748a !important
+}
+body.ice-blue .auto-card {
+    background: #f5faff !important;
+    border: 1px solid #a8c9e2 !important;
+    color: #23435d !important
+}
+body.ice-blue .auto-card h3 {
+    color: #58748a !important;
+    border-bottom: 1px solid #a8c9e2 !important
+}
+body.ice-blue .auto-card p {
+    color: #58748a !important
+}
+body.ice-blue .auto-card select {
+    background: #f5faff !important;
+    border: 1px solid #a8c9e2 !important;
+    color: #23435d !important
+}
+body.ice-blue .auto-card input[type=number] {
+    background: #f5faff !important;
+    border: 1px solid #a8c9e2 !important;
+    color: #23435d !important
+}
+body.ice-blue .auto-check input {
+    accent-color: #c4e3f7 !important
+}
+body.ice-blue .auto-potion {
+    border-bottom: 1px solid #a8c9e2 !important
+}
+body.ice-blue .auto-spell span {
+    color: #23435d !important
+}
+body.ice-blue .auto-aux>.auto-check+label {
+    color: #58748a !important
+}
+body.ice-blue .auto-aux small {
+    color: #58748a !important
+}
+body.ice-blue .reference-item-dialog {
+    background: #f5faff !important;
+    border: 3px solid #a8c9e2 !important;
+    color: #23435d !important
+}
+body.ice-blue .reference-item-title {
+    color: #58748a !important
+}
+body.ice-blue .reference-item-stats {
+    background: #f5faff !important
+}
+body.ice-blue .compare-button {
+    background: #e4eff8 !important;
+    border: 1px solid #a8c9e2 !important;
+    color: #23435d !important
+}
+body.ice-blue .sale-button {
+    background: #e4eff8 !important;
+    border: 1px solid #a8c9e2 !important;
+    color: #23435d !important
+}
+body.ice-blue .reference-item-dialog .item-enhancement {
+    background: #f5faff !important
+}
+body.ice-blue .reference-map-row {
+    background: #f5faff !important;
+    border: 1px solid #a8c9e2 !important;
+    color: #23435d !important
+}
+body.ice-blue .reference-map-row>span:last-child {
+    color: #58748a !important
+}
+body.ice-blue .reference-map-row.selected {
+    background: #e4eff8 !important;
+    border-color: #a8c9e2 !important
+}
+body.ice-blue .reference-map-row small {
+    color: #58748a !important
+}
+body.ice-blue .map-continent {
+    background: #f5faff !important;
+    color: #58748a !important;
+    border: 1px solid #a8c9e2 !important
+}
+body.ice-blue .enhancement-shortage {
+    color: #58748a !important
+}
+body.ice-blue .auto-sale-settings .auto-sale-description {
+    color: #58748a !important
+}
+body.ice-blue .auto-sale-row {
+    border: 1px solid #a8c9e2 !important;
+    background: #f5faff !important;
+    color: #23435d !important
+}
+body.ice-blue .auto-sale-row>span:last-child {
+    color: #58748a !important
+}
+body.ice-blue .auto-sale-row:hover {
+    background: #f5faff !important;
+    border-color: #a8c9e2 !important
+}
+body.ice-blue .reference-maps .sub-tabs button {
+    background: #f5faff !important;
+    border: 1px solid #a8c9e2 !important;
+    color: #23435d !important
+}
+body.ice-blue .reference-maps .sub-tabs button[data-state=active] {
+    background: #e4eff8 !important;
+    border-color: #a8c9e2 !important;
+    color: #58748a !important
+}
+body.ice-blue .reference-map-row {
+    background: #f5faff !important;
+    border-color: #a8c9e2 !important
+}
+body.ice-blue .reference-map-row>span:last-child {
+    color: #58748a !important
+}
+body.ice-blue .reference-map-row.selected {
+    background: #e4eff8 !important;
+    border-color: #a8c9e2 !important
+}
+body.ice-blue .reference-map-row .map-player-count {
+    color: #58748a !important
+}
+body.ice-blue .reference-maps .map-continent {
+    border-color: #a8c9e2 !important;
+    background: #f5faff !important;
+    color: #58748a !important
+}
+body.ice-blue .reference-ability-tabs button {
+    border: 1px solid #a8c9e2 !important;
+    background: #f5faff !important;
+    color: #23435d !important
+}
+body.ice-blue .reference-ability-tabs button.selected {
+    background: #e4eff8 !important;
+    border-color: #a8c9e2 !important;
+    color: #58748a !important
+}
+body.ice-blue .reference-attributes {
+    background: #f5faff !important;
+    color: #23435d !important
+}
+body.ice-blue .combat-attributes {
+    border-top: 1px solid #a8c9e2 !important
+}
+body.ice-blue .reference-point-allocation h3 {
+    color: #58748a !important
+}
+body.ice-blue .reference-point-allocation small {
+    color: #58748a !important
+}
+body.ice-blue .reference-point-allocation>div {
+    background: #f5faff !important
+}
+body.ice-blue .reference-point-allocation button {
+    border: 1px solid #a8c9e2 !important;
+    background: #e4eff8 !important;
+    color: #58748a !important
+}
+body.ice-blue .reference-ability-note {
+    color: #58748a !important
+}
+body.ice-blue .ability-unavailable {
+    color: #58748a !important
+}
+body.ice-blue .main-nav .ability-selected {
+    background: linear-gradient(#c4e3f7,#e4eff8) !important;
+    color: #23435d !important
+}
+body.ice-blue .skill-book-grid {
+    background: #f5faff !important;
+    color: #23435d !important
+}
+body.ice-blue .skill-book-grid .sb-sec {
+    color: #58748a !important;
+    border-left: 3px solid #a8c9e2 !important
+}
+body.ice-blue .skill-book-grid .sb-tier {
+    color: #58748a !important
+}
+body.ice-blue .skill-book-grid .sb-tier b {
+    color: #23435d !important
+}
+body.ice-blue .skill-book-grid .sb-slot {
+    background: #f5faff !important;
+    border: 1px solid #a8c9e2 !important
+}
+body.ice-blue .skill-book-grid .sb-slot.on {
+    background: #f5faff !important;
+    border-color: #a8c9e2 !important
+}
+body.ice-blue .skill-book-grid .sb-slot.on:active,
+body.ice-blue .skill-book-grid .sb-slot.on:focus-visible {
+    border-color: #a8c9e2 !important;
+    outline: 2px solid #a8c9e2 !important
+}
+body.ice-blue .skill-book-grid .sb-x {
+    color: #58748a !important;
+    text-shadow: none !important
+}
+body.ice-blue .map-monster-info {
+    border: 1px solid #a8c9e2 !important;
+    background: #f5faff !important;
+    color: #23435d !important
+}
+body.ice-blue .map-monster-entry {
+    border-bottom: 1px solid #a8c9e2 !important
+}
+body.ice-blue .map-monster-entry p {
+    color: #58748a !important
+}
+body.ice-blue .monster-drop-chip {
+    border: 1px solid #a8c9e2 !important;
+    color: #23435d !important;
+    background: #f5faff !important
+}
+body.ice-blue .monster-drop-list small {
+    color: #58748a !important
+}
+body.ice-blue .map-monster-info a {
+    color: #58748a !important
+}
+body.ice-blue .boss-room-row>div {
+    color: #58748a !important
+}
+body.ice-blue .boss-enter {
+    border: 1px solid #a8c9e2 !important;
+    background: #e4eff8 !important;
+    color: #58748a !important
+}
+body.ice-blue .reference-system {
+    color: #23435d !important
+}
+body.ice-blue .reference-system [role=tab],
+body.ice-blue .auto-tabs [role=tab],
+body.ice-blue .reference-view-tabs button {
+    border: 1px solid #a8c9e2 !important;
+    background: #f5faff !important;
+    color: #23435d !important
+}
+body.ice-blue .reference-system [role=tab][data-state=active],
+body.ice-blue .auto-tabs [role=tab][data-state=active],
+body.ice-blue .reference-themes .selected {
+    background: #e4eff8 !important;
+    border-color: #a8c9e2 !important;
+    color: #23435d !important
+}
+body.ice-blue .reference-pending {
+    border: 1px solid #a8c9e2 !important;
+    background: #f5faff !important
+}
+body.ice-blue .reference-compose input,
+body.ice-blue .reference-skill-search input,
+body.ice-blue .reference-system select,
+body.ice-blue .reference-system input {
+    background: #f5faff !important;
+    border: 1px solid #a8c9e2 !important;
+    color: #23435d !important
+}
+body.ice-blue .reference-metrics>div {
+    border: 1px solid #a8c9e2 !important;
+    background: #f5faff !important
+}
+body.ice-blue .reference-metrics strong {
+    color: #23435d !important
+}
+body.ice-blue .reference-log {
+    background: #f5faff !important
+}
+body.ice-blue .reference-log p {
+    border-bottom: 1px solid #a8c9e2 !important
+}
+body.ice-blue .reference-log time {
+    color: #58748a !important
+}
+body.ice-blue .reference-system fieldset {
+    border: 1px solid #a8c9e2 !important
+}
+body.ice-blue .reference-dolls>div {
+    border: 1px solid #a8c9e2 !important;
+    background: #f5faff !important
+}
+body.ice-blue .reference-dolls small {
+    color: #58748a !important
+}
+body.ice-blue .reference-skill-search span {
+    color: #58748a !important
+}
+body.ice-blue .reference-skill-list article {
+    border: 1px solid #a8c9e2 !important;
+    background: #f5faff !important;
+    color: #23435d !important
+}
+body.ice-blue .reference-skill-list small {
+    color: #58748a !important
+}
+body.ice-blue .reference-themes button {
+    border: 1px solid #a8c9e2 !important;
+    background: #f5faff !important;
+    color: #23435d !important
+}
+body.ice-blue .game-root:not(.interface-classic) .reference-hud,
+body.ice-blue .game-root:not(.interface-classic) .main-nav {
+    background: var(--ice-panel) !important
+}
+body.ice-blue .game-root:not(.interface-classic) [role=tab][data-state=active],
+body.ice-blue .game-root:not(.interface-classic) .gold-button {
+    background: var(--ice-panel) !important;
+    color: var(--ice-heading) !important;
+    border-color: var(--ice-heading) !important
+}
+body.ice-blue .game-root:not(.interface-classic) .reference-system article,
+body.ice-blue .game-root:not(.interface-classic) .reference-metrics>div {
+    background: var(--ice-panel) !important;
+    border-color: var(--ice-heading) !important
+}
+body.ice-blue .screenshot-layout {
+    background: #f5faff !important
+}
+body.ice-blue .screenshot-layout>.topbar {
+    background: linear-gradient(100deg,#e4eff8,#e4eff8) !important
+}
+body.ice-blue .screenshot-layout .reference-hud {
+    background: linear-gradient(100deg,#e4eff8,#e4eff8) !important;
+    border-bottom: 1px solid #a8c9e2 !important
+}
+body.ice-blue .screenshot-layout .hud-identity p {
+    color: #58748a !important
+}
+body.ice-blue .screenshot-layout .hud-identity p b {
+    color: #58748a !important
+}
+body.ice-blue .screenshot-layout .hud-identity p span {
+    color: #23435d !important
+}
+body.ice-blue .screenshot-layout .hud-config {
+    box-shadow: 0 2px 6px #315b7c88 !important
+}
+body.ice-blue .screenshot-layout .hud-currency strong {
+    color: #58748a !important
+}
+body.ice-blue .screenshot-layout .hud-currency button {
+    border: 1px solid #a8c9e2 !important
+}
+body.ice-blue .screenshot-layout .hud-defense {
+    color: #23435d !important
+}
+body.ice-blue .screenshot-layout .hud-defense b {
+    color: #58748a !important
+}
+body.ice-blue .screenshot-layout .main-panel {
+    background: #f5faff !important
+}
+body.ice-blue .lobby-battle-link {
+    border: 1px solid #a8c9e2 !important;
+    background: #f5faff99 !important;
+    color: #23435d !important
+}
+body.ice-blue .screenshot-layout .active-status-bar {
+    background: #f5faff !important;
+    border-top: 1px solid #a8c9e2 !important;
+    border-bottom: 1px solid #a8c9e2 !important
+}
+body.ice-blue .screenshot-layout .status-caption {
+    color: #58748a !important
+}
+body.ice-blue .screenshot-layout .reference-maps .map-continent {
+    border: 1px solid #a8c9e2 !important
+}
+body.ice-blue .screenshot-layout .reference-map-row {
+    border: 1px solid #a8c9e2 !important;
+    background: #f5faff !important
+}
+body.ice-blue .screenshot-layout .reference-map-row.selected {
+    border-color: #a8c9e2 !important;
+    background: #e4eff8 !important
+}
+body.ice-blue .screenshot-layout .main-nav {
+    background: linear-gradient(110deg,#e4eff8,#e4eff8) !important;
+    border-top: 1px solid #a8c9e2 !important
+}
+body.ice-blue .screenshot-layout .main-nav [data-slot=tabs-trigger] {
+    color: #23435d !important
+}
+body.ice-blue .screenshot-layout .main-nav [data-state=active] {
+    background: linear-gradient(120deg,#c4e3f7,#c4e3f7) !important;
+    color: #23435d !important
+}
+body.ice-blue .gm-gift-preview {
+    background: #f5faff !important;
+    border: 1px solid #a8c9e2 !important;
+    color: #23435d !important
+}
+body.ice-blue .gm-gift-form small {
+    color: #58748a !important
+}
+body.ice-blue .verified-progress {
+    background: #f5faff !important;
+    border: 1px solid #a8c9e2 !important
+}
+body.ice-blue .progress-tabs>span {
+    background: #f5faff !important;
+    border: 1px solid #a8c9e2 !important
+}
+body.ice-blue .verified-progress>input {
+    background: #f5faff !important;
+    border: 1px solid #a8c9e2 !important
+}
+body.ice-blue .collection-card {
+    border: 1px solid #a8c9e2 !important;
+    background: #f5faff !important
+}
+body.ice-blue .collection-card strong {
+    color: #58748a !important
+}
+body.ice-blue .collection-card.registered {
+    border-color: #a8c9e2 !important;
+    background: #f5faff !important
+}
+body.ice-blue .collection-bonus {
+    color: #23435d !important
+}
+body.ice-blue .pet-progress-card,
+body.ice-blue .doll-synthesis-row {
+    border: 1px solid #a8c9e2 !important;
+    background: #f5faff !important
+}
+body.ice-blue .pet-exp-track {
+    background: #f5faff !important
+}
+body.ice-blue .pet-exp-track span {
+    background: linear-gradient(90deg,#c4e3f7,#e4eff8) !important
+}
+body.ice-blue .auto-sale-search {
+    border: 1px solid #a8c9e2 !important;
+    background: #f5faff !important;
+    color: #23435d !important
+}
+body.ice-blue .auto-sale-summary {
+    background: #f5faff !important;
+    border: 1px solid #a8c9e2 !important;
+    color: #23435d !important
+}
+body.ice-blue .auto-sale-item small {
+    color: #58748a !important
+}
+body.ice-blue .battle-pet {
+    color: #23435d !important
+}
+body.ice-blue .pet-damage {
+    color: #23435d !important
+}
+body.ice-blue .doll-admin input:not([type=checkbox]),
+body.ice-blue .doll-admin select {
+    background: #f5faff !important;
+    color: #23435d !important;
+    border: 1px solid #a8c9e2 !important
+}
+body.ice-blue .doll-ability {
+    border-top: 1px solid #a8c9e2 !important
+}
+body.ice-blue .gm-spell-preview {
+    background: #f5faff !important;
+    border: 1px solid #a8c9e2 !important
+}
+body.ice-blue .gm-preview-table tr {
+    border-bottom: 1px solid #a8c9e2 !important
+}
+body.ice-blue .display-mode-picker {
+    color: #23435d !important
+}
+body.ice-blue .display-mode-picker select {
+    background: #f5faff !important;
+    border: 1px solid #a8c9e2 !important;
+    color: #23435d !important
+}
+body.ice-blue .display-help {
+    color: #58748a !important
+}
+body.ice-blue .game-root.display-landscape .play-stage {
+    border-right: 1px solid #a8c9e2 !important
+}
+body.ice-blue .gm-root.display-landscape .gm-edit-selection {
+    border-right: 1px solid #a8c9e2 !important
+}
+body.ice-blue .npc-bless-panel h3 {
+    color: #58748a !important
+}
+body.ice-blue .npc-bless-panel select,
+body.ice-blue .npc-bless-panel input {
+    background: #f5faff !important;
+    color: #23435d !important;
+    border: 1px solid #a8c9e2 !important
+}
+body.ice-blue .blessed-affix {
+    color: #23435d !important
+}
+body.ice-blue .cursed-affix {
+    color: #23435d !important
+}
+body.ice-blue .dark-affix-gray {
+    color: #23435d !important
+}
+body.ice-blue .dark-affix-blue {
+    color: #23435d !important
+}
+body.ice-blue .dark-affix-gold {
+    color: #58748a !important
+}
+body.ice-blue .affix-badge {
+    color: #58748a !important
+}
+body.ice-blue .uncurse-service {
+    background: #f5faff !important;
+    border: 1px solid #a8c9e2 !important
+}
+body.ice-blue .affix-rates th,
+body.ice-blue .affix-rates td {
+    border-bottom: 1px solid #a8c9e2 !important
+}
+body.ice-blue .reference-equipment-json {
+    background: #f5faff !important
+}
+body.ice-blue .gm-collapsible {
+    border: 1px solid #a8c9e2 !important;
+    background: #f5faff !important
+}
+body.ice-blue .gm-panel-heading h2>button {
+    color: var(--gold) !important
+}
+body.ice-blue .gm-panel-heading h2>button:focus-visible {
+    outline: 2px solid var(--gold) !important
+}
+body.ice-blue .gm-panel-body {
+    border-top: 1px solid #a8c9e2 !important
+}
+body.ice-blue .gm-collapsible.gm-history>.gm-panel-body>div {
+    border-bottom: 1px solid #a8c9e2 !important
+}
+body.ice-blue .doll-system .reference-dolls article {
+    border: 1px solid #a8c9e2 !important;
+    background: #f5faff !important
+}
+body.ice-blue .doll-system .filter-bar input,
+body.ice-blue .doll-system .filter-bar select {
+    background: #f5faff !important;
+    border: 1px solid #a8c9e2 !important;
+    color: #23435d !important
+}
+body.ice-blue .element-fire,
+body.ice-blue .ancient-eternal {
+    color: #58748a !important
+}
+body.ice-blue .element-water,
+body.ice-blue .ancient-primordial {
+    color: #23435d !important
+}
+body.ice-blue .element-wind,
+body.ice-blue .ancient-immortal {
+    color: #23435d !important
+}
+body.ice-blue .element-earth {
+    color: #23435d !important
+}
+body.ice-blue .ancient-ancient {
+    color: #23435d !important
+}
+body.ice-blue .element-five {
+    text-shadow: none !important
+}
+body.ice-blue .bian-weapon {
+    border: 1px solid #a8c9e2 !important;
+    background: #f5faff !important
+}
+body.ice-blue .bian-dialog[data-slot="dialog-content"] {
+    background: #f5faff !important;
+    color: #23435d !important;
+    border: 3px solid #a8c9e2 !important
+}
+body.ice-blue .bian-dialog [data-slot="dialog-title"] {
+    color: #23435d !important;
+    border-bottom: 1px solid #a8c9e2 !important
+}
+body.ice-blue .bian-dialog [data-slot="dialog-description"] {
+    color: #58748a !important
+}
+body.ice-blue .bian-scroll-counts {
+    color: #58748a !important
+}
+body.ice-blue .bian-equipment-row {
+    border: 2px solid #a8c9e2 !important;
+    background: #f5faff !important
+}
+body.ice-blue .bian-slot-name {
+    color: #58748a !important
+}
+body.ice-blue .bian-row-button,
+body.ice-blue .bian-close {
+    background: #e4eff8 !important;
+    color: #23435d !important;
+    border: 2px solid #a8c9e2 !important
+}
+body.ice-blue .bian-close {
+    color: #23435d !important
+}
+body.ice-blue .bian-item-details {
+    color: #58748a !important
+}
+body.ice-blue .bian-rules {
+    color: #58748a !important
+}
+body.ice-blue .bian-result {
+    border: 1px solid #a8c9e2 !important;
+    background: #f5faff !important;
+    color: #23435d !important
+}
+body.ice-blue .summon-party {
+    background: #f5faffe8 !important;
+    border: 1px solid #a8c9e2 !important
+}
+body.ice-blue .summon-companions progress {
+    accent-color: #c4e3f7 !important
+}
+body.ice-blue .summon-party small {
+    color: #58748a !important
+}
+body.ice-blue .summon-options h3 {
+    color: #58748a !important
+}
+body.ice-blue .summon-options button {
+    border: 1px solid #a8c9e2 !important;
+    background: #f5faff !important
+}
+body.ice-blue .summon-options button.selected {
+    border-color: #a8c9e2 !important;
+    background: #e4eff8 !important
+}
+body.ice-blue .summon-options small {
+    color: #58748a !important
+}
+body.ice-blue .scene-pet small {
+    color: #23435d !important;
+    background: #f5faffc9 !important
+}
+body.ice-blue .scene-pet progress {
+    accent-color: #c4e3f7 !important
+}
+body.ice-blue .pet-battle-info {
+    color: #23435d !important
+}
+body.ice-blue .pet-battle-info summary {
+    background: #f5faffe8 !important;
+    border: 1px solid #a8c9e2 !important
+}
+body.ice-blue .pet-battle-info[open] {
+    background: #f5fafff5 !important;
+    border: 1px solid #a8c9e2 !important
+}
+body.ice-blue .pet-battle-info article {
+    border-top: 1px solid #a8c9e2 !important
+}
+body.ice-blue .game-root .source-bag-cell .count {
+    color: #58748a !important;
+    text-shadow: none !important
+}
+body.ice-blue .game-root .source-bag-cell .enhance {
+    text-shadow: none !important
+}
+body.ice-blue .game-root .source-bag-cell .worn,
+body.ice-blue .game-root .source-bag-cell .auto-sale-mark {
+    text-shadow: none !important
+}
+body.ice-blue .game-root .source-bag-cell:focus-visible {
+    outline: 2px solid #a8c9e2 !important
+}
+body.ice-blue .scene-summon small {
+    color: #23435d !important;
+    text-shadow: none !important;
+    background: #f5faff99 !important
+}
+body.ice-blue .summon-management {
+    border: 1px solid #a8c9e2 !important;
+    background: #f5faff !important;
+    color: #23435d !important
+}
+body.ice-blue .summon-management>summary span {
+    color: #58748a !important
+}
+body.ice-blue .summon-management>summary:focus-visible {
+    outline: 2px solid #a8c9e2 !important
+}
+body.ice-blue .summon-management .summon-companions article {
+    border: 1px solid #a8c9e2 !important;
+    background: #f5faff !important
+}
+body.ice-blue .summon-management .summon-companions progress {
+    accent-color: #c4e3f7 !important
+}
+body.ice-blue .summon-management-content p {
+    color: #58748a !important
+}
+body.ice-blue .offline-income-dialog[data-slot=dialog-content] {
+    border: 3px solid #a8c9e2 !important;
+    background: #f5faff !important;
+    color: #23435d !important;
+    box-shadow: 0 20px 80px #315b7c99 !important
+}
+body.ice-blue .offline-income-dialog header {
+    border-bottom: 1px solid #a8c9e2 !important
+}
+body.ice-blue .offline-income-dialog [data-slot=dialog-title] {
+    color: #58748a !important
+}
+body.ice-blue .offline-income-dialog [data-slot=dialog-description] {
+    color: #58748a !important
+}
+body.ice-blue .offline-income-dialog h3 {
+    color: #58748a !important
+}
+body.ice-blue .offline-income-stats {
+    border-bottom: 1px solid #a8c9e2 !important
+}
+body.ice-blue .offline-income-item b {
+    color: #23435d !important
+}
+body.ice-blue .offline-income-empty {
+    color: #58748a !important
+}
+body.ice-blue .offline-income-dialog footer small {
+    color: #58748a !important
+}
+body.ice-blue .offline-income-collect[data-slot=button] {
+    background: linear-gradient(110deg,#c4e3f7,#e4eff8) !important;
+    color: #23435d !important
+}
+body.ice-blue .mastery-heading span {
+    color: #23435d !important
+}
+body.ice-blue .mastery-card small {
+    color: #58748a !important
+}
+body.ice-blue .mastery-card progress {
+    accent-color: #c4e3f7 !important
+}
+body.ice-blue .mastery-feed input {
+    border: 1px solid #a8c9e2 !important;
+    background: #f5faff !important
+}
+body.ice-blue .mastery-binding select {
+    background: #f5faff !important;
+    border: 1px solid #a8c9e2 !important
+}
+body.ice-blue .mastery-materials span {
+    color: #58748a !important
+}
+body.ice-blue .mastery-complete {
+    color: #23435d !important
+}
+body.ice-blue .mastery-aura {
+    border-top: 1px solid #a8c9e2 !important
+}
+body.ice-blue .mastery-card summary {
+    color: #23435d !important
+}
+body.ice-blue .mastery-card th,
+body.ice-blue .mastery-card td {
+    border-bottom: 1px solid #a8c9e2 !important
+}
+body.ice-blue .doll-trigger b {
+    text-shadow: none !important
+}
+body.ice-blue .doll-trigger-recovery {
+    color: #23435d !important
+}
+body.ice-blue .doll-trigger-guard {
+    color: #23435d !important
+}
+body.ice-blue .doll-trigger-label {
+    text-shadow: none !important
+}
+body.ice-blue .gm-gift-affixes {
+    border: 1px solid #a8c9e2 !important
+}
+body.ice-blue .gm-gift-affixes legend {
+    color: var(--gold) !important
+}
+body.ice-blue .gm-gift-affixes select {
+    background: #f5faff !important;
+    color: #23435d !important;
+    border: 1px solid #a8c9e2 !important
+}
+body.ice-blue .boss-victory-dialog {
+    background: #f5faff !important;
+    color: #23435d !important;
+    border: 3px solid #a8c9e2 !important;
+    box-shadow: 0 20px 90px #315b7caa !important
+}
+body.ice-blue .boss-victory-dialog [data-slot=dialog-title] {
+    color: #23435d !important
+}
+body.ice-blue .boss-victory-dialog [data-slot=dialog-description] {
+    color: #58748a !important
+}
+body.ice-blue .boss-victory-scroll section {
+    border-top: 1px solid #a8c9e2 !important
+}
+body.ice-blue .boss-victory-scroll h3 {
+    color: #58748a !important
+}
+body.ice-blue .boss-victory-income strong,
+body.ice-blue .boss-victory-drops strong {
+    color: #23435d !important
+}
+body.ice-blue .boss-victory-drops>div>div>span {
+    color: #58748a !important
+}
+body.ice-blue .boss-victory-rank>b {
+    color: #58748a !important
+}
+body.ice-blue .boss-victory-rank small {
+    color: #58748a !important
+}
+body.ice-blue .boss-victory-rank>strong {
+    color: #23435d !important
+}
+body.ice-blue .boss-victory-breakdown>div {
+    border-top: 1px solid #a8c9e2 !important;
+    color: #58748a !important
+}
+body.ice-blue .boss-victory-empty {
+    color: #58748a !important
+}
+body.ice-blue .world-boss-stage-name {
+    color: #58748a !important
+}
+body.ice-blue .world-boss-stage-heading small {
+    color: #58748a !important
+}
+body.ice-blue .world-boss-controls button {
+    color: #23435d !important
+}
+body.ice-blue .world-boss-return {
+    background: #e4eff8 !important;
+    border: 1px solid #a8c9e2 !important
+}
+body.ice-blue .world-boss-attack {
+    background: linear-gradient(130deg,#c4e3f7,#e4eff8) !important;
+    border: 2px solid #a8c9e2 !important
+}
+body.ice-blue .world-boss-controls button:focus-visible {
+    outline: 2px solid #a8c9e2 !important
+}
+body.ice-blue .world-boss-roster {
+    background: #f5faff !important;
+    border-top: 1px solid #a8c9e2 !important
+}
+body.ice-blue .world-boss-tabs button {
+    border: 1px solid #a8c9e2 !important;
+    background: #f5faff !important;
+    color: #23435d !important
+}
+body.ice-blue .world-boss-tabs button[aria-selected=true] {
+    border-color: #a8c9e2 !important;
+    background: #e4eff8 !important;
+    color: #23435d !important
+}
+body.ice-blue .world-boss-team-note {
+    color: #58748a !important
+}
+body.ice-blue .world-boss-team-note small {
+    color: #58748a !important
+}
+body.ice-blue .world-boss-team-row>b {
+    color: #58748a !important
+}
+body.ice-blue .world-boss-team-hp {
+    background: #f5faff !important
+}
+body.ice-blue .world-boss-team-hp>span {
+    background: #c4e3f7 !important
+}
+body.ice-blue .world-boss-damage-row {
+    border-bottom: 1px solid #a8c9e2 !important
+}
+body.ice-blue .world-boss-damage-row>b {
+    color: #58748a !important
+}
+body.ice-blue .world-boss-damage-row>strong {
+    color: #23435d !important
+}
+body.ice-blue .detail-dialog-header {
+    border-bottom: 1px solid #a8c9e2 !important;
+    background: #f5faff !important
+}
+body.ice-blue .detail-dialog-header>button {
+    border: 1px solid #a8c9e2 !important;
+    color: #23435d !important
+}
+body.ice-blue .detail-dialog-footer {
+    border-top: 1px solid #a8c9e2 !important;
+    background: #f5faff !important
+}
+body.ice-blue .detail-dialog-footer>button {
+    color: #23435d !important;
+    border-color: #a8c9e2 !important
+}
+
+/* Shared tokens also reach portalled dialogs, dropdowns and the GM route. */
+body.ice-blue{color-scheme:light;--ice-page:#eaf4fc;--ice-panel:#f5faff;--ice-heading:#2d648e;--background:#eaf4fc;--foreground:#23435d;--card:#f5faff;--popover:#f5faff;--primary:#2d648e;--primary-foreground:#fff;--muted:#e4eff8;--muted-foreground:#58748a;--accent:#c4e3f7;--border:#a8c9e2;--input:#a8c9e2;--text:#23435d;--subtle:#58748a;--gold:#2d648e;--gold-dim:#58748a;background:#eaf4fc!important;color:#23435d!important}
+body.ice-blue :is(.game-root,.gm-root){--gold:#2d648e;--gold-dim:#58748a;--interface-panel:#f5faff;--interface-accent:#2d648e;background:#eaf4fc!important;color:#23435d}
+body.ice-blue :is(.game-root>.topbar,.gm-root>.topbar,.game-root .reference-hud,.game-root .main-nav){background:linear-gradient(110deg,#d6eaf9,#eaf4fc)!important;border-color:#a8c9e2!important}
+body.ice-blue :is(.game-root .main-panel,.game-root .main-tabs){background:#eaf4fc!important}
+body.ice-blue :is(.game-dialog,.reference-item-dialog,.boss-victory-dialog,.offline-income-dialog,.bian-dialog,[data-slot=alert-dialog-content],[data-slot=select-content],[data-slot=popover-content],[data-slot=dropdown-menu-content]){background:#f5faff!important;color:#23435d!important;border-color:#a8c9e2!important;box-shadow:0 14px 50px #315b7c30!important}
+body.ice-blue :is(.gold-button,.boss-enter,.world-boss-attack){background:#2d648e!important;color:#fff!important;border-color:#2d648e!important;text-shadow:none!important}
+body.ice-blue :is(.gold-button,.boss-enter,.world-boss-attack):hover{background:#234f73!important;color:#fff!important}
+body.ice-blue :is(.game-root .main-nav [data-slot=tabs-trigger][data-state=active],.reference-themes .selected,.world-boss-tabs button[aria-selected=true]){background:#c4e3f7!important;color:#23435d!important;border-color:#709fc2!important}
+body.ice-blue :is(input:not([type=checkbox]):not([type=radio]),select,textarea,[data-slot=select-trigger]){background:#fff!important;color:#23435d!important;border-color:#a8c9e2!important;caret-color:#2d648e}
+body.ice-blue :is(input,textarea)::placeholder{color:#58748a!important;opacity:1}
+body.ice-blue :is([data-slot=dialog-close],.detail-dialog-header>button){color:#23435d!important}
+body.ice-blue .game-root .hud-config{background:#f5faff!important;color:#2d648e!important;border-color:#709fc2!important}
+body.ice-blue .hud-currency strong{color:#855b16!important}
+body.ice-blue .reference-stat-row{color:#23435d!important}
+body.ice-blue .source-bag-cell :is(.count,.enhance,.worn,.auto-sale-mark){background:#f5faffed!important;color:#23435d!important;text-shadow:none!important;border-radius:3px;padding:1px 3px}
+body.ice-blue :is(.blessed-affix,.dark-affix-gold,.affix-badge){color:#855b16!important}
+body.ice-blue :is(.element-fire,.ancient-eternal,.cursed-affix){color:#ad343a!important}
+body.ice-blue :is(.element-water,.ancient-primordial,.dark-affix-blue){color:#245b9b!important}
+body.ice-blue :is(.element-wind,.ancient-immortal){color:#237445!important}
+body.ice-blue .element-earth{color:#855b16!important}
+body.ice-blue .ancient-ancient{color:#7745a5!important}
+body.ice-blue .dark-affix-gray{color:#617080!important}
+body.ice-blue .world-boss-team-hp{background:#d4e6dc!important}
+body.ice-blue .world-boss-team-hp>span{background:#23a765!important}
+/* Text over scene artwork keeps its original high contrast. */
+body.ice-blue .world-boss-stage-heading{color:#f4cf69!important}
+body.ice-blue .world-boss-stage-heading small{color:#eadfc6!important}
+body.ice-blue .lobby-battle-link{background:#eaf4fcf2!important;color:#23435d!important;border-color:#709fc2!important}
+body.ice-blue [data-sonner-toast]{background:#f5faff!important;color:#23435d!important;border-color:#a8c9e2!important}
+body.ice-blue [data-sonner-toast] [data-description]{color:#58748a!important}
+body.ice-blue :focus-visible{outline-color:#2d648e!important}
+body.ice-blue .world-boss-stage-name{color:#f4cf69!important}
+body.ice-blue .monster-hp [data-slot=progress-indicator]{background:#ab665b!important}
+body.ice-blue .summon-companions progress{accent-color:#9853c2!important}
+body.ice-blue .scene-pet progress{accent-color:#23985c!important}
+body.ice-blue.ice-blue.ice-blue :is(.gold-button,.boss-enter,.world-boss-attack){background:#2d648e!important;color:#fff!important;border-color:#2d648e!important}
+body.ice-blue.ice-blue.ice-blue :is(.gold-button,.boss-enter,.world-boss-attack):hover{background:#234f73!important}
+body.ice-blue :is(.battle-scene,.static-arena,.reference-lobby,.town-walk-scene){--gold:#f4cf69;--text:#eadfc6;--subtle:#c4b29a;color:#eadfc6}

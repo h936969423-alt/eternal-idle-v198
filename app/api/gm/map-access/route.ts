@@ -1,0 +1,8 @@
+import {env} from 'cloudflare:workers';
+import {getChatGPTUser} from '../../../chatgpt-auth';
+import {isGameMaster} from '../../../../lib/game/world-store';
+import {getMapAccessConfig} from '../../../../lib/game/map-access-store';
+import {updateMapAccess} from '../../../../lib/game/map-access';
+export const dynamic='force-dynamic';
+export async function GET(){const user=await getChatGPTUser();if(!isGameMaster(user))return Response.json({error:'此帳號沒有 GM 權限'},{status:403});try{return Response.json(await getMapAccessConfig(),{headers:{'Cache-Control':'no-store'}});}catch{return Response.json({error:'目前無法讀取地圖開放設定'},{status:503});}}
+export async function POST(request:Request){const user=await getChatGPTUser();if(!user||!isGameMaster(user))return Response.json({error:'此帳號沒有 GM 權限'},{status:403});if(request.headers.get('origin')&&request.headers.get('origin')!==new URL(request.url).origin)return Response.json({error:'來源不符'},{status:403});try{const input:any=await request.json(),old=await getMapAccessConfig();if(input.revision!==old.revision)return Response.json({error:'設定已更新，請重新載入後再操作'},{status:409});const config=updateMapAccess(old,input.zone,input.open,user.userId,Date.now());const result=await env.DB!.prepare('UPDATE world_settings SET payload=?,revision=revision+1,updated_at=? WHERE id=? AND revision=?').bind(JSON.stringify(config),Date.now(),'map_access',old.revision).run();if(!result.meta.changes)return Response.json({error:'設定已更新，請重新載入後再操作'},{status:409});return Response.json(config,{headers:{'Cache-Control':'no-store'}});}catch(e){return Response.json({error:e instanceof Error?e.message:'設定未儲存'},{status:400});}}

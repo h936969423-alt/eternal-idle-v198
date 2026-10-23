@@ -1,0 +1,1125 @@
+{
+  "table": "weapon_skill_in",
+  "source": "dragon-integration-assets/raw/天堂w/fangzheng381.sql",
+  "sourceSha256": "2f00542c127e15aaa875a4c4a4c5ecec30f046ec43c1e0747c2ddd188773395b",
+  "columns": [
+    "item_id",
+    "powers",
+    "note"
+  ],
+  "schema": "CREATE TABLE `weapon_skill_in` (\n  `item_id` int(10) NOT NULL COMMENT '武器編號',\n  `powers` varchar(50) NOT NULL DEFAULT '0' COMMENT '能力組',\n  `note` varchar(50) DEFAULT '',\n  PRIMARY KEY (`item_id`),\n  KEY `id` (`item_id`)\n) ENGINE=MyISAM AUTO_INCREMENT=1445 DEFAULT CHARSET=utf8;",
+  "rows": [
+    {
+      "values": {
+        "item_id": "2",
+        "powers": "1",
+        "note": "骰子匕首"
+      },
+      "sourceLine": 139589
+    },
+    {
+      "values": {
+        "item_id": "200002",
+        "powers": "1",
+        "note": "骰子匕首"
+      },
+      "sourceLine": 139590
+    },
+    {
+      "values": {
+        "item_id": "13",
+        "powers": "2",
+        "note": "死亡之指"
+      },
+      "sourceLine": 139591
+    },
+    {
+      "values": {
+        "item_id": "410166",
+        "powers": "26",
+        "note": "戰神馬爾斯小刀"
+      },
+      "sourceLine": 139592
+    },
+    {
+      "values": {
+        "item_id": "58",
+        "powers": "19",
+        "note": "死亡騎士的烈炎之劍"
+      },
+      "sourceLine": 139593
+    },
+    {
+      "values": {
+        "item_id": "54",
+        "powers": "18",
+        "note": "克特之劍"
+      },
+      "sourceLine": 139594
+    },
+    {
+      "values": {
+        "item_id": "265",
+        "powers": "25",
+        "note": "底比斯歐西裡斯雙刀"
+      },
+      "sourceLine": 139595
+    },
+    {
+      "values": {
+        "item_id": "266",
+        "powers": "25",
+        "note": "底比斯歐西裡斯雙手"
+      },
+      "sourceLine": 139596
+    },
+    {
+      "values": {
+        "item_id": "267",
+        "powers": "29",
+        "note": "底比斯歐西裡斯弓 "
+      },
+      "sourceLine": 139597
+    },
+    {
+      "values": {
+        "item_id": "268",
+        "powers": "10",
+        "note": "底比斯歐西裡斯魔杖 "
+      },
+      "sourceLine": 139598
+    },
+    {
+      "values": {
+        "item_id": "410132",
+        "powers": "11",
+        "note": "狂風之斧"
+      },
+      "sourceLine": 139599
+    },
+    {
+      "values": {
+        "item_id": "410133",
+        "powers": "12",
+        "note": "酷寒之矛"
+      },
+      "sourceLine": 139600
+    },
+    {
+      "values": {
+        "item_id": "410134",
+        "powers": "13",
+        "note": "雷雨之劍"
+      },
+      "sourceLine": 139601
+    },
+    {
+      "values": {
+        "item_id": "410135",
+        "powers": "14",
+        "note": "弒神者之弓"
+      },
+      "sourceLine": 139602
+    },
+    {
+      "values": {
+        "item_id": "410129",
+        "powers": "58,175",
+        "note": "寒冰奇古獸"
+      },
+      "sourceLine": 139603
+    },
+    {
+      "values": {
+        "item_id": "410130",
+        "powers": "59,180",
+        "note": "寒冰鎖鏈劍"
+      },
+      "sourceLine": 139604
+    },
+    {
+      "values": {
+        "item_id": "76",
+        "powers": "20",
+        "note": "倫德雙刀"
+      },
+      "sourceLine": 139605
+    },
+    {
+      "values": {
+        "item_id": "121",
+        "powers": "21",
+        "note": "冰之女王魔杖"
+      },
+      "sourceLine": 139606
+    },
+    {
+      "values": {
+        "item_id": "203",
+        "powers": "22",
+        "note": "炎魔的雙手劍"
+      },
+      "sourceLine": 139607
+    },
+    {
+      "values": {
+        "item_id": "205",
+        "powers": "23",
+        "note": "熾炎天使弓"
+      },
+      "sourceLine": 139608
+    },
+    {
+      "values": {
+        "item_id": "410161",
+        "powers": "24",
+        "note": "破壞雙刀"
+      },
+      "sourceLine": 139609
+    },
+    {
+      "values": {
+        "item_id": "410162",
+        "powers": "24",
+        "note": "破壞鋼爪"
+      },
+      "sourceLine": 139610
+    },
+    {
+      "values": {
+        "item_id": "311",
+        "powers": "27",
+        "note": "超特製的耀武短劍"
+      },
+      "sourceLine": 139611
+    },
+    {
+      "values": {
+        "item_id": "312",
+        "powers": "27",
+        "note": "超特製的耀武雙手劍"
+      },
+      "sourceLine": 139612
+    },
+    {
+      "values": {
+        "item_id": "313",
+        "powers": "27",
+        "note": "超特製的耀武雙刀"
+      },
+      "sourceLine": 139613
+    },
+    {
+      "values": {
+        "item_id": "314",
+        "powers": "27",
+        "note": "超特製的耀武之弩"
+      },
+      "sourceLine": 139614
+    },
+    {
+      "values": {
+        "item_id": "315",
+        "powers": "27",
+        "note": "超特製的耀武魔杖"
+      },
+      "sourceLine": 139615
+    },
+    {
+      "values": {
+        "item_id": "410167",
+        "powers": "26",
+        "note": "戰神馬爾斯神弓"
+      },
+      "sourceLine": 139616
+    },
+    {
+      "values": {
+        "item_id": "410168",
+        "powers": "26",
+        "note": "戰神馬爾斯雙手劍"
+      },
+      "sourceLine": 139617
+    },
+    {
+      "values": {
+        "item_id": "410169",
+        "powers": "26",
+        "note": "戰神馬爾斯雙刀"
+      },
+      "sourceLine": 139618
+    },
+    {
+      "values": {
+        "item_id": "410170",
+        "powers": "26",
+        "note": "戰神馬爾斯法杖"
+      },
+      "sourceLine": 139619
+    },
+    {
+      "values": {
+        "item_id": "410171",
+        "powers": "26",
+        "note": "戰神馬爾斯奇古獸"
+      },
+      "sourceLine": 139620
+    },
+    {
+      "values": {
+        "item_id": "410172",
+        "powers": "26",
+        "note": "戰神馬爾斯鎖鏈劍"
+      },
+      "sourceLine": 139621
+    },
+    {
+      "values": {
+        "item_id": "410180",
+        "powers": "30",
+        "note": "月光鎖鏈劍"
+      },
+      "sourceLine": 139622
+    },
+    {
+      "values": {
+        "item_id": "134",
+        "powers": "28",
+        "note": "聖晶魔杖**"
+      },
+      "sourceLine": 139623
+    },
+    {
+      "values": {
+        "item_id": "410176",
+        "powers": "30",
+        "note": "后羿長劍"
+      },
+      "sourceLine": 139624
+    },
+    {
+      "values": {
+        "item_id": "264",
+        "powers": "13",
+        "note": "雷雨之劍"
+      },
+      "sourceLine": 139625
+    },
+    {
+      "values": {
+        "item_id": "260",
+        "powers": "11",
+        "note": "狂風之斧"
+      },
+      "sourceLine": 139626
+    },
+    {
+      "values": {
+        "item_id": "510",
+        "powers": "32",
+        "note": "提卡爾庫庫爾坎之矛"
+      },
+      "sourceLine": 139627
+    },
+    {
+      "values": {
+        "item_id": "511",
+        "powers": "32",
+        "note": "提卡爾庫庫爾坎鐵手甲"
+      },
+      "sourceLine": 139628
+    },
+    {
+      "values": {
+        "item_id": "410173",
+        "powers": "61",
+        "note": "共鳴奇古獸"
+      },
+      "sourceLine": 139629
+    },
+    {
+      "values": {
+        "item_id": "410174",
+        "powers": "60",
+        "note": "共鳴鎖鏈劍"
+      },
+      "sourceLine": 139630
+    },
+    {
+      "values": {
+        "item_id": "801",
+        "powers": "34",
+        "note": "傑羅斯的魔杖"
+      },
+      "sourceLine": 139631
+    },
+    {
+      "values": {
+        "item_id": "100801",
+        "powers": "34",
+        "note": "傑羅斯的魔杖"
+      },
+      "sourceLine": 139632
+    },
+    {
+      "values": {
+        "item_id": "410191",
+        "powers": "35",
+        "note": "圓月雙手劍"
+      },
+      "sourceLine": 139633
+    },
+    {
+      "values": {
+        "item_id": "410192",
+        "powers": "35",
+        "note": "圓月神斧"
+      },
+      "sourceLine": 139634
+    },
+    {
+      "values": {
+        "item_id": "410193",
+        "powers": "35",
+        "note": "圓月長劍"
+      },
+      "sourceLine": 139635
+    },
+    {
+      "values": {
+        "item_id": "410194",
+        "powers": "35",
+        "note": "圓月神弓"
+      },
+      "sourceLine": 139636
+    },
+    {
+      "values": {
+        "item_id": "410195",
+        "powers": "35",
+        "note": "圓月雙刀"
+      },
+      "sourceLine": 139637
+    },
+    {
+      "values": {
+        "item_id": "410196",
+        "powers": "35",
+        "note": "圓月奇古獸"
+      },
+      "sourceLine": 139638
+    },
+    {
+      "values": {
+        "item_id": "410197",
+        "powers": "35",
+        "note": "圓月法杖"
+      },
+      "sourceLine": 139639
+    },
+    {
+      "values": {
+        "item_id": "410198",
+        "powers": "35",
+        "note": "圓月鎖鏈劍"
+      },
+      "sourceLine": 139640
+    },
+    {
+      "values": {
+        "item_id": "410181",
+        "powers": "36",
+        "note": "馬爾斯小刀"
+      },
+      "sourceLine": 139641
+    },
+    {
+      "values": {
+        "item_id": "410182",
+        "powers": "36",
+        "note": "馬爾斯神弓"
+      },
+      "sourceLine": 139642
+    },
+    {
+      "values": {
+        "item_id": "410183",
+        "powers": "36",
+        "note": "馬爾斯雙手劍"
+      },
+      "sourceLine": 139643
+    },
+    {
+      "values": {
+        "item_id": "410184",
+        "powers": "36",
+        "note": "馬爾斯雙刀"
+      },
+      "sourceLine": 139644
+    },
+    {
+      "values": {
+        "item_id": "410185",
+        "powers": "36",
+        "note": "馬爾斯法杖"
+      },
+      "sourceLine": 139645
+    },
+    {
+      "values": {
+        "item_id": "410186",
+        "powers": "36",
+        "note": "馬爾斯奇古獸"
+      },
+      "sourceLine": 139646
+    },
+    {
+      "values": {
+        "item_id": "410187",
+        "powers": "36",
+        "note": "馬爾斯鎖鏈劍"
+      },
+      "sourceLine": 139647
+    },
+    {
+      "values": {
+        "item_id": "263",
+        "powers": "12",
+        "note": "酷寒之矛"
+      },
+      "sourceLine": 139648
+    },
+    {
+      "values": {
+        "item_id": "907",
+        "powers": "39",
+        "note": "疾風斧頭"
+      },
+      "sourceLine": 139649
+    },
+    {
+      "values": {
+        "item_id": "410300",
+        "powers": "40",
+        "note": "幻想的魔杖"
+      },
+      "sourceLine": 139650
+    },
+    {
+      "values": {
+        "item_id": "410301",
+        "powers": "40",
+        "note": "幻想的單手劍"
+      },
+      "sourceLine": 139651
+    },
+    {
+      "values": {
+        "item_id": "410302",
+        "powers": "40",
+        "note": "幻想的弓"
+      },
+      "sourceLine": 139652
+    },
+    {
+      "values": {
+        "item_id": "410303",
+        "powers": "40",
+        "note": "幻想的雙刀"
+      },
+      "sourceLine": 139653
+    },
+    {
+      "values": {
+        "item_id": "410304",
+        "powers": "40",
+        "note": "幻想的鎖鏈劍"
+      },
+      "sourceLine": 139654
+    },
+    {
+      "values": {
+        "item_id": "410305",
+        "powers": "40",
+        "note": "幻想的奇古獸"
+      },
+      "sourceLine": 139655
+    },
+    {
+      "values": {
+        "item_id": "410306",
+        "powers": "40",
+        "note": "幻想的雙手劍"
+      },
+      "sourceLine": 139656
+    },
+    {
+      "values": {
+        "item_id": "410307",
+        "powers": "40",
+        "note": "幻想的斧頭"
+      },
+      "sourceLine": 139657
+    },
+    {
+      "values": {
+        "item_id": "410175",
+        "powers": "30",
+        "note": "玉兔雙爪"
+      },
+      "sourceLine": 139658
+    },
+    {
+      "values": {
+        "item_id": "904",
+        "powers": "42",
+        "note": "法利昂的斧頭"
+      },
+      "sourceLine": 139659
+    },
+    {
+      "values": {
+        "item_id": "410320",
+        "powers": "43",
+        "note": "亞瓦隆匕首"
+      },
+      "sourceLine": 139660
+    },
+    {
+      "values": {
+        "item_id": "410321",
+        "powers": "43",
+        "note": "亞瓦隆長弓"
+      },
+      "sourceLine": 139661
+    },
+    {
+      "values": {
+        "item_id": "410322",
+        "powers": "43",
+        "note": "亞瓦隆法杖"
+      },
+      "sourceLine": 139662
+    },
+    {
+      "values": {
+        "item_id": "410323",
+        "powers": "43",
+        "note": "亞瓦隆雙刀"
+      },
+      "sourceLine": 139663
+    },
+    {
+      "values": {
+        "item_id": "410324",
+        "powers": "43",
+        "note": "亞瓦隆雙手劍"
+      },
+      "sourceLine": 139664
+    },
+    {
+      "values": {
+        "item_id": "410325",
+        "powers": "43",
+        "note": "亞瓦隆鎖鍊劍"
+      },
+      "sourceLine": 139665
+    },
+    {
+      "values": {
+        "item_id": "410326",
+        "powers": "43",
+        "note": "亞瓦隆奇古獸"
+      },
+      "sourceLine": 139666
+    },
+    {
+      "values": {
+        "item_id": "410335",
+        "powers": "43",
+        "note": "亞瓦隆單手斧"
+      },
+      "sourceLine": 139667
+    },
+    {
+      "values": {
+        "item_id": "950",
+        "powers": "42",
+        "note": "潘朵拉神劍(31天)"
+      },
+      "sourceLine": 139668
+    },
+    {
+      "values": {
+        "item_id": "951",
+        "powers": "42",
+        "note": "潘朵拉巨劍(31天)"
+      },
+      "sourceLine": 139669
+    },
+    {
+      "values": {
+        "item_id": "952",
+        "powers": "42",
+        "note": "潘朵拉弓(31天)"
+      },
+      "sourceLine": 139670
+    },
+    {
+      "values": {
+        "item_id": "953",
+        "powers": "42",
+        "note": "潘朵拉雙刀(31天)"
+      },
+      "sourceLine": 139671
+    },
+    {
+      "values": {
+        "item_id": "954",
+        "powers": "42",
+        "note": "潘朵拉魔杖(31天)"
+      },
+      "sourceLine": 139672
+    },
+    {
+      "values": {
+        "item_id": "955",
+        "powers": "42",
+        "note": "潘朵拉奇古獸(31天)"
+      },
+      "sourceLine": 139673
+    },
+    {
+      "values": {
+        "item_id": "956",
+        "powers": "42",
+        "note": "潘朵拉鎖鏈劍(31天)"
+      },
+      "sourceLine": 139674
+    },
+    {
+      "values": {
+        "item_id": "957",
+        "powers": "42",
+        "note": "潘朵拉斧頭(31天)"
+      },
+      "sourceLine": 139675
+    },
+    {
+      "values": {
+        "item_id": "338",
+        "powers": "8,15",
+        "note": "隱藏的魔族斧頭"
+      },
+      "sourceLine": 139676
+    },
+    {
+      "values": {
+        "item_id": "339",
+        "powers": "8,15",
+        "note": "隱藏的魔族之劍"
+      },
+      "sourceLine": 139677
+    },
+    {
+      "values": {
+        "item_id": "340",
+        "powers": "7,16",
+        "note": "隱藏的魔族弓箭"
+      },
+      "sourceLine": 139678
+    },
+    {
+      "values": {
+        "item_id": "341",
+        "powers": "7,37",
+        "note": "隱藏的魔族魔杖"
+      },
+      "sourceLine": 139679
+    },
+    {
+      "values": {
+        "item_id": "342",
+        "powers": "8,15",
+        "note": "隱藏的魔族鋼爪"
+      },
+      "sourceLine": 139680
+    },
+    {
+      "values": {
+        "item_id": "343",
+        "powers": "8,15",
+        "note": "隱藏的魔族鎖鏈劍"
+      },
+      "sourceLine": 139681
+    },
+    {
+      "values": {
+        "item_id": "344",
+        "powers": "7,37",
+        "note": "隱藏的魔族奇古獸"
+      },
+      "sourceLine": 139682
+    },
+    {
+      "values": {
+        "item_id": "410177",
+        "powers": "31",
+        "note": "后羿神弓"
+      },
+      "sourceLine": 139683
+    },
+    {
+      "values": {
+        "item_id": "410178",
+        "powers": "31",
+        "note": "嫦娥法杖"
+      },
+      "sourceLine": 139684
+    },
+    {
+      "values": {
+        "item_id": "410179",
+        "powers": "31",
+        "note": "月光奇古獸"
+      },
+      "sourceLine": 139685
+    },
+    {
+      "values": {
+        "item_id": "346",
+        "powers": "7",
+        "note": "瑞彼特 尤米弓"
+      },
+      "sourceLine": 139686
+    },
+    {
+      "values": {
+        "item_id": "347",
+        "powers": "7",
+        "note": "瑞彼特 法杖"
+      },
+      "sourceLine": 139687
+    },
+    {
+      "values": {
+        "item_id": "127",
+        "powers": "184",
+        "note": "鋼鐵瑪那魔杖"
+      },
+      "sourceLine": 139688
+    },
+    {
+      "values": {
+        "item_id": "259",
+        "powers": "67",
+        "note": "魔力短劍**"
+      },
+      "sourceLine": 139689
+    },
+    {
+      "values": {
+        "item_id": "126",
+        "powers": "183",
+        "note": "瑪那魔杖"
+      },
+      "sourceLine": 139690
+    },
+    {
+      "values": {
+        "item_id": "345",
+        "powers": "9",
+        "note": "瑞彼特 長劍"
+      },
+      "sourceLine": 139691
+    },
+    {
+      "values": {
+        "item_id": "348",
+        "powers": "9",
+        "note": "瑞彼特 鋼爪"
+      },
+      "sourceLine": 139692
+    },
+    {
+      "values": {
+        "item_id": "115202",
+        "powers": "178",
+        "note": "火神赫發斯特斯奇古獸"
+      },
+      "sourceLine": 139693
+    },
+    {
+      "values": {
+        "item_id": "262",
+        "powers": "68",
+        "note": "毀滅巨劍"
+      },
+      "sourceLine": 139694
+    },
+    {
+      "values": {
+        "item_id": "410157",
+        "powers": "4",
+        "note": "毀滅巨劍"
+      },
+      "sourceLine": 139695
+    },
+    {
+      "values": {
+        "item_id": "410164",
+        "powers": "182",
+        "note": "嗜血者鎖鏈劍"
+      },
+      "sourceLine": 139696
+    },
+    {
+      "values": {
+        "item_id": "12",
+        "powers": "4",
+        "note": "風刃短劍"
+      },
+      "sourceLine": 139697
+    },
+    {
+      "values": {
+        "item_id": "124",
+        "powers": "17",
+        "note": "巴風特魔杖"
+      },
+      "sourceLine": 139698
+    },
+    {
+      "values": {
+        "item_id": "370",
+        "powers": "50",
+        "note": "惡魔王 矛 [疾病]"
+      },
+      "sourceLine": 139699
+    },
+    {
+      "values": {
+        "item_id": "371",
+        "powers": "50",
+        "note": "惡魔王 雙刀 [疾病]"
+      },
+      "sourceLine": 139700
+    },
+    {
+      "values": {
+        "item_id": "372",
+        "powers": "50",
+        "note": "惡魔王 雙手劍 [疾病]"
+      },
+      "sourceLine": 139701
+    },
+    {
+      "values": {
+        "item_id": "373",
+        "powers": "50,183",
+        "note": "惡魔王 拐杖 [疾病+吸魔]"
+      },
+      "sourceLine": 139702
+    },
+    {
+      "values": {
+        "item_id": "374",
+        "powers": "50",
+        "note": "惡魔王 弓 [疾病+貫穿]"
+      },
+      "sourceLine": 139703
+    },
+    {
+      "values": {
+        "item_id": "204",
+        "powers": "51",
+        "note": "深紅之弩"
+      },
+      "sourceLine": 139704
+    },
+    {
+      "values": {
+        "item_id": "100204",
+        "powers": "51",
+        "note": "深紅之弩"
+      },
+      "sourceLine": 139705
+    },
+    {
+      "values": {
+        "item_id": "44",
+        "powers": "2",
+        "note": "古代黑暗妖精之劍"
+      },
+      "sourceLine": 139706
+    },
+    {
+      "values": {
+        "item_id": "47",
+        "powers": "52",
+        "note": "沉默之劍"
+      },
+      "sourceLine": 139707
+    },
+    {
+      "values": {
+        "item_id": "86",
+        "powers": "51",
+        "note": "紅影雙刀"
+      },
+      "sourceLine": 139708
+    },
+    {
+      "values": {
+        "item_id": "410131",
+        "powers": "56",
+        "note": "天使魔杖"
+      },
+      "sourceLine": 139709
+    },
+    {
+      "values": {
+        "item_id": "115207",
+        "powers": "179",
+        "note": "火神赫發斯特斯巨斧"
+      },
+      "sourceLine": 139710
+    },
+    {
+      "values": {
+        "item_id": "100369",
+        "powers": "58,175",
+        "note": "寒冰奇古獸"
+      },
+      "sourceLine": 139711
+    },
+    {
+      "values": {
+        "item_id": "100366",
+        "powers": "59,180",
+        "note": "寒冰鎖鏈劍"
+      },
+      "sourceLine": 139712
+    },
+    {
+      "values": {
+        "item_id": "100127",
+        "powers": "184",
+        "note": "鋼鐵瑪那魔杖"
+      },
+      "sourceLine": 139713
+    },
+    {
+      "values": {
+        "item_id": "115205",
+        "powers": "178",
+        "note": "火神赫發斯特斯法杖"
+      },
+      "sourceLine": 139714
+    },
+    {
+      "values": {
+        "item_id": "115203",
+        "powers": "179",
+        "note": "火神赫發斯特斯短劍"
+      },
+      "sourceLine": 139715
+    },
+    {
+      "values": {
+        "item_id": "115206",
+        "powers": "181",
+        "note": "火神赫發斯特斯神弓"
+      },
+      "sourceLine": 139716
+    },
+    {
+      "values": {
+        "item_id": "115201",
+        "powers": "179",
+        "note": "火神赫發斯特斯鎖鏈劍"
+      },
+      "sourceLine": 139717
+    },
+    {
+      "values": {
+        "item_id": "115200",
+        "powers": "179",
+        "note": "火神赫發斯特斯雙刀"
+      },
+      "sourceLine": 139718
+    },
+    {
+      "values": {
+        "item_id": "115204",
+        "powers": "179",
+        "note": "火神赫發斯特斯雙手劍"
+      },
+      "sourceLine": 139719
+    },
+    {
+      "values": {
+        "item_id": "410207",
+        "powers": "179",
+        "note": "火神赫發斯特斯雙刀"
+      },
+      "sourceLine": 139720
+    },
+    {
+      "values": {
+        "item_id": "410208",
+        "powers": "179",
+        "note": "火神赫發斯特斯鎖鏈劍"
+      },
+      "sourceLine": 139721
+    },
+    {
+      "values": {
+        "item_id": "410209",
+        "powers": "178",
+        "note": "火神赫發斯特斯奇古獸"
+      },
+      "sourceLine": 139722
+    },
+    {
+      "values": {
+        "item_id": "410210",
+        "powers": "179",
+        "note": "火神赫發斯特斯短劍"
+      },
+      "sourceLine": 139723
+    },
+    {
+      "values": {
+        "item_id": "410211",
+        "powers": "179",
+        "note": "火神赫發斯特斯雙手劍"
+      },
+      "sourceLine": 139724
+    },
+    {
+      "values": {
+        "item_id": "410212",
+        "powers": "178",
+        "note": "火神赫發斯特斯法杖"
+      },
+      "sourceLine": 139725
+    },
+    {
+      "values": {
+        "item_id": "410213",
+        "powers": "181",
+        "note": "火神赫發斯特斯神弓"
+      },
+      "sourceLine": 139726
+    },
+    {
+      "values": {
+        "item_id": "410214",
+        "powers": "179",
+        "note": "火神赫發斯特斯巨斧"
+      },
+      "sourceLine": 139727
+    }
+  ]
+}

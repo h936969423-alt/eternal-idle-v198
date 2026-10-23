@@ -1,0 +1,441 @@
+{
+  "sk_meteor": {
+    "n": "流星雨",
+    "type": "atk",
+    "tier": 10,
+    "reqM": 40,
+    "mp": 60,
+    "dmgType": "magic",
+    "ele": "fire",
+    "target": "all",
+    "multiDmg": [
+      [
+        2,
+        9
+      ],
+      [
+        2,
+        9
+      ],
+      [
+        2,
+        9
+      ],
+      [
+        2,
+        9
+      ],
+      [
+        2,
+        9
+      ],
+      [
+        2,
+        9
+      ],
+      [
+        2,
+        9
+      ],
+      [
+        2,
+        9
+      ],
+      [
+        2,
+        9
+      ],
+      [
+        2,
+        9
+      ],
+      [
+        2,
+        9
+      ],
+      [
+        2,
+        9
+      ]
+    ]
+  },
+  "sk_fire_storm": {
+    "n": "火風暴",
+    "type": "atk",
+    "tier": 9,
+    "reqM": 36,
+    "mp": 48,
+    "dmgType": "magic",
+    "ele": "fire",
+    "target": "all",
+    "multiDmg": [
+      [
+        4,
+        10
+      ],
+      [
+        4,
+        10
+      ],
+      [
+        4,
+        10
+      ],
+      [
+        4,
+        10
+      ]
+    ]
+  },
+  "sk_blaze": {
+    "n": "烈炎術",
+    "type": "atk",
+    "tier": 6,
+    "reqM": 24,
+    "reqE": 48,
+    "mp": 30,
+    "dmgType": "magic",
+    "ele": "fire",
+    "dmgDice": [
+      16,
+      5
+    ],
+    "dmgBase": 40
+  },
+  "sk_fireball": {
+    "n": "燃燒的火球",
+    "type": "atk",
+    "tier": 4,
+    "reqM": 16,
+    "reqE": 32,
+    "mp": 16,
+    "dmgType": "magic",
+    "ele": "fire",
+    "target": "all",
+    "dmgDice": [
+      5,
+      9
+    ]
+  },
+  "sk_firearrow": {
+    "n": "火箭",
+    "type": "atk",
+    "tier": 2,
+    "reqM": 8,
+    "reqE": 16,
+    "mp": 3,
+    "dmgType": "magic",
+    "ele": "fire",
+    "dmgDice": [
+      2,
+      10
+    ],
+    "dmgBase": 10
+  },
+  "sk_blizzard": {
+    "n": "冰雪暴",
+    "type": "atk",
+    "tier": 8,
+    "reqM": 32,
+    "mp": 60,
+    "dmgType": "magic",
+    "ele": "water",
+    "target": "all",
+    "multiDmg": [
+      [
+        2,
+        10
+      ],
+      [
+        2,
+        10
+      ],
+      [
+        2,
+        10
+      ],
+      [
+        2,
+        10
+      ],
+      [
+        2,
+        10
+      ],
+      [
+        2,
+        10
+      ],
+      [
+        2,
+        10
+      ],
+      [
+        2,
+        10
+      ]
+    ]
+  },
+  "sk_ice_lance": {
+    "n": "冰矛圍籬",
+    "type": "atk",
+    "tier": 7,
+    "reqM": 28,
+    "mp": 30,
+    "dmgType": "magic",
+    "ele": "water",
+    "dmgDice": [
+      10,
+      6
+    ],
+    "dmgBase": 45,
+    "freeze": 200
+  },
+  "sk_chill": {
+    "n": "寒冰氣息",
+    "type": "atk",
+    "tier": 3,
+    "reqM": 12,
+    "reqE": 24,
+    "mp": 9,
+    "dmgType": "magic",
+    "ele": "water",
+    "target": "all",
+    "dmgDice": [
+      5,
+      5
+    ],
+    "dmgBase": 5
+  },
+  "sk_icearrow": {
+    "n": "冰箭",
+    "type": "atk",
+    "tier": 1,
+    "reqM": 4,
+    "reqE": 8,
+    "reqK": 16,
+    "mp": 3,
+    "dmgType": "magic",
+    "ele": "water",
+    "dmgDice": [
+      1,
+      10
+    ],
+    "dmgBase": 10
+  },
+  "sk_poison_curse": {
+    "n": "毒咒",
+    "type": "atk",
+    "tier": 2,
+    "reqM": 8,
+    "reqE": 16,
+    "mp": 10,
+    "dmgType": "magic",
+    "status": {
+      "kind": "poison",
+      "pbase": 100,
+      "dur": 15,
+      "tick": 3,
+      "dmg": [
+        1,
+        8
+      ]
+    },
+    "msg": "你使目標中毒了。"
+  },
+  "sk_thunder_storm": {
+    "n": "雷霆風暴",
+    "type": "atk",
+    "tier": 9,
+    "reqM": 36,
+    "mp": 48,
+    "dmgType": "magic",
+    "ele": "wind",
+    "target": "all",
+    "multiDmg": [
+      [
+        2,
+        10
+      ],
+      [
+        2,
+        10
+      ],
+      [
+        2,
+        10
+      ],
+      [
+        2,
+        10
+      ],
+      [
+        2,
+        10
+      ],
+      [
+        2,
+        10
+      ],
+      [
+        2,
+        10
+      ],
+      [
+        2,
+        10
+      ]
+    ]
+  },
+  "sk_tornado": {
+    "n": "龍捲風",
+    "type": "atk",
+    "tier": 7,
+    "reqM": 28,
+    "mp": 45,
+    "dmgType": "magic",
+    "ele": "wind",
+    "target": "all",
+    "multiDmg": [
+      [
+        2,
+        10
+      ],
+      [
+        2,
+        10
+      ],
+      [
+        2,
+        10
+      ],
+      [
+        2,
+        10
+      ],
+      [
+        2,
+        10
+      ],
+      [
+        2,
+        10
+      ]
+    ]
+  },
+  "sk_thunder": {
+    "n": "極道落雷",
+    "type": "atk",
+    "tier": 5,
+    "reqM": 20,
+    "reqE": 40,
+    "mp": 25,
+    "dmgType": "magic",
+    "ele": "wind",
+    "dmgDice": [
+      5,
+      8
+    ],
+    "dmgBase": 40
+  },
+  "sk_windblade": {
+    "n": "風刃",
+    "type": "atk",
+    "tier": 1,
+    "reqM": 4,
+    "reqE": 8,
+    "reqK": 16,
+    "mp": 3,
+    "dmgType": "magic",
+    "ele": "wind",
+    "dmgDice": [
+      1,
+      10
+    ],
+    "dmgBase": 10
+  },
+  "sk_holy_dash": {
+    "n": "神聖疾走",
+    "type": "buff",
+    "tier": 7,
+    "reqM": 28,
+    "mp": 20,
+    "dur": 64,
+    "moveSpeedMult": 1.33,
+    "msg": "你覺得身體變輕了。"
+  },
+  "sk_quake": {
+    "n": "震裂術",
+    "type": "atk",
+    "tier": 8,
+    "reqM": 32,
+    "mp": 40,
+    "dmgType": "magic",
+    "ele": "earth",
+    "target": "all",
+    "dmgDice": [
+      8,
+      10
+    ],
+    "dmgBase": 30
+  },
+  "sk_earthquake": {
+    "n": "地裂術",
+    "type": "atk",
+    "tier": 6,
+    "reqM": 24,
+    "reqE": 48,
+    "mp": 25,
+    "dmgType": "magic",
+    "ele": "earth",
+    "dmgDice": [
+      5,
+      3
+    ],
+    "dmgBase": 50
+  },
+  "sk_rock_prison": {
+    "n": "岩牢",
+    "type": "atk",
+    "tier": 4,
+    "reqM": 16,
+    "reqE": 32,
+    "mp": 11,
+    "dmgType": "magic",
+    "ele": "earth",
+    "target": "all",
+    "dmgDice": [
+      5,
+      8
+    ]
+  },
+  "sk_hell_fang": {
+    "n": "地獄之牙",
+    "type": "atk",
+    "tier": 2,
+    "reqM": 8,
+    "reqE": 16,
+    "mp": 3,
+    "dmgType": "magic",
+    "ele": "earth",
+    "dmgDice": [
+      2,
+      10
+    ],
+    "dmgBase": 10
+  },
+  "sk_slow": {
+    "n": "緩速術",
+    "type": "atk",
+    "tier": 4,
+    "reqM": 16,
+    "reqE": 32,
+    "mp": 20,
+    "dmgType": "magic",
+    "status": {
+      "kind": "slow",
+      "pbase": 150,
+      "dur": 30
+    }
+  }
+}

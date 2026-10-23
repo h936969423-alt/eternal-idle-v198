@@ -1,0 +1,2699 @@
+{
+  "morph_0": {
+    "0": {
+      "source": "assets/morphanim/巴列斯2",
+      "body": [
+        "/assets/polymorph-cast/morphanim/巴列斯2/skill_0.png",
+        "/assets/polymorph-cast/morphanim/巴列斯2/skill_1.png",
+        "/assets/polymorph-cast/morphanim/巴列斯2/skill_2.png",
+        "/assets/polymorph-cast/morphanim/巴列斯2/skill_3.png",
+        "/assets/polymorph-cast/morphanim/巴列斯2/skill_4.png",
+        "/assets/polymorph-cast/morphanim/巴列斯2/skill_5.png"
+      ],
+      "shadow": [
+        "/assets/polymorph-cast/morphanim/巴列斯2/skill_s_0.png",
+        "/assets/polymorph-cast/morphanim/巴列斯2/skill_s_1.png",
+        "/assets/polymorph-cast/morphanim/巴列斯2/skill_s_2.png",
+        "/assets/polymorph-cast/morphanim/巴列斯2/skill_s_3.png",
+        "/assets/polymorph-cast/morphanim/巴列斯2/skill_s_4.png",
+        "/assets/polymorph-cast/morphanim/巴列斯2/skill_s_5.png"
+      ],
+      "weapon": [
+        "/assets/polymorph-cast/morphanim/巴列斯2/skill_w_0.png",
+        "/assets/polymorph-cast/morphanim/巴列斯2/skill_w_1.png",
+        "/assets/polymorph-cast/morphanim/巴列斯2/skill_w_2.png",
+        "/assets/polymorph-cast/morphanim/巴列斯2/skill_w_3.png",
+        "/assets/polymorph-cast/morphanim/巴列斯2/skill_w_4.png",
+        "/assets/polymorph-cast/morphanim/巴列斯2/skill_w_5.png"
+      ],
+      "layout": {
+        "viewBox": [
+          120,
+          96
+        ],
+        "x": -45.20833333333333,
+        "y": -34.66666666666666,
+        "width": 174.41666666666666,
+        "height": 176.58333333333331
+      }
+    },
+    "1": {
+      "source": "assets/morphanim/巴列斯F",
+      "body": [
+        "/assets/polymorph-cast/morphanim/巴列斯F/skill_0.png",
+        "/assets/polymorph-cast/morphanim/巴列斯F/skill_1.png",
+        "/assets/polymorph-cast/morphanim/巴列斯F/skill_2.png",
+        "/assets/polymorph-cast/morphanim/巴列斯F/skill_3.png",
+        "/assets/polymorph-cast/morphanim/巴列斯F/skill_4.png",
+        "/assets/polymorph-cast/morphanim/巴列斯F/skill_5.png"
+      ],
+      "shadow": [
+        "/assets/polymorph-cast/morphanim/巴列斯F/skill_s_0.png",
+        "/assets/polymorph-cast/morphanim/巴列斯F/skill_s_1.png",
+        "/assets/polymorph-cast/morphanim/巴列斯F/skill_s_2.png",
+        "/assets/polymorph-cast/morphanim/巴列斯F/skill_s_3.png",
+        "/assets/polymorph-cast/morphanim/巴列斯F/skill_s_4.png",
+        "/assets/polymorph-cast/morphanim/巴列斯F/skill_s_5.png"
+      ],
+      "weapon": [
+        "/assets/polymorph-cast/morphanim/巴列斯F/skill_w_0.png",
+        "/assets/polymorph-cast/morphanim/巴列斯F/skill_w_1.png",
+        "/assets/polymorph-cast/morphanim/巴列斯F/skill_w_2.png",
+        "/assets/polymorph-cast/morphanim/巴列斯F/skill_w_3.png",
+        "/assets/polymorph-cast/morphanim/巴列斯F/skill_w_4.png",
+        "/assets/polymorph-cast/morphanim/巴列斯F/skill_w_5.png"
+      ],
+      "layout": {
+        "viewBox": [
+          120,
+          96
+        ],
+        "x": -45.20833333333333,
+        "y": -34.66666666666666,
+        "width": 174.41666666666666,
+        "height": 176.58333333333331
+      }
+    },
+    "2": {
+      "source": "assets/morphanim/巴列斯",
+      "body": [
+        "/assets/polymorph-cast/morphanim/巴列斯/skill_0.png",
+        "/assets/polymorph-cast/morphanim/巴列斯/skill_1.png",
+        "/assets/polymorph-cast/morphanim/巴列斯/skill_2.png",
+        "/assets/polymorph-cast/morphanim/巴列斯/skill_3.png",
+        "/assets/polymorph-cast/morphanim/巴列斯/skill_4.png",
+        "/assets/polymorph-cast/morphanim/巴列斯/skill_5.png"
+      ],
+      "shadow": [
+        "/assets/polymorph-cast/morphanim/巴列斯/skill_s_0.png",
+        "/assets/polymorph-cast/morphanim/巴列斯/skill_s_1.png",
+        "/assets/polymorph-cast/morphanim/巴列斯/skill_s_2.png",
+        "/assets/polymorph-cast/morphanim/巴列斯/skill_s_3.png",
+        "/assets/polymorph-cast/morphanim/巴列斯/skill_s_4.png",
+        "/assets/polymorph-cast/morphanim/巴列斯/skill_s_5.png"
+      ],
+      "weapon": [
+        "/assets/polymorph-cast/morphanim/巴列斯/skill_w_0.png",
+        "/assets/polymorph-cast/morphanim/巴列斯/skill_w_1.png",
+        "/assets/polymorph-cast/morphanim/巴列斯/skill_w_2.png",
+        "/assets/polymorph-cast/morphanim/巴列斯/skill_w_3.png",
+        "/assets/polymorph-cast/morphanim/巴列斯/skill_w_4.png",
+        "/assets/polymorph-cast/morphanim/巴列斯/skill_w_5.png"
+      ],
+      "layout": {
+        "viewBox": [
+          120,
+          96
+        ],
+        "x": -45.20833333333333,
+        "y": -34.66666666666666,
+        "width": 174.41666666666666,
+        "height": 176.58333333333331
+      }
+    }
+  },
+  "morph_1": {
+    "0": {
+      "source": "assets/morphanim/黑騎士2",
+      "body": [
+        "/assets/polymorph-cast/morphanim/黑騎士2/skill_0.png",
+        "/assets/polymorph-cast/morphanim/黑騎士2/skill_1.png",
+        "/assets/polymorph-cast/morphanim/黑騎士2/skill_2.png",
+        "/assets/polymorph-cast/morphanim/黑騎士2/skill_3.png"
+      ],
+      "shadow": [
+        "/assets/polymorph-cast/morphanim/黑騎士2/skill_s_0.png",
+        "/assets/polymorph-cast/morphanim/黑騎士2/skill_s_1.png",
+        "/assets/polymorph-cast/morphanim/黑騎士2/skill_s_2.png",
+        "/assets/polymorph-cast/morphanim/黑騎士2/skill_s_3.png"
+      ],
+      "weapon": [
+        null,
+        null,
+        null,
+        null
+      ],
+      "layout": {
+        "viewBox": [
+          223,
+          152
+        ],
+        "x": 0.0,
+        "y": 0.0,
+        "width": 223.0,
+        "height": 152.0
+      }
+    },
+    "1": {
+      "source": "assets/morphanim/黑騎士F",
+      "body": [
+        "/assets/polymorph-cast/morphanim/黑騎士F/skill_0.png",
+        "/assets/polymorph-cast/morphanim/黑騎士F/skill_1.png",
+        "/assets/polymorph-cast/morphanim/黑騎士F/skill_2.png",
+        "/assets/polymorph-cast/morphanim/黑騎士F/skill_3.png"
+      ],
+      "shadow": [
+        "/assets/polymorph-cast/morphanim/黑騎士F/skill_s_0.png",
+        "/assets/polymorph-cast/morphanim/黑騎士F/skill_s_1.png",
+        "/assets/polymorph-cast/morphanim/黑騎士F/skill_s_2.png",
+        "/assets/polymorph-cast/morphanim/黑騎士F/skill_s_3.png"
+      ],
+      "weapon": [
+        null,
+        null,
+        null,
+        null
+      ],
+      "layout": {
+        "viewBox": [
+          223,
+          152
+        ],
+        "x": 0.0,
+        "y": 0.0,
+        "width": 223.0,
+        "height": 152.0
+      }
+    },
+    "2": {
+      "source": "assets/morphanim/黑騎士",
+      "body": [
+        "/assets/polymorph-cast/morphanim/黑騎士/skill_0.png",
+        "/assets/polymorph-cast/morphanim/黑騎士/skill_1.png",
+        "/assets/polymorph-cast/morphanim/黑騎士/skill_2.png",
+        "/assets/polymorph-cast/morphanim/黑騎士/skill_3.png"
+      ],
+      "shadow": [
+        "/assets/polymorph-cast/morphanim/黑騎士/skill_s_0.png",
+        "/assets/polymorph-cast/morphanim/黑騎士/skill_s_1.png",
+        "/assets/polymorph-cast/morphanim/黑騎士/skill_s_2.png",
+        "/assets/polymorph-cast/morphanim/黑騎士/skill_s_3.png"
+      ],
+      "weapon": [
+        null,
+        null,
+        null,
+        null
+      ],
+      "layout": {
+        "viewBox": [
+          223,
+          152
+        ],
+        "x": 0.0,
+        "y": 0.0,
+        "width": 223.0,
+        "height": 152.0
+      }
+    }
+  },
+  "morph_4": {
+    "0": {
+      "source": "assets/morphanim/狼人2",
+      "body": [
+        "/assets/polymorph-cast/morphanim/狼人2/skill_0.png",
+        "/assets/polymorph-cast/morphanim/狼人2/skill_1.png",
+        "/assets/polymorph-cast/morphanim/狼人2/skill_2.png",
+        "/assets/polymorph-cast/morphanim/狼人2/skill_3.png",
+        "/assets/polymorph-cast/morphanim/狼人2/skill_4.png",
+        "/assets/polymorph-cast/morphanim/狼人2/skill_5.png"
+      ],
+      "shadow": [
+        "/assets/polymorph-cast/morphanim/狼人2/skill_s_0.png",
+        "/assets/polymorph-cast/morphanim/狼人2/skill_s_1.png",
+        "/assets/polymorph-cast/morphanim/狼人2/skill_s_2.png",
+        "/assets/polymorph-cast/morphanim/狼人2/skill_s_3.png",
+        null,
+        null
+      ],
+      "weapon": [
+        null,
+        null,
+        null,
+        null,
+        null,
+        null
+      ],
+      "layout": {
+        "viewBox": [
+          72,
+          72
+        ],
+        "x": -73.77499999999999,
+        "y": -2.8333333333333286,
+        "width": 182.89999999999998,
+        "height": 119.96666666666665
+      }
+    },
+    "1": {
+      "source": "assets/morphanim/狼人F",
+      "body": [
+        "/assets/polymorph-cast/morphanim/狼人F/skill_0.png",
+        "/assets/polymorph-cast/morphanim/狼人F/skill_1.png",
+        "/assets/polymorph-cast/morphanim/狼人F/skill_2.png",
+        "/assets/polymorph-cast/morphanim/狼人F/skill_3.png",
+        "/assets/polymorph-cast/morphanim/狼人F/skill_4.png",
+        "/assets/polymorph-cast/morphanim/狼人F/skill_5.png"
+      ],
+      "shadow": [
+        "/assets/polymorph-cast/morphanim/狼人F/skill_s_0.png",
+        "/assets/polymorph-cast/morphanim/狼人F/skill_s_1.png",
+        "/assets/polymorph-cast/morphanim/狼人F/skill_s_2.png",
+        "/assets/polymorph-cast/morphanim/狼人F/skill_s_3.png",
+        null,
+        null
+      ],
+      "weapon": [
+        null,
+        null,
+        null,
+        null,
+        null,
+        null
+      ],
+      "layout": {
+        "viewBox": [
+          72,
+          72
+        ],
+        "x": -73.77499999999999,
+        "y": -2.8333333333333286,
+        "width": 182.89999999999998,
+        "height": 119.96666666666665
+      }
+    },
+    "2": {
+      "source": "assets/morphanim/狼人",
+      "body": [
+        "/assets/polymorph-cast/morphanim/狼人/skill_0.png",
+        "/assets/polymorph-cast/morphanim/狼人/skill_1.png",
+        "/assets/polymorph-cast/morphanim/狼人/skill_2.png",
+        "/assets/polymorph-cast/morphanim/狼人/skill_3.png",
+        "/assets/polymorph-cast/morphanim/狼人/skill_4.png",
+        "/assets/polymorph-cast/morphanim/狼人/skill_5.png"
+      ],
+      "shadow": [
+        "/assets/polymorph-cast/morphanim/狼人/skill_s_0.png",
+        "/assets/polymorph-cast/morphanim/狼人/skill_s_1.png",
+        "/assets/polymorph-cast/morphanim/狼人/skill_s_2.png",
+        "/assets/polymorph-cast/morphanim/狼人/skill_s_3.png",
+        null,
+        null
+      ],
+      "weapon": [
+        null,
+        null,
+        null,
+        null,
+        null,
+        null
+      ],
+      "layout": {
+        "viewBox": [
+          72,
+          72
+        ],
+        "x": -73.77499999999999,
+        "y": -2.8333333333333286,
+        "width": 182.89999999999998,
+        "height": 119.96666666666665
+      }
+    }
+  },
+  "morph_6": {
+    "0": {
+      "source": "assets/morphanim/紙人2",
+      "body": [
+        "/assets/polymorph-cast/morphanim/紙人2/skill_0.png",
+        "/assets/polymorph-cast/morphanim/紙人2/skill_1.png",
+        "/assets/polymorph-cast/morphanim/紙人2/skill_2.png",
+        "/assets/polymorph-cast/morphanim/紙人2/skill_3.png",
+        "/assets/polymorph-cast/morphanim/紙人2/skill_4.png"
+      ],
+      "shadow": [
+        "/assets/polymorph-cast/morphanim/紙人2/skill_s_0.png",
+        "/assets/polymorph-cast/morphanim/紙人2/skill_s_1.png",
+        "/assets/polymorph-cast/morphanim/紙人2/skill_s_2.png",
+        "/assets/polymorph-cast/morphanim/紙人2/skill_s_3.png",
+        "/assets/polymorph-cast/morphanim/紙人2/skill_s_4.png"
+      ],
+      "weapon": [
+        null,
+        null,
+        null,
+        null,
+        null
+      ],
+      "layout": {
+        "viewBox": [
+          48,
+          72
+        ],
+        "x": -30.935185185185183,
+        "y": -12.481481481481481,
+        "width": 105.01851851851852,
+        "height": 103.05555555555556
+      }
+    },
+    "1": {
+      "source": "assets/morphanim/紙人F",
+      "body": [
+        "/assets/polymorph-cast/morphanim/紙人F/skill_0.png",
+        "/assets/polymorph-cast/morphanim/紙人F/skill_1.png",
+        "/assets/polymorph-cast/morphanim/紙人F/skill_2.png",
+        "/assets/polymorph-cast/morphanim/紙人F/skill_3.png",
+        "/assets/polymorph-cast/morphanim/紙人F/skill_4.png"
+      ],
+      "shadow": [
+        "/assets/polymorph-cast/morphanim/紙人F/skill_s_0.png",
+        "/assets/polymorph-cast/morphanim/紙人F/skill_s_1.png",
+        "/assets/polymorph-cast/morphanim/紙人F/skill_s_2.png",
+        "/assets/polymorph-cast/morphanim/紙人F/skill_s_3.png",
+        "/assets/polymorph-cast/morphanim/紙人F/skill_s_4.png"
+      ],
+      "weapon": [
+        null,
+        null,
+        null,
+        null,
+        null
+      ],
+      "layout": {
+        "viewBox": [
+          48,
+          72
+        ],
+        "x": -30.935185185185183,
+        "y": -12.481481481481481,
+        "width": 105.01851851851852,
+        "height": 103.05555555555556
+      }
+    },
+    "2": {
+      "source": "assets/morphanim/紙人",
+      "body": [
+        "/assets/polymorph-cast/morphanim/紙人/skill_0.png",
+        "/assets/polymorph-cast/morphanim/紙人/skill_1.png",
+        "/assets/polymorph-cast/morphanim/紙人/skill_2.png",
+        "/assets/polymorph-cast/morphanim/紙人/skill_3.png",
+        "/assets/polymorph-cast/morphanim/紙人/skill_4.png"
+      ],
+      "shadow": [
+        "/assets/polymorph-cast/morphanim/紙人/skill_s_0.png",
+        "/assets/polymorph-cast/morphanim/紙人/skill_s_1.png",
+        "/assets/polymorph-cast/morphanim/紙人/skill_s_2.png",
+        "/assets/polymorph-cast/morphanim/紙人/skill_s_3.png",
+        "/assets/polymorph-cast/morphanim/紙人/skill_s_4.png"
+      ],
+      "weapon": [
+        null,
+        null,
+        null,
+        null,
+        null
+      ],
+      "layout": {
+        "viewBox": [
+          48,
+          72
+        ],
+        "x": -30.935185185185183,
+        "y": -12.481481481481481,
+        "width": 105.01851851851852,
+        "height": 103.05555555555556
+      }
+    }
+  },
+  "morph_9": {
+    "0": {
+      "source": "assets/morphanim/萊肯2",
+      "body": [
+        "/assets/polymorph-cast/morphanim/萊肯2/skill_0.png",
+        "/assets/polymorph-cast/morphanim/萊肯2/skill_1.png",
+        "/assets/polymorph-cast/morphanim/萊肯2/skill_2.png",
+        "/assets/polymorph-cast/morphanim/萊肯2/skill_3.png"
+      ],
+      "shadow": [
+        "/assets/polymorph-cast/morphanim/萊肯2/skill_s_0.png",
+        "/assets/polymorph-cast/morphanim/萊肯2/skill_s_1.png",
+        "/assets/polymorph-cast/morphanim/萊肯2/skill_s_2.png",
+        "/assets/polymorph-cast/morphanim/萊肯2/skill_s_3.png"
+      ],
+      "weapon": [
+        null,
+        null,
+        null,
+        null
+      ],
+      "layout": {
+        "viewBox": [
+          72,
+          72
+        ],
+        "x": -71.0,
+        "y": -23.0,
+        "width": 186.0,
+        "height": 141.0
+      }
+    },
+    "1": {
+      "source": "assets/morphanim/萊肯F",
+      "body": [
+        "/assets/polymorph-cast/morphanim/萊肯F/skill_0.png",
+        "/assets/polymorph-cast/morphanim/萊肯F/skill_1.png",
+        "/assets/polymorph-cast/morphanim/萊肯F/skill_2.png",
+        "/assets/polymorph-cast/morphanim/萊肯F/skill_3.png"
+      ],
+      "shadow": [
+        "/assets/polymorph-cast/morphanim/萊肯F/skill_s_0.png",
+        "/assets/polymorph-cast/morphanim/萊肯F/skill_s_1.png",
+        "/assets/polymorph-cast/morphanim/萊肯F/skill_s_2.png",
+        "/assets/polymorph-cast/morphanim/萊肯F/skill_s_3.png"
+      ],
+      "weapon": [
+        null,
+        null,
+        null,
+        null
+      ],
+      "layout": {
+        "viewBox": [
+          72,
+          72
+        ],
+        "x": -71.0,
+        "y": -23.0,
+        "width": 186.0,
+        "height": 141.0
+      }
+    },
+    "2": {
+      "source": "assets/morphanim/萊肯",
+      "body": [
+        "/assets/polymorph-cast/morphanim/萊肯/skill_0.png",
+        "/assets/polymorph-cast/morphanim/萊肯/skill_1.png",
+        "/assets/polymorph-cast/morphanim/萊肯/skill_2.png",
+        "/assets/polymorph-cast/morphanim/萊肯/skill_3.png"
+      ],
+      "shadow": [
+        "/assets/polymorph-cast/morphanim/萊肯/skill_s_0.png",
+        "/assets/polymorph-cast/morphanim/萊肯/skill_s_1.png",
+        "/assets/polymorph-cast/morphanim/萊肯/skill_s_2.png",
+        "/assets/polymorph-cast/morphanim/萊肯/skill_s_3.png"
+      ],
+      "weapon": [
+        null,
+        null,
+        null,
+        null
+      ],
+      "layout": {
+        "viewBox": [
+          72,
+          72
+        ],
+        "x": -71.0,
+        "y": -23.0,
+        "width": 186.0,
+        "height": 141.0
+      }
+    }
+  },
+  "morph_11": {
+    "0": {
+      "source": "assets/morphanim/克特2",
+      "body": [
+        "/assets/polymorph-cast/morphanim/克特2/skill_0.png",
+        "/assets/polymorph-cast/morphanim/克特2/skill_1.png",
+        "/assets/polymorph-cast/morphanim/克特2/skill_2.png",
+        "/assets/polymorph-cast/morphanim/克特2/skill_3.png",
+        "/assets/polymorph-cast/morphanim/克特2/skill_4.png",
+        "/assets/polymorph-cast/morphanim/克特2/skill_5.png"
+      ],
+      "shadow": [
+        "/assets/polymorph-cast/morphanim/克特2/skill_s_0.png",
+        "/assets/polymorph-cast/morphanim/克特2/skill_s_1.png",
+        "/assets/polymorph-cast/morphanim/克特2/skill_s_2.png",
+        "/assets/polymorph-cast/morphanim/克特2/skill_s_3.png",
+        "/assets/polymorph-cast/morphanim/克特2/skill_s_4.png",
+        "/assets/polymorph-cast/morphanim/克特2/skill_s_5.png"
+      ],
+      "weapon": [
+        null,
+        null,
+        null,
+        null,
+        null,
+        null
+      ],
+      "layout": {
+        "viewBox": [
+          219,
+          141
+        ],
+        "x": 0.0,
+        "y": 0.0,
+        "width": 219.0,
+        "height": 141.0
+      }
+    },
+    "1": {
+      "source": "assets/morphanim/克特F",
+      "body": [
+        "/assets/polymorph-cast/morphanim/克特F/skill_0.png",
+        "/assets/polymorph-cast/morphanim/克特F/skill_1.png",
+        "/assets/polymorph-cast/morphanim/克特F/skill_2.png",
+        "/assets/polymorph-cast/morphanim/克特F/skill_3.png",
+        "/assets/polymorph-cast/morphanim/克特F/skill_4.png",
+        "/assets/polymorph-cast/morphanim/克特F/skill_5.png"
+      ],
+      "shadow": [
+        "/assets/polymorph-cast/morphanim/克特F/skill_s_0.png",
+        "/assets/polymorph-cast/morphanim/克特F/skill_s_1.png",
+        "/assets/polymorph-cast/morphanim/克特F/skill_s_2.png",
+        "/assets/polymorph-cast/morphanim/克特F/skill_s_3.png",
+        "/assets/polymorph-cast/morphanim/克特F/skill_s_4.png",
+        "/assets/polymorph-cast/morphanim/克特F/skill_s_5.png"
+      ],
+      "weapon": [
+        null,
+        null,
+        null,
+        null,
+        null,
+        null
+      ],
+      "layout": {
+        "viewBox": [
+          219,
+          141
+        ],
+        "x": 0.0,
+        "y": 0.0,
+        "width": 219.0,
+        "height": 141.0
+      }
+    },
+    "2": {
+      "source": "assets/morphanim/克特",
+      "body": [
+        "/assets/polymorph-cast/morphanim/克特/skill_0.png",
+        "/assets/polymorph-cast/morphanim/克特/skill_1.png",
+        "/assets/polymorph-cast/morphanim/克特/skill_2.png",
+        "/assets/polymorph-cast/morphanim/克特/skill_3.png",
+        "/assets/polymorph-cast/morphanim/克特/skill_4.png",
+        "/assets/polymorph-cast/morphanim/克特/skill_5.png"
+      ],
+      "shadow": [
+        "/assets/polymorph-cast/morphanim/克特/skill_s_0.png",
+        "/assets/polymorph-cast/morphanim/克特/skill_s_1.png",
+        "/assets/polymorph-cast/morphanim/克特/skill_s_2.png",
+        "/assets/polymorph-cast/morphanim/克特/skill_s_3.png",
+        "/assets/polymorph-cast/morphanim/克特/skill_s_4.png",
+        "/assets/polymorph-cast/morphanim/克特/skill_s_5.png"
+      ],
+      "weapon": [
+        null,
+        null,
+        null,
+        null,
+        null,
+        null
+      ],
+      "layout": {
+        "viewBox": [
+          219,
+          141
+        ],
+        "x": 0.0,
+        "y": 0.0,
+        "width": 219.0,
+        "height": 141.0
+      }
+    }
+  },
+  "morph_13": {
+    "0": {
+      "source": "assets/morphanim/亞力安2",
+      "body": [
+        "/assets/polymorph-cast/morphanim/亞力安2/skill_0.png",
+        "/assets/polymorph-cast/morphanim/亞力安2/skill_1.png",
+        "/assets/polymorph-cast/morphanim/亞力安2/skill_2.png",
+        "/assets/polymorph-cast/morphanim/亞力安2/skill_3.png",
+        "/assets/polymorph-cast/morphanim/亞力安2/skill_4.png",
+        "/assets/polymorph-cast/morphanim/亞力安2/skill_5.png",
+        "/assets/polymorph-cast/morphanim/亞力安2/skill_6.png",
+        "/assets/polymorph-cast/morphanim/亞力安2/skill_7.png",
+        "/assets/polymorph-cast/morphanim/亞力安2/skill_8.png",
+        "/assets/polymorph-cast/morphanim/亞力安2/skill_9.png"
+      ],
+      "shadow": [
+        "/assets/polymorph-cast/morphanim/亞力安2/skill_s_0.png",
+        "/assets/polymorph-cast/morphanim/亞力安2/skill_s_1.png",
+        "/assets/polymorph-cast/morphanim/亞力安2/skill_s_2.png",
+        "/assets/polymorph-cast/morphanim/亞力安2/skill_s_3.png",
+        "/assets/polymorph-cast/morphanim/亞力安2/skill_s_4.png",
+        "/assets/polymorph-cast/morphanim/亞力安2/skill_s_5.png",
+        "/assets/polymorph-cast/morphanim/亞力安2/skill_s_6.png",
+        "/assets/polymorph-cast/morphanim/亞力安2/skill_s_7.png",
+        "/assets/polymorph-cast/morphanim/亞力安2/skill_s_8.png",
+        "/assets/polymorph-cast/morphanim/亞力安2/skill_s_9.png"
+      ],
+      "weapon": [
+        null,
+        null,
+        null,
+        null,
+        null,
+        null,
+        null,
+        null,
+        null,
+        null
+      ],
+      "layout": {
+        "viewBox": [
+          120,
+          84
+        ],
+        "x": 19.916666666666664,
+        "y": -12.3888888888889,
+        "width": 120.55555555555556,
+        "height": 103.33333333333334
+      }
+    },
+    "1": {
+      "source": "assets/morphanim/亞力安F",
+      "body": [
+        "/assets/polymorph-cast/morphanim/亞力安F/skill_0.png",
+        "/assets/polymorph-cast/morphanim/亞力安F/skill_1.png",
+        "/assets/polymorph-cast/morphanim/亞力安F/skill_2.png",
+        "/assets/polymorph-cast/morphanim/亞力安F/skill_3.png",
+        "/assets/polymorph-cast/morphanim/亞力安F/skill_4.png",
+        "/assets/polymorph-cast/morphanim/亞力安F/skill_5.png",
+        "/assets/polymorph-cast/morphanim/亞力安F/skill_6.png",
+        "/assets/polymorph-cast/morphanim/亞力安F/skill_7.png",
+        "/assets/polymorph-cast/morphanim/亞力安F/skill_8.png",
+        "/assets/polymorph-cast/morphanim/亞力安F/skill_9.png"
+      ],
+      "shadow": [
+        "/assets/polymorph-cast/morphanim/亞力安F/skill_s_0.png",
+        "/assets/polymorph-cast/morphanim/亞力安F/skill_s_1.png",
+        "/assets/polymorph-cast/morphanim/亞力安F/skill_s_2.png",
+        "/assets/polymorph-cast/morphanim/亞力安F/skill_s_3.png",
+        "/assets/polymorph-cast/morphanim/亞力安F/skill_s_4.png",
+        "/assets/polymorph-cast/morphanim/亞力安F/skill_s_5.png",
+        "/assets/polymorph-cast/morphanim/亞力安F/skill_s_6.png",
+        "/assets/polymorph-cast/morphanim/亞力安F/skill_s_7.png",
+        "/assets/polymorph-cast/morphanim/亞力安F/skill_s_8.png",
+        "/assets/polymorph-cast/morphanim/亞力安F/skill_s_9.png"
+      ],
+      "weapon": [
+        null,
+        null,
+        null,
+        null,
+        null,
+        null,
+        null,
+        null,
+        null,
+        null
+      ],
+      "layout": {
+        "viewBox": [
+          120,
+          84
+        ],
+        "x": 19.916666666666664,
+        "y": -12.3888888888889,
+        "width": 120.55555555555556,
+        "height": 103.33333333333334
+      }
+    },
+    "2": {
+      "source": "assets/morphanim/亞力安",
+      "body": [
+        "/assets/polymorph-cast/morphanim/亞力安/skill_0.png",
+        "/assets/polymorph-cast/morphanim/亞力安/skill_1.png",
+        "/assets/polymorph-cast/morphanim/亞力安/skill_2.png",
+        "/assets/polymorph-cast/morphanim/亞力安/skill_3.png",
+        "/assets/polymorph-cast/morphanim/亞力安/skill_4.png",
+        "/assets/polymorph-cast/morphanim/亞力安/skill_5.png",
+        "/assets/polymorph-cast/morphanim/亞力安/skill_6.png",
+        "/assets/polymorph-cast/morphanim/亞力安/skill_7.png",
+        "/assets/polymorph-cast/morphanim/亞力安/skill_8.png",
+        "/assets/polymorph-cast/morphanim/亞力安/skill_9.png"
+      ],
+      "shadow": [
+        "/assets/polymorph-cast/morphanim/亞力安/skill_s_0.png",
+        "/assets/polymorph-cast/morphanim/亞力安/skill_s_1.png",
+        "/assets/polymorph-cast/morphanim/亞力安/skill_s_2.png",
+        "/assets/polymorph-cast/morphanim/亞力安/skill_s_3.png",
+        "/assets/polymorph-cast/morphanim/亞力安/skill_s_4.png",
+        "/assets/polymorph-cast/morphanim/亞力安/skill_s_5.png",
+        "/assets/polymorph-cast/morphanim/亞力安/skill_s_6.png",
+        "/assets/polymorph-cast/morphanim/亞力安/skill_s_7.png",
+        "/assets/polymorph-cast/morphanim/亞力安/skill_s_8.png",
+        "/assets/polymorph-cast/morphanim/亞力安/skill_s_9.png"
+      ],
+      "weapon": [
+        null,
+        null,
+        null,
+        null,
+        null,
+        null,
+        null,
+        null,
+        null,
+        null
+      ],
+      "layout": {
+        "viewBox": [
+          120,
+          84
+        ],
+        "x": 19.916666666666664,
+        "y": -12.3888888888889,
+        "width": 120.55555555555556,
+        "height": 103.33333333333334
+      }
+    }
+  },
+  "morph_15": {
+    "0": {
+      "source": "assets/morphanim/妖魔鬥士2",
+      "body": [
+        "/assets/polymorph-cast/morphanim/妖魔鬥士2/skill_0.png",
+        "/assets/polymorph-cast/morphanim/妖魔鬥士2/skill_1.png",
+        "/assets/polymorph-cast/morphanim/妖魔鬥士2/skill_2.png",
+        "/assets/polymorph-cast/morphanim/妖魔鬥士2/skill_3.png"
+      ],
+      "shadow": [
+        null,
+        null,
+        null,
+        null
+      ],
+      "weapon": [
+        null,
+        null,
+        null,
+        null
+      ],
+      "layout": {
+        "viewBox": [
+          48,
+          96
+        ],
+        "x": -34.0,
+        "y": 6.0,
+        "width": 111.0,
+        "height": 87.0
+      }
+    },
+    "1": {
+      "source": "assets/morphanim/妖魔鬥士F",
+      "body": [
+        "/assets/polymorph-cast/morphanim/妖魔鬥士F/skill_0.png",
+        "/assets/polymorph-cast/morphanim/妖魔鬥士F/skill_1.png",
+        "/assets/polymorph-cast/morphanim/妖魔鬥士F/skill_2.png",
+        "/assets/polymorph-cast/morphanim/妖魔鬥士F/skill_3.png"
+      ],
+      "shadow": [
+        null,
+        null,
+        null,
+        null
+      ],
+      "weapon": [
+        null,
+        null,
+        null,
+        null
+      ],
+      "layout": {
+        "viewBox": [
+          48,
+          96
+        ],
+        "x": -34.0,
+        "y": 6.0,
+        "width": 111.0,
+        "height": 87.0
+      }
+    },
+    "2": {
+      "source": "assets/morphanim/妖魔鬥士",
+      "body": [
+        "/assets/polymorph-cast/morphanim/妖魔鬥士/skill_0.png",
+        "/assets/polymorph-cast/morphanim/妖魔鬥士/skill_1.png",
+        "/assets/polymorph-cast/morphanim/妖魔鬥士/skill_2.png",
+        "/assets/polymorph-cast/morphanim/妖魔鬥士/skill_3.png"
+      ],
+      "shadow": [
+        null,
+        null,
+        null,
+        null
+      ],
+      "weapon": [
+        null,
+        null,
+        null,
+        null
+      ],
+      "layout": {
+        "viewBox": [
+          48,
+          96
+        ],
+        "x": -34.0,
+        "y": 6.0,
+        "width": 111.0,
+        "height": 87.0
+      }
+    }
+  },
+  "morph_16": {
+    "0": {
+      "source": "assets/morphanim/黑長者2",
+      "body": [
+        "/assets/polymorph-cast/morphanim/黑長者2/skill_0.png",
+        "/assets/polymorph-cast/morphanim/黑長者2/skill_1.png",
+        "/assets/polymorph-cast/morphanim/黑長者2/skill_2.png",
+        "/assets/polymorph-cast/morphanim/黑長者2/skill_3.png",
+        "/assets/polymorph-cast/morphanim/黑長者2/skill_4.png"
+      ],
+      "shadow": [
+        "/assets/polymorph-cast/morphanim/黑長者2/skill_s_0.png",
+        "/assets/polymorph-cast/morphanim/黑長者2/skill_s_1.png",
+        "/assets/polymorph-cast/morphanim/黑長者2/skill_s_2.png",
+        "/assets/polymorph-cast/morphanim/黑長者2/skill_s_3.png",
+        "/assets/polymorph-cast/morphanim/黑長者2/skill_s_4.png"
+      ],
+      "weapon": [
+        "/assets/polymorph-cast/morphanim/黑長者2/skill_w_0.png",
+        "/assets/polymorph-cast/morphanim/黑長者2/skill_w_1.png",
+        "/assets/polymorph-cast/morphanim/黑長者2/skill_w_2.png",
+        "/assets/polymorph-cast/morphanim/黑長者2/skill_w_3.png",
+        "/assets/polymorph-cast/morphanim/黑長者2/skill_w_4.png"
+      ],
+      "layout": {
+        "viewBox": [
+          72,
+          96
+        ],
+        "x": -37.096385542168676,
+        "y": -4.698795180722897,
+        "width": 121.25301204819277,
+        "height": 95.39759036144578
+      }
+    },
+    "1": {
+      "source": "assets/morphanim/黑長者F",
+      "body": [
+        "/assets/polymorph-cast/morphanim/黑長者F/skill_0.png",
+        "/assets/polymorph-cast/morphanim/黑長者F/skill_1.png",
+        "/assets/polymorph-cast/morphanim/黑長者F/skill_2.png",
+        "/assets/polymorph-cast/morphanim/黑長者F/skill_3.png",
+        "/assets/polymorph-cast/morphanim/黑長者F/skill_4.png"
+      ],
+      "shadow": [
+        "/assets/polymorph-cast/morphanim/黑長者F/skill_s_0.png",
+        "/assets/polymorph-cast/morphanim/黑長者F/skill_s_1.png",
+        "/assets/polymorph-cast/morphanim/黑長者F/skill_s_2.png",
+        "/assets/polymorph-cast/morphanim/黑長者F/skill_s_3.png",
+        "/assets/polymorph-cast/morphanim/黑長者F/skill_s_4.png"
+      ],
+      "weapon": [
+        "/assets/polymorph-cast/morphanim/黑長者F/skill_w_0.png",
+        "/assets/polymorph-cast/morphanim/黑長者F/skill_w_1.png",
+        "/assets/polymorph-cast/morphanim/黑長者F/skill_w_2.png",
+        "/assets/polymorph-cast/morphanim/黑長者F/skill_w_3.png",
+        "/assets/polymorph-cast/morphanim/黑長者F/skill_w_4.png"
+      ],
+      "layout": {
+        "viewBox": [
+          72,
+          96
+        ],
+        "x": -37.096385542168676,
+        "y": -4.698795180722897,
+        "width": 121.25301204819277,
+        "height": 95.39759036144578
+      }
+    },
+    "2": {
+      "source": "assets/morphanim/黑長者",
+      "body": [
+        "/assets/polymorph-cast/morphanim/黑長者/skill_0.png",
+        "/assets/polymorph-cast/morphanim/黑長者/skill_1.png",
+        "/assets/polymorph-cast/morphanim/黑長者/skill_2.png",
+        "/assets/polymorph-cast/morphanim/黑長者/skill_3.png",
+        "/assets/polymorph-cast/morphanim/黑長者/skill_4.png"
+      ],
+      "shadow": [
+        "/assets/polymorph-cast/morphanim/黑長者/skill_s_0.png",
+        "/assets/polymorph-cast/morphanim/黑長者/skill_s_1.png",
+        "/assets/polymorph-cast/morphanim/黑長者/skill_s_2.png",
+        "/assets/polymorph-cast/morphanim/黑長者/skill_s_3.png",
+        "/assets/polymorph-cast/morphanim/黑長者/skill_s_4.png"
+      ],
+      "weapon": [
+        "/assets/polymorph-cast/morphanim/黑長者/skill_w_0.png",
+        "/assets/polymorph-cast/morphanim/黑長者/skill_w_1.png",
+        "/assets/polymorph-cast/morphanim/黑長者/skill_w_2.png",
+        "/assets/polymorph-cast/morphanim/黑長者/skill_w_3.png",
+        "/assets/polymorph-cast/morphanim/黑長者/skill_w_4.png"
+      ],
+      "layout": {
+        "viewBox": [
+          72,
+          96
+        ],
+        "x": -37.096385542168676,
+        "y": -4.698795180722897,
+        "width": 121.25301204819277,
+        "height": 95.39759036144578
+      }
+    }
+  },
+  "morph_18": {
+    "0": {
+      "source": "assets/morphanim/食人妖精2",
+      "body": [
+        "/assets/polymorph-cast/morphanim/食人妖精2/skill_0.png",
+        "/assets/polymorph-cast/morphanim/食人妖精2/skill_1.png",
+        "/assets/polymorph-cast/morphanim/食人妖精2/skill_2.png",
+        "/assets/polymorph-cast/morphanim/食人妖精2/skill_3.png"
+      ],
+      "shadow": [
+        "/assets/polymorph-cast/morphanim/食人妖精2/skill_s_0.png",
+        "/assets/polymorph-cast/morphanim/食人妖精2/skill_s_1.png",
+        "/assets/polymorph-cast/morphanim/食人妖精2/skill_s_2.png",
+        "/assets/polymorph-cast/morphanim/食人妖精2/skill_s_3.png"
+      ],
+      "weapon": [
+        null,
+        null,
+        null,
+        null
+      ],
+      "layout": {
+        "viewBox": [
+          48,
+          84
+        ],
+        "x": -69.47692307692309,
+        "y": -14.523076923076928,
+        "width": 184.12307692307692,
+        "height": 145.72307692307692
+      }
+    },
+    "1": {
+      "source": "assets/morphanim/食人妖精F",
+      "body": [
+        "/assets/polymorph-cast/morphanim/食人妖精F/skill_0.png",
+        "/assets/polymorph-cast/morphanim/食人妖精F/skill_1.png",
+        "/assets/polymorph-cast/morphanim/食人妖精F/skill_2.png",
+        "/assets/polymorph-cast/morphanim/食人妖精F/skill_3.png"
+      ],
+      "shadow": [
+        "/assets/polymorph-cast/morphanim/食人妖精F/skill_s_0.png",
+        "/assets/polymorph-cast/morphanim/食人妖精F/skill_s_1.png",
+        "/assets/polymorph-cast/morphanim/食人妖精F/skill_s_2.png",
+        "/assets/polymorph-cast/morphanim/食人妖精F/skill_s_3.png"
+      ],
+      "weapon": [
+        null,
+        null,
+        null,
+        null
+      ],
+      "layout": {
+        "viewBox": [
+          48,
+          84
+        ],
+        "x": -69.47692307692309,
+        "y": -14.523076923076928,
+        "width": 184.12307692307692,
+        "height": 145.72307692307692
+      }
+    },
+    "2": {
+      "source": "assets/morphanim/食人妖精",
+      "body": [
+        "/assets/polymorph-cast/morphanim/食人妖精/skill_0.png",
+        "/assets/polymorph-cast/morphanim/食人妖精/skill_1.png",
+        "/assets/polymorph-cast/morphanim/食人妖精/skill_2.png",
+        "/assets/polymorph-cast/morphanim/食人妖精/skill_3.png"
+      ],
+      "shadow": [
+        "/assets/polymorph-cast/morphanim/食人妖精/skill_s_0.png",
+        "/assets/polymorph-cast/morphanim/食人妖精/skill_s_1.png",
+        "/assets/polymorph-cast/morphanim/食人妖精/skill_s_2.png",
+        "/assets/polymorph-cast/morphanim/食人妖精/skill_s_3.png"
+      ],
+      "weapon": [
+        null,
+        null,
+        null,
+        null
+      ],
+      "layout": {
+        "viewBox": [
+          48,
+          84
+        ],
+        "x": -69.47692307692309,
+        "y": -14.523076923076928,
+        "width": 184.12307692307692,
+        "height": 145.72307692307692
+      }
+    }
+  },
+  "morph_19": {
+    "0": {
+      "source": "assets/morphanim/妖魔弓箭手2",
+      "body": [
+        "/assets/polymorph-cast/morphanim/妖魔弓箭手2/skill_0.png",
+        "/assets/polymorph-cast/morphanim/妖魔弓箭手2/skill_1.png",
+        "/assets/polymorph-cast/morphanim/妖魔弓箭手2/skill_2.png"
+      ],
+      "shadow": [
+        null,
+        null,
+        null
+      ],
+      "weapon": [
+        null,
+        null,
+        null
+      ],
+      "layout": {
+        "viewBox": [
+          72,
+          84
+        ],
+        "x": -18.126984126984127,
+        "y": -1.9682539682539755,
+        "width": 110.87301587301587,
+        "height": 88.17460317460318
+      }
+    },
+    "1": {
+      "source": "assets/morphanim/妖魔弓箭手F",
+      "body": [
+        "/assets/polymorph-cast/morphanim/妖魔弓箭手F/skill_0.png",
+        "/assets/polymorph-cast/morphanim/妖魔弓箭手F/skill_1.png",
+        "/assets/polymorph-cast/morphanim/妖魔弓箭手F/skill_2.png"
+      ],
+      "shadow": [
+        null,
+        null,
+        null
+      ],
+      "weapon": [
+        null,
+        null,
+        null
+      ],
+      "layout": {
+        "viewBox": [
+          72,
+          84
+        ],
+        "x": -18.126984126984127,
+        "y": -1.9682539682539755,
+        "width": 110.87301587301587,
+        "height": 88.17460317460318
+      }
+    },
+    "2": {
+      "source": "assets/morphanim/妖魔弓箭手",
+      "body": [
+        "/assets/polymorph-cast/morphanim/妖魔弓箭手/skill_0.png",
+        "/assets/polymorph-cast/morphanim/妖魔弓箭手/skill_1.png",
+        "/assets/polymorph-cast/morphanim/妖魔弓箭手/skill_2.png"
+      ],
+      "shadow": [
+        null,
+        null,
+        null
+      ],
+      "weapon": [
+        null,
+        null,
+        null
+      ],
+      "layout": {
+        "viewBox": [
+          72,
+          84
+        ],
+        "x": -18.126984126984127,
+        "y": -1.9682539682539755,
+        "width": 110.87301587301587,
+        "height": 88.17460317460318
+      }
+    }
+  },
+  "morph_21": {
+    "0": {
+      "source": "assets/morphanim/思克巴2",
+      "body": [
+        "/assets/polymorph-cast/morphanim/思克巴2/skill_0.png",
+        "/assets/polymorph-cast/morphanim/思克巴2/skill_1.png",
+        "/assets/polymorph-cast/morphanim/思克巴2/skill_2.png",
+        "/assets/polymorph-cast/morphanim/思克巴2/skill_3.png",
+        "/assets/polymorph-cast/morphanim/思克巴2/skill_4.png",
+        "/assets/polymorph-cast/morphanim/思克巴2/skill_5.png",
+        "/assets/polymorph-cast/morphanim/思克巴2/skill_6.png",
+        "/assets/polymorph-cast/morphanim/思克巴2/skill_7.png"
+      ],
+      "shadow": [
+        "/assets/polymorph-cast/morphanim/思克巴2/skill_s_0.png",
+        "/assets/polymorph-cast/morphanim/思克巴2/skill_s_1.png",
+        "/assets/polymorph-cast/morphanim/思克巴2/skill_s_2.png",
+        "/assets/polymorph-cast/morphanim/思克巴2/skill_s_3.png",
+        "/assets/polymorph-cast/morphanim/思克巴2/skill_s_4.png",
+        "/assets/polymorph-cast/morphanim/思克巴2/skill_s_5.png",
+        "/assets/polymorph-cast/morphanim/思克巴2/skill_s_6.png",
+        "/assets/polymorph-cast/morphanim/思克巴2/skill_s_7.png"
+      ],
+      "weapon": [
+        "/assets/polymorph-cast/morphanim/思克巴2/skill_w_0.png",
+        "/assets/polymorph-cast/morphanim/思克巴2/skill_w_1.png",
+        "/assets/polymorph-cast/morphanim/思克巴2/skill_w_2.png",
+        "/assets/polymorph-cast/morphanim/思克巴2/skill_w_3.png",
+        "/assets/polymorph-cast/morphanim/思克巴2/skill_w_4.png",
+        "/assets/polymorph-cast/morphanim/思克巴2/skill_w_5.png",
+        "/assets/polymorph-cast/morphanim/思克巴2/skill_w_6.png",
+        "/assets/polymorph-cast/morphanim/思克巴2/skill_w_7.png"
+      ],
+      "layout": {
+        "viewBox": [
+          48,
+          96
+        ],
+        "x": -63.50757575757575,
+        "y": -33.772727272727266,
+        "width": 192.45454545454544,
+        "height": 173.65151515151513
+      }
+    },
+    "1": {
+      "source": "assets/morphanim/思克巴F",
+      "body": [
+        "/assets/polymorph-cast/morphanim/思克巴F/skill_0.png",
+        "/assets/polymorph-cast/morphanim/思克巴F/skill_1.png",
+        "/assets/polymorph-cast/morphanim/思克巴F/skill_2.png",
+        "/assets/polymorph-cast/morphanim/思克巴F/skill_3.png",
+        "/assets/polymorph-cast/morphanim/思克巴F/skill_4.png",
+        "/assets/polymorph-cast/morphanim/思克巴F/skill_5.png",
+        "/assets/polymorph-cast/morphanim/思克巴F/skill_6.png",
+        "/assets/polymorph-cast/morphanim/思克巴F/skill_7.png"
+      ],
+      "shadow": [
+        "/assets/polymorph-cast/morphanim/思克巴F/skill_s_0.png",
+        "/assets/polymorph-cast/morphanim/思克巴F/skill_s_1.png",
+        "/assets/polymorph-cast/morphanim/思克巴F/skill_s_2.png",
+        "/assets/polymorph-cast/morphanim/思克巴F/skill_s_3.png",
+        "/assets/polymorph-cast/morphanim/思克巴F/skill_s_4.png",
+        "/assets/polymorph-cast/morphanim/思克巴F/skill_s_5.png",
+        "/assets/polymorph-cast/morphanim/思克巴F/skill_s_6.png",
+        "/assets/polymorph-cast/morphanim/思克巴F/skill_s_7.png"
+      ],
+      "weapon": [
+        "/assets/polymorph-cast/morphanim/思克巴F/skill_w_0.png",
+        "/assets/polymorph-cast/morphanim/思克巴F/skill_w_1.png",
+        "/assets/polymorph-cast/morphanim/思克巴F/skill_w_2.png",
+        "/assets/polymorph-cast/morphanim/思克巴F/skill_w_3.png",
+        "/assets/polymorph-cast/morphanim/思克巴F/skill_w_4.png",
+        "/assets/polymorph-cast/morphanim/思克巴F/skill_w_5.png",
+        "/assets/polymorph-cast/morphanim/思克巴F/skill_w_6.png",
+        "/assets/polymorph-cast/morphanim/思克巴F/skill_w_7.png"
+      ],
+      "layout": {
+        "viewBox": [
+          48,
+          96
+        ],
+        "x": -63.50757575757575,
+        "y": -33.772727272727266,
+        "width": 192.45454545454544,
+        "height": 173.65151515151513
+      }
+    },
+    "2": {
+      "source": "assets/morphanim/思克巴",
+      "body": [
+        "/assets/polymorph-cast/morphanim/思克巴/skill_0.png",
+        "/assets/polymorph-cast/morphanim/思克巴/skill_1.png",
+        "/assets/polymorph-cast/morphanim/思克巴/skill_2.png",
+        "/assets/polymorph-cast/morphanim/思克巴/skill_3.png",
+        "/assets/polymorph-cast/morphanim/思克巴/skill_4.png",
+        "/assets/polymorph-cast/morphanim/思克巴/skill_5.png",
+        "/assets/polymorph-cast/morphanim/思克巴/skill_6.png",
+        "/assets/polymorph-cast/morphanim/思克巴/skill_7.png"
+      ],
+      "shadow": [
+        "/assets/polymorph-cast/morphanim/思克巴/skill_s_0.png",
+        "/assets/polymorph-cast/morphanim/思克巴/skill_s_1.png",
+        "/assets/polymorph-cast/morphanim/思克巴/skill_s_2.png",
+        "/assets/polymorph-cast/morphanim/思克巴/skill_s_3.png",
+        "/assets/polymorph-cast/morphanim/思克巴/skill_s_4.png",
+        "/assets/polymorph-cast/morphanim/思克巴/skill_s_5.png",
+        "/assets/polymorph-cast/morphanim/思克巴/skill_s_6.png",
+        "/assets/polymorph-cast/morphanim/思克巴/skill_s_7.png"
+      ],
+      "weapon": [
+        "/assets/polymorph-cast/morphanim/思克巴/skill_w_0.png",
+        "/assets/polymorph-cast/morphanim/思克巴/skill_w_1.png",
+        "/assets/polymorph-cast/morphanim/思克巴/skill_w_2.png",
+        "/assets/polymorph-cast/morphanim/思克巴/skill_w_3.png",
+        "/assets/polymorph-cast/morphanim/思克巴/skill_w_4.png",
+        "/assets/polymorph-cast/morphanim/思克巴/skill_w_5.png",
+        "/assets/polymorph-cast/morphanim/思克巴/skill_w_6.png",
+        "/assets/polymorph-cast/morphanim/思克巴/skill_w_7.png"
+      ],
+      "layout": {
+        "viewBox": [
+          48,
+          96
+        ],
+        "x": -63.50757575757575,
+        "y": -33.772727272727266,
+        "width": 192.45454545454544,
+        "height": 173.65151515151513
+      }
+    }
+  },
+  "morph_23": {
+    "0": {
+      "source": "assets/morphanim/食人妖精王2",
+      "body": [
+        "/assets/polymorph-cast/morphanim/食人妖精王2/skill_0.png",
+        "/assets/polymorph-cast/morphanim/食人妖精王2/skill_1.png",
+        "/assets/polymorph-cast/morphanim/食人妖精王2/skill_2.png",
+        "/assets/polymorph-cast/morphanim/食人妖精王2/skill_3.png",
+        "/assets/polymorph-cast/morphanim/食人妖精王2/skill_4.png",
+        "/assets/polymorph-cast/morphanim/食人妖精王2/skill_5.png",
+        "/assets/polymorph-cast/morphanim/食人妖精王2/skill_6.png",
+        "/assets/polymorph-cast/morphanim/食人妖精王2/skill_7.png"
+      ],
+      "shadow": [
+        "/assets/polymorph-cast/morphanim/食人妖精王2/skill_s_0.png",
+        "/assets/polymorph-cast/morphanim/食人妖精王2/skill_s_1.png",
+        "/assets/polymorph-cast/morphanim/食人妖精王2/skill_s_2.png",
+        "/assets/polymorph-cast/morphanim/食人妖精王2/skill_s_3.png",
+        "/assets/polymorph-cast/morphanim/食人妖精王2/skill_s_4.png",
+        "/assets/polymorph-cast/morphanim/食人妖精王2/skill_s_5.png",
+        "/assets/polymorph-cast/morphanim/食人妖精王2/skill_s_6.png",
+        "/assets/polymorph-cast/morphanim/食人妖精王2/skill_s_7.png"
+      ],
+      "weapon": [
+        null,
+        null,
+        null,
+        null,
+        null,
+        null,
+        null,
+        null
+      ],
+      "layout": {
+        "viewBox": [
+          72,
+          84
+        ],
+        "x": -65.68333333333334,
+        "y": -24.83333333333333,
+        "width": 179.8,
+        "height": 142.1
+      }
+    },
+    "1": {
+      "source": "assets/morphanim/食人妖精王F",
+      "body": [
+        "/assets/polymorph-cast/morphanim/食人妖精王F/skill_0.png",
+        "/assets/polymorph-cast/morphanim/食人妖精王F/skill_1.png",
+        "/assets/polymorph-cast/morphanim/食人妖精王F/skill_2.png",
+        "/assets/polymorph-cast/morphanim/食人妖精王F/skill_3.png",
+        "/assets/polymorph-cast/morphanim/食人妖精王F/skill_4.png",
+        "/assets/polymorph-cast/morphanim/食人妖精王F/skill_5.png",
+        "/assets/polymorph-cast/morphanim/食人妖精王F/skill_6.png",
+        "/assets/polymorph-cast/morphanim/食人妖精王F/skill_7.png"
+      ],
+      "shadow": [
+        "/assets/polymorph-cast/morphanim/食人妖精王F/skill_s_0.png",
+        "/assets/polymorph-cast/morphanim/食人妖精王F/skill_s_1.png",
+        "/assets/polymorph-cast/morphanim/食人妖精王F/skill_s_2.png",
+        "/assets/polymorph-cast/morphanim/食人妖精王F/skill_s_3.png",
+        "/assets/polymorph-cast/morphanim/食人妖精王F/skill_s_4.png",
+        "/assets/polymorph-cast/morphanim/食人妖精王F/skill_s_5.png",
+        "/assets/polymorph-cast/morphanim/食人妖精王F/skill_s_6.png",
+        "/assets/polymorph-cast/morphanim/食人妖精王F/skill_s_7.png"
+      ],
+      "weapon": [
+        null,
+        null,
+        null,
+        null,
+        null,
+        null,
+        null,
+        null
+      ],
+      "layout": {
+        "viewBox": [
+          72,
+          84
+        ],
+        "x": -65.68333333333334,
+        "y": -24.83333333333333,
+        "width": 179.8,
+        "height": 142.1
+      }
+    },
+    "2": {
+      "source": "assets/morphanim/食人妖精王",
+      "body": [
+        "/assets/polymorph-cast/morphanim/食人妖精王/skill_0.png",
+        "/assets/polymorph-cast/morphanim/食人妖精王/skill_1.png",
+        "/assets/polymorph-cast/morphanim/食人妖精王/skill_2.png",
+        "/assets/polymorph-cast/morphanim/食人妖精王/skill_3.png",
+        "/assets/polymorph-cast/morphanim/食人妖精王/skill_4.png",
+        "/assets/polymorph-cast/morphanim/食人妖精王/skill_5.png",
+        "/assets/polymorph-cast/morphanim/食人妖精王/skill_6.png",
+        "/assets/polymorph-cast/morphanim/食人妖精王/skill_7.png"
+      ],
+      "shadow": [
+        "/assets/polymorph-cast/morphanim/食人妖精王/skill_s_0.png",
+        "/assets/polymorph-cast/morphanim/食人妖精王/skill_s_1.png",
+        "/assets/polymorph-cast/morphanim/食人妖精王/skill_s_2.png",
+        "/assets/polymorph-cast/morphanim/食人妖精王/skill_s_3.png",
+        "/assets/polymorph-cast/morphanim/食人妖精王/skill_s_4.png",
+        "/assets/polymorph-cast/morphanim/食人妖精王/skill_s_5.png",
+        "/assets/polymorph-cast/morphanim/食人妖精王/skill_s_6.png",
+        "/assets/polymorph-cast/morphanim/食人妖精王/skill_s_7.png"
+      ],
+      "weapon": [
+        null,
+        null,
+        null,
+        null,
+        null,
+        null,
+        null,
+        null
+      ],
+      "layout": {
+        "viewBox": [
+          72,
+          84
+        ],
+        "x": -65.68333333333334,
+        "y": -24.83333333333333,
+        "width": 179.8,
+        "height": 142.1
+      }
+    }
+  },
+  "morph_24": {
+    "0": {
+      "source": "assets/anim/黑法師",
+      "body": [
+        "/assets/polymorph-cast/anim/黑法師/skill_0.png",
+        "/assets/polymorph-cast/anim/黑法師/skill_1.png",
+        "/assets/polymorph-cast/anim/黑法師/skill_2.png",
+        "/assets/polymorph-cast/anim/黑法師/skill_3.png",
+        "/assets/polymorph-cast/anim/黑法師/skill_4.png",
+        "/assets/polymorph-cast/anim/黑法師/skill_5.png",
+        "/assets/polymorph-cast/anim/黑法師/skill_6.png"
+      ],
+      "shadow": [
+        "/assets/polymorph-cast/anim/黑法師/skill_s_0.png",
+        "/assets/polymorph-cast/anim/黑法師/skill_s_1.png",
+        "/assets/polymorph-cast/anim/黑法師/skill_s_2.png",
+        "/assets/polymorph-cast/anim/黑法師/skill_s_3.png",
+        "/assets/polymorph-cast/anim/黑法師/skill_s_4.png",
+        "/assets/polymorph-cast/anim/黑法師/skill_s_5.png",
+        "/assets/polymorph-cast/anim/黑法師/skill_s_6.png"
+      ],
+      "weapon": [
+        "/assets/polymorph-cast/anim/黑法師/skill_w_0.png",
+        "/assets/polymorph-cast/anim/黑法師/skill_w_1.png",
+        "/assets/polymorph-cast/anim/黑法師/skill_w_2.png",
+        "/assets/polymorph-cast/anim/黑法師/skill_w_3.png",
+        "/assets/polymorph-cast/anim/黑法師/skill_w_4.png",
+        "/assets/polymorph-cast/anim/黑法師/skill_w_5.png",
+        "/assets/polymorph-cast/anim/黑法師/skill_w_6.png"
+      ],
+      "layout": {
+        "viewBox": [
+          72,
+          84
+        ],
+        "x": -27.0,
+        "y": -22.0,
+        "width": 97.0,
+        "height": 130.0
+      }
+    },
+    "1": {
+      "source": "assets/anim/黑法師",
+      "body": [
+        "/assets/polymorph-cast/anim/黑法師/skill_0.png",
+        "/assets/polymorph-cast/anim/黑法師/skill_1.png",
+        "/assets/polymorph-cast/anim/黑法師/skill_2.png",
+        "/assets/polymorph-cast/anim/黑法師/skill_3.png",
+        "/assets/polymorph-cast/anim/黑法師/skill_4.png",
+        "/assets/polymorph-cast/anim/黑法師/skill_5.png",
+        "/assets/polymorph-cast/anim/黑法師/skill_6.png"
+      ],
+      "shadow": [
+        "/assets/polymorph-cast/anim/黑法師/skill_s_0.png",
+        "/assets/polymorph-cast/anim/黑法師/skill_s_1.png",
+        "/assets/polymorph-cast/anim/黑法師/skill_s_2.png",
+        "/assets/polymorph-cast/anim/黑法師/skill_s_3.png",
+        "/assets/polymorph-cast/anim/黑法師/skill_s_4.png",
+        "/assets/polymorph-cast/anim/黑法師/skill_s_5.png",
+        "/assets/polymorph-cast/anim/黑法師/skill_s_6.png"
+      ],
+      "weapon": [
+        "/assets/polymorph-cast/anim/黑法師/skill_w_0.png",
+        "/assets/polymorph-cast/anim/黑法師/skill_w_1.png",
+        "/assets/polymorph-cast/anim/黑法師/skill_w_2.png",
+        "/assets/polymorph-cast/anim/黑法師/skill_w_3.png",
+        "/assets/polymorph-cast/anim/黑法師/skill_w_4.png",
+        "/assets/polymorph-cast/anim/黑法師/skill_w_5.png",
+        "/assets/polymorph-cast/anim/黑法師/skill_w_6.png"
+      ],
+      "layout": {
+        "viewBox": [
+          72,
+          84
+        ],
+        "x": -27.0,
+        "y": -22.0,
+        "width": 97.0,
+        "height": 130.0
+      }
+    },
+    "2": {
+      "source": "assets/anim/黑法師",
+      "body": [
+        "/assets/polymorph-cast/anim/黑法師/skill_0.png",
+        "/assets/polymorph-cast/anim/黑法師/skill_1.png",
+        "/assets/polymorph-cast/anim/黑法師/skill_2.png",
+        "/assets/polymorph-cast/anim/黑法師/skill_3.png",
+        "/assets/polymorph-cast/anim/黑法師/skill_4.png",
+        "/assets/polymorph-cast/anim/黑法師/skill_5.png",
+        "/assets/polymorph-cast/anim/黑法師/skill_6.png"
+      ],
+      "shadow": [
+        "/assets/polymorph-cast/anim/黑法師/skill_s_0.png",
+        "/assets/polymorph-cast/anim/黑法師/skill_s_1.png",
+        "/assets/polymorph-cast/anim/黑法師/skill_s_2.png",
+        "/assets/polymorph-cast/anim/黑法師/skill_s_3.png",
+        "/assets/polymorph-cast/anim/黑法師/skill_s_4.png",
+        "/assets/polymorph-cast/anim/黑法師/skill_s_5.png",
+        "/assets/polymorph-cast/anim/黑法師/skill_s_6.png"
+      ],
+      "weapon": [
+        "/assets/polymorph-cast/anim/黑法師/skill_w_0.png",
+        "/assets/polymorph-cast/anim/黑法師/skill_w_1.png",
+        "/assets/polymorph-cast/anim/黑法師/skill_w_2.png",
+        "/assets/polymorph-cast/anim/黑法師/skill_w_3.png",
+        "/assets/polymorph-cast/anim/黑法師/skill_w_4.png",
+        "/assets/polymorph-cast/anim/黑法師/skill_w_5.png",
+        "/assets/polymorph-cast/anim/黑法師/skill_w_6.png"
+      ],
+      "layout": {
+        "viewBox": [
+          72,
+          84
+        ],
+        "x": -27.0,
+        "y": -22.0,
+        "width": 97.0,
+        "height": 130.0
+      }
+    }
+  },
+  "morph_25": {
+    "0": {
+      "source": "assets/morphanim/巴風特2",
+      "body": [
+        "/assets/polymorph-cast/morphanim/巴風特2/skill_0.png",
+        "/assets/polymorph-cast/morphanim/巴風特2/skill_1.png",
+        "/assets/polymorph-cast/morphanim/巴風特2/skill_2.png",
+        "/assets/polymorph-cast/morphanim/巴風特2/skill_3.png",
+        "/assets/polymorph-cast/morphanim/巴風特2/skill_4.png",
+        "/assets/polymorph-cast/morphanim/巴風特2/skill_5.png"
+      ],
+      "shadow": [
+        "/assets/polymorph-cast/morphanim/巴風特2/skill_s_0.png",
+        "/assets/polymorph-cast/morphanim/巴風特2/skill_s_1.png",
+        "/assets/polymorph-cast/morphanim/巴風特2/skill_s_2.png",
+        "/assets/polymorph-cast/morphanim/巴風特2/skill_s_3.png",
+        "/assets/polymorph-cast/morphanim/巴風特2/skill_s_4.png",
+        "/assets/polymorph-cast/morphanim/巴風特2/skill_s_5.png"
+      ],
+      "weapon": [
+        null,
+        null,
+        null,
+        null,
+        null,
+        null
+      ],
+      "layout": {
+        "viewBox": [
+          96,
+          96
+        ],
+        "x": -66.67391304347825,
+        "y": -6.753623188405783,
+        "width": 225.3478260869565,
+        "height": 169.78260869565216
+      }
+    },
+    "1": {
+      "source": "assets/morphanim/巴風特F",
+      "body": [
+        "/assets/polymorph-cast/morphanim/巴風特F/skill_0.png",
+        "/assets/polymorph-cast/morphanim/巴風特F/skill_1.png",
+        "/assets/polymorph-cast/morphanim/巴風特F/skill_2.png",
+        "/assets/polymorph-cast/morphanim/巴風特F/skill_3.png",
+        "/assets/polymorph-cast/morphanim/巴風特F/skill_4.png",
+        "/assets/polymorph-cast/morphanim/巴風特F/skill_5.png"
+      ],
+      "shadow": [
+        "/assets/polymorph-cast/morphanim/巴風特F/skill_s_0.png",
+        "/assets/polymorph-cast/morphanim/巴風特F/skill_s_1.png",
+        "/assets/polymorph-cast/morphanim/巴風特F/skill_s_2.png",
+        "/assets/polymorph-cast/morphanim/巴風特F/skill_s_3.png",
+        "/assets/polymorph-cast/morphanim/巴風特F/skill_s_4.png",
+        "/assets/polymorph-cast/morphanim/巴風特F/skill_s_5.png"
+      ],
+      "weapon": [
+        null,
+        null,
+        null,
+        null,
+        null,
+        null
+      ],
+      "layout": {
+        "viewBox": [
+          96,
+          96
+        ],
+        "x": -66.67391304347825,
+        "y": -6.753623188405783,
+        "width": 225.3478260869565,
+        "height": 169.78260869565216
+      }
+    },
+    "2": {
+      "source": "assets/morphanim/巴風特",
+      "body": [
+        "/assets/polymorph-cast/morphanim/巴風特/skill_0.png",
+        "/assets/polymorph-cast/morphanim/巴風特/skill_1.png",
+        "/assets/polymorph-cast/morphanim/巴風特/skill_2.png",
+        "/assets/polymorph-cast/morphanim/巴風特/skill_3.png",
+        "/assets/polymorph-cast/morphanim/巴風特/skill_4.png",
+        "/assets/polymorph-cast/morphanim/巴風特/skill_5.png"
+      ],
+      "shadow": [
+        "/assets/polymorph-cast/morphanim/巴風特/skill_s_0.png",
+        "/assets/polymorph-cast/morphanim/巴風特/skill_s_1.png",
+        "/assets/polymorph-cast/morphanim/巴風特/skill_s_2.png",
+        "/assets/polymorph-cast/morphanim/巴風特/skill_s_3.png",
+        "/assets/polymorph-cast/morphanim/巴風特/skill_s_4.png",
+        "/assets/polymorph-cast/morphanim/巴風特/skill_s_5.png"
+      ],
+      "weapon": [
+        null,
+        null,
+        null,
+        null,
+        null,
+        null
+      ],
+      "layout": {
+        "viewBox": [
+          96,
+          96
+        ],
+        "x": -66.67391304347825,
+        "y": -6.753623188405783,
+        "width": 225.3478260869565,
+        "height": 169.78260869565216
+      }
+    }
+  },
+  "morph_26": {
+    "0": {
+      "source": "assets/morphanim/小惡魔2",
+      "body": [
+        "/assets/polymorph-cast/morphanim/小惡魔2/skill_0.png",
+        "/assets/polymorph-cast/morphanim/小惡魔2/skill_1.png",
+        "/assets/polymorph-cast/morphanim/小惡魔2/skill_2.png",
+        "/assets/polymorph-cast/morphanim/小惡魔2/skill_3.png",
+        "/assets/polymorph-cast/morphanim/小惡魔2/skill_4.png",
+        "/assets/polymorph-cast/morphanim/小惡魔2/skill_5.png",
+        "/assets/polymorph-cast/morphanim/小惡魔2/skill_6.png"
+      ],
+      "shadow": [
+        "/assets/polymorph-cast/morphanim/小惡魔2/skill_s_0.png",
+        "/assets/polymorph-cast/morphanim/小惡魔2/skill_s_1.png",
+        "/assets/polymorph-cast/morphanim/小惡魔2/skill_s_2.png",
+        "/assets/polymorph-cast/morphanim/小惡魔2/skill_s_3.png",
+        "/assets/polymorph-cast/morphanim/小惡魔2/skill_s_4.png",
+        "/assets/polymorph-cast/morphanim/小惡魔2/skill_s_5.png",
+        "/assets/polymorph-cast/morphanim/小惡魔2/skill_s_6.png"
+      ],
+      "weapon": [
+        null,
+        null,
+        null,
+        null,
+        null,
+        null,
+        null
+      ],
+      "layout": {
+        "viewBox": [
+          72,
+          84
+        ],
+        "x": -27.82352941176471,
+        "y": -2.39705882352942,
+        "width": 147.22058823529412,
+        "height": 93.97058823529413
+      }
+    },
+    "1": {
+      "source": "assets/morphanim/小惡魔F",
+      "body": [
+        "/assets/polymorph-cast/morphanim/小惡魔F/skill_0.png",
+        "/assets/polymorph-cast/morphanim/小惡魔F/skill_1.png",
+        "/assets/polymorph-cast/morphanim/小惡魔F/skill_2.png",
+        "/assets/polymorph-cast/morphanim/小惡魔F/skill_3.png",
+        "/assets/polymorph-cast/morphanim/小惡魔F/skill_4.png",
+        "/assets/polymorph-cast/morphanim/小惡魔F/skill_5.png",
+        "/assets/polymorph-cast/morphanim/小惡魔F/skill_6.png"
+      ],
+      "shadow": [
+        "/assets/polymorph-cast/morphanim/小惡魔F/skill_s_0.png",
+        "/assets/polymorph-cast/morphanim/小惡魔F/skill_s_1.png",
+        "/assets/polymorph-cast/morphanim/小惡魔F/skill_s_2.png",
+        "/assets/polymorph-cast/morphanim/小惡魔F/skill_s_3.png",
+        "/assets/polymorph-cast/morphanim/小惡魔F/skill_s_4.png",
+        "/assets/polymorph-cast/morphanim/小惡魔F/skill_s_5.png",
+        "/assets/polymorph-cast/morphanim/小惡魔F/skill_s_6.png"
+      ],
+      "weapon": [
+        null,
+        null,
+        null,
+        null,
+        null,
+        null,
+        null
+      ],
+      "layout": {
+        "viewBox": [
+          72,
+          84
+        ],
+        "x": -27.82352941176471,
+        "y": -2.39705882352942,
+        "width": 147.22058823529412,
+        "height": 93.97058823529413
+      }
+    },
+    "2": {
+      "source": "assets/morphanim/小惡魔",
+      "body": [
+        "/assets/polymorph-cast/morphanim/小惡魔/skill_0.png",
+        "/assets/polymorph-cast/morphanim/小惡魔/skill_1.png",
+        "/assets/polymorph-cast/morphanim/小惡魔/skill_2.png",
+        "/assets/polymorph-cast/morphanim/小惡魔/skill_3.png",
+        "/assets/polymorph-cast/morphanim/小惡魔/skill_4.png",
+        "/assets/polymorph-cast/morphanim/小惡魔/skill_5.png",
+        "/assets/polymorph-cast/morphanim/小惡魔/skill_6.png"
+      ],
+      "shadow": [
+        "/assets/polymorph-cast/morphanim/小惡魔/skill_s_0.png",
+        "/assets/polymorph-cast/morphanim/小惡魔/skill_s_1.png",
+        "/assets/polymorph-cast/morphanim/小惡魔/skill_s_2.png",
+        "/assets/polymorph-cast/morphanim/小惡魔/skill_s_3.png",
+        "/assets/polymorph-cast/morphanim/小惡魔/skill_s_4.png",
+        "/assets/polymorph-cast/morphanim/小惡魔/skill_s_5.png",
+        "/assets/polymorph-cast/morphanim/小惡魔/skill_s_6.png"
+      ],
+      "weapon": [
+        null,
+        null,
+        null,
+        null,
+        null,
+        null,
+        null
+      ],
+      "layout": {
+        "viewBox": [
+          72,
+          84
+        ],
+        "x": -27.82352941176471,
+        "y": -2.39705882352942,
+        "width": 147.22058823529412,
+        "height": 93.97058823529413
+      }
+    }
+  },
+  "morph_36": {
+    "0": {
+      "source": "assets/anim/黑暗妖精法師",
+      "body": [
+        "/assets/polymorph-cast/anim/黑暗妖精法師/skill_0.png",
+        "/assets/polymorph-cast/anim/黑暗妖精法師/skill_1.png",
+        "/assets/polymorph-cast/anim/黑暗妖精法師/skill_2.png",
+        "/assets/polymorph-cast/anim/黑暗妖精法師/skill_3.png",
+        "/assets/polymorph-cast/anim/黑暗妖精法師/skill_4.png",
+        "/assets/polymorph-cast/anim/黑暗妖精法師/skill_5.png",
+        "/assets/polymorph-cast/anim/黑暗妖精法師/skill_6.png",
+        "/assets/polymorph-cast/anim/黑暗妖精法師/skill_7.png",
+        "/assets/polymorph-cast/anim/黑暗妖精法師/skill_8.png"
+      ],
+      "shadow": [
+        "/assets/polymorph-cast/anim/黑暗妖精法師/skill_s_0.png",
+        "/assets/polymorph-cast/anim/黑暗妖精法師/skill_s_1.png",
+        "/assets/polymorph-cast/anim/黑暗妖精法師/skill_s_2.png",
+        "/assets/polymorph-cast/anim/黑暗妖精法師/skill_s_3.png",
+        "/assets/polymorph-cast/anim/黑暗妖精法師/skill_s_4.png",
+        "/assets/polymorph-cast/anim/黑暗妖精法師/skill_s_5.png",
+        "/assets/polymorph-cast/anim/黑暗妖精法師/skill_s_6.png",
+        "/assets/polymorph-cast/anim/黑暗妖精法師/skill_s_7.png",
+        "/assets/polymorph-cast/anim/黑暗妖精法師/skill_s_8.png"
+      ],
+      "weapon": [
+        null,
+        null,
+        null,
+        null,
+        null,
+        null,
+        null,
+        null,
+        null
+      ],
+      "layout": {
+        "viewBox": [
+          72,
+          72
+        ],
+        "x": -2.816176470588239,
+        "y": -10.352941176470594,
+        "width": 67.67647058823529,
+        "height": 115.39705882352942
+      }
+    },
+    "1": {
+      "source": "assets/anim/黑暗妖精法師",
+      "body": [
+        "/assets/polymorph-cast/anim/黑暗妖精法師/skill_0.png",
+        "/assets/polymorph-cast/anim/黑暗妖精法師/skill_1.png",
+        "/assets/polymorph-cast/anim/黑暗妖精法師/skill_2.png",
+        "/assets/polymorph-cast/anim/黑暗妖精法師/skill_3.png",
+        "/assets/polymorph-cast/anim/黑暗妖精法師/skill_4.png",
+        "/assets/polymorph-cast/anim/黑暗妖精法師/skill_5.png",
+        "/assets/polymorph-cast/anim/黑暗妖精法師/skill_6.png",
+        "/assets/polymorph-cast/anim/黑暗妖精法師/skill_7.png",
+        "/assets/polymorph-cast/anim/黑暗妖精法師/skill_8.png"
+      ],
+      "shadow": [
+        "/assets/polymorph-cast/anim/黑暗妖精法師/skill_s_0.png",
+        "/assets/polymorph-cast/anim/黑暗妖精法師/skill_s_1.png",
+        "/assets/polymorph-cast/anim/黑暗妖精法師/skill_s_2.png",
+        "/assets/polymorph-cast/anim/黑暗妖精法師/skill_s_3.png",
+        "/assets/polymorph-cast/anim/黑暗妖精法師/skill_s_4.png",
+        "/assets/polymorph-cast/anim/黑暗妖精法師/skill_s_5.png",
+        "/assets/polymorph-cast/anim/黑暗妖精法師/skill_s_6.png",
+        "/assets/polymorph-cast/anim/黑暗妖精法師/skill_s_7.png",
+        "/assets/polymorph-cast/anim/黑暗妖精法師/skill_s_8.png"
+      ],
+      "weapon": [
+        null,
+        null,
+        null,
+        null,
+        null,
+        null,
+        null,
+        null,
+        null
+      ],
+      "layout": {
+        "viewBox": [
+          72,
+          72
+        ],
+        "x": -2.816176470588239,
+        "y": -10.352941176470594,
+        "width": 67.67647058823529,
+        "height": 115.39705882352942
+      }
+    },
+    "2": {
+      "source": "assets/anim/黑暗妖精法師",
+      "body": [
+        "/assets/polymorph-cast/anim/黑暗妖精法師/skill_0.png",
+        "/assets/polymorph-cast/anim/黑暗妖精法師/skill_1.png",
+        "/assets/polymorph-cast/anim/黑暗妖精法師/skill_2.png",
+        "/assets/polymorph-cast/anim/黑暗妖精法師/skill_3.png",
+        "/assets/polymorph-cast/anim/黑暗妖精法師/skill_4.png",
+        "/assets/polymorph-cast/anim/黑暗妖精法師/skill_5.png",
+        "/assets/polymorph-cast/anim/黑暗妖精法師/skill_6.png",
+        "/assets/polymorph-cast/anim/黑暗妖精法師/skill_7.png",
+        "/assets/polymorph-cast/anim/黑暗妖精法師/skill_8.png"
+      ],
+      "shadow": [
+        "/assets/polymorph-cast/anim/黑暗妖精法師/skill_s_0.png",
+        "/assets/polymorph-cast/anim/黑暗妖精法師/skill_s_1.png",
+        "/assets/polymorph-cast/anim/黑暗妖精法師/skill_s_2.png",
+        "/assets/polymorph-cast/anim/黑暗妖精法師/skill_s_3.png",
+        "/assets/polymorph-cast/anim/黑暗妖精法師/skill_s_4.png",
+        "/assets/polymorph-cast/anim/黑暗妖精法師/skill_s_5.png",
+        "/assets/polymorph-cast/anim/黑暗妖精法師/skill_s_6.png",
+        "/assets/polymorph-cast/anim/黑暗妖精法師/skill_s_7.png",
+        "/assets/polymorph-cast/anim/黑暗妖精法師/skill_s_8.png"
+      ],
+      "weapon": [
+        null,
+        null,
+        null,
+        null,
+        null,
+        null,
+        null,
+        null,
+        null
+      ],
+      "layout": {
+        "viewBox": [
+          72,
+          72
+        ],
+        "x": -2.816176470588239,
+        "y": -10.352941176470594,
+        "width": 67.67647058823529,
+        "height": 115.39705882352942
+      }
+    }
+  },
+  "morph_37": {
+    "0": {
+      "source": "assets/anim/曼波兔",
+      "body": [
+        "/assets/polymorph-cast/anim/曼波兔/skill_0.png",
+        "/assets/polymorph-cast/anim/曼波兔/skill_1.png",
+        "/assets/polymorph-cast/anim/曼波兔/skill_2.png",
+        "/assets/polymorph-cast/anim/曼波兔/skill_3.png",
+        "/assets/polymorph-cast/anim/曼波兔/skill_4.png",
+        "/assets/polymorph-cast/anim/曼波兔/skill_5.png",
+        "/assets/polymorph-cast/anim/曼波兔/skill_6.png",
+        "/assets/polymorph-cast/anim/曼波兔/skill_7.png",
+        "/assets/polymorph-cast/anim/曼波兔/skill_8.png",
+        "/assets/polymorph-cast/anim/曼波兔/skill_9.png",
+        "/assets/polymorph-cast/anim/曼波兔/skill_10.png",
+        "/assets/polymorph-cast/anim/曼波兔/skill_11.png",
+        "/assets/polymorph-cast/anim/曼波兔/skill_12.png",
+        "/assets/polymorph-cast/anim/曼波兔/skill_13.png",
+        "/assets/polymorph-cast/anim/曼波兔/skill_14.png"
+      ],
+      "shadow": [
+        "/assets/polymorph-cast/anim/曼波兔/skill_s_0.png",
+        "/assets/polymorph-cast/anim/曼波兔/skill_s_1.png",
+        "/assets/polymorph-cast/anim/曼波兔/skill_s_2.png",
+        "/assets/polymorph-cast/anim/曼波兔/skill_s_3.png",
+        "/assets/polymorph-cast/anim/曼波兔/skill_s_4.png",
+        "/assets/polymorph-cast/anim/曼波兔/skill_s_5.png",
+        "/assets/polymorph-cast/anim/曼波兔/skill_s_6.png",
+        "/assets/polymorph-cast/anim/曼波兔/skill_s_7.png",
+        "/assets/polymorph-cast/anim/曼波兔/skill_s_8.png",
+        "/assets/polymorph-cast/anim/曼波兔/skill_s_9.png",
+        "/assets/polymorph-cast/anim/曼波兔/skill_s_10.png",
+        "/assets/polymorph-cast/anim/曼波兔/skill_s_11.png",
+        "/assets/polymorph-cast/anim/曼波兔/skill_s_12.png",
+        "/assets/polymorph-cast/anim/曼波兔/skill_s_13.png",
+        "/assets/polymorph-cast/anim/曼波兔/skill_s_14.png"
+      ],
+      "weapon": [
+        null,
+        null,
+        null,
+        null,
+        null,
+        null,
+        null,
+        null,
+        null,
+        null,
+        null,
+        null,
+        null,
+        null,
+        null
+      ],
+      "layout": {
+        "viewBox": [
+          48,
+          96
+        ],
+        "x": -22.641509433962263,
+        "y": -51.90566037735849,
+        "width": 85.16981132075472,
+        "height": 154.22641509433961
+      }
+    },
+    "1": {
+      "source": "assets/anim/曼波兔",
+      "body": [
+        "/assets/polymorph-cast/anim/曼波兔/skill_0.png",
+        "/assets/polymorph-cast/anim/曼波兔/skill_1.png",
+        "/assets/polymorph-cast/anim/曼波兔/skill_2.png",
+        "/assets/polymorph-cast/anim/曼波兔/skill_3.png",
+        "/assets/polymorph-cast/anim/曼波兔/skill_4.png",
+        "/assets/polymorph-cast/anim/曼波兔/skill_5.png",
+        "/assets/polymorph-cast/anim/曼波兔/skill_6.png",
+        "/assets/polymorph-cast/anim/曼波兔/skill_7.png",
+        "/assets/polymorph-cast/anim/曼波兔/skill_8.png",
+        "/assets/polymorph-cast/anim/曼波兔/skill_9.png",
+        "/assets/polymorph-cast/anim/曼波兔/skill_10.png",
+        "/assets/polymorph-cast/anim/曼波兔/skill_11.png",
+        "/assets/polymorph-cast/anim/曼波兔/skill_12.png",
+        "/assets/polymorph-cast/anim/曼波兔/skill_13.png",
+        "/assets/polymorph-cast/anim/曼波兔/skill_14.png"
+      ],
+      "shadow": [
+        "/assets/polymorph-cast/anim/曼波兔/skill_s_0.png",
+        "/assets/polymorph-cast/anim/曼波兔/skill_s_1.png",
+        "/assets/polymorph-cast/anim/曼波兔/skill_s_2.png",
+        "/assets/polymorph-cast/anim/曼波兔/skill_s_3.png",
+        "/assets/polymorph-cast/anim/曼波兔/skill_s_4.png",
+        "/assets/polymorph-cast/anim/曼波兔/skill_s_5.png",
+        "/assets/polymorph-cast/anim/曼波兔/skill_s_6.png",
+        "/assets/polymorph-cast/anim/曼波兔/skill_s_7.png",
+        "/assets/polymorph-cast/anim/曼波兔/skill_s_8.png",
+        "/assets/polymorph-cast/anim/曼波兔/skill_s_9.png",
+        "/assets/polymorph-cast/anim/曼波兔/skill_s_10.png",
+        "/assets/polymorph-cast/anim/曼波兔/skill_s_11.png",
+        "/assets/polymorph-cast/anim/曼波兔/skill_s_12.png",
+        "/assets/polymorph-cast/anim/曼波兔/skill_s_13.png",
+        "/assets/polymorph-cast/anim/曼波兔/skill_s_14.png"
+      ],
+      "weapon": [
+        null,
+        null,
+        null,
+        null,
+        null,
+        null,
+        null,
+        null,
+        null,
+        null,
+        null,
+        null,
+        null,
+        null,
+        null
+      ],
+      "layout": {
+        "viewBox": [
+          48,
+          96
+        ],
+        "x": -22.641509433962263,
+        "y": -51.90566037735849,
+        "width": 85.16981132075472,
+        "height": 154.22641509433961
+      }
+    },
+    "2": {
+      "source": "assets/anim/曼波兔",
+      "body": [
+        "/assets/polymorph-cast/anim/曼波兔/skill_0.png",
+        "/assets/polymorph-cast/anim/曼波兔/skill_1.png",
+        "/assets/polymorph-cast/anim/曼波兔/skill_2.png",
+        "/assets/polymorph-cast/anim/曼波兔/skill_3.png",
+        "/assets/polymorph-cast/anim/曼波兔/skill_4.png",
+        "/assets/polymorph-cast/anim/曼波兔/skill_5.png",
+        "/assets/polymorph-cast/anim/曼波兔/skill_6.png",
+        "/assets/polymorph-cast/anim/曼波兔/skill_7.png",
+        "/assets/polymorph-cast/anim/曼波兔/skill_8.png",
+        "/assets/polymorph-cast/anim/曼波兔/skill_9.png",
+        "/assets/polymorph-cast/anim/曼波兔/skill_10.png",
+        "/assets/polymorph-cast/anim/曼波兔/skill_11.png",
+        "/assets/polymorph-cast/anim/曼波兔/skill_12.png",
+        "/assets/polymorph-cast/anim/曼波兔/skill_13.png",
+        "/assets/polymorph-cast/anim/曼波兔/skill_14.png"
+      ],
+      "shadow": [
+        "/assets/polymorph-cast/anim/曼波兔/skill_s_0.png",
+        "/assets/polymorph-cast/anim/曼波兔/skill_s_1.png",
+        "/assets/polymorph-cast/anim/曼波兔/skill_s_2.png",
+        "/assets/polymorph-cast/anim/曼波兔/skill_s_3.png",
+        "/assets/polymorph-cast/anim/曼波兔/skill_s_4.png",
+        "/assets/polymorph-cast/anim/曼波兔/skill_s_5.png",
+        "/assets/polymorph-cast/anim/曼波兔/skill_s_6.png",
+        "/assets/polymorph-cast/anim/曼波兔/skill_s_7.png",
+        "/assets/polymorph-cast/anim/曼波兔/skill_s_8.png",
+        "/assets/polymorph-cast/anim/曼波兔/skill_s_9.png",
+        "/assets/polymorph-cast/anim/曼波兔/skill_s_10.png",
+        "/assets/polymorph-cast/anim/曼波兔/skill_s_11.png",
+        "/assets/polymorph-cast/anim/曼波兔/skill_s_12.png",
+        "/assets/polymorph-cast/anim/曼波兔/skill_s_13.png",
+        "/assets/polymorph-cast/anim/曼波兔/skill_s_14.png"
+      ],
+      "weapon": [
+        null,
+        null,
+        null,
+        null,
+        null,
+        null,
+        null,
+        null,
+        null,
+        null,
+        null,
+        null,
+        null,
+        null,
+        null
+      ],
+      "layout": {
+        "viewBox": [
+          48,
+          96
+        ],
+        "x": -22.641509433962263,
+        "y": -51.90566037735849,
+        "width": 85.16981132075472,
+        "height": 154.22641509433961
+      }
+    }
+  },
+  "morph_38": {
+    "0": {
+      "source": "assets/anim/德雷克",
+      "body": [
+        "/assets/polymorph-cast/anim/德雷克/skill_0.png",
+        "/assets/polymorph-cast/anim/德雷克/skill_1.png",
+        "/assets/polymorph-cast/anim/德雷克/skill_2.png",
+        "/assets/polymorph-cast/anim/德雷克/skill_3.png",
+        "/assets/polymorph-cast/anim/德雷克/skill_4.png",
+        "/assets/polymorph-cast/anim/德雷克/skill_5.png",
+        "/assets/polymorph-cast/anim/德雷克/skill_6.png",
+        "/assets/polymorph-cast/anim/德雷克/skill_7.png",
+        "/assets/polymorph-cast/anim/德雷克/skill_8.png",
+        "/assets/polymorph-cast/anim/德雷克/skill_9.png",
+        "/assets/polymorph-cast/anim/德雷克/skill_10.png",
+        "/assets/polymorph-cast/anim/德雷克/skill_11.png",
+        "/assets/polymorph-cast/anim/德雷克/skill_12.png",
+        "/assets/polymorph-cast/anim/德雷克/skill_13.png",
+        "/assets/polymorph-cast/anim/德雷克/skill_14.png",
+        "/assets/polymorph-cast/anim/德雷克/skill_15.png",
+        "/assets/polymorph-cast/anim/德雷克/skill_16.png",
+        "/assets/polymorph-cast/anim/德雷克/skill_17.png",
+        "/assets/polymorph-cast/anim/德雷克/skill_18.png",
+        "/assets/polymorph-cast/anim/德雷克/skill_19.png",
+        "/assets/polymorph-cast/anim/德雷克/skill_20.png",
+        "/assets/polymorph-cast/anim/德雷克/skill_21.png",
+        "/assets/polymorph-cast/anim/德雷克/skill_22.png",
+        "/assets/polymorph-cast/anim/德雷克/skill_23.png",
+        "/assets/polymorph-cast/anim/德雷克/skill_24.png",
+        "/assets/polymorph-cast/anim/德雷克/skill_25.png",
+        "/assets/polymorph-cast/anim/德雷克/skill_26.png"
+      ],
+      "shadow": [
+        "/assets/polymorph-cast/anim/德雷克/skill_s_0.png",
+        "/assets/polymorph-cast/anim/德雷克/skill_s_1.png",
+        "/assets/polymorph-cast/anim/德雷克/skill_s_2.png",
+        "/assets/polymorph-cast/anim/德雷克/skill_s_3.png",
+        "/assets/polymorph-cast/anim/德雷克/skill_s_4.png",
+        "/assets/polymorph-cast/anim/德雷克/skill_s_5.png",
+        "/assets/polymorph-cast/anim/德雷克/skill_s_6.png",
+        "/assets/polymorph-cast/anim/德雷克/skill_s_7.png",
+        "/assets/polymorph-cast/anim/德雷克/skill_s_8.png",
+        "/assets/polymorph-cast/anim/德雷克/skill_s_9.png",
+        "/assets/polymorph-cast/anim/德雷克/skill_s_10.png",
+        "/assets/polymorph-cast/anim/德雷克/skill_s_11.png",
+        "/assets/polymorph-cast/anim/德雷克/skill_s_12.png",
+        "/assets/polymorph-cast/anim/德雷克/skill_s_13.png",
+        "/assets/polymorph-cast/anim/德雷克/skill_s_14.png",
+        "/assets/polymorph-cast/anim/德雷克/skill_s_15.png",
+        "/assets/polymorph-cast/anim/德雷克/skill_s_16.png",
+        "/assets/polymorph-cast/anim/德雷克/skill_s_17.png",
+        "/assets/polymorph-cast/anim/德雷克/skill_s_18.png",
+        "/assets/polymorph-cast/anim/德雷克/skill_s_19.png",
+        "/assets/polymorph-cast/anim/德雷克/skill_s_20.png",
+        "/assets/polymorph-cast/anim/德雷克/skill_s_21.png",
+        "/assets/polymorph-cast/anim/德雷克/skill_s_22.png",
+        "/assets/polymorph-cast/anim/德雷克/skill_s_23.png",
+        "/assets/polymorph-cast/anim/德雷克/skill_s_24.png",
+        "/assets/polymorph-cast/anim/德雷克/skill_s_25.png",
+        "/assets/polymorph-cast/anim/德雷克/skill_s_26.png"
+      ],
+      "weapon": [
+        "/assets/polymorph-cast/anim/德雷克/skill_w_0.png",
+        "/assets/polymorph-cast/anim/德雷克/skill_w_1.png",
+        "/assets/polymorph-cast/anim/德雷克/skill_w_2.png",
+        "/assets/polymorph-cast/anim/德雷克/skill_w_3.png",
+        "/assets/polymorph-cast/anim/德雷克/skill_w_4.png",
+        "/assets/polymorph-cast/anim/德雷克/skill_w_5.png",
+        "/assets/polymorph-cast/anim/德雷克/skill_w_6.png",
+        "/assets/polymorph-cast/anim/德雷克/skill_w_7.png",
+        "/assets/polymorph-cast/anim/德雷克/skill_w_8.png",
+        "/assets/polymorph-cast/anim/德雷克/skill_w_9.png",
+        "/assets/polymorph-cast/anim/德雷克/skill_w_10.png",
+        "/assets/polymorph-cast/anim/德雷克/skill_w_11.png",
+        "/assets/polymorph-cast/anim/德雷克/skill_w_12.png",
+        "/assets/polymorph-cast/anim/德雷克/skill_w_13.png",
+        "/assets/polymorph-cast/anim/德雷克/skill_w_14.png",
+        "/assets/polymorph-cast/anim/德雷克/skill_w_15.png",
+        "/assets/polymorph-cast/anim/德雷克/skill_w_16.png",
+        "/assets/polymorph-cast/anim/德雷克/skill_w_17.png",
+        "/assets/polymorph-cast/anim/德雷克/skill_w_18.png",
+        "/assets/polymorph-cast/anim/德雷克/skill_w_19.png",
+        "/assets/polymorph-cast/anim/德雷克/skill_w_20.png",
+        "/assets/polymorph-cast/anim/德雷克/skill_w_21.png",
+        "/assets/polymorph-cast/anim/德雷克/skill_w_22.png",
+        "/assets/polymorph-cast/anim/德雷克/skill_w_23.png",
+        "/assets/polymorph-cast/anim/德雷克/skill_w_24.png",
+        "/assets/polymorph-cast/anim/德雷克/skill_w_25.png",
+        "/assets/polymorph-cast/anim/德雷克/skill_w_26.png"
+      ],
+      "layout": {
+        "viewBox": [
+          72,
+          108
+        ],
+        "x": -56.881578947368425,
+        "y": -45.57894736842107,
+        "width": 171.3947368421053,
+        "height": 162.1578947368421
+      }
+    },
+    "1": {
+      "source": "assets/anim/德雷克",
+      "body": [
+        "/assets/polymorph-cast/anim/德雷克/skill_0.png",
+        "/assets/polymorph-cast/anim/德雷克/skill_1.png",
+        "/assets/polymorph-cast/anim/德雷克/skill_2.png",
+        "/assets/polymorph-cast/anim/德雷克/skill_3.png",
+        "/assets/polymorph-cast/anim/德雷克/skill_4.png",
+        "/assets/polymorph-cast/anim/德雷克/skill_5.png",
+        "/assets/polymorph-cast/anim/德雷克/skill_6.png",
+        "/assets/polymorph-cast/anim/德雷克/skill_7.png",
+        "/assets/polymorph-cast/anim/德雷克/skill_8.png",
+        "/assets/polymorph-cast/anim/德雷克/skill_9.png",
+        "/assets/polymorph-cast/anim/德雷克/skill_10.png",
+        "/assets/polymorph-cast/anim/德雷克/skill_11.png",
+        "/assets/polymorph-cast/anim/德雷克/skill_12.png",
+        "/assets/polymorph-cast/anim/德雷克/skill_13.png",
+        "/assets/polymorph-cast/anim/德雷克/skill_14.png",
+        "/assets/polymorph-cast/anim/德雷克/skill_15.png",
+        "/assets/polymorph-cast/anim/德雷克/skill_16.png",
+        "/assets/polymorph-cast/anim/德雷克/skill_17.png",
+        "/assets/polymorph-cast/anim/德雷克/skill_18.png",
+        "/assets/polymorph-cast/anim/德雷克/skill_19.png",
+        "/assets/polymorph-cast/anim/德雷克/skill_20.png",
+        "/assets/polymorph-cast/anim/德雷克/skill_21.png",
+        "/assets/polymorph-cast/anim/德雷克/skill_22.png",
+        "/assets/polymorph-cast/anim/德雷克/skill_23.png",
+        "/assets/polymorph-cast/anim/德雷克/skill_24.png",
+        "/assets/polymorph-cast/anim/德雷克/skill_25.png",
+        "/assets/polymorph-cast/anim/德雷克/skill_26.png"
+      ],
+      "shadow": [
+        "/assets/polymorph-cast/anim/德雷克/skill_s_0.png",
+        "/assets/polymorph-cast/anim/德雷克/skill_s_1.png",
+        "/assets/polymorph-cast/anim/德雷克/skill_s_2.png",
+        "/assets/polymorph-cast/anim/德雷克/skill_s_3.png",
+        "/assets/polymorph-cast/anim/德雷克/skill_s_4.png",
+        "/assets/polymorph-cast/anim/德雷克/skill_s_5.png",
+        "/assets/polymorph-cast/anim/德雷克/skill_s_6.png",
+        "/assets/polymorph-cast/anim/德雷克/skill_s_7.png",
+        "/assets/polymorph-cast/anim/德雷克/skill_s_8.png",
+        "/assets/polymorph-cast/anim/德雷克/skill_s_9.png",
+        "/assets/polymorph-cast/anim/德雷克/skill_s_10.png",
+        "/assets/polymorph-cast/anim/德雷克/skill_s_11.png",
+        "/assets/polymorph-cast/anim/德雷克/skill_s_12.png",
+        "/assets/polymorph-cast/anim/德雷克/skill_s_13.png",
+        "/assets/polymorph-cast/anim/德雷克/skill_s_14.png",
+        "/assets/polymorph-cast/anim/德雷克/skill_s_15.png",
+        "/assets/polymorph-cast/anim/德雷克/skill_s_16.png",
+        "/assets/polymorph-cast/anim/德雷克/skill_s_17.png",
+        "/assets/polymorph-cast/anim/德雷克/skill_s_18.png",
+        "/assets/polymorph-cast/anim/德雷克/skill_s_19.png",
+        "/assets/polymorph-cast/anim/德雷克/skill_s_20.png",
+        "/assets/polymorph-cast/anim/德雷克/skill_s_21.png",
+        "/assets/polymorph-cast/anim/德雷克/skill_s_22.png",
+        "/assets/polymorph-cast/anim/德雷克/skill_s_23.png",
+        "/assets/polymorph-cast/anim/德雷克/skill_s_24.png",
+        "/assets/polymorph-cast/anim/德雷克/skill_s_25.png",
+        "/assets/polymorph-cast/anim/德雷克/skill_s_26.png"
+      ],
+      "weapon": [
+        "/assets/polymorph-cast/anim/德雷克/skill_w_0.png",
+        "/assets/polymorph-cast/anim/德雷克/skill_w_1.png",
+        "/assets/polymorph-cast/anim/德雷克/skill_w_2.png",
+        "/assets/polymorph-cast/anim/德雷克/skill_w_3.png",
+        "/assets/polymorph-cast/anim/德雷克/skill_w_4.png",
+        "/assets/polymorph-cast/anim/德雷克/skill_w_5.png",
+        "/assets/polymorph-cast/anim/德雷克/skill_w_6.png",
+        "/assets/polymorph-cast/anim/德雷克/skill_w_7.png",
+        "/assets/polymorph-cast/anim/德雷克/skill_w_8.png",
+        "/assets/polymorph-cast/anim/德雷克/skill_w_9.png",
+        "/assets/polymorph-cast/anim/德雷克/skill_w_10.png",
+        "/assets/polymorph-cast/anim/德雷克/skill_w_11.png",
+        "/assets/polymorph-cast/anim/德雷克/skill_w_12.png",
+        "/assets/polymorph-cast/anim/德雷克/skill_w_13.png",
+        "/assets/polymorph-cast/anim/德雷克/skill_w_14.png",
+        "/assets/polymorph-cast/anim/德雷克/skill_w_15.png",
+        "/assets/polymorph-cast/anim/德雷克/skill_w_16.png",
+        "/assets/polymorph-cast/anim/德雷克/skill_w_17.png",
+        "/assets/polymorph-cast/anim/德雷克/skill_w_18.png",
+        "/assets/polymorph-cast/anim/德雷克/skill_w_19.png",
+        "/assets/polymorph-cast/anim/德雷克/skill_w_20.png",
+        "/assets/polymorph-cast/anim/德雷克/skill_w_21.png",
+        "/assets/polymorph-cast/anim/德雷克/skill_w_22.png",
+        "/assets/polymorph-cast/anim/德雷克/skill_w_23.png",
+        "/assets/polymorph-cast/anim/德雷克/skill_w_24.png",
+        "/assets/polymorph-cast/anim/德雷克/skill_w_25.png",
+        "/assets/polymorph-cast/anim/德雷克/skill_w_26.png"
+      ],
+      "layout": {
+        "viewBox": [
+          72,
+          108
+        ],
+        "x": -56.881578947368425,
+        "y": -45.57894736842107,
+        "width": 171.3947368421053,
+        "height": 162.1578947368421
+      }
+    },
+    "2": {
+      "source": "assets/anim/德雷克",
+      "body": [
+        "/assets/polymorph-cast/anim/德雷克/skill_0.png",
+        "/assets/polymorph-cast/anim/德雷克/skill_1.png",
+        "/assets/polymorph-cast/anim/德雷克/skill_2.png",
+        "/assets/polymorph-cast/anim/德雷克/skill_3.png",
+        "/assets/polymorph-cast/anim/德雷克/skill_4.png",
+        "/assets/polymorph-cast/anim/德雷克/skill_5.png",
+        "/assets/polymorph-cast/anim/德雷克/skill_6.png",
+        "/assets/polymorph-cast/anim/德雷克/skill_7.png",
+        "/assets/polymorph-cast/anim/德雷克/skill_8.png",
+        "/assets/polymorph-cast/anim/德雷克/skill_9.png",
+        "/assets/polymorph-cast/anim/德雷克/skill_10.png",
+        "/assets/polymorph-cast/anim/德雷克/skill_11.png",
+        "/assets/polymorph-cast/anim/德雷克/skill_12.png",
+        "/assets/polymorph-cast/anim/德雷克/skill_13.png",
+        "/assets/polymorph-cast/anim/德雷克/skill_14.png",
+        "/assets/polymorph-cast/anim/德雷克/skill_15.png",
+        "/assets/polymorph-cast/anim/德雷克/skill_16.png",
+        "/assets/polymorph-cast/anim/德雷克/skill_17.png",
+        "/assets/polymorph-cast/anim/德雷克/skill_18.png",
+        "/assets/polymorph-cast/anim/德雷克/skill_19.png",
+        "/assets/polymorph-cast/anim/德雷克/skill_20.png",
+        "/assets/polymorph-cast/anim/德雷克/skill_21.png",
+        "/assets/polymorph-cast/anim/德雷克/skill_22.png",
+        "/assets/polymorph-cast/anim/德雷克/skill_23.png",
+        "/assets/polymorph-cast/anim/德雷克/skill_24.png",
+        "/assets/polymorph-cast/anim/德雷克/skill_25.png",
+        "/assets/polymorph-cast/anim/德雷克/skill_26.png"
+      ],
+      "shadow": [
+        "/assets/polymorph-cast/anim/德雷克/skill_s_0.png",
+        "/assets/polymorph-cast/anim/德雷克/skill_s_1.png",
+        "/assets/polymorph-cast/anim/德雷克/skill_s_2.png",
+        "/assets/polymorph-cast/anim/德雷克/skill_s_3.png",
+        "/assets/polymorph-cast/anim/德雷克/skill_s_4.png",
+        "/assets/polymorph-cast/anim/德雷克/skill_s_5.png",
+        "/assets/polymorph-cast/anim/德雷克/skill_s_6.png",
+        "/assets/polymorph-cast/anim/德雷克/skill_s_7.png",
+        "/assets/polymorph-cast/anim/德雷克/skill_s_8.png",
+        "/assets/polymorph-cast/anim/德雷克/skill_s_9.png",
+        "/assets/polymorph-cast/anim/德雷克/skill_s_10.png",
+        "/assets/polymorph-cast/anim/德雷克/skill_s_11.png",
+        "/assets/polymorph-cast/anim/德雷克/skill_s_12.png",
+        "/assets/polymorph-cast/anim/德雷克/skill_s_13.png",
+        "/assets/polymorph-cast/anim/德雷克/skill_s_14.png",
+        "/assets/polymorph-cast/anim/德雷克/skill_s_15.png",
+        "/assets/polymorph-cast/anim/德雷克/skill_s_16.png",
+        "/assets/polymorph-cast/anim/德雷克/skill_s_17.png",
+        "/assets/polymorph-cast/anim/德雷克/skill_s_18.png",
+        "/assets/polymorph-cast/anim/德雷克/skill_s_19.png",
+        "/assets/polymorph-cast/anim/德雷克/skill_s_20.png",
+        "/assets/polymorph-cast/anim/德雷克/skill_s_21.png",
+        "/assets/polymorph-cast/anim/德雷克/skill_s_22.png",
+        "/assets/polymorph-cast/anim/德雷克/skill_s_23.png",
+        "/assets/polymorph-cast/anim/德雷克/skill_s_24.png",
+        "/assets/polymorph-cast/anim/德雷克/skill_s_25.png",
+        "/assets/polymorph-cast/anim/德雷克/skill_s_26.png"
+      ],
+      "weapon": [
+        "/assets/polymorph-cast/anim/德雷克/skill_w_0.png",
+        "/assets/polymorph-cast/anim/德雷克/skill_w_1.png",
+        "/assets/polymorph-cast/anim/德雷克/skill_w_2.png",
+        "/assets/polymorph-cast/anim/德雷克/skill_w_3.png",
+        "/assets/polymorph-cast/anim/德雷克/skill_w_4.png",
+        "/assets/polymorph-cast/anim/德雷克/skill_w_5.png",
+        "/assets/polymorph-cast/anim/德雷克/skill_w_6.png",
+        "/assets/polymorph-cast/anim/德雷克/skill_w_7.png",
+        "/assets/polymorph-cast/anim/德雷克/skill_w_8.png",
+        "/assets/polymorph-cast/anim/德雷克/skill_w_9.png",
+        "/assets/polymorph-cast/anim/德雷克/skill_w_10.png",
+        "/assets/polymorph-cast/anim/德雷克/skill_w_11.png",
+        "/assets/polymorph-cast/anim/德雷克/skill_w_12.png",
+        "/assets/polymorph-cast/anim/德雷克/skill_w_13.png",
+        "/assets/polymorph-cast/anim/德雷克/skill_w_14.png",
+        "/assets/polymorph-cast/anim/德雷克/skill_w_15.png",
+        "/assets/polymorph-cast/anim/德雷克/skill_w_16.png",
+        "/assets/polymorph-cast/anim/德雷克/skill_w_17.png",
+        "/assets/polymorph-cast/anim/德雷克/skill_w_18.png",
+        "/assets/polymorph-cast/anim/德雷克/skill_w_19.png",
+        "/assets/polymorph-cast/anim/德雷克/skill_w_20.png",
+        "/assets/polymorph-cast/anim/德雷克/skill_w_21.png",
+        "/assets/polymorph-cast/anim/德雷克/skill_w_22.png",
+        "/assets/polymorph-cast/anim/德雷克/skill_w_23.png",
+        "/assets/polymorph-cast/anim/德雷克/skill_w_24.png",
+        "/assets/polymorph-cast/anim/德雷克/skill_w_25.png",
+        "/assets/polymorph-cast/anim/德雷克/skill_w_26.png"
+      ],
+      "layout": {
+        "viewBox": [
+          72,
+          108
+        ],
+        "x": -56.881578947368425,
+        "y": -45.57894736842107,
+        "width": 171.3947368421053,
+        "height": 162.1578947368421
+      }
+    }
+  },
+  "deathknight": {
+    "0": {
+      "source": "assets/morphanim/死亡騎士2",
+      "body": [
+        "/assets/polymorph-cast/morphanim/死亡騎士2/skill_0.png",
+        "/assets/polymorph-cast/morphanim/死亡騎士2/skill_1.png",
+        "/assets/polymorph-cast/morphanim/死亡騎士2/skill_2.png",
+        "/assets/polymorph-cast/morphanim/死亡騎士2/skill_3.png",
+        "/assets/polymorph-cast/morphanim/死亡騎士2/skill_4.png"
+      ],
+      "shadow": [
+        "/assets/polymorph-cast/morphanim/死亡騎士2/skill_s_0.png",
+        "/assets/polymorph-cast/morphanim/死亡騎士2/skill_s_1.png",
+        "/assets/polymorph-cast/morphanim/死亡騎士2/skill_s_2.png",
+        "/assets/polymorph-cast/morphanim/死亡騎士2/skill_s_3.png",
+        "/assets/polymorph-cast/morphanim/死亡騎士2/skill_s_4.png"
+      ],
+      "weapon": [
+        "/assets/polymorph-cast/morphanim/死亡騎士2/skill_w_0.png",
+        "/assets/polymorph-cast/morphanim/死亡騎士2/skill_w_1.png",
+        "/assets/polymorph-cast/morphanim/死亡騎士2/skill_w_2.png",
+        "/assets/polymorph-cast/morphanim/死亡騎士2/skill_w_3.png",
+        "/assets/polymorph-cast/morphanim/死亡騎士2/skill_w_4.png"
+      ],
+      "layout": {
+        "viewBox": [
+          113,
+          102
+        ],
+        "x": -36.27419354838709,
+        "y": -8.225806451612897,
+        "width": 177.74193548387095,
+        "height": 145.0
+      }
+    },
+    "1": {
+      "source": "assets/morphanim/死亡騎士F",
+      "body": [
+        "/assets/polymorph-cast/morphanim/死亡騎士F/skill_0.png",
+        "/assets/polymorph-cast/morphanim/死亡騎士F/skill_1.png",
+        "/assets/polymorph-cast/morphanim/死亡騎士F/skill_2.png",
+        "/assets/polymorph-cast/morphanim/死亡騎士F/skill_3.png",
+        "/assets/polymorph-cast/morphanim/死亡騎士F/skill_4.png"
+      ],
+      "shadow": [
+        "/assets/polymorph-cast/morphanim/死亡騎士F/skill_s_0.png",
+        "/assets/polymorph-cast/morphanim/死亡騎士F/skill_s_1.png",
+        "/assets/polymorph-cast/morphanim/死亡騎士F/skill_s_2.png",
+        "/assets/polymorph-cast/morphanim/死亡騎士F/skill_s_3.png",
+        "/assets/polymorph-cast/morphanim/死亡騎士F/skill_s_4.png"
+      ],
+      "weapon": [
+        "/assets/polymorph-cast/morphanim/死亡騎士F/skill_w_0.png",
+        "/assets/polymorph-cast/morphanim/死亡騎士F/skill_w_1.png",
+        "/assets/polymorph-cast/morphanim/死亡騎士F/skill_w_2.png",
+        "/assets/polymorph-cast/morphanim/死亡騎士F/skill_w_3.png",
+        "/assets/polymorph-cast/morphanim/死亡騎士F/skill_w_4.png"
+      ],
+      "layout": {
+        "viewBox": [
+          113,
+          102
+        ],
+        "x": -36.27419354838709,
+        "y": -8.225806451612897,
+        "width": 177.74193548387095,
+        "height": 145.0
+      }
+    },
+    "2": {
+      "source": "assets/morphanim/死亡騎士",
+      "body": [
+        "/assets/polymorph-cast/morphanim/死亡騎士/skill_0.png",
+        "/assets/polymorph-cast/morphanim/死亡騎士/skill_1.png",
+        "/assets/polymorph-cast/morphanim/死亡騎士/skill_2.png",
+        "/assets/polymorph-cast/morphanim/死亡騎士/skill_3.png",
+        "/assets/polymorph-cast/morphanim/死亡騎士/skill_4.png"
+      ],
+      "shadow": [
+        "/assets/polymorph-cast/morphanim/死亡騎士/skill_s_0.png",
+        "/assets/polymorph-cast/morphanim/死亡騎士/skill_s_1.png",
+        "/assets/polymorph-cast/morphanim/死亡騎士/skill_s_2.png",
+        "/assets/polymorph-cast/morphanim/死亡騎士/skill_s_3.png",
+        "/assets/polymorph-cast/morphanim/死亡騎士/skill_s_4.png"
+      ],
+      "weapon": [
+        "/assets/polymorph-cast/morphanim/死亡騎士/skill_w_0.png",
+        "/assets/polymorph-cast/morphanim/死亡騎士/skill_w_1.png",
+        "/assets/polymorph-cast/morphanim/死亡騎士/skill_w_2.png",
+        "/assets/polymorph-cast/morphanim/死亡騎士/skill_w_3.png",
+        "/assets/polymorph-cast/morphanim/死亡騎士/skill_w_4.png"
+      ],
+      "layout": {
+        "viewBox": [
+          113,
+          102
+        ],
+        "x": -36.27419354838709,
+        "y": -8.225806451612897,
+        "width": 177.74193548387095,
+        "height": 145.0
+      }
+    }
+  },
+  "darkelf": {
+    "0": {
+      "source": "assets/morphanim/黑暗精靈2",
+      "body": [
+        "/assets/polymorph-cast/morphanim/黑暗精靈2/skill_0.png",
+        "/assets/polymorph-cast/morphanim/黑暗精靈2/skill_1.png",
+        "/assets/polymorph-cast/morphanim/黑暗精靈2/skill_2.png",
+        "/assets/polymorph-cast/morphanim/黑暗精靈2/skill_3.png",
+        "/assets/polymorph-cast/morphanim/黑暗精靈2/skill_4.png",
+        "/assets/polymorph-cast/morphanim/黑暗精靈2/skill_5.png",
+        "/assets/polymorph-cast/morphanim/黑暗精靈2/skill_6.png",
+        "/assets/polymorph-cast/morphanim/黑暗精靈2/skill_7.png",
+        "/assets/polymorph-cast/morphanim/黑暗精靈2/skill_8.png",
+        "/assets/polymorph-cast/morphanim/黑暗精靈2/skill_9.png",
+        "/assets/polymorph-cast/morphanim/黑暗精靈2/skill_10.png",
+        "/assets/polymorph-cast/morphanim/黑暗精靈2/skill_11.png",
+        "/assets/polymorph-cast/morphanim/黑暗精靈2/skill_12.png"
+      ],
+      "shadow": [
+        "/assets/polymorph-cast/morphanim/黑暗精靈2/skill_s_0.png",
+        "/assets/polymorph-cast/morphanim/黑暗精靈2/skill_s_1.png",
+        "/assets/polymorph-cast/morphanim/黑暗精靈2/skill_s_2.png",
+        "/assets/polymorph-cast/morphanim/黑暗精靈2/skill_s_3.png",
+        "/assets/polymorph-cast/morphanim/黑暗精靈2/skill_s_4.png",
+        "/assets/polymorph-cast/morphanim/黑暗精靈2/skill_s_5.png",
+        "/assets/polymorph-cast/morphanim/黑暗精靈2/skill_s_6.png",
+        "/assets/polymorph-cast/morphanim/黑暗精靈2/skill_s_7.png",
+        "/assets/polymorph-cast/morphanim/黑暗精靈2/skill_s_8.png",
+        "/assets/polymorph-cast/morphanim/黑暗精靈2/skill_s_9.png",
+        "/assets/polymorph-cast/morphanim/黑暗精靈2/skill_s_10.png",
+        "/assets/polymorph-cast/morphanim/黑暗精靈2/skill_s_11.png",
+        "/assets/polymorph-cast/morphanim/黑暗精靈2/skill_s_12.png"
+      ],
+      "weapon": [
+        null,
+        null,
+        null,
+        null,
+        null,
+        null,
+        null,
+        null,
+        null,
+        null,
+        null,
+        null,
+        null
+      ],
+      "layout": {
+        "viewBox": [
+          59,
+          66
+        ],
+        "x": -70.32456140350877,
+        "y": -12.68421052631578,
+        "width": 187.64912280701753,
+        "height": 129.68421052631578
+      }
+    },
+    "1": {
+      "source": "assets/morphanim/黑暗精靈F",
+      "body": [
+        "/assets/polymorph-cast/morphanim/黑暗精靈F/skill_0.png",
+        "/assets/polymorph-cast/morphanim/黑暗精靈F/skill_1.png",
+        "/assets/polymorph-cast/morphanim/黑暗精靈F/skill_2.png",
+        "/assets/polymorph-cast/morphanim/黑暗精靈F/skill_3.png",
+        "/assets/polymorph-cast/morphanim/黑暗精靈F/skill_4.png",
+        "/assets/polymorph-cast/morphanim/黑暗精靈F/skill_5.png",
+        "/assets/polymorph-cast/morphanim/黑暗精靈F/skill_6.png",
+        "/assets/polymorph-cast/morphanim/黑暗精靈F/skill_7.png",
+        "/assets/polymorph-cast/morphanim/黑暗精靈F/skill_8.png",
+        "/assets/polymorph-cast/morphanim/黑暗精靈F/skill_9.png",
+        "/assets/polymorph-cast/morphanim/黑暗精靈F/skill_10.png",
+        "/assets/polymorph-cast/morphanim/黑暗精靈F/skill_11.png",
+        "/assets/polymorph-cast/morphanim/黑暗精靈F/skill_12.png"
+      ],
+      "shadow": [
+        "/assets/polymorph-cast/morphanim/黑暗精靈F/skill_s_0.png",
+        "/assets/polymorph-cast/morphanim/黑暗精靈F/skill_s_1.png",
+        "/assets/polymorph-cast/morphanim/黑暗精靈F/skill_s_2.png",
+        "/assets/polymorph-cast/morphanim/黑暗精靈F/skill_s_3.png",
+        "/assets/polymorph-cast/morphanim/黑暗精靈F/skill_s_4.png",
+        "/assets/polymorph-cast/morphanim/黑暗精靈F/skill_s_5.png",
+        "/assets/polymorph-cast/morphanim/黑暗精靈F/skill_s_6.png",
+        "/assets/polymorph-cast/morphanim/黑暗精靈F/skill_s_7.png",
+        "/assets/polymorph-cast/morphanim/黑暗精靈F/skill_s_8.png",
+        "/assets/polymorph-cast/morphanim/黑暗精靈F/skill_s_9.png",
+        "/assets/polymorph-cast/morphanim/黑暗精靈F/skill_s_10.png",
+        "/assets/polymorph-cast/morphanim/黑暗精靈F/skill_s_11.png",
+        "/assets/polymorph-cast/morphanim/黑暗精靈F/skill_s_12.png"
+      ],
+      "weapon": [
+        null,
+        null,
+        null,
+        null,
+        null,
+        null,
+        null,
+        null,
+        null,
+        null,
+        null,
+        null,
+        null
+      ],
+      "layout": {
+        "viewBox": [
+          59,
+          66
+        ],
+        "x": -70.32456140350877,
+        "y": -12.68421052631578,
+        "width": 187.64912280701753,
+        "height": 129.68421052631578
+      }
+    },
+    "2": {
+      "source": "assets/morphanim/黑暗精靈",
+      "body": [
+        "/assets/polymorph-cast/morphanim/黑暗精靈/skill_0.png",
+        "/assets/polymorph-cast/morphanim/黑暗精靈/skill_1.png",
+        "/assets/polymorph-cast/morphanim/黑暗精靈/skill_2.png",
+        "/assets/polymorph-cast/morphanim/黑暗精靈/skill_3.png",
+        "/assets/polymorph-cast/morphanim/黑暗精靈/skill_4.png",
+        "/assets/polymorph-cast/morphanim/黑暗精靈/skill_5.png",
+        "/assets/polymorph-cast/morphanim/黑暗精靈/skill_6.png",
+        "/assets/polymorph-cast/morphanim/黑暗精靈/skill_7.png",
+        "/assets/polymorph-cast/morphanim/黑暗精靈/skill_8.png",
+        "/assets/polymorph-cast/morphanim/黑暗精靈/skill_9.png",
+        "/assets/polymorph-cast/morphanim/黑暗精靈/skill_10.png",
+        "/assets/polymorph-cast/morphanim/黑暗精靈/skill_11.png",
+        "/assets/polymorph-cast/morphanim/黑暗精靈/skill_12.png"
+      ],
+      "shadow": [
+        "/assets/polymorph-cast/morphanim/黑暗精靈/skill_s_0.png",
+        "/assets/polymorph-cast/morphanim/黑暗精靈/skill_s_1.png",
+        "/assets/polymorph-cast/morphanim/黑暗精靈/skill_s_2.png",
+        "/assets/polymorph-cast/morphanim/黑暗精靈/skill_s_3.png",
+        "/assets/polymorph-cast/morphanim/黑暗精靈/skill_s_4.png",
+        "/assets/polymorph-cast/morphanim/黑暗精靈/skill_s_5.png",
+        "/assets/polymorph-cast/morphanim/黑暗精靈/skill_s_6.png",
+        "/assets/polymorph-cast/morphanim/黑暗精靈/skill_s_7.png",
+        "/assets/polymorph-cast/morphanim/黑暗精靈/skill_s_8.png",
+        "/assets/polymorph-cast/morphanim/黑暗精靈/skill_s_9.png",
+        "/assets/polymorph-cast/morphanim/黑暗精靈/skill_s_10.png",
+        "/assets/polymorph-cast/morphanim/黑暗精靈/skill_s_11.png",
+        "/assets/polymorph-cast/morphanim/黑暗精靈/skill_s_12.png"
+      ],
+      "weapon": [
+        null,
+        null,
+        null,
+        null,
+        null,
+        null,
+        null,
+        null,
+        null,
+        null,
+        null,
+        null,
+        null
+      ],
+      "layout": {
+        "viewBox": [
+          59,
+          66
+        ],
+        "x": -70.32456140350877,
+        "y": -12.68421052631578,
+        "width": 187.64912280701753,
+        "height": 129.68421052631578
+      }
+    }
+  }
+}

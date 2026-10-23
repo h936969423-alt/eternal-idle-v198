@@ -1,0 +1,10 @@
+'use client';
+import {useState} from 'react';
+import type {Character} from '@/lib/game/engine';
+import type {BattleView} from './use-combat-replay';
+export default function WorldBossRoster({c,view,characters,derived}:{c:Character;view:BattleView;characters:Character[];derived:Record<string,any>}){
+ const [tab,setTab]=useState<'battle'|'ranking'>('battle'),participants=c.bossRooms?.[c.zone]?.ledger?.participants||{};
+ const ids=new Set([...Object.keys(participants),c.id]);
+ const rows=characters.filter(p=>ids.has(p.id)).map(p=>({id:p.id,name:p.name,hp:p.id===c.id?view.hp:p.hp,max:Math.max(1,derived[p.id]?.maxHp||p.hp||1),damage:participants[p.id]?.damage||0})).sort((a,b)=>b.damage-a.damage).slice(0,10);
+ return <section className="world-boss-roster" aria-label="世界王隊伍與排名"><div className="world-boss-tabs" role="tablist" aria-label="世界王資訊"><button role="tab" id={`boss-battle-tab-${c.id}`} aria-controls={`boss-team-${c.id}`} aria-selected={tab==='battle'} onClick={()=>setTab('battle')}>戰鬥</button><button role="tab" id={`boss-ranking-tab-${c.id}`} aria-controls={`boss-ranks-${c.id}`} aria-selected={tab==='ranking'} onClick={()=>setTab('ranking')}>排名</button></div><div role="tabpanel" id={tab==='battle'?`boss-team-${c.id}`:`boss-ranks-${c.id}`} aria-labelledby={tab==='battle'?`boss-battle-tab-${c.id}`:`boss-ranking-tab-${c.id}`}><p className="world-boss-team-note">{tab==='battle'?'隊伍血條（依傷害排序，最多十位）':'本場傷害排名'}<small>本帳號參戰角色</small></p>{rows.map((p,index)=>{const percent=Math.max(0,Math.min(100,p.hp/p.max*100));return tab==='battle'?<div className="world-boss-team-row" key={p.id}><span title={p.name}>{p.name}</span><div className="world-boss-team-hp" role="progressbar" aria-label={`${p.name}生命值`} aria-valuemin={0} aria-valuemax={100} aria-valuenow={Math.round(percent)} aria-valuetext={`${p.hp}/${p.max}`}><span style={{width:`${percent}%`}}/></div><b>{Math.round(percent)}%</b></div>:<div className="world-boss-damage-row" key={p.id}><b>{index+1}</b><span>{p.name}</span><strong>{p.damage.toLocaleString('zh-TW')}</strong></div>;})}</div></section>;
+}

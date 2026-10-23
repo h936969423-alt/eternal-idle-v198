@@ -1,0 +1,489 @@
+{
+  "source": "https://zxc518zxc.github.io/poly.html",
+  "retrievedAt": "2026-10-20",
+  "forms": [
+    {
+      "name": "妖魔",
+      "level": 0,
+      "bonus": {
+        "meleeDmg": 1,
+        "meleeHit": 1
+      },
+      "description": "近傷+1、近命中+1"
+    },
+    {
+      "name": "骷髏",
+      "level": 0,
+      "bonus": {
+        "meleeDmg": 1,
+        "meleeHit": 1
+      },
+      "description": "近傷+1、近命中+1"
+    },
+    {
+      "name": "那魯加妖魔",
+      "level": 0,
+      "bonus": {
+        "meleeDmg": 1,
+        "meleeHit": 1
+      },
+      "description": "近傷+1、近命中+1"
+    },
+    {
+      "name": "妖魔弓箭手",
+      "level": 0,
+      "bonus": {
+        "rangedDmg": 1,
+        "rangedHit": 1
+      },
+      "description": "遠傷+1、遠命中+1"
+    },
+    {
+      "name": "長者",
+      "level": 0,
+      "bonus": {
+        "extraMp": 2,
+        "mpR": 1
+      },
+      "description": "額外魔法點數+2、MP恢復+1"
+    },
+    {
+      "name": "侏儒",
+      "level": 0,
+      "bonus": {
+        "ac": 1,
+        "speedPct": 10
+      },
+      "description": "防禦 AC 提升 1、攻速+10%"
+    },
+    {
+      "name": "歐姆",
+      "level": 0,
+      "bonus": {
+        "extraDmg": 1,
+        "extraHit": 1
+      },
+      "description": "額外傷+1、額外命中+1"
+    },
+    {
+      "name": "巨蟻",
+      "level": 0,
+      "bonus": {
+        "extraHit": 1,
+        "speedPct": 10
+      },
+      "description": "額外命中+1、攻速+10%"
+    },
+    {
+      "name": "奇異鸚鵡",
+      "level": 0,
+      "bonus": {
+        "extraDmg": 1,
+        "extraMp": 1
+      },
+      "description": "額外傷+1、額外魔法點數+1"
+    },
+    {
+      "name": "浣熊",
+      "level": 0,
+      "bonus": {
+        "extraHit": 1,
+        "extraMp": 1
+      },
+      "description": "額外命中+1、額外魔法點數+1"
+    },
+    {
+      "name": "果凍怪",
+      "level": 0,
+      "bonus": {
+        "extraMp": 1,
+        "mr": 4
+      },
+      "description": "額外魔法點數+1、魔防 MR+4"
+    },
+    {
+      "name": "妖魔鬥士",
+      "level": 15,
+      "bonus": {
+        "meleeDmg": 2,
+        "meleeHit": 1
+      },
+      "description": "近傷+2、近命中+1"
+    },
+    {
+      "name": "狼人",
+      "level": 15,
+      "bonus": {
+        "meleeDmg": 1,
+        "meleeHit": 2
+      },
+      "description": "近傷+1、近命中+2"
+    },
+    {
+      "name": "食人妖精",
+      "level": 15,
+      "bonus": {
+        "meleeDmg": 2,
+        "meleeHit": 2
+      },
+      "description": "近傷+2、近命中+2"
+    },
+    {
+      "name": "妖魔巡守",
+      "level": 15,
+      "bonus": {
+        "rangedDmg": 2,
+        "rangedHit": 1
+      },
+      "description": "遠傷+2、遠命中+1"
+    },
+    {
+      "name": "夏洛伯",
+      "level": 15,
+      "bonus": {
+        "ac": 2,
+        "speedPct": 15
+      },
+      "description": "防禦 AC 提升 2、攻速+15%"
+    },
+    {
+      "name": "黑暗妖精運送員",
+      "level": 15,
+      "bonus": {
+        "rangedDmg": 1,
+        "rangedHit": 2
+      },
+      "description": "遠傷+1、遠命中+2"
+    },
+    {
+      "name": "巨大兵蟻",
+      "level": 15,
+      "bonus": {
+        "extraDmg": 2,
+        "extraHit": 1
+      },
+      "description": "額外傷+2、額外命中+1"
+    },
+    {
+      "name": "紙人",
+      "level": 15,
+      "bonus": {
+        "extraMp": 2,
+        "mpR": 2
+      },
+      "description": "額外魔法點數+2、MP恢復+2"
+    },
+    {
+      "name": "雪人",
+      "level": 15,
+      "bonus": {
+        "mdmg": 1
+      },
+      "description": "魔傷+1"
+    },
+    {
+      "name": "萊肯",
+      "level": 30,
+      "bonus": {
+        "meleeDmg": 2,
+        "meleeHit": 2
+      },
+      "description": "近傷+2、近命中+2"
+    },
+    {
+      "name": "思克巴",
+      "level": 30,
+      "bonus": {
+        "mdmg": 1,
+        "mpR": 2
+      },
+      "description": "魔傷+1、MP恢復+2"
+    },
+    {
+      "name": "食人妖精王",
+      "level": 30,
+      "bonus": {
+        "meleeDmg": 3,
+        "meleeHit": 2
+      },
+      "description": "近傷+3、近命中+2"
+    },
+    {
+      "name": "黑暗妖精警衛(矛)",
+      "level": 30,
+      "bonus": {
+        "meleeDmg": 1,
+        "meleeHit": 3
+      },
+      "description": "近傷+1、近命中+3"
+    },
+    {
+      "name": "強盜(弓)",
+      "level": 30,
+      "bonus": {
+        "rangedDmg": 2,
+        "rangedHit": 2
+      },
+      "description": "遠傷+2、遠命中+2"
+    },
+    {
+      "name": "黑暗妖精盜賊",
+      "level": 30,
+      "bonus": {
+        "rangedDmg": 2,
+        "rangedHit": 3
+      },
+      "description": "遠傷+2、遠命中+3"
+    },
+    {
+      "name": "黑暗妖精法師",
+      "level": 30,
+      "bonus": {
+        "extraMp": 3,
+        "mpR": 1
+      },
+      "description": "額外魔法點數+3、MP恢復+1"
+    },
+    {
+      "name": "亞力安",
+      "level": 30,
+      "bonus": {
+        "meleeDmg": 1,
+        "meleeHit": 1,
+        "extraMp": 2
+      },
+      "description": "近傷+1、近命中+1、額外魔法點數+2"
+    },
+    {
+      "name": "曼波兔",
+      "level": 30,
+      "bonus": {
+        "er": 1,
+        "speedPct": 15
+      },
+      "description": "閃避 ER+1、攻速+15%"
+    },
+    {
+      "name": "德雷克",
+      "level": 45,
+      "bonus": {
+        "meleeDmg": 3,
+        "meleeHit": 3
+      },
+      "description": "近傷+3、近命中+3"
+    },
+    {
+      "name": "布雷哲",
+      "level": 45,
+      "bonus": {
+        "meleeDmg": 2,
+        "meleeHit": 4
+      },
+      "description": "近傷+2、近命中+4"
+    },
+    {
+      "name": "賞金獵人",
+      "level": 45,
+      "bonus": {
+        "meleeDmg": 1,
+        "meleeHit": 1,
+        "speedPct": 15
+      },
+      "description": "近傷+1、近命中+1、攻速+15%"
+    },
+    {
+      "name": "黑暗妖精警衛(弓)",
+      "level": 45,
+      "bonus": {
+        "rangedDmg": 1,
+        "rangedHit": 1,
+        "speedPct": 15
+      },
+      "description": "遠傷+1、遠命中+1、攻速+15%"
+    },
+    {
+      "name": "黑暗妖精巡守",
+      "level": 45,
+      "bonus": {
+        "rangedDmg": 3,
+        "rangedHit": 3
+      },
+      "description": "遠傷+3、遠命中+3"
+    },
+    {
+      "name": "巴風特",
+      "level": 45,
+      "bonus": {
+        "mdmg": 1,
+        "extraMp": 2,
+        "mpR": 2
+      },
+      "description": "魔傷+1、額外魔法點數+2、MP恢復+2"
+    },
+    {
+      "name": "克特",
+      "level": 50,
+      "bonus": {
+        "meleeDmg": 3,
+        "meleeHit": 3,
+        "speedPct": 15
+      },
+      "description": "近傷+3、近命中+3、攻速+15%"
+    },
+    {
+      "name": "刺客首領",
+      "level": 50,
+      "bonus": {
+        "meleeDmg": 2,
+        "meleeHit": 2,
+        "speedPct": 20
+      },
+      "description": "近傷+2、近命中+2、攻速+20%"
+    },
+    {
+      "name": "小惡魔",
+      "level": 50,
+      "bonus": {
+        "rangedDmg": 1,
+        "mdmg": 1,
+        "mpR": 3,
+        "speedPct": 15
+      },
+      "description": "遠傷+1、魔傷+1、MP恢復+3、攻速+15%"
+    },
+    {
+      "name": "黑騎士",
+      "level": 50,
+      "bonus": {
+        "meleeDmg": 1,
+        "meleeHit": 4,
+        "speedPct": 10
+      },
+      "description": "近傷+1、近命中+4、攻速+10%"
+    },
+    {
+      "name": "火焰弓箭手",
+      "level": 50,
+      "bonus": {
+        "rangedDmg": 3,
+        "rangedHit": 3,
+        "speedPct": 10
+      },
+      "description": "遠傷+3、遠命中+3、攻速+10%"
+    },
+    {
+      "name": "黑法師",
+      "level": 50,
+      "bonus": {
+        "mdmg": 1,
+        "extraMp": 3,
+        "mpR": 2,
+        "speedPct": 10
+      },
+      "description": "魔傷+1、額外魔法點數+3、MP恢復+2、攻速+10%"
+    },
+    {
+      "name": "死亡騎士",
+      "level": 52,
+      "bonus": {
+        "meleeDmg": 3,
+        "meleeHit": 3,
+        "speedPct": 20
+      },
+      "description": "近傷+3、近命中+3、攻速+20%"
+    },
+    {
+      "name": "狂暴將軍",
+      "level": 52,
+      "bonus": {
+        "meleeDmg": 5,
+        "speedPct": 15
+      },
+      "description": "近傷+5、攻速+15%"
+    },
+    {
+      "name": "黑暗精靈",
+      "level": 52,
+      "bonus": {
+        "rangedDmg": 3,
+        "rangedHit": 3,
+        "speedPct": 20
+      },
+      "description": "遠傷+3、遠命中+3、攻速+20%"
+    },
+    {
+      "name": "黑長者",
+      "level": 52,
+      "bonus": {
+        "mdmg": 2,
+        "extraMp": 1,
+        "mpR": 2,
+        "speedPct": 15
+      },
+      "description": "魔傷+2、額外魔法點數+1、MP恢復+2、攻速+15%"
+    },
+    {
+      "name": "巴列斯",
+      "level": 52,
+      "bonus": {
+        "mdmg": 1,
+        "extraMp": 2,
+        "mpR": 4,
+        "speedPct": 10
+      },
+      "description": "魔傷+1、額外魔法點數+2、MP恢復+4、攻速+10%"
+    },
+    {
+      "name": "真死亡騎士(紅)",
+      "level": 55,
+      "bonus": {
+        "meleeDmg": 4,
+        "meleeHit": 4,
+        "speedPct": 20
+      },
+      "description": "近傷+4、近命中+4、攻速+20%"
+    },
+    {
+      "name": "死亡騎士(焚焰)",
+      "level": 55,
+      "bonus": {
+        "meleeDmg": 6,
+        "speedPct": 20
+      },
+      "description": "近傷+6、攻速+20%"
+    },
+    {
+      "name": "海露拜",
+      "level": 55,
+      "bonus": {
+        "rangedDmg": 4,
+        "rangedHit": 4,
+        "speedPct": 20
+      },
+      "description": "遠傷+4、遠命中+4、攻速+20%"
+    },
+    {
+      "name": "宙斯",
+      "level": 55,
+      "bonus": {
+        "mdmg": 3,
+        "extraMp": 2,
+        "mpR": 3,
+        "speedPct": 15
+      },
+      "description": "魔傷+3、額外魔法點數+2、MP恢復+3、攻速+15%"
+    },
+    {
+      "name": "依詩蒂",
+      "level": 55,
+      "bonus": {
+        "mdmg": 2,
+        "extraMp": 2,
+        "mpR": 4,
+        "summonHit": 2,
+        "speedPct": 10
+      },
+      "description": "魔傷+2、額外魔法點數+2、MP恢復+4、召喚獸命中+2、攻速+10%"
+    }
+  ]
+}

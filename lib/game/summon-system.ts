@@ -1,0 +1,20 @@
+import tiers from './summon-tiers.json';
+import raw from './gamedata.json';
+import type {Character} from './engine';
+export type SummonEntity={uid:string;form:string;lv:number;hp:number;maxHp:number;nextAt:number;diedAt?:number};
+export type SummonContract={until:number;entities:SummonEntity[];auto:boolean;retryAt:number};
+export const SUMMON_TIERS=tiers;
+const items=raw.items as Record<string,any>;
+export function summonRing(c:Character){return Object.values(c.equipment).some(e=>{const id=e.id.split('@')[0],d=items[id];return id==='ap381_armor_20284'||d?.summonCtrl||d?.sourceDefinition?.summonCtrl;});}
+export function summonEntry(name:string){for(let index=0;index<tiers.length;index++){const tier=tiers[index],mob=tier.mobs.find(m=>m.n===name);if(mob)return {tier,mob,index};}return null;}
+export function summonCount(c:Character,name:string,cha:number){const e=summonEntry(name);if(!e)return 0;const t=e.tier;return ('fixedCount' in t&&t.fixedCount)||Math.max(0,Math.min(summonRing(c)?t.ringCap:t.cap,Math.floor((cha+6)/(('div' in t&&t.div)||8))));}
+export function summonEligible(c:Character,name:string,cha:number){const e=summonEntry(name);return !!e&&c.lv>=e.tier.reqLv&&(!('reqCha' in e.tier)||cha>=e.tier.reqCha!)&&(!('ring' in e.mob)||summonRing(c))&&summonCount(c,name,cha)>0;}
+export function summonForm(c:Character,cha:number){if(c.summonChoice&&summonRing(c)&&summonEligible(c,c.summonChoice,cha))return c.summonChoice;return [...tiers].reverse().find(t=>t.reqLv<=52&&t.reqLv<=c.lv)?.mobs[0].n||'';}
+export function summonNumbers(c:Character,name:string,b:Record<string,number>){const e=summonEntry(name);if(!e)throw Error('召喚怪物不存在');const {tier:t,mob:m,index}=e,cha=Math.max(0,b.cha),hps=t.mobs.map(m=>m.hp).sort((a,b)=>a-b),hpScale=Math.pow(hps[Math.floor(hps.length/2)]/m.hp,.35);
+ const squad=(39+.09*cha*c.lv)*(1+index*.06)*(('premium' in t&&t.premium)||1)*hpScale,mean=squad/t.cap*m.aspd/10,flat=Math.round(mean*.55),dice=Math.max(1,Math.round((mean-flat)*2));
+ const extra=Object.values(c.equipment).reduce((n,e)=>{const i=items[e.id.split('@')[0]];return n+(i?.summonMdmg||i?.sourceDefinition?.summonMdmg||0);},0),bonus=b.summonBonus||0;
+ return {flat:flat+bonus,dice,interval:m.aspd*100,mult:(1+Math.min(12,Math.max(0,b.mdmg+extra))/80),hit:c.lv+Math.floor(c.lv*.75+cha*.35)+Math.floor(m.lv/8)+index+bonus+(b.summonHit||0),ac:10-Math.floor(m.lv/4),dr:Math.floor(m.lv/10),skillPower:Math.max(1,Math.floor(m.lv+c.lv*.35+index*2+cha*.5))};}
+export function summonHit(raw:number,rng:()=>number){let h;if(raw>=8)h=Math.min(20,raw);else{const f=Math.min(30,8-raw)/30;h=8-7*(2*f-f*f);}const lo=Math.floor(h);return Math.max(1,Math.min(20,lo+(rng()<h-lo?1:0)));}
+export function summonRoll(n:number,sides:number,rng:()=>number){let v=0;for(let i=0;i<n;i++)v+=1+Math.floor(rng()*sides);return v;}
+export function summonPhysical(c:Character,s:SummonEntity,b:Record<string,number>,target:{lv:number;ac:number;dr?:number},rng:()=>number){const d=summonNumbers(c,s.form,b),hv=summonHit(d.hit-target.lv+target.ac,rng),r=summonRoll(1,20,rng);if(r===1||(r!==20&&hv<r))return {damage:0,miss:true};return {damage:Math.max(1,Math.floor(((r===20?d.dice:summonRoll(1,d.dice,rng))+d.flat)*d.mult)-(target.dr||0)),miss:false};}
+export function buildSummons(c:Character,b:Record<string,number>,now:number){if(c.cls!=='mage'||c.lv<28)throw Error('召喚術需要法師 Lv.28');if((raw.towns as Record<string,unknown>)[c.zone])throw Error('安全區不能召喚，請先前往狩獵區');const form=summonForm(c,b.cha);if(!form||!summonEligible(c,form,b.cha))throw Error('等級或魅力不足，無法召喚');const e=summonEntry(form)!;return {until:now+3600000,auto:true,retryAt:now+2000,entities:Array.from({length:summonCount(c,form,b.cha)},(_,i)=>({uid:`sum-${crypto.randomUUID()}`,form,lv:e.mob.lv,hp:e.mob.hp,maxHp:e.mob.hp,nextAt:now+500+i*300}))};}

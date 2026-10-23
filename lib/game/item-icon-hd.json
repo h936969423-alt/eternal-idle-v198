@@ -1,0 +1,932 @@
+{
+  "/assets/equipment381/icons/1195.webp": {
+    "src": "/assets/equipment-hd/1195-v2.webp",
+    "width": 384,
+    "height": 384,
+    "origin": "AI 高清重製；原始 3.81 圖示保留"
+  },
+  "/assets/equipment381/icons/58.webp": {
+    "src": "/assets/equipment-hd/58-v2.webp",
+    "width": 384,
+    "height": 384,
+    "origin": "AI 高清重製；原始 3.81 圖示保留"
+  },
+  "/assets/equipment381/icons/265.webp": {
+    "src": "/assets/equipment-hd/265-v2.webp",
+    "width": 384,
+    "height": 384,
+    "origin": "AI 高清重製；原始 3.81 圖示保留"
+  },
+  "/assets/equipment381/icons/328.webp": {
+    "src": "/assets/equipment-hd/328-v2.webp",
+    "width": 384,
+    "height": 384,
+    "origin": "AI 高清重製；原始 3.81 圖示保留"
+  },
+  "/assets/equipment381/icons/1072.webp": {
+    "src": "/assets/equipment-hd/1072-v2.webp",
+    "width": 384,
+    "height": 384,
+    "origin": "AI 高清重製；原始 3.81 圖示保留"
+  },
+  "/assets/equipment381/icons/1187.webp": {
+    "src": "/assets/equipment-hd/1187-v2.webp",
+    "width": 384,
+    "height": 384,
+    "origin": "AI 高清重製；原始 3.81 圖示保留"
+  },
+  "/assets/equipment381/icons/3518.webp": {
+    "src": "/assets/equipment-hd/3518-v2.webp",
+    "width": 384,
+    "height": 256,
+    "origin": "AI 高清重製；原始 3.81 圖示保留"
+  },
+  "/assets/equipment381/icons/34.webp": {
+    "src": "/assets/equipment-hd/34-v2.webp",
+    "width": 384,
+    "height": 317,
+    "origin": "AI 高清重製；原始 3.81 圖示保留"
+  },
+  "/assets/equipment381/icons/144.webp": {
+    "src": "/assets/equipment-hd/144-v2.webp",
+    "width": 384,
+    "height": 371,
+    "origin": "AI 高清重製；原始 3.81 圖示保留"
+  },
+  "/assets/equipment381/icons/322.webp": {
+    "src": "/assets/equipment-hd/322-v2.webp",
+    "width": 384,
+    "height": 384,
+    "origin": "AI 高清重製；原始 3.81 圖示保留"
+  },
+  "/assets/equipment381/icons/35.webp": {
+    "src": "/assets/equipment-hd/35-v2.webp",
+    "width": 384,
+    "height": 281,
+    "origin": "AI 高清重製；原始 3.81 圖示保留"
+  },
+  "/assets/equipment381/icons/1332.webp": {
+    "src": "/assets/equipment-hd/1332-v2.webp",
+    "width": 284,
+    "height": 384,
+    "origin": "AI 高清重製；原始 3.81 圖示保留"
+  },
+  "/assets/equipment381/icons/33.webp": {
+    "src": "/assets/equipment-hd/33-v2.webp",
+    "width": 384,
+    "height": 317,
+    "origin": "AI 高清重製；原始 3.81 圖示保留"
+  },
+  "/assets/equipment381/icons/1629.webp": {
+    "src": "/assets/equipment-hd/1629-v2.webp",
+    "width": 384,
+    "height": 384,
+    "origin": "AI 高清重製；原始 3.81 圖示保留"
+  },
+  "/assets/equipment381/icons/1635.webp": {
+    "src": "/assets/equipment-hd/1635-v2.webp",
+    "width": 384,
+    "height": 384,
+    "origin": "AI 高清重製；原始 3.81 圖示保留"
+  },
+  "/assets/equipment381/icons/1341.webp": {
+    "src": "/assets/equipment-hd/1341-v2.webp",
+    "width": 343,
+    "height": 384,
+    "origin": "AI 高清重製；原始 3.81 圖示保留"
+  },
+  "/assets/equipment381/icons/1921.webp": {
+    "src": "/assets/equipment-hd/1921-v2.webp",
+    "width": 384,
+    "height": 384,
+    "origin": "AI 高清重製；原始 3.81 圖示保留"
+  },
+  "/assets/equipment381/icons/1947.webp": {
+    "src": "/assets/equipment-hd/1947-v2.webp",
+    "width": 356,
+    "height": 384,
+    "origin": "AI 高清重製；原始 3.81 圖示保留"
+  },
+  "/assets/equipment381/icons/1317.webp": {
+    "src": "/assets/equipment-hd/1317-v2.webp",
+    "width": 334,
+    "height": 384,
+    "origin": "AI 高清重製；原始 3.81 圖示保留"
+  },
+  "/assets/equipment381/icons/1995.webp": {
+    "src": "/assets/equipment-hd/1995-v2.webp",
+    "width": 384,
+    "height": 361,
+    "origin": "AI 高清重製；原始 3.81 圖示保留"
+  },
+  "/assets/equipment381/icons/1243.webp": {
+    "src": "/assets/equipment-hd/1243-v2.webp",
+    "width": 384,
+    "height": 375,
+    "origin": "AI 高清重製；原始 3.81 圖示保留"
+  },
+  "/assets/equipment381/icons/1241.webp": {
+    "src": "/assets/equipment-hd/1241-v3.webp",
+    "width": 384,
+    "height": 356,
+    "origin": "AI 高清重製；原始 3.81 圖示保留"
+  },
+  "/assets/equipment381/icons/90.webp": {
+    "src": "/assets/equipment-hd/90-v2.webp",
+    "width": 384,
+    "height": 307,
+    "origin": "AI 高清重製；原始 3.81 圖示保留"
+  },
+  "/assets/equipment381/icons/2.webp": {
+    "src": "/assets/equipment-hd/2-v2.webp",
+    "width": 384,
+    "height": 310,
+    "origin": "AI 高清重製；原始 3.81 圖示保留"
+  },
+  "/assets/equipment381/icons/103.webp": {
+    "src": "/assets/equipment-hd/103-v2.webp",
+    "width": 384,
+    "height": 320,
+    "origin": "AI 高清重製；原始 3.81 圖示保留"
+  },
+  "/assets/equipment381/icons/151.webp": {
+    "src": "/assets/equipment-hd/151-v2.webp",
+    "width": 285,
+    "height": 384,
+    "origin": "AI 高清重製；原始 3.81 圖示保留"
+  },
+  "/assets/equipment381/icons/1871.webp": {
+    "src": "/assets/equipment-hd/1871-v2.webp",
+    "width": 359,
+    "height": 384,
+    "origin": "AI 高清重製；原始 3.81 圖示保留"
+  },
+  "/assets/equipment381/icons/1872.webp": {
+    "src": "/assets/equipment-hd/1872-v2.webp",
+    "width": 369,
+    "height": 384,
+    "origin": "AI 高清重製；原始 3.81 圖示保留"
+  },
+  "/assets/equipment381/icons/105.webp": {
+    "src": "/assets/equipment-hd/105-v2.webp",
+    "width": 384,
+    "height": 310,
+    "origin": "AI 高清重製；原始 3.81 圖示保留"
+  },
+  "/assets/equipment381/icons/932.webp": {
+    "src": "/assets/equipment-hd/932-v2.webp",
+    "width": 384,
+    "height": 282,
+    "origin": "AI 高清重製；原始 3.81 圖示保留"
+  },
+  "/assets/equipment381/icons/321.webp": {
+    "src": "/assets/equipment-hd/321-v2.webp",
+    "width": 384,
+    "height": 384,
+    "origin": "AI 高清重製；原始 3.81 圖示保留"
+  },
+  "/assets/equipment381/icons/298.webp": {
+    "src": "/assets/equipment-hd/298-v2.webp",
+    "width": 384,
+    "height": 384,
+    "origin": "AI 高清重製；原始 3.81 圖示保留"
+  },
+  "/assets/equipment381/icons/276.webp": {
+    "src": "/assets/equipment-hd/276-v2.webp",
+    "width": 370,
+    "height": 384,
+    "origin": "AI 高清重製；原始 3.81 圖示保留"
+  },
+  "/assets/equipment381/icons/1335.webp": {
+    "src": "/assets/equipment-hd/1335-v2.webp",
+    "width": 331,
+    "height": 384,
+    "origin": "AI 高清重製；原始 3.81 圖示保留"
+  },
+  "/assets/equipment381/icons/1779.webp": {
+    "src": "/assets/equipment-hd/1779-v2.webp",
+    "width": 369,
+    "height": 384,
+    "origin": "AI 高清重製；原始 3.81 圖示保留"
+  },
+  "/assets/equipment381/icons/21.webp": {
+    "src": "/assets/equipment-hd/21-v2.webp",
+    "width": 384,
+    "height": 334,
+    "origin": "AI 高清重製；原始 3.81 圖示保留"
+  },
+  "/assets/equipment381/icons/155.webp": {
+    "src": "/assets/equipment-hd/155-v2.webp",
+    "width": 384,
+    "height": 362,
+    "origin": "AI 高清重製；原始 3.81 圖示保留"
+  },
+  "/assets/equipment381/icons/1511.webp": {
+    "src": "/assets/equipment-hd/1511-v2.webp",
+    "width": 332,
+    "height": 384,
+    "origin": "AI 高清重製；原始 3.81 圖示保留"
+  },
+  "/assets/equipment381/icons/1778.webp": {
+    "src": "/assets/equipment-hd/1778-v2.webp",
+    "width": 370,
+    "height": 384,
+    "origin": "AI 高清重製；原始 3.81 圖示保留"
+  },
+  "/assets/equipment381/icons/1250.webp": {
+    "src": "/assets/equipment-hd/1250-v2.webp",
+    "width": 384,
+    "height": 371,
+    "origin": "AI 高清重製；原始 3.81 圖示保留"
+  },
+  "/assets/equipment381/icons/106.webp": {
+    "src": "/assets/equipment-hd/106-v2.webp",
+    "width": 384,
+    "height": 282,
+    "origin": "AI 高清重製；原始 3.81 圖示保留"
+  },
+  "/assets/equipment381/icons/1894.webp": {
+    "src": "/assets/equipment-hd/1894-v2.webp",
+    "width": 384,
+    "height": 384,
+    "origin": "AI 高清重製；原始 3.81 圖示保留"
+  },
+  "/assets/equipment381/icons/1918.webp": {
+    "src": "/assets/equipment-hd/1918-v2.webp",
+    "width": 384,
+    "height": 384,
+    "origin": "AI 高清重製；原始 3.81 圖示保留"
+  },
+  "/assets/equipment381/icons/156.webp": {
+    "src": "/assets/equipment-hd/156-v2.webp",
+    "width": 285,
+    "height": 384,
+    "origin": "AI 高清重製；原始 3.81 圖示保留"
+  },
+  "/assets/equipment381/icons/1019.webp": {
+    "src": "/assets/equipment-hd/1019-v2.webp",
+    "width": 384,
+    "height": 350,
+    "origin": "AI 高清重製；原始 3.81 圖示保留"
+  },
+  "/assets/equipment381/icons/325.webp": {
+    "src": "/assets/equipment-hd/325-v2.webp",
+    "width": 384,
+    "height": 294,
+    "origin": "AI 高清重製；原始 3.81 圖示保留"
+  },
+  "/assets/equipment381/icons/1020.webp": {
+    "src": "/assets/equipment-hd/1020-v2.webp",
+    "width": 384,
+    "height": 384,
+    "origin": "AI 高清重製；原始 3.81 圖示保留"
+  },
+  "/assets/equipment381/icons/104.webp": {
+    "src": "/assets/equipment-hd/104-v2.webp",
+    "width": 384,
+    "height": 384,
+    "origin": "AI 高清重製；原始 3.81 圖示保留"
+  },
+  "/assets/equipment381/icons/4.webp": {
+    "src": "/assets/equipment-hd/4-v2.webp",
+    "width": 384,
+    "height": 307,
+    "origin": "AI 高清重製；原始 3.81 圖示保留"
+  },
+  "/assets/equipment381/icons/163.webp": {
+    "src": "/assets/equipment-hd/163-v2.webp",
+    "width": 285,
+    "height": 384,
+    "origin": "AI 高清重製；原始 3.81 圖示保留"
+  },
+  "/assets/equipment381/icons/441.webp": {
+    "src": "/assets/equipment-hd/441-v2.webp",
+    "width": 384,
+    "height": 384,
+    "origin": "AI 高清重製；原始 3.81 圖示保留"
+  },
+  "/assets/equipment381/icons/1350.webp": {
+    "src": "/assets/equipment-hd/1350-v2.webp",
+    "width": 384,
+    "height": 384,
+    "origin": "AI 高清重製；原始 3.81 圖示保留"
+  },
+  "/assets/equipment381/icons/1917.webp": {
+    "src": "/assets/equipment-hd/1917-v2.webp",
+    "width": 384,
+    "height": 384,
+    "origin": "AI 高清重製；原始 3.81 圖示保留"
+  },
+  "/assets/equipment381/icons/1016.webp": {
+    "src": "/assets/equipment-hd/1016-v2.webp",
+    "width": 384,
+    "height": 384,
+    "origin": "AI 高清重製；原始 3.81 圖示保留"
+  },
+  "/assets/equipment381/icons/112.webp": {
+    "src": "/assets/equipment-hd/112-v2.webp",
+    "width": 384,
+    "height": 359,
+    "origin": "AI 高清重製；原始 3.81 圖示保留"
+  },
+  "/assets/equipment381/icons/1259.webp": {
+    "src": "/assets/equipment-hd/1259-v2.webp",
+    "width": 384,
+    "height": 384,
+    "origin": "AI 高清重製；原始 3.81 圖示保留"
+  },
+  "/assets/equipment381/icons/1181.webp": {
+    "src": "/assets/equipment-hd/1181-v2.webp",
+    "width": 384,
+    "height": 384,
+    "origin": "AI 高清重製；原始 3.81 圖示保留"
+  },
+  "/assets/equipment381/icons/1893.webp": {
+    "src": "/assets/equipment-hd/1893-v2.webp",
+    "width": 384,
+    "height": 384,
+    "origin": "AI 高清重製；原始 3.81 圖示保留"
+  },
+  "/assets/equipment381/icons/1720.webp": {
+    "src": "/assets/equipment-hd/1720-v2.webp",
+    "width": 384,
+    "height": 384,
+    "origin": "AI 高清重製；原始 3.81 圖示保留"
+  },
+  "/assets/equipment381/icons/1945.webp": {
+    "src": "/assets/equipment-hd/1945-v2.webp",
+    "width": 384,
+    "height": 384,
+    "origin": "AI 高清重製；原始 3.81 圖示保留"
+  },
+  "/assets/equipment381/icons/463.webp": {
+    "src": "/assets/equipment-hd/463-v2.webp",
+    "width": 384,
+    "height": 384,
+    "origin": "AI 高清重製；原始 3.81 圖示保留"
+  },
+  "/assets/equipment381/icons/7490.webp": {
+    "src": "/assets/equipment-hd/7490-v2.webp",
+    "width": 384,
+    "height": 384,
+    "origin": "AI 高清重製；原始 3.81 圖示保留"
+  },
+  "/assets/equipment381/icons/1010.webp": {
+    "src": "/assets/equipment-hd/1010-v2.webp",
+    "width": 384,
+    "height": 384,
+    "origin": "AI 高清重製；原始 3.81 圖示保留"
+  },
+  "/assets/equipment381/icons/902.webp": {
+    "src": "/assets/equipment-hd/902-v2.webp",
+    "width": 384,
+    "height": 384,
+    "origin": "AI 高清重製；原始 3.81 圖示保留"
+  },
+  "/assets/equipment381/icons/897.webp": {
+    "src": "/assets/equipment-hd/897-v2.webp",
+    "width": 384,
+    "height": 384,
+    "origin": "AI 高清重製；原始 3.81 圖示保留"
+  },
+  "/assets/equipment381/icons/1067.webp": {
+    "src": "/assets/equipment-hd/1067-v2.webp",
+    "width": 384,
+    "height": 384,
+    "origin": "AI 高清重製；原始 3.81 圖示保留"
+  },
+  "/assets/equipment381/icons/1920.webp": {
+    "src": "/assets/equipment-hd/1920-v2.webp",
+    "width": 384,
+    "height": 384,
+    "origin": "AI 高清重製；原始 3.81 圖示保留"
+  },
+  "/assets/equipment381/icons/1090.webp": {
+    "src": "/assets/equipment-hd/1090-v2.webp",
+    "width": 384,
+    "height": 384,
+    "origin": "AI 高清重製；原始 3.81 圖示保留"
+  },
+  "/assets/equipment381/icons/1083.webp": {
+    "src": "/assets/equipment-hd/1083-v2.webp",
+    "width": 384,
+    "height": 384,
+    "origin": "AI 高清重製；原始 3.81 圖示保留"
+  },
+  "/assets/equipment381/icons/1085.webp": {
+    "src": "/assets/equipment-hd/1085-v2.webp",
+    "width": 384,
+    "height": 384,
+    "origin": "AI 高清重製；原始 3.81 圖示保留"
+  },
+  "/assets/equipment381/icons/1260.webp": {
+    "src": "/assets/equipment-hd/1260-v2.webp",
+    "width": 384,
+    "height": 384,
+    "origin": "AI 高清重製；原始 3.81 圖示保留"
+  },
+  "/assets/equipment381/icons/1088.webp": {
+    "src": "/assets/equipment-hd/1088-v2.webp",
+    "width": 384,
+    "height": 384,
+    "origin": "AI 高清重製；原始 3.81 圖示保留"
+  },
+  "/assets/equipment381/icons/1914.webp": {
+    "src": "/assets/equipment-hd/1914-v2.webp",
+    "width": 384,
+    "height": 384,
+    "origin": "AI 高清重製；原始 3.81 圖示保留"
+  },
+  "/assets/equipment381/icons/1875.webp": {
+    "src": "/assets/equipment-hd/1875-v2.webp",
+    "width": 384,
+    "height": 384,
+    "origin": "AI 高清重製；原始 3.81 圖示保留"
+  },
+  "/assets/equipment381/icons/1069.webp": {
+    "src": "/assets/equipment-hd/1069-v2.webp",
+    "width": 384,
+    "height": 384,
+    "origin": "AI 高清重製；原始 3.81 圖示保留"
+  },
+  "/assets/equipment381/icons/1064.webp": {
+    "src": "/assets/equipment-hd/1064-v2.webp",
+    "width": 384,
+    "height": 384,
+    "origin": "AI 高清重製；原始 3.81 圖示保留"
+  },
+  "/assets/equipment381/icons/1324.webp": {
+    "src": "/assets/equipment-hd/1324-v2.webp",
+    "width": 384,
+    "height": 384,
+    "origin": "AI 高清重製；原始 3.81 圖示保留"
+  },
+  "/assets/equipment381/icons/1512.webp": {
+    "src": "/assets/equipment-hd/1512-v2.webp",
+    "width": 384,
+    "height": 384,
+    "origin": "AI 高清重製；原始 3.81 圖示保留"
+  },
+  "/assets/equipment381/icons/1078.webp": {
+    "src": "/assets/equipment-hd/1078-v2.webp",
+    "width": 384,
+    "height": 384,
+    "origin": "AI 高清重製；原始 3.81 圖示保留"
+  },
+  "/assets/equipment381/icons/1785.webp": {
+    "src": "/assets/equipment-hd/1785-v2.webp",
+    "width": 384,
+    "height": 384,
+    "origin": "AI 高清重製；原始 3.81 圖示保留"
+  },
+  "/assets/equipment381/icons/1228.webp": {
+    "src": "/assets/equipment-hd/1228-v2.webp",
+    "width": 384,
+    "height": 384,
+    "origin": "AI 高清重製；原始 3.81 圖示保留"
+  },
+  "/assets/equipment381/icons/317.webp": {
+    "src": "/assets/equipment-hd/317-v2.webp",
+    "width": 384,
+    "height": 384,
+    "origin": "AI 高清重製；原始 3.81 圖示保留"
+  },
+  "/assets/equipment381/icons/315.webp": {
+    "src": "/assets/equipment-hd/315-v2.webp",
+    "width": 384,
+    "height": 384,
+    "origin": "AI 高清重製；原始 3.81 圖示保留"
+  },
+  "/assets/equipment381/icons/1949.webp": {
+    "src": "/assets/equipment-hd/1949-v2.webp",
+    "width": 384,
+    "height": 384,
+    "origin": "AI 高清重製；原始 3.81 圖示保留"
+  },
+  "/assets/equipment381/icons/11.webp": {
+    "src": "/assets/equipment-hd/11-v2.webp",
+    "width": 384,
+    "height": 384,
+    "origin": "AI 高清重製；原始 3.81 圖示保留"
+  },
+  "/assets/equipment381/icons/100.webp": {
+    "src": "/assets/equipment-hd/100-v2.webp",
+    "width": 384,
+    "height": 384,
+    "origin": "AI 高清重製；原始 3.81 圖示保留"
+  },
+  "/assets/equipment381/icons/13.webp": {
+    "src": "/assets/equipment-hd/13-v2.webp",
+    "width": 384,
+    "height": 384,
+    "origin": "AI 高清重製；原始 3.81 圖示保留"
+  },
+  "/assets/equipment381/icons/111.webp": {
+    "src": "/assets/equipment-hd/111-v2.webp",
+    "width": 384,
+    "height": 384,
+    "origin": "AI 高清重製；原始 3.81 圖示保留"
+  },
+  "/assets/equipment381/icons/72.webp": {
+    "src": "/assets/equipment-hd/72-v2.webp",
+    "width": 384,
+    "height": 384,
+    "origin": "AI 高清重製；原始 3.81 圖示保留"
+  },
+  "/assets/equipment381/icons/60.webp": {
+    "src": "/assets/equipment-hd/60-v2.webp",
+    "width": 384,
+    "height": 384,
+    "origin": "AI 高清重製；原始 3.81 圖示保留"
+  },
+  "/assets/equipment381/icons/98.webp": {
+    "src": "/assets/equipment-hd/98-v2.webp",
+    "width": 384,
+    "height": 384,
+    "origin": "AI 高清重製；原始 3.81 圖示保留"
+  },
+  "/assets/equipment381/icons/48.webp": {
+    "src": "/assets/equipment-hd/48-v2.webp",
+    "width": 384,
+    "height": 384,
+    "origin": "AI 高清重製；原始 3.81 圖示保留"
+  },
+  "/assets/equipment381/icons/45.webp": {
+    "src": "/assets/equipment-hd/45-v2.webp",
+    "width": 384,
+    "height": 384,
+    "origin": "AI 高清重製；原始 3.81 圖示保留"
+  },
+  "/assets/equipment381/icons/99.webp": {
+    "src": "/assets/equipment-hd/99-v2.webp",
+    "width": 384,
+    "height": 384,
+    "origin": "AI 高清重製；原始 3.81 圖示保留"
+  },
+  "/assets/equipment381/icons/316.webp": {
+    "src": "/assets/equipment-hd/316-v2.webp",
+    "width": 384,
+    "height": 384,
+    "origin": "AI 高清重製；原始 3.81 圖示保留"
+  },
+  "/assets/equipment381/icons/1333.webp": {
+    "src": "/assets/equipment-hd/1333-v2.webp",
+    "width": 384,
+    "height": 384,
+    "origin": "AI 高清重製；原始 3.81 圖示保留"
+  },
+  "/assets/equipment381/icons/66.webp": {
+    "src": "/assets/equipment-hd/66-v2.webp",
+    "width": 384,
+    "height": 384,
+    "origin": "AI 高清重製；原始 3.81 圖示保留"
+  },
+  "/assets/equipment381/icons/50.webp": {
+    "src": "/assets/equipment-hd/50-v2.webp",
+    "width": 384,
+    "height": 384,
+    "origin": "AI 高清重製；原始 3.81 圖示保留"
+  },
+  "/assets/equipment381/icons/41.webp": {
+    "src": "/assets/equipment-hd/41-v2.webp",
+    "width": 384,
+    "height": 384,
+    "origin": "AI 高清重製；原始 3.81 圖示保留"
+  },
+  "/assets/equipment381/icons/38.webp": {
+    "src": "/assets/equipment-hd/38-v2.webp",
+    "width": 384,
+    "height": 384,
+    "origin": "AI 高清重製；原始 3.81 圖示保留"
+  },
+  "/assets/equipment381/icons/1240.webp": {
+    "src": "/assets/equipment-hd/1240-v2.webp",
+    "width": 384,
+    "height": 384,
+    "origin": "AI 高清重製；原始 3.81 圖示保留"
+  },
+  "/assets/equipment381/icons/1255.webp": {
+    "src": "/assets/equipment-hd/1255-v2.webp",
+    "width": 384,
+    "height": 384,
+    "origin": "AI 高清重製；原始 3.81 圖示保留"
+  },
+  "/assets/equipment381/icons/1257.webp": {
+    "src": "/assets/equipment-hd/1257-v2.webp",
+    "width": 384,
+    "height": 384,
+    "origin": "AI 高清重製；原始 3.81 圖示保留"
+  },
+  "/assets/equipment381/icons/1239.webp": {
+    "src": "/assets/equipment-hd/1239-v2.webp",
+    "width": 384,
+    "height": 384,
+    "origin": "AI 高清重製；原始 3.81 圖示保留"
+  },
+  "/assets/equipment381/icons/2228.webp": {
+    "src": "/assets/equipment-hd/2228-v2.webp",
+    "width": 384,
+    "height": 384,
+    "origin": "AI 高清重製；原始 3.81 圖示保留"
+  },
+  "/assets/equipment381/icons/939.webp": {
+    "src": "/assets/equipment-hd/939-v2.webp",
+    "width": 384,
+    "height": 384,
+    "origin": "AI 高清重製；原始 3.81 圖示保留"
+  },
+  "/assets/equipment381/icons/1487.webp": {
+    "src": "/assets/equipment-hd/1487-v2.webp",
+    "width": 384,
+    "height": 384,
+    "origin": "AI 高清重製；原始 3.81 圖示保留"
+  },
+  "/assets/equipment381/icons/1516.webp": {
+    "src": "/assets/equipment-hd/1516-v2.webp",
+    "width": 384,
+    "height": 384,
+    "origin": "AI 高清重製；原始 3.81 圖示保留"
+  },
+  "/assets/equipment381/icons/1878.webp": {
+    "src": "/assets/equipment-hd/1878-v2.webp",
+    "width": 384,
+    "height": 384,
+    "origin": "AI 高清重製；原始 3.81 圖示保留"
+  },
+  "/assets/equipment381/icons/1334.webp": {
+    "src": "/assets/equipment-hd/1334-v2.webp",
+    "width": 384,
+    "height": 384,
+    "origin": "AI 高清重製；原始 3.81 圖示保留"
+  },
+  "/assets/equipment381/icons/292.webp": {
+    "src": "/assets/equipment-hd/292-v2.webp",
+    "width": 384,
+    "height": 384,
+    "origin": "AI 高清重製；原始 3.81 圖示保留"
+  },
+  "/assets/equipment381/icons/293.webp": {
+    "src": "/assets/equipment-hd/293-v2.webp",
+    "width": 384,
+    "height": 384,
+    "origin": "AI 高清重製；原始 3.81 圖示保留"
+  },
+  "/assets/equipment381/icons/7685.webp": {
+    "src": "/assets/equipment-hd/7685-v2.webp",
+    "width": 384,
+    "height": 384,
+    "origin": "AI 高清重製；原始 3.81 圖示保留"
+  },
+  "/assets/equipment381/icons/291.webp": {
+    "src": "/assets/equipment-hd/291-v2.webp",
+    "width": 384,
+    "height": 384,
+    "origin": "AI 高清重製；原始 3.81 圖示保留"
+  },
+  "/assets/equipment381/icons/297.webp": {
+    "src": "/assets/equipment-hd/297-v2.webp",
+    "width": 384,
+    "height": 384,
+    "origin": "AI 高清重製；原始 3.81 圖示保留"
+  },
+  "/assets/equipment381/icons/1919.webp": {
+    "src": "/assets/equipment-hd/1919-v2.webp",
+    "width": 384,
+    "height": 384,
+    "origin": "AI 高清重製；原始 3.81 圖示保留"
+  },
+  "/assets/equipment381/icons/83.webp": {
+    "src": "/assets/equipment-hd/83-v2.webp",
+    "width": 384,
+    "height": 355,
+    "origin": "AI 高清重製；原始 3.81 圖示保留"
+  },
+  "/assets/equipment381/icons/19.webp": {
+    "src": "/assets/equipment-hd/19-v2.webp",
+    "width": 291,
+    "height": 384,
+    "origin": "AI 高清重製；原始 3.81 圖示保留"
+  },
+  "/assets/equipment381/icons/18.webp": {
+    "src": "/assets/equipment-hd/18-v2.webp",
+    "width": 288,
+    "height": 384,
+    "origin": "AI 高清重製；原始 3.81 圖示保留"
+  },
+  "/assets/equipment381/icons/1075.webp": {
+    "src": "/assets/equipment-hd/1075-v2.webp",
+    "width": 384,
+    "height": 351,
+    "origin": "AI 高清重製；原始 3.81 圖示保留"
+  },
+  "/assets/equipment381/icons/279.webp": {
+    "src": "/assets/equipment-hd/279-v2.webp",
+    "width": 274,
+    "height": 384,
+    "origin": "AI 高清重製；原始 3.81 圖示保留"
+  },
+  "/assets/equipment381/icons/278.webp": {
+    "src": "/assets/equipment-hd/278-v2.webp",
+    "width": 256,
+    "height": 384,
+    "origin": "AI 高清重製；原始 3.81 圖示保留"
+  },
+  "/assets/equipment381/icons/1951.webp": {
+    "src": "/assets/equipment-hd/1951-v2.webp",
+    "width": 384,
+    "height": 384,
+    "origin": "AI 高清重製；原始 3.81 圖示保留"
+  },
+  "/assets/equipment381/icons/1721.webp": {
+    "src": "/assets/equipment-hd/1721-v2.webp",
+    "width": 384,
+    "height": 370,
+    "origin": "AI 高清重製；原始 3.81 圖示保留"
+  },
+  "/assets/equipment381/icons/1079.webp": {
+    "src": "/assets/equipment-hd/1079-v2.webp",
+    "width": 384,
+    "height": 318,
+    "origin": "AI 高清重製；原始 3.81 圖示保留"
+  },
+  "/assets/equipment381/icons/1534.webp": {
+    "src": "/assets/equipment-hd/1534-v2.webp",
+    "width": 384,
+    "height": 370,
+    "origin": "AI 高清重製；原始 3.81 圖示保留"
+  },
+  "/assets/equipment381/icons/1065.webp": {
+    "src": "/assets/equipment-hd/1065-v2.webp",
+    "width": 384,
+    "height": 318,
+    "origin": "AI 高清重製；原始 3.81 圖示保留"
+  },
+  "/assets/equipment381/icons/1070.webp": {
+    "src": "/assets/equipment-hd/1070-v2.webp",
+    "width": 384,
+    "height": 318,
+    "origin": "AI 高清重製；原始 3.81 圖示保留"
+  },
+  "/assets/equipment381/icons/1089.webp": {
+    "src": "/assets/equipment-hd/1089-v2.webp",
+    "width": 384,
+    "height": 320,
+    "origin": "AI 高清重製；原始 3.81 圖示保留"
+  },
+  "/assets/equipment381/icons/1086.webp": {
+    "src": "/assets/equipment-hd/1086-v2.webp",
+    "width": 384,
+    "height": 350,
+    "origin": "AI 高清重製；原始 3.81 圖示保留"
+  },
+  "/assets/equipment381/icons/1915.webp": {
+    "src": "/assets/equipment-hd/1915-v2.webp",
+    "width": 384,
+    "height": 359,
+    "origin": "AI 高清重製；原始 3.81 圖示保留"
+  },
+  "/assets/equipment381/icons/1073.webp": {
+    "src": "/assets/equipment-hd/1073-v2.webp",
+    "width": 384,
+    "height": 330,
+    "origin": "AI 高清重製；原始 3.81 圖示保留"
+  },
+  "/assets/equipment381/icons/1091.webp": {
+    "src": "/assets/equipment-hd/1091-v2.webp",
+    "width": 384,
+    "height": 320,
+    "origin": "AI 高清重製；原始 3.81 圖示保留"
+  },
+  "/assets/equipment381/icons/1084.webp": {
+    "src": "/assets/equipment-hd/1084-v2.webp",
+    "width": 384,
+    "height": 318,
+    "origin": "AI 高清重製；原始 3.81 圖示保留"
+  },
+  "/assets/equipment381/icons/1068.webp": {
+    "src": "/assets/equipment-hd/1068-v2.webp",
+    "width": 384,
+    "height": 325,
+    "origin": "AI 高清重製；原始 3.81 圖示保留"
+  },
+  "/assets/equipment381/icons/1627.webp": {
+    "src": "/assets/equipment-hd/1627-v2.webp",
+    "width": 384,
+    "height": 347,
+    "origin": "AI 高清重製；原始 3.81 圖示保留"
+  },
+  "/assets/equipment381/icons/2009.webp": {
+    "src": "/assets/equipment-hd/2009-v2.webp",
+    "width": 384,
+    "height": 339,
+    "origin": "AI 高清重製；原始 3.81 圖示保留"
+  },
+  "/assets/equipment381/icons/980.webp": {
+    "src": "/assets/equipment-hd/980-v2.webp",
+    "width": 384,
+    "height": 384,
+    "origin": "AI 高清重製；原始 3.81 圖示保留"
+  },
+  "/assets/equipment381/icons/171.webp": {
+    "src": "/assets/equipment-hd/171-v2.webp",
+    "width": 384,
+    "height": 364,
+    "origin": "AI 高清重製；原始 3.81 圖示保留"
+  },
+  "/assets/equipment381/icons/68.webp": {
+    "src": "/assets/equipment-hd/68-v2.webp",
+    "width": 261,
+    "height": 384,
+    "origin": "AI 高清重製；原始 3.81 圖示保留"
+  },
+  "/assets/equipment381/icons/439.webp": {
+    "src": "/assets/equipment-hd/439-v2.webp",
+    "width": 384,
+    "height": 274,
+    "origin": "AI 高清重製；原始 3.81 圖示保留"
+  },
+  "/assets/equipment381/icons/172.webp": {
+    "src": "/assets/equipment-hd/172-v2.webp",
+    "width": 384,
+    "height": 362,
+    "origin": "AI 高清重製；原始 3.81 圖示保留"
+  },
+  "/assets/equipment381/icons/9.webp": {
+    "src": "/assets/equipment-hd/9-v2.webp",
+    "width": 384,
+    "height": 344,
+    "origin": "AI 高清重製；原始 3.81 圖示保留"
+  },
+  "/assets/equipment381/icons/173.webp": {
+    "src": "/assets/equipment-hd/173-v2.webp",
+    "width": 384,
+    "height": 346,
+    "origin": "AI 高清重製；原始 3.81 圖示保留"
+  },
+  "/assets/equipment381/icons/119.webp": {
+    "src": "/assets/equipment-hd/119-v2.webp",
+    "width": 384,
+    "height": 320,
+    "origin": "AI 高清重製；原始 3.81 圖示保留"
+  },
+  "/assets/equipment381/icons/67.webp": {
+    "src": "/assets/equipment-hd/67-v2.webp",
+    "width": 384,
+    "height": 310,
+    "origin": "AI 高清重製；原始 3.81 圖示保留"
+  },
+  "/assets/equipment381/icons/42.webp": {
+    "src": "/assets/equipment-hd/42-v2.webp",
+    "width": 384,
+    "height": 380,
+    "origin": "AI 高清重製；原始 3.81 圖示保留"
+  },
+  "/assets/equipment381/icons/31.webp": {
+    "src": "/assets/equipment-hd/31-v2.webp",
+    "width": 356,
+    "height": 384,
+    "origin": "AI 高清重製；原始 3.81 圖示保留"
+  },
+  "/assets/equipment381/icons/8.webp": {
+    "src": "/assets/equipment-hd/8-v2.webp",
+    "width": 384,
+    "height": 297,
+    "origin": "AI 高清重製；原始 3.81 圖示保留"
+  },
+  "/assets/equipment381/icons/1.webp": {
+    "src": "/assets/equipment-hd/1-v2.webp",
+    "width": 384,
+    "height": 272,
+    "origin": "AI 高清重製；原始 3.81 圖示保留"
+  },
+  "/assets/equipment381/icons/1227.webp": {
+    "src": "/assets/equipment-hd/1227-v2.webp",
+    "width": 384,
+    "height": 384,
+    "origin": "AI 高清重製；原始 3.81 圖示保留"
+  },
+  "/assets/equipment381/icons/1953.webp": {
+    "src": "/assets/equipment-hd/1953-v2.webp",
+    "width": 384,
+    "height": 384,
+    "origin": "AI 高清重製；原始 3.81 圖示保留"
+  },
+  "/assets/equipment381/icons/1003.webp": {
+    "src": "/assets/equipment-hd/1003-v2.webp",
+    "width": 384,
+    "height": 342,
+    "origin": "AI 高清重製；原始 3.81 圖示保留"
+  },
+  "/assets/equipment381/icons/1901.webp": {
+    "src": "/assets/equipment-hd/1901-v2.webp",
+    "width": 359,
+    "height": 384,
+    "origin": "AI 高清重製；原始 3.81 圖示保留"
+  },
+  "/assets/equipment381/icons/1242.webp": {
+    "src": "/assets/equipment-hd/1242-v2.webp",
+    "width": 384,
+    "height": 359,
+    "origin": "AI 高清重製；原始 3.81 圖示保留"
+  }
+}

@@ -1,0 +1,3 @@
+import {env} from 'cloudflare:workers';
+import {initialMapAccess,type MapAccessConfig} from './map-access';
+export async function getMapAccessConfig():Promise<MapAccessConfig>{if(!env.DB)throw Error('地圖開放設定無法儲存');const initial=initialMapAccess();await env.DB.prepare('INSERT INTO world_settings (id,payload,revision,updated_at) VALUES (?,?,0,?) ON CONFLICT(id) DO NOTHING').bind('map_access',JSON.stringify(initial),Date.now()).run();const row=await env.DB.prepare('SELECT payload,revision FROM world_settings WHERE id=?').bind('map_access').first<{payload:string;revision:number}>();if(!row)throw Error('無法讀取地圖開放設定');return {...initial,...JSON.parse(row.payload),revision:row.revision};}

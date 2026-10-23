@@ -1,0 +1,23 @@
+'use client';
+import ItemIcon from './item-icon';
+import {useState} from 'react';
+import {Button} from '@/components/ui/button';
+import {Dialog,DialogContent,DialogTitle,DialogDescription} from '@/components/ui/dialog';
+import type {Character} from '@/lib/game/engine';
+import {npcOriginalService,findNpc} from '@/lib/game/npc-config';
+import raw from '@/lib/game/gamedata.json';
+import assets from '@/lib/game/asset-map.json';
+import {scrollCandidates,isCursed,affixGlow,getAttrMagic,elementEligibility} from '@/lib/game/affix-rules';
+import {blessingEquipmentInfo} from '@/lib/game/gear';
+import AffixDetails from './affix-details';
+import GearName from './gear-name';
+const items=raw.items as Record<string,any>,icons=assets.icons.items as Record<string,string>;
+export default function NpcBlessPanel({c,busy,act,onClose,modal=false}:{c:Character;busy:boolean;act:(a:any)=>Promise<any>;initialItem?:string;onClose?:()=>void;modal?:boolean}){
+ const [open,setOpen]=useState(false);
+ const worn=[...new Set(Object.values(c.equipment).map(e=>e.id))].filter(k=>{const i=items[k.split('@')[0]];return i&&['wpn','arm','acc'].includes(i.type)&&!i.isArrow&&!i.doll&&!i.noEquip;}),atNpc=c.zone==='town_silver_knight'&&npcOriginalService(c.zone,'npc_bian',c.npcConfig);
+ const count=(id:string)=>scrollCandidates(c,id).reduce((n,k)=>n+c.bag[k],0);
+ const reason=(key:string)=>{try{blessingEquipmentInfo(c,key);return '';}catch(e){return e instanceof Error?e.message:String(e);}};
+ const close=()=>{setOpen(false);onClose?.();};
+ const content=<section className="bian-blessing-content"><p className="bian-intro">{findNpc(c.zone,'npc_bian',c.npcConfig)?.n||'碧恩'}：我能為你的裝備灌注力量。每次賦予在「元素／遠古系／祝福／詛咒」四類中隨機抽取，各占 25%。只修改抽中的系別，其他詞條與強化保留。</p><div className="bian-scroll-counts"><span>武器卷軸 ×{count('new_item_bless_wpn')}</span><span>盔甲卷軸 ×{count('new_item_bless_arm')}</span><span>飾品卷軸 ×{count('new_item_bless_acc')}</span><span>解咒卷軸 ×{count('new_item_uncurse')}</span></div><div className="bian-equipment-list">{worn.map(key=>{const i=items[key.split('@')[0]],cursed=isCursed(c,key),why=reason(key),scroll='new_item_bless_'+i.type,aff=c.affixes?.[key],magic=getAttrMagic(aff);let magicReason='';try{if(aff?.element)elementEligibility(c,key,aff.element.element);}catch(e){magicReason=e instanceof Error?e.message:String(e);}return <article className="bian-equipment-row" key={key}>{(i.sourceIcon||icons[i.n])&&<ItemIcon itemId={key} appearance={c.lootAppearance} src={i.sourceIcon||icons[i.n]} className={affixGlow(c,key)} alt={i.n}/>}<div className="bian-item-copy"><span className="bian-slot-name">{i.type==='wpn'?'武器':i.type==='arm'?'防具':i.slot==='belt'?'腰帶':'飾品'}{c.locked?.includes(key)?' · 🔒 已鎖定':''}</span><strong><GearName c={c} item={key}/></strong>{cursed&&<span className="cursed-affix">詛咒中 · 解除後才可卸下或再賦予</span>}</div><Button className="bian-row-button" disabled={busy||!atNpc||(cursed?(!!c.locked?.includes(key)||!count('new_item_uncurse')):(!!why||!count(scroll)))} onClick={()=>act({type:cursed?'uncurse':'affix',npc:'npc_bian',item:key})}>{cursed?(count('new_item_uncurse')?'解除詛咒':'缺少解咒卷軸'):'賦予'}</Button><details className="bian-item-details"><summary>目前能力{why&&!cursed?` · ${why}`:''}</summary><AffixDetails c={c} item={key}/>{i.type==='wpn'&&aff?.element?.tier===5&&!cursed&&<><p>同元素卷軸附加／重抽魔法成功率 1%，最高三星。抽到不同魔法回到一星。</p>{magic&&<p>目前 {'★'.repeat(magic.star)} · 觸發率 {magic.rate}%</p>}<Button disabled={busy||!atNpc||!!magicReason||!count('scroll_attr_'+aff.element.element)} title={magicReason} onClick={()=>act({type:'attrMagic',npc:'npc_bian',item:key,element:aff.element!.element})}>附加／重抽魔法 · 卷軸 ×{count('scroll_attr_'+aff.element.element)}</Button></>}</details></article>;})}{!worn.length&&<p className="bian-empty">請先穿戴武器、防具、飾品或腰帶。</p>}</div>{c.lastGear&&<p role="status" className="bian-result">{c.lastGear.result}</p>}<details className="bian-rules"><summary>賦予規則與機率</summary><p>元素類內火、水、風、地各 25%；遠古系內遠古、永恆、不朽、太初各 25%。每種的總機率為 6.25%。祝福與詛咒各占總機率 25%，兩者互相取代。</p><p>同元素升一階，最高五階；不同元素改為第一階，武器原附加魔法與星數清除。武器第四階需 +10、第五階需 +11，古老的劍／巨劍免門檻。門檻不足或已滿階時保留原能力，仍消耗卷軸。防具、飾品、腰帶的元素提供抗性與魔防。</p><p>同遠古或同祝福保留。詛咒後不能卸下、替換或再次賦予。解除必須消耗 1 張解除詛咒卷軸，沒有可用卷軸無法解除。鎖定、寵物裝備、娃娃與遺物不開放。</p></details><Button className="bian-close" disabled={busy} onClick={close}>關閉</Button></section>;
+ return modal?<><Button disabled={busy||!atNpc} className="gold-button" onClick={()=>setOpen(true)}>開啟{findNpc('town_silver_knight','npc_bian',c.npcConfig)?.n||'碧恩'}賦予</Button><Dialog open={open} onOpenChange={setOpen}><DialogContent className="bian-dialog" showCloseButton={false}><DialogTitle>{findNpc('town_silver_knight','npc_bian',c.npcConfig)?.n||'碧恩'}（裝備賦予）</DialogTitle><DialogDescription className="sr-only">穿戴裝備的四類隨機賦予與解除詛咒</DialogDescription>{content}</DialogContent></Dialog></>:content;
+}

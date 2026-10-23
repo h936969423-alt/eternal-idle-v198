@@ -1,0 +1,22 @@
+const assert=require('node:assert/strict'),fs=require('node:fs'),vm=require('node:vm'),ts=require('typescript'),path=require('node:path');
+function compile(p,mocks={}){const module={exports:{}};vm.runInNewContext(ts.transpileModule(fs.readFileSync(path.join(__dirname,'..',p),'utf8'),{compilerOptions:{module:ts.ModuleKind.CommonJS,target:ts.ScriptTarget.ES2022}}).outputText,{module,exports:module.exports,require:n=>mocks[n]});return module.exports;}
+const startup=compile('lib/game/startup-recovery.ts'),poll=compile('lib/game/client-poll.ts',{'./sync-policy':{syncDelay:()=>1500}});
+function surface(){const listeners={};return {listeners,addEventListener(k,v){(listeners[k]??=new Set()).add(v);},removeEventListener(k,v){listeners[k]?.delete(v);},emit(k,e={}){for(const fn of listeners[k]||[])fn(e);}};}
+function boot({query='',data=new Map(),blocked=false,pathname='/'}={}){const win=surface(),box={hidden:true},link={},calls=[],replaced=[],timers=new Map();let next=0;const storage={getItem:k=>{if(blocked)throw Error('blocked');return data.get(k)||null;},setItem:(k,v)=>{if(blocked)throw Error('blocked');data.set(k,v);}};const location={pathname,href:'https://game.test'+pathname+query,replace:url=>replaced.push(url)};
+ vm.runInNewContext(startup.STARTUP_RECOVERY_SCRIPT,{window:win,document:{visibilityState:'hidden',getElementById:id=>id==='game-startup-recovery'?box:link},sessionStorage:storage,location,URL,Date,fetch:(url,o)=>{calls.push(JSON.parse(o.body));return Promise.resolve();},setTimeout:(fn,delay)=>{timers.set(++next,{fn,delay});return next;},clearTimeout:id=>timers.delete(id)});
+ return {win,box,link,calls,replaced,timers,data,fire(delay){for(const [id,t]of [...timers])if(t.delay===delay){timers.delete(id);t.fn();}}};}
+async function run(){
+ let b=boot();b.fire(12000);assert.equal(b.box.hidden,false);assert.ok(b.link.href.includes('__game_reload='));b.fire(25000);assert.equal(b.replaced.length,0,'slow downloads are never interrupted by automatic navigation');assert.ok(b.calls.some(x=>x.phase==='startup-timeout'));
+ const again=boot({data:b.data});again.fire(25000);assert.equal(again.replaced.length,0,'one restart within 2 minutes');assert.equal(again.box.hidden,false);
+ b=boot({query:'?__game_reload=123'});b.fire(25000);assert.equal(b.replaced.length,0,'cache-busting restart cannot loop');
+ b=boot({blocked:true});b.fire(25000);assert.equal(b.replaced.length,0);assert.equal(b.box.hidden,false,'manual recovery when storage is blocked');
+ b=boot();b.win.emit('game-client-mounted');b.fire(12000);b.fire(25000);assert.equal(b.box.hidden,true);assert.equal(b.replaced.length,0);b.win.emit('game-state-ready');b.win.emit('game-state-ready');assert.equal(b.calls.filter(x=>x.phase==='state-ready').length,1);
+ b=boot({pathname:'/gm'});assert.equal(b.timers.size,0);assert.equal(b.calls.length,0,'GM page must not be reloaded by game startup guard');
+ const doc={...surface(),visibilityState:'hidden'},win=surface(),timers=new Map();let count=0,id=0;
+ const stop=poll.startGamePolling({request:async()=>{count++;},getState:()=>({running:false,failures:0,pending:false}),hasPending:()=>false,doc,win,clock:()=>0,schedule:fn=>{timers.set(++id,fn);return id;},cancel:n=>timers.delete(n)});await new Promise(resolve=>setImmediate(resolve));assert.equal(count,1,'hidden initial page still requests its character');
+ let fn=[...timers.values()][0];timers.clear();await fn();await new Promise(resolve=>setImmediate(resolve));assert.equal(count,1,'background interval pauses after initial read');
+ win.emit('pageshow');await new Promise(resolve=>setImmediate(resolve));assert.equal(count,2,'back-forward restore reads even when visibility lags');win.emit('focus');await new Promise(resolve=>setImmediate(resolve));assert.equal(count,3);
+ doc.visibilityState='visible';doc.emit('visibilitychange');await new Promise(resolve=>setImmediate(resolve));assert.equal(count,4);stop();assert.equal(timers.size,0);win.emit('focus');doc.emit('visibilitychange');await new Promise(resolve=>setImmediate(resolve));assert.equal(count,4,'unmount cancels timers and listeners');
+ console.log('PASS: first character fetch while hidden; foreground and bfcache restores; paused background interval; cleanup; inline recovery before React, manual cache-busting reload without interrupting slow downloads, blocked storage/manual fallback, no GM reload, startup phases.');
+}
+run().catch(e=>{console.error(e);process.exitCode=1;});

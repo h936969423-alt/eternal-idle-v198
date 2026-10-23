@@ -1,0 +1,11 @@
+import { readFileSync, writeFileSync } from 'node:fs';
+import { createHash } from 'node:crypto';
+const plan = JSON.parse(readFileSync('.asset-storage/upload-plan.json', 'utf8'));
+const receipt = JSON.parse(readFileSync('.asset-storage/upload-receipt.json', 'utf8'));
+if (!receipt.verified || receipt.indexKey !== plan.indexKey || receipt.objects !== plan.objects.length) throw new Error('Upload and verify every asset pack before activating');
+const digest = plan.indexKey.split('/').at(-1);
+const release = readFileSync('.asset-storage/' + digest);
+if (createHash('sha256').update(release).digest('hex') !== digest) throw new Error('Asset index checksum mismatch');
+writeFileSync('lib/asset-storage-release.json', release);
+writeFileSync('lib/asset-storage-config.json', JSON.stringify({ indexKey: plan.indexKey }) + '\n');
+console.log(`Activated ${plan.fileCount} independent assets (${plan.totalBytes} bytes). Rebuild and publish to apply.`);

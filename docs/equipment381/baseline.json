@@ -1,0 +1,16 @@
+{
+  "projectId": "appgprj_6ac34ca443948191bb1259e268ef9bbd",
+  "siteVersion": 110,
+  "commit": "9449ead71f298132f65116bf4004a90e71e1fad8",
+  "legacyEquipmentCount": 1281,
+  "preserve": [
+    "characters",
+    "levels",
+    "xp",
+    "gold",
+    "skills",
+    "dolls",
+    "pets"
+  ],
+  "liveSaveBackup": "Per-owner original payload and revision must be captured atomically with first replacement. No live equipment deletion before all validation gates pass."
+}

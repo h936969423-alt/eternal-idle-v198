@@ -1,0 +1,8 @@
+'use client';
+import {useRef,useState} from 'react';
+import {Button} from '@/components/ui/button';
+import {VIP888_CODE,VIP888_REWARD_TEXT,normalizeChatCode} from '@/lib/game/chat-codes';
+export default function ChatCommands({claimed,busy,act}:{claimed:boolean;busy:boolean;act:(a:any)=>Promise<any>}){
+ const [message,setMessage]=useState(''),[notice,setNotice]=useState(''),[sending,setSending]=useState(false),pending=useRef(false);
+ return <section className="chat-commands" aria-label="聊天指令"><p>輸入 <strong>.VIP888</strong> 領取 {VIP888_REWARD_TEXT}，每個帳號限領一次。</p>{claimed&&<p role="status">此帳號已領取 .VIP888。</p>}<form className="reference-compose" onSubmit={async e=>{e.preventDefault();if(busy||pending.current||!message.trim())return;const code=normalizeChatCode(message);if(code!==VIP888_CODE){setNotice('多人聊天尚未開放，請輸入有效的兌換指令。');return;}if(claimed){setNotice('此帳號已領取 .VIP888，每個帳號限領一次。');return;}pending.current=true;setSending(true);setNotice('領取中…');try{const result=await act({type:'redeemCode',code});if(result?.save?.codeRedemptions?.VIP888){setMessage('');setNotice(`領取成功：${VIP888_REWARD_TEXT}，已放入目前角色背包。`);}else setNotice('領取未完成，請查看提示後重試；已領取的帳號不會重複發放。');}catch{setNotice('連線失敗，請稍後重試。');}finally{pending.current=false;setSending(false);}}}><input value={message} onChange={e=>setMessage(e.target.value)} disabled={busy||sending} maxLength={120} autoCapitalize="none" autoCorrect="off" placeholder="輸入 .VIP888" aria-label="聊天訊息"/><Button type="submit" disabled={busy||sending||!message.trim()}>{sending?'領取中…':'發送'}</Button></form>{notice&&<p role="status" aria-live="polite">{notice}</p>}</section>;
+}

@@ -1,0 +1,4124 @@
+{
+  "source": "https://zxc518zxc.github.io/monsters.html",
+  "dataSource": "https://zxc518zxc.github.io/data.js?v=5a64fdec",
+  "sourceGeneratedAt": "2026-10-05",
+  "retrievedAt": "2026-10-06",
+  "sourceSha256": "9c19a7c1fe6d1d19811fda6080d3a9d2229bbce33203a6634d3e53a6bd1817db",
+  "probabilitiesPublished": false,
+  "mobs": {
+    "orc": {
+      "lv": 2,
+      "hp": 6,
+      "exp": 5,
+      "drops": [
+        "wpn_dagger1",
+        "wpn_25",
+        "wpn_27",
+        "hlm_oasis",
+        "amr_oasis",
+        "new_item_179"
+      ]
+    },
+    "goblin": {
+      "lv": 2,
+      "hp": 3,
+      "exp": 5,
+      "drops": [
+        "hlm_mr",
+        "wpn_9",
+        "wpn_10",
+        "arm_42",
+        "bot_short",
+        "potion_heal"
+      ]
+    },
+    "gremlin": {
+      "lv": 3,
+      "hp": 7,
+      "exp": 10,
+      "drops": [
+        "wpn_10",
+        "bot_short",
+        "new_item_179"
+      ]
+    },
+    "orc_archer": {
+      "lv": 3,
+      "hp": 12,
+      "exp": 10,
+      "drops": [
+        "wpn_8",
+        "hlm_oasis",
+        "arm_64",
+        "amr_oasis",
+        "clk_oasis",
+        "new_item_179",
+        "wpn_xbow_dark"
+      ]
+    },
+    "nm_003": {
+      "lv": 4,
+      "hp": 30,
+      "exp": 37,
+      "drops": [
+        "wpn_5",
+        "new_item_195",
+        "new_item_179"
+      ]
+    },
+    "nm_002": {
+      "lv": 4,
+      "hp": 20,
+      "exp": 17,
+      "drops": [
+        "new_item_166"
+      ]
+    },
+    "侏儒": {
+      "lv": 5,
+      "hp": 30,
+      "exp": 26,
+      "drops": [
+        "wpn_26",
+        "hlm_gnome",
+        "arm_86",
+        "shd_gnome",
+        "new_item_169",
+        "scroll_poly",
+        "new_item_180",
+        "mat_silverore"
+      ]
+    },
+    "nm_035": {
+      "lv": 5,
+      "hp": 30,
+      "exp": 26,
+      "drops": [
+        "new_item_143",
+        "new_item_179"
+      ]
+    },
+    "nm_004": {
+      "lv": 5,
+      "hp": 30,
+      "exp": 26,
+      "drops": [
+        "new_item_143",
+        "new_item_179"
+      ]
+    },
+    "nm_005": {
+      "lv": 5,
+      "hp": 50,
+      "exp": 26,
+      "drops": [
+        "new_item_179"
+      ]
+    },
+    "zombie": {
+      "lv": 6,
+      "hp": 45,
+      "exp": 37,
+      "drops": [
+        "bk_vampire",
+        "bk_dark_shadow"
+      ]
+    },
+    "nm_006": {
+      "lv": 6,
+      "hp": 100,
+      "exp": 37,
+      "drops": [
+        "new_item_150",
+        "new_item_154",
+        "new_item_179",
+        "new_item_182",
+        "potion_blue",
+        "bk_rock_prison"
+      ]
+    },
+    "nm_007": {
+      "lv": 6,
+      "hp": 50,
+      "exp": 37,
+      "drops": [
+        "new_item_141",
+        "new_item_237"
+      ]
+    },
+    "doberman": {
+      "lv": 6,
+      "hp": 20,
+      "exp": 37,
+      "drops": [
+        "new_item_143",
+        "new_item_179"
+      ]
+    },
+    "floating_eye": {
+      "lv": 7,
+      "hp": 40,
+      "exp": 50,
+      "drops": [
+        "new_item_143",
+        "new_item_150"
+      ]
+    },
+    "ice_wolf": {
+      "lv": 8,
+      "hp": 60,
+      "exp": 65,
+      "drops": [
+        "new_item_150",
+        "new_item_151",
+        "new_item_154",
+        "new_item_157",
+        "new_item_160"
+      ]
+    },
+    "fighter": {
+      "lv": 8,
+      "hp": 50,
+      "exp": 65,
+      "drops": [
+        "arm_69",
+        "hlm_oasis",
+        "arm_64",
+        "amr_oasis",
+        "clk_oasis",
+        "arm_104",
+        "arm_63",
+        "wpn_dual_bronze"
+      ]
+    },
+    "nm_008": {
+      "lv": 8,
+      "hp": 30,
+      "exp": 65,
+      "drops": [
+        "glv_glove",
+        "arm_99",
+        "new_item_150"
+      ]
+    },
+    "gnome_warrior": {
+      "lv": 9,
+      "hp": 70,
+      "exp": 82,
+      "drops": [
+        "wpn_23",
+        "wpn_26",
+        "hlm_gnome",
+        "arm_86",
+        "shd_gnome",
+        "potion_haste",
+        "new_item_180",
+        "mat_silverore"
+      ]
+    },
+    "wolf": {
+      "lv": 9,
+      "hp": 50,
+      "exp": 82,
+      "drops": [
+        "arm_69",
+        "wpn_longsword",
+        "wpn_2",
+        "wpn_10",
+        "wpn_13",
+        "arm_66",
+        "arm_103",
+        "bot_short",
+        "bk_dex_up",
+        "bk_vampire",
+        "wpn_dual_steel"
+      ]
+    },
+    "gandi_orc": {
+      "lv": 10,
+      "hp": 80,
+      "exp": 101,
+      "drops": [
+        "potion_heal",
+        "new_item_148",
+        "new_item_150",
+        "new_item_201",
+        "item_orc_amulet"
+      ]
+    },
+    "ice_maid": {
+      "lv": 10,
+      "hp": 1000,
+      "exp": 0,
+      "drops": [
+        "bk_thunder_storm",
+        "bk_cancel"
+      ]
+    },
+    "nm_009": {
+      "lv": 10,
+      "hp": 100,
+      "exp": 101,
+      "drops": [
+        "new_item_163"
+      ]
+    },
+    "orc_zombie": {
+      "lv": 10,
+      "hp": 100,
+      "exp": 101,
+      "drops": [
+        "wpn_33",
+        "hlm_oasis",
+        "arm_64",
+        "amr_oasis",
+        "arm_104",
+        "wpn_claw_bronze",
+        "wpn_claw_steel"
+      ]
+    },
+    "skeleton": {
+      "lv": 10,
+      "hp": 80,
+      "exp": 101,
+      "drops": [
+        "hlm_mr",
+        "wpn_scimitar",
+        "arm_42",
+        "clk_mr",
+        "arm_105",
+        "potion_haste",
+        "new_item_150",
+        "bk_dex_up",
+        "new_item_183",
+        "new_item_203",
+        "new_item_214",
+        "wpn_claw_bronze",
+        "wpn_claw_steel"
+      ]
+    },
+    "croc": {
+      "lv": 10,
+      "hp": 90,
+      "exp": 101,
+      "drops": [
+        "arm_45",
+        "new_item_154",
+        "bk_thunder",
+        "potion_brave"
+      ]
+    },
+    "ant": {
+      "lv": 12,
+      "hp": 90,
+      "exp": 145,
+      "drops": [
+        "arm_45",
+        "potion_haste",
+        "new_item_154",
+        "potion_brave"
+      ]
+    },
+    "orc_mage": {
+      "lv": 12,
+      "hp": 80,
+      "exp": 145,
+      "drops": [
+        "wpn_oakwand",
+        "wpn_38",
+        "wpn_strwand",
+        "new_item_150",
+        "bk_heal2",
+        "potion_blue",
+        "bk_blaze",
+        "item_orc_elder_head"
+      ]
+    },
+    "skel_archer": {
+      "lv": 12,
+      "hp": 80,
+      "exp": 145,
+      "drops": [
+        "hlm_mr",
+        "wpn_3",
+        "arm_42",
+        "clk_mr",
+        "potion_haste",
+        "new_item_150",
+        "bk_dex_up",
+        "new_item_183",
+        "wpn_claw_bronze",
+        "wpn_claw_steel",
+        "wpn_xbow_dark"
+      ]
+    },
+    "roach": {
+      "lv": 12,
+      "hp": 100,
+      "exp": 145,
+      "drops": [
+        "hlm_mr",
+        "arm_42",
+        "potion_haste",
+        "new_item_158"
+      ]
+    },
+    "stone_golem": {
+      "lv": 13,
+      "hp": 150,
+      "exp": 170,
+      "drops": [
+        "wpn_alien",
+        "wpn_1",
+        "wpn_10",
+        "wpn_13",
+        "new_item_150",
+        "new_item_159",
+        "new_item_164",
+        "potion_blue",
+        "bk_rock_prison",
+        "new_item_207",
+        "mat_silverore",
+        "wpn_claw_bronze",
+        "wpn_claw_steel",
+        "wpn_dual_bronze",
+        "wpn_dual_steel"
+      ]
+    },
+    "skel_axe": {
+      "lv": 13,
+      "hp": 90,
+      "exp": 170,
+      "drops": [
+        "hlm_mr",
+        "wpn_1",
+        "arm_42",
+        "clk_mr",
+        "potion_haste",
+        "new_item_150",
+        "new_item_183"
+      ]
+    },
+    "skel_spear": {
+      "lv": 13,
+      "hp": 90,
+      "exp": 170,
+      "drops": [
+        "hlm_mr",
+        "wpn_4",
+        "arm_42",
+        "clk_mr",
+        "potion_haste",
+        "new_item_150",
+        "bk_dex_up",
+        "new_item_183"
+      ]
+    },
+    "rova_orc": {
+      "lv": 13,
+      "hp": 80,
+      "exp": 170,
+      "drops": [
+        "arm_69",
+        "arm_63",
+        "potion_haste",
+        "new_item_149",
+        "new_item_157",
+        "item_orc_amulet"
+      ]
+    },
+    "orc_scout": {
+      "lv": 14,
+      "hp": 90,
+      "exp": 197,
+      "drops": [
+        "scroll_acc"
+      ]
+    },
+    "hobgoblin": {
+      "lv": 14,
+      "hp": 90,
+      "exp": 197,
+      "drops": [
+        "hlm_mr",
+        "wpn_9",
+        "arm_42",
+        "potion_haste",
+        "new_item_180",
+        "mat_silverore"
+      ]
+    },
+    "spider": {
+      "lv": 14,
+      "hp": 100,
+      "exp": 197,
+      "drops": [
+        "bk_slow",
+        "bk_earthquake",
+        "scroll_acc",
+        "new_item_144"
+      ]
+    },
+    "troglodyte": {
+      "lv": 15,
+      "hp": 60,
+      "exp": 226,
+      "drops": [
+        "wpn_battleaxe",
+        "wpn_giantaxe",
+        "arm_61",
+        "scroll_acc"
+      ]
+    },
+    "atuba_orc": {
+      "lv": 15,
+      "hp": 120,
+      "exp": 226,
+      "drops": [
+        "hlm_mr",
+        "wpn_damascus",
+        "arm_60",
+        "arm_64",
+        "arm_104",
+        "arm_42",
+        "acc_123",
+        "new_item_145",
+        "new_item_157",
+        "new_item_202",
+        "item_orc_amulet"
+      ]
+    },
+    "duda_orc": {
+      "lv": 15,
+      "hp": 100,
+      "exp": 226,
+      "drops": [
+        "hlm_mr",
+        "arm_104",
+        "arm_42",
+        "acc_123",
+        "potion_haste",
+        "new_item_147",
+        "new_item_150",
+        "new_item_158",
+        "new_item_199",
+        "scroll_acc",
+        "item_orc_amulet"
+      ]
+    },
+    "lizardman": {
+      "lv": 15,
+      "hp": 90,
+      "exp": 226,
+      "drops": [
+        "hlm_mr",
+        "wpn_37",
+        "arm_105",
+        "arm_42",
+        "new_item_160",
+        "scroll_acc",
+        "mat_silverore",
+        "wpn_claw_steel",
+        "wpn_dual_bronze",
+        "wpn_dual_steel"
+      ]
+    },
+    "bear": {
+      "lv": 15,
+      "hp": 250,
+      "exp": 226,
+      "drops": [
+        "potion_brave",
+        "new_item_182",
+        "scroll_acc",
+        "wpn_claw_steel"
+      ]
+    },
+    "mermaid": {
+      "lv": 16,
+      "hp": 85,
+      "exp": 257,
+      "drops": [
+        "scroll_acc",
+        "new_item_mermaid_scale"
+      ]
+    },
+    "sparto": {
+      "lv": 16,
+      "hp": 120,
+      "exp": 257,
+      "drops": [
+        "hlm_mr",
+        "wpn_scimitar",
+        "arm_42",
+        "arm_60",
+        "scroll_acc",
+        "arm_105",
+        "new_item_150",
+        "wpn_claw_bronze",
+        "wpn_claw_steel",
+        "wpn_dual_bronze",
+        "wpn_dual_steel"
+      ]
+    },
+    "ghoul": {
+      "lv": 16,
+      "hp": 110,
+      "exp": 257,
+      "drops": [
+        "scroll_weapon",
+        "bk_berserk",
+        "new_item_204",
+        "new_item_205"
+      ]
+    },
+    "b_knight": {
+      "lv": 16,
+      "hp": 100,
+      "exp": 257,
+      "drops": [
+        "hlm_mr",
+        "wpn_2hsword",
+        "wpn_16",
+        "wpn_17",
+        "wpn_21",
+        "wpn_28",
+        "arm_42",
+        "arm_60",
+        "tsh_tshirt",
+        "arm_87",
+        "bot_short",
+        "arm_90",
+        "new_item_151",
+        "new_item_154",
+        "new_item_157",
+        "new_item_160",
+        "potion_blue",
+        "new_item_196",
+        "new_item_198",
+        "mat_silverore",
+        "wpn_dual_shadow"
+      ]
+    },
+    "nm_011": {
+      "lv": 16,
+      "hp": 100,
+      "exp": 257,
+      "drops": [
+        "hlm_mr",
+        "wpn_2hsword",
+        "wpn_16",
+        "wpn_17",
+        "wpn_21",
+        "wpn_28",
+        "arm_42",
+        "arm_60",
+        "tsh_tshirt",
+        "arm_87",
+        "bot_short",
+        "arm_90",
+        "new_item_151",
+        "new_item_154",
+        "new_item_157",
+        "new_item_160",
+        "potion_blue",
+        "new_item_197"
+      ]
+    },
+    "nm_010": {
+      "lv": 16,
+      "hp": 90,
+      "exp": 257,
+      "drops": [
+        "acc_129",
+        "potion_haste",
+        "new_item_160",
+        "new_item_161",
+        "new_item_162"
+      ]
+    },
+    "neruga_orc": {
+      "lv": 17,
+      "hp": 150,
+      "exp": 290,
+      "drops": [
+        "wpn_2hsword",
+        "wpn_invader",
+        "wpn_damascus",
+        "arm_64",
+        "arm_104",
+        "acc_123",
+        "potion_haste",
+        "new_item_146",
+        "new_item_157",
+        "new_item_200",
+        "item_orc_amulet"
+      ]
+    },
+    "lycan": {
+      "lv": 17,
+      "hp": 120,
+      "exp": 290,
+      "drops": [
+        "wpn_battleaxe",
+        "wpn_halberd",
+        "arm_65",
+        "arm_66",
+        "arm_105",
+        "arm_90",
+        "new_item_151",
+        "bk_dex_up",
+        "bk_vampire",
+        "bk_slow",
+        "new_item_195",
+        "wpn_dual_steel"
+      ]
+    },
+    "ungoliant": {
+      "lv": 18,
+      "hp": 200,
+      "exp": 325,
+      "drops": [
+        "scroll_weapon",
+        "scroll_armor",
+        "scroll_acc",
+        "bk_slow",
+        "bk_charm",
+        "bk_rock_prison"
+      ]
+    },
+    "crabman": {
+      "lv": 18,
+      "hp": 200,
+      "exp": 325,
+      "drops": [
+        "scroll_armor",
+        "bk_break",
+        "bk_str_up"
+      ]
+    },
+    "giant_ant": {
+      "lv": 20,
+      "hp": 150,
+      "exp": 401,
+      "drops": [
+        "arm_60",
+        "arm_47",
+        "potion_haste",
+        "new_item_154",
+        "new_item_155",
+        "new_item_156",
+        "new_item_157",
+        "new_item_158",
+        "new_item_159",
+        "potion_brave",
+        "arm_46"
+      ]
+    },
+    "starfish": {
+      "lv": 20,
+      "hp": 180,
+      "exp": 401,
+      "drops": [
+        "potion_haste",
+        "bk_ice_spike",
+        "scroll_acc"
+      ]
+    },
+    "ratman": {
+      "lv": 20,
+      "hp": 150,
+      "exp": 401,
+      "drops": [
+        "arm_61",
+        "potion_haste",
+        "bk_dex_up",
+        "bk_haste_spell"
+      ]
+    },
+    "obli_lizardman": {
+      "lv": 20,
+      "hp": 180,
+      "exp": 2401,
+      "drops": [
+        "item_forgotten_robe"
+      ]
+    },
+    "obli_croc": {
+      "lv": 20,
+      "hp": 150,
+      "exp": 2401,
+      "drops": [
+        "arm_95"
+      ]
+    },
+    "gaster": {
+      "lv": 21,
+      "hp": 200,
+      "exp": 442,
+      "drops": [
+        "wpn_battleaxe",
+        "wpn_giantaxe",
+        "new_item_154",
+        "new_item_155",
+        "bk_summon",
+        "potion_blue",
+        "item_death_oath"
+      ]
+    },
+    "elder": {
+      "lv": 21,
+      "hp": 250,
+      "exp": 442,
+      "drops": [
+        "arm_87",
+        "new_item_150",
+        "bk_thunder",
+        "bk_heal2",
+        "scroll_acc",
+        "potion_blue",
+        "new_item_234"
+      ]
+    },
+    "ogre": {
+      "lv": 22,
+      "hp": 250,
+      "exp": 485,
+      "drops": [
+        "wpn_battleaxe",
+        "wpn_giantaxe",
+        "arm_61",
+        "scroll_weapon",
+        "scroll_armor",
+        "bk_fireball",
+        "bk_break",
+        "bk_elf_release",
+        "new_item_217",
+        "bk_blaze"
+      ]
+    },
+    "lamia": {
+      "lv": 22,
+      "hp": 200,
+      "exp": 485,
+      "drops": [
+        "scroll_weapon",
+        "scroll_acc",
+        "bk_break",
+        "new_item_221",
+        "new_item_208"
+      ]
+    },
+    "cerberus": {
+      "lv": 24,
+      "hp": 120,
+      "exp": 577,
+      "drops": [
+        "wpn_strwand",
+        "wpn_witchwand",
+        "scroll_acc",
+        "new_item_150",
+        "new_item_157",
+        "new_item_158",
+        "new_item_159",
+        "bk_fireball",
+        "bk_break",
+        "bk_holy_barrier",
+        "new_item_195"
+      ]
+    },
+    "sildeis": {
+      "lv": 24,
+      "hp": 210,
+      "exp": 730,
+      "drops": [
+        "new_item_160",
+        "new_item_161",
+        "new_item_162",
+        "bk_slow",
+        "bk_ice_lance",
+        "potion_blue",
+        "bk_ice_spike",
+        "bk_elf_lifespring",
+        "bk_elf_lifebless",
+        "new_item_213"
+      ]
+    },
+    "dragon_turtle": {
+      "lv": 24,
+      "hp": 280,
+      "exp": 577,
+      "drops": [
+        "bk_cancel",
+        "scroll_acc",
+        "bk_ice_spike",
+        "new_item_206"
+      ]
+    },
+    "harpy": {
+      "lv": 26,
+      "hp": 230,
+      "exp": 677,
+      "drops": [
+        "arm_62",
+        "new_item_150",
+        "bk_haste_spell",
+        "bk_holy_dash",
+        "potion_blue",
+        "bk_greater_haste",
+        "new_item_195",
+        "bk_elf_stormeye"
+      ]
+    },
+    "scorpion": {
+      "lv": 26,
+      "hp": 200,
+      "exp": 677,
+      "drops": [
+        "arm_46",
+        "potion_haste",
+        "bk_thunder",
+        "bk_cancel",
+        "bk_rock_prison",
+        "bk_quake",
+        "wpn_claw_dark",
+        "wpn_dual_dark"
+      ]
+    },
+    "dark_elf": {
+      "lv": 27,
+      "hp": 350,
+      "exp": 730,
+      "drops": [
+        "wpn_elfbow",
+        "wpn_30",
+        "clk_elf",
+        "arm_71",
+        "bk_tornado",
+        "bk_invisible",
+        "potion_blue",
+        "new_item_195",
+        "bk_elf_release",
+        "bk_meditation",
+        "item_blueflute"
+      ]
+    },
+    "skel_sniper": {
+      "lv": 27,
+      "hp": 250,
+      "exp": 730,
+      "drops": [
+        "wpn_3",
+        "arm_42",
+        "clk_mr",
+        "arm_105",
+        "acc_120",
+        "potion_haste",
+        "new_item_150",
+        "bk_dex_up",
+        "bk_charm",
+        "new_item_212"
+      ]
+    },
+    "skel_guard": {
+      "lv": 27,
+      "hp": 270,
+      "exp": 730,
+      "drops": [
+        "wpn_14",
+        "arm_42",
+        "clk_mr",
+        "arm_105",
+        "potion_haste",
+        "new_item_150",
+        "bk_dex_up",
+        "bk_charm",
+        "new_item_212"
+      ]
+    },
+    "electon": {
+      "lv": 28,
+      "hp": 350,
+      "exp": 1226,
+      "drops": [
+        "acc_127",
+        "scroll_armor",
+        "new_item_151",
+        "new_item_152",
+        "new_item_153",
+        "bk_thunder",
+        "bk_summon",
+        "bk_thunder_storm",
+        "potion_blue",
+        "bk_ice_spike",
+        "bk_elf_lifespring"
+      ]
+    },
+    "troll": {
+      "lv": 28,
+      "hp": 270,
+      "exp": 785,
+      "drops": [
+        "wpn_battleaxe",
+        "wpn_giantaxe",
+        "wpn_berserker",
+        "arm_61",
+        "arm_45",
+        "acc_132",
+        "bk_heal2",
+        "bk_regen",
+        "potion_brave"
+      ]
+    },
+    "nm_013": {
+      "lv": 28,
+      "hp": 250,
+      "exp": 1370,
+      "drops": [
+        "scroll_poly",
+        "scroll_acc"
+      ]
+    },
+    "bandit": {
+      "lv": 28,
+      "hp": 500,
+      "exp": 785,
+      "drops": [
+        "wpn_20",
+        "arm_69",
+        "hlm_mr",
+        "wpn_shortbow",
+        "wpn_32",
+        "arm_42",
+        "arm_66",
+        "arm_98",
+        "arm_49",
+        "potion_heal",
+        "potion_strong",
+        "potion_haste",
+        "potion_ult",
+        "new_item_225",
+        "item_death_oath"
+      ]
+    },
+    "nm_012": {
+      "lv": 28,
+      "hp": 444,
+      "exp": 1370,
+      "drops": [
+        "bk_elf_release",
+        "scroll_acc"
+      ]
+    },
+    "ogre_warrior": {
+      "lv": 28,
+      "hp": 500,
+      "exp": 785,
+      "drops": [
+        "wpn_battleaxe",
+        "wpn_giantaxe",
+        "wpn_berserker",
+        "arm_61",
+        "arm_47",
+        "acc_133",
+        "scroll_weapon",
+        "scroll_armor",
+        "new_item_167",
+        "potion_brave",
+        "wpn_claw_shadow"
+      ]
+    },
+    "crustacean": {
+      "lv": 29,
+      "hp": 450,
+      "exp": 1090,
+      "drops": [
+        "acc_128",
+        "scroll_weapon",
+        "scroll_armor",
+        "scroll_acc",
+        "new_item_151",
+        "new_item_152",
+        "new_item_153",
+        "bk_weaken"
+      ]
+    },
+    "skel_fighter": {
+      "lv": 29,
+      "hp": 280,
+      "exp": 842,
+      "drops": [
+        "wpn_battleaxe",
+        "arm_42",
+        "clk_mr",
+        "arm_105",
+        "potion_haste",
+        "new_item_150",
+        "bk_dex_up",
+        "bk_haste_spell",
+        "bk_solid_shield"
+      ]
+    },
+    "bomb_flower": {
+      "lv": 29,
+      "hp": 230,
+      "exp": 677,
+      "drops": [
+        "bk_sleep_mist",
+        "scroll_acc"
+      ]
+    },
+    "nm_046": {
+      "lv": 30,
+      "hp": 300,
+      "exp": 901,
+      "drops": [
+        "wpn_battleaxe",
+        "potion_haste",
+        "new_item_150",
+        "potion_blue",
+        "new_item_195"
+      ]
+    },
+    "nm_014": {
+      "lv": 30,
+      "hp": 250,
+      "exp": 901,
+      "drops": [
+        "wpn_4",
+        "wpn_halberd",
+        "wpn_14",
+        "arm_66",
+        "arm_68",
+        "bot_short",
+        "glv_glove",
+        "scroll_armor",
+        "scroll_acc",
+        "potion_brave"
+      ]
+    },
+    "ogre_king": {
+      "lv": 30,
+      "hp": 400,
+      "exp": 901,
+      "drops": [
+        "wpn_battleaxe",
+        "wpn_10",
+        "wpn_giantaxe",
+        "wpn_berserker",
+        "arm_61",
+        "arm_47",
+        "scroll_weapon",
+        "scroll_armor",
+        "new_item_158",
+        "bk_fireball",
+        "bk_break",
+        "bk_holy_light",
+        "potion_blue",
+        "bk_disease",
+        "bk_shock_stun",
+        "bk_dark_burn",
+        "wpn_claw_shadow"
+      ]
+    },
+    "monia": {
+      "lv": 30,
+      "hp": 350,
+      "exp": 901,
+      "drops": [
+        "arm_87",
+        "scroll_weapon",
+        "scroll_armor",
+        "bk_slow",
+        "bk_heal2",
+        "bk_holy_light",
+        "scroll_poly",
+        "potion_blue"
+      ]
+    },
+    "nm_039": {
+      "lv": 30,
+      "hp": 360,
+      "exp": 901,
+      "drops": [
+        "scroll_weapon",
+        "scroll_armor",
+        "scroll_poly"
+      ]
+    },
+    "nm_038": {
+      "lv": 30,
+      "hp": 250,
+      "exp": 901,
+      "drops": [
+        "potion_haste",
+        "scroll_weapon",
+        "scroll_armor",
+        "potion_blue"
+      ]
+    },
+    "nm_015": {
+      "lv": 31,
+      "hp": 230,
+      "exp": 962,
+      "drops": [
+        "wpn_witchwand",
+        "scroll_weapon",
+        "bk_full_heal",
+        "potion_blue",
+        "bk_ice_spike",
+        "bk_bless_wpn"
+      ]
+    },
+    "griffon": {
+      "lv": 31,
+      "hp": 380,
+      "exp": 962,
+      "drops": [
+        "arm_62",
+        "potion_haste",
+        "new_item_150",
+        "new_item_152",
+        "new_item_155",
+        "new_item_158",
+        "new_item_161",
+        "bk_tornado",
+        "bk_elf_release",
+        "bk_elf_winddash",
+        "bk_elf_stormeye",
+        "bk_magic_shield",
+        "arm_46"
+      ]
+    },
+    "nm_016": {
+      "lv": 31,
+      "hp": 300,
+      "exp": 962,
+      "drops": [
+        "hlm_mr",
+        "arm_42",
+        "potion_strong",
+        "potion_haste",
+        "potion_blue"
+      ]
+    },
+    "giant_croc": {
+      "lv": 32,
+      "hp": 4000,
+      "exp": 10250,
+      "drops": [
+        "scroll_armor",
+        "scroll_acc",
+        "new_item_154",
+        "bk_thunder",
+        "potion_brave"
+      ]
+    },
+    "nm_017": {
+      "lv": 32,
+      "hp": 400,
+      "exp": 1025,
+      "drops": [
+        "wpn_2",
+        "glv_crystal",
+        "bk_ice_lance",
+        "bk_ice_spike",
+        "bk_elf_lifespring"
+      ]
+    },
+    "gaster_king": {
+      "lv": 33,
+      "hp": 300,
+      "exp": 1090,
+      "drops": [
+        "wpn_battleaxe",
+        "wpn_giantaxe",
+        "wpn_berserker",
+        "arm_45",
+        "scroll_weapon",
+        "scroll_armor",
+        "new_item_155",
+        "new_item_156",
+        "potion_blue",
+        "bk_disease"
+      ]
+    },
+    "nm_019": {
+      "lv": 33,
+      "hp": 270,
+      "exp": 1090,
+      "drops": [
+        "potion_haste",
+        "scroll_acc",
+        "new_item_150",
+        "new_item_195"
+      ]
+    },
+    "beholder": {
+      "lv": 33,
+      "hp": 450,
+      "exp": 1090,
+      "drops": [
+        "scroll_weapon",
+        "new_item_160",
+        "new_item_161",
+        "new_item_162",
+        "bk_mummy_curse",
+        "bk_cancel",
+        "bk_elf_release",
+        "bk_weaken",
+        "bk_disease",
+        "bk_elf_triple"
+      ]
+    },
+    "nm_018": {
+      "lv": 33,
+      "hp": 300,
+      "exp": 1090,
+      "drops": [
+        "wpn_battleaxe",
+        "arm_60",
+        "arm_62",
+        "potion_heal",
+        "potion_strong",
+        "potion_ult",
+        "bk_holy_barrier",
+        "bk_weaken"
+      ]
+    },
+    "nm_020": {
+      "lv": 33,
+      "hp": 400,
+      "exp": 1090,
+      "drops": [
+        "wpn_18",
+        "scroll_acc",
+        "new_item_195",
+        "item_yeti_head"
+      ]
+    },
+    "dragon_fly": {
+      "lv": 33,
+      "hp": 350,
+      "exp": 1090,
+      "drops": [
+        "scroll_weapon",
+        "scroll_armor",
+        "bk_vampire",
+        "new_item_192"
+      ]
+    },
+    "doppelganger": {
+      "lv": 33,
+      "hp": 320,
+      "exp": 1090,
+      "drops": [
+        "scroll_poly",
+        "scroll_acc",
+        "potion_blue",
+        "new_item_240",
+        "wpn_dual_shadow"
+      ]
+    },
+    "arian": {
+      "lv": 34,
+      "hp": 500,
+      "exp": 1157,
+      "drops": [
+        "potion_haste",
+        "scroll_weapon",
+        "scroll_armor",
+        "scroll_acc",
+        "bk_slow",
+        "bk_mummy_curse",
+        "bk_heal2",
+        "bk_holy_light",
+        "bk_haste_spell",
+        "bk_earthquake",
+        "bk_rock_prison",
+        "bk_greater_haste",
+        "bk_quake",
+        "bk_elf_groundtrap"
+      ]
+    },
+    "obli_sharlob": {
+      "lv": 34,
+      "hp": 170,
+      "exp": 2157,
+      "drops": [
+        "item_forgotten_scale",
+        "bk_sleep_mist"
+      ]
+    },
+    "obli_werewolf": {
+      "lv": 34,
+      "hp": 180,
+      "exp": 2157,
+      "drops": [
+        "item_forgotten_scale"
+      ]
+    },
+    "fire_warrior": {
+      "lv": 35,
+      "hp": 350,
+      "exp": 1226,
+      "drops": [
+        "hlm_mr",
+        "wpn_longsword",
+        "arm_42",
+        "arm_62",
+        "arm_105",
+        "potion_haste",
+        "new_item_192"
+      ]
+    },
+    "nm_021": {
+      "lv": 35,
+      "hp": 280,
+      "exp": 1226,
+      "drops": [
+        "wpn_2hsword",
+        "arm_60",
+        "arm_65",
+        "arm_90",
+        "glv_glove",
+        "potion_haste",
+        "scroll_weapon",
+        "scroll_armor",
+        "scroll_acc",
+        "bk_shock_stun",
+        "bk_reduction_armor",
+        "bk_spike_armor"
+      ]
+    },
+    "aruba": {
+      "lv": 35,
+      "hp": 500,
+      "exp": 1226,
+      "drops": [
+        "wpn_18",
+        "bk_str_up",
+        "bk_haste_spell",
+        "bk_earthquake",
+        "bk_rock_prison",
+        "bk_greater_haste",
+        "bk_quake"
+      ]
+    },
+    "bandit_boss": {
+      "lv": 35,
+      "hp": 5000,
+      "exp": 12260,
+      "drops": [
+        "hlm_mr",
+        "wpn_katana",
+        "wpn_silversword",
+        "arm_62",
+        "arm_87",
+        "scroll_acc",
+        "arm_42",
+        "potion_heal",
+        "potion_strong",
+        "potion_haste",
+        "potion_ult",
+        "new_item_152",
+        "new_item_153",
+        "new_item_155",
+        "new_item_156",
+        "new_item_158",
+        "new_item_159",
+        "new_item_161",
+        "new_item_162",
+        "item_nightvision"
+      ]
+    },
+    "obli_darkelf": {
+      "lv": 35,
+      "hp": 350,
+      "exp": 3226,
+      "drops": [
+        "hlm_wind",
+        "item_forgotten_leather",
+        "rng_mr",
+        "mat_black_mithril"
+      ]
+    },
+    "obli_bear": {
+      "lv": 35,
+      "hp": 250,
+      "exp": 2226,
+      "drops": [
+        "item_forgotten_leather"
+      ]
+    },
+    "nm_022": {
+      "lv": 35,
+      "hp": 650,
+      "exp": 1226,
+      "drops": [
+        "scroll_weapon",
+        "scroll_armor",
+        "bk_str_up",
+        "new_item_164",
+        "new_item_180",
+        "potion_blue",
+        "bk_elf_soul",
+        "bk_elf_steelguard",
+        "bk_weaken",
+        "item_ancientkey",
+        "bk_dark_double"
+      ]
+    },
+    "fire_archer": {
+      "lv": 36,
+      "hp": 320,
+      "exp": 1297,
+      "drops": [
+        "hlm_mr",
+        "wpn_32",
+        "arm_42",
+        "arm_67",
+        "arm_90",
+        "bk_dex_up",
+        "bk_slow",
+        "new_item_192"
+      ]
+    },
+    "evil_lizard": {
+      "lv": 36,
+      "hp": 800,
+      "exp": 1297,
+      "drops": [
+        "scroll_weapon",
+        "scroll_armor",
+        "scroll_acc",
+        "new_item_151",
+        "new_item_152",
+        "new_item_153",
+        "bk_slow",
+        "bk_heal2",
+        "bk_holy_light",
+        "bk_cancel",
+        "bk_earthquake",
+        "bk_rock_prison",
+        "bk_quake",
+        "bk_elf_release",
+        "new_item_232",
+        "item_lizard_horn",
+        "arm_46"
+      ]
+    },
+    "obli_kasta": {
+      "lv": 36,
+      "hp": 240,
+      "exp": 3370,
+      "drops": [
+        "item_forgotten_leather",
+        "new_item_191"
+      ]
+    },
+    "succubus": {
+      "lv": 37,
+      "hp": 400,
+      "exp": 1370,
+      "drops": [
+        "acc_117",
+        "bk_ice_lance",
+        "bk_summon",
+        "bk_blizzard",
+        "potion_blue",
+        "bk_ice_spike",
+        "bk_elf_release",
+        "bk_elf_lifespring",
+        "bk_elf_triple",
+        "new_item_226",
+        "bk_dark_double",
+        "wpn_claw_shadow"
+      ]
+    },
+    "obli_axetaurus": {
+      "lv": 37,
+      "hp": 300,
+      "exp": 4370,
+      "drops": [
+        "item_forgotten_scale",
+        "rng_mr",
+        "item_ancient_scroll",
+        "new_item_191"
+      ]
+    },
+    "obli_troll": {
+      "lv": 37,
+      "hp": 300,
+      "exp": 2870,
+      "drops": [
+        "item_forgotten_robe",
+        "acc_demonbane"
+      ]
+    },
+    "obli_lamia": {
+      "lv": 37,
+      "hp": 240,
+      "exp": 3370,
+      "drops": [
+        "item_forgotten_robe",
+        "item_forgotten_scale",
+        "arm_95",
+        "new_item_221"
+      ]
+    },
+    "obli_lycan": {
+      "lv": 37,
+      "hp": 220,
+      "exp": 2570,
+      "drops": [
+        "hlm_wind",
+        "item_forgotten_leather",
+        "rng_mr"
+      ]
+    },
+    "salamander": {
+      "lv": 38,
+      "hp": 383,
+      "exp": 1450,
+      "drops": [
+        "potion_haste",
+        "new_item_155",
+        "new_item_158",
+        "new_item_192",
+        "bk_fire_storm",
+        "bk_elf_magicerase",
+        "bk_elf_stormeye",
+        "bk_shock_stun"
+      ]
+    },
+    "nm_040": {
+      "lv": 38,
+      "hp": 383,
+      "exp": 1450,
+      "drops": [
+        "wpn_2hsword",
+        "wpn_giantaxe",
+        "scroll_weapon",
+        "scroll_armor",
+        "bk_fire_storm"
+      ]
+    },
+    "nm_036": {
+      "lv": 38,
+      "hp": 350,
+      "exp": 1450,
+      "drops": [
+        "potion_haste",
+        "scroll_weapon",
+        "scroll_armor",
+        "potion_blue"
+      ]
+    },
+    "nm_041": {
+      "lv": 38,
+      "hp": 200,
+      "exp": 1450,
+      "drops": [
+        "scroll_weapon",
+        "scroll_armor"
+      ]
+    },
+    "nm_042": {
+      "lv": 38,
+      "hp": 250,
+      "exp": 1450,
+      "drops": [
+        "scroll_weapon",
+        "scroll_armor"
+      ]
+    },
+    "obli_ungoliant": {
+      "lv": 38,
+      "hp": 250,
+      "exp": 2845,
+      "drops": [
+        "item_forgotten_leather",
+        "rng_mr"
+      ]
+    },
+    "fire_egg": {
+      "lv": 39,
+      "hp": 500,
+      "exp": 1520,
+      "drops": [
+        "scroll_weapon",
+        "scroll_armor",
+        "bk_fireball",
+        "bk_holy_light",
+        "scroll_poly",
+        "new_item_192",
+        "potion_blue"
+      ]
+    },
+    "nm_043": {
+      "lv": 39,
+      "hp": 500,
+      "exp": 1520,
+      "drops": [
+        "scroll_weapon",
+        "scroll_armor",
+        "bk_holy_light",
+        "scroll_poly"
+      ]
+    },
+    "nm_044": {
+      "lv": 39,
+      "hp": 573,
+      "exp": 1520,
+      "drops": [
+        "wpn_silveraxe",
+        "scroll_weapon",
+        "scroll_armor",
+        "scroll_revive",
+        "bk_elf_soul"
+      ]
+    },
+    "nm_023": {
+      "lv": 39,
+      "hp": 340,
+      "exp": 1520,
+      "drops": [
+        "arm_45",
+        "scroll_weapon",
+        "scroll_armor",
+        "bk_thunder_storm"
+      ]
+    },
+    "nm_024": {
+      "lv": 39,
+      "hp": 400,
+      "exp": 1520,
+      "drops": [
+        "arm_60",
+        "potion_haste",
+        "scroll_weapon",
+        "scroll_armor",
+        "bk_spike_armor"
+      ]
+    },
+    "ohm": {
+      "lv": 39,
+      "hp": 480,
+      "exp": 1503,
+      "drops": [
+        "scroll_revive"
+      ]
+    },
+    "ohm_rage": {
+      "lv": 40,
+      "hp": 500,
+      "exp": 1662,
+      "drops": [
+        "scroll_revive"
+      ]
+    },
+    "de_remnant_bow": {
+      "lv": 40,
+      "hp": 490,
+      "exp": 1687,
+      "drops": [
+        "wpn_small_katana",
+        "wpn_bow_rasta",
+        "arm_rasta_leather",
+        "bot_rasta"
+      ]
+    },
+    "nm_045": {
+      "lv": 40,
+      "hp": 360,
+      "exp": 1520,
+      "drops": [
+        "potion_haste",
+        "scroll_weapon",
+        "scroll_armor",
+        "potion_blue"
+      ]
+    },
+    "nm_037": {
+      "lv": 40,
+      "hp": 1500,
+      "exp": 1601,
+      "drops": [
+        "wpn_2hsword",
+        "potion_haste",
+        "scroll_weapon",
+        "scroll_armor",
+        "potion_blue",
+        "panacea_wis",
+        "bk_elf_triple"
+      ]
+    },
+    "ohm_armor": {
+      "lv": 40,
+      "hp": 530,
+      "exp": 1740,
+      "drops": [
+        "scroll_acc",
+        "wpn_xbow_rasta"
+      ]
+    },
+    "cyclops": {
+      "lv": 40,
+      "hp": 800,
+      "exp": 1601,
+      "drops": [
+        "arm_62",
+        "arm_47",
+        "scroll_weapon",
+        "scroll_armor",
+        "scroll_acc",
+        "bk_str_up",
+        "bk_summon",
+        "bk_rock_prison",
+        "bk_quake",
+        "bk_elf_groundtrap",
+        "bk_elf_earthbless",
+        "bk_weaken",
+        "bk_seal",
+        "new_item_227"
+      ]
+    },
+    "ohm_armor_rage": {
+      "lv": 41,
+      "hp": 550,
+      "exp": 1906,
+      "drops": [
+        "wpn_xbow_rasta",
+        "scroll_weapon",
+        "scroll_armor"
+      ]
+    },
+    "succubus_queen": {
+      "lv": 41,
+      "hp": 500,
+      "exp": 1682,
+      "drops": [
+        "acc_116",
+        "scroll_acc",
+        "bk_ice_lance",
+        "bk_summon",
+        "potion_blue",
+        "bk_ice_spike",
+        "bk_elf_lifespring",
+        "bk_mana_drain",
+        "new_item_235"
+      ]
+    },
+    "de_remnant_xbow": {
+      "lv": 41,
+      "hp": 500,
+      "exp": 1837,
+      "drops": [
+        "wpn_dagger_rasta",
+        "wpn_xbow_rasta",
+        "bk_holy_dash",
+        "bk_dark_crit",
+        "bk_dark_erup"
+      ]
+    },
+    "de_remnant_mage": {
+      "lv": 41,
+      "hp": 510,
+      "exp": 1868,
+      "drops": [
+        "wpn_wand_rasta",
+        "amr_rasta_robe"
+      ]
+    },
+    "de_remnant_sword": {
+      "lv": 41,
+      "hp": 540,
+      "exp": 1948,
+      "drops": [
+        "wpn_sword_rasta",
+        "clk_dark",
+        "arm_rasta_leather",
+        "bot_rasta",
+        "scroll_weapon",
+        "scroll_armor",
+        "bk_berserk",
+        "bk_dark_burn",
+        "bk_dark_erup"
+      ]
+    },
+    "de_gate_apprentice": {
+      "lv": 41,
+      "hp": 330,
+      "exp": 1430,
+      "drops": [
+        "wpn_wand_rasta",
+        "amr_rasta_robe"
+      ]
+    },
+    "nm_025": {
+      "lv": 41,
+      "hp": 832,
+      "exp": 1682,
+      "drops": [
+        "acc_129",
+        "acc_131",
+        "potion_heal",
+        "potion_strong",
+        "potion_ult",
+        "potion_blue",
+        "bk_ice_spike",
+        "bk_magic_shield",
+        "bk_dark_shadow",
+        "wpn_claw_shadow"
+      ]
+    },
+    "obli_harpy": {
+      "lv": 41,
+      "hp": 250,
+      "exp": 2677,
+      "drops": [
+        "arm_95",
+        "rng_harpy"
+      ]
+    },
+    "obli_griffon": {
+      "lv": 41,
+      "hp": 410,
+      "exp": 4682,
+      "drops": [
+        "item_forgotten_xbow",
+        "hlm_wind",
+        "item_forgotten_robe",
+        "acc_demonbane",
+        "new_item_193",
+        "mat_griffon_feather"
+      ]
+    },
+    "obli_hammertaurus": {
+      "lv": 41,
+      "hp": 430,
+      "exp": 4682,
+      "drops": [
+        "item_forgotten_plate",
+        "rng_mr",
+        "item_ancient_scroll",
+        "new_item_191"
+      ]
+    },
+    "sema": {
+      "lv": 42,
+      "hp": 8000,
+      "exp": 17650,
+      "drops": [
+        "arm_87",
+        "arm_90",
+        "arm_57",
+        "amu_str",
+        "scroll_weapon",
+        "scroll_armor",
+        "scroll_acc",
+        "new_item_150",
+        "new_item_151",
+        "new_item_152",
+        "new_item_153",
+        "bk_dex_up",
+        "bk_haste_spell",
+        "potion_blue",
+        "bk_greater_haste",
+        "bk_elf_stormeye",
+        "bk_weaken",
+        "scroll_weapon_b",
+        "scroll_armor_b",
+        "mat_boss_crystal"
+      ]
+    },
+    "necromancer": {
+      "lv": 42,
+      "hp": 800,
+      "exp": 1765,
+      "drops": [
+        "arm_87",
+        "arm_90",
+        "amu_str",
+        "scroll_weapon",
+        "scroll_armor",
+        "scroll_acc",
+        "new_item_151",
+        "new_item_152",
+        "new_item_153",
+        "bk_dex_up",
+        "bk_haste_spell",
+        "potion_blue",
+        "bk_greater_haste",
+        "bk_elf_stormeye",
+        "bk_weaken",
+        "item_crystal_ball"
+      ]
+    },
+    "nm_026": {
+      "lv": 42,
+      "hp": 644,
+      "exp": 1765,
+      "drops": [
+        "amr_robe",
+        "glv_crystal",
+        "potion_heal",
+        "potion_strong",
+        "potion_haste",
+        "potion_ult",
+        "bk_elf_seal",
+        "bk_magic_shield",
+        "bk_weaken"
+      ]
+    },
+    "de_train_summoner": {
+      "lv": 42,
+      "hp": 540,
+      "exp": 2430,
+      "drops": [
+        "amr_summoner_robe",
+        "acc_summoner_amulet"
+      ]
+    },
+    "de_remnant_2h": {
+      "lv": 42,
+      "hp": 600,
+      "exp": 2299,
+      "drops": [
+        "wpn_dual_rasta"
+      ]
+    },
+    "de_gate_xbow": {
+      "lv": 42,
+      "hp": 380,
+      "exp": 1732,
+      "drops": [
+        "wpn_xbow_heavy_rasta",
+        "bk_holy_dash",
+        "bk_dark_burn"
+      ]
+    },
+    "obli_kastaking": {
+      "lv": 42,
+      "hp": 360,
+      "exp": 3765,
+      "drops": [
+        "item_forgotten_leather",
+        "rng_mr"
+      ]
+    },
+    "obli_bigcroc": {
+      "lv": 42,
+      "hp": 440,
+      "exp": 4765,
+      "drops": [
+        "item_forgotten_plate",
+        "arm_95",
+        "rng_mr"
+      ]
+    },
+    "obli_shapeshifter": {
+      "lv": 42,
+      "hp": 350,
+      "exp": 3765,
+      "drops": [
+        "acc_demonbane",
+        "item_ancient_scroll"
+      ]
+    },
+    "batus": {
+      "lv": 43,
+      "hp": 8000,
+      "exp": 18500,
+      "drops": [
+        "arm_87",
+        "arm_90",
+        "arm_54",
+        "acc_117",
+        "amu_int",
+        "scroll_weapon",
+        "scroll_armor",
+        "scroll_acc",
+        "new_item_150",
+        "new_item_154",
+        "new_item_155",
+        "new_item_156",
+        "bk_cancel",
+        "potion_blue",
+        "bk_quake",
+        "bk_elf_groundtrap",
+        "bk_elf_earthbless",
+        "scroll_weapon_b",
+        "scroll_armor_b",
+        "mat_boss_crystal"
+      ]
+    },
+    "nm_029": {
+      "lv": 43,
+      "hp": 2500,
+      "exp": 3601,
+      "drops": [
+        "arm_69",
+        "arm_63",
+        "potion_haste",
+        "scroll_weapon",
+        "scroll_armor",
+        "scroll_revive",
+        "potion_blue",
+        "panacea_int"
+      ]
+    },
+    "nm_028": {
+      "lv": 43,
+      "hp": 1500,
+      "exp": 3601,
+      "drops": [
+        "arm_69",
+        "arm_63",
+        "potion_haste",
+        "scroll_weapon",
+        "scroll_armor",
+        "scroll_revive",
+        "potion_blue",
+        "panacea_str"
+      ]
+    },
+    "nm_031": {
+      "lv": 43,
+      "hp": 2000,
+      "exp": 3601,
+      "drops": [
+        "arm_69",
+        "arm_63",
+        "potion_haste",
+        "scroll_weapon",
+        "scroll_armor",
+        "scroll_revive",
+        "potion_blue",
+        "panacea_con"
+      ]
+    },
+    "de_train_tamer": {
+      "lv": 43,
+      "hp": 430,
+      "exp": 2021,
+      "drops": [
+        "wpn_official2h",
+        "glv_official",
+        "bot_official"
+      ]
+    },
+    "nm_027": {
+      "lv": 43,
+      "hp": 666,
+      "exp": 1850,
+      "drops": [
+        "amr_robe",
+        "glv_crystal",
+        "potion_heal",
+        "potion_strong",
+        "potion_ult",
+        "potion_blue",
+        "bk_elf_seal",
+        "bk_dark_shadow"
+      ]
+    },
+    "nm_030": {
+      "lv": 43,
+      "hp": 1500,
+      "exp": 3601,
+      "drops": [
+        "arm_69",
+        "arm_63",
+        "potion_haste",
+        "scroll_weapon",
+        "scroll_armor",
+        "scroll_revive",
+        "potion_blue",
+        "panacea_dex"
+      ]
+    },
+    "de_train_blacktiger": {
+      "lv": 43,
+      "hp": 540,
+      "exp": 2547,
+      "drops": [
+        "clk_blacktiger"
+      ]
+    },
+    "de_gate_patrol": {
+      "lv": 43,
+      "hp": 550,
+      "exp": 2621,
+      "drops": [
+        "wpn_small_katana",
+        "wpn_bow_rasta",
+        "arm_rasta_leather",
+        "bot_rasta"
+      ]
+    },
+    "de_gate_spear": {
+      "lv": 43,
+      "hp": 700,
+      "exp": 3315,
+      "drops": [
+        "wpn_spear_rasta",
+        "arm_rasta_leather",
+        "shd_rasta"
+      ]
+    },
+    "lava_golem": {
+      "lv": 43,
+      "hp": 700,
+      "exp": 1850,
+      "drops": [
+        "wpn_2hsword",
+        "wpn_18",
+        "wpn_giantaxe",
+        "bk_slow",
+        "bk_str_up",
+        "scroll_acc",
+        "new_item_192",
+        "bk_elf_triple"
+      ]
+    },
+    "nm_032": {
+      "lv": 43,
+      "hp": 3000,
+      "exp": 3601,
+      "drops": [
+        "wpn_18",
+        "scroll_weapon",
+        "scroll_armor",
+        "scroll_poly",
+        "panacea_cha"
+      ]
+    },
+    "obli_doro": {
+      "lv": 43,
+      "hp": 330,
+      "exp": 3850,
+      "drops": [
+        "item_forgotten_scale",
+        "acc_132"
+      ]
+    },
+    "casper": {
+      "lv": 44,
+      "hp": 8000,
+      "exp": 19370,
+      "drops": [
+        "arm_87",
+        "arm_90",
+        "arm_55",
+        "acc_117",
+        "amu_str",
+        "scroll_weapon",
+        "scroll_armor",
+        "scroll_acc",
+        "new_item_150",
+        "new_item_157",
+        "new_item_158",
+        "new_item_159",
+        "bk_fireball",
+        "potion_blue",
+        "bk_elf_dancefire",
+        "bk_elf_earthshield",
+        "bk_blaze",
+        "scroll_weapon_b",
+        "scroll_armor_b",
+        "mat_boss_crystal"
+      ]
+    },
+    "de_train_hellhound": {
+      "lv": 44,
+      "hp": 560,
+      "exp": 2790,
+      "drops": []
+    },
+    "de_train_gatekeeper": {
+      "lv": 44,
+      "hp": 620,
+      "exp": 3079,
+      "drops": []
+    },
+    "de_lab_blackmage": {
+      "lv": 44,
+      "hp": 460,
+      "exp": 2257,
+      "drops": [
+        "scroll_acc",
+        "wpn_darkmage_wand",
+        "amr_darkmage_robe",
+        "acc_darkmage_amulet"
+      ]
+    },
+    "de_gate_soldier": {
+      "lv": 44,
+      "hp": 550,
+      "exp": 2744,
+      "drops": [
+        "wpn_sword_rasta",
+        "arm_rasta_leather",
+        "bot_rasta",
+        "scroll_armor",
+        "scroll_weapon",
+        "bk_dark_burn"
+      ]
+    },
+    "ifrit": {
+      "lv": 45,
+      "hp": 11000,
+      "exp": 2117,
+      "drops": [
+        "arm_69",
+        "wpn_katana",
+        "amr_plate",
+        "arm_63",
+        "scroll_weapon",
+        "scroll_armor",
+        "scroll_acc",
+        "new_item_152",
+        "new_item_153",
+        "new_item_155",
+        "new_item_156",
+        "new_item_158",
+        "new_item_159",
+        "new_item_161",
+        "new_item_162",
+        "bk_fireball",
+        "bk_dex_up",
+        "bk_str_up",
+        "bk_cancel",
+        "potion_blue",
+        "bk_fire_storm",
+        "bk_elf_magicerase",
+        "bk_elf_triple",
+        "bk_blaze",
+        "bk_elf_attrfire",
+        "scroll_weapon_b",
+        "scroll_armor_b",
+        "mat_boss_crystal"
+      ]
+    },
+    "nm_033": {
+      "lv": 45,
+      "hp": 280,
+      "exp": 2026,
+      "drops": [
+        "wpn_16",
+        "wpn_giantaxe",
+        "wpn_flaming_angel",
+        "arm_61",
+        "scroll_weapon",
+        "scroll_armor",
+        "scroll_acc",
+        "potion_blue",
+        "bk_elf_stormshot",
+        "bk_disease",
+        "wpn_dual_dark"
+      ]
+    },
+    "de_train_cursetamer": {
+      "lv": 45,
+      "hp": 590,
+      "exp": 3072,
+      "drops": [
+        "wpn_official2h",
+        "glv_official",
+        "bot_official"
+      ]
+    },
+    "ashitakio": {
+      "lv": 45,
+      "hp": 1100,
+      "exp": 2026,
+      "drops": [
+        "potion_haste",
+        "scroll_weapon",
+        "scroll_armor",
+        "scroll_acc",
+        "bk_fireball",
+        "bk_dex_up",
+        "bk_str_up",
+        "bk_haste_spell",
+        "bk_earthquake",
+        "new_item_192",
+        "new_item_194"
+      ]
+    },
+    "marcus": {
+      "lv": 45,
+      "hp": 8000,
+      "exp": 20260,
+      "drops": [
+        "arm_87",
+        "arm_90",
+        "arm_56",
+        "acc_116",
+        "amu_str",
+        "scroll_weapon",
+        "scroll_armor",
+        "scroll_acc",
+        "new_item_150",
+        "new_item_160",
+        "new_item_161",
+        "new_item_162",
+        "potion_blue",
+        "bk_elf_soul",
+        "bk_elf_lifespring",
+        "scroll_weapon_b",
+        "scroll_armor_b",
+        "mat_boss_crystal"
+      ]
+    },
+    "de_lab_mage": {
+      "lv": 45,
+      "hp": 530,
+      "exp": 2708,
+      "drops": [
+        "wpn_wand_rasta",
+        "amr_rasta_robe",
+        "bk_tornado",
+        "bk_ice_spike",
+        "bk_soul_up"
+      ]
+    },
+    "de_gate_general": {
+      "lv": 45,
+      "hp": 740,
+      "exp": 3850,
+      "drops": [
+        "scroll_acc",
+        "scroll_armor",
+        "scroll_weapon",
+        "bk_reduction_armor",
+        "bk_meteor",
+        "bk_dark_burn",
+        "bk_dark_double"
+      ]
+    },
+    "de_necro_omwarrior": {
+      "lv": 45,
+      "hp": 520,
+      "exp": 2639,
+      "drops": [
+        "hlm_priest",
+        "clk_priest",
+        "bot_priest",
+        "glv_priest",
+        "blt_dark"
+      ]
+    },
+    "obli_aruba": {
+      "lv": 45,
+      "hp": 550,
+      "exp": 5026,
+      "drops": [
+        "item_forgotten_greatsword",
+        "item_forgotten_scale",
+        "acc_demonbane"
+      ]
+    },
+    "obli_trollking": {
+      "lv": 45,
+      "hp": 480,
+      "exp": 4026,
+      "drops": [
+        "item_forgotten_plate",
+        "rng_mr",
+        "new_item_192"
+      ]
+    },
+    "de_lab_water": {
+      "lv": 46,
+      "hp": 630,
+      "exp": 3407,
+      "drops": []
+    },
+    "de_lab_fire": {
+      "lv": 46,
+      "hp": 630,
+      "exp": 3407,
+      "drops": []
+    },
+    "de_lab_earth": {
+      "lv": 46,
+      "hp": 630,
+      "exp": 3407,
+      "drops": []
+    },
+    "de_necro_warlock": {
+      "lv": 46,
+      "hp": 630,
+      "exp": 3317,
+      "drops": [
+        "wpn_red_crystalwand",
+        "hlm_priest",
+        "amr_priest",
+        "amr_dark_cape",
+        "bot_priest"
+      ]
+    },
+    "de_elder_guard": {
+      "lv": 46,
+      "hp": 370,
+      "exp": 1905,
+      "drops": [
+        "wpn_spear_rasta"
+      ]
+    },
+    "de_lab_wind": {
+      "lv": 46,
+      "hp": 630,
+      "exp": 3407,
+      "drops": []
+    },
+    "de_necro_avenger": {
+      "lv": 46,
+      "hp": 590,
+      "exp": 3114,
+      "drops": [
+        "wpn_dark_sword",
+        "amr_official",
+        "arm_59"
+      ]
+    },
+    "dark_spirit_caller": {
+      "lv": 46,
+      "hp": 550,
+      "exp": 2465,
+      "drops": [
+        "scroll_acc",
+        "scroll_weapon",
+        "scroll_armor",
+        "bk_holy_barrier",
+        "bk_dark_burn",
+        "bk_dark_double",
+        "bk_dark_crit"
+      ]
+    },
+    "de_train_soulknight": {
+      "lv": 46,
+      "hp": 720,
+      "exp": 3910,
+      "drops": [
+        "scroll_acc",
+        "wpn_official2h",
+        "glv_official",
+        "bot_official",
+        "blt_dark"
+      ]
+    },
+    "dark_spirit_king": {
+      "lv": 46,
+      "hp": 270,
+      "exp": 1400,
+      "drops": [
+        "scroll_weapon",
+        "scroll_armor",
+        "bk_bless_wpn",
+        "bk_berserk",
+        "bk_soul_up",
+        "bk_elf_blazewpn",
+        "bk_dark_burn",
+        "bk_dark_double"
+      ]
+    },
+    "de_necro_bloodknight": {
+      "lv": 47,
+      "hp": 650,
+      "exp": 3571,
+      "drops": [
+        "wpn_blood_2hsword",
+        "hlm_priest"
+      ]
+    },
+    "de_elder_follower": {
+      "lv": 47,
+      "hp": 630,
+      "exp": 3445,
+      "drops": [
+        "clk_priest",
+        "shd_priest"
+      ]
+    },
+    "de_necro_omheavy": {
+      "lv": 47,
+      "hp": 580,
+      "exp": 3160,
+      "drops": [
+        "hlm_priest",
+        "clk_priest",
+        "bot_priest",
+        "blt_dark"
+      ]
+    },
+    "obli_arian": {
+      "lv": 47,
+      "hp": 600,
+      "exp": 4210,
+      "drops": [
+        "item_forgotten_sword",
+        "item_forgotten_plate",
+        "glv_dk",
+        "acc_demonbane",
+        "item_ancient_scroll"
+      ]
+    },
+    "de_necro_darklord": {
+      "lv": 47,
+      "hp": 650,
+      "exp": 3571,
+      "drops": [
+        "wpn_red_crystalwand",
+        "hlm_priest",
+        "bot_priest"
+      ]
+    },
+    "wyvern": {
+      "lv": 48,
+      "hp": 11000,
+      "exp": 28100,
+      "drops": [
+        "item_dragon_claw",
+        "potion_haste",
+        "scroll_weapon",
+        "scroll_armor",
+        "scroll_acc",
+        "new_item_150",
+        "new_item_151",
+        "new_item_152",
+        "new_item_153",
+        "new_item_154",
+        "new_item_155",
+        "new_item_156",
+        "new_item_157",
+        "new_item_158",
+        "new_item_159",
+        "new_item_160",
+        "new_item_161",
+        "new_item_162",
+        "bk_holy_dash",
+        "potion_blue",
+        "bk_quake",
+        "bk_elf_magicerase",
+        "bk_elf_stormeye",
+        "bk_elf_triple",
+        "bk_elf_attrfire",
+        "scroll_weapon_b",
+        "scroll_armor_b",
+        "mat_boss_crystal"
+      ]
+    },
+    "fire_beast": {
+      "lv": 48,
+      "hp": 1154,
+      "exp": 2810,
+      "drops": [
+        "scroll_weapon",
+        "scroll_armor",
+        "bk_holy_barrier",
+        "scroll_acc",
+        "new_item_192",
+        "bk_elf_magicerase",
+        "bk_shock_stun"
+      ]
+    },
+    "obli_evillizard": {
+      "lv": 48,
+      "hp": 800,
+      "exp": 5305,
+      "drops": [
+        "item_forgotten_sword",
+        "item_forgotten_robe",
+        "glv_demon",
+        "acc_demonbane",
+        "item_ancient_scroll"
+      ]
+    },
+    "de_elder_captain": {
+      "lv": 49,
+      "hp": 970,
+      "exp": 5720,
+      "drops": [
+        "bk_elf_flamesoul",
+        "bk_elf_attrfire"
+      ]
+    },
+    "baphomet": {
+      "lv": 50,
+      "hp": 14000,
+      "exp": 26020,
+      "drops": [
+        "wpn_katana",
+        "wpn_2hsword",
+        "amr_plate",
+        "arm_88",
+        "glv_glove",
+        "acc_116",
+        "acc_127",
+        "acc_129",
+        "blt_body",
+        "acc_131",
+        "potion_haste",
+        "scroll_weapon",
+        "scroll_armor",
+        "scroll_acc",
+        "new_item_150",
+        "new_item_151",
+        "new_item_152",
+        "new_item_153",
+        "new_item_154",
+        "new_item_155",
+        "new_item_156",
+        "new_item_161",
+        "new_item_162",
+        "bk_charm",
+        "bk_earthquake",
+        "bk_summon",
+        "bk_rock_prison",
+        "bk_quake",
+        "new_item_195",
+        "bk_elf_dancefire",
+        "bk_magic_shield",
+        "bk_weaken",
+        "bk_bless_wpn",
+        "scroll_armor_b",
+        "scroll_weapon_b",
+        "mat_boss_crystal"
+      ]
+    },
+    "blackelder": {
+      "lv": 50,
+      "hp": 12000,
+      "exp": 25010,
+      "drops": [
+        "clk_mr",
+        "glv_glove",
+        "arm_84",
+        "arm_96",
+        "acc_130",
+        "scroll_weapon",
+        "scroll_armor",
+        "scroll_acc",
+        "new_item_150",
+        "bk_thunder",
+        "bk_charm",
+        "bk_str_up",
+        "potion_blue",
+        "bk_ice_spike",
+        "new_item_195",
+        "bk_elf_soul",
+        "bk_elf_lifespring",
+        "scroll_weapon_b",
+        "scroll_armor_b",
+        "mat_boss_crystal"
+      ]
+    },
+    "obli_cyclops": {
+      "lv": 50,
+      "hp": 880,
+      "exp": 4501,
+      "drops": [
+        "item_forgotten_greatsword",
+        "item_forgotten_plate",
+        "acc_demonbane"
+      ]
+    },
+    "doppel_boss": {
+      "lv": 50,
+      "hp": 13000,
+      "exp": 25010,
+      "drops": [
+        "wpn_2hsword",
+        "wpn_strwand",
+        "arm_60",
+        "scroll_weapon",
+        "scroll_armor",
+        "scroll_acc",
+        "bk_summon",
+        "bk_elf_magicerase",
+        "bk_shock_stun",
+        "bk_reduction_armor",
+        "bk_spike_armor",
+        "bk_solid_shield",
+        "new_item_240",
+        "scroll_weapon_b",
+        "scroll_armor_b",
+        "mat_boss_crystal"
+      ]
+    },
+    "kurt": {
+      "lv": 51,
+      "hp": 15000,
+      "exp": 51850,
+      "drops": [
+        "wpn_12",
+        "wpn_katana",
+        "wpn_longsword",
+        "wpn_2hsword",
+        "arm_60",
+        "tsh_tshirt",
+        "arm_87",
+        "arm_105",
+        "arm_106",
+        "arm_90",
+        "glv_glove",
+        "arm_110",
+        "arm_101",
+        "amr_kurt",
+        "arm_97",
+        "hlm_kurt",
+        "scroll_weapon",
+        "scroll_armor",
+        "scroll_acc",
+        "potion_blue",
+        "bk_berserk",
+        "bk_shock_stun",
+        "bk_reduction_armor",
+        "bk_spike_armor",
+        "bk_solid_shield",
+        "scroll_armor_b",
+        "scroll_weapon_b",
+        "mat_boss_crystal"
+      ]
+    },
+    "dk": {
+      "lv": 52,
+      "hp": 18000,
+      "exp": 61850,
+      "drops": [
+        "wpn_katana",
+        "wpn_2hsword",
+        "wpn_33",
+        "amr_plate",
+        "arm_88",
+        "glv_glove",
+        "glv_dk",
+        "amr_dk",
+        "bot_dk",
+        "hlm_dk",
+        "acc_117",
+        "amu_str",
+        "acc_128",
+        "acc_129",
+        "acc_130",
+        "acc_131",
+        "scroll_weapon",
+        "scroll_armor",
+        "scroll_acc",
+        "new_item_152",
+        "new_item_153",
+        "bk_zombie",
+        "bk_tornado",
+        "bk_resurrection",
+        "bk_disease",
+        "bk_solid_shield",
+        "bk_blaze",
+        "bk_elf_flamesoul",
+        "scroll_armor_b",
+        "scroll_weapon_b",
+        "bk_dark_double",
+        "mat_boss_crystal"
+      ]
+    },
+    "obli_wyvern": {
+      "lv": 53,
+      "hp": 1200,
+      "exp": 6810,
+      "drops": [
+        "item_forgotten_xbow",
+        "hlm_wind",
+        "item_forgotten_leather",
+        "glv_demon",
+        "glv_dk",
+        "acc_demonbane",
+        "rng_mr",
+        "new_item_192",
+        "item_ancient_scroll"
+      ]
+    },
+    "ice_queen": {
+      "lv": 56,
+      "hp": 13500,
+      "exp": 31370,
+      "drops": [
+        "arm_88",
+        "arm_63",
+        "glv_crystal",
+        "acc_116",
+        "amu_int",
+        "acc_122",
+        "acc_128",
+        "acc_129",
+        "acc_130",
+        "acc_131",
+        "potion_haste",
+        "scroll_weapon",
+        "scroll_armor",
+        "scroll_revive",
+        "new_item_150",
+        "new_item_151",
+        "new_item_152",
+        "bk_summon",
+        "bk_invisible",
+        "new_item_140",
+        "potion_blue",
+        "bk_fire_storm",
+        "new_item_195",
+        "bk_elf_winddash",
+        "bk_elf_lifespring",
+        "bk_elf_lifebless",
+        "bk_elf_steelguard",
+        "bk_magic_shield",
+        "bk_dark_shadow",
+        "bk_seal",
+        "scroll_weapon_b",
+        "scroll_armor_b",
+        "wpn_claw_gloom",
+        "wpn_dual_gloom",
+        "wpn_xbow_gloom",
+        "mat_boss_crystal"
+      ]
+    },
+    "ant_queen": {
+      "lv": 57,
+      "hp": 16000,
+      "exp": 65000,
+      "drops": [
+        "arm_69",
+        "wpn_katana",
+        "amr_plate",
+        "arm_63",
+        "arm_47",
+        "acc_121",
+        "acc_127",
+        "blt_body",
+        "potion_haste",
+        "scroll_weapon",
+        "scroll_armor",
+        "scroll_acc",
+        "new_item_150",
+        "new_item_154",
+        "new_item_155",
+        "new_item_156",
+        "new_item_157",
+        "new_item_158",
+        "new_item_159",
+        "bk_heal2",
+        "bk_charm",
+        "bk_earthquake",
+        "bk_regen",
+        "potion_blue",
+        "bk_rock_prison",
+        "bk_greater_haste",
+        "new_item_195",
+        "bk_elf_magicerase",
+        "bk_dark_shadow",
+        "scroll_weapon_b",
+        "scroll_armor_b",
+        "mat_boss_crystal"
+      ]
+    },
+    "phoenix": {
+      "lv": 59,
+      "hp": 18500,
+      "exp": 69640,
+      "drops": [
+        "arm_69",
+        "wpn_katana",
+        "wpn_siruge",
+        "amr_plate",
+        "arm_88",
+        "arm_63",
+        "acc_117",
+        "amu_str",
+        "acc_120",
+        "acc_128",
+        "acc_129",
+        "acc_130",
+        "acc_131",
+        "potion_haste",
+        "scroll_weapon",
+        "scroll_armor",
+        "scroll_acc",
+        "new_item_159",
+        "bk_sleep_mist",
+        "bk_holy_barrier",
+        "bk_meteor",
+        "potion_blue",
+        "bk_fire_storm",
+        "bk_elf_dancefire",
+        "bk_blaze",
+        "scroll_weapon_b",
+        "scroll_armor_b",
+        "mat_boss_crystal"
+      ]
+    }
+  },
+  "worldBossDrops": {
+    "wb_sema": [
+      "arm_87",
+      "arm_90",
+      "arm_57",
+      "amu_str",
+      "scroll_weapon",
+      "scroll_armor",
+      "scroll_acc",
+      "new_item_150",
+      "new_item_151",
+      "new_item_152",
+      "new_item_153",
+      "bk_dex_up",
+      "bk_haste_spell",
+      "potion_blue",
+      "bk_greater_haste",
+      "bk_elf_stormeye",
+      "bk_weaken",
+      "scroll_weapon_b",
+      "scroll_armor_b",
+      "mat_boss_crystal"
+    ],
+    "wb_batus": [
+      "arm_87",
+      "arm_90",
+      "arm_54",
+      "acc_117",
+      "amu_int",
+      "scroll_weapon",
+      "scroll_armor",
+      "scroll_acc",
+      "new_item_150",
+      "new_item_154",
+      "new_item_155",
+      "new_item_156",
+      "bk_cancel",
+      "potion_blue",
+      "bk_quake",
+      "bk_elf_groundtrap",
+      "bk_elf_earthbless",
+      "scroll_weapon_b",
+      "scroll_armor_b",
+      "mat_boss_crystal"
+    ],
+    "wb_casper": [
+      "arm_87",
+      "arm_90",
+      "arm_55",
+      "acc_117",
+      "amu_str",
+      "scroll_weapon",
+      "scroll_armor",
+      "scroll_acc",
+      "new_item_150",
+      "new_item_157",
+      "new_item_158",
+      "new_item_159",
+      "bk_fireball",
+      "potion_blue",
+      "bk_elf_dancefire",
+      "bk_elf_earthshield",
+      "bk_blaze",
+      "scroll_weapon_b",
+      "scroll_armor_b",
+      "mat_boss_crystal"
+    ],
+    "wb_marcus": [
+      "arm_87",
+      "arm_90",
+      "arm_56",
+      "acc_116",
+      "amu_str",
+      "scroll_weapon",
+      "scroll_armor",
+      "scroll_acc",
+      "new_item_150",
+      "new_item_160",
+      "new_item_161",
+      "new_item_162",
+      "potion_blue",
+      "bk_elf_soul",
+      "bk_elf_lifespring",
+      "scroll_weapon_b",
+      "scroll_armor_b",
+      "mat_boss_crystal"
+    ],
+    "wb_ifrit": [
+      "arm_69",
+      "wpn_katana",
+      "amr_plate",
+      "arm_63",
+      "scroll_weapon",
+      "scroll_armor",
+      "scroll_acc",
+      "new_item_152",
+      "new_item_153",
+      "new_item_155",
+      "new_item_156",
+      "new_item_158",
+      "new_item_159",
+      "new_item_161",
+      "new_item_162",
+      "bk_fireball",
+      "bk_dex_up",
+      "bk_str_up",
+      "bk_cancel",
+      "potion_blue",
+      "bk_fire_storm",
+      "bk_elf_magicerase",
+      "bk_elf_triple",
+      "bk_blaze",
+      "bk_elf_attrfire",
+      "scroll_weapon_b",
+      "scroll_armor_b",
+      "mat_boss_crystal"
+    ],
+    "wb_fourcolor": [
+      "arm_87",
+      "arm_90",
+      "arm_57",
+      "amu_str",
+      "scroll_weapon",
+      "scroll_armor",
+      "scroll_acc",
+      "new_item_150",
+      "new_item_151",
+      "new_item_152",
+      "new_item_153",
+      "bk_dex_up",
+      "bk_haste_spell",
+      "potion_blue",
+      "bk_greater_haste",
+      "bk_elf_stormeye",
+      "bk_weaken",
+      "scroll_weapon_b",
+      "scroll_armor_b",
+      "mat_boss_crystal",
+      "arm_54",
+      "acc_117",
+      "amu_int",
+      "new_item_154",
+      "new_item_155",
+      "new_item_156",
+      "bk_cancel",
+      "bk_quake",
+      "bk_elf_groundtrap",
+      "bk_elf_earthbless",
+      "arm_55",
+      "new_item_157",
+      "new_item_158",
+      "new_item_159",
+      "bk_fireball",
+      "bk_elf_dancefire",
+      "bk_elf_earthshield",
+      "bk_blaze",
+      "arm_56",
+      "acc_116",
+      "new_item_160",
+      "new_item_161",
+      "new_item_162",
+      "bk_elf_soul",
+      "bk_elf_lifespring"
+    ],
+    "wb_wyvern": [
+      "item_dragon_claw",
+      "potion_haste",
+      "scroll_weapon",
+      "scroll_armor",
+      "scroll_acc",
+      "new_item_150",
+      "new_item_151",
+      "new_item_152",
+      "new_item_153",
+      "new_item_154",
+      "new_item_155",
+      "new_item_156",
+      "new_item_157",
+      "new_item_158",
+      "new_item_159",
+      "new_item_160",
+      "new_item_161",
+      "new_item_162",
+      "bk_holy_dash",
+      "potion_blue",
+      "bk_quake",
+      "bk_elf_magicerase",
+      "bk_elf_stormeye",
+      "bk_elf_triple",
+      "bk_elf_attrfire",
+      "scroll_weapon_b",
+      "scroll_armor_b",
+      "mat_boss_crystal"
+    ],
+    "wb_twinwyvern": [
+      "item_dragon_claw",
+      "potion_haste",
+      "scroll_weapon",
+      "scroll_armor",
+      "scroll_acc",
+      "new_item_150",
+      "new_item_151",
+      "new_item_152",
+      "new_item_153",
+      "new_item_154",
+      "new_item_155",
+      "new_item_156",
+      "new_item_157",
+      "new_item_158",
+      "new_item_159",
+      "new_item_160",
+      "new_item_161",
+      "new_item_162",
+      "bk_holy_dash",
+      "potion_blue",
+      "bk_quake",
+      "bk_elf_magicerase",
+      "bk_elf_stormeye",
+      "bk_elf_triple",
+      "bk_elf_attrfire",
+      "scroll_weapon_b",
+      "scroll_armor_b",
+      "mat_boss_crystal"
+    ],
+    "wb_blackelder": [
+      "clk_mr",
+      "glv_glove",
+      "arm_84",
+      "arm_96",
+      "acc_130",
+      "scroll_weapon",
+      "scroll_armor",
+      "scroll_acc",
+      "new_item_150",
+      "bk_thunder",
+      "bk_charm",
+      "bk_str_up",
+      "potion_blue",
+      "bk_ice_spike",
+      "new_item_195",
+      "bk_elf_soul",
+      "bk_elf_lifespring",
+      "scroll_weapon_b",
+      "scroll_armor_b",
+      "mat_boss_crystal"
+    ],
+    "wb_doppel": [
+      "wpn_2hsword",
+      "wpn_strwand",
+      "arm_60",
+      "scroll_weapon",
+      "scroll_armor",
+      "scroll_acc",
+      "bk_summon",
+      "bk_elf_magicerase",
+      "bk_shock_stun",
+      "bk_reduction_armor",
+      "bk_spike_armor",
+      "bk_solid_shield",
+      "new_item_240",
+      "scroll_weapon_b",
+      "scroll_armor_b",
+      "mat_boss_crystal"
+    ],
+    "wb_baphomet": [
+      "wpn_katana",
+      "wpn_2hsword",
+      "amr_plate",
+      "arm_88",
+      "glv_glove",
+      "acc_116",
+      "acc_127",
+      "acc_129",
+      "blt_body",
+      "acc_131",
+      "potion_haste",
+      "scroll_weapon",
+      "scroll_armor",
+      "scroll_acc",
+      "new_item_150",
+      "new_item_151",
+      "new_item_152",
+      "new_item_153",
+      "new_item_154",
+      "new_item_155",
+      "new_item_156",
+      "new_item_161",
+      "new_item_162",
+      "bk_charm",
+      "bk_earthquake",
+      "bk_summon",
+      "bk_rock_prison",
+      "bk_quake",
+      "new_item_195",
+      "bk_elf_dancefire",
+      "bk_magic_shield",
+      "bk_weaken",
+      "bk_bless_wpn",
+      "scroll_armor_b",
+      "scroll_weapon_b",
+      "mat_boss_crystal"
+    ],
+    "wb_kurt": [
+      "wpn_12",
+      "wpn_katana",
+      "wpn_longsword",
+      "wpn_2hsword",
+      "arm_60",
+      "tsh_tshirt",
+      "arm_87",
+      "arm_105",
+      "arm_106",
+      "arm_90",
+      "glv_glove",
+      "arm_110",
+      "arm_101",
+      "amr_kurt",
+      "arm_97",
+      "hlm_kurt",
+      "scroll_weapon",
+      "scroll_armor",
+      "scroll_acc",
+      "potion_blue",
+      "bk_berserk",
+      "bk_shock_stun",
+      "bk_reduction_armor",
+      "bk_spike_armor",
+      "bk_solid_shield",
+      "scroll_armor_b",
+      "scroll_weapon_b",
+      "mat_boss_crystal"
+    ],
+    "wb_dk": [
+      "wpn_katana",
+      "wpn_2hsword",
+      "wpn_33",
+      "amr_plate",
+      "arm_88",
+      "glv_glove",
+      "glv_dk",
+      "amr_dk",
+      "bot_dk",
+      "hlm_dk",
+      "acc_117",
+      "amu_str",
+      "acc_128",
+      "acc_129",
+      "acc_130",
+      "acc_131",
+      "scroll_weapon",
+      "scroll_armor",
+      "scroll_acc",
+      "new_item_152",
+      "new_item_153",
+      "bk_zombie",
+      "bk_tornado",
+      "bk_resurrection",
+      "bk_disease",
+      "bk_solid_shield",
+      "bk_blaze",
+      "bk_elf_flamesoul",
+      "scroll_armor_b",
+      "scroll_weapon_b",
+      "bk_dark_double",
+      "mat_boss_crystal"
+    ],
+    "wb_castle": [
+      "wpn_katana",
+      "wpn_2hsword",
+      "wpn_33",
+      "amr_plate",
+      "arm_88",
+      "glv_glove",
+      "glv_dk",
+      "amr_dk",
+      "bot_dk",
+      "hlm_dk",
+      "acc_117",
+      "amu_str",
+      "acc_128",
+      "acc_129",
+      "acc_130",
+      "acc_131",
+      "scroll_weapon",
+      "scroll_armor",
+      "scroll_acc",
+      "new_item_152",
+      "new_item_153",
+      "bk_zombie",
+      "bk_tornado",
+      "bk_resurrection",
+      "bk_disease",
+      "bk_solid_shield",
+      "bk_blaze",
+      "bk_elf_flamesoul",
+      "scroll_armor_b",
+      "scroll_weapon_b",
+      "bk_dark_double",
+      "mat_boss_crystal"
+    ],
+    "wb_ice": [
+      "arm_88",
+      "arm_63",
+      "glv_crystal",
+      "acc_116",
+      "amu_int",
+      "acc_122",
+      "acc_128",
+      "acc_129",
+      "acc_130",
+      "acc_131",
+      "potion_haste",
+      "scroll_weapon",
+      "scroll_armor",
+      "scroll_revive",
+      "new_item_150",
+      "new_item_151",
+      "new_item_152",
+      "bk_summon",
+      "bk_invisible",
+      "new_item_140",
+      "potion_blue",
+      "bk_fire_storm",
+      "new_item_195",
+      "bk_elf_winddash",
+      "bk_elf_lifespring",
+      "bk_elf_lifebless",
+      "bk_elf_steelguard",
+      "bk_magic_shield",
+      "bk_dark_shadow",
+      "bk_seal",
+      "scroll_weapon_b",
+      "scroll_armor_b",
+      "wpn_claw_gloom",
+      "wpn_dual_gloom",
+      "wpn_xbow_gloom",
+      "mat_boss_crystal"
+    ],
+    "wb_antqueen": [
+      "arm_69",
+      "wpn_katana",
+      "amr_plate",
+      "arm_63",
+      "arm_47",
+      "acc_121",
+      "acc_127",
+      "blt_body",
+      "potion_haste",
+      "scroll_weapon",
+      "scroll_armor",
+      "scroll_acc",
+      "new_item_150",
+      "new_item_154",
+      "new_item_155",
+      "new_item_156",
+      "new_item_157",
+      "new_item_158",
+      "new_item_159",
+      "bk_heal2",
+      "bk_charm",
+      "bk_earthquake",
+      "bk_regen",
+      "potion_blue",
+      "bk_rock_prison",
+      "bk_greater_haste",
+      "new_item_195",
+      "bk_elf_magicerase",
+      "bk_dark_shadow",
+      "scroll_weapon_b",
+      "scroll_armor_b",
+      "mat_boss_crystal"
+    ],
+    "wb_phoenix": [
+      "arm_69",
+      "wpn_katana",
+      "wpn_siruge",
+      "amr_plate",
+      "arm_88",
+      "arm_63",
+      "acc_117",
+      "amu_str",
+      "acc_120",
+      "acc_128",
+      "acc_129",
+      "acc_130",
+      "acc_131",
+      "potion_haste",
+      "scroll_weapon",
+      "scroll_armor",
+      "scroll_acc",
+      "new_item_159",
+      "bk_sleep_mist",
+      "bk_holy_barrier",
+      "bk_meteor",
+      "potion_blue",
+      "bk_fire_storm",
+      "bk_elf_dancefire",
+      "bk_blaze",
+      "scroll_weapon_b",
+      "scroll_armor_b",
+      "mat_boss_crystal"
+    ],
+    "wb_dragon381_71026": [
+      "item_dragon_claw",
+      "potion_haste",
+      "scroll_weapon",
+      "scroll_armor",
+      "scroll_acc",
+      "new_item_150",
+      "new_item_151",
+      "new_item_152",
+      "new_item_153",
+      "new_item_154",
+      "new_item_155",
+      "new_item_156",
+      "new_item_157",
+      "new_item_158",
+      "new_item_159",
+      "new_item_160",
+      "new_item_161",
+      "new_item_162",
+      "bk_holy_dash",
+      "potion_blue",
+      "bk_quake",
+      "bk_elf_magicerase",
+      "bk_elf_stormeye",
+      "bk_elf_triple",
+      "bk_elf_attrfire",
+      "scroll_weapon_b",
+      "scroll_armor_b",
+      "mat_boss_crystal"
+    ],
+    "wb_dragon381_71027": [
+      "item_dragon_claw",
+      "potion_haste",
+      "scroll_weapon",
+      "scroll_armor",
+      "scroll_acc",
+      "new_item_150",
+      "new_item_151",
+      "new_item_152",
+      "new_item_153",
+      "new_item_154",
+      "new_item_155",
+      "new_item_156",
+      "new_item_157",
+      "new_item_158",
+      "new_item_159",
+      "new_item_160",
+      "new_item_161",
+      "new_item_162",
+      "bk_holy_dash",
+      "potion_blue",
+      "bk_quake",
+      "bk_elf_magicerase",
+      "bk_elf_stormeye",
+      "bk_elf_triple",
+      "bk_elf_attrfire",
+      "scroll_weapon_b",
+      "scroll_armor_b",
+      "mat_boss_crystal"
+    ],
+    "wb_dragon381_71028": [
+      "item_dragon_claw",
+      "potion_haste",
+      "scroll_weapon",
+      "scroll_armor",
+      "scroll_acc",
+      "new_item_150",
+      "new_item_151",
+      "new_item_152",
+      "new_item_153",
+      "new_item_154",
+      "new_item_155",
+      "new_item_156",
+      "new_item_157",
+      "new_item_158",
+      "new_item_159",
+      "new_item_160",
+      "new_item_161",
+      "new_item_162",
+      "bk_holy_dash",
+      "potion_blue",
+      "bk_quake",
+      "bk_elf_magicerase",
+      "bk_elf_stormeye",
+      "bk_elf_triple",
+      "bk_elf_attrfire",
+      "scroll_weapon_b",
+      "scroll_armor_b",
+      "mat_boss_crystal"
+    ],
+    "wb_lindvior_381": [
+      "item_dragon_claw",
+      "potion_haste",
+      "scroll_weapon",
+      "scroll_armor",
+      "scroll_acc",
+      "new_item_150",
+      "new_item_151",
+      "new_item_152",
+      "new_item_153",
+      "new_item_154",
+      "new_item_155",
+      "new_item_156",
+      "new_item_157",
+      "new_item_158",
+      "new_item_159",
+      "new_item_160",
+      "new_item_161",
+      "new_item_162",
+      "bk_holy_dash",
+      "potion_blue",
+      "bk_quake",
+      "bk_elf_magicerase",
+      "bk_elf_stormeye",
+      "bk_elf_triple",
+      "bk_elf_attrfire",
+      "scroll_weapon_b",
+      "scroll_armor_b",
+      "mat_boss_crystal"
+    ],
+    "wb_antaras_381": [
+      "item_dragon_claw",
+      "potion_haste",
+      "scroll_weapon",
+      "scroll_armor",
+      "scroll_acc",
+      "new_item_150",
+      "new_item_151",
+      "new_item_152",
+      "new_item_153",
+      "new_item_154",
+      "new_item_155",
+      "new_item_156",
+      "new_item_157",
+      "new_item_158",
+      "new_item_159",
+      "new_item_160",
+      "new_item_161",
+      "new_item_162",
+      "bk_holy_dash",
+      "potion_blue",
+      "bk_quake",
+      "bk_elf_magicerase",
+      "bk_elf_stormeye",
+      "bk_elf_triple",
+      "bk_elf_attrfire",
+      "scroll_weapon_b",
+      "scroll_armor_b",
+      "mat_boss_crystal"
+    ],
+    "wb_fafurion_381": [
+      "item_dragon_claw",
+      "potion_haste",
+      "scroll_weapon",
+      "scroll_armor",
+      "scroll_acc",
+      "new_item_150",
+      "new_item_151",
+      "new_item_152",
+      "new_item_153",
+      "new_item_154",
+      "new_item_155",
+      "new_item_156",
+      "new_item_157",
+      "new_item_158",
+      "new_item_159",
+      "new_item_160",
+      "new_item_161",
+      "new_item_162",
+      "bk_holy_dash",
+      "potion_blue",
+      "bk_quake",
+      "bk_elf_magicerase",
+      "bk_elf_stormeye",
+      "bk_elf_triple",
+      "bk_elf_attrfire",
+      "scroll_weapon_b",
+      "scroll_armor_b",
+      "mat_boss_crystal"
+    ],
+    "wb_valakas_381": [
+      "item_dragon_claw",
+      "potion_haste",
+      "scroll_weapon",
+      "scroll_armor",
+      "scroll_acc",
+      "new_item_150",
+      "new_item_151",
+      "new_item_152",
+      "new_item_153",
+      "new_item_154",
+      "new_item_155",
+      "new_item_156",
+      "new_item_157",
+      "new_item_158",
+      "new_item_159",
+      "new_item_160",
+      "new_item_161",
+      "new_item_162",
+      "bk_holy_dash",
+      "potion_blue",
+      "bk_quake",
+      "bk_elf_magicerase",
+      "bk_elf_stormeye",
+      "bk_elf_triple",
+      "bk_elf_attrfire",
+      "scroll_weapon_b",
+      "scroll_armor_b",
+      "mat_boss_crystal"
+    ],
+    "wb_dragon381_97204": [
+      "item_dragon_claw",
+      "potion_haste",
+      "scroll_weapon",
+      "scroll_armor",
+      "scroll_acc",
+      "new_item_150",
+      "new_item_151",
+      "new_item_152",
+      "new_item_153",
+      "new_item_154",
+      "new_item_155",
+      "new_item_156",
+      "new_item_157",
+      "new_item_158",
+      "new_item_159",
+      "new_item_160",
+      "new_item_161",
+      "new_item_162",
+      "bk_holy_dash",
+      "potion_blue",
+      "bk_quake",
+      "bk_elf_magicerase",
+      "bk_elf_stormeye",
+      "bk_elf_triple",
+      "bk_elf_attrfire",
+      "scroll_weapon_b",
+      "scroll_armor_b",
+      "mat_boss_crystal"
+    ],
+    "wb_dragon381_97205": [
+      "item_dragon_claw",
+      "potion_haste",
+      "scroll_weapon",
+      "scroll_armor",
+      "scroll_acc",
+      "new_item_150",
+      "new_item_151",
+      "new_item_152",
+      "new_item_153",
+      "new_item_154",
+      "new_item_155",
+      "new_item_156",
+      "new_item_157",
+      "new_item_158",
+      "new_item_159",
+      "new_item_160",
+      "new_item_161",
+      "new_item_162",
+      "bk_holy_dash",
+      "potion_blue",
+      "bk_quake",
+      "bk_elf_magicerase",
+      "bk_elf_stormeye",
+      "bk_elf_triple",
+      "bk_elf_attrfire",
+      "scroll_weapon_b",
+      "scroll_armor_b",
+      "mat_boss_crystal"
+    ],
+    "wb_dragon381_97206": [
+      "item_dragon_claw",
+      "potion_haste",
+      "scroll_weapon",
+      "scroll_armor",
+      "scroll_acc",
+      "new_item_150",
+      "new_item_151",
+      "new_item_152",
+      "new_item_153",
+      "new_item_154",
+      "new_item_155",
+      "new_item_156",
+      "new_item_157",
+      "new_item_158",
+      "new_item_159",
+      "new_item_160",
+      "new_item_161",
+      "new_item_162",
+      "bk_holy_dash",
+      "potion_blue",
+      "bk_quake",
+      "bk_elf_magicerase",
+      "bk_elf_stormeye",
+      "bk_elf_triple",
+      "bk_elf_attrfire",
+      "scroll_weapon_b",
+      "scroll_armor_b",
+      "mat_boss_crystal"
+    ],
+    "wb_dragon381_97207": [
+      "item_dragon_claw",
+      "potion_haste",
+      "scroll_weapon",
+      "scroll_armor",
+      "scroll_acc",
+      "new_item_150",
+      "new_item_151",
+      "new_item_152",
+      "new_item_153",
+      "new_item_154",
+      "new_item_155",
+      "new_item_156",
+      "new_item_157",
+      "new_item_158",
+      "new_item_159",
+      "new_item_160",
+      "new_item_161",
+      "new_item_162",
+      "bk_holy_dash",
+      "potion_blue",
+      "bk_quake",
+      "bk_elf_magicerase",
+      "bk_elf_stormeye",
+      "bk_elf_triple",
+      "bk_elf_attrfire",
+      "scroll_weapon_b",
+      "scroll_armor_b",
+      "mat_boss_crystal"
+    ],
+    "wb_dragon381_97208": [
+      "item_dragon_claw",
+      "potion_haste",
+      "scroll_weapon",
+      "scroll_armor",
+      "scroll_acc",
+      "new_item_150",
+      "new_item_151",
+      "new_item_152",
+      "new_item_153",
+      "new_item_154",
+      "new_item_155",
+      "new_item_156",
+      "new_item_157",
+      "new_item_158",
+      "new_item_159",
+      "new_item_160",
+      "new_item_161",
+      "new_item_162",
+      "bk_holy_dash",
+      "potion_blue",
+      "bk_quake",
+      "bk_elf_magicerase",
+      "bk_elf_stormeye",
+      "bk_elf_triple",
+      "bk_elf_attrfire",
+      "scroll_weapon_b",
+      "scroll_armor_b",
+      "mat_boss_crystal"
+    ],
+    "wb_dragon381_97209": [
+      "item_dragon_claw",
+      "potion_haste",
+      "scroll_weapon",
+      "scroll_armor",
+      "scroll_acc",
+      "new_item_150",
+      "new_item_151",
+      "new_item_152",
+      "new_item_153",
+      "new_item_154",
+      "new_item_155",
+      "new_item_156",
+      "new_item_157",
+      "new_item_158",
+      "new_item_159",
+      "new_item_160",
+      "new_item_161",
+      "new_item_162",
+      "bk_holy_dash",
+      "potion_blue",
+      "bk_quake",
+      "bk_elf_magicerase",
+      "bk_elf_stormeye",
+      "bk_elf_triple",
+      "bk_elf_attrfire",
+      "scroll_weapon_b",
+      "scroll_armor_b",
+      "mat_boss_crystal"
+    ],
+    "wb_dragon381_71014": [
+      "item_dragon_claw",
+      "potion_haste",
+      "scroll_weapon",
+      "scroll_armor",
+      "scroll_acc",
+      "new_item_150",
+      "new_item_151",
+      "new_item_152",
+      "new_item_153",
+      "new_item_154",
+      "new_item_155",
+      "new_item_156",
+      "new_item_157",
+      "new_item_158",
+      "new_item_159",
+      "new_item_160",
+      "new_item_161",
+      "new_item_162",
+      "bk_holy_dash",
+      "potion_blue",
+      "bk_quake",
+      "bk_elf_magicerase",
+      "bk_elf_stormeye",
+      "bk_elf_triple",
+      "bk_elf_attrfire",
+      "scroll_weapon_b",
+      "scroll_armor_b",
+      "mat_boss_crystal"
+    ],
+    "wb_dragon381_71015": [
+      "item_dragon_claw",
+      "potion_haste",
+      "scroll_weapon",
+      "scroll_armor",
+      "scroll_acc",
+      "new_item_150",
+      "new_item_151",
+      "new_item_152",
+      "new_item_153",
+      "new_item_154",
+      "new_item_155",
+      "new_item_156",
+      "new_item_157",
+      "new_item_158",
+      "new_item_159",
+      "new_item_160",
+      "new_item_161",
+      "new_item_162",
+      "bk_holy_dash",
+      "potion_blue",
+      "bk_quake",
+      "bk_elf_magicerase",
+      "bk_elf_stormeye",
+      "bk_elf_triple",
+      "bk_elf_attrfire",
+      "scroll_weapon_b",
+      "scroll_armor_b",
+      "mat_boss_crystal"
+    ],
+    "wb_dragon381_71016": [
+      "item_dragon_claw",
+      "potion_haste",
+      "scroll_weapon",
+      "scroll_armor",
+      "scroll_acc",
+      "new_item_150",
+      "new_item_151",
+      "new_item_152",
+      "new_item_153",
+      "new_item_154",
+      "new_item_155",
+      "new_item_156",
+      "new_item_157",
+      "new_item_158",
+      "new_item_159",
+      "new_item_160",
+      "new_item_161",
+      "new_item_162",
+      "bk_holy_dash",
+      "potion_blue",
+      "bk_quake",
+      "bk_elf_magicerase",
+      "bk_elf_stormeye",
+      "bk_elf_triple",
+      "bk_elf_attrfire",
+      "scroll_weapon_b",
+      "scroll_armor_b",
+      "mat_boss_crystal"
+    ],
+    "wb_dragon381_230267": [
+      "item_dragon_claw",
+      "potion_haste",
+      "scroll_weapon",
+      "scroll_armor",
+      "scroll_acc",
+      "new_item_150",
+      "new_item_151",
+      "new_item_152",
+      "new_item_153",
+      "new_item_154",
+      "new_item_155",
+      "new_item_156",
+      "new_item_157",
+      "new_item_158",
+      "new_item_159",
+      "new_item_160",
+      "new_item_161",
+      "new_item_162",
+      "bk_holy_dash",
+      "potion_blue",
+      "bk_quake",
+      "bk_elf_magicerase",
+      "bk_elf_stormeye",
+      "bk_elf_triple",
+      "bk_elf_attrfire",
+      "scroll_weapon_b",
+      "scroll_armor_b",
+      "mat_boss_crystal"
+    ],
+    "wb_dragon381_230753": [
+      "item_dragon_claw",
+      "potion_haste",
+      "scroll_weapon",
+      "scroll_armor",
+      "scroll_acc",
+      "new_item_150",
+      "new_item_151",
+      "new_item_152",
+      "new_item_153",
+      "new_item_154",
+      "new_item_155",
+      "new_item_156",
+      "new_item_157",
+      "new_item_158",
+      "new_item_159",
+      "new_item_160",
+      "new_item_161",
+      "new_item_162",
+      "bk_holy_dash",
+      "potion_blue",
+      "bk_quake",
+      "bk_elf_magicerase",
+      "bk_elf_stormeye",
+      "bk_elf_triple",
+      "bk_elf_attrfire",
+      "scroll_weapon_b",
+      "scroll_armor_b",
+      "mat_boss_crystal"
+    ],
+    "wb_dragon381_55408": [
+      "item_dragon_claw",
+      "potion_haste",
+      "scroll_weapon",
+      "scroll_armor",
+      "scroll_acc",
+      "new_item_150",
+      "new_item_151",
+      "new_item_152",
+      "new_item_153",
+      "new_item_154",
+      "new_item_155",
+      "new_item_156",
+      "new_item_157",
+      "new_item_158",
+      "new_item_159",
+      "new_item_160",
+      "new_item_161",
+      "new_item_162",
+      "bk_holy_dash",
+      "potion_blue",
+      "bk_quake",
+      "bk_elf_magicerase",
+      "bk_elf_stormeye",
+      "bk_elf_triple",
+      "bk_elf_attrfire",
+      "scroll_weapon_b",
+      "scroll_armor_b",
+      "mat_boss_crystal"
+    ],
+    "wb_dragon381_55436": [
+      "item_dragon_claw",
+      "potion_haste",
+      "scroll_weapon",
+      "scroll_armor",
+      "scroll_acc",
+      "new_item_150",
+      "new_item_151",
+      "new_item_152",
+      "new_item_153",
+      "new_item_154",
+      "new_item_155",
+      "new_item_156",
+      "new_item_157",
+      "new_item_158",
+      "new_item_159",
+      "new_item_160",
+      "new_item_161",
+      "new_item_162",
+      "bk_holy_dash",
+      "potion_blue",
+      "bk_quake",
+      "bk_elf_magicerase",
+      "bk_elf_stormeye",
+      "bk_elf_triple",
+      "bk_elf_attrfire",
+      "scroll_weapon_b",
+      "scroll_armor_b",
+      "mat_boss_crystal"
+    ],
+    "wb_dragon381_56163": [
+      "item_dragon_claw",
+      "potion_haste",
+      "scroll_weapon",
+      "scroll_armor",
+      "scroll_acc",
+      "new_item_150",
+      "new_item_151",
+      "new_item_152",
+      "new_item_153",
+      "new_item_154",
+      "new_item_155",
+      "new_item_156",
+      "new_item_157",
+      "new_item_158",
+      "new_item_159",
+      "new_item_160",
+      "new_item_161",
+      "new_item_162",
+      "bk_holy_dash",
+      "potion_blue",
+      "bk_quake",
+      "bk_elf_magicerase",
+      "bk_elf_stormeye",
+      "bk_elf_triple",
+      "bk_elf_attrfire",
+      "scroll_weapon_b",
+      "scroll_armor_b",
+      "mat_boss_crystal"
+    ],
+    "wb_dragon381_56295": [
+      "item_dragon_claw",
+      "potion_haste",
+      "scroll_weapon",
+      "scroll_armor",
+      "scroll_acc",
+      "new_item_150",
+      "new_item_151",
+      "new_item_152",
+      "new_item_153",
+      "new_item_154",
+      "new_item_155",
+      "new_item_156",
+      "new_item_157",
+      "new_item_158",
+      "new_item_159",
+      "new_item_160",
+      "new_item_161",
+      "new_item_162",
+      "bk_holy_dash",
+      "potion_blue",
+      "bk_quake",
+      "bk_elf_magicerase",
+      "bk_elf_stormeye",
+      "bk_elf_triple",
+      "bk_elf_attrfire",
+      "scroll_weapon_b",
+      "scroll_armor_b",
+      "mat_boss_crystal"
+    ]
+  }
+}

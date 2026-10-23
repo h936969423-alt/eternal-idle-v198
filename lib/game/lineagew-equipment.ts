@@ -1,0 +1,11 @@
+import catalog from './lineagew-equipment-reference.json';
+import hlCatalog from './lineagew-hero-legend-reference.json';
+import mythicCatalog from './lineagew-mythic-catalog-reference.json';
+export const LINEAGEW_EQUIPMENT={...catalog.items,...hlCatalog.items,...mythicCatalog.items} as Record<string,{sourceId:number;name:string;sourceUrl:string;iconUrl:string;category:string;grade:string;classes:string[];info:Record<string,string>;attributes:string[];enhancements:Record<string,string[]>;stats:Record<string,number>;growth:Record<string,Record<string,number>>;pending:string[];appliedEffects?:{text:string;stage:number|null;key:string;value:number}[];officialIds:string[]}>;
+export function lineageWEquipmentReference(item:any){return item?.lwCatalogId?LINEAGEW_EQUIPMENT[item.lwCatalogId]:undefined;}
+export function lineageWEquipmentGrowth(item:any,en:number):Record<string,number>{const r=lineageWEquipmentReference(item);if(!r)return {};const max=Math.max(0,...Object.keys(r.growth).map(Number)),g=r.growth[String(Math.min(max,Math.max(0,Math.floor(Number.isFinite(en)?en:0))))]||{};return Object.fromEntries(Object.entries(g).filter(([k])=>!['hit','damage','minS','maxS','minL','maxL','undead','ignoreDr','ignoreEr','ignoreAc'].includes(k)).map(([k,v])=>[k,k==='ac'?-v:v]));}
+export function lineageWEquipmentProfile(item:any,en:number){
+ const r=lineageWEquipmentReference(item);if(!r||item.type!=='wpn')return null;
+ const max=Math.max(0,...Object.keys(r.growth).map(Number)),stage=Math.min(max,Math.max(0,Math.floor(Number.isFinite(en)?en:0))),g=r.growth[String(stage)]||{},b=r.stats,value=(k:string)=>(b[k]||0)+(g[k]||0);
+ return {growth:g as Record<string,number>,stage,kind:item.isBow?'bow':item.wcat==='staff'?'staff':item.wcat==='dual'?'dual':'sword',minS:value('minS')||1,maxS:value('maxS')||1,minL:value('minL')||1,maxL:value('maxL')||1,hit:value('hit'),damage:value('damage'),ignoreDr:value('ignoreDr'),ignoreEr:value('ignoreEr'),ignoreAc:value('ignoreAc'),undead:b.undead||0,undeadExtra:g.undead||0,hitPct:value('hitPct'),str:value('str'),dex:value('dex'),int:value('int'),crit:0,ignoreCounter:0,doubleChance:value('doubleChance'),er:value('er'),mdmg:value('mdmg'),mpR:value('mpR'),magicHit:value('magicHit'),sp:value('sp'),magicPen:value('magicPen'),ignoreMr:value('ignoreMr'),pvpMagicAmp:value('pvpSp')};
+}

@@ -1,0 +1,22 @@
+import {LW_HL_SKILLS,type HLProc} from './lineagew-hl-skills';
+import {isPlayerTarget} from './lineagew-conditions';
+export {isPlayerTarget} from './lineagew-conditions';
+import raw from './gamedata.json';
+import {lineageWEquipmentReference} from './lineagew-equipment';
+import {weaponMagicDamage} from './weapon-magic';
+import type {Character} from './engine';
+export const LW_EFFECT_RULES={manaMin:1,manaMax:5,lifeFraction:.1,venomSeconds:12,venomTickMs:3000,venomTickDamage:6,iceSeconds:3,iceSlowPct:20,ampUnitsPerPercent:10000} as const;
+const NAR_SKILLS={lw_moon_quake:{name:'月光地裂',kind:'moon',ele:'earth',dmgDice:[3,6],dmgBase:12,tier:6},lw_spirit_arrow:{name:'精靈之箭',kind:'spirit',ele:'wind',dmgDice:[3,6],dmgBase:10,tier:6},lw_ice_cone:{name:'冰錐',kind:'ice',ele:'water',dmgDice:[3,6],dmgBase:8,tier:6},lw_venom_burst:{name:'猛爆劇毒',kind:'venom',ele:'earth',dmgDice:[2,6],dmgBase:6,tier:4},lw_hp_drain:{name:'HP吸收',kind:'life'},lw_mp_drain:{name:'MP吸收',kind:'mana'}} as const;
+export const LW_EQUIPMENT_SKILLS:Record<string,HLProc>={...NAR_SKILLS,...LW_HL_SKILLS};
+export type LWEquipmentSkill=string;
+export function lineageWEffectDefinition(skill?:string){return skill&&Object.hasOwn(LW_EQUIPMENT_SKILLS,skill)?LW_EQUIPMENT_SKILLS[skill as LWEquipmentSkill]:undefined;}
+const cache=new Map<string,ReturnType<typeof profile>>();
+function profile(item:any,en:number){const r=lineageWEquipmentReference(item);if(!r)return null;const max=Math.max(0,...Object.keys(r.growth).map(Number)),stage=Math.min(max,Math.max(0,Math.floor(Number.isFinite(en)?en:0))),g=r.growth[String(stage)]||{},value=(key:string)=>(r.stats[key]||0)+(g[key]||0);return {stage,mpAbsorb:value('mpAbsorb')>0,hpAbsorb:value('hpAbsorb')>0,rates:[{skill:'lw_moon_quake' as const,rate:value('lwProc_moon')},{skill:'lw_spirit_arrow' as const,rate:value('lwProc_spirit')},{skill:'lw_ice_cone' as const,rate:value('lwProc_ice')},{skill:'lw_venom_burst' as const,rate:value('lwProc_venom')},...Object.keys(LW_HL_SKILLS).map(skill=>({skill,rate:value('lwHL_'+skill.slice(6))+(skill.startsWith('lw_hl_mythic_')?value('lwMythic_'+skill.slice(13)):0)}))].filter(p=>p.rate>0)};}
+export function lineageWEffectProfile(item:any,en:number){if(!item?.lwCatalogId)return null;const key=item.lwCatalogId+':'+Math.min(12,Math.max(0,Math.floor(Number.isFinite(en)?en:0)));if(!cache.has(key))cache.set(key,profile(item,en));return cache.get(key)!;}
+export function rollLineageWEquipmentProcs(item:any,en:number,rng:()=>number){return (lineageWEffectProfile(item,en)?.rates||[]).filter(p=>rng()*100<Math.max(0,Math.min(100,p.rate)));}
+export function lineageWProcDamage(skill:LWEquipmentSkill,b:Record<string,number>,m:any,rng:()=>number){const def=LW_EQUIPMENT_SKILLS[skill];if(!def||def.undeadOnly&&!m.un)return 0;if(def.physical){const roll=(def.dmgDice||[]).length?Array.from({length:def.dmgDice![0]},()=>1+Math.floor(rng()*def.dmgDice![1])).reduce((a,z)=>a+z,0):0;return Math.max(1,roll+(def.dmgBase||0)+(b.meleeDmg||0)-Math.max(0,(m.dr||0)-(def.ignoreDr||0)-(b.allIgnoreDr||0)-(b.ignoreMeleeDr||0)));}return def.dmgDice?weaponMagicDamage(def,b,m,rng):0;}
+export function targetMagicHit(b:Record<string,number>,m:any){return (b.magicHit||0)+(isPlayerTarget(m)?b.pvpMagicHit||0:b.pveMagicHit||0);}
+/** Equipment, buffs and dolls are already combined in stats: one resist roll, never twice. */
+export function equipmentResistsStatus(b:Record<string,number>,kind:string,rng:()=>number){const flag=({poison:'immPoison',paralyze:'immParalyze',slow:'immSlow'} as Record<string,string>)[kind];if(flag&&b[flag])return true;const field=({stun:'stunResist',freeze:'freezeResist',stone:'stoneResist',sleep:'sleepResist',blind:'blindResist',sustain:'sustainResist',poison:'poisonResist',silence:'silenceResist',slow:'slowResist',repulsion:'repulsionResist'} as Record<string,string>)[kind],rate=Math.max(0,Math.min(100,(field?b[field]||0:0)+(b.abnormalResist||0)));return rate>0&&rng()*100<rate;}
+export function hurtDelayMultiplier(percent:number){return 1-Math.max(0,Math.min(95,percent||0))/100;}
+export function lineageWGearHurtMultiplier(c:Character){const items=raw.items as Record<string,any>;let pct=0;for(const eq of Object.values(c.equipment)){const i=items[eq.id.split('@')[0]],r=lineageWEquipmentReference(i);if(!r)continue;const stage=Math.min(Math.max(0,...Object.keys(r.growth).map(Number)),Math.max(0,Math.floor(eq.en)));pct+=(r.stats.hurtDelayReductionPct||0)+(r.growth[String(stage)]?.hurtDelayReductionPct||0);}return hurtDelayMultiplier(pct);}

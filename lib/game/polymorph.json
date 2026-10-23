@@ -1,0 +1,2550 @@
+{
+  "source": "https://zxc518zxc.github.io/poly.html",
+  "retrievedAt": "2026-10-20",
+  "sourceFields": [
+    "51 種變身名稱、等級分段與能力加成",
+    "隨機限目前段、控制戒指可選目前及上一段",
+    "Lv55 完整解鎖配方，同帳號角色共用",
+    "變身攻速同時縮短攻擊與施法間隔"
+  ],
+  "reconstructedFields": [
+    "保留永夜卷軸持續1800秒及既有其他系統設定"
+  ],
+  "durationSeconds": 1800,
+  "crystalDropLevel": 45,
+  "crystalDropChance": 0.01,
+  "levelBands": [
+    0,
+    15,
+    30,
+    45,
+    50,
+    52,
+    55
+  ],
+  "unlockCost": {
+    "gold": 60000000,
+    "items": {
+      "mat_boss_crystal": 5,
+      "new_item_bless_wpn": 5,
+      "new_item_bless_arm": 5,
+      "new_item_bless_acc": 5
+    }
+  },
+  "forms": [
+    {
+      "id": "morph_12",
+      "name": "妖魔",
+      "level": 0,
+      "tier": "Lv.0 變身",
+      "crystals": 0,
+      "frames": {
+        "idle": [
+          "/assets/morphanim/妖魔/idle/0.png",
+          "/assets/morphanim/妖魔/idle/1.png",
+          "/assets/morphanim/妖魔/idle/2.png",
+          "/assets/morphanim/妖魔/idle/3.png"
+        ],
+        "attack": [
+          "/assets/morphanim/妖魔/attack/0.png",
+          "/assets/morphanim/妖魔/attack/1.png",
+          "/assets/morphanim/妖魔/attack/2.png",
+          "/assets/morphanim/妖魔/attack/3.png",
+          "/assets/morphanim/妖魔/attack/4.png"
+        ],
+        "hurt": [
+          "/assets/morphanim/妖魔/hurt/0.png"
+        ]
+      },
+      "walkTicks": 20,
+      "bonus": {
+        "meleeDmg": 1,
+        "meleeHit": 1,
+        "rangedDmg": 0,
+        "rangedHit": 0,
+        "extraDmg": 0,
+        "extraHit": 0,
+        "extraMp": 0,
+        "mdmg": 0,
+        "mpR": 0,
+        "mr": 0,
+        "er": 0,
+        "summonHit": 0,
+        "speedPct": 0,
+        "ac": 0
+      },
+      "bonusText": "近傷+1、近命中+1"
+    },
+    {
+      "id": "morph_10",
+      "name": "骷髏",
+      "level": 0,
+      "tier": "Lv.0 變身",
+      "crystals": 0,
+      "frames": {
+        "idle": [
+          "/assets/morphanim/骷髏/idle/0.png",
+          "/assets/morphanim/骷髏/idle/1.png",
+          "/assets/morphanim/骷髏/idle/2.png"
+        ],
+        "attack": [
+          "/assets/morphanim/骷髏/attack/0.png",
+          "/assets/morphanim/骷髏/attack/1.png",
+          "/assets/morphanim/骷髏/attack/2.png",
+          "/assets/morphanim/骷髏/attack/3.png"
+        ],
+        "hurt": [
+          "/assets/morphanim/骷髏/hurt/0.png"
+        ]
+      },
+      "walkTicks": 16,
+      "bonus": {
+        "meleeDmg": 1,
+        "meleeHit": 1,
+        "rangedDmg": 0,
+        "rangedHit": 0,
+        "extraDmg": 0,
+        "extraHit": 0,
+        "extraMp": 0,
+        "mdmg": 0,
+        "mpR": 0,
+        "mr": 0,
+        "er": 0,
+        "summonHit": 0,
+        "speedPct": 0,
+        "ac": 0
+      },
+      "bonusText": "近傷+1、近命中+1"
+    },
+    {
+      "id": "morph_14",
+      "name": "那魯加妖魔",
+      "level": 0,
+      "tier": "Lv.0 變身",
+      "crystals": 0,
+      "frames": {
+        "idle": [
+          "/assets/morphanim/那魯加妖魔/idle/0.png",
+          "/assets/morphanim/那魯加妖魔/idle/1.png",
+          "/assets/morphanim/那魯加妖魔/idle/2.png",
+          "/assets/morphanim/那魯加妖魔/idle/3.png",
+          "/assets/morphanim/那魯加妖魔/idle/4.png",
+          "/assets/morphanim/那魯加妖魔/idle/5.png"
+        ],
+        "attack": [
+          "/assets/morphanim/那魯加妖魔/attack/0.png",
+          "/assets/morphanim/那魯加妖魔/attack/1.png",
+          "/assets/morphanim/那魯加妖魔/attack/2.png",
+          "/assets/morphanim/那魯加妖魔/attack/3.png",
+          "/assets/morphanim/那魯加妖魔/attack/4.png",
+          "/assets/morphanim/那魯加妖魔/attack/5.png"
+        ],
+        "hurt": [
+          "/assets/morphanim/那魯加妖魔/hurt/0.png",
+          "/assets/morphanim/那魯加妖魔/hurt/1.png"
+        ]
+      },
+      "walkTicks": 16,
+      "bonus": {
+        "meleeDmg": 1,
+        "meleeHit": 1,
+        "rangedDmg": 0,
+        "rangedHit": 0,
+        "extraDmg": 0,
+        "extraHit": 0,
+        "extraMp": 0,
+        "mdmg": 0,
+        "mpR": 0,
+        "mr": 0,
+        "er": 0,
+        "summonHit": 0,
+        "speedPct": 0,
+        "ac": 0
+      },
+      "bonusText": "近傷+1、近命中+1"
+    },
+    {
+      "id": "morph_19",
+      "name": "妖魔弓箭手",
+      "level": 0,
+      "tier": "Lv.0 變身",
+      "crystals": 0,
+      "frames": {
+        "idle": [
+          "/assets/morphanim/妖魔弓箭手/idle/0.png",
+          "/assets/morphanim/妖魔弓箭手/idle/1.png",
+          "/assets/morphanim/妖魔弓箭手/idle/2.png",
+          "/assets/morphanim/妖魔弓箭手/idle/3.png"
+        ],
+        "attack": [
+          "/assets/morphanim/妖魔弓箭手/attack/0.png",
+          "/assets/morphanim/妖魔弓箭手/attack/1.png",
+          "/assets/morphanim/妖魔弓箭手/attack/2.png",
+          "/assets/morphanim/妖魔弓箭手/attack/3.png",
+          "/assets/morphanim/妖魔弓箭手/attack/4.png"
+        ],
+        "hurt": [
+          "/assets/morphanim/妖魔弓箭手/hurt/0.png",
+          "/assets/morphanim/妖魔弓箭手/hurt/1.png"
+        ]
+      },
+      "walkTicks": 20,
+      "bonus": {
+        "meleeDmg": 0,
+        "meleeHit": 0,
+        "rangedDmg": 1,
+        "rangedHit": 1,
+        "extraDmg": 0,
+        "extraHit": 0,
+        "extraMp": 0,
+        "mdmg": 0,
+        "mpR": 0,
+        "mr": 0,
+        "er": 0,
+        "summonHit": 0,
+        "speedPct": 0,
+        "ac": 0
+      },
+      "bonusText": "遠傷+1、遠命中+1"
+    },
+    {
+      "id": "morph_20",
+      "name": "長者",
+      "level": 0,
+      "tier": "Lv.0 變身",
+      "crystals": 0,
+      "frames": {
+        "idle": [
+          "/assets/morphanim/長者/idle/0.png",
+          "/assets/morphanim/長者/idle/1.png",
+          "/assets/morphanim/長者/idle/2.png",
+          "/assets/morphanim/長者/idle/3.png"
+        ],
+        "attack": [
+          "/assets/morphanim/長者/attack/0.png",
+          "/assets/morphanim/長者/attack/1.png",
+          "/assets/morphanim/長者/attack/2.png",
+          "/assets/morphanim/長者/attack/3.png"
+        ]
+      },
+      "bonus": {
+        "meleeDmg": 0,
+        "meleeHit": 0,
+        "rangedDmg": 0,
+        "rangedHit": 0,
+        "extraDmg": 0,
+        "extraHit": 0,
+        "extraMp": 2,
+        "mdmg": 0,
+        "mpR": 1,
+        "mr": 0,
+        "er": 0,
+        "summonHit": 0,
+        "speedPct": 0,
+        "ac": 0
+      },
+      "bonusText": "額外魔法點數+2、MP恢復+1"
+    },
+    {
+      "id": "morph_8",
+      "name": "侏儒",
+      "level": 0,
+      "tier": "Lv.0 變身",
+      "crystals": 0,
+      "frames": {
+        "idle": [
+          "/assets/morphanim/侏儒/idle/0.png",
+          "/assets/morphanim/侏儒/idle/1.png",
+          "/assets/morphanim/侏儒/idle/2.png"
+        ],
+        "attack": [
+          "/assets/morphanim/侏儒/attack/0.png",
+          "/assets/morphanim/侏儒/attack/1.png",
+          "/assets/morphanim/侏儒/attack/2.png",
+          "/assets/morphanim/侏儒/attack/3.png"
+        ],
+        "hurt": [
+          "/assets/morphanim/侏儒/hurt/0.png"
+        ]
+      },
+      "walkTicks": 15,
+      "bonus": {
+        "meleeDmg": 0,
+        "meleeHit": 0,
+        "rangedDmg": 0,
+        "rangedHit": 0,
+        "extraDmg": 0,
+        "extraHit": 0,
+        "extraMp": 0,
+        "mdmg": 0,
+        "mpR": 0,
+        "mr": 0,
+        "er": 0,
+        "summonHit": 0,
+        "speedPct": 10,
+        "ac": 1
+      },
+      "bonusText": "防禦 AC 提升 1、攻速+10%"
+    },
+    {
+      "id": "morph_27",
+      "name": "歐姆",
+      "level": 0,
+      "tier": "Lv.0 變身",
+      "crystals": 0,
+      "frames": {
+        "idle": [
+          "/assets/morphanim/歐姆/idle/0.png",
+          "/assets/morphanim/歐姆/idle/1.png",
+          "/assets/morphanim/歐姆/idle/2.png",
+          "/assets/morphanim/歐姆/idle/3.png",
+          "/assets/morphanim/歐姆/idle/4.png",
+          "/assets/morphanim/歐姆/idle/5.png",
+          "/assets/morphanim/歐姆/idle/6.png",
+          "/assets/morphanim/歐姆/idle/7.png",
+          "/assets/morphanim/歐姆/idle/8.png",
+          "/assets/morphanim/歐姆/idle/9.png"
+        ],
+        "attack": [
+          "/assets/morphanim/歐姆/attack/0.png",
+          "/assets/morphanim/歐姆/attack/1.png",
+          "/assets/morphanim/歐姆/attack/2.png",
+          "/assets/morphanim/歐姆/attack/3.png",
+          "/assets/morphanim/歐姆/attack/4.png",
+          "/assets/morphanim/歐姆/attack/5.png",
+          "/assets/morphanim/歐姆/attack/6.png",
+          "/assets/morphanim/歐姆/attack/7.png"
+        ],
+        "hurt": [
+          "/assets/morphanim/歐姆/hurt/0.png",
+          "/assets/morphanim/歐姆/hurt/1.png"
+        ]
+      },
+      "bonus": {
+        "meleeDmg": 0,
+        "meleeHit": 0,
+        "rangedDmg": 0,
+        "rangedHit": 0,
+        "extraDmg": 1,
+        "extraHit": 1,
+        "extraMp": 0,
+        "mdmg": 0,
+        "mpR": 0,
+        "mr": 0,
+        "er": 0,
+        "summonHit": 0,
+        "speedPct": 0,
+        "ac": 0
+      },
+      "bonusText": "額外傷+1、額外命中+1"
+    },
+    {
+      "id": "morph_28",
+      "name": "巨蟻",
+      "level": 0,
+      "tier": "Lv.0 變身",
+      "crystals": 0,
+      "frames": {
+        "idle": [
+          "/assets/morphanim/巨蟻/idle/0.png",
+          "/assets/morphanim/巨蟻/idle/1.png",
+          "/assets/morphanim/巨蟻/idle/2.png",
+          "/assets/morphanim/巨蟻/idle/3.png",
+          "/assets/morphanim/巨蟻/idle/4.png"
+        ],
+        "attack": [
+          "/assets/morphanim/巨蟻/attack/0.png",
+          "/assets/morphanim/巨蟻/attack/1.png",
+          "/assets/morphanim/巨蟻/attack/2.png",
+          "/assets/morphanim/巨蟻/attack/3.png",
+          "/assets/morphanim/巨蟻/attack/4.png"
+        ],
+        "hurt": [
+          "/assets/morphanim/巨蟻/hurt/0.png",
+          "/assets/morphanim/巨蟻/hurt/1.png"
+        ]
+      },
+      "bonus": {
+        "meleeDmg": 0,
+        "meleeHit": 0,
+        "rangedDmg": 0,
+        "rangedHit": 0,
+        "extraDmg": 0,
+        "extraHit": 1,
+        "extraMp": 0,
+        "mdmg": 0,
+        "mpR": 0,
+        "mr": 0,
+        "er": 0,
+        "summonHit": 0,
+        "speedPct": 10,
+        "ac": 0
+      },
+      "bonusText": "額外命中+1、攻速+10%"
+    },
+    {
+      "id": "morph_29",
+      "name": "奇異鸚鵡",
+      "level": 0,
+      "tier": "Lv.0 變身",
+      "crystals": 0,
+      "frames": {
+        "idle": [
+          "/assets/morphanim/奇異鸚鵡/idle/0.png",
+          "/assets/morphanim/奇異鸚鵡/idle/1.png",
+          "/assets/morphanim/奇異鸚鵡/idle/2.png",
+          "/assets/morphanim/奇異鸚鵡/idle/3.png",
+          "/assets/morphanim/奇異鸚鵡/idle/4.png",
+          "/assets/morphanim/奇異鸚鵡/idle/5.png",
+          "/assets/morphanim/奇異鸚鵡/idle/6.png",
+          "/assets/morphanim/奇異鸚鵡/idle/7.png",
+          "/assets/morphanim/奇異鸚鵡/idle/8.png",
+          "/assets/morphanim/奇異鸚鵡/idle/9.png",
+          "/assets/morphanim/奇異鸚鵡/idle/10.png",
+          "/assets/morphanim/奇異鸚鵡/idle/11.png",
+          "/assets/morphanim/奇異鸚鵡/idle/12.png",
+          "/assets/morphanim/奇異鸚鵡/idle/13.png",
+          "/assets/morphanim/奇異鸚鵡/idle/14.png",
+          "/assets/morphanim/奇異鸚鵡/idle/15.png",
+          "/assets/morphanim/奇異鸚鵡/idle/16.png",
+          "/assets/morphanim/奇異鸚鵡/idle/17.png",
+          "/assets/morphanim/奇異鸚鵡/idle/18.png",
+          "/assets/morphanim/奇異鸚鵡/idle/19.png",
+          "/assets/morphanim/奇異鸚鵡/idle/20.png",
+          "/assets/morphanim/奇異鸚鵡/idle/21.png",
+          "/assets/morphanim/奇異鸚鵡/idle/22.png",
+          "/assets/morphanim/奇異鸚鵡/idle/23.png"
+        ],
+        "attack": [
+          "/assets/morphanim/奇異鸚鵡/attack/0.png",
+          "/assets/morphanim/奇異鸚鵡/attack/1.png",
+          "/assets/morphanim/奇異鸚鵡/attack/2.png",
+          "/assets/morphanim/奇異鸚鵡/attack/3.png",
+          "/assets/morphanim/奇異鸚鵡/attack/4.png",
+          "/assets/morphanim/奇異鸚鵡/attack/5.png",
+          "/assets/morphanim/奇異鸚鵡/attack/6.png",
+          "/assets/morphanim/奇異鸚鵡/attack/7.png",
+          "/assets/morphanim/奇異鸚鵡/attack/8.png",
+          "/assets/morphanim/奇異鸚鵡/attack/9.png",
+          "/assets/morphanim/奇異鸚鵡/attack/10.png",
+          "/assets/morphanim/奇異鸚鵡/attack/11.png",
+          "/assets/morphanim/奇異鸚鵡/attack/12.png",
+          "/assets/morphanim/奇異鸚鵡/attack/13.png",
+          "/assets/morphanim/奇異鸚鵡/attack/14.png"
+        ],
+        "hurt": [
+          "/assets/morphanim/奇異鸚鵡/hurt/0.png",
+          "/assets/morphanim/奇異鸚鵡/hurt/1.png"
+        ]
+      },
+      "bonus": {
+        "meleeDmg": 0,
+        "meleeHit": 0,
+        "rangedDmg": 0,
+        "rangedHit": 0,
+        "extraDmg": 1,
+        "extraHit": 0,
+        "extraMp": 1,
+        "mdmg": 0,
+        "mpR": 0,
+        "mr": 0,
+        "er": 0,
+        "summonHit": 0,
+        "speedPct": 0,
+        "ac": 0
+      },
+      "bonusText": "額外傷+1、額外魔法點數+1"
+    },
+    {
+      "id": "morph_40",
+      "name": "浣熊",
+      "level": 0,
+      "tier": "Lv.0 變身",
+      "crystals": 0,
+      "frames": {
+        "idle": [
+          "/assets/morphanim/浣熊/idle/0.png",
+          "/assets/morphanim/浣熊/idle/1.png",
+          "/assets/morphanim/浣熊/idle/2.png",
+          "/assets/morphanim/浣熊/idle/3.png",
+          "/assets/morphanim/浣熊/idle/4.png",
+          "/assets/morphanim/浣熊/idle/5.png",
+          "/assets/morphanim/浣熊/idle/6.png",
+          "/assets/morphanim/浣熊/idle/7.png",
+          "/assets/morphanim/浣熊/idle/8.png",
+          "/assets/morphanim/浣熊/idle/9.png",
+          "/assets/morphanim/浣熊/idle/10.png",
+          "/assets/morphanim/浣熊/idle/11.png",
+          "/assets/morphanim/浣熊/idle/12.png",
+          "/assets/morphanim/浣熊/idle/13.png",
+          "/assets/morphanim/浣熊/idle/14.png",
+          "/assets/morphanim/浣熊/idle/15.png",
+          "/assets/morphanim/浣熊/idle/16.png",
+          "/assets/morphanim/浣熊/idle/17.png"
+        ],
+        "attack": [
+          "/assets/morphanim/浣熊/attack/0.png",
+          "/assets/morphanim/浣熊/attack/1.png",
+          "/assets/morphanim/浣熊/attack/2.png",
+          "/assets/morphanim/浣熊/attack/3.png",
+          "/assets/morphanim/浣熊/attack/4.png",
+          "/assets/morphanim/浣熊/attack/5.png",
+          "/assets/morphanim/浣熊/attack/6.png",
+          "/assets/morphanim/浣熊/attack/7.png",
+          "/assets/morphanim/浣熊/attack/8.png"
+        ],
+        "hurt": [
+          "/assets/morphanim/浣熊/hurt/0.png",
+          "/assets/morphanim/浣熊/hurt/1.png"
+        ]
+      },
+      "bonus": {
+        "meleeDmg": 0,
+        "meleeHit": 0,
+        "rangedDmg": 0,
+        "rangedHit": 0,
+        "extraDmg": 0,
+        "extraHit": 1,
+        "extraMp": 1,
+        "mdmg": 0,
+        "mpR": 0,
+        "mr": 0,
+        "er": 0,
+        "summonHit": 0,
+        "speedPct": 0,
+        "ac": 0
+      },
+      "bonusText": "額外命中+1、額外魔法點數+1"
+    },
+    {
+      "id": "morph_3",
+      "name": "果凍怪",
+      "level": 0,
+      "tier": "Lv.0 變身",
+      "crystals": 0,
+      "frames": {
+        "idle": [
+          "/assets/morphanim/果凍怪/idle/0.png",
+          "/assets/morphanim/果凍怪/idle/1.png",
+          "/assets/morphanim/果凍怪/idle/2.png",
+          "/assets/morphanim/果凍怪/idle/3.png",
+          "/assets/morphanim/果凍怪/idle/4.png",
+          "/assets/morphanim/果凍怪/idle/5.png",
+          "/assets/morphanim/果凍怪/idle/6.png",
+          "/assets/morphanim/果凍怪/idle/7.png",
+          "/assets/morphanim/果凍怪/idle/8.png",
+          "/assets/morphanim/果凍怪/idle/9.png",
+          "/assets/morphanim/果凍怪/idle/10.png",
+          "/assets/morphanim/果凍怪/idle/11.png",
+          "/assets/morphanim/果凍怪/idle/12.png"
+        ],
+        "attack": [
+          "/assets/morphanim/果凍怪/attack/0.png",
+          "/assets/morphanim/果凍怪/attack/1.png",
+          "/assets/morphanim/果凍怪/attack/2.png",
+          "/assets/morphanim/果凍怪/attack/3.png",
+          "/assets/morphanim/果凍怪/attack/4.png",
+          "/assets/morphanim/果凍怪/attack/5.png",
+          "/assets/morphanim/果凍怪/attack/6.png",
+          "/assets/morphanim/果凍怪/attack/7.png"
+        ],
+        "hurt": [
+          "/assets/morphanim/果凍怪/hurt/0.png",
+          "/assets/morphanim/果凍怪/hurt/1.png"
+        ]
+      },
+      "walkTicks": 36,
+      "bonus": {
+        "meleeDmg": 0,
+        "meleeHit": 0,
+        "rangedDmg": 0,
+        "rangedHit": 0,
+        "extraDmg": 0,
+        "extraHit": 0,
+        "extraMp": 1,
+        "mdmg": 0,
+        "mpR": 0,
+        "mr": 4,
+        "er": 0,
+        "summonHit": 0,
+        "speedPct": 0,
+        "ac": 0
+      },
+      "bonusText": "額外魔法點數+1、魔防 MR+4"
+    },
+    {
+      "id": "morph_15",
+      "name": "妖魔鬥士",
+      "level": 15,
+      "tier": "Lv.15 變身",
+      "crystals": 0,
+      "frames": {
+        "idle": [
+          "/assets/morphanim/妖魔鬥士/idle/0.png",
+          "/assets/morphanim/妖魔鬥士/idle/1.png",
+          "/assets/morphanim/妖魔鬥士/idle/2.png",
+          "/assets/morphanim/妖魔鬥士/idle/3.png"
+        ],
+        "attack": [
+          "/assets/morphanim/妖魔鬥士/attack/0.png",
+          "/assets/morphanim/妖魔鬥士/attack/1.png",
+          "/assets/morphanim/妖魔鬥士/attack/2.png",
+          "/assets/morphanim/妖魔鬥士/attack/3.png"
+        ],
+        "hurt": [
+          "/assets/morphanim/妖魔鬥士/hurt/0.png"
+        ]
+      },
+      "walkTicks": 16,
+      "bonus": {
+        "meleeDmg": 2,
+        "meleeHit": 1,
+        "rangedDmg": 0,
+        "rangedHit": 0,
+        "extraDmg": 0,
+        "extraHit": 0,
+        "extraMp": 0,
+        "mdmg": 0,
+        "mpR": 0,
+        "mr": 0,
+        "er": 0,
+        "summonHit": 0,
+        "speedPct": 0,
+        "ac": 0
+      },
+      "bonusText": "近傷+2、近命中+1"
+    },
+    {
+      "id": "morph_4",
+      "name": "狼人",
+      "level": 15,
+      "tier": "Lv.15 變身",
+      "crystals": 0,
+      "frames": {
+        "idle": [
+          "/assets/morphanim/狼人/idle/0.png",
+          "/assets/morphanim/狼人/idle/1.png",
+          "/assets/morphanim/狼人/idle/2.png",
+          "/assets/morphanim/狼人/idle/3.png",
+          "/assets/morphanim/狼人/idle/4.png",
+          "/assets/morphanim/狼人/idle/5.png",
+          "/assets/morphanim/狼人/idle/6.png",
+          "/assets/morphanim/狼人/idle/7.png"
+        ],
+        "attack": [
+          "/assets/morphanim/狼人/attack/0.png",
+          "/assets/morphanim/狼人/attack/1.png",
+          "/assets/morphanim/狼人/attack/2.png",
+          "/assets/morphanim/狼人/attack/3.png",
+          "/assets/morphanim/狼人/attack/4.png"
+        ],
+        "hurt": [
+          "/assets/morphanim/狼人/hurt/0.png",
+          "/assets/morphanim/狼人/hurt/1.png"
+        ]
+      },
+      "walkTicks": 16,
+      "bonus": {
+        "meleeDmg": 1,
+        "meleeHit": 2,
+        "rangedDmg": 0,
+        "rangedHit": 0,
+        "extraDmg": 0,
+        "extraHit": 0,
+        "extraMp": 0,
+        "mdmg": 0,
+        "mpR": 0,
+        "mr": 0,
+        "er": 0,
+        "summonHit": 0,
+        "speedPct": 0,
+        "ac": 0
+      },
+      "bonusText": "近傷+1、近命中+2"
+    },
+    {
+      "id": "morph_18",
+      "name": "食人妖精",
+      "level": 15,
+      "tier": "Lv.15 變身",
+      "crystals": 0,
+      "frames": {
+        "idle": [
+          "/assets/morphanim/食人妖精/idle/0.png",
+          "/assets/morphanim/食人妖精/idle/1.png",
+          "/assets/morphanim/食人妖精/idle/2.png",
+          "/assets/morphanim/食人妖精/idle/3.png",
+          "/assets/morphanim/食人妖精/idle/4.png",
+          "/assets/morphanim/食人妖精/idle/5.png"
+        ],
+        "attack": [
+          "/assets/morphanim/食人妖精/attack/0.png",
+          "/assets/morphanim/食人妖精/attack/1.png",
+          "/assets/morphanim/食人妖精/attack/2.png",
+          "/assets/morphanim/食人妖精/attack/3.png",
+          "/assets/morphanim/食人妖精/attack/4.png"
+        ],
+        "hurt": [
+          "/assets/morphanim/食人妖精/hurt/0.png",
+          "/assets/morphanim/食人妖精/hurt/1.png"
+        ]
+      },
+      "walkTicks": 16,
+      "bonus": {
+        "meleeDmg": 2,
+        "meleeHit": 2,
+        "rangedDmg": 0,
+        "rangedHit": 0,
+        "extraDmg": 0,
+        "extraHit": 0,
+        "extraMp": 0,
+        "mdmg": 0,
+        "mpR": 0,
+        "mr": 0,
+        "er": 0,
+        "summonHit": 0,
+        "speedPct": 0,
+        "ac": 0
+      },
+      "bonusText": "近傷+2、近命中+2"
+    },
+    {
+      "id": "morph_7",
+      "name": "妖魔巡守",
+      "level": 15,
+      "tier": "Lv.15 變身",
+      "crystals": 0,
+      "frames": {
+        "idle": [
+          "/assets/morphanim/妖魔巡守/idle/0.png",
+          "/assets/morphanim/妖魔巡守/idle/1.png",
+          "/assets/morphanim/妖魔巡守/idle/2.png",
+          "/assets/morphanim/妖魔巡守/idle/3.png",
+          "/assets/morphanim/妖魔巡守/idle/4.png",
+          "/assets/morphanim/妖魔巡守/idle/5.png"
+        ],
+        "attack": [
+          "/assets/morphanim/妖魔巡守/attack/0.png",
+          "/assets/morphanim/妖魔巡守/attack/1.png",
+          "/assets/morphanim/妖魔巡守/attack/2.png",
+          "/assets/morphanim/妖魔巡守/attack/3.png"
+        ],
+        "hurt": [
+          "/assets/morphanim/妖魔巡守/hurt/0.png",
+          "/assets/morphanim/妖魔巡守/hurt/1.png"
+        ]
+      },
+      "walkTicks": 16,
+      "bonus": {
+        "meleeDmg": 0,
+        "meleeHit": 0,
+        "rangedDmg": 2,
+        "rangedHit": 1,
+        "extraDmg": 0,
+        "extraHit": 0,
+        "extraMp": 0,
+        "mdmg": 0,
+        "mpR": 0,
+        "mr": 0,
+        "er": 0,
+        "summonHit": 0,
+        "speedPct": 0,
+        "ac": 0
+      },
+      "bonusText": "遠傷+2、遠命中+1"
+    },
+    {
+      "id": "morph_30",
+      "name": "夏洛伯",
+      "level": 15,
+      "tier": "Lv.15 變身",
+      "crystals": 0,
+      "frames": {
+        "idle": [
+          "/assets/morphanim/夏洛伯/idle/0.png",
+          "/assets/morphanim/夏洛伯/idle/1.png",
+          "/assets/morphanim/夏洛伯/idle/2.png"
+        ],
+        "attack": [
+          "/assets/morphanim/夏洛伯/attack/0.png",
+          "/assets/morphanim/夏洛伯/attack/1.png",
+          "/assets/morphanim/夏洛伯/attack/2.png",
+          "/assets/morphanim/夏洛伯/attack/3.png"
+        ],
+        "hurt": [
+          "/assets/morphanim/夏洛伯/hurt/0.png"
+        ]
+      },
+      "bonus": {
+        "meleeDmg": 0,
+        "meleeHit": 0,
+        "rangedDmg": 0,
+        "rangedHit": 0,
+        "extraDmg": 0,
+        "extraHit": 0,
+        "extraMp": 0,
+        "mdmg": 0,
+        "mpR": 0,
+        "mr": 0,
+        "er": 0,
+        "summonHit": 0,
+        "speedPct": 15,
+        "ac": 2
+      },
+      "bonusText": "防禦 AC 提升 2、攻速+15%"
+    },
+    {
+      "id": "morph_2",
+      "name": "黑暗妖精運送員",
+      "level": 15,
+      "tier": "Lv.15 變身",
+      "crystals": 0,
+      "frames": {
+        "idle": [
+          "/assets/morphanim/黑暗妖精運送員/idle/0.png",
+          "/assets/morphanim/黑暗妖精運送員/idle/1.png",
+          "/assets/morphanim/黑暗妖精運送員/idle/2.png",
+          "/assets/morphanim/黑暗妖精運送員/idle/3.png",
+          "/assets/morphanim/黑暗妖精運送員/idle/4.png",
+          "/assets/morphanim/黑暗妖精運送員/idle/5.png",
+          "/assets/morphanim/黑暗妖精運送員/idle/6.png",
+          "/assets/morphanim/黑暗妖精運送員/idle/7.png",
+          "/assets/morphanim/黑暗妖精運送員/idle/8.png",
+          "/assets/morphanim/黑暗妖精運送員/idle/9.png",
+          "/assets/morphanim/黑暗妖精運送員/idle/10.png",
+          "/assets/morphanim/黑暗妖精運送員/idle/11.png",
+          "/assets/morphanim/黑暗妖精運送員/idle/12.png",
+          "/assets/morphanim/黑暗妖精運送員/idle/13.png"
+        ],
+        "attack": [
+          "/assets/morphanim/黑暗妖精運送員/attack/0.png",
+          "/assets/morphanim/黑暗妖精運送員/attack/1.png",
+          "/assets/morphanim/黑暗妖精運送員/attack/2.png",
+          "/assets/morphanim/黑暗妖精運送員/attack/3.png",
+          "/assets/morphanim/黑暗妖精運送員/attack/4.png",
+          "/assets/morphanim/黑暗妖精運送員/attack/5.png",
+          "/assets/morphanim/黑暗妖精運送員/attack/6.png",
+          "/assets/morphanim/黑暗妖精運送員/attack/7.png"
+        ],
+        "hurt": [
+          "/assets/morphanim/黑暗妖精運送員/hurt/0.png",
+          "/assets/morphanim/黑暗妖精運送員/hurt/1.png"
+        ]
+      },
+      "walkTicks": 24,
+      "bonus": {
+        "meleeDmg": 0,
+        "meleeHit": 0,
+        "rangedDmg": 1,
+        "rangedHit": 2,
+        "extraDmg": 0,
+        "extraHit": 0,
+        "extraMp": 0,
+        "mdmg": 0,
+        "mpR": 0,
+        "mr": 0,
+        "er": 0,
+        "summonHit": 0,
+        "speedPct": 0,
+        "ac": 0
+      },
+      "bonusText": "遠傷+1、遠命中+2"
+    },
+    {
+      "id": "morph_31",
+      "name": "巨大兵蟻",
+      "level": 15,
+      "tier": "Lv.15 變身",
+      "crystals": 0,
+      "frames": {
+        "idle": [
+          "/assets/morphanim/巨大兵蟻/idle/0.png",
+          "/assets/morphanim/巨大兵蟻/idle/1.png",
+          "/assets/morphanim/巨大兵蟻/idle/2.png",
+          "/assets/morphanim/巨大兵蟻/idle/3.png",
+          "/assets/morphanim/巨大兵蟻/idle/4.png",
+          "/assets/morphanim/巨大兵蟻/idle/5.png",
+          "/assets/morphanim/巨大兵蟻/idle/6.png"
+        ],
+        "attack": [
+          "/assets/morphanim/巨大兵蟻/attack/0.png",
+          "/assets/morphanim/巨大兵蟻/attack/1.png",
+          "/assets/morphanim/巨大兵蟻/attack/2.png",
+          "/assets/morphanim/巨大兵蟻/attack/3.png",
+          "/assets/morphanim/巨大兵蟻/attack/4.png"
+        ],
+        "hurt": [
+          "/assets/morphanim/巨大兵蟻/hurt/0.png",
+          "/assets/morphanim/巨大兵蟻/hurt/1.png"
+        ]
+      },
+      "bonus": {
+        "meleeDmg": 0,
+        "meleeHit": 0,
+        "rangedDmg": 0,
+        "rangedHit": 0,
+        "extraDmg": 2,
+        "extraHit": 1,
+        "extraMp": 0,
+        "mdmg": 0,
+        "mpR": 0,
+        "mr": 0,
+        "er": 0,
+        "summonHit": 0,
+        "speedPct": 0,
+        "ac": 0
+      },
+      "bonusText": "額外傷+2、額外命中+1"
+    },
+    {
+      "id": "morph_6",
+      "name": "紙人",
+      "level": 15,
+      "tier": "Lv.15 變身",
+      "crystals": 0,
+      "frames": {
+        "idle": [
+          "/assets/morphanim/紙人/idle/0.png",
+          "/assets/morphanim/紙人/idle/1.png",
+          "/assets/morphanim/紙人/idle/2.png",
+          "/assets/morphanim/紙人/idle/3.png",
+          "/assets/morphanim/紙人/idle/4.png",
+          "/assets/morphanim/紙人/idle/5.png"
+        ],
+        "attack": [
+          "/assets/morphanim/紙人/attack/0.png",
+          "/assets/morphanim/紙人/attack/1.png"
+        ],
+        "hurt": [
+          "/assets/morphanim/紙人/hurt/0.png",
+          "/assets/morphanim/紙人/hurt/1.png",
+          "/assets/morphanim/紙人/hurt/2.png",
+          "/assets/morphanim/紙人/hurt/3.png"
+        ]
+      },
+      "walkTicks": 24,
+      "bonus": {
+        "meleeDmg": 0,
+        "meleeHit": 0,
+        "rangedDmg": 0,
+        "rangedHit": 0,
+        "extraDmg": 0,
+        "extraHit": 0,
+        "extraMp": 2,
+        "mdmg": 0,
+        "mpR": 2,
+        "mr": 0,
+        "er": 0,
+        "summonHit": 0,
+        "speedPct": 0,
+        "ac": 0
+      },
+      "bonusText": "額外魔法點數+2、MP恢復+2"
+    },
+    {
+      "id": "morph_22",
+      "name": "雪人",
+      "level": 15,
+      "tier": "Lv.15 變身",
+      "crystals": 0,
+      "frames": {
+        "idle": [
+          "/assets/morphanim/雪人/idle/0.png",
+          "/assets/morphanim/雪人/idle/1.png",
+          "/assets/morphanim/雪人/idle/2.png",
+          "/assets/morphanim/雪人/idle/3.png",
+          "/assets/morphanim/雪人/idle/4.png",
+          "/assets/morphanim/雪人/idle/5.png",
+          "/assets/morphanim/雪人/idle/6.png",
+          "/assets/morphanim/雪人/idle/7.png"
+        ],
+        "attack": [
+          "/assets/morphanim/雪人/attack/0.png",
+          "/assets/morphanim/雪人/attack/1.png",
+          "/assets/morphanim/雪人/attack/2.png",
+          "/assets/morphanim/雪人/attack/3.png",
+          "/assets/morphanim/雪人/attack/4.png",
+          "/assets/morphanim/雪人/attack/5.png",
+          "/assets/morphanim/雪人/attack/6.png"
+        ],
+        "hurt": [
+          "/assets/morphanim/雪人/hurt/0.png",
+          "/assets/morphanim/雪人/hurt/1.png"
+        ]
+      },
+      "bonus": {
+        "meleeDmg": 0,
+        "meleeHit": 0,
+        "rangedDmg": 0,
+        "rangedHit": 0,
+        "extraDmg": 0,
+        "extraHit": 0,
+        "extraMp": 0,
+        "mdmg": 1,
+        "mpR": 0,
+        "mr": 0,
+        "er": 0,
+        "summonHit": 0,
+        "speedPct": 0,
+        "ac": 0
+      },
+      "bonusText": "魔傷+1"
+    },
+    {
+      "id": "morph_9",
+      "name": "萊肯",
+      "level": 30,
+      "tier": "Lv.30 變身",
+      "crystals": 0,
+      "frames": {
+        "idle": [
+          "/assets/morphanim/萊肯/idle/0.png",
+          "/assets/morphanim/萊肯/idle/1.png",
+          "/assets/morphanim/萊肯/idle/2.png",
+          "/assets/morphanim/萊肯/idle/3.png",
+          "/assets/morphanim/萊肯/idle/4.png",
+          "/assets/morphanim/萊肯/idle/5.png",
+          "/assets/morphanim/萊肯/idle/6.png"
+        ],
+        "attack": [
+          "/assets/morphanim/萊肯/attack/0.png",
+          "/assets/morphanim/萊肯/attack/1.png",
+          "/assets/morphanim/萊肯/attack/2.png",
+          "/assets/morphanim/萊肯/attack/3.png",
+          "/assets/morphanim/萊肯/attack/4.png"
+        ],
+        "hurt": [
+          "/assets/morphanim/萊肯/hurt/0.png",
+          "/assets/morphanim/萊肯/hurt/1.png"
+        ]
+      },
+      "walkTicks": 16,
+      "bonus": {
+        "meleeDmg": 2,
+        "meleeHit": 2,
+        "rangedDmg": 0,
+        "rangedHit": 0,
+        "extraDmg": 0,
+        "extraHit": 0,
+        "extraMp": 0,
+        "mdmg": 0,
+        "mpR": 0,
+        "mr": 0,
+        "er": 0,
+        "summonHit": 0,
+        "speedPct": 0,
+        "ac": 0
+      },
+      "bonusText": "近傷+2、近命中+2"
+    },
+    {
+      "id": "morph_21",
+      "name": "思克巴",
+      "level": 30,
+      "tier": "Lv.30 變身",
+      "crystals": 0,
+      "frames": {
+        "idle": [
+          "/assets/morphanim/思克巴/idle/0.png",
+          "/assets/morphanim/思克巴/idle/1.png",
+          "/assets/morphanim/思克巴/idle/2.png",
+          "/assets/morphanim/思克巴/idle/3.png",
+          "/assets/morphanim/思克巴/idle/4.png",
+          "/assets/morphanim/思克巴/idle/5.png",
+          "/assets/morphanim/思克巴/idle/6.png",
+          "/assets/morphanim/思克巴/idle/7.png"
+        ],
+        "attack": [
+          "/assets/morphanim/思克巴/attack/0.png",
+          "/assets/morphanim/思克巴/attack/1.png",
+          "/assets/morphanim/思克巴/attack/2.png",
+          "/assets/morphanim/思克巴/attack/3.png",
+          "/assets/morphanim/思克巴/attack/4.png"
+        ],
+        "hurt": [
+          "/assets/morphanim/思克巴/hurt/0.png",
+          "/assets/morphanim/思克巴/hurt/1.png"
+        ]
+      },
+      "walkTicks": 16,
+      "bonus": {
+        "meleeDmg": 0,
+        "meleeHit": 0,
+        "rangedDmg": 0,
+        "rangedHit": 0,
+        "extraDmg": 0,
+        "extraHit": 0,
+        "extraMp": 0,
+        "mdmg": 1,
+        "mpR": 2,
+        "mr": 0,
+        "er": 0,
+        "summonHit": 0,
+        "speedPct": 0,
+        "ac": 0
+      },
+      "bonusText": "魔傷+1、MP恢復+2"
+    },
+    {
+      "id": "morph_23",
+      "name": "食人妖精王",
+      "level": 30,
+      "tier": "Lv.30 變身",
+      "crystals": 0,
+      "frames": {
+        "idle": [
+          "/assets/morphanim/食人妖精王/idle/0.png",
+          "/assets/morphanim/食人妖精王/idle/1.png",
+          "/assets/morphanim/食人妖精王/idle/2.png",
+          "/assets/morphanim/食人妖精王/idle/3.png",
+          "/assets/morphanim/食人妖精王/idle/4.png",
+          "/assets/morphanim/食人妖精王/idle/5.png"
+        ],
+        "attack": [
+          "/assets/morphanim/食人妖精王/attack/0.png",
+          "/assets/morphanim/食人妖精王/attack/1.png",
+          "/assets/morphanim/食人妖精王/attack/2.png",
+          "/assets/morphanim/食人妖精王/attack/3.png",
+          "/assets/morphanim/食人妖精王/attack/4.png"
+        ],
+        "hurt": [
+          "/assets/morphanim/食人妖精王/hurt/0.png",
+          "/assets/morphanim/食人妖精王/hurt/1.png"
+        ]
+      },
+      "walkTicks": 16,
+      "bonus": {
+        "meleeDmg": 3,
+        "meleeHit": 2,
+        "rangedDmg": 0,
+        "rangedHit": 0,
+        "extraDmg": 0,
+        "extraHit": 0,
+        "extraMp": 0,
+        "mdmg": 0,
+        "mpR": 0,
+        "mr": 0,
+        "er": 0,
+        "summonHit": 0,
+        "speedPct": 0,
+        "ac": 0
+      },
+      "bonusText": "近傷+3、近命中+2"
+    },
+    {
+      "id": "morph_32",
+      "name": "黑暗妖精警衛(矛)",
+      "level": 30,
+      "tier": "Lv.30 變身",
+      "crystals": 0,
+      "frames": {
+        "idle": [
+          "/assets/morphanim/黑暗妖精警衛(矛)/idle/0.png",
+          "/assets/morphanim/黑暗妖精警衛(矛)/idle/1.png",
+          "/assets/morphanim/黑暗妖精警衛(矛)/idle/2.png",
+          "/assets/morphanim/黑暗妖精警衛(矛)/idle/3.png",
+          "/assets/morphanim/黑暗妖精警衛(矛)/idle/4.png",
+          "/assets/morphanim/黑暗妖精警衛(矛)/idle/5.png",
+          "/assets/morphanim/黑暗妖精警衛(矛)/idle/6.png",
+          "/assets/morphanim/黑暗妖精警衛(矛)/idle/7.png",
+          "/assets/morphanim/黑暗妖精警衛(矛)/idle/8.png",
+          "/assets/morphanim/黑暗妖精警衛(矛)/idle/9.png"
+        ],
+        "attack": [
+          "/assets/morphanim/黑暗妖精警衛(矛)/attack/0.png",
+          "/assets/morphanim/黑暗妖精警衛(矛)/attack/1.png",
+          "/assets/morphanim/黑暗妖精警衛(矛)/attack/2.png",
+          "/assets/morphanim/黑暗妖精警衛(矛)/attack/3.png",
+          "/assets/morphanim/黑暗妖精警衛(矛)/attack/4.png",
+          "/assets/morphanim/黑暗妖精警衛(矛)/attack/5.png",
+          "/assets/morphanim/黑暗妖精警衛(矛)/attack/6.png"
+        ],
+        "hurt": [
+          "/assets/morphanim/黑暗妖精警衛(矛)/hurt/0.png",
+          "/assets/morphanim/黑暗妖精警衛(矛)/hurt/1.png"
+        ]
+      },
+      "bonus": {
+        "meleeDmg": 1,
+        "meleeHit": 3,
+        "rangedDmg": 0,
+        "rangedHit": 0,
+        "extraDmg": 0,
+        "extraHit": 0,
+        "extraMp": 0,
+        "mdmg": 0,
+        "mpR": 0,
+        "mr": 0,
+        "er": 0,
+        "summonHit": 0,
+        "speedPct": 0,
+        "ac": 0
+      },
+      "bonusText": "近傷+1、近命中+3"
+    },
+    {
+      "id": "morph_34",
+      "name": "強盜(弓)",
+      "level": 30,
+      "tier": "Lv.30 變身",
+      "crystals": 0,
+      "frames": {
+        "idle": [
+          "/assets/morphanim/強盜(弓)/idle/0.png",
+          "/assets/morphanim/強盜(弓)/idle/1.png",
+          "/assets/morphanim/強盜(弓)/idle/2.png",
+          "/assets/morphanim/強盜(弓)/idle/3.png",
+          "/assets/morphanim/強盜(弓)/idle/4.png",
+          "/assets/morphanim/強盜(弓)/idle/5.png",
+          "/assets/morphanim/強盜(弓)/idle/6.png",
+          "/assets/morphanim/強盜(弓)/idle/7.png",
+          "/assets/morphanim/強盜(弓)/idle/8.png",
+          "/assets/morphanim/強盜(弓)/idle/9.png",
+          "/assets/morphanim/強盜(弓)/idle/10.png"
+        ],
+        "attack": [
+          "/assets/morphanim/強盜(弓)/attack/0.png",
+          "/assets/morphanim/強盜(弓)/attack/1.png",
+          "/assets/morphanim/強盜(弓)/attack/2.png",
+          "/assets/morphanim/強盜(弓)/attack/3.png",
+          "/assets/morphanim/強盜(弓)/attack/4.png",
+          "/assets/morphanim/強盜(弓)/attack/5.png",
+          "/assets/morphanim/強盜(弓)/attack/6.png",
+          "/assets/morphanim/強盜(弓)/attack/7.png"
+        ],
+        "hurt": [
+          "/assets/morphanim/強盜(弓)/hurt/0.png",
+          "/assets/morphanim/強盜(弓)/hurt/1.png"
+        ]
+      },
+      "bonus": {
+        "meleeDmg": 0,
+        "meleeHit": 0,
+        "rangedDmg": 2,
+        "rangedHit": 2,
+        "extraDmg": 0,
+        "extraHit": 0,
+        "extraMp": 0,
+        "mdmg": 0,
+        "mpR": 0,
+        "mr": 0,
+        "er": 0,
+        "summonHit": 0,
+        "speedPct": 0,
+        "ac": 0
+      },
+      "bonusText": "遠傷+2、遠命中+2"
+    },
+    {
+      "id": "morph_35",
+      "name": "黑暗妖精盜賊",
+      "level": 30,
+      "tier": "Lv.30 變身",
+      "crystals": 0,
+      "frames": {
+        "idle": [
+          "/assets/morphanim/黑暗妖精盜賊/idle/0.png",
+          "/assets/morphanim/黑暗妖精盜賊/idle/1.png",
+          "/assets/morphanim/黑暗妖精盜賊/idle/2.png",
+          "/assets/morphanim/黑暗妖精盜賊/idle/3.png",
+          "/assets/morphanim/黑暗妖精盜賊/idle/4.png",
+          "/assets/morphanim/黑暗妖精盜賊/idle/5.png",
+          "/assets/morphanim/黑暗妖精盜賊/idle/6.png",
+          "/assets/morphanim/黑暗妖精盜賊/idle/7.png",
+          "/assets/morphanim/黑暗妖精盜賊/idle/8.png",
+          "/assets/morphanim/黑暗妖精盜賊/idle/9.png"
+        ],
+        "attack": [
+          "/assets/morphanim/黑暗妖精盜賊/attack/0.png",
+          "/assets/morphanim/黑暗妖精盜賊/attack/1.png",
+          "/assets/morphanim/黑暗妖精盜賊/attack/2.png",
+          "/assets/morphanim/黑暗妖精盜賊/attack/3.png",
+          "/assets/morphanim/黑暗妖精盜賊/attack/4.png",
+          "/assets/morphanim/黑暗妖精盜賊/attack/5.png",
+          "/assets/morphanim/黑暗妖精盜賊/attack/6.png",
+          "/assets/morphanim/黑暗妖精盜賊/attack/7.png",
+          "/assets/morphanim/黑暗妖精盜賊/attack/8.png"
+        ],
+        "hurt": [
+          "/assets/morphanim/黑暗妖精盜賊/hurt/0.png",
+          "/assets/morphanim/黑暗妖精盜賊/hurt/1.png"
+        ]
+      },
+      "bonus": {
+        "meleeDmg": 0,
+        "meleeHit": 0,
+        "rangedDmg": 2,
+        "rangedHit": 3,
+        "extraDmg": 0,
+        "extraHit": 0,
+        "extraMp": 0,
+        "mdmg": 0,
+        "mpR": 0,
+        "mr": 0,
+        "er": 0,
+        "summonHit": 0,
+        "speedPct": 0,
+        "ac": 0
+      },
+      "bonusText": "遠傷+2、遠命中+3"
+    },
+    {
+      "id": "morph_36",
+      "name": "黑暗妖精法師",
+      "level": 30,
+      "tier": "Lv.30 變身",
+      "crystals": 0,
+      "frames": {
+        "idle": [
+          "/assets/morphanim/黑暗妖精法師/idle/0.png",
+          "/assets/morphanim/黑暗妖精法師/idle/1.png",
+          "/assets/morphanim/黑暗妖精法師/idle/2.png",
+          "/assets/morphanim/黑暗妖精法師/idle/3.png",
+          "/assets/morphanim/黑暗妖精法師/idle/4.png",
+          "/assets/morphanim/黑暗妖精法師/idle/5.png",
+          "/assets/morphanim/黑暗妖精法師/idle/6.png",
+          "/assets/morphanim/黑暗妖精法師/idle/7.png"
+        ],
+        "attack": [
+          "/assets/morphanim/黑暗妖精法師/attack/0.png",
+          "/assets/morphanim/黑暗妖精法師/attack/1.png",
+          "/assets/morphanim/黑暗妖精法師/attack/2.png",
+          "/assets/morphanim/黑暗妖精法師/attack/3.png",
+          "/assets/morphanim/黑暗妖精法師/attack/4.png",
+          "/assets/morphanim/黑暗妖精法師/attack/5.png",
+          "/assets/morphanim/黑暗妖精法師/attack/6.png",
+          "/assets/morphanim/黑暗妖精法師/attack/7.png",
+          "/assets/morphanim/黑暗妖精法師/attack/8.png",
+          "/assets/morphanim/黑暗妖精法師/attack/9.png"
+        ],
+        "hurt": [
+          "/assets/morphanim/黑暗妖精法師/hurt/0.png",
+          "/assets/morphanim/黑暗妖精法師/hurt/1.png"
+        ]
+      },
+      "bonus": {
+        "meleeDmg": 0,
+        "meleeHit": 0,
+        "rangedDmg": 0,
+        "rangedHit": 0,
+        "extraDmg": 0,
+        "extraHit": 0,
+        "extraMp": 3,
+        "mdmg": 0,
+        "mpR": 1,
+        "mr": 0,
+        "er": 0,
+        "summonHit": 0,
+        "speedPct": 0,
+        "ac": 0
+      },
+      "bonusText": "額外魔法點數+3、MP恢復+1"
+    },
+    {
+      "id": "morph_13",
+      "name": "亞力安",
+      "level": 30,
+      "tier": "Lv.30 變身",
+      "crystals": 0,
+      "frames": {
+        "idle": [
+          "/assets/morphanim/亞力安/idle/0.png",
+          "/assets/morphanim/亞力安/idle/1.png",
+          "/assets/morphanim/亞力安/idle/2.png",
+          "/assets/morphanim/亞力安/idle/3.png",
+          "/assets/morphanim/亞力安/idle/4.png",
+          "/assets/morphanim/亞力安/idle/5.png",
+          "/assets/morphanim/亞力安/idle/6.png"
+        ],
+        "attack": [
+          "/assets/morphanim/亞力安/attack/0.png",
+          "/assets/morphanim/亞力安/attack/1.png",
+          "/assets/morphanim/亞力安/attack/2.png",
+          "/assets/morphanim/亞力安/attack/3.png",
+          "/assets/morphanim/亞力安/attack/4.png"
+        ],
+        "hurt": [
+          "/assets/morphanim/亞力安/hurt/0.png",
+          "/assets/morphanim/亞力安/hurt/1.png"
+        ]
+      },
+      "walkTicks": 13,
+      "bonus": {
+        "meleeDmg": 1,
+        "meleeHit": 1,
+        "rangedDmg": 0,
+        "rangedHit": 0,
+        "extraDmg": 0,
+        "extraHit": 0,
+        "extraMp": 2,
+        "mdmg": 0,
+        "mpR": 0,
+        "mr": 0,
+        "er": 0,
+        "summonHit": 0,
+        "speedPct": 0,
+        "ac": 0
+      },
+      "bonusText": "近傷+1、近命中+1、額外魔法點數+2"
+    },
+    {
+      "id": "morph_37",
+      "name": "曼波兔",
+      "level": 30,
+      "tier": "Lv.30 變身",
+      "crystals": 0,
+      "frames": {
+        "idle": [
+          "/assets/morphanim/曼波兔/idle/0.png",
+          "/assets/morphanim/曼波兔/idle/1.png",
+          "/assets/morphanim/曼波兔/idle/2.png",
+          "/assets/morphanim/曼波兔/idle/3.png",
+          "/assets/morphanim/曼波兔/idle/4.png",
+          "/assets/morphanim/曼波兔/idle/5.png",
+          "/assets/morphanim/曼波兔/idle/6.png",
+          "/assets/morphanim/曼波兔/idle/7.png",
+          "/assets/morphanim/曼波兔/idle/8.png",
+          "/assets/morphanim/曼波兔/idle/9.png",
+          "/assets/morphanim/曼波兔/idle/10.png",
+          "/assets/morphanim/曼波兔/idle/11.png",
+          "/assets/morphanim/曼波兔/idle/12.png",
+          "/assets/morphanim/曼波兔/idle/13.png",
+          "/assets/morphanim/曼波兔/idle/14.png",
+          "/assets/morphanim/曼波兔/idle/15.png",
+          "/assets/morphanim/曼波兔/idle/16.png",
+          "/assets/morphanim/曼波兔/idle/17.png",
+          "/assets/morphanim/曼波兔/idle/18.png",
+          "/assets/morphanim/曼波兔/idle/19.png",
+          "/assets/morphanim/曼波兔/idle/20.png",
+          "/assets/morphanim/曼波兔/idle/21.png",
+          "/assets/morphanim/曼波兔/idle/22.png",
+          "/assets/morphanim/曼波兔/idle/23.png",
+          "/assets/morphanim/曼波兔/idle/24.png",
+          "/assets/morphanim/曼波兔/idle/25.png",
+          "/assets/morphanim/曼波兔/idle/26.png",
+          "/assets/morphanim/曼波兔/idle/27.png"
+        ],
+        "attack": [
+          "/assets/morphanim/曼波兔/attack/0.png",
+          "/assets/morphanim/曼波兔/attack/1.png",
+          "/assets/morphanim/曼波兔/attack/2.png",
+          "/assets/morphanim/曼波兔/attack/3.png",
+          "/assets/morphanim/曼波兔/attack/4.png",
+          "/assets/morphanim/曼波兔/attack/5.png"
+        ],
+        "hurt": [
+          "/assets/morphanim/曼波兔/hurt/0.png",
+          "/assets/morphanim/曼波兔/hurt/1.png"
+        ]
+      },
+      "bonus": {
+        "meleeDmg": 0,
+        "meleeHit": 0,
+        "rangedDmg": 0,
+        "rangedHit": 0,
+        "extraDmg": 0,
+        "extraHit": 0,
+        "extraMp": 0,
+        "mdmg": 0,
+        "mpR": 0,
+        "mr": 0,
+        "er": 1,
+        "summonHit": 0,
+        "speedPct": 15,
+        "ac": 0
+      },
+      "bonusText": "閃避 ER+1、攻速+15%"
+    },
+    {
+      "id": "morph_38",
+      "name": "德雷克",
+      "level": 45,
+      "tier": "Lv.45 變身",
+      "crystals": 0,
+      "frames": {
+        "idle": [
+          "/assets/morphanim/德雷克/idle/0.png",
+          "/assets/morphanim/德雷克/idle/1.png",
+          "/assets/morphanim/德雷克/idle/2.png",
+          "/assets/morphanim/德雷克/idle/3.png",
+          "/assets/morphanim/德雷克/idle/4.png",
+          "/assets/morphanim/德雷克/idle/5.png",
+          "/assets/morphanim/德雷克/idle/6.png",
+          "/assets/morphanim/德雷克/idle/7.png",
+          "/assets/morphanim/德雷克/idle/8.png",
+          "/assets/morphanim/德雷克/idle/9.png",
+          "/assets/morphanim/德雷克/idle/10.png",
+          "/assets/morphanim/德雷克/idle/11.png",
+          "/assets/morphanim/德雷克/idle/12.png",
+          "/assets/morphanim/德雷克/idle/13.png"
+        ],
+        "attack": [
+          "/assets/morphanim/德雷克/attack/0.png",
+          "/assets/morphanim/德雷克/attack/1.png",
+          "/assets/morphanim/德雷克/attack/2.png",
+          "/assets/morphanim/德雷克/attack/3.png",
+          "/assets/morphanim/德雷克/attack/4.png",
+          "/assets/morphanim/德雷克/attack/5.png",
+          "/assets/morphanim/德雷克/attack/6.png",
+          "/assets/morphanim/德雷克/attack/7.png",
+          "/assets/morphanim/德雷克/attack/8.png",
+          "/assets/morphanim/德雷克/attack/9.png",
+          "/assets/morphanim/德雷克/attack/10.png",
+          "/assets/morphanim/德雷克/attack/11.png",
+          "/assets/morphanim/德雷克/attack/12.png",
+          "/assets/morphanim/德雷克/attack/13.png"
+        ],
+        "hurt": [
+          "/assets/morphanim/德雷克/hurt/0.png",
+          "/assets/morphanim/德雷克/hurt/1.png"
+        ]
+      },
+      "bonus": {
+        "meleeDmg": 3,
+        "meleeHit": 3,
+        "rangedDmg": 0,
+        "rangedHit": 0,
+        "extraDmg": 0,
+        "extraHit": 0,
+        "extraMp": 0,
+        "mdmg": 0,
+        "mpR": 0,
+        "mr": 0,
+        "er": 0,
+        "summonHit": 0,
+        "speedPct": 0,
+        "ac": 0
+      },
+      "bonusText": "近傷+3、近命中+3"
+    },
+    {
+      "id": "morph_blaze",
+      "name": "布雷哲",
+      "level": 45,
+      "tier": "Lv.45 變身",
+      "crystals": 0,
+      "bonus": {
+        "meleeDmg": 2,
+        "meleeHit": 4,
+        "rangedDmg": 0,
+        "rangedHit": 0,
+        "extraDmg": 0,
+        "extraHit": 0,
+        "extraMp": 0,
+        "mdmg": 0,
+        "mpR": 0,
+        "mr": 0,
+        "er": 0,
+        "summonHit": 0,
+        "speedPct": 0,
+        "ac": 0
+      },
+      "bonusText": "近傷+2、近命中+4",
+      "frames": {
+        "idle": [
+          "/assets/morphanim/布雷哲/idle/0.png",
+          "/assets/morphanim/布雷哲/idle/1.png",
+          "/assets/morphanim/布雷哲/idle/2.png",
+          "/assets/morphanim/布雷哲/idle/3.png",
+          "/assets/morphanim/布雷哲/idle/4.png",
+          "/assets/morphanim/布雷哲/idle/5.png",
+          "/assets/morphanim/布雷哲/idle/6.png",
+          "/assets/morphanim/布雷哲/idle/7.png",
+          "/assets/morphanim/布雷哲/idle/8.png"
+        ],
+        "attack": [
+          "/assets/morphanim/布雷哲/attack/0.png",
+          "/assets/morphanim/布雷哲/attack/1.png",
+          "/assets/morphanim/布雷哲/attack/2.png",
+          "/assets/morphanim/布雷哲/attack/3.png",
+          "/assets/morphanim/布雷哲/attack/4.png",
+          "/assets/morphanim/布雷哲/attack/5.png",
+          "/assets/morphanim/布雷哲/attack/6.png",
+          "/assets/morphanim/布雷哲/attack/7.png",
+          "/assets/morphanim/布雷哲/attack/8.png"
+        ],
+        "hurt": [
+          "/assets/morphanim/布雷哲/hurt/0.png",
+          "/assets/morphanim/布雷哲/hurt/1.png",
+          "/assets/morphanim/布雷哲/hurt/2.png"
+        ]
+      },
+      "walkTicks": 16
+    },
+    {
+      "id": "morph_bounty",
+      "name": "賞金獵人",
+      "level": 45,
+      "tier": "Lv.45 變身",
+      "crystals": 0,
+      "bonus": {
+        "meleeDmg": 1,
+        "meleeHit": 1,
+        "rangedDmg": 0,
+        "rangedHit": 0,
+        "extraDmg": 0,
+        "extraHit": 0,
+        "extraMp": 0,
+        "mdmg": 0,
+        "mpR": 0,
+        "mr": 0,
+        "er": 0,
+        "summonHit": 0,
+        "speedPct": 15,
+        "ac": 0
+      },
+      "bonusText": "近傷+1、近命中+1、攻速+15%",
+      "frames": {
+        "idle": [
+          "/assets/morphanim/賞金獵人/idle/0.png",
+          "/assets/morphanim/賞金獵人/idle/1.png",
+          "/assets/morphanim/賞金獵人/idle/2.png",
+          "/assets/morphanim/賞金獵人/idle/3.png",
+          "/assets/morphanim/賞金獵人/idle/4.png",
+          "/assets/morphanim/賞金獵人/idle/5.png",
+          "/assets/morphanim/賞金獵人/idle/6.png",
+          "/assets/morphanim/賞金獵人/idle/7.png",
+          "/assets/morphanim/賞金獵人/idle/8.png",
+          "/assets/morphanim/賞金獵人/idle/9.png",
+          "/assets/morphanim/賞金獵人/idle/10.png",
+          "/assets/morphanim/賞金獵人/idle/11.png"
+        ],
+        "attack": [
+          "/assets/morphanim/賞金獵人/attack/0.png",
+          "/assets/morphanim/賞金獵人/attack/1.png",
+          "/assets/morphanim/賞金獵人/attack/2.png",
+          "/assets/morphanim/賞金獵人/attack/3.png",
+          "/assets/morphanim/賞金獵人/attack/4.png"
+        ],
+        "hurt": [
+          "/assets/morphanim/賞金獵人/hurt/0.png",
+          "/assets/morphanim/賞金獵人/hurt/1.png",
+          "/assets/morphanim/賞金獵人/hurt/2.png"
+        ]
+      },
+      "walkTicks": 16
+    },
+    {
+      "id": "morph_33",
+      "name": "黑暗妖精警衛(弓)",
+      "level": 45,
+      "tier": "Lv.45 變身",
+      "crystals": 0,
+      "frames": {
+        "idle": [
+          "/assets/morphanim/黑暗妖精警衛(弓)/idle/0.png",
+          "/assets/morphanim/黑暗妖精警衛(弓)/idle/1.png",
+          "/assets/morphanim/黑暗妖精警衛(弓)/idle/2.png",
+          "/assets/morphanim/黑暗妖精警衛(弓)/idle/3.png",
+          "/assets/morphanim/黑暗妖精警衛(弓)/idle/4.png",
+          "/assets/morphanim/黑暗妖精警衛(弓)/idle/5.png",
+          "/assets/morphanim/黑暗妖精警衛(弓)/idle/6.png",
+          "/assets/morphanim/黑暗妖精警衛(弓)/idle/7.png",
+          "/assets/morphanim/黑暗妖精警衛(弓)/idle/8.png",
+          "/assets/morphanim/黑暗妖精警衛(弓)/idle/9.png"
+        ],
+        "attack": [
+          "/assets/morphanim/黑暗妖精警衛(弓)/attack/0.png",
+          "/assets/morphanim/黑暗妖精警衛(弓)/attack/1.png",
+          "/assets/morphanim/黑暗妖精警衛(弓)/attack/2.png",
+          "/assets/morphanim/黑暗妖精警衛(弓)/attack/3.png",
+          "/assets/morphanim/黑暗妖精警衛(弓)/attack/4.png",
+          "/assets/morphanim/黑暗妖精警衛(弓)/attack/5.png",
+          "/assets/morphanim/黑暗妖精警衛(弓)/attack/6.png"
+        ],
+        "hurt": [
+          "/assets/morphanim/黑暗妖精警衛(弓)/hurt/0.png",
+          "/assets/morphanim/黑暗妖精警衛(弓)/hurt/1.png"
+        ]
+      },
+      "bonus": {
+        "meleeDmg": 0,
+        "meleeHit": 0,
+        "rangedDmg": 1,
+        "rangedHit": 1,
+        "extraDmg": 0,
+        "extraHit": 0,
+        "extraMp": 0,
+        "mdmg": 0,
+        "mpR": 0,
+        "mr": 0,
+        "er": 0,
+        "summonHit": 0,
+        "speedPct": 15,
+        "ac": 0
+      },
+      "bonusText": "遠傷+1、遠命中+1、攻速+15%"
+    },
+    {
+      "id": "morph_5",
+      "name": "黑暗妖精巡守",
+      "level": 45,
+      "tier": "Lv.45 變身",
+      "crystals": 0,
+      "frames": {
+        "idle": [
+          "/assets/morphanim/黑暗妖精巡守/idle/0.png",
+          "/assets/morphanim/黑暗妖精巡守/idle/1.png",
+          "/assets/morphanim/黑暗妖精巡守/idle/2.png",
+          "/assets/morphanim/黑暗妖精巡守/idle/3.png",
+          "/assets/morphanim/黑暗妖精巡守/idle/4.png",
+          "/assets/morphanim/黑暗妖精巡守/idle/5.png",
+          "/assets/morphanim/黑暗妖精巡守/idle/6.png",
+          "/assets/morphanim/黑暗妖精巡守/idle/7.png"
+        ],
+        "attack": [
+          "/assets/morphanim/黑暗妖精巡守/attack/0.png",
+          "/assets/morphanim/黑暗妖精巡守/attack/1.png",
+          "/assets/morphanim/黑暗妖精巡守/attack/2.png",
+          "/assets/morphanim/黑暗妖精巡守/attack/3.png",
+          "/assets/morphanim/黑暗妖精巡守/attack/4.png",
+          "/assets/morphanim/黑暗妖精巡守/attack/5.png"
+        ],
+        "hurt": [
+          "/assets/morphanim/黑暗妖精巡守/hurt/0.png",
+          "/assets/morphanim/黑暗妖精巡守/hurt/1.png"
+        ]
+      },
+      "bonus": {
+        "meleeDmg": 0,
+        "meleeHit": 0,
+        "rangedDmg": 3,
+        "rangedHit": 3,
+        "extraDmg": 0,
+        "extraHit": 0,
+        "extraMp": 0,
+        "mdmg": 0,
+        "mpR": 0,
+        "mr": 0,
+        "er": 0,
+        "summonHit": 0,
+        "speedPct": 0,
+        "ac": 0
+      },
+      "bonusText": "遠傷+3、遠命中+3"
+    },
+    {
+      "id": "morph_25",
+      "name": "巴風特",
+      "level": 45,
+      "tier": "Lv.45 變身",
+      "crystals": 0,
+      "frames": {
+        "idle": [
+          "/assets/morphanim/巴風特/idle/0.png",
+          "/assets/morphanim/巴風特/idle/1.png",
+          "/assets/morphanim/巴風特/idle/2.png"
+        ],
+        "attack": [
+          "/assets/morphanim/巴風特/attack/0.png",
+          "/assets/morphanim/巴風特/attack/1.png",
+          "/assets/morphanim/巴風特/attack/2.png",
+          "/assets/morphanim/巴風特/attack/3.png",
+          "/assets/morphanim/巴風特/attack/4.png"
+        ],
+        "hurt": [
+          "/assets/morphanim/巴風特/hurt/0.png",
+          "/assets/morphanim/巴風特/hurt/1.png"
+        ]
+      },
+      "walkTicks": 12,
+      "bonus": {
+        "meleeDmg": 0,
+        "meleeHit": 0,
+        "rangedDmg": 0,
+        "rangedHit": 0,
+        "extraDmg": 0,
+        "extraHit": 0,
+        "extraMp": 2,
+        "mdmg": 1,
+        "mpR": 2,
+        "mr": 0,
+        "er": 0,
+        "summonHit": 0,
+        "speedPct": 0,
+        "ac": 0
+      },
+      "bonusText": "魔傷+1、額外魔法點數+2、MP恢復+2"
+    },
+    {
+      "id": "morph_11",
+      "name": "克特",
+      "level": 50,
+      "tier": "Lv.50 變身",
+      "crystals": 0,
+      "frames": {
+        "idle": [
+          "/assets/morphanim/克特/idle/0.png",
+          "/assets/morphanim/克特/idle/1.png",
+          "/assets/morphanim/克特/idle/2.png",
+          "/assets/morphanim/克特/idle/3.png"
+        ],
+        "attack": [
+          "/assets/morphanim/克特/attack/0.png",
+          "/assets/morphanim/克特/attack/1.png",
+          "/assets/morphanim/克特/attack/2.png",
+          "/assets/morphanim/克特/attack/3.png"
+        ],
+        "hurt": [
+          "/assets/morphanim/克特/hurt/0.png",
+          "/assets/morphanim/克特/hurt/1.png"
+        ]
+      },
+      "walkTicks": 16,
+      "bonus": {
+        "meleeDmg": 3,
+        "meleeHit": 3,
+        "rangedDmg": 0,
+        "rangedHit": 0,
+        "extraDmg": 0,
+        "extraHit": 0,
+        "extraMp": 0,
+        "mdmg": 0,
+        "mpR": 0,
+        "mr": 0,
+        "er": 0,
+        "summonHit": 0,
+        "speedPct": 15,
+        "ac": 0
+      },
+      "bonusText": "近傷+3、近命中+3、攻速+15%"
+    },
+    {
+      "id": "morph_41",
+      "name": "刺客首領",
+      "level": 50,
+      "tier": "Lv.50 變身",
+      "crystals": 0,
+      "frames": {
+        "idle": [
+          "/assets/morphanim/刺客首領/idle/0.png",
+          "/assets/morphanim/刺客首領/idle/1.png",
+          "/assets/morphanim/刺客首領/idle/2.png",
+          "/assets/morphanim/刺客首領/idle/3.png",
+          "/assets/morphanim/刺客首領/idle/4.png",
+          "/assets/morphanim/刺客首領/idle/5.png",
+          "/assets/morphanim/刺客首領/idle/6.png",
+          "/assets/morphanim/刺客首領/idle/7.png",
+          "/assets/morphanim/刺客首領/idle/8.png",
+          "/assets/morphanim/刺客首領/idle/9.png",
+          "/assets/morphanim/刺客首領/idle/10.png"
+        ],
+        "attack": [
+          "/assets/morphanim/刺客首領/attack/0.png",
+          "/assets/morphanim/刺客首領/attack/1.png",
+          "/assets/morphanim/刺客首領/attack/2.png",
+          "/assets/morphanim/刺客首領/attack/3.png",
+          "/assets/morphanim/刺客首領/attack/4.png",
+          "/assets/morphanim/刺客首領/attack/5.png",
+          "/assets/morphanim/刺客首領/attack/6.png",
+          "/assets/morphanim/刺客首領/attack/7.png",
+          "/assets/morphanim/刺客首領/attack/8.png"
+        ],
+        "hurt": [
+          "/assets/morphanim/刺客首領/hurt/0.png",
+          "/assets/morphanim/刺客首領/hurt/1.png"
+        ]
+      },
+      "bonus": {
+        "meleeDmg": 2,
+        "meleeHit": 2,
+        "rangedDmg": 0,
+        "rangedHit": 0,
+        "extraDmg": 0,
+        "extraHit": 0,
+        "extraMp": 0,
+        "mdmg": 0,
+        "mpR": 0,
+        "mr": 0,
+        "er": 0,
+        "summonHit": 0,
+        "speedPct": 20,
+        "ac": 0
+      },
+      "bonusText": "近傷+2、近命中+2、攻速+20%"
+    },
+    {
+      "id": "morph_26",
+      "name": "小惡魔",
+      "level": 50,
+      "tier": "Lv.50 變身",
+      "crystals": 0,
+      "frames": {
+        "idle": [
+          "/assets/morphanim/小惡魔/idle/0.png",
+          "/assets/morphanim/小惡魔/idle/1.png",
+          "/assets/morphanim/小惡魔/idle/2.png",
+          "/assets/morphanim/小惡魔/idle/3.png",
+          "/assets/morphanim/小惡魔/idle/4.png",
+          "/assets/morphanim/小惡魔/idle/5.png",
+          "/assets/morphanim/小惡魔/idle/6.png",
+          "/assets/morphanim/小惡魔/idle/7.png"
+        ],
+        "attack": [
+          "/assets/morphanim/小惡魔/attack/0.png",
+          "/assets/morphanim/小惡魔/attack/1.png",
+          "/assets/morphanim/小惡魔/attack/2.png",
+          "/assets/morphanim/小惡魔/attack/3.png",
+          "/assets/morphanim/小惡魔/attack/4.png",
+          "/assets/morphanim/小惡魔/attack/5.png",
+          "/assets/morphanim/小惡魔/attack/6.png"
+        ],
+        "hurt": [
+          "/assets/morphanim/小惡魔/hurt/0.png",
+          "/assets/morphanim/小惡魔/hurt/1.png"
+        ]
+      },
+      "walkTicks": 18,
+      "bonus": {
+        "meleeDmg": 0,
+        "meleeHit": 0,
+        "rangedDmg": 1,
+        "rangedHit": 0,
+        "extraDmg": 0,
+        "extraHit": 0,
+        "extraMp": 0,
+        "mdmg": 1,
+        "mpR": 3,
+        "mr": 0,
+        "er": 0,
+        "summonHit": 0,
+        "speedPct": 15,
+        "ac": 0
+      },
+      "bonusText": "遠傷+1、魔傷+1、MP恢復+3、攻速+15%"
+    },
+    {
+      "id": "morph_1",
+      "name": "黑騎士",
+      "level": 50,
+      "tier": "Lv.50 變身",
+      "crystals": 0,
+      "frames": {
+        "idle": [
+          "/assets/morphanim/黑騎士/idle/0.png",
+          "/assets/morphanim/黑騎士/idle/1.png",
+          "/assets/morphanim/黑騎士/idle/2.png",
+          "/assets/morphanim/黑騎士/idle/3.png"
+        ],
+        "attack": [
+          "/assets/morphanim/黑騎士/attack/0.png",
+          "/assets/morphanim/黑騎士/attack/1.png",
+          "/assets/morphanim/黑騎士/attack/2.png",
+          "/assets/morphanim/黑騎士/attack/3.png",
+          "/assets/morphanim/黑騎士/attack/4.png"
+        ],
+        "hurt": [
+          "/assets/morphanim/黑騎士/hurt/0.png",
+          "/assets/morphanim/黑騎士/hurt/1.png"
+        ]
+      },
+      "walkTicks": 12,
+      "bonus": {
+        "meleeDmg": 1,
+        "meleeHit": 4,
+        "rangedDmg": 0,
+        "rangedHit": 0,
+        "extraDmg": 0,
+        "extraHit": 0,
+        "extraMp": 0,
+        "mdmg": 0,
+        "mpR": 0,
+        "mr": 0,
+        "er": 0,
+        "summonHit": 0,
+        "speedPct": 10,
+        "ac": 0
+      },
+      "bonusText": "近傷+1、近命中+4、攻速+10%"
+    },
+    {
+      "id": "morph_39",
+      "name": "火焰弓箭手",
+      "level": 50,
+      "tier": "Lv.50 變身",
+      "crystals": 0,
+      "frames": {
+        "idle": [
+          "/assets/morphanim/火焰弓箭手/idle/0.png",
+          "/assets/morphanim/火焰弓箭手/idle/1.png",
+          "/assets/morphanim/火焰弓箭手/idle/2.png",
+          "/assets/morphanim/火焰弓箭手/idle/3.png",
+          "/assets/morphanim/火焰弓箭手/idle/4.png",
+          "/assets/morphanim/火焰弓箭手/idle/5.png",
+          "/assets/morphanim/火焰弓箭手/idle/6.png",
+          "/assets/morphanim/火焰弓箭手/idle/7.png",
+          "/assets/morphanim/火焰弓箭手/idle/8.png",
+          "/assets/morphanim/火焰弓箭手/idle/9.png"
+        ],
+        "attack": [
+          "/assets/morphanim/火焰弓箭手/attack/0.png",
+          "/assets/morphanim/火焰弓箭手/attack/1.png",
+          "/assets/morphanim/火焰弓箭手/attack/2.png",
+          "/assets/morphanim/火焰弓箭手/attack/3.png",
+          "/assets/morphanim/火焰弓箭手/attack/4.png",
+          "/assets/morphanim/火焰弓箭手/attack/5.png",
+          "/assets/morphanim/火焰弓箭手/attack/6.png",
+          "/assets/morphanim/火焰弓箭手/attack/7.png",
+          "/assets/morphanim/火焰弓箭手/attack/8.png",
+          "/assets/morphanim/火焰弓箭手/attack/9.png",
+          "/assets/morphanim/火焰弓箭手/attack/10.png"
+        ],
+        "hurt": [
+          "/assets/morphanim/火焰弓箭手/hurt/0.png",
+          "/assets/morphanim/火焰弓箭手/hurt/1.png"
+        ]
+      },
+      "bonus": {
+        "meleeDmg": 0,
+        "meleeHit": 0,
+        "rangedDmg": 3,
+        "rangedHit": 3,
+        "extraDmg": 0,
+        "extraHit": 0,
+        "extraMp": 0,
+        "mdmg": 0,
+        "mpR": 0,
+        "mr": 0,
+        "er": 0,
+        "summonHit": 0,
+        "speedPct": 10,
+        "ac": 0
+      },
+      "bonusText": "遠傷+3、遠命中+3、攻速+10%"
+    },
+    {
+      "id": "morph_24",
+      "name": "黑法師",
+      "level": 50,
+      "tier": "Lv.50 變身",
+      "crystals": 0,
+      "frames": {
+        "idle": [
+          "/assets/morphanim/黑法師/idle/0.png",
+          "/assets/morphanim/黑法師/idle/1.png",
+          "/assets/morphanim/黑法師/idle/2.png",
+          "/assets/morphanim/黑法師/idle/3.png",
+          "/assets/morphanim/黑法師/idle/4.png",
+          "/assets/morphanim/黑法師/idle/5.png",
+          "/assets/morphanim/黑法師/idle/6.png",
+          "/assets/morphanim/黑法師/idle/7.png"
+        ],
+        "attack": [
+          "/assets/morphanim/黑法師/attack/0.png",
+          "/assets/morphanim/黑法師/attack/1.png",
+          "/assets/morphanim/黑法師/attack/2.png",
+          "/assets/morphanim/黑法師/attack/3.png",
+          "/assets/morphanim/黑法師/attack/4.png",
+          "/assets/morphanim/黑法師/attack/5.png"
+        ],
+        "hurt": [
+          "/assets/morphanim/黑法師/hurt/0.png",
+          "/assets/morphanim/黑法師/hurt/1.png"
+        ]
+      },
+      "bonus": {
+        "meleeDmg": 0,
+        "meleeHit": 0,
+        "rangedDmg": 0,
+        "rangedHit": 0,
+        "extraDmg": 0,
+        "extraHit": 0,
+        "extraMp": 3,
+        "mdmg": 1,
+        "mpR": 2,
+        "mr": 0,
+        "er": 0,
+        "summonHit": 0,
+        "speedPct": 10,
+        "ac": 0
+      },
+      "bonusText": "魔傷+1、額外魔法點數+3、MP恢復+2、攻速+10%"
+    },
+    {
+      "id": "deathknight",
+      "name": "死亡騎士",
+      "level": 52,
+      "tier": "Lv.52 變身",
+      "crystals": 0,
+      "frames": {
+        "idle": [
+          "/assets/sprites/deathknight/idle/0.png",
+          "/assets/sprites/deathknight/idle/1.png",
+          "/assets/sprites/deathknight/idle/2.png",
+          "/assets/sprites/deathknight/idle/3.png",
+          "/assets/sprites/deathknight/idle/4.png",
+          "/assets/sprites/deathknight/idle/5.png"
+        ],
+        "attack": [
+          "/assets/sprites/deathknight/attack/0.png",
+          "/assets/sprites/deathknight/attack/1.png",
+          "/assets/sprites/deathknight/attack/2.png",
+          "/assets/sprites/deathknight/attack/3.png",
+          "/assets/sprites/deathknight/attack/4.png",
+          "/assets/sprites/deathknight/attack/5.png"
+        ],
+        "hurt": [
+          "/assets/sprites/deathknight/hurt/0.png",
+          "/assets/sprites/deathknight/hurt/1.png"
+        ]
+      },
+      "walkTicks": 16,
+      "bonus": {
+        "meleeDmg": 3,
+        "meleeHit": 3,
+        "rangedDmg": 0,
+        "rangedHit": 0,
+        "extraDmg": 0,
+        "extraHit": 0,
+        "extraMp": 0,
+        "mdmg": 0,
+        "mpR": 0,
+        "mr": 0,
+        "er": 0,
+        "summonHit": 0,
+        "speedPct": 20,
+        "ac": 0
+      },
+      "bonusText": "近傷+3、近命中+3、攻速+20%"
+    },
+    {
+      "id": "morph_17",
+      "name": "狂暴將軍",
+      "level": 52,
+      "tier": "Lv.52 變身",
+      "crystals": 0,
+      "frames": {
+        "idle": [
+          "/assets/morphanim/狂暴將軍/idle/0.png",
+          "/assets/morphanim/狂暴將軍/idle/1.png",
+          "/assets/morphanim/狂暴將軍/idle/2.png",
+          "/assets/morphanim/狂暴將軍/idle/3.png",
+          "/assets/morphanim/狂暴將軍/idle/4.png",
+          "/assets/morphanim/狂暴將軍/idle/5.png",
+          "/assets/morphanim/狂暴將軍/idle/6.png",
+          "/assets/morphanim/狂暴將軍/idle/7.png"
+        ],
+        "attack": [
+          "/assets/morphanim/狂暴將軍/attack/0.png",
+          "/assets/morphanim/狂暴將軍/attack/1.png",
+          "/assets/morphanim/狂暴將軍/attack/2.png",
+          "/assets/morphanim/狂暴將軍/attack/3.png",
+          "/assets/morphanim/狂暴將軍/attack/4.png",
+          "/assets/morphanim/狂暴將軍/attack/5.png"
+        ],
+        "hurt": [
+          "/assets/morphanim/狂暴將軍/hurt/0.png",
+          "/assets/morphanim/狂暴將軍/hurt/1.png"
+        ]
+      },
+      "bonus": {
+        "meleeDmg": 5,
+        "meleeHit": 0,
+        "rangedDmg": 0,
+        "rangedHit": 0,
+        "extraDmg": 0,
+        "extraHit": 0,
+        "extraMp": 0,
+        "mdmg": 0,
+        "mpR": 0,
+        "mr": 0,
+        "er": 0,
+        "summonHit": 0,
+        "speedPct": 15,
+        "ac": 0
+      },
+      "bonusText": "近傷+5、攻速+15%"
+    },
+    {
+      "id": "darkelf",
+      "name": "黑暗精靈",
+      "level": 52,
+      "tier": "Lv.52 變身",
+      "crystals": 0,
+      "frames": {
+        "idle": [
+          "/assets/sprites/darkelf/idle/0.png",
+          "/assets/sprites/darkelf/idle/1.png",
+          "/assets/sprites/darkelf/idle/2.png",
+          "/assets/sprites/darkelf/idle/3.png",
+          "/assets/sprites/darkelf/idle/4.png",
+          "/assets/sprites/darkelf/idle/5.png",
+          "/assets/sprites/darkelf/idle/6.png"
+        ],
+        "attack": [
+          "/assets/sprites/darkelf/attack/0.png",
+          "/assets/sprites/darkelf/attack/1.png",
+          "/assets/sprites/darkelf/attack/2.png",
+          "/assets/sprites/darkelf/attack/3.png",
+          "/assets/sprites/darkelf/attack/4.png",
+          "/assets/sprites/darkelf/attack/5.png",
+          "/assets/sprites/darkelf/attack/6.png",
+          "/assets/sprites/darkelf/attack/7.png"
+        ],
+        "hurt": [
+          "/assets/sprites/darkelf/hurt/0.png",
+          "/assets/sprites/darkelf/hurt/1.png"
+        ]
+      },
+      "walkTicks": 16,
+      "bonus": {
+        "meleeDmg": 0,
+        "meleeHit": 0,
+        "rangedDmg": 3,
+        "rangedHit": 3,
+        "extraDmg": 0,
+        "extraHit": 0,
+        "extraMp": 0,
+        "mdmg": 0,
+        "mpR": 0,
+        "mr": 0,
+        "er": 0,
+        "summonHit": 0,
+        "speedPct": 20,
+        "ac": 0
+      },
+      "bonusText": "遠傷+3、遠命中+3、攻速+20%"
+    },
+    {
+      "id": "morph_16",
+      "name": "黑長者",
+      "level": 52,
+      "tier": "Lv.52 變身",
+      "crystals": 0,
+      "frames": {
+        "idle": [
+          "/assets/morphanim/黑長者/idle/0.png",
+          "/assets/morphanim/黑長者/idle/1.png",
+          "/assets/morphanim/黑長者/idle/2.png"
+        ],
+        "attack": [
+          "/assets/morphanim/黑長者/attack/0.png",
+          "/assets/morphanim/黑長者/attack/1.png",
+          "/assets/morphanim/黑長者/attack/2.png",
+          "/assets/morphanim/黑長者/attack/3.png",
+          "/assets/morphanim/黑長者/attack/4.png",
+          "/assets/morphanim/黑長者/attack/5.png"
+        ]
+      },
+      "walkTicks": 16,
+      "bonus": {
+        "meleeDmg": 0,
+        "meleeHit": 0,
+        "rangedDmg": 0,
+        "rangedHit": 0,
+        "extraDmg": 0,
+        "extraHit": 0,
+        "extraMp": 1,
+        "mdmg": 2,
+        "mpR": 2,
+        "mr": 0,
+        "er": 0,
+        "summonHit": 0,
+        "speedPct": 15,
+        "ac": 0
+      },
+      "bonusText": "魔傷+2、額外魔法點數+1、MP恢復+2、攻速+15%"
+    },
+    {
+      "id": "morph_0",
+      "name": "巴列斯",
+      "level": 52,
+      "tier": "Lv.52 變身",
+      "crystals": 0,
+      "frames": {
+        "idle": [
+          "/assets/morphanim/巴列斯/idle/0.png",
+          "/assets/morphanim/巴列斯/idle/1.png",
+          "/assets/morphanim/巴列斯/idle/2.png"
+        ],
+        "attack": [
+          "/assets/morphanim/巴列斯/attack/0.png",
+          "/assets/morphanim/巴列斯/attack/1.png",
+          "/assets/morphanim/巴列斯/attack/2.png",
+          "/assets/morphanim/巴列斯/attack/3.png",
+          "/assets/morphanim/巴列斯/attack/4.png"
+        ],
+        "hurt": [
+          "/assets/morphanim/巴列斯/hurt/0.png",
+          "/assets/morphanim/巴列斯/hurt/1.png"
+        ]
+      },
+      "walkTicks": 12,
+      "bonus": {
+        "meleeDmg": 0,
+        "meleeHit": 0,
+        "rangedDmg": 0,
+        "rangedHit": 0,
+        "extraDmg": 0,
+        "extraHit": 0,
+        "extraMp": 2,
+        "mdmg": 1,
+        "mpR": 4,
+        "mr": 0,
+        "er": 0,
+        "summonHit": 0,
+        "speedPct": 10,
+        "ac": 0
+      },
+      "bonusText": "魔傷+1、額外魔法點數+2、MP恢復+4、攻速+10%"
+    },
+    {
+      "id": "morph_red_deathknight",
+      "name": "真死亡騎士(紅)",
+      "level": 55,
+      "tier": "Lv.55 變身",
+      "crystals": 5,
+      "bonus": {
+        "meleeDmg": 4,
+        "meleeHit": 4,
+        "rangedDmg": 0,
+        "rangedHit": 0,
+        "extraDmg": 0,
+        "extraHit": 0,
+        "extraMp": 0,
+        "mdmg": 0,
+        "mpR": 0,
+        "mr": 0,
+        "er": 0,
+        "summonHit": 0,
+        "speedPct": 20,
+        "ac": 0
+      },
+      "bonusText": "近傷+4、近命中+4、攻速+20%",
+      "frames": {
+        "idle": [
+          "/assets/morphanim/真死亡騎士(紅)/idle/0.png",
+          "/assets/morphanim/真死亡騎士(紅)/idle/1.png",
+          "/assets/morphanim/真死亡騎士(紅)/idle/2.png",
+          "/assets/morphanim/真死亡騎士(紅)/idle/3.png",
+          "/assets/morphanim/真死亡騎士(紅)/idle/4.png",
+          "/assets/morphanim/真死亡騎士(紅)/idle/5.png"
+        ],
+        "attack": [
+          "/assets/morphanim/真死亡騎士(紅)/attack/0.png",
+          "/assets/morphanim/真死亡騎士(紅)/attack/1.png",
+          "/assets/morphanim/真死亡騎士(紅)/attack/2.png",
+          "/assets/morphanim/真死亡騎士(紅)/attack/3.png",
+          "/assets/morphanim/真死亡騎士(紅)/attack/4.png",
+          "/assets/morphanim/真死亡騎士(紅)/attack/5.png"
+        ],
+        "hurt": [
+          "/assets/morphanim/真死亡騎士(紅)/hurt/0.png",
+          "/assets/morphanim/真死亡騎士(紅)/hurt/1.png"
+        ]
+      },
+      "walkTicks": 16
+    },
+    {
+      "id": "morph_flame_deathknight",
+      "name": "死亡騎士(焚焰)",
+      "level": 55,
+      "tier": "Lv.55 變身",
+      "crystals": 5,
+      "bonus": {
+        "meleeDmg": 6,
+        "meleeHit": 0,
+        "rangedDmg": 0,
+        "rangedHit": 0,
+        "extraDmg": 0,
+        "extraHit": 0,
+        "extraMp": 0,
+        "mdmg": 0,
+        "mpR": 0,
+        "mr": 0,
+        "er": 0,
+        "summonHit": 0,
+        "speedPct": 20,
+        "ac": 0
+      },
+      "bonusText": "近傷+6、攻速+20%",
+      "frames": {
+        "idle": [
+          "/assets/morphanim/死亡騎士(焚焰)/idle/0.png",
+          "/assets/morphanim/死亡騎士(焚焰)/idle/1.png",
+          "/assets/morphanim/死亡騎士(焚焰)/idle/2.png",
+          "/assets/morphanim/死亡騎士(焚焰)/idle/3.png",
+          "/assets/morphanim/死亡騎士(焚焰)/idle/4.png",
+          "/assets/morphanim/死亡騎士(焚焰)/idle/5.png"
+        ],
+        "attack": [
+          "/assets/morphanim/死亡騎士(焚焰)/attack/0.png",
+          "/assets/morphanim/死亡騎士(焚焰)/attack/1.png",
+          "/assets/morphanim/死亡騎士(焚焰)/attack/2.png",
+          "/assets/morphanim/死亡騎士(焚焰)/attack/3.png",
+          "/assets/morphanim/死亡騎士(焚焰)/attack/4.png",
+          "/assets/morphanim/死亡騎士(焚焰)/attack/5.png"
+        ],
+        "hurt": [
+          "/assets/morphanim/死亡騎士(焚焰)/hurt/0.png",
+          "/assets/morphanim/死亡騎士(焚焰)/hurt/1.png"
+        ]
+      },
+      "walkTicks": 16
+    },
+    {
+      "id": "morph_heruby",
+      "name": "海露拜",
+      "level": 55,
+      "tier": "Lv.55 變身",
+      "crystals": 5,
+      "bonus": {
+        "meleeDmg": 0,
+        "meleeHit": 0,
+        "rangedDmg": 4,
+        "rangedHit": 4,
+        "extraDmg": 0,
+        "extraHit": 0,
+        "extraMp": 0,
+        "mdmg": 0,
+        "mpR": 0,
+        "mr": 0,
+        "er": 0,
+        "summonHit": 0,
+        "speedPct": 20,
+        "ac": 0
+      },
+      "bonusText": "遠傷+4、遠命中+4、攻速+20%",
+      "frames": {
+        "idle": [
+          "/assets/morphanim/海露拜/idle/0.png",
+          "/assets/morphanim/海露拜/idle/1.png",
+          "/assets/morphanim/海露拜/idle/2.png",
+          "/assets/morphanim/海露拜/idle/3.png",
+          "/assets/morphanim/海露拜/idle/4.png",
+          "/assets/morphanim/海露拜/idle/5.png",
+          "/assets/morphanim/海露拜/idle/6.png",
+          "/assets/morphanim/海露拜/idle/7.png",
+          "/assets/morphanim/海露拜/idle/8.png",
+          "/assets/morphanim/海露拜/idle/9.png",
+          "/assets/morphanim/海露拜/idle/10.png",
+          "/assets/morphanim/海露拜/idle/11.png"
+        ],
+        "attack": [
+          "/assets/morphanim/海露拜/attack/0.png",
+          "/assets/morphanim/海露拜/attack/1.png",
+          "/assets/morphanim/海露拜/attack/2.png",
+          "/assets/morphanim/海露拜/attack/3.png",
+          "/assets/morphanim/海露拜/attack/4.png",
+          "/assets/morphanim/海露拜/attack/5.png"
+        ],
+        "hurt": [
+          "/assets/morphanim/海露拜/hurt/0.png",
+          "/assets/morphanim/海露拜/hurt/1.png",
+          "/assets/morphanim/海露拜/hurt/2.png"
+        ]
+      },
+      "walkTicks": 16
+    },
+    {
+      "id": "morph_zeus",
+      "name": "宙斯",
+      "level": 55,
+      "tier": "Lv.55 變身",
+      "crystals": 5,
+      "bonus": {
+        "meleeDmg": 0,
+        "meleeHit": 0,
+        "rangedDmg": 0,
+        "rangedHit": 0,
+        "extraDmg": 0,
+        "extraHit": 0,
+        "extraMp": 2,
+        "mdmg": 3,
+        "mpR": 3,
+        "mr": 0,
+        "er": 0,
+        "summonHit": 0,
+        "speedPct": 15,
+        "ac": 0
+      },
+      "bonusText": "魔傷+3、額外魔法點數+2、MP恢復+3、攻速+15%",
+      "frames": {
+        "idle": [
+          "/assets/morphanim/宙斯/idle/0.png",
+          "/assets/morphanim/宙斯/idle/1.png",
+          "/assets/morphanim/宙斯/idle/2.png",
+          "/assets/morphanim/宙斯/idle/3.png",
+          "/assets/morphanim/宙斯/idle/4.png",
+          "/assets/morphanim/宙斯/idle/5.png",
+          "/assets/morphanim/宙斯/idle/6.png",
+          "/assets/morphanim/宙斯/idle/7.png",
+          "/assets/morphanim/宙斯/idle/8.png",
+          "/assets/morphanim/宙斯/idle/9.png",
+          "/assets/morphanim/宙斯/idle/10.png",
+          "/assets/morphanim/宙斯/idle/11.png"
+        ],
+        "attack": [
+          "/assets/morphanim/宙斯/attack/0.png",
+          "/assets/morphanim/宙斯/attack/1.png",
+          "/assets/morphanim/宙斯/attack/2.png",
+          "/assets/morphanim/宙斯/attack/3.png",
+          "/assets/morphanim/宙斯/attack/4.png",
+          "/assets/morphanim/宙斯/attack/5.png",
+          "/assets/morphanim/宙斯/attack/6.png"
+        ],
+        "hurt": [
+          "/assets/morphanim/宙斯/hurt/0.png",
+          "/assets/morphanim/宙斯/hurt/1.png",
+          "/assets/morphanim/宙斯/hurt/2.png",
+          "/assets/morphanim/宙斯/hurt/3.png"
+        ]
+      },
+      "walkTicks": 16
+    },
+    {
+      "id": "morph_esti",
+      "name": "依詩蒂",
+      "level": 55,
+      "tier": "Lv.55 變身",
+      "crystals": 5,
+      "bonus": {
+        "meleeDmg": 0,
+        "meleeHit": 0,
+        "rangedDmg": 0,
+        "rangedHit": 0,
+        "extraDmg": 0,
+        "extraHit": 0,
+        "extraMp": 2,
+        "mdmg": 2,
+        "mpR": 4,
+        "mr": 0,
+        "er": 0,
+        "summonHit": 2,
+        "speedPct": 10,
+        "ac": 0
+      },
+      "bonusText": "魔傷+2、額外魔法點數+2、MP恢復+4、召喚獸命中+2、攻速+10%",
+      "frames": {
+        "idle": [
+          "/assets/morphanim/依詩蒂/idle/0.png",
+          "/assets/morphanim/依詩蒂/idle/1.png",
+          "/assets/morphanim/依詩蒂/idle/2.png",
+          "/assets/morphanim/依詩蒂/idle/3.png",
+          "/assets/morphanim/依詩蒂/idle/4.png",
+          "/assets/morphanim/依詩蒂/idle/5.png",
+          "/assets/morphanim/依詩蒂/idle/6.png",
+          "/assets/morphanim/依詩蒂/idle/7.png",
+          "/assets/morphanim/依詩蒂/idle/8.png",
+          "/assets/morphanim/依詩蒂/idle/9.png",
+          "/assets/morphanim/依詩蒂/idle/10.png",
+          "/assets/morphanim/依詩蒂/idle/11.png"
+        ],
+        "attack": [
+          "/assets/morphanim/依詩蒂/attack/0.png",
+          "/assets/morphanim/依詩蒂/attack/1.png",
+          "/assets/morphanim/依詩蒂/attack/2.png",
+          "/assets/morphanim/依詩蒂/attack/3.png",
+          "/assets/morphanim/依詩蒂/attack/4.png",
+          "/assets/morphanim/依詩蒂/attack/5.png"
+        ],
+        "hurt": [
+          "/assets/morphanim/依詩蒂/hurt/0.png",
+          "/assets/morphanim/依詩蒂/hurt/1.png",
+          "/assets/morphanim/依詩蒂/hurt/2.png"
+        ]
+      },
+      "walkTicks": 16
+    }
+  ]
+}

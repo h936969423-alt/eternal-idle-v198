@@ -1,0 +1,21 @@
+'use client';
+import ChatCommands from './chat-commands';
+import {abilitySummary} from '@/lib/game/doll-config';
+import {dollDefinition} from '@/lib/game/companions';
+import {DOLL_TIERS} from '@/lib/game/verified-progress';
+import {useState} from 'react';
+import {Tabs,TabsList,TabsTrigger,TabsContent} from '@/components/ui/tabs';
+import {Button} from '@/components/ui/button';
+import type {Character} from '@/lib/game/engine';
+import raw from '@/lib/game/gamedata.json';
+import assets from '@/lib/game/asset-map.json';
+const D=raw as any,A=assets.icons.items as Record<string,string>;
+function Pending({children}:{children:React.ReactNode}){return <p className="reference-pending">{children}</p>;}
+export function SocialPanel({kind,c,onBag,act,busy=false,vipClaimed=false}:{kind:'chat'|'trade'|'mastery'|'pet'|'party'|'pk'|'duel'|'castle';c:Character;onBag?:()=>void;act?:(a:any)=>Promise<any>;busy?:boolean;vipClaimed?:boolean}){
+ const dropLogs=c.logs.filter(l=>l.kind==='loot'&&!!l.item).slice(0,30);
+ if(kind==='chat')return <Tabs defaultValue="chat" className="reference-system"><TabsList><TabsTrigger value="chat">聊天</TabsTrigger><TabsTrigger value="hunt">狩獵統計</TabsTrigger><TabsTrigger value="rank">排行榜</TabsTrigger></TabsList><TabsContent value="chat"><Tabs defaultValue="all"><TabsList>{[['all','全部'],['pledge','血盟'],['party','隊伍'],['notice','公告']].map(([v,n])=><TabsTrigger key={v} value={v}>{n}</TabsTrigger>)}</TabsList>{['all','pledge','party','notice'].map(v=><TabsContent key={v} value={v}><Pending>私人單人版尚未接入多人聊天服務。</Pending></TabsContent>)}</Tabs><ChatCommands key={c.id} claimed={vipClaimed} busy={busy} act={act||(async()=>null)}/></TabsContent><TabsContent value="hunt"><Tabs defaultValue="stats"><TabsList><TabsTrigger value="stats">統計</TabsTrigger><TabsTrigger value="log">紀錄</TabsTrigger></TabsList><TabsContent value="stats"><div className="reference-metrics">{[['累計擊殺',c.kills],['死亡次數',c.deaths],['目前金幣',c.gold],['目前等級',c.lv]].map(([n,v])=><div key={n}><span>{n}</span><strong>{Number(v).toLocaleString()}</strong></div>)}</div><p className="section-hint">統計來自目前角色存檔；金幣為目前餘額。</p></TabsContent><TabsContent value="log"><div className="reference-log">{[...dropLogs].reverse().map((l,i)=><p key={`${l.time}-${i}`}><time>{new Date(l.time).toLocaleTimeString('zh-TW')}</time>{l.text}</p>)}{!dropLogs.length&&<p>尚無掉落紀錄。</p>}</div></TabsContent></Tabs></TabsContent><TabsContent value="rank"><Pending>排行榜需要多人伺服器資料，目前尚未開放。</Pending></TabsContent></Tabs>;
+ if(kind==='trade')return <Tabs defaultValue={c.lv>=45?'market':'mail'} className="reference-system"><TabsList><TabsTrigger value="market" disabled={c.lv<45}>交易所</TabsTrigger><TabsTrigger value="mine" disabled={c.lv<45}>我的上架</TabsTrigger><TabsTrigger value="mail">領取</TabsTrigger></TabsList>{c.lv<45&&<p className="section-hint">交易所買賣功能需達 45 級開放。</p>}{['market','mine','mail'].map(v=><TabsContent key={v} value={v}><Pending>{v==='mail'?'交易郵件服務尚未接入，無法讀取可領取物品。':'私人單人版尚未接入玩家交易服務。'}</Pending><Button variant="outline" onClick={onBag}>打開背包</Button></TabsContent>)}</Tabs>;
+ const names={mastery:'精通',pet:'寵物',party:'隊伍',pk:'PK設定',duel:'決鬥（賭注）',castle:'城堡爭奪戰'};
+ return <section className="reference-system auto-card"><h3>{names[kind]}</h3><Pending>{kind==='mastery'?'製作中（原站目前亦顯示製作中）。':kind==='pet'?'寵物能力、成長與升級材料尚未取得完整資料。':'多人服務尚未開放，目前無法使用。'}</Pending>{kind==='party'?<><h4>目前隊伍</h4><p>尚未加入隊伍</p><div className="reference-compose"><input disabled placeholder="搜尋隊伍" aria-label="搜尋隊伍"/><Button disabled>建立隊伍</Button></div></>:kind==='pk'?<fieldset disabled><legend>獨立對戰設定</legend><label>補血藥水<select defaultValue="red"><option value="red">紅色藥水</option></select></label><label>HP 低於 <input type="number" defaultValue={30} min={0} max={100}/> %</label><label>攻擊技能<select><option>無</option></select></label></fieldset>:kind==='duel'?<fieldset disabled><label>賭注金幣<input type="number" min={0} defaultValue={0}/></label><Button disabled>尋找對手</Button></fieldset>:kind==='castle'?<><div className="reference-metrics">{[['入場金幣',D.castle?.cost||3000],['準備秒數',60],['戰鬥秒數',60]].map(([n,v])=><div key={n}><span>{n}</span><strong>{v}</strong></div>)}</div><Button disabled>參加城堡爭奪戰</Button></>:<Button disabled>{kind==='pet'?'召喚寵物':'突破精通'}</Button>}</section>;
+}
+export {default as DollPanel} from './doll-panel';

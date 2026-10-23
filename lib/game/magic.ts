@@ -1,0 +1,22 @@
+import {fixedHealing} from './magic-formulas';
+import {TRIPLE_SHOT_GAP_MS} from './projectile-timing';
+import {SPECIAL_BUFFS,TARGET_EFFECTS,AREA_SKILLS} from './combat-rules';
+import raw from './gamedata.json';
+export const abilityLabels:Record<string,string>={erosionIndex:'侵蝕累積',erosionThreshold:'侵蝕門檻',potionErosion:'藥水侵蝕',healingErosion:'治癒侵蝕',incomingDamagePct:'受到傷害增加%',repulsion:'排斥詛咒',str:'力量',dex:'敏捷',con:'體質',int:'智力',wis:'精神',cha:'魅力',ac:'防禦 AC',mr:'魔防 MR',extraDmg:'額外傷害',extraHit:'額外命中',meleeDmg:'近戰傷害',rangedDmg:'遠程傷害',mdmg:'魔法傷害',hpR:'HP 回復',mpR:'MP 回復',atkSpdPct:'攻速',mhp:'最大 HP',mmp:'最大 MP',dr:'傷害減免',magicBarrier:'抵擋魔法次數',lure:'誘捕狀態',damageReductionPct:'減傷%',damagePct:'傷害%',doubleChance:'雙重破壞機率%',maxWeapon:'武器最大傷害',maxHpPct:'HP加成%',maxMpPct:'MP加成%',invisible:'隱身',summon:'召喚數量',immPoison:'毒性免疫',poison:'中毒傷害',stun:'暈眩',freeze:'冰凍',silence:'沉默',light:'照明',reveal:'偵測隱身'};
+export function effectText(d:Record<string,number>){return Object.entries(d).map(([k,v])=>k==='speedStage'?`${v}段加速：移動與攻擊速度 ×1.33`:`${abilityLabels[k]||k} ${k==='ac'?(-v>=0?'+':'')+(-v):`${v>=0?'+':''}${v}`}${k==='atkSpdPct'?'%':''}`).join('、');}
+export function skillSummary(id:string,stats?:Record<string,number>){
+ const s=(raw.skills as Record<string,any>)[id];if(!s)return '';
+ const notes:Record<string,string>={sk_shock_stun:'一次完整普攻，命中後判暈眩6秒；冷卻6秒，世界王30%暈2秒並有免疫期',sk_dark_armorbreak:'異常命中成功後目標受到所有傷害×1.58，持續8秒；世界王免疫',sk_elf_triple:`連續 3 次完整普攻，每矢獨立判定命中與爆擊；一次施放只消耗 1 支箭，箭矢間隔 ${TRIPLE_SHOT_GAP_MS} 毫秒`,sk_teleport:'重新遭遇怪物；頭目區禁用',sk_energy_sense:'顯示目標屬性與四屬性抗性',sk_charm:'異常命中判定迷魅非頭目，持續3600秒',sk_abs_barrier:'無敵且無法行動7秒；結束後再冷卻12秒',sk_load_up:'施放後負重上限+50，持續1800秒',sk_summon:'召喚獨立實體；等級／魅力決定種類與數量，控制戒指可選怪，持續60分鐘',sk_holy_barrier:'物理及魔法傷害減少30%，持續32秒',sk_elf_earthshield:'免疫一般物理攻擊8秒',sk_reduction_armor:'傷害減免增加floor(等級÷10)',sk_dark_stealth:'抵銷一次物理攻擊後消失，觸發後冷卻5秒',sk_dark_dodge:'效果中每次物理命中20%機率迴避，不消耗效果；對魔法無效',sk_dark_burn:'一般攻擊30%機率造成1.5倍傷害',sk_elf_attrfire:'火屬性妖精近戰命中33%機率傷害×1.5，遠程無效',sk_dark_double:'持雙刀／鋼爪時，普攻命中20%機率傷害×2',sk_dark_poisonres:'中毒傷害減少50%',sk_dark_poison:'普攻命中50%機率附加劇毒',sk_dark_crit:'施放後HP與MP均為1；必中必爆，依武器最大骰及施放前MP比例×5計算；冷卻30秒',sk_elf_singleres:'所選屬性抗性+50，持續64秒',sk_elf_watervital:'下一次瞬間治癒恢復量×2，觸發後冷卻7秒',sk_elf_flamesoul:'近戰普攻武器骰最大化並×1.2，屬性武器傷害亦×1.2',sk_elf_preciseshot:'一般攻擊擲骰1不再必定失敗',sk_elf_mirror:'受傷害魔法時，以精神值%機率反射',sk_heal_energy_storm:'HP自然回復間隔改為3秒，MP間隔維持原設定',sk_counter_barrier:'單手劍反擊傷害×2，並開放雙手劍反擊',sk_antidote:'解除中毒；無中毒時不消耗',sk_holy_light:'解除石化／麻痺',sk_cancel:'解除對應負面狀態，保留正面增益與變身',sk_elf_worldtree:'提升指定地區素材掉落率',sk_elf_muddywater:'僅限頭目，使HP自然回復量減半32秒'};
+ let text=notes[id]||'';
+ if(!text&&s.type==='buff')text=effectText(s.d||{})||s.msg||s.desc||'特殊增益';
+ if(s.type==='atk'&&!text){text=s.target==='all'?'全體目標':'單體目標';if(s.ele)text+=' · '+({fire:'火',water:'水',wind:'風',earth:'地',none:'無'} as Record<string,string>)[s.ele]+'屬性';if(s.dmgDice)text+=` · ${s.dmgDice[0]}D${s.dmgDice[1]} +${s.dmgBase||0}`;if(s.multiDmg)text+=' · 分段傷害 '+s.multiDmg.map((d:number[])=>`${d[0]}D${d[1]}`).join('＋');if(s.status)text+=` · 附加異常 ${s.status.dur||6}秒`;if(s.instakill)text+=' · 指定種類非頭目即死判定';if(s.hits)text+=` · 連續${s.hits}擊，箭矢間隔${TRIPLE_SHOT_GAP_MS}毫秒`;}
+ if(s.type==='heal'&&s.fixedHeal)text=`${s.hot?'每3秒恢復，共5次：':''}${s.fixedHeal[0]}＋${s.fixedHeal[1]}×INT額外魔法點數${stats?`＝${fixedHealing(s.fixedHeal,stats)} HP`:''}`;
+ if(s.type==='heal'&&!text)text=s.fullRestore?'恢復全部已損HP':s.classicHeal?`治癒骰（${s.classicHeal.baseDice}＋INT治癒加成）D${s.classicHeal.sides} ×${2*(s.classicHeal.mult||1)}${s.groupHeal?'，全隊各自恢復':''}`:'治癒／淨化';
+ if(s.type==='convert')text=s.drain?'消耗50 HP；需目標並通過異常命中，恢復1D(目標等級÷2) MP':`消耗${s.hpCost||0} HP，恢復${s.mpGain||0} MP`;
+ if(s.stormInterval)text=`持續${s.dur}秒，每${s.stormInterval/10}秒造成全體${s.dmgDice[0]}D${s.dmgDice[1]}傷害`;
+ if(s.healCooldownTicks)text+=` · 本招冷卻${s.healCooldownTicks/10}秒`;
+ if(s.hpCost&&s.type!=='convert')text+=` · 消耗HP ${s.hpCost}`;
+ if(s.reqEle)text+=' · '+({fire:'火',water:'水',wind:'風',earth:'地'} as Record<string,string>)[s.reqEle]+'屬性限定';
+ if(s.noRefresh)text+=' · 生效中不可刷新';
+ return text||s.msg||s.desc||'被動技能';
+}

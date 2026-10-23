@@ -1,0 +1,754 @@
+{
+  "town_silver_knight": {
+    "src": "/assets/client-maps/town_silver_knight.webp",
+    "mapId": 4,
+    "mapName": "整個大陸",
+    "block": "maps/4/80048009.s32",
+    "mapping": "reference-town-return-coordinates",
+    "missingTiles": 0,
+    "referencePoint": [
+      33071,
+      33402
+    ]
+  },
+  "town_elf": {
+    "src": "/assets/client-maps/town_elf.webp",
+    "mapId": 4,
+    "mapName": "整個大陸",
+    "block": "maps/4/80047ff9.s32",
+    "mapping": "reference-town-return-coordinates",
+    "missingTiles": 0,
+    "referencePoint": [
+      33065,
+      32358
+    ]
+  },
+  "town_talking": {
+    "src": "/assets/client-maps/town_talking.webp",
+    "mapId": 0,
+    "mapName": "說話之島",
+    "block": "maps/0/7ffd8002.s32",
+    "mapping": "reference-town-return-coordinates",
+    "missingTiles": 0,
+    "referencePoint": [
+      32600,
+      32942
+    ]
+  },
+  "town_gludio": {
+    "src": "/assets/client-maps/town_gludio.webp",
+    "mapId": 4,
+    "mapName": "整個大陸",
+    "block": "maps/4/7fff7ffa.s32",
+    "mapping": "reference-town-return-coordinates",
+    "missingTiles": 0,
+    "referencePoint": [
+      32750,
+      32435
+    ]
+  },
+  "town_giran": {
+    "src": "/assets/client-maps/town_giran.webp",
+    "mapId": 4,
+    "mapName": "整個大陸",
+    "block": "maps/4/800a8000.s32",
+    "mapping": "reference-town-return-coordinates",
+    "missingTiles": 0,
+    "referencePoint": [
+      33435,
+      32803
+    ]
+  },
+  "town_heine": {
+    "src": "/assets/client-maps/town_heine.webp",
+    "mapId": 4,
+    "mapName": "整個大陸",
+    "block": "maps/4/800c8005.s32",
+    "mapping": "reference-town-return-coordinates",
+    "missingTiles": 0,
+    "referencePoint": [
+      33593,
+      33242
+    ]
+  },
+  "town_oren": {
+    "src": "/assets/client-maps/town_oren.webp",
+    "mapId": 4,
+    "mapName": "整個大陸",
+    "block": "maps/4/80147ff8.s32",
+    "mapping": "reference-town-return-coordinates",
+    "missingTiles": 0,
+    "referencePoint": [
+      34086,
+      32280
+    ]
+  },
+  "town_witon": {
+    "src": "/assets/client-maps/town_witon.webp",
+    "mapId": 4,
+    "mapName": "整個大陸",
+    "block": "maps/4/800f7ffb.s32",
+    "mapping": "reference-town-return-coordinates",
+    "missingTiles": 0,
+    "referencePoint": [
+      33702,
+      32492
+    ]
+  },
+  "town_silent": {
+    "src": "/assets/client-maps/304.webp",
+    "mapId": 304,
+    "mapName": "沉默洞穴",
+    "block": "maps/304/7ffe8000.s32",
+    "mapping": "matched-name",
+    "missingTiles": 0
+  },
+  "training": {
+    "src": "/assets/client-maps/4.webp",
+    "mapId": 4,
+    "mapName": "整個大陸",
+    "block": "maps/4/800a7ffe.s32",
+    "mapping": "shared-mainland-section",
+    "missingTiles": 0
+  },
+  "silver_knight": {
+    "src": "/assets/client-maps/4.webp",
+    "mapId": 4,
+    "mapName": "整個大陸",
+    "block": "maps/4/800a7ffe.s32",
+    "mapping": "shared-mainland-section",
+    "missingTiles": 0
+  },
+  "talking_island": {
+    "src": "/assets/client-maps/0.webp",
+    "mapId": 0,
+    "mapName": "說話之島",
+    "block": "maps/0/7ffc8005.s32",
+    "mapping": "shared-mainland-section",
+    "missingTiles": 0
+  },
+  "zone_01": {
+    "src": "/assets/client-maps/4.webp",
+    "mapId": 4,
+    "mapName": "整個大陸",
+    "block": "maps/4/800a7ffe.s32",
+    "mapping": "shared-mainland-section",
+    "missingTiles": 0
+  },
+  "talking_island_port": {
+    "src": "/assets/client-maps/0.webp",
+    "mapId": 0,
+    "mapName": "說話之島",
+    "block": "maps/0/7ffc8005.s32",
+    "mapping": "shared-mainland-section",
+    "missingTiles": 0
+  },
+  "elf_forest": {
+    "src": "/assets/client-maps/4.webp",
+    "mapId": 4,
+    "mapName": "整個大陸",
+    "block": "maps/4/800a7ffe.s32",
+    "mapping": "shared-mainland-section",
+    "missingTiles": 0
+  },
+  "gludio": {
+    "src": "/assets/client-maps/4.webp",
+    "mapId": 4,
+    "mapName": "整個大陸",
+    "block": "maps/4/800a7ffe.s32",
+    "mapping": "shared-mainland-section",
+    "missingTiles": 0
+  },
+  "windwood": {
+    "src": "/assets/client-maps/4.webp",
+    "mapId": 4,
+    "mapName": "整個大陸",
+    "block": "maps/4/800a7ffe.s32",
+    "mapping": "shared-mainland-section",
+    "missingTiles": 0
+  },
+  "desert": {
+    "src": "/assets/client-maps/4.webp",
+    "mapId": 4,
+    "mapName": "整個大陸",
+    "block": "maps/4/800a7ffe.s32",
+    "mapping": "shared-mainland-section",
+    "missingTiles": 0
+  },
+  "kent": {
+    "src": "/assets/client-maps/4.webp",
+    "mapId": 4,
+    "mapName": "整個大陸",
+    "block": "maps/4/800a7ffe.s32",
+    "mapping": "shared-mainland-section",
+    "missingTiles": 0
+  },
+  "dragon_valley": {
+    "src": "/assets/client-maps/4.webp",
+    "mapId": 4,
+    "mapName": "整個大陸",
+    "block": "maps/4/800a7ffe.s32",
+    "mapping": "shared-mainland-section",
+    "missingTiles": 0
+  },
+  "fire_dragon": {
+    "src": "/assets/client-maps/4.webp",
+    "mapId": 4,
+    "mapName": "整個大陸",
+    "block": "maps/4/800a7ffe.s32",
+    "mapping": "shared-mainland-section",
+    "missingTiles": 0
+  },
+  "giran": {
+    "src": "/assets/client-maps/4.webp",
+    "mapId": 4,
+    "mapName": "整個大陸",
+    "block": "maps/4/800a7ffe.s32",
+    "mapping": "shared-mainland-section",
+    "missingTiles": 0
+  },
+  "heine": {
+    "src": "/assets/client-maps/4.webp",
+    "mapId": 4,
+    "mapName": "整個大陸",
+    "block": "maps/4/800a7ffe.s32",
+    "mapping": "shared-mainland-section",
+    "missingTiles": 0
+  },
+  "mirror_forest": {
+    "src": "/assets/client-maps/4.webp",
+    "mapId": 4,
+    "mapName": "整個大陸",
+    "block": "maps/4/800a7ffe.s32",
+    "mapping": "shared-mainland-section",
+    "missingTiles": 0
+  },
+  "zone_02": {
+    "src": "/assets/client-maps/4.webp",
+    "mapId": 4,
+    "mapName": "整個大陸",
+    "block": "maps/4/800a7ffe.s32",
+    "mapping": "shared-mainland-section",
+    "missingTiles": 0
+  },
+  "zone_03": {
+    "src": "/assets/client-maps/4.webp",
+    "mapId": 4,
+    "mapName": "整個大陸",
+    "block": "maps/4/800a7ffe.s32",
+    "mapping": "shared-mainland-section",
+    "missingTiles": 0
+  },
+  "zone_04": {
+    "src": "/assets/client-maps/4.webp",
+    "mapId": 4,
+    "mapName": "整個大陸",
+    "block": "maps/4/800a7ffe.s32",
+    "mapping": "shared-mainland-section",
+    "missingTiles": 0
+  },
+  "zone_05": {
+    "src": "/assets/client-maps/4.webp",
+    "mapId": 4,
+    "mapName": "整個大陸",
+    "block": "maps/4/800a7ffe.s32",
+    "mapping": "shared-mainland-section",
+    "missingTiles": 0
+  },
+  "dream_island": {
+    "src": "/assets/client-maps/303.webp",
+    "mapId": 303,
+    "mapName": "夢幻之島",
+    "block": "maps/303/7ffe8000.s32",
+    "mapping": "matched-name",
+    "missingTiles": 0
+  },
+  "oblivion_island": {
+    "src": "/assets/client-maps/70.webp",
+    "mapId": 70,
+    "mapName": "遺忘之島",
+    "block": "maps/70/7fff8002.s32",
+    "mapping": "matched-name",
+    "missingTiles": 0
+  },
+  "zone_06": {
+    "src": "/assets/client-maps/7.webp",
+    "mapId": 7,
+    "mapName": "古魯丁地監 1樓",
+    "block": "maps/7/7fff7fff.s32",
+    "mapping": "matched-name",
+    "missingTiles": 0
+  },
+  "zone_07": {
+    "src": "/assets/client-maps/8.webp",
+    "mapId": 8,
+    "mapName": "古魯丁地監 2樓",
+    "block": "maps/8/7fff7fff.s32",
+    "mapping": "matched-name",
+    "missingTiles": 0
+  },
+  "zone_08": {
+    "src": "/assets/client-maps/9.webp",
+    "mapId": 9,
+    "mapName": "古魯丁地監 3樓",
+    "block": "maps/9/7fff8000.s32",
+    "mapping": "matched-name",
+    "missingTiles": 0
+  },
+  "zone_09": {
+    "src": "/assets/client-maps/10.webp",
+    "mapId": 10,
+    "mapName": "古魯丁地監 4樓",
+    "block": "maps/10/7fff7fff.s32",
+    "mapping": "matched-name",
+    "missingTiles": 0
+  },
+  "zone_10": {
+    "src": "/assets/client-maps/11.webp",
+    "mapId": 11,
+    "mapName": "古魯丁地監 5樓",
+    "block": "maps/11/80007fff.s32",
+    "mapping": "matched-name",
+    "missingTiles": 0
+  },
+  "zone_11": {
+    "src": "/assets/client-maps/12.webp",
+    "mapId": 12,
+    "mapName": "古魯丁地監 6樓",
+    "block": "maps/12/80008000.s32",
+    "mapping": "matched-name",
+    "missingTiles": 0
+  },
+  "zone_12": {
+    "src": "/assets/client-maps/13.webp",
+    "mapId": 13,
+    "mapName": "古魯丁地監 7樓",
+    "block": "maps/13/80007fff.s32",
+    "mapping": "matched-name",
+    "missingTiles": 0
+  },
+  "zone_15": {
+    "src": "/assets/client-maps/19.webp",
+    "mapId": 19,
+    "mapName": "眠龍洞穴 1樓",
+    "block": "maps/19/7fff7fff.s32",
+    "mapping": "matched-name",
+    "missingTiles": 0
+  },
+  "zone_16": {
+    "src": "/assets/client-maps/20.webp",
+    "mapId": 20,
+    "mapName": "眠龍洞穴 2樓",
+    "block": "maps/20/7fff7fff.s32",
+    "mapping": "matched-name",
+    "missingTiles": 0
+  },
+  "zone_17": {
+    "src": "/assets/client-maps/21.webp",
+    "mapId": 21,
+    "mapName": "眠龍洞穴 3樓",
+    "block": "maps/21/80007fff.s32",
+    "mapping": "matched-name",
+    "missingTiles": 0
+  },
+  "crystal_cave1": {
+    "src": "/assets/client-maps/72.webp",
+    "mapId": 72,
+    "mapName": "水晶洞穴 1樓",
+    "block": "maps/72/7fff8000.s32",
+    "mapping": "matched-name",
+    "missingTiles": 0
+  },
+  "crystal_cave2": {
+    "src": "/assets/client-maps/73.webp",
+    "mapId": 73,
+    "mapName": "水晶洞穴 2樓",
+    "block": "maps/73/80008000.s32",
+    "mapping": "matched-name",
+    "missingTiles": 0
+  },
+  "crystal_cave3": {
+    "src": "/assets/client-maps/74.webp",
+    "mapId": 74,
+    "mapName": "水晶洞穴 3樓",
+    "block": "maps/74/7fff8002.s32",
+    "mapping": "matched-name",
+    "missingTiles": 0
+  },
+  "zone_18": {
+    "src": "/assets/client-maps/53.webp",
+    "mapId": 53,
+    "mapName": "奇岩地監 1樓",
+    "block": "maps/53/7fff7fff.s32",
+    "mapping": "matched-name",
+    "missingTiles": 0
+  },
+  "zone_19": {
+    "src": "/assets/client-maps/54.webp",
+    "mapId": 54,
+    "mapName": "奇岩地監 2樓",
+    "block": "maps/54/7fff7fff.s32",
+    "mapping": "matched-name",
+    "missingTiles": 0
+  },
+  "zone_20": {
+    "src": "/assets/client-maps/55.webp",
+    "mapId": 55,
+    "mapName": "奇岩地監 3樓",
+    "block": "maps/55/7fff8001.s32",
+    "mapping": "matched-name",
+    "missingTiles": 0
+  },
+  "zone_21": {
+    "src": "/assets/client-maps/56.webp",
+    "mapId": 56,
+    "mapName": "奇岩地監 4樓",
+    "block": "maps/56/7fff7fff.s32",
+    "mapping": "matched-name",
+    "missingTiles": 0
+  },
+  "zone_26": {
+    "src": "/assets/client-maps/30.webp",
+    "mapId": 30,
+    "mapName": "龍之谷地監 1樓",
+    "block": "maps/30/7fff7fff.s32",
+    "mapping": "matched-name",
+    "missingTiles": 0
+  },
+  "zone_27": {
+    "src": "/assets/client-maps/31.webp",
+    "mapId": 31,
+    "mapName": "龍之谷地監 2樓",
+    "block": "maps/31/7fff7fff.s32",
+    "mapping": "matched-name",
+    "missingTiles": 0
+  },
+  "zone_28": {
+    "src": "/assets/client-maps/32.webp",
+    "mapId": 32,
+    "mapName": "龍之谷地監 3樓",
+    "block": "maps/32/7ffe8000.s32",
+    "mapping": "matched-name",
+    "missingTiles": 0
+  },
+  "zone_29": {
+    "src": "/assets/client-maps/33.webp",
+    "mapId": 33,
+    "mapName": "龍之谷地監 4樓",
+    "block": "maps/33/7ffe8000.s32",
+    "mapping": "matched-name",
+    "missingTiles": 0
+  },
+  "zone_30": {
+    "src": "/assets/client-maps/35.webp",
+    "mapId": 35,
+    "mapName": "龍之谷地監5樓",
+    "block": "maps/35/7ffe8000.s32",
+    "mapping": "matched-name",
+    "missingTiles": 0
+  },
+  "zone_31": {
+    "src": "/assets/client-maps/36.webp",
+    "mapId": 36,
+    "mapName": "龍之谷地監6樓",
+    "block": "maps/36/7ffe8000.s32",
+    "mapping": "matched-name",
+    "missingTiles": 0
+  },
+  "zone_37": {
+    "src": "/assets/client-maps/78.webp",
+    "mapId": 78,
+    "mapName": "象牙塔 4樓",
+    "block": "maps/78/80017fff.s32",
+    "mapping": "matched-name",
+    "missingTiles": 0
+  },
+  "zone_38": {
+    "src": "/assets/client-maps/79.webp",
+    "mapId": 79,
+    "mapName": "象牙塔 5樓",
+    "block": "maps/79/7fff8000.s32",
+    "mapping": "matched-name",
+    "missingTiles": 0
+  },
+  "zone_39": {
+    "src": "/assets/client-maps/80.webp",
+    "mapId": 80,
+    "mapName": "象牙塔 6樓",
+    "block": "maps/80/7fff8000.s32",
+    "mapping": "matched-name",
+    "missingTiles": 0
+  },
+  "zone_40": {
+    "src": "/assets/client-maps/81.webp",
+    "mapId": 81,
+    "mapName": "象牙塔 7樓",
+    "block": "maps/81/7fff8000.s32",
+    "mapping": "matched-name",
+    "missingTiles": 0
+  },
+  "zone_41": {
+    "src": "/assets/client-maps/82.webp",
+    "mapId": 82,
+    "mapName": "象牙塔 8樓",
+    "block": "maps/82/7ffe8000.s32",
+    "mapping": "matched-name",
+    "missingTiles": 0
+  },
+  "rastabad_cave1": {
+    "src": "/assets/client-maps/307.webp",
+    "mapId": 307,
+    "mapName": "拉斯塔巴德地下洞穴 1樓",
+    "block": "maps/307/80008002.s32",
+    "mapping": "matched-name",
+    "missingTiles": 0
+  },
+  "rastabad_cave2": {
+    "src": "/assets/client-maps/308.webp",
+    "mapId": 308,
+    "mapName": "拉斯塔巴德地下洞穴 2樓",
+    "block": "maps/308/80028000.s32",
+    "mapping": "matched-name",
+    "missingTiles": 0
+  },
+  "rastabad_cave3": {
+    "src": "/assets/client-maps/309.webp",
+    "mapId": 309,
+    "mapName": "拉斯塔巴德地下洞穴 3樓",
+    "block": "maps/309/80018002.s32",
+    "mapping": "matched-name",
+    "missingTiles": 0
+  },
+  "rastabad_gate": {
+    "src": "/assets/client-maps/450.webp",
+    "mapId": 450,
+    "mapName": "拉斯塔巴德正門",
+    "block": "maps/450/7fff8001.s32",
+    "mapping": "matched-name",
+    "missingTiles": 0
+  },
+  "pride_f1": {
+    "src": "/assets/client-maps/101.webp",
+    "mapId": 101,
+    "mapName": "傲慢之塔 1樓",
+    "block": "maps/101/80017fff.s32",
+    "mapping": "matched-name",
+    "missingTiles": 0
+  },
+  "pride_f2": {
+    "src": "/assets/client-maps/102.webp",
+    "mapId": 102,
+    "mapName": "傲慢之塔 2樓",
+    "block": "maps/102/80017fff.s32",
+    "mapping": "matched-name",
+    "missingTiles": 0
+  },
+  "pride_f3": {
+    "src": "/assets/client-maps/103.webp",
+    "mapId": 103,
+    "mapName": "傲慢之塔 3樓",
+    "block": "maps/103/80008001.s32",
+    "mapping": "matched-name",
+    "missingTiles": 0
+  },
+  "pride_f4": {
+    "src": "/assets/client-maps/104.webp",
+    "mapId": 104,
+    "mapName": "傲慢之塔 4樓",
+    "block": "maps/104/7ffe8000.s32",
+    "mapping": "matched-name",
+    "missingTiles": 0
+  },
+  "pride_f5": {
+    "src": "/assets/client-maps/105.webp",
+    "mapId": 105,
+    "mapName": "傲慢之塔 5樓",
+    "block": "maps/105/7ffe8001.s32",
+    "mapping": "matched-name",
+    "missingTiles": 0
+  },
+  "pride_f6": {
+    "src": "/assets/client-maps/106.webp",
+    "mapId": 106,
+    "mapName": "傲慢之塔 6樓",
+    "block": "maps/106/7ffe8000.s32",
+    "mapping": "matched-name",
+    "missingTiles": 0
+  },
+  "pride_f7": {
+    "src": "/assets/client-maps/107.webp",
+    "mapId": 107,
+    "mapName": "傲慢之塔 7樓",
+    "block": "maps/107/7fff8001.s32",
+    "mapping": "matched-name",
+    "missingTiles": 0
+  },
+  "pride_f8": {
+    "src": "/assets/client-maps/108.webp",
+    "mapId": 108,
+    "mapName": "傲慢之塔 8樓",
+    "block": "maps/108/7ffe8001.s32",
+    "mapping": "matched-name",
+    "missingTiles": 0
+  },
+  "pride_f9": {
+    "src": "/assets/client-maps/109.webp",
+    "mapId": 109,
+    "mapName": "傲慢之塔 9樓",
+    "block": "maps/109/7ffe8000.s32",
+    "mapping": "matched-name",
+    "missingTiles": 0
+  },
+  "pride_f11": {
+    "src": "/assets/client-maps/111.webp",
+    "mapId": 111,
+    "mapName": "傲慢之塔 11樓",
+    "block": "maps/111/7ffe8000.s32",
+    "mapping": "matched-name",
+    "missingTiles": 0
+  },
+  "pride_f12": {
+    "src": "/assets/client-maps/112.webp",
+    "mapId": 112,
+    "mapName": "傲慢之塔 12樓",
+    "block": "maps/112/80017fff.s32",
+    "mapping": "matched-name",
+    "missingTiles": 0
+  },
+  "pride_f13": {
+    "src": "/assets/client-maps/113.webp",
+    "mapId": 113,
+    "mapName": "傲慢之塔 13樓",
+    "block": "maps/113/80008001.s32",
+    "mapping": "matched-name",
+    "missingTiles": 0
+  },
+  "pride_f14": {
+    "src": "/assets/client-maps/114.webp",
+    "mapId": 114,
+    "mapName": "傲慢之塔 14樓",
+    "block": "maps/114/7ffe8000.s32",
+    "mapping": "matched-name",
+    "missingTiles": 0
+  },
+  "pride_f15": {
+    "src": "/assets/client-maps/115.webp",
+    "mapId": 115,
+    "mapName": "傲慢之塔 15樓",
+    "block": "maps/115/7ffe8001.s32",
+    "mapping": "matched-name",
+    "missingTiles": 0
+  },
+  "pride_f16": {
+    "src": "/assets/client-maps/116.webp",
+    "mapId": 116,
+    "mapName": "傲慢之塔 16樓",
+    "block": "maps/116/7fff8001.s32",
+    "mapping": "matched-name",
+    "missingTiles": 0
+  },
+  "pride_f17": {
+    "src": "/assets/client-maps/117.webp",
+    "mapId": 117,
+    "mapName": "傲慢之塔 17樓",
+    "block": "maps/117/7fff8001.s32",
+    "mapping": "matched-name",
+    "missingTiles": 0
+  },
+  "pride_f18": {
+    "src": "/assets/client-maps/118.webp",
+    "mapId": 118,
+    "mapName": "傲慢之塔 18樓",
+    "block": "maps/118/7ffe8001.s32",
+    "mapping": "matched-name",
+    "missingTiles": 0
+  },
+  "pride_f19": {
+    "src": "/assets/client-maps/119.webp",
+    "mapId": 119,
+    "mapName": "傲慢之塔 19樓",
+    "block": "maps/119/7ffe8000.s32",
+    "mapping": "matched-name",
+    "missingTiles": 0
+  },
+  "antaras_lair": {
+    "src": "/assets/client-maps/37.webp",
+    "mapId": 37,
+    "mapName": "安塔瑞斯棲息地",
+    "block": "maps/37/7fff8000.s32",
+    "mapping": "matched-name",
+    "missingTiles": 0
+  },
+  "town_ivory_tower": {
+    "src": "/assets/client-maps/town_ivory_tower.webp",
+    "mapId": 75,
+    "mapName": "象牙塔 1樓",
+    "block": "maps/75/7fff8000.s32",
+    "mapping": "tower-ground-floor",
+    "missingTiles": 0
+  },
+  "zone_13": {
+    "src": "/assets/client-maps/zone_13.webp",
+    "mapId": 1,
+    "mapName": "冒險洞窟 1樓",
+    "block": "maps/1/7ffe8001.s32",
+    "mapping": "talking-island-dungeon-alias",
+    "missingTiles": 0
+  },
+  "zone_14": {
+    "src": "/assets/client-maps/zone_14.webp",
+    "mapId": 2,
+    "mapName": "冒險洞窟 2樓",
+    "block": "maps/2/7fff8000.s32",
+    "mapping": "talking-island-dungeon-alias",
+    "missingTiles": 0
+  },
+  "rastabad_beast": {
+    "src": "/assets/client-maps/rastabad_beast.webp",
+    "mapId": 455,
+    "mapName": "1樓 魔獸訓練場",
+    "block": "maps/455/7fff8000.s32",
+    "mapping": "reference-name",
+    "missingTiles": 0
+  },
+  "dark_magic_lab": {
+    "src": "/assets/client-maps/dark_magic_lab.webp",
+    "mapId": 461,
+    "mapName": "2樓 黑魔法研究室",
+    "block": "maps/461/80008000.s32",
+    "mapping": "reference-name",
+    "missingTiles": 0
+  },
+  "necro_training": {
+    "src": "/assets/client-maps/necro_training.webp",
+    "mapId": 473,
+    "mapName": "3樓 冥法軍訓練場",
+    "block": "maps/473/80008000.s32",
+    "mapping": "reference-name",
+    "missingTiles": 0
+  },
+  "elder_room": {
+    "src": "/assets/client-maps/elder_room.webp",
+    "mapId": 530,
+    "mapName": "4樓 格蘭肯神殿、長老．琪娜之室",
+    "block": "maps/530/7fff8001.s32",
+    "mapping": "reference-name",
+    "missingTiles": 0
+  },
+  "fafurion_lair": {
+    "src": "/assets/client-maps/fafurion_lair.webp",
+    "mapId": 65,
+    "mapName": "法利昂棲息地",
+    "block": "maps/65/80008001.s32",
+    "mapping": "lair-name-alias",
+    "missingTiles": 0
+  },
+  "valakas_lair": {
+    "src": "/assets/client-maps/valakas_lair.webp",
+    "mapId": 67,
+    "mapName": "巴拉卡斯棲息地",
+    "block": "maps/67/7fff7fff.s32",
+    "mapping": "lair-name-alias",
+    "missingTiles": 0
+  }
+}

@@ -1,0 +1,2 @@
+'use client';
+export default function AbilityNav({value,level,onSelect}:{value:string;level:number;onSelect:(v:string)=>void}){return <div className="reference-ability-tabs" role="tablist" aria-label="人物能力分頁">{[['ability','屬性'],['skills','技能'],['mastery','精通'],['pet','寵物'],['codex','圖鑑']].map(([id,label])=><button type="button" role="tab" aria-selected={value===id} className={value===id?'selected':''} key={id} disabled={id==='codex'&&level<41} title={id==='codex'&&level<41?'41 級開放圖鑑':label} onClick={()=>onSelect(id)}>{label}</button>)}</div>;}

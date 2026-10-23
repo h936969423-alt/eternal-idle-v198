@@ -1,0 +1,2 @@
+/** Polls may be skipped; player actions must wait and always run. */
+export function createRequestQueue(){let tail:Promise<unknown>=Promise.resolve(),pending=0;return {run<T>(operation:()=>Promise<T>,mutation=false):Promise<T|null>{if(!mutation&&pending)return Promise.resolve(null);pending++;const result=tail.then(operation,operation);tail=result.then(()=>undefined,()=>undefined);return result.finally(()=>{pending--;});},get pending(){return pending;}};}

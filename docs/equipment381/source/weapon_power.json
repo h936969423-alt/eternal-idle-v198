@@ -1,0 +1,13 @@
+{
+  "table": "weapon_power",
+  "source": "dragon-integration-assets/raw/天堂w/fangzheng381.sql",
+  "sourceSha256": "2f00542c127e15aaa875a4c4a4c5ecec30f046ec43c1e0747c2ddd188773395b",
+  "columns": [
+    "weapon_id",
+    "note",
+    "add_dmg_min",
+    "add_dmg_max"
+  ],
+  "schema": "CREATE TABLE `weapon_power` (\n  `weapon_id` int(11) unsigned NOT NULL DEFAULT '0' COMMENT '武器編號',\n  `note` varchar(255) DEFAULT NULL COMMENT '備註',\n  `add_dmg_min` int(10) NOT NULL DEFAULT '0' COMMENT '追加傷害最小質',\n  `add_dmg_max` int(10) NOT NULL DEFAULT '1' COMMENT '追加傷害最大質',\n  PRIMARY KEY (`weapon_id`)\n) ENGINE=MyISAM DEFAULT CHARSET=utf8 COMMENT='MyISAM free: 10240 kB';",
+  "rows": []
+}

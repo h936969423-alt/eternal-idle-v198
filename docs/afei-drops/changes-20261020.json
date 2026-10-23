@@ -1,0 +1,322 @@
+{
+  "changedMonsters": [
+    {
+      "mob": "giant",
+      "name": "巨人",
+      "added": [
+        "item_pride_unseal"
+      ],
+      "removed": []
+    },
+    {
+      "mob": "giant_warrior",
+      "name": "巨人戰士",
+      "added": [
+        "item_pride_unseal"
+      ],
+      "removed": []
+    },
+    {
+      "mob": "pride_lamia",
+      "name": "變種蛇女",
+      "added": [
+        "scroll_acc",
+        "scroll_weapon"
+      ],
+      "removed": []
+    },
+    {
+      "mob": "pride_ungoliant",
+      "name": "變種楊果里恩",
+      "added": [
+        "scroll_armor",
+        "scroll_weapon"
+      ],
+      "removed": []
+    },
+    {
+      "mob": "pride_chimera",
+      "name": "奇美拉",
+      "added": [
+        "mat_chimera_dragon",
+        "mat_chimera_goat",
+        "mat_chimera_lion",
+        "mat_chimera_snake",
+        "new_item_191"
+      ],
+      "removed": []
+    },
+    {
+      "mob": "giant_elder",
+      "name": "巨人長老",
+      "added": [
+        "item_pride_unseal"
+      ],
+      "removed": []
+    },
+    {
+      "mob": "pride_medusa",
+      "name": "梅杜莎",
+      "added": [
+        "bk_cancel",
+        "bk_dark_burn",
+        "bk_dark_double",
+        "bk_holy_barrier",
+        "bk_resurrection",
+        "bk_weaken",
+        "new_item_190",
+        "scroll_armor",
+        "scroll_weapon"
+      ],
+      "removed": []
+    },
+    {
+      "mob": "pride_arian",
+      "name": "變種亞力安",
+      "added": [
+        "bk_dark_burn",
+        "bk_earthquake",
+        "bk_elf_groundtrap",
+        "bk_greater_haste",
+        "bk_haste_spell",
+        "bk_heal2",
+        "bk_holy_light",
+        "bk_mummy_curse",
+        "bk_quake",
+        "bk_rock_prison",
+        "bk_slow",
+        "scroll_acc",
+        "scroll_armor",
+        "scroll_weapon"
+      ],
+      "removed": []
+    }
+  ],
+  "fallbackEntries": [
+    {
+      "mob": "侏儒",
+      "item": "mat_silverore",
+      "chance": 1.5
+    },
+    {
+      "mob": "gnome_warrior",
+      "item": "mat_silverore",
+      "chance": 1.5
+    },
+    {
+      "mob": "orc_mage",
+      "item": "item_orc_elder_head",
+      "chance": 1.5
+    },
+    {
+      "mob": "stone_golem",
+      "item": "mat_silverore",
+      "chance": 0.8
+    },
+    {
+      "mob": "hobgoblin",
+      "item": "mat_silverore",
+      "chance": 2.4
+    },
+    {
+      "mob": "lizardman",
+      "item": "mat_silverore",
+      "chance": 1.3333333333333333
+    },
+    {
+      "mob": "b_knight",
+      "item": "mat_silverore",
+      "chance": 0.631578947368421
+    },
+    {
+      "mob": "gaster",
+      "item": "item_death_oath",
+      "chance": 1.7142857142857142
+    },
+    {
+      "mob": "bandit",
+      "item": "item_death_oath",
+      "chance": 0.8571428571428571
+    },
+    {
+      "mob": "ogre_king",
+      "item": "bk_dark_burn",
+      "chance": 0.7058823529411765
+    },
+    {
+      "mob": "nm_020",
+      "item": "item_yeti_head",
+      "chance": 3.0
+    },
+    {
+      "mob": "nm_022",
+      "item": "bk_dark_double",
+      "chance": 1.0909090909090908
+    },
+    {
+      "mob": "succubus",
+      "item": "bk_dark_double",
+      "chance": 1.0
+    },
+    {
+      "mob": "sema",
+      "item": "mat_boss_crystal",
+      "chance": 0.6
+    },
+    {
+      "mob": "batus",
+      "item": "mat_boss_crystal",
+      "chance": 0.6
+    },
+    {
+      "mob": "casper",
+      "item": "mat_boss_crystal",
+      "chance": 0.631578947368421
+    },
+    {
+      "mob": "ifrit",
+      "item": "mat_boss_crystal",
+      "chance": 0.42857142857142855
+    },
+    {
+      "mob": "marcus",
+      "item": "mat_boss_crystal",
+      "chance": 0.6666666666666666
+    },
+    {
+      "mob": "wyvern",
+      "item": "mat_boss_crystal",
+      "chance": 0.42857142857142855
+    },
+    {
+      "mob": "baphomet",
+      "item": "scroll_armor_b",
+      "chance": 0.35294117647058826
+    },
+    {
+      "mob": "baphomet",
+      "item": "scroll_weapon_b",
+      "chance": 0.35294117647058826
+    },
+    {
+      "mob": "baphomet",
+      "item": "mat_boss_crystal",
+      "chance": 0.35294117647058826
+    },
+    {
+      "mob": "giant",
+      "item": "item_pride_unseal",
+      "chance": 2.0
+    },
+    {
+      "mob": "blackelder",
+      "item": "mat_boss_crystal",
+      "chance": 0.6
+    },
+    {
+      "mob": "doppel_boss",
+      "item": "scroll_weapon_b",
+      "chance": 0.6666666666666666
+    },
+    {
+      "mob": "doppel_boss",
+      "item": "scroll_armor_b",
+      "chance": 0.6666666666666666
+    },
+    {
+      "mob": "doppel_boss",
+      "item": "mat_boss_crystal",
+      "chance": 0.6666666666666666
+    },
+    {
+      "mob": "kurt",
+      "item": "scroll_armor_b",
+      "chance": 0.42857142857142855
+    },
+    {
+      "mob": "kurt",
+      "item": "scroll_weapon_b",
+      "chance": 0.42857142857142855
+    },
+    {
+      "mob": "kurt",
+      "item": "mat_boss_crystal",
+      "chance": 0.42857142857142855
+    },
+    {
+      "mob": "dk",
+      "item": "scroll_armor_b",
+      "chance": 0.4
+    },
+    {
+      "mob": "dk",
+      "item": "scroll_weapon_b",
+      "chance": 0.4
+    },
+    {
+      "mob": "dk",
+      "item": "bk_dark_double",
+      "chance": 0.4
+    },
+    {
+      "mob": "dk",
+      "item": "mat_boss_crystal",
+      "chance": 0.4
+    },
+    {
+      "mob": "giant_warrior",
+      "item": "item_pride_unseal",
+      "chance": 2.0
+    },
+    {
+      "mob": "ice_queen",
+      "item": "scroll_weapon_b",
+      "chance": 0.35294117647058826
+    },
+    {
+      "mob": "ice_queen",
+      "item": "scroll_armor_b",
+      "chance": 0.35294117647058826
+    },
+    {
+      "mob": "ice_queen",
+      "item": "mat_boss_crystal",
+      "chance": 0.35294117647058826
+    },
+    {
+      "mob": "ant_queen",
+      "item": "scroll_weapon_b",
+      "chance": 0.3870967741935484
+    },
+    {
+      "mob": "ant_queen",
+      "item": "scroll_armor_b",
+      "chance": 0.3870967741935484
+    },
+    {
+      "mob": "ant_queen",
+      "item": "mat_boss_crystal",
+      "chance": 0.3870967741935484
+    },
+    {
+      "mob": "phoenix",
+      "item": "scroll_weapon_b",
+      "chance": 0.46153846153846156
+    },
+    {
+      "mob": "phoenix",
+      "item": "scroll_armor_b",
+      "chance": 0.46153846153846156
+    },
+    {
+      "mob": "phoenix",
+      "item": "mat_boss_crystal",
+      "chance": 0.46153846153846156
+    },
+    {
+      "mob": "giant_elder",
+      "item": "item_pride_unseal",
+      "chance": 2.0
+    }
+  ]
+}
