@@ -25,6 +25,9 @@ export async function assetStorageFetch(request: Request, bucket?: Bucket): Prom
   // This write endpoint relies on the Site's verified owner-only access policy.
   // Never make the Site public/shared without adding explicit upload authorization.
   if (pathname.startsWith(UPLOAD)) {
+    // Standalone Cloudflare tests have no Sites owner-only upload policy.
+    // Disable the mutation endpoint until explicit authenticated upload authorization is implemented.
+    return new Response('Asset upload disabled in standalone test', { status: 403 });
     if (!bucket) return new Response('Storage unavailable', { status: 503 });
     if (request.method !== 'PUT') return new Response('Method not allowed', { status: 405 });
     const digest = pathname.slice(UPLOAD.length);
