@@ -16,6 +16,30 @@ export function useCombatReplay(c:Character|null,sound:boolean){
  if(fresh.length){if(fresh.some(e=>e.manual||e.kind==='attack'&&e.skill==='sk_elf_triple'))live.current=true;const prepared=enqueueCombatReplay(queue.current,prepareCombatHealth(fresh,health.current),performance.now(),offset.current,live.current);queue.current=prepared.queue;offset.current=prepared.offset;seen.current=c.eventSeq||seen.current;}
  else if(!queue.current.length&&!impacts.current.length){if(!c.running){live.current=false;offset.current=null;}health.current=new Map((c.arena||[]).map(m=>[m.uid,m.hp]));setView(v=>({...v,petEntities:petSnapshot(c,Date.now()),summonEntities:c.summonContract?.entities||[],hp:c.hp,mp:c.mp,target:c.arenaTarget||0,arena:(c.arena||[]).map(m=>({...m}))}));}
  },[c]);
- useEffect(()=>{let animation=0;const tick=()=>{const now=performance.now();for(const next of drainCombatPresentation(queue.current,impacts.current,now,!!(raw.items as any)[baseItem(latest.current?.equipment.weapon?.id||'')]?.ranged)){if(soundOn.current&&latest.current&&now-(next.visualAt??(next as TimedCombatEvent).due??now)<=250)combatSound(latest.current,next);setView(v=>applyCombatViewEvent(v,next,now));}setView(v=>(v.actions||[]).some(e=>now-e.shownAt>=5000)||v.floats.some(f=>now-f.shownAt>=800)||(v.casts||[]).some(f=>now-f.shownAt>=2000)?{...v,actions:(v.actions||[]).filter(e=>now-e.shownAt<5000),casts:(v.casts||[]).filter(f=>now-f.shownAt<2000),floats:v.floats.filter(f=>now-f.shownAt<800)}:v);animation=requestAnimationFrame(tick);};animation=requestAnimationFrame(tick);return()=>cancelAnimationFrame(animation);},[]);
+ useEffect(()=>{
+  let animation=0;
+  let lastCleanup=0;
+  const tick=()=>{
+   const now=performance.now();
+   const ready=drainCombatPresentation(queue.current,impacts.current,now,!!(raw.items as any)[baseItem(latest.current?.equipment.weapon?.id||'')]?.ranged);
+   for(const next of ready)if(soundOn.current&&latest.current&&now-(next.visualAt??(next as TimedCombatEvent).due??now)<=250)combatSound(latest.current,next);
+   // One React update per animation frame, rather than one per attack plus a
+   // cleanup update on every 60 FPS frame. Animation still uses rAF.
+   const cleanup=now-lastCleanup>=100;
+   if(cleanup)lastCleanup=now;
+   if(ready.length||cleanup)setView(previous=>{
+    let result=previous;
+    for(const next of ready)result=applyCombatViewEvent(result,next,now);
+    if(cleanup&&(result.actions||[]).some(e=>now-e.shownAt>=5000)||cleanup&&result.floats.some(f=>now-f.shownAt>=800)||cleanup&&(result.casts||[]).some(f=>now-f.shownAt>=2000)){
+     result={...result,actions:(result.actions||[]).filter(e=>now-e.shownAt<5000),casts:(result.casts||[]).filter(f=>now-f.shownAt<2000),floats:result.floats.filter(f=>now-f.shownAt<800)};
+    }
+    return result;
+   });
+   animation=requestAnimationFrame(tick);
+  };
+  animation=requestAnimationFrame(tick);
+  return()=>cancelAnimationFrame(animation);
+ },[]);
+
  return c&&owner.current!==c.id?{petEntities:petSnapshot(c,Date.now()),summonEntities:c.summonContract?.entities||[],hp:c.hp,mp:c.mp,arena:c.arena||[],target:c.arenaTarget||0,floats:[]}:view;
 }
