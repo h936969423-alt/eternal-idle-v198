@@ -42,7 +42,7 @@ async function handle(request:Request,mutate:boolean){
  row=await ensureControlRingRestoration(env.DB,owner,row);
  row=await ensureLineageWMythicMigration(env.DB,owner,row);
   const simulationAt=performance.now();
-  const save=JSON.parse(row.payload) as Save,{maps:mapConfig,monsters,dolls,world}=settings;const requestedAt=Date.now();for(const c of save.characters){c.npcConfig={...settings.npcs,history:[]};c.mapAccess=settings.mapAccess;c.lootAppearance={...settings.appearance,history:[]};c.dollDefinitions=dolls.definitions;c.mapPools=mapConfig.maps;c.bossGeneration=mapConfig.bosses;c.monsterDefinitions=monsters.definitions;c.bossDropDefinitions=monsters.bossDrops;}const report=advance(save,requestedAt,Math.random,world);const now=save.at;
+  const save=JSON.parse(row.payload) as Save,{maps:mapConfig,monsters,dolls,world}=settings;const requestedAt=Date.now();for(const c of save.characters){c.npcConfig={...settings.npcs,history:[]};c.mapAccess=settings.mapAccess;c.lootAppearance={...settings.appearance,history:[]};c.dollDefinitions=dolls.definitions;c.mapPools=mapConfig.maps;c.bossGeneration=mapConfig.bosses;c.monsterDefinitions=monsters.definitions;c.bossDropDefinitions=monsters.bossDrops;}const report=advance(save,requestedAt,Math.random,world,750);const now=save.at;
   for(const c of save.characters){syncPopulation(c,worldRulesAt(world,now));ensureArena(c,Math.random,now);}
   for(const c of save.characters){c.npcConfig={...settings.npcs,history:[]};c.mapAccess=settings.mapAccess;c.lootAppearance={...settings.appearance,history:[]};c.dollDefinitions=dolls.definitions;c.mapPools=mapConfig.maps;c.bossGeneration=mapConfig.bosses;c.monsterDefinitions=monsters.definitions;c.bossDropDefinitions=monsters.bossDrops;const b=stats(c,now);c.hp=Math.min(c.hp,b.maxHp);c.mp=Math.min(c.mp,b.maxMp);}if(payload&&!report.pendingSeconds)action(save,payload,now);for(const c of save.characters){c.npcConfig={...settings.npcs,history:[]};c.mapAccess=settings.mapAccess;c.lootAppearance={...settings.appearance,history:[]};c.dollDefinitions=dolls.definitions;c.mapPools=mapConfig.maps;c.bossGeneration=mapConfig.bosses;c.monsterDefinitions=monsters.definitions;c.bossDropDefinitions=monsters.bossDrops;}
   for(const c of save.characters){syncPopulation(c,worldRulesAt(world,now));ensureArena(c,Math.random,now);}
@@ -58,7 +58,7 @@ async function handle(request:Request,mutate:boolean){
    if(!committed)continue;
    const current=JSON.parse(committed.payload) as Save;
    for(const c of current.characters){c.npcConfig={...settings.npcs,history:[]};c.mapAccess=settings.mapAccess;c.lootAppearance={...settings.appearance,history:[]};c.dollDefinitions=dolls.definitions;c.mapPools=mapConfig.maps;c.bossGeneration=mapConfig.bosses;c.monsterDefinitions=monsters.definitions;c.bossDropDefinitions=monsters.bossDrops;}
-   const currentReport={seconds:0,kills:0,gold:0,pendingSeconds:current.catchup?Math.max(0,Math.ceil((requestedAt-current.at)/1000)):0,offline:false};
+   const currentReport={seconds:0,kills:0,gold:0,pendingSeconds:current.catchup?Math.max(0,Math.ceil(((current.catchup.targetAt??requestedAt)-current.at)/1000)):0,offline:false};
    return reply(view(current,currentReport,world,isGameMaster(user),settingsKey,cursor));
   }
   const viewAt=performance.now();const response=view(save,report,world,isGameMaster(user),settingsKey,cursor);timings.view=performance.now()-viewAt;
