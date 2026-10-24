@@ -30,6 +30,12 @@ export function combatSound(c:Character,e:CombatEvent){
 
  const name=e.mob?mobs[e.mob]?.n||'':'';const poly=e.polyName;const special=poly&&['黃金死亡騎士','赤紅刺客首領','蒼藍歐瑞','凱莉紗','地獄傑克'].includes(poly);
  if(e.kind==='attack'){
+  // Arrow impacts are a second visual phase, not another weapon swing.
+  // Play the launch sound only once and reserve the impact for monster hit SFX.
+  if(e.visualPhase==='impact'){
+   if(!e.miss&&e.damage){number(mapped(S.MOB_HURT_SFX,name),.2);if(e.mobHp===0)number(S.MOB_KILL_SFX[name]||57,.25);}
+   return;
+  }
   if(e.skill){if(e.visualPhase!=='impact')spell(e,c.id);}
   else if(e.source==='doll'){}
   else if(e.source==='pet')number(mapped(S.MOB_ATTACK_SFX,e.petName||e.pet||''),.25);
