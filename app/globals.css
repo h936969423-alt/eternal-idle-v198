@@ -497,3 +497,6 @@ body.ice-blue .game-root .source-bag-cell .enhance{color:#ffd66c!important;backg
 .lw-fx-lightning,.lw-fx-arrow{--mythic-fx-color:#8ed8ff}.lw-fx-earth{--mythic-fx-color:#ccaa70}.lw-fx-curse{--mythic-fx-color:#be88ff}.lw-fx-fire{--mythic-fx-color:#ff763c}.lw-fx-blood{--mythic-fx-color:#ff4666}.lw-fx-guard,.lw-fx-holy{--mythic-fx-color:#ffe399}.lw-fx-slash{--mythic-fx-color:#eee6ff}
 
 .equipment-ability-list{padding-left:20px;margin:10px 0;list-style:disc;line-height:1.8}
+
+/* Keep the configuration action readable on mobile instead of an unlabeled slider icon. */
+.header-config-text{font-size:14px!important;white-space:nowrap;min-width:48px;padding:0 8px!important;color:#f4d58b!important;font-weight:600}
