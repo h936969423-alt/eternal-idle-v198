@@ -571,6 +571,10 @@ export function advance(save:Save,now=Date.now(),rng:()=>number=Math.random,conf
  // Freeze the finish line when catchup starts: each request resumes the same
  // interval instead of chasing an ever-moving Date.now() while the user waits.
  const targetAt=save.catchup?.targetAt??now;
+ // 阿肥-style eligibility: only a character already hunting when the offline
+ // interval began can generate a new offline hunting income receipt. A pending
+ // catchup retains the original hunter identity even if they died meanwhile.
+ const offlineHunter=save.catchup?.characterId||save.characters.find(c=>c.running)?.id;
  const old=save.at,start=save.catchup?Math.min(save.at,targetAt):Math.max(Math.min(save.at,targetAt),targetAt-43200000);
  // Short foreground syncs (including entering a character after successful
  // login catchup) must finish together instead of opening another offline
@@ -613,7 +617,7 @@ export function advance(save:Save,now=Date.now(),rng:()=>number=Math.random,conf
  const prior=save.catchup,report={xp:ledger.xp,drops:ledger.drops,characterName,characterId,seconds:(prior?.seconds||0)+(end-start)/1000,kills:(prior?.kills||0)+save.characters.reduce((a,c)=>a+c.kills,0)-before,gold:(prior?.gold||0)+save.characters.reduce((a,c)=>a+c.gold,0)-gold};
  const pendingSeconds=Math.max(0,Math.ceil((targetAt-end)/1000));
  if(pendingSeconds)save.catchup={...report,targetAt};else delete save.catchup;
- const result={...report,pendingSeconds,offline:!pendingSeconds&&(!!prior||targetAt-old>30000)};
+ const result={...report,pendingSeconds,offline:!pendingSeconds&&!!offlineHunter&&(!!prior||targetAt-old>30000)};
  rememberOfflineIncome(save,result,end);
  return result;
  }finally{if(accelerated)for(const c of save.characters)offlineEventRecordingAfter.delete(c);}
