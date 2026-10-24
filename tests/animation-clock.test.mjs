@@ -25,3 +25,21 @@ test('dead monster ignores subsequent attacks',()=>{
 test('attack animation has finite duration',()=>{
  assert.equal(durationFor('attack',4),500);
 });
+
+test('rapid monster attacks stay queued in order after spawn',()=>{
+ let state={kind:'spawn',at:0,duration:500,pending:[]};
+ for(let i=1;i<=3;i++)state=pushCue(state,cue(i,'attack'),i*50,duration,true,false);
+ assert.deepEqual(state.pending.map(e=>e.seq),[1,2,3]);
+ state=advanceMotion(state,501,duration);
+ assert.equal(state.kind,'attack');
+ assert.deepEqual(state.pending.map(e=>e.seq),[2,3]);
+ state=advanceMotion(state,1002,duration);
+ assert.deepEqual(state.pending.map(e=>e.seq),[3]);
+ state=advanceMotion(state,1503,duration);
+ assert.deepEqual(state.pending,[]);
+});
+test('monster pending attack queue remains bounded',()=>{
+ let state={kind:'spawn',at:0,duration:500,pending:[]};
+ for(let i=1;i<=10;i++)state=pushCue(state,cue(i,'attack'),i*10,duration,true,false);
+ assert.deepEqual(state.pending.map(e=>e.seq),[7,8,9,10]);
+});
