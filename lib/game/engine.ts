@@ -601,7 +601,7 @@ export function advance(save:Save,now=Date.now(),rng:()=>number=Math.random,conf
   // Yield only between fully completed seconds: all combat rolls, inventory
   // changes and boss rewards for the tick have been resolved together.
   // This avoids timing out and losing a whole 120-second D1 transaction.
-  if(Number.isFinite(budgetMs)&&t<end&&t-start>=4000&&performance.now()-budgetStart>=budgetMs){end=t;break;}
+  if(Number.isFinite(budgetMs)&&t<end&&t-start>=1000&&performance.now()-budgetStart>=budgetMs){end=t;break;}
  }
  for(const c of save.characters){const dollMsg=renewDoll(c,end);if(dollMsg)log(c,dollMsg,'info',end);const msg=tickPolymorph(c,end,rng);if(msg)log(c,msg,'magic',end);}
  for(const c of save.characters)incomeLedgers.delete(c);bindDollCollections(save);save.at=end;
