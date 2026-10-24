@@ -551,12 +551,12 @@ export function advance(save:Save,now=Date.now(),rng:()=>number=Math.random,conf
  try{
  singleHunt(save);bindBossRooms(save);bindDollCollections(save);bindPolymorphUnlocks(save);
  for(const c of save.characters){migrateDolls(c);upgradeAbilityPoints(c);upgradeSupply(c,start);}
- const ledger:IncomeLedger={xp:save.catchup?.xp||0,drops:{...(save.catchup?.drops||{})}};const characterName=save.catchup?.characterName||save.characters.find(c=>c.running)?.name||save.characters.find(c=>c.id===save.active)?.name||'冒險者';for(const c of save.characters)incomeLedgers.set(c,ledger);
+ const ledger:IncomeLedger={xp:save.catchup?.xp||0,drops:{...(save.catchup?.drops||{})}};const beneficiary=save.characters.find(c=>c.id===save.catchup?.characterId)||save.characters.find(c=>c.running)||save.characters.find(c=>c.id===save.active);const characterName=save.catchup?.characterName||beneficiary?.name||'冒險者';const characterId=save.catchup?.characterId||beneficiary?.id;for(const c of save.characters)incomeLedgers.set(c,ledger);
  const before=save.characters.reduce((a,c)=>a+c.kills,0),gold=save.characters.reduce((a,c)=>a+c.gold,0);
  for(let t=start;t<end;){const next=Math.min(end,t+1000);for(const c of save.characters)second(c,next,rng,worldRulesAt(config,next),next-t);for(const c of save.characters)settleBossRewards(c,next,rng);t=next;}
  for(const c of save.characters){const dollMsg=renewDoll(c,end);if(dollMsg)log(c,dollMsg,'info',end);const msg=tickPolymorph(c,end,rng);if(msg)log(c,msg,'magic',end);}
  for(const c of save.characters)incomeLedgers.delete(c);bindDollCollections(save);save.at=end;
- const prior=save.catchup,report={xp:ledger.xp,drops:ledger.drops,characterName,seconds:(prior?.seconds||0)+(end-start)/1000,kills:(prior?.kills||0)+save.characters.reduce((a,c)=>a+c.kills,0)-before,gold:(prior?.gold||0)+save.characters.reduce((a,c)=>a+c.gold,0)-gold};
+ const prior=save.catchup,report={xp:ledger.xp,drops:ledger.drops,characterName,characterId,seconds:(prior?.seconds||0)+(end-start)/1000,kills:(prior?.kills||0)+save.characters.reduce((a,c)=>a+c.kills,0)-before,gold:(prior?.gold||0)+save.characters.reduce((a,c)=>a+c.gold,0)-gold};
  const pendingSeconds=Math.max(0,Math.ceil((now-end)/1000));
  if(pendingSeconds)save.catchup=report;else delete save.catchup;
  const result={...report,pendingSeconds,offline:!pendingSeconds&&(!!prior||now-old>30000)};
