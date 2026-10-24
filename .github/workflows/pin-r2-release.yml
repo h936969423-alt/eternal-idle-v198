@@ -1,0 +1,24 @@
+name: Pin R2 release manifest
+on:
+  workflow_dispatch:
+permissions:
+  contents: write
+jobs:
+  sync:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - name: Download pinned manifest
+        env:
+          AWS_ACCESS_KEY_ID: ${{ secrets.R2_ACCESS_KEY_ID }}
+          AWS_SECRET_ACCESS_KEY: ${{ secrets.R2_SECRET_ACCESS_KEY }}
+          AWS_DEFAULT_REGION: auto
+        run: |
+          aws --endpoint-url https://9bf17726da5739f20d3e5ec454ae3d91.r2.cloudflarestorage.com s3 cp s3://eternal-idle-v198-test-assets/eternal-assets/v1/aa60192d9cb15b71c265816c53b04ae0eb526a5833d40bd4b6c7949ac1f29d00 lib/asset-storage-release.json
+          echo "aa60192d9cb15b71c265816c53b04ae0eb526a5833d40bd4b6c7949ac1f29d00  lib/asset-storage-release.json" | sha256sum -c -
+      - name: Commit manifest
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add lib/asset-storage-release.json
+          git diff --cached --quiet || (git commit -m "Pin verified v198 R2 asset release" && git push)
