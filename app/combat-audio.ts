@@ -3,9 +3,9 @@ import raw from '@/lib/game/gamedata.json';
 import { baseItem } from '@/lib/game/gear';
 import type { Character,CombatEvent } from '@/lib/game/engine';
 const S=sounds as Record<string,Record<string,string|number>>,items=raw.items as Record<string,any>,mobs=raw.mobs as Record<string,any>;let voices:HTMLAudioElement[]=[];let context:AudioContext|null=null;let enabled=false;let generation=0;let masterGain:GainNode|null=null;const fallbackVolumes=new WeakMap<HTMLAudioElement,number>();const buffers=new Map<string,Promise<AudioBuffer>>();const active=new Set<AudioBufferSourceNode>();
-function stopVoices(){generation++;for(const source of active){try{source.stop();}catch{}}active.clear();for(const audio of voices)audio.pause();voices=[];}
+export function stopCombatVoices(){generation++;for(const source of active){try{source.stop();}catch{}}active.clear();for(const audio of voices)audio.pause();voices=[];}
 export function unlockCombatAudio(on:boolean){
- if(enabled!==on)generation++;enabled=on;if(!on){stopVoices();return;}
+ if(enabled!==on)generation++;enabled=on;if(!on){stopCombatVoices();return;}
  const C=window.AudioContext||(window as any).webkitAudioContext;
  if(C&&!context){context=new C();masterGain=context!.createGain();masterGain.gain.value=masterVolume;masterGain.connect(context!.destination);document.addEventListener('visibilitychange',()=>{if(document.hidden)stopVoices();});}
  void context?.resume().catch(()=>{});
