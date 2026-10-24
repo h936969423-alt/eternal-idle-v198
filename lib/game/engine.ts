@@ -572,6 +572,11 @@ export function advance(save:Save,now=Date.now(),rng:()=>number=Math.random,conf
  // interval instead of chasing an ever-moving Date.now() while the user waits.
  const targetAt=save.catchup?.targetAt??now;
  const old=save.at,start=save.catchup?Math.min(save.at,targetAt):Math.max(Math.min(save.at,targetAt),targetAt-43200000);
+ // Short foreground syncs (including entering a character after successful
+ // login catchup) must finish together instead of opening another offline
+ // settlement progress screen. Bound them to <= 5 seconds of game time.
+ const foregroundSync=!save.catchup&&targetAt-start<=5000;
+ const effectiveBudget=foregroundSync?Infinity:budgetMs;
  let end=save.characters.length?Math.min(targetAt,start+ADVANCE_BATCH_MS):targetAt;
  const accelerated=end-start>OFFLINE_EVENT_TAIL_MS,recordAfter=end<now?Infinity:end-OFFLINE_EVENT_TAIL_MS;if(accelerated)for(const c of save.characters){offlineEventRecordingAfter.set(c,recordAfter);c.events=(c.events||[]).filter(e=>e.at>=recordAfter);}
  try{
@@ -601,7 +606,7 @@ export function advance(save:Save,now=Date.now(),rng:()=>number=Math.random,conf
   // Yield only between fully completed seconds: all combat rolls, inventory
   // changes and boss rewards for the tick have been resolved together.
   // This avoids timing out and losing a whole 120-second D1 transaction.
-  if(Number.isFinite(budgetMs)&&t<end&&t-start>=1000&&performance.now()-budgetStart>=budgetMs){end=t;break;}
+  if(Number.isFinite(effectiveBudget)&&t<end&&t-start>=1000&&performance.now()-budgetStart>=effectiveBudget){end=t;break;}
  }
  for(const c of save.characters){const dollMsg=renewDoll(c,end);if(dollMsg)log(c,dollMsg,'info',end);const msg=tickPolymorph(c,end,rng);if(msg)log(c,msg,'magic',end);}
  for(const c of save.characters)incomeLedgers.delete(c);bindDollCollections(save);save.at=end;
