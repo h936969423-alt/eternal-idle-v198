@@ -22,6 +22,16 @@ async function handle(request:Request,mutate:boolean){
   if(!env.DB)throw new Error('save storage unavailable');
   if(GAME_PASSWORD_LOGIN_ENABLED&&!await gameAccount(user.userId))return Response.json({error:'請登入遊戲帳號'},{status:401});
   const owner=user.userId;
+  // Read-only recovery endpoint. Never runs the combat engine or writes D1.
+  // Enables the client to verify a save exists even when offline simulation
+  // exceeds the Worker CPU limit. Do not expose private owner identifiers.
+  const requestUrl=new URL(request.url);
+  if(!mutate&&requestUrl.searchParams.get('mode')==='recovery'){
+   const row=await env.DB.prepare('SELECT payload,revision FROM game_saves WHERE owner=?').bind(owner).first<{payload:string;revision:number}>();
+   if(!row)return Response.json({available:false,pending:false,characters:[]},{headers:{'Cache-Control':'no-store'}});
+   const stored=JSON.parse(row.payload) as Save;
+   return Response.json({available:true,pending:!!stored.catchup||Date.now()-stored.at>30000,characters:stored.characters.map(c=>({id:c.id,name:c.name,level:c.lv,running:c.running})),active:stored.active,settledAt:stored.at,remainingSeconds:stored.catchup?.targetAt?Math.max(0,Math.ceil((stored.catchup.targetAt-stored.at)/1000)):null},{headers:{'Cache-Control':'no-store'}});
+  }
   const payload=mutate?await request.json():null;
   const readAt=performance.now();
   const [existing,settings]=await Promise.all([env.DB.prepare('SELECT payload,revision FROM game_saves WHERE owner=?').bind(owner).first<{payload:string;revision:number}>(),getGameSettings()]);
