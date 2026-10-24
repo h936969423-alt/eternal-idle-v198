@@ -547,9 +547,11 @@ function stopHuntOnCharacterSwitch(save:Save,nextId:string,now:number){
 /** Settle a bounded offline batch without replaying hours of visual snapshots.
  * A pending catchup has already applied the twelve-hour cap; do not cap it again.
  */
-// Keep exact combat and rewards, but retain only the visual tail needed when
-// returning to live play. Larger bounded batches avoid hundreds of DB round trips.
-export const ADVANCE_BATCH_MS=1_200_000;
+// Keep exact combat and rewards, but bound each D1 transaction's CPU time.
+// Twenty-minute batches could exceed the Worker/request timeout and leave the
+// login catchup progress stuck. Commit small batches atomically; the next GET
+// resumes from save.at, with the reward ledger preserved in save.catchup.
+export const ADVANCE_BATCH_MS=120_000;
 export const OFFLINE_EVENT_TAIL_MS=4000;
 export function advance(save:Save,now=Date.now(),rng:()=>number=Math.random,config:WorldRules|WorldConfig=DEFAULT_WORLD_RULES){
  if(save.characterDeletions){bindBossRooms(save);bindDollCollections(save);bindPolymorphUnlocks(save);settleCharacterDeletions(save,now);}
