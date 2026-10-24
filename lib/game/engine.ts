@@ -536,6 +536,14 @@ export function singleHunt(save:Save,now=save.at){
  const keep=running.find(c=>c.id===save.active)||running[0];
  for(const c of running)if(c!==keep){c.running=false;log(c,'同帳號僅能一位角色狩獵，已停止此角色。','info',now);}
 }
+/** Selecting a different character ends the previous character's hunt after
+ * advance() has settled all elapsed time. Rewards stay with their owner. */
+function stopHuntOnCharacterSwitch(save:Save,nextId:string,now:number){
+ if(save.active===nextId)return;
+ for(const character of save.characters){
+  if(character.running){character.running=false;log(character,'切換角色，狩獵與離線收益已暫停。','info',now);}
+ }
+}
 /** Settle a bounded offline batch without replaying hours of visual snapshots.
  * A pending catchup has already applied the twelve-hour cap; do not cap it again.
  */
@@ -565,10 +573,10 @@ export function advance(save:Save,now=Date.now(),rng:()=>number=Math.random,conf
  }finally{if(accelerated)for(const c of save.characters)offlineEventRecordingAfter.delete(c);}
 }
 
-export function action(save:Save,a:any,now=Date.now(),rng:()=>number=Math.random){if(a.type==='interfaceTheme'){if(a.theme!=='classic'&&a.theme!=='ice')throw Error('不支援的介面色系');save.interfaceTheme=a.theme;return;}if(a.type==='bossVictoryDismiss'){const c=save.characters.find(c=>c.id===a.characterId);if(c)acknowledgeBossVictory(c,a.id);return;}if(a.type==='offlineIncomeDismiss'){acknowledgeOfflineIncome(save,a.id);return;}singleHunt(save);bindBossRooms(save);bindDollCollections(save);bindPolymorphUnlocks(save);if(a.type==='create'){if(save.characters.length>=MAX_CHARACTERS)throw new Error('最多建立三位角色');const c=createCharacter(String(a.name||''),String(a.cls),String(a.gender),a.allocation||{},now);save.characters.push(c);bindPolymorphUnlocks(save);save.active=c.id;return;}
+export function action(save:Save,a:any,now=Date.now(),rng:()=>number=Math.random){if(a.type==='interfaceTheme'){if(a.theme!=='classic'&&a.theme!=='ice')throw Error('不支援的介面色系');save.interfaceTheme=a.theme;return;}if(a.type==='bossVictoryDismiss'){const c=save.characters.find(c=>c.id===a.characterId);if(c)acknowledgeBossVictory(c,a.id);return;}if(a.type==='offlineIncomeDismiss'){acknowledgeOfflineIncome(save,a.id);return;}singleHunt(save);bindBossRooms(save);bindDollCollections(save);bindPolymorphUnlocks(save);if(a.type==='create'){if(save.characters.length>=MAX_CHARACTERS)throw new Error('最多建立三位角色');const c=createCharacter(String(a.name||''),String(a.cls),String(a.gender),a.allocation||{},now);stopHuntOnCharacterSwitch(save,c.id,now);save.characters.push(c);bindPolymorphUnlocks(save);save.active=c.id;return;}
  if(a.type==='deleteCharacter'){requestCharacterDeletion(save,String(a.id),now);return;}
  if(a.type==='cancelCharacterDeletion'){cancelCharacterDeletion(save,String(a.id),String(a.token),now);return;}
- if(a.type==='select'){if(!save.characters.some(x=>x.id===a.id))throw Error('角色不存在');if(save.characterDeletions?.[a.id])throw Error('此角色正在等待刪除，請先取消刪除');save.active=a.id;return;}
+ if(a.type==='select'){if(!save.characters.some(x=>x.id===a.id))throw Error('角色不存在');if(save.characterDeletions?.[a.id])throw Error('此角色正在等待刪除，請先取消刪除');stopHuntOnCharacterSwitch(save,String(a.id),now);save.active=a.id;return;}
  const c=save.characters.find(x=>x.id===save.active);if(c&&save.characterDeletions?.[c.id])throw Error('此角色正在等待刪除，請先取消刪除');if(!c)throw new Error('請先建立角色');migrateDolls(c);upgradeAbilityPoints(c);ensureArena(c,rng,now);const i=DATA.items[a.item];
  if(String(a.type).startsWith('mastery')){log(c,masteryAction(c,a,now),'info',now);return;}
  switch(a.type){
