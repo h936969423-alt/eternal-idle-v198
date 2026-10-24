@@ -26,4 +26,32 @@ export function validateMapPool(zone:any,input:any,custom:Record<string,MonsterD
  if(mode==='fixed'&&points.some((p:any,i:number)=>points.slice(0,i).some((q:any)=>Math.hypot(p.x-q.x,p.y-q.y)<14)))throw Error('定點位置距離需至少 14%，避免怪物重疊');
  const spawnPoints=points.map((p:any)=>({x:p.x,y:p.y}));const seen=new Set<string>();const entries=input.entries.map((e:any)=>{if(!e||typeof e.id!=='string'||(!Object.hasOwn(raw.mobs,e.id)&&!(Object.hasOwn(custom,e.id)&&custom[e.id]?.custom))||seen.has(e.id))throw Error('怪物不存在或重複');if(typeof e.enabled!=='boolean'||!Number.isInteger(e.weight)||e.weight<1||e.weight>100)throw Error('出現權重需為 1–100');seen.add(e.id);return {id:e.id,weight:e.weight,enabled:e.enabled};});return {spawnMode:mode,spawnPoints,enabled:input.enabled,count:input.count,respawnSeconds:input.respawnSeconds,respawnRulesVersion:2,entries};}
 export function validateBossGeneration(zone:any,input:any):BossGeneration{const b=(raw.worldBosses as Record<string,any>)[zone];if(typeof zone!=='string'||!Object.hasOwn(raw.worldBosses,zone)||b.mvOnly)throw Error('此世界王不能設定生成');const max=b.members?.length?1:6;if(!input||typeof input.enabled!=='boolean'||!Number.isInteger(input.count)||input.count<1||input.count>max||!Number.isFinite(input.respawnSeconds)||input.respawnSeconds<1||input.respawnSeconds>604800)throw Error(`數量需為 1–${max}，重生時間需為 1–604,800 秒`);return {enabled:input.enabled,count:input.count,respawnSeconds:input.respawnSeconds};}
-export function chooseMapMonster(zone:string,maps:Record<string,MapGeneration>|undefined,rng:()=>number){const entries=mapPool(zone,maps),total=entries.reduce((n,e)=>n+e.weight,0);if(!total)return null;let pick=Math.min(.999999999,Math.max(0,rng()))*total;for(const e of entries){pick-=e.weight;if(pick<0)return e.id;}return entries.at(-1)!.id;}
+// Reuse the validated weighted pool for each unchanged GM map definition.
+// Cache is bound to the definition object: a GM update loads a new object.
+// Only the pick consumes RNG, exactly once as before.
+const monsterPools=new WeakMap<MapGeneration,{entries:MapPoolEntry[];total:number}>();
+const defaultMonsterPools=new Map<string,{entries:MapPoolEntry[];total:number}>();
+function weightedMonsterPool(zone:string,maps?:Record<string,MapGeneration>){
+ const original=maps?.[zone];
+ if(original){
+  const cached=monsterPools.get(original);
+  if(cached)return cached;
+  const entries=original.enabled?original.entries.filter(e=>e.enabled):[];
+  const value={entries,total:entries.reduce((n,e)=>n+e.weight,0)};
+  monsterPools.set(original,value);
+  return value;
+ }
+ const cached=defaultMonsterPools.get(zone);
+ if(cached)return cached;
+ const entries=mapPool(zone);
+ const value={entries,total:entries.reduce((n,e)=>n+e.weight,0)};
+ defaultMonsterPools.set(zone,value);
+ return value;
+}
+export function chooseMapMonster(zone:string,maps:Record<string,MapGeneration>|undefined,rng:()=>number){
+ const {entries,total}=weightedMonsterPool(zone,maps);
+ if(!total)return null;
+ let pick=Math.min(.999999999,Math.max(0,rng()))*total;
+ for(const e of entries){pick-=e.weight;if(pick<0)return e.id;}
+ return entries.at(-1)!.id;
+}
