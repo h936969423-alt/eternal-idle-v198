@@ -553,6 +553,19 @@ function stopHuntOnCharacterSwitch(save:Save,nextId:string,now:number){
 // resumes from save.at, with the reward ledger preserved in save.catchup.
 export const ADVANCE_BATCH_MS=120_000;
 export const OFFLINE_EVENT_TAIL_MS=4000;
+/** Strictly inert secondary characters require no per-second combat clock.
+ * Do not shortcut buffs, pets, summons, monsters, resource regeneration,
+ * transformations, dolls or any character currently hunting.
+ * The shortcut never changes loot rolls or the active hunter's timeline.
+ */
+function isInertOfflineCharacter(c:Character,now:number){
+ if(c.running||c.hp<=0||c.healingOverTime||c.doll||c.poly?.until&&c.poly.until>now)return false;
+ if(Object.keys(c.buffs||{}).length||Object.keys(c.bossRooms||{}).length)return false;
+ if(c.petActive||c.petActives?.length||c.summons||c.summonContract?.entities?.length)return false;
+ if(c.arena?.length||!DATA.towns[c.zone])return false;
+ const b=stats(c,now);
+ return c.hp>=b.maxHp&&c.mp>=b.maxMp;
+}
 export function advance(save:Save,now=Date.now(),rng:()=>number=Math.random,config:WorldRules|WorldConfig=DEFAULT_WORLD_RULES){
  if(save.characterDeletions){bindBossRooms(save);bindDollCollections(save);bindPolymorphUnlocks(save);settleCharacterDeletions(save,now);}
  // Freeze the finish line when catchup starts: each request resumes the same
@@ -575,10 +588,13 @@ export function advance(save:Save,now=Date.now(),rng:()=>number=Math.random,conf
  let changeIndex=0;while(changeIndex<changes.length&&changes[changeIndex].at<=start)changeIndex++;
  let rules=worldRulesAt(config,start);
  const characters=save.characters;
+ // Only completely inert town characters can skip second-by-second updates.
+ // Recompute this once per batch, never for the hunting character.
+ const inert=new Set(characters.filter(c=>isInertOfflineCharacter(c,start)));
  for(let t=start;t<end;){
   const next=Math.min(end,t+1000);
   while(changeIndex<changes.length&&changes[changeIndex].at<=next){rules=changes[changeIndex];changeIndex++;}
-  for(const c of characters)second(c,next,rng,rules,next-t);
+  for(const c of characters)if(!inert.has(c))second(c,next,rng,rules,next-t);
   for(const c of characters)settleBossRewards(c,next,rng);
   t=next;
  }
