@@ -575,12 +575,11 @@ export function advance(save:Save,now=Date.now(),rng:()=>number=Math.random,conf
  let changeIndex=0;while(changeIndex<changes.length&&changes[changeIndex].at<=start)changeIndex++;
  let rules=worldRulesAt(config,start);
  const characters=save.characters;
- const bossParticipants=characters.filter(c=>Object.keys(c.bossRooms||{}).length>0);
  for(let t=start;t<end;){
   const next=Math.min(end,t+1000);
   while(changeIndex<changes.length&&changes[changeIndex].at<=next){rules=changes[changeIndex];changeIndex++;}
   for(const c of characters)second(c,next,rng,rules,next-t);
-  for(const c of bossParticipants)settleBossRewards(c,next,rng);
+  for(const c of characters)settleBossRewards(c,next,rng);
   t=next;
  }
  for(const c of save.characters){const dollMsg=renewDoll(c,end);if(dollMsg)log(c,dollMsg,'info',end);const msg=tickPolymorph(c,end,rng);if(msg)log(c,msg,'magic',end);}
