@@ -32,7 +32,9 @@ export function addCombatFloat(floats:CombatFloat[],event:CombatEvent,now:number
 export function scheduleReplay<T extends CombatEvent&{due:number}>(events:T[],now:number):T[]{
  if(!events.length||events[0].due>=now)return events;
  const first=events[0].due,last=events.at(-1)!.due,span=last-first;
- const window=Math.min(1500,span);
+ // Preserve the actual timing between swings across the ~3.5s network poll.
+ // Compress only exceptionally large backlogs to avoid burst-then-pause combat.
+ const window=Math.min(4000,span);
  return events.map(e=>({...e,due:now+(span>0?(e.due-first)/span*window:0)}));
 }
 
