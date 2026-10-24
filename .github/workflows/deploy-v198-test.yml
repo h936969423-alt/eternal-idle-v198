@@ -19,6 +19,22 @@ jobs:
         shell: bash
         run: |
           if [ -z "$CLOUDFLARE_API_TOKEN" ]; then echo "::error::Missing CLOUDFLARE_API_TOKEN GitHub secret"; exit 1; fi
+      - name: Verify Cloudflare API token before expensive build
+        shell: bash
+        run: |
+          curl --silent --show-error --fail-with-body \
+            -H "Authorization: Bearer $CLOUDFLARE_API_TOKEN" \
+            -H "Content-Type: application/json" \
+            "https://api.cloudflare.com/client/v4/user/tokens/verify" \
+            -o /tmp/cloudflare-token-status.json || { echo "::error::Cloudflare did not accept the API token. Update CLOUDFLARE_API_TOKEN."; exit 1; }
+          python3 - <<'PY'
+          import json
+          data=json.load(open('/tmp/cloudflare-token-status.json'))
+          if not data.get('success') or data.get('result',{}).get('status') != 'active':
+              print('::error::Cloudflare API token is not active or was not accepted.')
+              raise SystemExit(1)
+          print('Cloudflare API token active; build can proceed.')
+          PY
       - name: Restore game assets from isolated private R2
         env:
           AWS_ACCESS_KEY_ID: ${{ secrets.R2_ACCESS_KEY_ID }}
