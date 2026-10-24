@@ -568,7 +568,21 @@ export function advance(save:Save,now=Date.now(),rng:()=>number=Math.random,conf
  // Previously multiple character ledgers shared the same aggregate receipt.
  if(beneficiary)incomeLedgers.set(beneficiary,ledger);
  const before=save.characters.reduce((a,c)=>a+c.kills,0),gold=save.characters.reduce((a,c)=>a+c.gold,0);
- for(let t=start;t<end;){const next=Math.min(end,t+1000);for(const c of save.characters)second(c,next,rng,worldRulesAt(config,next),next-t);for(const c of save.characters)settleBossRewards(c,next,rng);t=next;}
+ // Resolve world rules once for stable intervals, rather than scanning the
+ // full GM settings history once per simulated second. Advance the cursor only
+ // when the actual rule-change timestamp is reached.
+ const changes='history' in config?[...config.history].sort((a,b)=>a.at-b.at):[];
+ let changeIndex=0;while(changeIndex<changes.length&&changes[changeIndex].at<=start)changeIndex++;
+ let rules=worldRulesAt(config,start);
+ const characters=save.characters;
+ const bossParticipants=characters.filter(c=>Object.keys(c.bossRooms||{}).length>0);
+ for(let t=start;t<end;){
+  const next=Math.min(end,t+1000);
+  while(changeIndex<changes.length&&changes[changeIndex].at<=next){rules=changes[changeIndex];changeIndex++;}
+  for(const c of characters)second(c,next,rng,rules,next-t);
+  for(const c of bossParticipants)settleBossRewards(c,next,rng);
+  t=next;
+ }
  for(const c of save.characters){const dollMsg=renewDoll(c,end);if(dollMsg)log(c,dollMsg,'info',end);const msg=tickPolymorph(c,end,rng);if(msg)log(c,msg,'magic',end);}
  for(const c of save.characters)incomeLedgers.delete(c);bindDollCollections(save);save.at=end;
  const prior=save.catchup,report={xp:ledger.xp,drops:ledger.drops,characterName,characterId,seconds:(prior?.seconds||0)+(end-start)/1000,kills:(prior?.kills||0)+save.characters.reduce((a,c)=>a+c.kills,0)-before,gold:(prior?.gold||0)+save.characters.reduce((a,c)=>a+c.gold,0)-gold};
