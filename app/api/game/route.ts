@@ -66,7 +66,7 @@ async function handle(request:Request,mutate:boolean){
   return reply(response);
   }
   return Response.json({error:'進度同步繁忙，請稍後重試'},{status:409,headers:{'Cache-Control':'no-store'}});
- }catch(e){const msg=e instanceof Error?e.message:'未知錯誤';const storage=/storage|table|database|D1|SQLITE|save not found/i.test(msg);if(storage)console.error('game save failed',e);return Response.json({error:storage?'暫時無法讀取存檔，請稍後重試；你的進度未被覆寫。':msg},{status:storage?503:400});}
+ }catch(e){const msg=e instanceof Error?e.message:'未知錯誤';const storage=/storage|table|database|D1|SQLITE|save not found/i.test(msg);console.error('game-api-error',JSON.stringify({method:request.method,storage,elapsedMs:Math.round(performance.now()-started),error:msg.slice(0,350)}));return Response.json({error:storage?'暫時無法讀取存檔，請稍後重試；你的進度未被覆寫。':msg},{status:storage?503:400});}
 }
 export const GET=(r:Request)=>handle(r,false);
 export const POST=(r:Request)=>handle(r,true);
