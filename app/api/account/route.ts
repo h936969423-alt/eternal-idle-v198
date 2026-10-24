@@ -65,10 +65,6 @@ export async function POST(request: Request) {
     }>();
 
     if (input.register === true) {
-      const secret = (env as unknown as { TEST_REGISTRATION_CODE?: string }).TEST_REGISTRATION_CODE || "";
-      const supplied = String(input.inviteCode || "");
-      if (secret.length < 16 || !sameSecret(supplied, secret))
-        return reply({ error: "測試邀請碼不正確，或尚未設定" }, 403);
       if (row) return reply({ error: "此帳號已建立，請改用登入" }, 409);
       const salt = crypto.randomUUID();
       await env.DB.prepare(
