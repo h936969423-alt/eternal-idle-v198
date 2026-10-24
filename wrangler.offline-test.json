@@ -1,0 +1,23 @@
+{
+  "name": "eternal-idle-v198-offline-test",
+  "main": "workers/offline-settler.ts",
+  "compatibility_date": "2026-09-01",
+  "compatibility_flags": [
+    "nodejs_compat"
+  ],
+  "triggers": {
+    "crons": [
+      "* * * * *"
+    ]
+  },
+  "d1_databases": [
+    {
+      "binding": "DB",
+      "database_name": "eternal-idle-v198-test-db",
+      "database_id": "827dd8d1-53b2-460c-9594-2435db824432"
+    }
+  ],
+  "observability": {
+    "enabled": true
+  }
+}
