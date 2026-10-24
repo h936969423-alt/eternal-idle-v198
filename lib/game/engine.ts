@@ -566,13 +566,13 @@ function isInertOfflineCharacter(c:Character,now:number){
  const b=stats(c,now);
  return c.hp>=b.maxHp&&c.mp>=b.maxMp;
 }
-export function advance(save:Save,now=Date.now(),rng:()=>number=Math.random,config:WorldRules|WorldConfig=DEFAULT_WORLD_RULES){
+export function advance(save:Save,now=Date.now(),rng:()=>number=Math.random,config:WorldRules|WorldConfig=DEFAULT_WORLD_RULES,budgetMs=Infinity){
  if(save.characterDeletions){bindBossRooms(save);bindDollCollections(save);bindPolymorphUnlocks(save);settleCharacterDeletions(save,now);}
  // Freeze the finish line when catchup starts: each request resumes the same
  // interval instead of chasing an ever-moving Date.now() while the user waits.
  const targetAt=save.catchup?.targetAt??now;
  const old=save.at,start=save.catchup?Math.min(save.at,targetAt):Math.max(Math.min(save.at,targetAt),targetAt-43200000);
- const end=save.characters.length?Math.min(targetAt,start+ADVANCE_BATCH_MS):targetAt;
+ let end=save.characters.length?Math.min(targetAt,start+ADVANCE_BATCH_MS):targetAt;
  const accelerated=end-start>OFFLINE_EVENT_TAIL_MS,recordAfter=end<now?Infinity:end-OFFLINE_EVENT_TAIL_MS;if(accelerated)for(const c of save.characters){offlineEventRecordingAfter.set(c,recordAfter);c.events=(c.events||[]).filter(e=>e.at>=recordAfter);}
  try{
  singleHunt(save);bindBossRooms(save);bindDollCollections(save);bindPolymorphUnlocks(save);
@@ -588,6 +588,7 @@ export function advance(save:Save,now=Date.now(),rng:()=>number=Math.random,conf
  let changeIndex=0;while(changeIndex<changes.length&&changes[changeIndex].at<=start)changeIndex++;
  let rules=worldRulesAt(config,start);
  const characters=save.characters;
+ const budgetStart=performance.now();
  // Only completely inert town characters can skip second-by-second updates.
  // Recompute this once per batch, never for the hunting character.
  const inert=new Set(characters.filter(c=>isInertOfflineCharacter(c,start)));
@@ -597,6 +598,10 @@ export function advance(save:Save,now=Date.now(),rng:()=>number=Math.random,conf
   for(const c of characters)if(!inert.has(c))second(c,next,rng,rules,next-t);
   for(const c of characters)settleBossRewards(c,next,rng);
   t=next;
+  // Yield only between fully completed seconds: all combat rolls, inventory
+  // changes and boss rewards for the tick have been resolved together.
+  // This avoids timing out and losing a whole 120-second D1 transaction.
+  if(Number.isFinite(budgetMs)&&t<end&&t-start>=4000&&performance.now()-budgetStart>=budgetMs){end=t;break;}
  }
  for(const c of save.characters){const dollMsg=renewDoll(c,end);if(dollMsg)log(c,dollMsg,'info',end);const msg=tickPolymorph(c,end,rng);if(msg)log(c,msg,'magic',end);}
  for(const c of save.characters)incomeLedgers.delete(c);bindDollCollections(save);save.at=end;
