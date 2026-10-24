@@ -1,0 +1,53 @@
+name: Deploy v198 offline settlement scheduler (test only)
+on:
+  workflow_dispatch:
+permissions:
+  contents: read
+concurrency:
+  group: eternal-idle-v198-offline-test-deploy
+  cancel-in-progress: false
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+    timeout-minutes: 25
+    env:
+      CLOUDFLARE_ACCOUNT_ID: 9bf17726da5739f20d3e5ec454ae3d91
+      CLOUDFLARE_API_TOKEN: ${{ secrets.CLOUDFLARE_API_TOKEN }}
+    steps:
+      - uses: actions/checkout@v4
+      - name: Verify deploy token
+        shell: bash
+        run: |
+          if [ -z "$CLOUDFLARE_API_TOKEN" ]; then echo "::error::Missing CLOUDFLARE_API_TOKEN"; exit 1; fi
+          curl --silent --show-error --fail-with-body \
+            -H "Authorization: Bearer $CLOUDFLARE_API_TOKEN" \
+            "https://api.cloudflare.com/client/v4/user/tokens/verify" \
+            -o /tmp/offline-token.json
+          python3 - <<'PY'
+          import json
+          data=json.load(open('/tmp/offline-token.json'))
+          assert data.get('success') and data.get('result',{}).get('status')=='active'
+          PY
+      - uses: pnpm/action-setup@v4
+        with:
+          version: 11.25.0
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '22'
+          cache: pnpm
+      - run: pnpm install --frozen-lockfile
+      - name: Assert isolated test database and one-minute cron
+        run: |
+          python3 - <<'PY'
+          import json
+          c=json.load(open('wrangler.offline-test.json'))
+          assert c['name']=='eternal-idle-v198-offline-test'
+          assert c['triggers']['crons']==['* * * * *']
+          d=c['d1_databases']
+          assert len(d)==1 and d[0]['binding']=='DB'
+          assert d[0]['database_name']=='eternal-idle-v198-test-db'
+          assert d[0]['database_id']=='827dd8d1-53b2-460c-9594-2435db824432'
+          print('Isolated D1 binding verified; no production database')
+          PY
+      - name: Deploy separate test-only cron Worker
+        run: pnpm exec wrangler deploy --config wrangler.offline-test.json
