@@ -1,0 +1,19 @@
+{
+  "id": "/",
+  "name": "永夜放置",
+  "short_name": "永夜",
+  "description": "永夜 v198 測試版",
+  "start_url": "/",
+  "scope": "/",
+  "display": "standalone",
+  "background_color": "#171a1c",
+  "theme_color": "#6b4d1a",
+  "icons": [
+    {
+      "src": "/favicon.svg",
+      "sizes": "any",
+      "type": "image/svg+xml",
+      "purpose": "any"
+    }
+  ]
+}
