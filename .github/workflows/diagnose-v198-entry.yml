@@ -37,7 +37,7 @@ jobs:
           python3 - <<'PYH'
           import os,json,time,urllib.request,urllib.error
           end=int(time.time()*1000)
-          payload={'queryId':'v198-entry-history','timeframe':{'from':end-3600000,'to':end},'limit':200,'dry':True,'parameters':{'view':'events','filters':[{'key':'$metadata.service','operation':'eq','type':'string','value':'eternal-idle-v198-test'}]}}
+          payload={'queryId':'v198-entry-history','timeframe':{'from':end-3600000,'to':end},'limit':200,'dry':True,'view':'events','parameters':{'needle':{'value':'/api/game'},'filters':[{'key':'$metadata.service','operation':'eq','type':'string','value':'eternal-idle-v198-test'}]}}
           url='https://api.cloudflare.com/client/v4/accounts/'+os.environ['CLOUDFLARE_ACCOUNT_ID']+'/workers/observability/telemetry/query'
           request=urllib.request.Request(url,data=json.dumps(payload).encode(),headers={'Authorization':'Bearer '+os.environ['CLOUDFLARE_API_TOKEN'],'Content-Type':'application/json'})
           try:
