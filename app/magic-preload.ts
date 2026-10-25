@@ -1,4 +1,4 @@
-import fx from '@/lib/game/magic-fx.json';
+import {magicVisual,magicVisualPaths} from '@/lib/game/magic-visuals';
 import raw from '@/lib/game/gamedata.json';
 const loading=new Set<string>();
 function preload(paths:string[]){
@@ -9,10 +9,9 @@ function preload(paths:string[]){
  }
 }
 function paths(skill:string,full:boolean){
- const name=(raw.skills as Record<string,{n:string}>)[skill]?.n;
- const config=(fx as Record<string,{frames?:string[];layers?:string[][];directions?:string[][]}>)[name];
+ const {config}=magicVisual({skill});
  if(!config)return [];
- return [config.frames||[],...(config.layers||[]),...(config.directions||[])].flatMap(frames=>full?frames:frames.slice(0,2));
+ return full?magicVisualPaths(config):config.frames.slice(0,2);
 }
 export function preloadSkillEffect(skill:string){preload(paths(skill,true));}
 // Predecode full animation sequences for learned offensive spells while the
@@ -24,6 +23,6 @@ export function preloadLearnedEffects(skills:string[]){
  const primary=skills.filter(id=>OFFENSIVE_FX.has(definitions[id]?.n));
  // Bound initial image requests on mobile; a cast still preloads its entire FX.
  const offensive=primary.flatMap(id=>paths(id,true)).slice(0,100);
- const utility=skills.filter(id=>!OFFENSIVE_FX.has(definitions[id]?.n)).flatMap(id=>paths(id,false));
+ const utility=skills.filter(id=>!OFFENSIVE_FX.has(definitions[id]?.n)).flatMap(id=>paths(id,false)).slice(0,Math.max(0,100-offensive.length));
  preload([...offensive,...utility]);
 }

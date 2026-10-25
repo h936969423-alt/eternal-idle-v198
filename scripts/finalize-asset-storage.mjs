@@ -29,6 +29,7 @@ export function finalizeAssetStorage() {
   const selected = new Set(JSON.parse(readFileSync('dist/client/assets/dragon381/deployment-manifest.json', 'utf8')).groups);
   function copy(dir) {
     for (const item of readdirSync(dir, { withFileTypes: true })) {
+      if (item.name === '.rsync-tmp') continue;
       const file = path.join(dir, item.name);
       const rel = path.relative(input, file).split(path.sep).join('/');
       if (rel.startsWith('client/assets/dragon381/sprites/')) {
@@ -48,3 +49,4 @@ export function finalizeAssetStorage() {
   renameSync(stage, input);
   console.log(`Independent asset storage: ${removed} verified files (${bytes} bytes) excluded from deployment.`);
 }
+

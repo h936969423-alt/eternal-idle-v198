@@ -3,6 +3,7 @@ import {mythicProcDefinition} from './lineagew-mythic-procs';
 import type {CombatEvent,Encounter,PetSnapshot} from './engine';
 import type {SummonEntity} from './summon-system';
 import raw from './gamedata.json';
+import {isFlyingMagic,magicFlightMs} from './magic-visuals';
 import {TRIPLE_FLIGHT_MS,ARROW_FLIGHT_MS} from './player-sprite-layout';
 import {manualReplayOffset,replayOffset,tripleReplayOffset,REPLAY_MAX_AHEAD_MS} from './replay-timing';
 export type PresentationEvent=CombatEvent&{visualHpDelta?:number};
@@ -59,16 +60,17 @@ export function enqueueCombatReplay<T extends CombatEvent>(queued:(T&{due:number
 export type BattleView={healthCredits?:Record<string,number>;actions?:(CombatEvent&{shownAt:number})[];petHurt?:CombatEvent;petEntities?:PetSnapshot[];summonEntities?:SummonEntity[];hp:number;mp:number;arena:Encounter[];target?:number;attack?:CombatEvent;magic?:CombatEvent;hurt?:CombatEvent;casts?:(CombatEvent&{shownAt:number})[];floats:CombatFloat[]};
 export type TimedCombatEvent=PresentationEvent&{due:number};
 /** Flight deadlines use the display clock and never move with a later network packet. */
-export function drainCombatPresentation(queue:TimedCombatEvent[],pending:TimedCombatEvent[],now:number,bow=false){
+export function drainCombatPresentation(queue:TimedCombatEvent[],pending:TimedCombatEvent[],now:number,bow=false,spellFlight?:(event:CombatEvent)=>number){
  const visible:PresentationEvent[]=[];
+ const flightFor=(event:CombatEvent)=>isFlyingMagic(event)?Math.max(140,Math.min(380,spellFlight?.(event)??magicFlightMs(320))):event.skill==='sk_elf_triple'?TRIPLE_FLIGHT_MS:ARROW_FLIGHT_MS;
  while((queue[0]?.due??Infinity)<=now||(pending[0]?.due??Infinity)<=now){
   const impactFirst=!!pending.length&&(!queue.length||pending[0].due<=queue[0].due);
   const next=(impactFirst?pending:queue).shift()!;
-  if(!impactFirst&&next.kind==='attack'&&(next.skill==='sk_elf_triple'||next.magicProjectile||bow&&!next.skill&&!next.weaponProc&&(!next.source||next.source==='physical'))){
-   const flight=next.skill==='sk_elf_triple'?TRIPLE_FLIGHT_MS:ARROW_FLIGHT_MS;
-   pending.push({...next,visualPhase:'impact',visualAt:now+flight,due:now+flight});
+  if(!impactFirst&&next.kind==='attack'&&(isFlyingMagic(next)||next.skill==='sk_elf_triple'||next.magicProjectile||bow&&!next.skill&&!next.weaponProc&&(!next.source||next.source==='physical'))){
+   const flight=flightFor(next);
+   pending.push({...next,visualPhase:'impact',visualAt:now+flight,visualFlightMs:flight,due:now+flight});
    pending.sort((a,b)=>a.due-b.due||a.seq-b.seq);
-   visible.push({...next,visualPhase:'launch',visualAt:now});continue;
+   visible.push({...next,visualPhase:'launch',visualAt:now,visualFlightMs:flight});continue;
   }
   // A W weapon proc belongs to its landed arrow, including each individual triple shot.
   if(!impactFirst&&next.weaponProc&&(mythicProcDefinition(next.skill)||lineageWEffectDefinition(next.skill))){
@@ -78,7 +80,7 @@ export function drainCombatPresentation(queue:TimedCombatEvent[],pending:TimedCo
   if(next.kind==='loot'||next.kind==='spawn'){
    const waiting=[...pending,...queue].filter(e=>e.kind==='attack'&&e.seq<next.seq&&(next.kind==='spawn'?e.slot===next.slot:e.uid===next.uid));
    if(waiting.length){
-    const due=Math.max(...waiting.map(e=>e.due+(e.visualPhase==='impact'?0:e.skill==='sk_elf_triple'?TRIPLE_FLIGHT_MS:bow?ARROW_FLIGHT_MS:0)),now+1);
+    const due=Math.max(...waiting.map(e=>e.due+(e.visualPhase==='impact'?0:isFlyingMagic(e)||e.skill==='sk_elf_triple'||bow?flightFor(e):0)),now+1);
     queue.push({...next,due});queue.sort((a,b)=>a.due-b.due||a.seq-b.seq);continue;
    }
   }

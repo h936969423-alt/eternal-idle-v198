@@ -50,3 +50,6 @@ next-env.d.ts
 
 # Python importer caches
 __pycache__/
+
+# Recreated from immutable, hash-checked upstream frames at build time.
+/public/assets/fx-import/

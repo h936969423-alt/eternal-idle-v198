@@ -2,6 +2,7 @@
 import { useEffect,useRef,useState } from 'react';
 import type { Character,CombatEvent } from '@/lib/game/engine';
 import raw from '@/lib/game/gamedata.json';
+import {magicFlightMs} from '@/lib/game/magic-visuals';
 import {baseItem} from '@/lib/game/gear';
 import {petSnapshot} from '@/lib/game/engine';
 import {replayHasGap,replayFrameExpired} from '@/lib/game/replay-timing';
@@ -31,7 +32,12 @@ export function useCombatReplay(c:Character|null,sound:boolean){
     if(current){seen.current=current.eventSeq||0;health.current=new Map((current.arena||[]).map(m=>[m.uid,m.hp]));setView({petEntities:petSnapshot(current,Date.now()),summonEntities:current.summonContract?.entities||[],hp:current.hp,mp:current.mp,target:current.arenaTarget||0,arena:(current.arena||[]).map(m=>({...m})),floats:[]});}
    }
    lastFrame=now;
-   const ready=drainCombatPresentation(queue.current,impacts.current,now,!!(raw.items as any)[baseItem(latest.current?.equipment.weapon?.id||'')]?.ranged);
+   const ready=drainCombatPresentation(queue.current,impacts.current,now,!!(raw.items as any)[baseItem(latest.current?.equipment.weapon?.id||'')]?.ranged,event=>{
+    const root=document.querySelector('.static-arena'),player=root?.querySelector(event.source==='doll'?'.doll-companion-art':'.character-sprite'),monster=root?.querySelector(`[data-monster-slot="${event.slot}"] .four-monster-art`);
+    if(!player||!monster)return magicFlightMs(320);
+    const p=player.getBoundingClientRect(),m=monster.getBoundingClientRect();
+    return magicFlightMs(Math.hypot(m.left+m.width/2-p.left-p.width*.6,m.top+m.height*.55-p.top-p.height*.55));
+   });
    for(const next of ready)if(soundOn.current&&latest.current&&now-(next.visualAt??(next as TimedCombatEvent).due??now)<=250)combatSound(latest.current,next);
    // One React update per animation frame, rather than one per attack plus a
    // cleanup update on every 60 FPS frame. Animation still uses rAF.
