@@ -52,3 +52,16 @@ const health=new Map([['mixed',100]]);const healing=prepareCombatHealth([make(1,
 assert.equal(healing[1].visualHpDelta,5);let hv={hp:100,mp:100,arena:[{uid:'mixed',id:'test',hp:100,maxHp:100,clock:0}],floats:[]};hv=applyCombatViewEvent(hv,healing[1],20);assert.equal(hv.arena[0].hp,100);assert.equal(hv.healthCredits.mixed,5);hv=applyCombatViewEvent(hv,{...healing[0],visualPhase:'impact'},200);assert.equal(hv.arena[0].hp,95);
 let pose={kind:'attack',at:0,duration:1200,pending:[]};pose=pushCue(pose,{seq:2,kind:'attack',at:50,immediate:true,durationMs:70},50,()=>1200,false,true);assert.equal(pose.at,0,'triple preserves normal attack animation origin');assert.equal(pose.duration,120);pose=pushCue(pose,{seq:3,kind:'attack',at:60,immediate:true},60,()=>1200,false,true);assert.equal(pose.at,0);assert.equal(pose.duration,120);assert.equal(pushCue({...pose,kind:'death'},{seq:4,kind:'attack',immediate:true},70,()=>90,false,true).kind,'death');
 console.log('PASS: mixed flight HP deltas, delayed lethal drops/replacement, regeneration during flight, no restart of active player swing, unchanged death priority.');
+
+
+// Lethal numbers survive replacement in their display slot for their full lifetime.
+const arenaSource=fs.readFileSync(require.resolve('../app/battle-arena.tsx'),'utf8');
+const floatFilter=arenaSource.match(/view\.floats\.filter\((f=>f\.kind==='attack'[^)]*)\)/)[1];
+const visibleInSlot=new Function('floats','slot','m',`return floats.filter(${floatFilter})`);
+assert.equal(visibleInSlot(bow.view.floats,0,bow.view.arena[0]).length,1,'lethal hit remains rendered after same-frame respawn');
+const {addCombatFloat}=require('../lib/game/combat-presentation.ts');
+const continued=addCombatFloat(bow.view.floats,{seq:99,at:1,kind:'attack',slot:0,uid:'new',damage:5,hp:100,mp:80},1250);
+assert.deepEqual(visibleInSlot(continued,0,bow.view.arena[0]).map(e=>e.lane),[0,1],'replacement hit cannot overlap the lethal number');
+assert.equal(visibleInSlot(continued,1,{}).length,0,'numbers stay in their own slot');
+assert.equal(addCombatFloat(continued,{seq:100,at:2,kind:'attack',slot:0,uid:'new',damage:5,hp:100,mp:80},2050).length,1,'expired numbers are still removed');
+console.log('PASS: lethal damage renders through respawn, new hits use a free lane, other slots and expiry remain isolated.');
