@@ -20,7 +20,7 @@ export default function MagicEffect({event,loopUntil}:{event:CombatEvent;loopUnt
   const parent=host.current?.parentElement,root=parent?.closest('.static-arena'),sprite=parent?.querySelector(config.self?'.character-sprite':'.four-monster-art'),caster=root?.querySelector('.character-sprite');
   const position=()=>{if(config.imported&&parent&&(sprite||config.atlas)){
    const box=parent.getBoundingClientRect(),r=sprite?.getBoundingClientRect()||{left:box.left+box.width*.5,top:box.top+box.height*.6,width:0,height:0},p=caster?.getBoundingClientRect();
-   const facing=magicDirection(config,r.left+r.width*.5-(p?p.left+p.width*.6:r.left),r.top+r.height*.55-(p?p.top+p.height*.55:r.bottom));
+   const facing=magicDirection(config,r.left+r.width*.5-(p?p.left+p.width*.6:r.left),r.top+r.height*.55-(p?p.top+p.height*.55:r.top+r.height));
    setPlacement(config.atlas?targetSpellLayout(config.atlas,box,r,root?.getBoundingClientRect()||box,config.targetVc):{left:r.left-box.left+r.width*.5,top:r.top-box.top+r.height*(config.oh ? .15 : config.targetVc??.55),...facing});
   }};
   position();
