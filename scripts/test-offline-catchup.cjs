@@ -10,6 +10,18 @@ function fixture(level=60,zone='talking_island'){
  const c=s.characters[0];c.lv=level;c.zone=zone;c.arenaZone=zone;c.arena=[];c.running=true;c.gold=0;c.xp=0;c.hp=e.stats(c,s.at).maxHp;return s;
 }
 try{
+ // Regression: a RESIDENT monster survives an offline interval. Its clocks are seconds.
+ const resident=fixture();e.ensureArena(resident.characters[0],()=>.5,resident.at);
+ e.advance(resident,resident.at+60000,()=>.99);
+ assert.equal(resident.characters[0].atkClock,0);assert.ok(resident.characters[0].arena.every(m=>m.clock===0));
+ const serialized=JSON.parse(JSON.stringify(sync.persistedSave(resident)));const began=performance.now();
+ e.advance(serialized,serialized.at+1000,()=>.5);assert.ok(performance.now()-began<1000);assert.ok(serialized.characters[0].events.length<=160);
+ // Repair already persisted bad clocks without deleting characters, inventories or rewards.
+ const broken=fixture();e.ensureArena(broken.characters[0],()=>.5,broken.at);const bc=broken.characters[0];
+ bc.atkClock=bc.mobClock=1792910000000;for(const m of bc.arena){m.clock=1792910000000;m.magicClocks={test:1792910000000};}
+ bc.gold=98765;bc.bag.potion_heal=1000;const gap=2,predicted=Math.floor((1-(gap-bc.arena[0].clock))/gap)+1;assert.ok(predicted>1e9,'old code would allocate billions of attacks');
+ e.advance(broken,broken.at,()=>.5);assert.equal(bc.atkClock,0);assert.equal(bc.mobClock,0);assert.ok(bc.arena.every(m=>m.clock===0&&m.magicClocks.test===0));assert.equal(bc.gold,98765);assert.equal(bc.bag.potion_heal,1000);
+ e.advance(broken,broken.at+1000,()=>.5);assert.ok(bc.arena.every(m=>m.clock>=0&&m.clock<86400));assert.ok(bc.events.length<=160);
  // CPU-limited ONLINE simulation resumes exactly; it must not become arithmetic offline income.
  const online=fixture();e.ensureArena(online.characters[0],()=>.5,online.at);const reference=structuredClone(online),finish=online.at+4000;
  const full=e.advance(reference,finish,()=>.5);

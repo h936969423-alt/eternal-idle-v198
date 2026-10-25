@@ -40,6 +40,16 @@ try:
  again=req('/api/game');assert again['save']['offlineIncome']['id']==receipt['id'];assert again['report']['offline']==False
  req('/api/game',{'type':'offlineIncomeDismiss','id':receipt['id']});assert req('/api/game')['save']['offlineIncome']['seen']==True
  req('/api/account',{'logout':True});cookie='';req('/api/account',{'username':username,'password':password});reloaded=req('/api/game');assert reloaded['save']['active']==cid;assert reloaded['save']['offlineIncome']['id']==receipt['id'];assert reloaded['save']['offlineIncome']['seen']==True
+ # A save affected by the previous release must recover on real HTTP selection.
+ row=db.execute('SELECT payload FROM game_saves WHERE owner=?',(owner,)).fetchone();damaged=json.loads(row[0]);dc=damaged['characters'][0]
+ assert dc['arena'],'resident monsters are required to exercise the old failure'
+ dc['running']=True;dc['atkClock']=dc['mobClock']=1792910000000
+ for monster in dc['arena']:
+  monster['clock']=1792910000000;monster['magicClocks']={'test':1792910000000}
+ damaged['at']=int(time.time()*1000)-1000
+ db.execute('UPDATE game_saves SET payload=?,revision=revision+1 WHERE owner=?',(json.dumps(damaged),owner));db.commit()
+ repaired=req('/api/game',{'type':'select','id':cid});assert repaired['save']['active']==cid
+ fixed=repaired['save']['characters'][0];assert fixed['gold']>=72123;assert fixed['atkClock']<86400;assert all(m['clock']<86400 for m in fixed['arena'])
  for _ in range(5):
   current=req('/api/game');character=current['save']['characters'][0]
   query=urllib.parse.urlencode({'character':cid,'after':character.get('eventSeq',0),'settings':current['sync']['settingsKey']})

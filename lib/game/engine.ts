@@ -1,3 +1,4 @@
+import {combatClock,repairCombatClocks} from './combat-clock';
 import {calculateOfflineGains,MAP_EFFICIENCY,DEFAULT_OFFLINE_EFFICIENCY,MAX_OFFLINE_SECONDS} from './offline-gains';
 import {lineageWProjectileStrike} from './lineagew-projectile';
 import {LW_MYTHIC_FIELDS,mythicMonsterMagicDamage,mythicHealing,applyWaterErosion,waterErosionActive,mythicCancelHit} from './lineagew-mythic-effects';
@@ -513,11 +514,11 @@ function second(c:Character,now:number,rng:()=>number,rules:WorldRules,duration=
  if(Math.floor(now/1000)>Math.floor(begin/1000))for(const k of [...new Set([...cfg.buffs,...(c.autoConfig?[]:c.autoSkills)])]){const sk=DATA.skills[k];if(sk?.type==='buff'&&c.buffs[k]?.until<=begin||sk?.type==='buff'&&!c.buffs[k]){try{cast(c,k,begin,rng,true);}catch{}}}
 
  tickSpecialCombat(c,begin-duration,begin,rng);if(!c.running)return;
- const timeline:{time:number;poisonTick?:boolean;healTick?:boolean;autoSpell?:boolean;slot?:number;uid?:string;respawn?:boolean;monsterMagic?:string;petName?:string;petMagic?:boolean;summonUid?:string}[]=[];const interval=b.attackInterval;c.atkClock=Math.min(c.atkClock,interval-1e-6);for(let t=interval-c.atkClock;t<=dt+1e-9;t+=interval)timeline.push({time:Math.max(0,t)});c.atkClock=(c.atkClock+dt)%interval;
+ const timeline:{time:number;poisonTick?:boolean;healTick?:boolean;autoSpell?:boolean;slot?:number;uid?:string;respawn?:boolean;monsterMagic?:string;petName?:string;petMagic?:boolean;summonUid?:string}[]=[];const interval=b.attackInterval;c.atkClock=combatClock(c.atkClock,interval);for(let t=interval-c.atkClock;t<=dt+1e-9;t+=interval)timeline.push({time:Math.max(0,t)});c.atkClock=(c.atkClock+dt)%interval;
  for(const name of petNamesOut(c)){const p=ensurePet(c,name,begin),d=petStats(c,name,p);if(p.hp!<=0)continue;let next=Math.max(begin,p.nextAt||begin);while(next<=now){timeline.push({time:(next-begin)/1000,petName:name});next+=d.atkItv*100*(p.effects?.slow?.until!>next?2:1);}p.nextAt=next;if(d.castItv&&Math.max(begin,p.castAt||begin)<=now)timeline.push({time:(Math.max(begin,p.castAt||begin)-begin)/1000,petName:name,petMagic:true});}
  for(const e of c.summonContract?.entities||[]){if(e.hp<=0)continue;const interval=summonNumbers(c,e.form,b).interval;for(let at=Math.max(begin,e.nextAt);at<=now;at+=interval)timeline.push({time:(at-begin)/1000,summonUid:e.uid});e.nextAt=Math.max(begin,e.nextAt);while(e.nextAt<=now)e.nextAt+=interval;}
  if(cfg.attack||cfg.opener||cfg.heal||cfg.convert)for(let at=(Math.floor(begin/AUTO_SPELL_CHECK_MS)+1)*AUTO_SPELL_CHECK_MS;at<=now;at+=AUTO_SPELL_CHECK_MS)timeline.push({time:(at-begin)/1000,autoSpell:true});
- c.arena.forEach((m,slot)=>{if(m.hp<=0){if(!playableBoss(c.zone)&&m.respawnAt&&m.respawnAt<=now)timeline.push({time:Math.max(0,(m.respawnAt-begin)/1000),slot,uid:m.uid,respawn:true});return;}const poison=m.effects?.poison;if(poison?.tickMs&&poison.nextAt)for(let at=poison.nextAt;at<=now&&at<=poison.until;at+=Math.max(1,poison.tickMs))timeline.push({time:Math.max(0,(at-begin)/1000),slot,uid:m.uid,poisonTick:true});const data=monsterData(c,m.id,m),gap=Math.max(.4,(data.atkSpd||2)*(m.effects?.slow?.until!>begin?1+m.effects!.slow.value/100:1));if(!data.noAttack)for(let t=gap-m.clock;t<=dt+1e-9;t+=gap)timeline.push({time:Math.max(0,t),slot,uid:m.uid});m.clock=(m.clock+dt)%gap;m.magicClocks||={};for(const key of magicKeys(data)){const magic=magicData(data,key);if(!magic||!(magic.cd>0))continue;const clock=m.magicClocks[key]||0;for(let t=magic.cd-clock;t<=dt+1e-9;t+=magic.cd)timeline.push({time:Math.max(0,t),slot,uid:m.uid,monsterMagic:key});m.magicClocks[key]=(clock+dt)%magic.cd;}});timeline.sort((a,b)=>a.time-b.time||Number(!!b.respawn)-Number(!!a.respawn)||Number(!!b.autoSpell)-Number(!!a.autoSpell)||Number(!!b.petMagic)-Number(!!a.petMagic));
+ c.arena.forEach((m,slot)=>{if(m.hp<=0){if(!playableBoss(c.zone)&&m.respawnAt&&m.respawnAt<=now)timeline.push({time:Math.max(0,(m.respawnAt-begin)/1000),slot,uid:m.uid,respawn:true});return;}const poison=m.effects?.poison;if(poison?.tickMs&&poison.nextAt)for(let at=poison.nextAt;at<=now&&at<=poison.until;at+=Math.max(1,poison.tickMs))timeline.push({time:Math.max(0,(at-begin)/1000),slot,uid:m.uid,poisonTick:true});const data=monsterData(c,m.id,m),gap=Math.max(.4,(data.atkSpd||2)*(m.effects?.slow?.until!>begin?1+m.effects!.slow.value/100:1));m.clock=combatClock(m.clock,gap);if(!data.noAttack)for(let t=gap-m.clock;t<=dt+1e-9;t+=gap)timeline.push({time:Math.max(0,t),slot,uid:m.uid});m.clock=(m.clock+dt)%gap;m.magicClocks||={};for(const key of magicKeys(data)){const magic=magicData(data,key);if(!magic||!(magic.cd>0))continue;const clock=combatClock(m.magicClocks[key],magic.cd);for(let t=magic.cd-clock;t<=dt+1e-9;t+=magic.cd)timeline.push({time:Math.max(0,t),slot,uid:m.uid,monsterMagic:key});m.magicClocks[key]=(clock+dt)%magic.cd;}});timeline.sort((a,b)=>a.time-b.time||Number(!!b.respawn)-Number(!!a.respawn)||Number(!!b.autoSpell)-Number(!!a.autoSpell)||Number(!!b.petMagic)-Number(!!a.petMagic));
  if(c.healingOverTime)for(let at=c.healingOverTime.nextAt;at<=now;at+=3000)timeline.push({time:Math.max(0,(at-begin)/1000),healTick:true});timeline.sort((a,b)=>a.time-b.time);
  for(const turn of timeline){if(!c.running)break;const at=begin+Math.round(turn.time*1000);if(turn.healTick){tickHealingOverTime(c,at);continue;}if(!mapIsOpen(c.zone,c.mapAccess,at)){ensureArena(c,rng,at);break;}if(turn.respawn){const m=c.arena[turn.slot!];if(m.uid===turn.uid&&m.hp<=0)replacement(c,turn.slot!,rng,at);syncTarget(c);continue;}if(turn.poisonTick){const target=c.arena[turn.slot!],poison=target?.effects?.poison;if(target?.uid===turn.uid&&target.hp>0&&poison?.tickMs&&poison.nextAt&&poison.nextAt<=at&&at<=poison.until){poison.nextAt+=poison.tickMs;const saved=c.arenaTarget;c.arenaTarget=turn.slot!;syncTarget(c);damageMonster(c,poison.value,at,rng,'sk_poison_curse','poison');c.arenaTarget=saved;syncTarget(c);}continue;}recoverArena(c,at);if(turn.autoSpell){autoCastSpells(c,cfg,at,rng);continue;}const current=stats(c,at);
  if(turn.summonUid){const entity=c.summonContract?.entities.find(s=>s.uid===turn.summonUid);if(entity)summonAttack(c,entity,at,rng);}
@@ -567,8 +568,8 @@ export function settleOfflineGains(save:Save,now:number,rng:()=>number=Math.rand
   if(isDead)defeat(hunter,now,rng);
  }
  for(const c of save.characters){
-  c.events=[];c.atkClock=now;c.mobClock=now;
-  for(const m of c.arena||[]){m.clock=now;for(const key of Object.keys(m.magicClocks||{}))m.magicClocks![key]=now;}
+  c.events=[];c.atkClock=0;c.mobClock=0;
+  for(const m of c.arena||[]){m.clock=0;for(const key of Object.keys(m.magicClocks||{}))m.magicClocks![key]=0;}
   event(c,'state',now);
  }
  save.at=Math.max(save.at,now);delete save.catchup;
@@ -579,6 +580,7 @@ export function settleOfflineGains(save:Save,now:number,rng:()=>number=Math.rand
 /** Online polling retains exact combat; offline intervals use arithmetic above. */
 export function advance(save:Save,now=Date.now(),rng:()=>number=Math.random,config:WorldRules|WorldConfig=DEFAULT_WORLD_RULES,budgetMs=Infinity){
  if(!Number.isFinite(now)||!Number.isFinite(save.at))throw Error('無效的存檔時間');
+ for(const c of save.characters)repairCombatClocks(c);
  if(now<=save.at)return {seconds:0,kills:0,gold:0,xp:0,drops:{},pendingSeconds:0,offline:false};
  if(save.characterDeletions){bindBossRooms(save);bindDollCollections(save);bindPolymorphUnlocks(save);settleCharacterDeletions(save,now);}
  if(save.catchup?.mode!=='online'&&(save.catchup||now-save.at>30000))return settleOfflineGains(save,now,rng);
