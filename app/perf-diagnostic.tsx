@@ -90,7 +90,7 @@ export default function PerfDiagnostic(){
         frameMs.current=0;
         lastSampleAt.current=now;
         if(elapsed>=20000){
-          const all=[...samplesRef.current,sample];
+          const all=samplesRef.current;
           const result={
             title:'永夜放置 20 秒效能偵測',
             startedAt:new Date(Date.now()-elapsed).toISOString(),
