@@ -8,6 +8,15 @@ const {pushCue,advanceMotion,durationFor}=game('animation-clock');
 const {playerCues}=game('animation-cues');
 const {enqueueCombatReplay,drainCombatPresentation}=game('combat-presentation');
 const duration=k=>durationFor(k,12,1.2,1.4);
+assert.equal(durationFor('skill',8,0,1.2),1000,'Sunrise cast runs at 125ms/frame for an 8-frame cast');
+assert.equal(durationFor('skill',8,0,.1),360,'Sunrise fast casts never run below 45ms/frame');
+let queued={kind:'skill',at:0,duration:1000,pending:[]};
+queued=pushCue(queued,{seq:101,kind:'attack',at:250,immediate:true},250,duration,false,true);
+assert.equal(queued.kind,'skill','local attack waits for the cast pose');
+assert.equal(queued.pending.length,1);
+queued=advanceMotion(queued,1000,duration);
+assert.equal(queued.kind,'attack','pending local attack begins as soon as casting ends');
+assert.equal(queued.at,1000);
 // Reproduce the long cast pose covering a normal attack which already landed.
 let state={kind:'skill',at:0,duration:1400,pending:[]};
 state=pushCue(state,{seq:2,kind:'attack',at:200},200,duration,false,true);
