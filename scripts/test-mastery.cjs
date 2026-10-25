@@ -2,8 +2,16 @@ const assert=require('node:assert/strict'),fs=require('node:fs'),path=require('n
 const root=path.resolve(__dirname,'..'),dir=fs.mkdtempSync(path.join(require('node:os').tmpdir(),'mastery-check-'));
 fs.writeFileSync(path.join(dir,'package.json'),'{"type":"commonjs"}');
 for(const name of fs.readdirSync(path.join(root,'lib/game'))){const from=path.join(root,'lib/game',name);if(name.endsWith('.json'))fs.copyFileSync(from,path.join(dir,name));else if(name.endsWith('.ts'))fs.writeFileSync(path.join(dir,name.replace(/\.ts$/,'.js')),ts.transpileModule(fs.readFileSync(from,'utf8'),{compilerOptions:{module:ts.ModuleKind.CommonJS,target:ts.ScriptTarget.ES2022,esModuleInterop:true}}).outputText);}
+// Recipes are tested with isolated archived-material fixtures; live catalog gaps
+// are tested separately below and must reject resource consumption.
+const liveCatalog=require('../lib/game/gamedata.json').items;
+const recipeData=require(path.join(dir,'mastery-data.js'));
+const archive={...require('../lib/game/lineagew-retired.json').items,...require('../lib/game/lineagew-hl-retired.json').items,...require('../lib/game/lineagew-mythic-retired.json').items};
+const requiredNames=[...new Set([...recipeData.MASTERIES.flatMap(d=>d.steps.flatMap(s=>[...(s.feed||[]),...s.materials.filter(m=>!m.bound).map(m=>m.name)])),'武士刀','鎖子甲破壞者','瑪那魔杖','黑暗雙刀'])];
+const additions={};for(const name of requiredNames){if(Object.values(liveCatalog).some(i=>i.n===name))continue;const original=Object.values(archive).find(i=>i.n===name);assert.ok(original,'missing immutable material definition: '+name);additions['qa_mastery_'+Object.keys(additions).length]={...original};}
+require('./item-fixtures.cjs')(dir,additions);
 const e=require(path.join(dir,'engine.js')),m=require(path.join(dir,'mastery-system.js')),d=require(path.join(dir,'mastery-data.js')),sum=require(path.join(dir,'summon-system.js')),now=1000000;
-function character(cls='knight'){const b=e.BASES[cls],allocation={};let left=b.pts;for(const k of ['str','dex','con','int','wis','cha']){allocation[k]=Math.min(left,20-b[k]);left-=allocation[k];}return e.createCharacter('精通測試',cls,'m',allocation,now);}
+function character(cls='knight'){const b=e.BASES[cls],allocation={};let left=b.pts;for(const k of ['str','dex','con','int','wis','cha']){allocation[k]=Math.min(left,20-b[k]);left-=allocation[k];}const c=e.createCharacter('精通測試',cls,'m',allocation,now);c.bag[c.equipment.weapon.id]||=1;return c;}
 function give(c,name,n=1,en=0,blessed=false){const id=Object.keys(e.DATA.items).find(k=>e.DATA.items[k].n===name);assert.ok(id,name);const key=id+'@'+crypto.randomUUID();c.bag[key]=n;c.enh[key]=en;if(blessed){c.affixes||={};c.affixes[key]={key:'families',name:'',value:0,blessing:'blessed'};}return key;}
 function state(c,id,lv,choice){c.masteries||={version:1,entries:{}};c.masteries.entries[id]={lv,xp:[],choice,auraUntil:0,resonanceUntil:0};return c.masteries.entries[id];}
 try{
@@ -33,5 +41,11 @@ try{
  assert.equal(m.masteryMaterialCount(spare,material,pp),2);assert.deepEqual(m.masteryBreakPreview(spare,'d_assassin').equipment,[]);m.masteryAction(spare,{type:'masteryBreak',id:'d_assassin'},now);assert.equal(spare.bag[copyBlade],undefined);assert.equal(spare.bag[held],1);assert.equal(spare.equipment.weapon.id,held,'spare copies are consumed before the worn weapon');
  const stack=character('dark'),stackp=state(stack,'d_assassin',0),stackBlade=give(stack,'黑暗雙刀',2,7);stackp.xp=[5000];stack.equipment.weapon={id:stackBlade,en:7};m.masteryAction(stack,{type:'masteryBreak',id:'d_assassin'},now);assert.equal(stack.bag[stackBlade],1);assert.equal(stack.equipment.weapon.id,stackBlade);
  const missing=character('dark'),mp=state(missing,'d_assassin',1),only=give(missing,'黑暗雙刀',1,7);mp.xp=[5000];missing.equipment.weapon={id:only,en:7};assert.throws(()=>m.masteryAction(missing,{type:'masteryBreak',id:'d_assassin',equippedMaterials:[only]},now),/缺少/);assert.equal(missing.bag[only],1);assert.equal(mp.lv,1);assert.equal(missing.equipment.weapon.id,only);
+ // A renamed instance stays selectable. Missing live recipe materials cannot
+ // consume XP, bag items, gold, or alter existing progress and aura.
+ const instance=character(),weapon=instance.equipment.weapon.id,instanceKey=weapon+'@qa';instance.bag[instanceKey]=1;assert.ok(m.masteryWeaponKeys(instance).includes(instanceKey));instance.locked=[instanceKey];assert.ok(!m.masteryWeaponKeys(instance).includes(instanceKey));
+ const removed={};for(const id of Object.keys(additions)){removed[id]=e.DATA.items[id];delete e.DATA.items[id];}
+ try{const guarded=character(),definition=d.MASTERIES.find(def=>m.masteryUnavailableMaterials(guarded,def).length&&def.cls===guarded.cls);assert.ok(definition);guarded.gold=999999;const before=JSON.stringify(guarded);assert.throws(()=>m.masteryAction(guarded,{type:'masteryFeed',id:definition.id,track:0,count:1},now),/配方材料未開放/);assert.equal(JSON.stringify(guarded),before);assert.throws(()=>m.masteryAction(guarded,{type:'masteryBreak',id:definition.id},now),/配方材料未開放/);assert.equal(JSON.stringify(guarded),before);}finally{Object.assign(e.DATA.items,removed);}
  console.log('Mastery checks passed: all 12 recipes, protections, atomic consumption, class gates, aura expiry/cap, binding, resonance, sharing, switching, summon and mana effects, saved actions.');
 }finally{fs.rmSync(dir,{recursive:true,force:true});}
+

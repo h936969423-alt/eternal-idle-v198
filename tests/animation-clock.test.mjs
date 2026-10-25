@@ -43,3 +43,32 @@ test('monster pending attack queue remains bounded',()=>{
  for(let i=1;i<=10;i++)state=pushCue(state,cue(i,'attack'),i*10,duration,true,false);
  assert.deepEqual(state.pending.map(e=>e.seq),[7,8,9,10]);
 });
+
+test('new monster attack cannot restart a swing or overtake pending attacks',()=>{
+ let state={kind:'spawn',at:0,duration:500,pending:[]};
+ for(let i=1;i<=3;i++)state=pushCue(state,cue(i,'attack'),i*50,duration,true);
+ state=advanceMotion(state,501,duration);
+ state=pushCue(state,cue(4,'attack'),600,duration,true);
+ assert.equal(state.at,501,'active swing keeps its original clock');
+ assert.deepEqual(state.pending.map(e=>e.seq),[2,3,4]);
+ for(const [now,expected] of [[1001,[3,4]],[1501,[4]],[2001,[]]]){
+  state=advanceMotion(state,now,duration);
+  assert.deepEqual(state.pending.map(e=>e.seq),expected);
+ }
+});
+
+test('cue arriving between animation frames starts the oldest queued attack first',()=>{
+ let state={kind:'spawn',at:0,duration:500,pending:[cue(1,'attack'),cue(2,'attack')]};
+ state=pushCue(state,cue(3,'attack'),600,duration,true);
+ assert.equal(state.kind,'attack');
+ assert.deepEqual(state.pending.map(e=>e.seq),[2,3]);
+});
+
+test('death discards the whole monster attack backlog',()=>{
+ const state={kind:'attack',at:0,duration:500,pending:[cue(1,'attack')]};
+ const dead=pushCue(state,cue(2,'death'),100,duration,true);
+ assert.equal(dead.kind,'death');
+ assert.deepEqual(dead.pending,[]);
+ assert.deepEqual(advanceMotion(dead,5000,duration),dead);
+});
+

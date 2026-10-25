@@ -2,6 +2,7 @@
 import type {CSSProperties} from 'react';
 import {itemTextColor,itemRarity,RARITY_COLORS} from '@/lib/game/loot-appearance';
 import {startGamePolling} from '@/lib/game/client-poll';
+import {parseRecoveryStatus,type RecoveryStatus} from '@/lib/game/recovery-status';
 import ItemIcon from './item-icon';
 import ItemLabel from './item-label';
 import {ItemAppearanceProvider} from './item-appearance-context';
@@ -95,7 +96,7 @@ function Game({signedIn,signIn,gmAllowed=false}:{signedIn:boolean;signIn:string;
  const [vendor,setVendor]=useState('');
  const [volume,setVolume]=useState(70); const [audio,setAudio]=useState(false),[offline,setOffline]=useState<any>(null),[savedAt,setSavedAt]=useState(''),[threshold,setThreshold]=useState(70);
  const [pendingSeconds,setPendingSeconds]=useState(0),[settledSeconds,setSettledSeconds]=useState(0);
- const [recovery,setRecovery]=useState<{available:boolean;pending:boolean;characters:{id:string;name:string;level:number;running:boolean}[];remainingSeconds:number|null}|null>(null);
+ const [recovery,setRecovery]=useState<RecoveryStatus|null>(null);
  const catchupPercent=pendingSeconds?Math.min(99,Math.max(0,Math.floor(settledSeconds/Math.max(1,settledSeconds+pendingSeconds)*100))):100;
  const busy=actionBusy||pendingSeconds>0;
  const syncState=useRef({running:false,failures:0,pending:false});
@@ -114,7 +115,7 @@ function Game({signedIn,signIn,gmAllowed=false}:{signedIn:boolean;signIn:string;
  const request=useCallback(async(a?:any)=>{if(a&&syncState.current.pending)return null;if(a){pollAbort.current?.abort();if(a.type==='cast'){preloadSkillEffect(a.skill);setPendingSkill(a.skill);}pendingActions.current++;setBusy(true);}try{return await requestQueue.current.run(async()=>{if(!a&&pendingActions.current)return null;const controller=a?null:new AbortController();if(controller)pollAbort.current=controller;try{const {res,data:r}=await fetchGameState(a,fetch,!a&&!acceptedSave.current?30000:undefined,syncCursor.current,controller?.signal);if(controller?.signal.aborted)return null;if(res.status===401)window.dispatchEvent(new Event('game-session-expired'));if(!res.ok){if(r.save)accept(r);throw new Error(r.error||'連線失敗');}syncState.current.failures=0;setRecovery(null);accept(r);return r;}catch(e){if(controller?.signal.aborted)return null;const m=e instanceof Error?e.message:'連線失敗';if(a)toast.error(m);else{syncState.current.failures++;if(syncState.current.failures>=3){setError(m);
  // Diagnose the saved character without invoking CPU-heavy offline simulation.
  // This is read-only and does not acknowledge, alter or reaward any income.
- try{const response=await fetch('/api/game?mode=recovery',{cache:'no-store'});if(response.ok){const status=await response.json();setRecovery(status);}}catch{}
+ try{const response=await fetch('/api/game?mode=recovery',{cache:'no-store'});if(response.ok){setRecovery(parseRecoveryStatus(await response.json()));}}catch{}
  }}return null;}finally{if(pollAbort.current===controller)pollAbort.current=null;setLoading(false);}},!!a);}finally{if(a){pendingActions.current--;setBusy(pendingActions.current>0);if(a.type==='cast')setPendingSkill(current=>current===a.skill?null:current);}}},[accept]);
  const act=useCallback(async(a:any)=>{if(c&&['useScroll','potion'].includes(a.type)&&D.items[a.item]?.eff==='poly'&&hasPolyControl(c)){if(c.locked?.includes(a.item)){toast.error('請先解除卷軸鎖定');return null;}setInspect(null);setPolyScroll(a.item);return null;}return await request(a);},[request,c]);
  const leaveWorldBoss=useCallback(async()=>{if(c&&playableBoss(c.zone)){const result=await act({type:'zone',zone:'town_silver_knight'});if(!result)return;}setHuntView('lobby');setTab('hunt');},[c?.zone,act]);
@@ -177,3 +178,4 @@ function Game({signedIn,signIn,gmAllowed=false}:{signedIn:boolean;signIn:string;
 }
 
 export default function AuthenticatedGame(props:{signedIn:boolean;signIn:string;gmAllowed?:boolean}){return <GameLogin signedIn={props.signedIn} signIn={props.signIn}><Game {...props}/></GameLogin>;}
+

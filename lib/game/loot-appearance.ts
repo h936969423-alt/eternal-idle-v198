@@ -3,6 +3,9 @@ import advancedEquipment from './advanced-equipment-reference.json';
 import normalEquipment from './normal-equipment-reference.json';
 import {defaultEquipmentRank} from './equipment-ranks';
 import raw from './gamedata.json';
+import retiredNormal from './lineagew-retirement-index.json';
+import retiredHigh from './lineagew-hl-retirement-index.json';
+import retiredMythic from './lineagew-mythic-retirement-index.json';
 export type ItemRarity='normal'|'advanced'|'rare'|'hero'|'legend'|'mythic'|'relic';
 export const ITEM_RARITY_OPTIONS=['normal','advanced','rare','hero','legend','mythic'] as const;
 export type LootEffect='off'|'text'|'sparkles';
@@ -17,9 +20,10 @@ export const DEFAULT_LOOT_STYLE={normal:{effect:'off',position:'monster',duratio
 for(const rarity of ['advanced','rare','hero','mythic'] as ItemRarity[])DEFAULT_LOOT_STYLE[rarity]={...DEFAULT_LOOT_STYLE[rarity==='advanced'||rarity==='rare'?'normal':'legend']};
 export function initialLootAppearance():LootAppearanceConfig{return {revision:0,defaults:structuredClone(DEFAULT_LOOT_STYLE),items:{},history:[]};}
 const items=raw.items as Record<string,any>;
+const archivedNames:Record<string,{n:string}>={...retiredNormal.items,...retiredHigh.items,...retiredMythic.items};
 export function itemRarity(id:string,config?:Pick<LootAppearanceConfig,'items'>):ItemRarity{const base=id.split('@')[0],i=items[base];return config?.items[base]?.rarity||(Object.hasOwn(rareEquipment.items,base)?'rare':Object.hasOwn(advancedEquipment.items,base)?'advanced':Object.hasOwn(normalEquipment.items,base)?'normal':i?.relic?'relic':i?.legend?'legend':defaultEquipmentRank(base,i));}
 export function lootAppearance(id:string,config?:LootAppearanceConfig){const base=id.split('@')[0],rarity=itemRarity(base,config),override=config?.items[base]||{};return {rarity,style:{...DEFAULT_LOOT_STYLE[rarity],...config?.defaults[rarity],...override}};}
-export function itemDisplayName(id:string,config?:Pick<LootAppearanceConfig,'items'>){const base=id.split('@')[0];return config?.items[base]?.name||items[base]?.n||base;}
+export function itemDisplayName(id:string,config?:Pick<LootAppearanceConfig,'items'>){const base=id.split('@')[0];return config?.items[base]?.name||items[base]?.n||archivedNames[base]?.n||base;}
 export function itemTextColor(id:string,config?:Pick<LootAppearanceConfig,'items'>){const i=items[id.split('@')[0]];return config?.items[id.split('@')[0]]?.color||(i?.lwCatalogId?RARITY_COLORS[itemRarity(id,config)]:undefined);}
 export function itemDescription(id:string,config?:Pick<LootAppearanceConfig,'items'>){const base=id.split('@')[0];return config?.items[base]?.description??(typeof items[base]?.d==='string'?items[base].d:'');}
 export function lootText(notice:Pick<LootNotice,'style'|'name'|'quantity'>){return notice.style.template.replace(/\{name\}/g,notice.name).replace(/\{count\}/g,String(notice.quantity));}
@@ -30,3 +34,4 @@ export function validateLootDefaults(value:unknown):Record<ItemRarity,LootStyle>
 
 /** Frames follow classification, independently of custom text colors. */
 export function itemFrameColor(id:string,config?:Pick<LootAppearanceConfig,'items'>){return RARITY_COLORS[itemRarity(id,config)];}
+

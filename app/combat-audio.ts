@@ -7,7 +7,7 @@ export function stopCombatVoices(){generation++;for(const source of active){try{
 export function unlockCombatAudio(on:boolean){
  if(enabled!==on)generation++;enabled=on;if(!on){stopCombatVoices();return;}
  const C=window.AudioContext||(window as any).webkitAudioContext;
- if(C&&!context){context=new C();masterGain=context!.createGain();masterGain.gain.value=masterVolume;masterGain.connect(context!.destination);document.addEventListener('visibilitychange',()=>{if(document.hidden)stopVoices();});}
+ if(C&&!context){context=new C();masterGain=context!.createGain();masterGain.gain.value=masterVolume;masterGain.connect(context!.destination);document.addEventListener('visibilitychange',()=>{if(document.hidden)stopCombatVoices();});}
  void context?.resume().catch(()=>{});
 }
 function play(path:string,volume=.3){
@@ -36,7 +36,7 @@ export function combatSound(c:Character,e:CombatEvent){
    if(!e.miss&&e.damage){number(mapped(S.MOB_HURT_SFX,name),.2);if(e.mobHp===0)number(S.MOB_KILL_SFX[name]||57,.25);}
    return;
   }
-  if(e.skill){if(e.visualPhase!=='impact')spell(e,c.id);}
+  if(e.skill){spell(e,c.id);}
   else if(e.source==='doll'){}
   else if(e.source==='pet')number(mapped(S.MOB_ATTACK_SFX,e.petName||e.pet||''),.25);
   else if(e.source==='summon')number(mapped(S.MOB_ATTACK_SFX,e.summonName||e.pet||''),.25);

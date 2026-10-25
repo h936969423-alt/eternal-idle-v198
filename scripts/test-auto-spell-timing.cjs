@@ -13,7 +13,7 @@ function fixture(cls='elf'){
  c.hp=e.stats(c,time).maxHp;c.mp=e.stats(c,time).maxMp;return {s,c,arrow};
 }
 const casts=(c,id)=>c.events.filter(x=>x.kind==='magic'&&x.skill===id);
-const run=(s,end)=>e.advance(s,end,()=>.5);
+const run=(s,end)=>{let report;do{report=e.advance(s,end,()=>.5);}while(report.pendingSeconds);return report;};
 try{
  // Triple is three full weapon attacks, using one arrow and one MP payment.
  const {playerStrike}=require(path.join(dir,'attack-rules.js')),runtime=require(path.join(dir,'monster-runtime.js')),supplies=require(path.join(dir,'auto-supplies.js')),spellRules=require(path.join(dir,'spell-rules.js')),affix=require(path.join(dir,'affix-rules.js'));
@@ -77,3 +77,4 @@ try{
  ({s,c}=fixture());c.autoConfig.convert='sk_elf_soul';c.mp=0;const started=performance.now();run(s,time+1200000);const elapsed=performance.now()-started;assert.ok(c.running);assert.ok(c.eventSeq>3000,'offline batch exercises continuous spell casts');assert.ok(elapsed<5000,`20-minute combat batch took ${elapsed}ms`);assert.ok(c.events.length<=160);
  console.log(`PASS: 100ms retry; triple-normal cycle; elf 1200ms / DK 1600ms; 70ms arrows; independent healing/conversion; no cooldown resource loss; manual/auto sharing; reload; target switch; silence; poll boundaries; ordinary attacks; 20-minute offline batch ${elapsed.toFixed(0)}ms.`);
 }finally{fs.rmSync(dir,{recursive:true,force:true});}
+

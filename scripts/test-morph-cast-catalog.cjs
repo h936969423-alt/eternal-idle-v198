@@ -3,6 +3,7 @@ require.extensions['.ts']=(m,f)=>m._compile(ts.transpileModule(fs.readFileSync(f
 const {morphCastFor,morphCastFrames,morphCastLayers}=require('../lib/game/morph-cast.ts');
 const catalog=require('../lib/game/polymorph-cast-catalog.json');
 const audit=require('../docs/polymorph-cast-catalog-import.json');
+const release=require('../lib/asset-storage-release.json');
 const forms=require('../lib/game/polymorph.json').forms;
 const legacy=require('../lib/game/polymorph-cast.json');
 let available=0,shadows=0,weapons=0;const files=new Set();
@@ -25,7 +26,8 @@ for(const [name,entry] of Object.entries(catalog.forms)){
     assert.equal(data.subarray(0,8).toString('hex'),'89504e470d0a1a0a');
     dims.add(`${data.readUInt32BE(16)}x${data.readUInt32BE(20)}`);
     const sha=crypto.createHash('sha1').update(`blob ${data.length}\0`).update(data).digest('hex');
-    assert.equal(sha,audit.gitBlobSha1[url.split('/morphanim/')[1]],'pinned original bytes');
+    const original=audit.gitBlobSha1[url.split('/morphanim/')[1]];assert.match(original,/^[0-9a-f]{40}$/,'original import provenance retained');
+    const shipped=release.files[url];if(shipped){assert.equal(data.length,shipped[2]);assert.equal(crypto.createHash('sha256').update(data).digest('hex'),shipped[4],'pinned released bytes after asset normalization');}else assert.equal(sha,original,'untransformed original bytes');
    }
   }
   assert.equal(dims.size,1,'layer canvases aligned');
@@ -41,4 +43,5 @@ const wolf=morphCastFor({id:'unused',name:'狼人'},2);
 assert.equal(wolf.body.length,6);assert.ok(morphCastLayers(wolf,3).shadow);assert.equal(morphCastLayers(wolf,4).shadow,undefined);assert.equal(morphCastLayers(wolf,5).shadow,undefined);
 assert.ok(morphCastLayers(wolf,99).body.endsWith('skill_5.png'));
 assert.equal(morphCastFor({id:'unused',name:'無對應名稱'},2),undefined,'no invented aliases');
-console.log('Passed: 79 source names, 61 casts, 57 shadows, 23 weapon effects, 3114 original PNGs, exact layer indices, aliases and existing game mappings.');
+console.log('Passed: 79 source names, 61 casts, 57 shadows, 23 weapon effects, 3114 pinned released PNGs with source provenance, exact layer indices, aliases and existing game mappings.');
+

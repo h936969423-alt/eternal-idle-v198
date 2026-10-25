@@ -1,0 +1,20 @@
+{
+  "source": "Original Eternal Idle Sites repository; immutable git show bytes",
+  "snapshots": {
+    "19d42b21742a1c59f48200917778f88d9cce7604:lib/game/engine.ts": "cd88eb626c40c7d1a81e983799249db5f0c639a2",
+    "19d42b21742a1c59f48200917778f88d9cce7604:lib/game/lineagew-equipment-reference.json": "1a105badbb30d885ae2b9fa1d883171a38f14b32",
+    "20e52d26985143072b8102cce0c0592630bd5dbc:lib/game/gamedata.json": "b24378c64b8392738d83d64f6e63b23cc0c9d24d",
+    "25e5b923bd0d175b343bd93935274d7130a152ff:lib/game/gamedata.json": "749e9be16a3e2c5ef8621e55fb901bec9ef08f24",
+    "3d7757abe0a4c03dc09e45cea6fe796603e199de:lib/game/engine.ts": "ee8f811adeeb5300f877e420bed43e73a77f6094",
+    "7964a7ac4edc0089bfb2c2254ee5ac37ff64eb30:lib/game/gamedata.json": "a042de82034197f011fd7c5ee7c66fdd539ff7fe",
+    "8c6467547a5e5198ccc6339a723af1484df061b3:lib/game/gamedata.json": "ef8cdacc7c59b73dd1831d231061eb2712286b1d",
+    "908f12639d710261e29138dccd82e697c00c61b2:lib/game/gamedata.json": "b15f2fd284591c342541b196e12387d60a399f58",
+    "a52fb2be668a82a495e7edbb4f163e77808238fb:lib/game/gamedata.json": "58d5f96c94e4014b889da5c17f94c7dac0210859",
+    "cacd61dbcc64d80f97eedfd3466ad68d7e685fdc:lib/game/gamedata.json": "3418b8b24f46a4091baed96328548a6bc6ca156d",
+    "f29951fe7b519479dfac916ec557c030d05efc97:lib/game/gamedata.json": "178688af4653c442f978a76baaa1f683abf980d1",
+    "97570d5c27e48d69593ab0e8c9c5d66eed0bd17f:lib/game/gamedata.json": "77df7e68ef3a86359ee2b3818340cc2b28425563",
+    "97570d5c27e48d69593ab0e8c9c5d66eed0bd17f:lib/game/monster-drops.json": "ba02334d415c08df23aa0afd362cc1b5019b182b",
+    "97570d5c27e48d69593ab0e8c9c5d66eed0bd17f:lib/game/monster-drop-rates.json": "54aba5724e1950216287f80b9b0b95309971ed95"
+  },
+  "compressedSha256": "c0c687f612260e7a6b039a035aecb5f8971b405b09b75683d88ab525dcac1ea1"
+}

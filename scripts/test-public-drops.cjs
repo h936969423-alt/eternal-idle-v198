@@ -8,7 +8,8 @@ const data=require('../lib/game/gamedata.json');
 const {specialSkillSupported}=require('../lib/game/combat-rules.ts');
 assert.equal(specialSkillSupported('sk_elf_worldtree','passive'),true,'regional passive must be learnable');
 assert.equal(Object.keys(PUBLIC_DROP_RATES).length,195);
-assert.equal(Object.values(PUBLIC_DROP_RATES).flat().length,1473);
+// The 2026-10-20 non-equipment sync replaced retired catalog entries.
+assert.equal(Object.values(PUBLIC_DROP_RATES).flat().length,1263);
 assert.equal(Object.keys(AREA_DROP_RATES).length,4);
 for(const [id,entries] of Object.entries(PUBLIC_DROP_RATES)){
  assert.ok(data.mobs[id],id);assert.equal(new Set(entries.map(d=>d.item)).size,entries.length,id);
@@ -16,7 +17,7 @@ for(const [id,entries] of Object.entries(PUBLIC_DROP_RATES)){
  const converted=convertedDrops(id);validateDrops(converted);
  assert.deepEqual(converted.map(d=>({item:d.item,chance:d.chance})),entries);
 }
-assert.equal(publicMonsterDrop('orc',()=>0).items.length,6,'one kill can grant every independent drop');
+assert.equal(publicMonsterDrop('orc',()=>0).items.length,4,'one kill can grant every independent drop');
 assert.equal(publicMonsterDrop('orc',()=>.9).items.length,0);
 assert.deepEqual(publicMonsterDrop('siege_ovi',()=>0),{known:true,items:[]},'empty published table must not use replacement loot');
 assert.equal(publicMonsterDrop('missing_monster',()=>0).known,false);
@@ -37,3 +38,4 @@ assert.equal(rollConfiguredDrops([{item:'potion_heal',chance:100,min:1,max:1,ena
 const future=Object.entries(data.items).find(([,v])=>v.availFrom);
 if(future)assert.equal(rollPublicRates([{item:future[0],chance:100}],()=>0,future[1].availFrom-1).length,0,'release-date gate preserved');
 console.log('Passed: full ID mapping, rates, independent multi-drop, empty tables, boundaries, bonuses, regional passive, GM overrides and release-date gates.');
+
