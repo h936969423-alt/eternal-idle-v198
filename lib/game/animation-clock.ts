@@ -15,7 +15,10 @@ export function pushCue(state:MotionClock,cue:MotionCue,now:number,duration:(kin
  // attack queue behind the previous swing because a render arrived late.
  if(attackPriority&&state.kind!=='spawn'&&cue.kind==='attack'&&!cue.immediate&&Number.isFinite(cue.displayAt))
   return {kind:cue.kind,at:Math.min(now,cue.displayAt!),duration:cue.durationMs??duration(cue.kind),pending:[]};
- if(cue.immediate)return {kind:cue.kind,at:now,duration:cue.durationMs??duration(cue.kind),pending:[]};
+ // A browser already played this confirmed spell's windup. An acknowledgement
+ // arriving after it ends must not restart it or interrupt a normal swing.
+ if(cue.immediate&&cue.kind==='skill'&&Number.isFinite(cue.displayAt)&&now-cue.displayAt!>=(cue.durationMs??duration(cue.kind)))return state;
+ if(cue.immediate)return {kind:cue.kind,at:cue.kind==='skill'&&Number.isFinite(cue.displayAt)?Math.min(now,cue.displayAt!):now,duration:cue.durationMs??duration(cue.kind),pending:[]};
  const active=now<state.at+state.duration;
  if(attackPriority&&active&&(state.kind==='attack'||state.kind==='skill')&&cue.kind==='hurt')return state;
  // A confirmed player action replaces a visual cast/flinch immediately. Skill

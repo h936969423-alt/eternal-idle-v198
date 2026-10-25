@@ -4,8 +4,6 @@ import {ensureLineageWHLMigration} from '@/lib/game/lineagew-hl-migration-store'
 import {ensureLineageWMigration} from '@/lib/game/lineagew-migration-store';
 import {ensureEquipment381Migration} from '../../../lib/game/equipment381-migration-store';
 import {getGameSettings} from '../../../lib/game/game-settings';
-import {GAME_PASSWORD_LOGIN_ENABLED} from '../../../lib/game/login-mode';
-import {gameAccount} from '../../../lib/game/account';
 import {persistedSave,responseSave,type GameSyncCursor} from '../../../lib/game/state-sync';
 import { isGameMaster } from '../../../lib/game/world-store';
 import { worldRulesAt, type WorldConfig } from '../../../lib/game/world-rules';
@@ -20,7 +18,8 @@ async function handle(request:Request,mutate:boolean){
  if(mutate){const origin=request.headers.get('origin');if(origin&&new URL(request.url).origin!==origin)return Response.json({error:'來源不符'},{status:403});}
  try{
   if(!env.DB)throw new Error('save storage unavailable');
-  if(GAME_PASSWORD_LOGIN_ENABLED&&!await gameAccount(user.userId))return Response.json({error:'請登入遊戲帳號'},{status:401});
+  // getChatGPTUser already validates this exact session hash and expiry in D1.
+  // Repeating gameAccount here added another serial database round trip.
   const owner=user.userId;
   // Read-only recovery endpoint. Never runs the combat engine or writes D1.
   // Enables the client to verify a save exists even when offline simulation
@@ -80,4 +79,5 @@ async function handle(request:Request,mutate:boolean){
 }
 export const GET=(r:Request)=>handle(r,false);
 export const POST=(r:Request)=>handle(r,true);
+
 
