@@ -2,7 +2,7 @@
 import { useEffect,useRef,useState } from 'react';
 import type { Character,CombatEvent } from '@/lib/game/engine';
 import raw from '@/lib/game/gamedata.json';
-import {magicFlightMs} from '@/lib/game/magic-visuals';
+import {magicFlightMs,magicEffectLifetime} from '@/lib/game/magic-visuals';
 import {baseItem} from '@/lib/game/gear';
 import {petSnapshot} from '@/lib/game/engine';
 import {replayHasGap,replayFrameExpired} from '@/lib/game/replay-timing';
@@ -46,8 +46,8 @@ export function useCombatReplay(c:Character|null,sound:boolean){
    if(ready.length||cleanup)setView(previous=>{
     let result=previous;
     for(const next of ready)result=applyCombatViewEvent(result,next,now);
-    if(cleanup&&(result.actions||[]).some(e=>now-e.shownAt>=5000)||cleanup&&result.floats.some(f=>now-f.shownAt>=800)||cleanup&&(result.casts||[]).some(f=>now-f.shownAt>=2000)){
-     result={...result,actions:(result.actions||[]).filter(e=>now-e.shownAt<5000),casts:(result.casts||[]).filter(f=>now-f.shownAt<2000),floats:result.floats.filter(f=>now-f.shownAt<800)};
+    if(cleanup&&(result.actions||[]).some(e=>now-e.shownAt>=5000)||cleanup&&result.floats.some(f=>now-f.shownAt>=800)||cleanup&&(result.casts||[]).some(f=>now-f.shownAt>=magicEffectLifetime(f))){
+     result={...result,actions:(result.actions||[]).filter(e=>now-e.shownAt<5000),casts:(result.casts||[]).filter(f=>now-f.shownAt<magicEffectLifetime(f)),floats:result.floats.filter(f=>now-f.shownAt<800)};
     }
     return result;
    });

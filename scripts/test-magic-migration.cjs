@@ -18,7 +18,7 @@ for(const [name,dirs] of [['光箭',4],['燃燒的火球',8],['冰裂術',8]]){
  const config=fx[name];assert.equal(config.directions.length,dirs);
  for(let dir=0;dir<8;dir++){const a=dir*Math.PI/4,clip=v.magicDirection(config,Math.sin(a),-Math.cos(a));assert.ok(clip.frames.length);assert.equal(clip.frames.length,config.frames.length);}
 }
-assert.equal(fx['究極光裂術'].layers.length,2);assert.equal(fx['冰裂術'].shadowDirections.length,8);
+assert.equal(fx['究極光裂術'].layers.length,2);assert.ok(v.magicEffectLifetime({skill:'sk_abs_barrier'})>2200,'long source animations must not be cut by the old 2s replay cleanup');assert.equal(fx['冰裂術'].shadowDirections.length,8);
 assert.equal(v.magicFrame(0,16,21),0);assert.equal(v.magicFrame(1313,16,21),-1);assert.equal(v.magicFrame(1313,16,21,true),0);
 assert.equal(v.magicFlightMs(0),140);assert.equal(v.magicFlightMs(320),200);assert.equal(v.magicFlightMs(5000),380);
 for(const [skill,duration] of [['sk_lightarrow',140],['sk_fireball',380]]){

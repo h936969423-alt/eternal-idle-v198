@@ -22,3 +22,7 @@ export function magicFrame(elapsed:number,fps:number,count:number,loop=false){
  return loop?frame%count:frame<count?frame:-1;
 }
 export function magicVisualPaths(config:MagicVisual){return [...new Set([config.frames,...(config.layers||[]),config.shadowFrames||[],...(config.directions||[]),...(config.shadowDirections||[])].flat())];}
+export function magicEffectLifetime(event:CombatEvent){
+ const {config}=magicVisual(event);
+ return config?Math.max(2000,Math.ceil(Math.max(config.frames.length,...(config.layers||[]).map(layer=>layer.length))*1000/config.fps)+100):2000;
+}
