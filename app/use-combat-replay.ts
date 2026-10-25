@@ -10,12 +10,12 @@ import { combatSound } from './combat-audio';
 import {applyCombatViewEvent,drainCombatPresentation,enqueueCombatReplay,prepareCombatHealth,type BattleView,type TimedCombatEvent} from '@/lib/game/combat-presentation';
 export type {BattleView} from '@/lib/game/combat-presentation';
 export function useCombatReplay(c:Character|null,sound:boolean){
- const [view,setView]=useState<BattleView>({hp:0,mp:0,arena:[],floats:[]});const latest=useRef(c),soundOn=useRef(sound),owner=useRef(''),zone=useRef(''),seen=useRef(0),queue=useRef<TimedCombatEvent[]>([]),offset=useRef<number|null>(null),impacts=useRef<TimedCombatEvent[]>([]),health=useRef(new Map<string,number>()),live=useRef(false);
+ const [view,setView]=useState<BattleView>({hp:0,mp:0,arena:[],floats:[]});const latest=useRef(c),soundOn=useRef(sound),owner=useRef(''),zone=useRef(''),seen=useRef(0),queue=useRef<TimedCombatEvent[]>([]),offset=useRef<number|null>(null),impacts=useRef<TimedCombatEvent[]>([]),health=useRef(new Map<string,number>());
  latest.current=c;soundOn.current=sound;
  useEffect(()=>{if(!c)return;const fresh=(c.events||[]).filter(e=>e.seq>seen.current);const reset=owner.current!==c.id||zone.current!==c.zone||fresh.length&&(replayHasGap(fresh,seen.current)||(c.eventSeq||0)-seen.current>160||Date.now()-fresh[0].at>6000)||document.visibilityState==='hidden';
- if(reset){owner.current=c.id;zone.current=c.zone;seen.current=c.eventSeq||0;queue.current=[];impacts.current=[];offset.current=null;live.current=false;health.current=new Map((c.arena||[]).map(m=>[m.uid,m.hp]));setView({petEntities:petSnapshot(c,Date.now()),summonEntities:c.summonContract?.entities||[],hp:c.hp,mp:c.mp,target:c.arenaTarget||0,arena:(c.arena||[]).map(m=>({...m})),floats:[]});return;}
- if(fresh.length){if(fresh.some(e=>e.manual||e.kind==='attack'&&e.skill==='sk_elf_triple'))live.current=true;const prepared=enqueueCombatReplay(queue.current,prepareCombatHealth(fresh,health.current),performance.now(),offset.current,live.current);queue.current=prepared.queue;offset.current=prepared.offset;seen.current=c.eventSeq||seen.current;}
- else if(!queue.current.length&&!impacts.current.length){if(!c.running){live.current=false;offset.current=null;}health.current=new Map((c.arena||[]).map(m=>[m.uid,m.hp]));setView(v=>({...v,petEntities:petSnapshot(c,Date.now()),summonEntities:c.summonContract?.entities||[],hp:c.hp,mp:c.mp,target:c.arenaTarget||0,arena:(c.arena||[]).map(m=>({...m}))}));}
+ if(reset){owner.current=c.id;zone.current=c.zone;seen.current=c.eventSeq||0;queue.current=[];impacts.current=[];offset.current=null;health.current=new Map((c.arena||[]).map(m=>[m.uid,m.hp]));setView({petEntities:petSnapshot(c,Date.now()),summonEntities:c.summonContract?.entities||[],hp:c.hp,mp:c.mp,target:c.arenaTarget||0,arena:(c.arena||[]).map(m=>({...m})),floats:[]});return;}
+ if(fresh.length){const prepared=enqueueCombatReplay(queue.current,prepareCombatHealth(fresh,health.current),performance.now(),offset.current);queue.current=prepared.queue;offset.current=prepared.offset;seen.current=c.eventSeq||seen.current;}
+ else if(!queue.current.length&&!impacts.current.length){if(!c.running){offset.current=null;}health.current=new Map((c.arena||[]).map(m=>[m.uid,m.hp]));setView(v=>({...v,petEntities:petSnapshot(c,Date.now()),summonEntities:c.summonContract?.entities||[],hp:c.hp,mp:c.mp,target:c.arenaTarget||0,arena:(c.arena||[]).map(m=>({...m}))}));}
  },[c]);
  useEffect(()=>{
   let animation=0;
@@ -27,7 +27,7 @@ export function useCombatReplay(c:Character|null,sound:boolean){
   const tick=()=>{
    const now=performance.now();
    if(restore||replayFrameExpired(lastFrame,now)){
-    restore=false;queue.current=[];impacts.current=[];offset.current=null;live.current=false;
+    restore=false;queue.current=[];impacts.current=[];offset.current=null;
     const current=latest.current;
     if(current){seen.current=current.eventSeq||0;health.current=new Map((current.arena||[]).map(m=>[m.uid,m.hp]));setView({petEntities:petSnapshot(current,Date.now()),summonEntities:current.summonContract?.entities||[],hp:current.hp,mp:current.mp,target:current.arenaTarget||0,arena:(current.arena||[]).map(m=>({...m})),floats:[]});}
    }
@@ -59,4 +59,5 @@ export function useCombatReplay(c:Character|null,sound:boolean){
 
  return c&&owner.current!==c.id?{petEntities:petSnapshot(c,Date.now()),summonEntities:c.summonContract?.entities||[],hp:c.hp,mp:c.mp,arena:c.arena||[],target:c.arenaTarget||0,floats:[]}:view;
 }
+
 
