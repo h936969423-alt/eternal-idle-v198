@@ -21,6 +21,7 @@ export default function PerfDiagnostic(){
   const [samples,setSamples]=useState<Sample[]>([]);
   const [message,setMessage]=useState('');
   const [report,setReport]=useState('');
+  const samplesRef=useRef<Sample[]>([]);
   const frames=useRef(0);
   const frameMs=useRef(0);
   const lastFrame=useRef<number|null>(null);
@@ -116,7 +117,6 @@ export default function PerfDiagnostic(){
     raf.current=requestAnimationFrame(tick);
   },[]);
 
-  const samplesRef=useRef<Sample[]>([]);
   useEffect(()=>{samplesRef.current=samples;},[samples]);
 
   const copy=useCallback(async()=>{
