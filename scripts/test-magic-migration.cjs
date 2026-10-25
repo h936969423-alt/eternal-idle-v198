@@ -10,6 +10,7 @@ const v=require(path.join(dir,'magic-visuals.js')),p=require(path.join(dir,'comb
 const fx=require('../lib/game/magic-fx.json'),manifest=require('../lib/game/magic-import.json');
 assert.equal(manifest.commit,'5f00f4a86389aaa7309c24d7a7c1ab060c47b500');
 for(const name of manifest.importedEffects){const c=fx[name];assert.ok(c.frames.length&&c.fps>0,name);for(const url of v.magicVisualPaths(c)){
+ if(url.startsWith('/assets/dasu-v1/')){const integrity=require('../lib/game/dasu-asset-integrity.json'),file=url.split('/').at(-1),body=fs.readFileSync(path.join(root,'public/assets/dasu-v1',file));assert.equal(crypto.createHash('sha256').update(body).digest('hex'),integrity.files[file],url);continue;}
  const rel=decodeURIComponent(url.replace('/assets/fx-import/','')),entry=manifest.files[rel];assert.ok(entry,url);
  const body=fs.readFileSync(path.join(root,'public/assets/fx-import',rel));
  assert.equal(body.length,entry.size,url);assert.equal(crypto.createHash('sha1').update(Buffer.concat([Buffer.from(`blob ${body.length}\0`),body])).digest('hex'),entry.sha,url);
@@ -18,7 +19,7 @@ for(const [name,dirs] of [['光箭',4],['燃燒的火球',8],['冰裂術',8]]){
  const config=fx[name];assert.equal(config.directions.length,dirs);
  for(let dir=0;dir<8;dir++){const a=dir*Math.PI/4,clip=v.magicDirection(config,Math.sin(a),-Math.cos(a));assert.ok(clip.frames.length);assert.equal(clip.frames.length,config.frames.length);}
 }
-assert.equal(fx['究極光裂術'].layers.length,2);assert.ok(v.magicEffectLifetime({skill:'sk_abs_barrier'})>2200,'long source animations must not be cut by the old 2s replay cleanup');assert.equal(fx['冰裂術'].shadowDirections.length,8);
+assert.equal(fx['究極光裂術'].layers.length,2);assert.ok(v.magicEffectLifetime({skill:'sk_abs_barrier'})>=fx['絕對屏障'].frames.length*1000/fx['絕對屏障'].fps,'source animations remain alive through the final frame');assert.equal(fx['冰裂術'].shadowDirections.length,8);
 assert.equal(v.magicFrame(0,16,21),0);assert.equal(v.magicFrame(1313,16,21),-1);assert.equal(v.magicFrame(1313,16,21,true),0);
 assert.equal(v.magicFlightMs(0),140);assert.equal(v.magicFlightMs(320),200);assert.equal(v.magicFlightMs(5000),380);
 for(const [skill,duration] of [['sk_lightarrow',140],['sk_fireball',380]]){
@@ -41,3 +42,4 @@ assert.throws(()=>e.action(save,{type:'learn',skill:'sk_shield',book:'bk_heal1'}
 c.locked=['bk_shield'];assert.throws(()=>e.action(save,{type:'learn',skill:'sk_shield',book:'bk_shield'},t),/未鎖定/);assert.equal(c.bag.bk_shield,1);
 c.locked=[];e.action(save,{type:'useItem',item:'bk_shield'},t);assert.ok(c.skills.includes('sk_shield'));assert.equal(c.gold,12345);
 console.log(`PASS: ${manifest.importedEffects.length} spell effects / ${Object.keys(manifest.files).length} SHA-verified frames; directions, shadows, layers, frame cleanup, 140–380ms launch/impact/loot ordering, exact book consumption, duplicates, forged/locked books and retained gold/skills.`);
+
