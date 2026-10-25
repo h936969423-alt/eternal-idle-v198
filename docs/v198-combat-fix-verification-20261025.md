@@ -1,37 +1,55 @@
-# 永夜 v198 戰鬥修正驗證（2026-10-25）
+# 永夜 v198 第二輪修正與驗證（2026-10-25）
 
-基準提交：9baea2a78043b5151b0639afe0c30fd65ac28d68。修正放在獨立分支，未部署、未合併 main，沒有修改遠端資料庫。
+基準：8d2cb0a2c82db6df2274a9b3f634aee0679c2aef。只更新 codex/v198-combat-regression-fixes-20261025，未合併 main、未部署、未寫入遠端正式／測試資料庫；原 Sites 僅唯讀取得歷史測試基準。
 
-## 修正內容
+## 本輪程式修正
 
-- 怪物新攻擊不再重啟正在播放的攻擊；過期動作先消化原佇列，再接受新提示，避免插隊。死亡清空佇列。保留原本四筆上限與受擊／施法優先權，不保證所有歷史動作完整播放。
-- 積壓回播窗口由 4000ms 縮為 1500ms，短序列維持原間隔，修復既有戰鬥平順測試。
-- 切背景時呼叫 stopCombatVoices，避免未定義函式；移除不可能成立的 impact 比較，保留箭矢施放與落點音效分離。
-- 載入診斷回應先驗證資料結構再交給 UI；缺省 remainingSeconds 轉成 null。
-- 離線排程使用 Cloudflare ScheduledController 型別；未修改結算公式、CAS 或發獎邏輯。
-- 隔離測試部署加入型別、音效、戰鬥與全部既有回歸門檻，並取得完整 Git 歷史供基準測試使用。
+- 背景讀取遇到衝突或伺服器錯誤時的 650ms 重試等待可立即取消。玩家操作可中止舊背景讀取，避免操作隊列多等一次重試；新增回歸確認取消後不發出第二次舊讀取。
+- 已封存裝備的顯示名稱可從精簡封存索引讀取；神話分類維持可讀。保留 GM 自訂名稱／分類與實例 ID，沒有重新啟用已封存裝備或放寬 GM 寫入檢查。
 
-## 測試結果
+## 測試與素材修復
 
-環境：Node v24.22.1、pnpm 11.25.0、TypeScript 5.9.3。GitHub CI 使用 Node 22，本次尚未執行遠端 CI。
+- 修正路由測試對 catalog migration 匯入的模擬，保留既有 CAS／重複發獎斷言。存檔競爭、GM Exactly-once、VIP888 並行領取均通過。
+- 啟動提示測試對齊現行 35 秒提示／60 秒逾時，不縮短下載時間或自動重新整理。吉倫 UI 測試補齊 GearName 呈現依賴。
+- 素材上傳測試確認獨立 Worker 必須回傳 403，且任何方法都不得改寫 R2；沒有為了測試打開上傳權限。
+- 長施法測試完成全部兩分鐘離線批次，再判斷二十分鐘結果。離線測試比較一分鐘／兩分鐘批次的相同戰鬥、收益、寵物／召喚結果，完整驗證 12 小時上限及凍結終點；沒有提高 production CPU 批次上限。
+- 從原 Sites 儲存庫找回 14 份真實 Git blob，打包在 tests/fixtures。每份保留原提交／路徑／blob SHA-1，壓縮檔另有 SHA-256，讀取時全部驗證。GitHub 測試不再依賴另一個儲存庫才有的提交。
+- 普通／高級／稀有歷史驗證涵蓋三階段封存資料。掉落保留雜湊比對固定到實際的歷史匯入版本，當前非裝備掉落仍另外驗證；沒有改寫歷史預期雜湊。
+- 娃娃呈現測試改為比較同一版引擎在有／無呈現查詢時的結果，另驗證呈現查詢不修改存檔，避免把後續生成規則改動誤判為娃娃畫面造成。
+- 變身素材同時保留原匯入來源記錄並核對發布版本的精確 SHA-256、大小、PNG 格式及圖層索引，避免將後續合法素材正規化誤判為毀損。
+- 已從隔離測試站補齊並驗證發布清單中全部 25,780 個素材，合計 192,248,665 bytes；每檔核對長度與 SHA-256。一次 503 的檔案重試後通過。這是發布版本素材，不代表所有歷史方向素材均已找回。
 
-| 檢查 | 結果 |
+## 最新有效結果
+
+環境：Linux、Node v24.22.1、pnpm 11.25.0、TypeScript 5.9.3。遠端 CI 的 Node 22 尚未在本輪執行。
+
+| 項目 | 結果 |
 |---|---|
-| 動畫、音效、載入診斷測試 | 13/13 通過 |
-| TypeScript --noEmit | 通過，原 4 項錯誤消除 |
-| scripts/verify-combat.mjs | 全部通過：13 項測試、型別與 9 支相關回歸腳本 |
-| 全部既有檢查 | 64 支：25 通過、39 未通過 |
-| 本機真實 Worker HTTP 操作 | 7 個流程通過 |
-| pnpm run build | Vinext 編譯完成；因缺少四龍素材，後處理失敗 |
+| 動畫、音效、診斷單元測試 | 13/13 通過 |
+| TypeScript --noEmit | 通過 |
+| verify-combat.mjs | 通過，包含 9 支相關回歸 |
+| verify-regressions.mjs | 58/65 通過，7 支未通過，正確回傳非零退出碼 |
+| 原有 64 支腳本 | 57 通過、7 未通過；另新增 1 支封存標籤測試通過 |
+| 完整 pnpm run build | 通過，包括四龍處理、25,780 檔素材雜湊與大小驗證 |
+| 最終展開建置大小 | 23,447,276 bytes |
 
-原本失敗的 test-combat-smoothness.cjs 已通過，其餘 39 支未通過的狀態不變。未通過項目含規格／資料斷言、素材缺漏、歷史基準缺漏、測試模擬依賴，不能宣稱全專案測試已通過。
+本輪沒有先前已通過項目退步。上一輪原有腳本為 25/64 通過，本輪提高至 57/64；新增的封存標籤測試另計，不以新增測試灌高原有通過數。
 
-本機獨立 D1／臨時帳號通過：匿名存取拒絕、註冊、創角、recovery 查詢、開始狩獵、登出使 session 失效、重登讀回同一角色。沒有寫入遠端資料庫。
-收益收據與通知防重複、一般弓箭／三重矢落點與 MISS 格式、施法後連續攻擊程式測試通過。
+## 仍未通過的 7 項
 
-## 未完成與部署條件
+| 腳本 | 阻擋原因 |
+|---|---|
+| check-element-system.cjs | 現行裝備庫無符合舊測試完整四部位／騎士限制／可一般賦予的組合；未擅自放寬 noAffix 或恢復被替換裝備 |
+| test-dragon381.cjs | 要求所有歷史動作與 8 方向元資料；發布版只有實際選定方向／動作，首先缺 123-0/frames.json。原來源歷史樹仍列出未發布物件，但批次讀取回報 bad revision，未偽造檔案 |
+| test-equipment381-replacement.cjs | 仍期待 2,248 件 3.81 全部在當前遊戲；現行已替換成 W 裝備，apang381 來源剩 464（含 5 種補給品），未把已封存物品加回 |
+| test-eternal-night-dual.cjs | 舊 ID wpn_eternal_night_dual 不在現行可用裝備庫，不能驗證其舊專屬能力 |
+| test-gm-gift.cjs | 仍以全部 2,248 件舊 3.81 裝備及已封存武器作測試資料，與當前目錄不符；並行發放安全測試已另通過 |
+| test-magic-reference.cjs | 舊治癒規格期待 classic dice 得 6，現行固定 INT 規格得 21；新魔法公式測試已通過，沒有為舊斷言覆寫現行規格 |
+| test-mastery.cjs | 舊配方要求已不存在的力量魔法頭盔等材料；沒有任意替換材料或恢復已封存裝備 |
 
-本機沒有私人 R2 認證，缺少完整 public/assets，包括四龍 definitions.json 與圖集。沒有跳過素材檢查。登入後完整遊戲畫面、所有怪物腳底與瞬移、手機實機操作尚未驗證；本機 HTTP 不能代替畫面實測。完整離線追趕與 CAS 競爭測試仍未全部通過。
+這些項目需要補齊未發布來源或調整舊功能與現行目錄的規格，尚未宣稱修好。登入後完整遊戲畫面、手機實機及四龍所有方向仍未驗證。禁止因部分測試通過而部署。
+
+## 驗證／測試版部署方式
 
 ```sh
 pnpm install --frozen-lockfile
@@ -40,126 +58,280 @@ node scripts/verify-regressions.mjs
 pnpm run build
 ```
 
-GitHub Actions 可選 **Verify v198 test deployment build**、選本修正分支，在不部署的情況下使用既有 secrets 還原素材及驗證。新增回歸門檻失敗時流程會停止，不能把尚未執行的建置當作通過。
-只有全部檢查通過後，才可執行 **Deploy v198 isolated Cloudflare test**。它會檢查隔離資源，部署 Worker eternal-idle-v198-test。本次未觸發部署或建置 workflow。
+在 GitHub Actions 選 Verify v198 test deployment build、本修正分支，可使用既有私有 R2 還原流程在不部署的情況下執行驗證。剩餘檢查不通過時門檻會停止。部署仍須全部相關檢查通過，才可執行 Deploy v198 isolated Cloudflare test；本輪沒有觸發任何部署工作流程。
 
-## 全部既有腳本結果
+## 全部腳本結果
 
 | 腳本 | 結果 |
 |---|---|
-| scripts/check-doll-system.cjs | 通過 |
-| scripts/check-element-system.cjs | 未通過 |
-| scripts/test-account-theme.cjs | 通過 |
-| scripts/test-advanced-equipment.cjs | 未通過 |
-| scripts/test-afei-drops.cjs | 未通過 |
-| scripts/test-afei-polymorph.cjs | 未通過 |
-| scripts/test-asset-storage.mjs | 未通過 |
-| scripts/test-auto-spell-timing.cjs | 未通過 |
-| scripts/test-boss-victory.cjs | 未通過 |
-| scripts/test-character-menu.cjs | 通過 |
-| scripts/test-chat-commands.cjs | 通過 |
-| scripts/test-combat-smoothness.cjs | 通過 |
-| scripts/test-control-ring-restoration.cjs | 未通過 |
-| scripts/test-dialog-positioning.cjs | 通過 |
-| scripts/test-doll-scene.cjs | 未通過 |
-| scripts/test-dragon381.cjs | 未通過 |
-| scripts/test-equipment381-preparation.cjs | 未通過 |
-| scripts/test-equipment381-replacement.cjs | 未通過 |
-| scripts/test-eternal-night-dual.cjs | 未通過 |
-| scripts/test-gilen-entry.cjs | 通過 |
-| scripts/test-gilen-shop-ui.cjs | 未通過 |
-| scripts/test-gm-gift.cjs | 未通過 |
-| scripts/test-gm-grant-conflicts.cjs | 未通過 |
-| scripts/test-hybrid-loot.cjs | 通過 |
-| scripts/test-interface-preferences.cjs | 通過 |
-| scripts/test-lineagew-dark-mage.cjs | 未通過 |
-| scripts/test-lineagew-equipment-effects.cjs | 未通過 |
-| scripts/test-lineagew-equipment.cjs | 未通過 |
-| scripts/test-lineagew-hero-legend.cjs | 未通過 |
-| scripts/test-lineagew-hl-effects.cjs | 未通過 |
-| scripts/test-lineagew-mythic-catalog.cjs | 未通過 |
-| scripts/test-lineagew-mythic-enhancement.cjs | 通過 |
-| scripts/test-lineagew-mythic-procs.cjs | 通過 |
-| scripts/test-lineagew-mythic.cjs | 未通過 |
-| scripts/test-loot-appearance.cjs | 通過 |
-| scripts/test-magic-formulas.cjs | 通過 |
-| scripts/test-magic-reference.cjs | 未通過 |
-| scripts/test-manual-triple-latency.cjs | 通過 |
-| scripts/test-map-access.cjs | 通過 |
-| scripts/test-mastery.cjs | 未通過 |
-| scripts/test-monster-ground.cjs | 未通過 |
-| scripts/test-morph-cast-catalog.cjs | 未通過 |
-| scripts/test-normal-equipment.cjs | 未通過 |
-| scripts/test-npc-magic.cjs | 未通過 |
-| scripts/test-npc-management.cjs | 未通過 |
-| scripts/test-offline-catchup.cjs | 未通過 |
-| scripts/test-offline-income-notices.cjs | 通過 |
-| scripts/test-offline-income.cjs | 通過 |
-| scripts/test-player-cast-direction.cjs | 未通過 |
-| scripts/test-player-sprite-layout.cjs | 未通過 |
-| scripts/test-polymorph-animation.cjs | 通過 |
-| scripts/test-polymorph-cast-assets.cjs | 未通過 |
-| scripts/test-polymorph-unlock-ui.cjs | 通過 |
-| scripts/test-post-cast-continuity.cjs | 通過 |
-| scripts/test-public-drops.cjs | 未通過 |
-| scripts/test-rare-equipment.cjs | 未通過 |
-| scripts/test-respawn-rules.cjs | 通過 |
-| scripts/test-reusable-speed.cjs | 通過 |
-| scripts/test-save-conflicts.cjs | 未通過 |
-| scripts/test-startup-recovery.cjs | 未通過 |
-| scripts/test-triple-impact-sync.cjs | 通過 |
-| scripts/test-vip888-races.cjs | 未通過 |
-| scripts/test-vip888.cjs | 通過 |
-| scripts/test-world-boss-loot.cjs | 通過 |
+| check-doll-system.cjs | 通過 |
+| check-element-system.cjs | 未通過 |
+| test-account-theme.cjs | 通過 |
+| test-advanced-equipment.cjs | 通過 |
+| test-afei-drops.cjs | 通過 |
+| test-afei-polymorph.cjs | 通過 |
+| test-asset-storage.mjs | 通過 |
+| test-auto-spell-timing.cjs | 通過 |
+| test-boss-victory.cjs | 通過 |
+| test-character-menu.cjs | 通過 |
+| test-chat-commands.cjs | 通過 |
+| test-combat-smoothness.cjs | 通過 |
+| test-control-ring-restoration.cjs | 通過 |
+| test-dialog-positioning.cjs | 通過 |
+| test-doll-scene.cjs | 通過 |
+| test-dragon381.cjs | 未通過 |
+| test-equipment381-preparation.cjs | 通過 |
+| test-equipment381-replacement.cjs | 未通過 |
+| test-eternal-night-dual.cjs | 未通過 |
+| test-gilen-entry.cjs | 通過 |
+| test-gilen-shop-ui.cjs | 通過 |
+| test-gm-gift.cjs | 未通過 |
+| test-gm-grant-conflicts.cjs | 通過 |
+| test-hybrid-loot.cjs | 通過 |
+| test-interface-preferences.cjs | 通過 |
+| test-lineagew-dark-mage.cjs | 通過 |
+| test-lineagew-equipment-effects.cjs | 通過 |
+| test-lineagew-equipment.cjs | 通過 |
+| test-lineagew-hero-legend.cjs | 通過 |
+| test-lineagew-hl-effects.cjs | 通過 |
+| test-lineagew-mythic-catalog.cjs | 通過 |
+| test-lineagew-mythic-enhancement.cjs | 通過 |
+| test-lineagew-mythic-procs.cjs | 通過 |
+| test-lineagew-mythic.cjs | 通過 |
+| test-loot-appearance.cjs | 通過 |
+| test-magic-formulas.cjs | 通過 |
+| test-magic-reference.cjs | 未通過 |
+| test-manual-triple-latency.cjs | 通過 |
+| test-map-access.cjs | 通過 |
+| test-mastery.cjs | 未通過 |
+| test-monster-ground.cjs | 通過 |
+| test-morph-cast-catalog.cjs | 通過 |
+| test-normal-equipment.cjs | 通過 |
+| test-npc-magic.cjs | 通過 |
+| test-npc-management.cjs | 通過 |
+| test-offline-catchup.cjs | 通過 |
+| test-offline-income-notices.cjs | 通過 |
+| test-offline-income.cjs | 通過 |
+| test-player-cast-direction.cjs | 通過 |
+| test-player-sprite-layout.cjs | 通過 |
+| test-polymorph-animation.cjs | 通過 |
+| test-polymorph-cast-assets.cjs | 通過 |
+| test-polymorph-unlock-ui.cjs | 通過 |
+| test-post-cast-continuity.cjs | 通過 |
+| test-public-drops.cjs | 通過 |
+| test-rare-equipment.cjs | 通過 |
+| test-respawn-rules.cjs | 通過 |
+| test-retired-labels.cjs | 通過 |
+| test-reusable-speed.cjs | 通過 |
+| test-save-conflicts.cjs | 通過 |
+| test-startup-recovery.cjs | 通過 |
+| test-triple-impact-sync.cjs | 通過 |
+| test-vip888-races.cjs | 通過 |
+| test-vip888.cjs | 通過 |
+| test-world-boss-loot.cjs | 通過 |
 
-## 戰鬥驗證原始輸出
+## 未通過項目的有效輸出（前 2,000 字）
+
+### check-element-system.cjs
 
 ```text
-Verifying: node --experimental-strip-types --test tests/animation-clock.test.mjs tests/recovery-status.test.mjs tests/combat-audio.test.mjs
-✔ monster attack during spawn is queued then played (0.941089ms)
-✔ monster attack during skill is queued then played (0.134523ms)
-✔ dead monster ignores subsequent attacks (0.304368ms)
-✔ attack animation has finite duration (0.097587ms)
-✔ rapid monster attacks stay queued in order after spawn (0.492452ms)
-✔ monster pending attack queue remains bounded (0.158519ms)
-✔ new monster attack cannot restart a swing or overtake pending attacks (0.200883ms)
-✔ cue arriving between animation frames starts the oldest queued attack first (0.135434ms)
-✔ death discards the whole monster attack backlog (0.183767ms)
-✔ arrow impact does not repeat launch audio and backgrounding stops active voices (84.813224ms)
-✔ recovery accepts the no-save API response and normalizes its missing estimate (2.183471ms)
-✔ recovery retains valid character summaries without exposing extra fields (0.215204ms)
-✔ malformed recovery data cannot enter the loading UI (0.214844ms)
-ℹ tests 13
-ℹ suites 0
-ℹ pass 13
-ℹ fail 0
-ℹ cancelled 0
-ℹ skipped 0
-ℹ todo 0
-ℹ duration_ms 289.497329
-Verifying: node node_modules/typescript/bin/tsc --noEmit --incremental false
-Verifying: node scripts/test-combat-smoothness.cjs
-PASS: lag recovery, fast clips, bounded poses, death priority, delta reconstruction, GM invalidation and save reload. Active event payload 8597 -> 166 bytes.
-PASS: separate floating lanes, paced late deliveries, incoming hits cannot stall player attack; death priority preserved.
-Verifying: node scripts/test-triple-impact-sync.cjs
-PASS: manual/auto triple launches at 0/70/140ms; HP, numbers, hurt/death and loot wait until impact at 200/270/340ms; misses, recovery, replacement, slow frames and network updates are safe.
-PASS: normal bow impact at 200ms, MP on launch, lethal loot/spawn ordering, one-time impact, other damage sources immediate, critical/magic/MISS formatting.
-PASS: mixed flight HP deltas, delayed lethal drops/replacement, regeneration during flight, no restart of active player swing, unchanged death priority.
-Verifying: node scripts/test-manual-triple-latency.cjs
-PASS: automatic/manual triple damage bypasses buffered history, latest burst and lethal/missed shots preserve 70ms cadence, arrow launch has no extra wait.
-PASS: stalled poll yields promptly, no read retry/stale result, one mutation, immediate confirmed manual animation, 70ms triple burst, 70ms hit spacing, death priority.
-Verifying: node scripts/test-post-cast-continuity.cjs
-PASS: cast-to-normal handoff has no visual lock; hit reaction cannot stall casting; live replay remains on the confirmed post-cast clock; bow impact/loot order and triple cadence retained; monster/spawn/death priority unchanged.
-Verifying: node scripts/test-offline-income.cjs
-PASS: offline receipt survives lost responses, polling, CAS recovery and reload; dismissal and manual re-open never award income again; stale acknowledgement cannot hide a new report.
-Verifying: node scripts/test-offline-income-notices.cjs
-PASS: one auto-dialog per receipt across retries, remount/reload, delayed acknowledgement and stale responses; pending catch-up waits for final settlement; stable receipt identity/read state; storage fallback and bounded history; real new income remains visible.
-Verifying: node scripts/test-character-menu.cjs
-PASS: server three-character limit; 10-second boundary; cancel/reload; stale/duplicate requests; committed deletion frees slot; active/all deletion and recreation; foreign IDs; legacy preservation.
-PASS: actual menu markup renders empty/full slots, character selection and cancellation.
-Verifying: node scripts/test-account-theme.cjs
-PASS: cloud account theme survives persistence, responses, reconciliation and advance; no-character accounts supported; invalid choices rejected; separate accounts isolated.
-Verifying: node scripts/test-respawn-rules.cjs
-PASS: fixed/random initial spawn and respawn, survivors, 100 randomized layouts, validation/serialization; all 93 hunting maps use 5s base; same count/pool, independent slots, speed buffs/poly/expiry/floor, legacy GM migration, new GM timing and world-boss isolation.
+node:internal/assert/utils:77
+    throw err;
+    ^
+
+AssertionError [ERR_ASSERTION]: The expression evaluated to a falsy value:
+
+  assert(weapon&&armor&&belt&&ring)
+
+    at Object.<anonymous> (/workspace/scratch/dc0bbe63132f/eternal-idle-v198/scripts/check-element-system.cjs:6:92)
+    at Module._compile (node:internal/modules/cjs/loader:1929:14)
+    at Object..js (node:internal/modules/cjs/loader:2060:10)
+    at Module.load (node:internal/modules/cjs/loader:1651:32)
+    at Module._load (node:internal/modules/cjs/loader:1443:12)
+    at wrapModuleLoad (node:internal/modules/cjs/loader:261:19)
+    at Module.executeUserEntryPoint [as runMain] (node:internal/modules/run_main:154:5)
+    at node:internal/main/run_main_module:33:47 {
+  generatedMessage: true,
+  code: 'ERR_ASSERTION',
+  actual: undefined,
+  expected: true,
+  operator: '==',
+  diff: 'simple'
+}
+
+Node.js v24.22.1
+FAIL: check-element-system.cjs
+
+```
+
+### test-dragon381.cjs
+
+```text
+node:internal/assert/utils:77
+    throw err;
+    ^
+
+AssertionError [ERR_ASSERTION]: 123-0
+    at Object.<anonymous> (/workspace/scratch/dc0bbe63132f/eternal-idle-v198/scripts/test-dragon381.cjs:34:355)
+    at Module._compile (node:internal/modules/cjs/loader:1929:14)
+    at Object..js (node:internal/modules/cjs/loader:2060:10)
+    at Module.load (node:internal/modules/cjs/loader:1651:32)
+    at Module._load (node:internal/modules/cjs/loader:1443:12)
+    at wrapModuleLoad (node:internal/modules/cjs/loader:261:19)
+    at Module.executeUserEntryPoint [as runMain] (node:internal/modules/run_main:154:5)
+    at node:internal/main/run_main_module:33:47 {
+  generatedMessage: false,
+  code: 'ERR_ASSERTION',
+  actual: false,
+  expected: true,
+  operator: '==',
+  diff: 'simple'
+}
+
+Node.js v24.22.1
+FAIL: test-dragon381.cjs
+
+```
+
+### test-equipment381-replacement.cjs
+
+```text
+AssertionError [ERR_ASSERTION]: Expected values to be strictly equal:
+
+464 !== 2248
+
+    at run (/workspace/scratch/dc0bbe63132f/eternal-idle-v198/scripts/test-equipment381-replacement.cjs:9:8)
+    at Object.<anonymous> (/workspace/scratch/dc0bbe63132f/eternal-idle-v198/scripts/test-equipment381-replacement.cjs:30:1)
+    at Module._compile (node:internal/modules/cjs/loader:1929:14)
+    at Object..js (node:internal/modules/cjs/loader:2060:10)
+    at Module.load (node:internal/modules/cjs/loader:1651:32)
+    at Module._load (node:internal/modules/cjs/loader:1443:12)
+    at wrapModuleLoad (node:internal/modules/cjs/loader:261:19)
+    at Module.executeUserEntryPoint [as runMain] (node:internal/modules/run_main:154:5)
+    at node:internal/main/run_main_module:33:47 {
+  generatedMessage: true,
+  code: 'ERR_ASSERTION',
+  actual: 464,
+  expected: 2248,
+  operator: 'strictEqual',
+  diff: 'simple'
+}
+FAIL: test-equipment381-replacement.cjs
+
+```
+
+### test-eternal-night-dual.cjs
+
+```text
+/workspace/scratch/dc0bbe63132f/eternal-idle-v198/scripts/test-eternal-night-dual.cjs:8
+ assert.deepEqual([item.n,item.req,item.wcat,item.dmgS,item.dmgL,item.hit,item.str,item.dex,item.safe],['永夜雙刀','dark','雙刀',200,200,5,100,100,6]);
+                        ^
+
+TypeError: Cannot read properties of undefined (reading 'n')
+    at Object.<anonymous> (/workspace/scratch/dc0bbe63132f/eternal-idle-v198/scripts/test-eternal-night-dual.cjs:8:25)
+    at Module._compile (node:internal/modules/cjs/loader:1929:14)
+    at Object..js (node:internal/modules/cjs/loader:2060:10)
+    at Module.load (node:internal/modules/cjs/loader:1651:32)
+    at Module._load (node:internal/modules/cjs/loader:1443:12)
+    at wrapModuleLoad (node:internal/modules/cjs/loader:261:19)
+    at Module.executeUserEntryPoint [as runMain] (node:internal/modules/run_main:154:5)
+    at node:internal/main/run_main_module:33:47
+
+Node.js v24.22.1
+FAIL: test-eternal-night-dual.cjs
+
+```
+
+### test-gm-gift.cjs
+
+```text
+node:assert:152
+  throw new AssertionError(obj);
+  ^
+
+AssertionError [ERR_ASSERTION]: Expected values to be strictly equal:
+
+464 !== 2248
+
+    at Object.<anonymous> (/workspace/scratch/dc0bbe63132f/eternal-idle-v198/scripts/test-gm-gift.cjs:7:85)
+    at Module._compile (node:internal/modules/cjs/loader:1929:14)
+    at Object..js (node:internal/modules/cjs/loader:2060:10)
+    at Module.load (node:internal/modules/cjs/loader:1651:32)
+    at Module._load (node:internal/modules/cjs/loader:1443:12)
+    at wrapModuleLoad (node:internal/modules/cjs/loader:261:19)
+    at Module.executeUserEntryPoint [as runMain] (node:internal/modules/run_main:154:5)
+    at node:internal/main/run_main_module:33:47 {
+  generatedMessage: true,
+  code: 'ERR_ASSERTION',
+  actual: 464,
+  expected: 2248,
+  operator: 'strictEqual',
+  diff: 'simple'
+}
+
+Node.js v24.22.1
+FAIL: test-gm-gift.cjs
+
+```
+
+### test-magic-reference.cjs
+
+```text
+node:assert:152
+  throw new AssertionError(obj);
+  ^
+
+AssertionError [ERR_ASSERTION]: classic heal uses three D4, times two
+
+21 !== 6
+
+    at Object.<anonymous> (/workspace/scratch/dc0bbe63132f/eternal-idle-v198/scripts/test-magic-reference.cjs:12:9)
+    at Module._compile (node:internal/modules/cjs/loader:1929:14)
+    at Object..js (node:internal/modules/cjs/loader:2060:10)
+    at Module.load (node:internal/modules/cjs/loader:1651:32)
+    at Module._load (node:internal/modules/cjs/loader:1443:12)
+    at wrapModuleLoad (node:internal/modules/cjs/loader:261:19)
+    at Module.executeUserEntryPoint [as runMain] (node:internal/modules/run_main:154:5)
+    at node:internal/main/run_main_module:33:47 {
+  generatedMessage: false,
+  code: 'ERR_ASSERTION',
+  actual: 21,
+  expected: 6,
+  operator: 'strictEqual',
+  diff: 'simple'
+}
+
+Node.js v24.22.1
+FAIL: test-magic-reference.cjs
+
+```
+
+### test-mastery.cjs
+
+```text
+node:internal/assert/utils:77
+    throw err;
+    ^
+
+AssertionError [ERR_ASSERTION]: 力量魔法頭盔
+    at give (/workspace/scratch/dc0bbe63132f/eternal-idle-v198/scripts/test-mastery.cjs:7:122)
+    at Object.<anonymous> (/workspace/scratch/dc0bbe63132f/eternal-idle-v198/scripts/test-mastery.cjs:13:155)
+    at Module._compile (node:internal/modules/cjs/loader:1929:14)
+    at Object..js (node:internal/modules/cjs/loader:2060:10)
+    at Module.load (node:internal/modules/cjs/loader:1651:32)
+    at Module._load (node:internal/modules/cjs/loader:1443:12)
+    at wrapModuleLoad (node:internal/modules/cjs/loader:261:19)
+    at Module.executeUserEntryPoint [as runMain] (node:internal/modules/run_main:154:5)
+    at node:internal/main/run_main_module:33:47 {
+  generatedMessage: false,
+  code: 'ERR_ASSERTION',
+  actual: undefined,
+  expected: true,
+  operator: '==',
+  diff: 'simple'
+}
+
+Node.js v24.22.1
+FAIL: test-mastery.cjs
 
 ```

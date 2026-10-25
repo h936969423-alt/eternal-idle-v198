@@ -4,7 +4,7 @@ for(const name of fs.readdirSync(path.join(root,'lib/game'))){const file=path.jo
 try{
  const e=require(path.join(dir,'engine')),a=require(path.join(dir,'attack-rules')),p=require(path.join(dir,'lineagew-mythic')),g=require(path.join(dir,'gear')),gm=require(path.join(dir,'gm-grants')),appearance=require(path.join(dir,'loot-appearance')),tables=require(path.join(dir,'attack-tables'));
  const sword='lw_weapon_919276',bow='lw_weapon_919284',ids=[sword,bow];
- const baseline=JSON.parse(cp.execFileSync('git',['show','7964a7ac4edc0089bfb2c2254ee5ac37ff64eb30:lib/game/gamedata.json'],{cwd:root,maxBuffer:20e6}));
+ const baseline=JSON.parse(require('./historical-fixture.cjs')('7964a7ac4edc0089bfb2c2254ee5ac37ff64eb30:lib/game/gamedata.json'));
  assert.deepEqual(Object.keys(e.DATA.items).filter(id=>!Object.hasOwn(baseline.items,id)&&!id.startsWith('lw_equipment_')),[...ids,'lw_weapon_919283','lw_weapon_919278']);
  for(const [id,item]of Object.entries(baseline.items))assert.deepEqual(e.DATA.items[id]||require(path.join(dir,'lineagew-retired.json')).items[id]||require(path.join(dir,'lineagew-hl-retired.json')).items[id]||require(path.join(dir,'lineagew-mythic-retired.json')).items[id],item.lwMythicId?{...item,noEnh:false,enhCap:7,d:item.d.replace('玩家衝裝尚未開放。','玩家強化採永夜規則，上限 +7。')}:item,'unchanged existing item '+id);
  const make=(cls='knight')=>{const base=e.BASES[cls],allocation={};let points=base.pts;for(const key of ['str','dex','con','int','wis','cha']){allocation[key]=Math.min(points,20-base[key]);points-=allocation[key];}return e.createCharacter('神話測試',cls,'m',allocation,1000);};
@@ -43,3 +43,4 @@ try{
  for(const id of ids){const i=e.DATA.items[id],html=renderToStaticMarkup(React.createElement('div',null,React.createElement(app('item-icon').default,{itemId:id,src:i.sourceIcon,alt:i.n}),React.createElement(app('lineagew-mythic-details').default,{item:i,en:7})));assert.ok(html.includes(i.sourceIcon));assert.match(html,/outline:2px solid #ffd700/);assert.ok(!html.includes('<select'));assert.ok(!html.includes('試作'));assert.ok(html.includes('武器命中'));assert.ok(html.includes('equipment-ability-list'));}
  console.log('PASS: 2 original icons; all existing items unchanged; GM grant/equip/class restrictions; mythic gold; +0–7 stats without double enchant bonuses; actual small/large, min/max, DR, undead, bow/arrow combat; visible pending skills; unrestricted GM values with explicit +7 table boundary.');
 }finally{fs.rmSync(dir,{recursive:true,force:true});}
+

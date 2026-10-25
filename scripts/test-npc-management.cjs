@@ -6,7 +6,7 @@ function fixture(){const b=e.BASES.dark,a={};let left=b.pts;for(const k of ['str
 function route(mocks){const module={exports:{}};vm.runInNewContext(ts.transpileModule(fs.readFileSync(path.join(root,'app/api/gm/npcs/route.ts'),'utf8'),{compilerOptions:{module:ts.ModuleKind.CommonJS,target:ts.ScriptTarget.ES2022}}).outputText,{module,exports:module.exports,require:n=>{assert.ok(n in mocks,n);return mocks[n];},Response,Request,URL,Date,Math,JSON,Error});return module.exports;}
 async function run(){
  assert.equal(npc.npcCatalog().filter(n=>n.id==='npc_bian').length,1);assert.equal(npc.findNpc('town_silver_knight','npc_bian').n,'碧恩');assert.equal(npc.findNpc('town_ivory_tower','npc_bian'),undefined);
- const publicTowns=JSON.parse(fs.readFileSync(path.join(root,'public/gamedata.json'))).towns;assert.deepEqual(publicTowns.town_silver_knight.npcs.find(n=>n.id==='npc_bian'),npc.findNpc('town_silver_knight','npc_bian'));assert.ok(!publicTowns.town_ivory_tower.npcs.some(n=>n.id==='npc_bian'));
+ const publicTowns=JSON.parse(fs.readFileSync(path.join(root,'lib/game/gamedata.json'))).towns;assert.deepEqual(publicTowns.town_silver_knight.npcs.find(n=>n.id==='npc_bian'),npc.findNpc('town_silver_knight','npc_bian'));assert.ok(!publicTowns.town_ivory_tower.npcs.some(n=>n.id==='npc_bian'));
  let config=npc.initialNpcConfig(),{c,s}=fixture();affix.requireBian(c,'npc_bian');c.zone='town_ivory_tower';assert.throws(()=>affix.requireBian(c,'npc_bian'),/銀騎士村/);c.zone='town_silver_knight';
  config=npc.updateNpcConfig(config,{action:'visibility',zone:c.zone,npc:'npc_bian',visible:false},'gm',time);c.npcConfig=config;assert.throws(()=>affix.requireBian(c,'npc_bian'),/銀騎士村/);config=npc.updateNpcConfig(config,{action:'visibility',zone:c.zone,npc:'npc_bian',visible:true},'gm',time+1);c.npcConfig=config;affix.requireBian(c,'npc_bian');
  const worn=Object.keys(raw.items).find(id=>raw.items[id].source==='apang381'&&raw.items[id].type==='wpn'&&!raw.items[id].noEquip&&!raw.items[id].isArrow);assert.ok(worn);c.bag[worn]=1;c.bag.new_item_uncurse=1;c.equipment.weapon={id:worn,en:7};c.enh[worn]=7;c.affixes={[worn]:{key:'families',name:'',value:0,blessing:'cursed'}};e.action(s,{type:'uncurse',npc:'npc_bian',item:worn},time);assert.equal(c.bag.new_item_uncurse||0,0);assert.ok(!c.affixes[c.equipment.weapon.id]?.blessing);assert.equal(c.enh[c.equipment.weapon.id],7);
@@ -46,3 +46,4 @@ async function run(){
  console.log('PASS: Bian relocation/service guard; per-town visibility; persistent merchant stocks/prices; server purchase costs, atomic failures and free goods; runtime sync; GM authorization, origin validation and revision conflicts.');
 }
 run().catch(e=>{console.error(e);process.exitCode=1;}).finally(()=>fs.rmSync(dir,{recursive:true,force:true}));
+

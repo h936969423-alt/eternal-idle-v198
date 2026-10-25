@@ -6,11 +6,11 @@ function boot({query='',data=new Map(),blocked=false,pathname='/'}={}){const win
  vm.runInNewContext(startup.STARTUP_RECOVERY_SCRIPT,{window:win,document:{visibilityState:'hidden',getElementById:id=>id==='game-startup-recovery'?box:link},sessionStorage:storage,location,URL,Date,fetch:(url,o)=>{calls.push(JSON.parse(o.body));return Promise.resolve();},setTimeout:(fn,delay)=>{timers.set(++next,{fn,delay});return next;},clearTimeout:id=>timers.delete(id)});
  return {win,box,link,calls,replaced,timers,data,fire(delay){for(const [id,t]of [...timers])if(t.delay===delay){timers.delete(id);t.fn();}}};}
 async function run(){
- let b=boot();b.fire(12000);assert.equal(b.box.hidden,false);assert.ok(b.link.href.includes('__game_reload='));b.fire(25000);assert.equal(b.replaced.length,0,'slow downloads are never interrupted by automatic navigation');assert.ok(b.calls.some(x=>x.phase==='startup-timeout'));
- const again=boot({data:b.data});again.fire(25000);assert.equal(again.replaced.length,0,'one restart within 2 minutes');assert.equal(again.box.hidden,false);
- b=boot({query:'?__game_reload=123'});b.fire(25000);assert.equal(b.replaced.length,0,'cache-busting restart cannot loop');
- b=boot({blocked:true});b.fire(25000);assert.equal(b.replaced.length,0);assert.equal(b.box.hidden,false,'manual recovery when storage is blocked');
- b=boot();b.win.emit('game-client-mounted');b.fire(12000);b.fire(25000);assert.equal(b.box.hidden,true);assert.equal(b.replaced.length,0);b.win.emit('game-state-ready');b.win.emit('game-state-ready');assert.equal(b.calls.filter(x=>x.phase==='state-ready').length,1);
+ let b=boot();b.fire(35000);assert.equal(b.box.hidden,false);assert.ok(b.link.href.includes('__game_reload='));b.fire(60000);assert.equal(b.replaced.length,0,'slow downloads are never interrupted by automatic navigation');assert.ok(b.calls.some(x=>x.phase==='startup-timeout'));
+ const again=boot({data:b.data});again.fire(60000);assert.equal(again.replaced.length,0,'one restart within 2 minutes');assert.equal(again.box.hidden,false);
+ b=boot({query:'?__game_reload=123'});b.fire(60000);assert.equal(b.replaced.length,0,'cache-busting restart cannot loop');
+ b=boot({blocked:true});b.fire(60000);assert.equal(b.replaced.length,0);assert.equal(b.box.hidden,false,'manual recovery when storage is blocked');
+ b=boot();b.win.emit('game-client-mounted');b.fire(35000);b.fire(60000);assert.equal(b.box.hidden,true);assert.equal(b.replaced.length,0);b.win.emit('game-state-ready');b.win.emit('game-state-ready');assert.equal(b.calls.filter(x=>x.phase==='state-ready').length,1);
  b=boot({pathname:'/gm'});assert.equal(b.timers.size,0);assert.equal(b.calls.length,0,'GM page must not be reloaded by game startup guard');
  const doc={...surface(),visibilityState:'hidden'},win=surface(),timers=new Map();let count=0,id=0;
  const stop=poll.startGamePolling({request:async()=>{count++;},getState:()=>({running:false,failures:0,pending:false}),hasPending:()=>false,doc,win,clock:()=>0,schedule:fn=>{timers.set(++id,fn);return id;},cancel:n=>timers.delete(n)});await new Promise(resolve=>setImmediate(resolve));assert.equal(count,1,'hidden initial page still requests its character');
@@ -20,3 +20,4 @@ async function run(){
  console.log('PASS: first character fetch while hidden; foreground and bfcache restores; paused background interval; cleanup; inline recovery before React, manual cache-busting reload without interrupting slow downloads, blocked storage/manual fallback, no GM reload, startup phases.');
 }
 run().catch(e=>{console.error(e);process.exitCode=1;});
+

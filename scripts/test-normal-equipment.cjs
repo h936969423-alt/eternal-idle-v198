@@ -1,10 +1,10 @@
 const assert=require('node:assert/strict'),fs=require('node:fs'),path=require('node:path'),ts=require('typescript'),vm=require('node:vm'),cp=require('node:child_process');
 const root=path.resolve(__dirname,'..'),dir=fs.mkdtempSync('/tmp/normal-equipment-');
 fs.writeFileSync(path.join(dir,'package.json'),'{"type":"commonjs"}');
-for(const name of ['gamedata.json','normal-equipment-reference.json','advanced-equipment-reference.json','rare-equipment-reference.json'])fs.copyFileSync(path.join(root,'lib/game',name),path.join(dir,name));
+for(const name of ['gamedata.json','lineagew-retirement-index.json','lineagew-hl-retirement-index.json','lineagew-mythic-retirement-index.json','normal-equipment-reference.json','advanced-equipment-reference.json','rare-equipment-reference.json'])fs.copyFileSync(path.join(root,'lib/game',name),path.join(dir,name));
 for(const name of ['loot-appearance','equipment-ranks','normal-equipment-migration','advanced-equipment-migration','rare-equipment-migration'])fs.writeFileSync(path.join(dir,name+'.js'),ts.transpileModule(fs.readFileSync(path.join(root,'lib/game',name+'.ts'),'utf8'),{compilerOptions:{module:ts.ModuleKind.CommonJS,target:ts.ScriptTarget.ES2022,esModuleInterop:true}}).outputText);
 // Historical appearance/parity checks read exact archived definitions for retired equipment.
-const archived={...require(path.join(root,'lib/game/lineagew-retired.json')).items,...require(path.join(root,'lib/game/lineagew-hl-retired.json')).items},priorItems={...archived,...require(path.join(root,'lib/game/gamedata.json')).items};
+const archived={...require(path.join(root,'lib/game/lineagew-retired.json')).items,...require(path.join(root,'lib/game/lineagew-hl-retired.json')).items,...require(path.join(root,'lib/game/lineagew-mythic-retired.json')).items},priorItems={...archived,...require(path.join(root,'lib/game/gamedata.json')).items};
 async function main(){
  // Historic overrides remain readable, while new GM writes to retired IDs are rejected.
  const historicalPatch=(config,ids,patch)=>{for(const id of ids)if(archived[id]&&!require(path.join(root,'lib/game/gamedata.json')).items[id])assert.throws(()=>a.applyLootPatch(config,[id],patch),/有效物品/);return {...config,items:{...config.items,...Object.fromEntries(ids.map(id=>[id,{...config.items[id],...patch}]))}};};
@@ -17,7 +17,7 @@ async function main(){
  for(const [id,row]of Object.entries(reference.items)){assert.equal(a.itemRarity(id),'normal');assert.equal(a.itemRarity(id+'@instance',next),'normal');assert.equal(a.itemDisplayName(id,next),row.name);assert.ok(['wpn','arm'].includes(priorItems[id].type));}
  const edited=historicalPatch(next,['ap381_weapon_1'],{name:'GM新名稱',rarity:'rare'});assert.equal(m.migrateNormalEquipmentConfig(edited),edited);assert.equal(a.itemRarity('ap381_weapon_1',edited),'rare');assert.equal(a.itemDisplayName('ap381_weapon_1',edited),'GM新名稱');
  assert.equal(a.itemRarity('ap381_weapon_61'),'mythic');assert.ok(!reference.items.ap381_weapon_41,'high-grade katana is not traditional katana');assert.ok(!reference.items.ap381_weapon_180,'crossbow not demoted by traditional crossbow');
- const baseline=JSON.parse(cp.execFileSync('git',['show','25e5b923bd0d175b343bd93935274d7130a152ff:lib/game/gamedata.json'],{cwd:root,maxBuffer:20e6}));
+ const baseline=JSON.parse(require('./historical-fixture.cjs')('25e5b923bd0d175b343bd93935274d7130a152ff:lib/game/gamedata.json'));
  assert.deepEqual(Object.keys(priorItems).filter(id=>!id.startsWith('lw_equipment_')&&!['lw_weapon_919276','lw_weapon_919284','lw_weapon_919283','lw_weapon_919278'].includes(id)).sort(),Object.keys(baseline.items).sort());for(const id of Object.keys(baseline.items)){const {n,...before}=baseline.items[id],{n:afterName,...after}=priorItems[id];assert.deepEqual(after,before,id);if(!reference.items[id]&&!require(path.join(dir,'advanced-equipment-reference.json')).items[id]&&!require(path.join(dir,'rare-equipment-reference.json')).items[id])assert.equal(afterName,n,id);}
  // Exercise the persistent store, including revision conflict retry and exact backup.
  let current={payload:snapshot,revision:12},backups=[],batches=0,failOnce=true;
@@ -38,3 +38,4 @@ async function main(){
  console.log('PASS: ordinary mapped items; instance IDs; exact name aliases; unchanged IDs/stats/assets; traditional separation; custom fields; later GM edits; backup; revision conflict retry; one-time migration.');
 }
 main().finally(()=>fs.rmSync(dir,{recursive:true,force:true})).catch(e=>{console.error(e);process.exitCode=1;});
+

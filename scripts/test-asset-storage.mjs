@@ -41,11 +41,17 @@ assert.equal(await response.text(), '');
 assert.equal(await assetStorageFetch(req('/api/game'), bucket), null);
 assert.equal(await assetStorageFetch(req('/assets/unknown.png'), bucket), null);
 const upload = '/api/internal/asset-storage/' + sha;
+const beforeUpload = [...stored.entries()].map(([key, value]) => [key, Buffer.from(value)]);
 response = await assetStorageFetch(req(upload, { method:'PUT', body:content, headers:{'content-length':String(content.length)} }), bucket);
-assert.equal(response.status, 200);
-assert.deepEqual(stored.get('eternal-assets/v1/' + sha), content);
+assert.equal(response.status, 403, 'standalone Worker must never expose the owner-only upload API');
 response = await assetStorageFetch(req('/api/internal/asset-storage/' + '0'.repeat(64), { method:'PUT', body:content, headers:{'content-length':String(content.length)} }), bucket);
-assert.equal(response.status, 400);
+assert.equal(response.status, 403);
 response = await assetStorageFetch(req(upload, { method:'PUT', body:content, headers:{'content-length':String(11*1024*1024)} }), bucket);
-assert.equal(response.status, 413);
-console.log('Asset reads, exact pack offsets, ranges, HEAD, ETags, fallback and upload checksums passed.');
+assert.equal(response.status, 403);
+for (const method of ['GET','HEAD','POST','DELETE']) {
+  response = await assetStorageFetch(req(upload, {method}), bucket);
+  assert.equal(response.status, 403, method);
+}
+assert.deepEqual([...stored.entries()], beforeUpload, 'denied uploads cannot alter R2');
+console.log('Asset reads, exact pack offsets, ranges, HEAD, ETags, fallback and denied standalone uploads passed.');
+

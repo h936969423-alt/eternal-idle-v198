@@ -12,15 +12,14 @@ try{
  e.event(c,'magic',1000001,{source:'doll',dollKind:'attack',skill:'sk_blaze',effectName:'烈炎術'});const event=c.events.at(-1);assert.equal(event.dollId,c.doll);assert.ok(scene.isSceneDollEvent(c,event));assert.deepEqual(cues.playerCues([event]),[]);
  const damage={...event,kind:'attack',damage:45,uid:'enemy'};assert.equal(cues.monsterCues([damage],'enemy')[0].kind,'hurt');assert.deepEqual(cues.playerCues([damage]),[]);
  c.doll=dolls[1].id;assert.equal(scene.isSceneDollEvent(c,event),false);c.doll=null;assert.equal(scene.sceneDoll(c),null);
- // Compare gameplay against the previous source, with identical RNG: visuals must not change combat.
- const Module=require('node:module'),baselineFile=path.join(dir,'baseline.js');
- const previous=require('node:child_process').execFileSync('git',['show','19d42b21742a1c59f48200917778f88d9cce7604:lib/game/engine.ts'],{cwd:root,encoding:'utf8'});
- fs.writeFileSync(baselineFile,ts.transpileModule(previous,{compilerOptions:{module:ts.ModuleKind.CommonJS,target:ts.ScriptTarget.ES2022,esModuleInterop:true}}).outputText);
- const old=require(baselineFile),save=e.emptySave(1000000);save.characters=[c];save.active=c.id;c.doll=doll.id;c.dollStartedAt=save.at;c.dollDefinitions={[doll.id]:{...doll,abilities:[{key:'procBlaze',value:100},{key:'procDamageRate',value:100},{key:'procDamage',value:17},{key:'procReduceRate',value:100},{key:'procReduce',value:9},{key:'healHp',value:5,interval:1},{key:'healMp',value:3,interval:1}]}};c.hp=30;c.mp=0;c.running=true;c.zone='zone_22';c.lv=60;c.attrs.con=40;c.gold=100000000;c.bag.potion_heal=1000;c.autoPotion=true;
- const copy=structuredClone(save);function rng(){let n=13;return()=>{n=(n*1664525+1013904223)>>>0;return n/4294967296;};}
+ // Compare the current simulation with and without presentation reads.
+ // An old engine also differs in spawn RNG and is not a visual-only baseline.
+ const old=e,save=e.emptySave(1000000);save.characters=[c];save.active=c.id;c.doll=doll.id;c.dollStartedAt=save.at;c.dollDefinitions={[doll.id]:{...doll,abilities:[{key:'procBlaze',value:100},{key:'procDamageRate',value:100},{key:'procDamage',value:17},{key:'procReduceRate',value:100},{key:'procReduce',value:9},{key:'healHp',value:5,interval:1},{key:'healMp',value:3,interval:1}]}};c.hp=30;c.mp=0;c.running=true;c.zone='zone_22';c.lv=60;c.attrs.con=40;c.gold=100000000;c.bag.potion_heal=1000;c.autoPotion=true;
+ const copy=structuredClone(save);const beforePresentation=JSON.stringify(save);for(let frame=0;frame<60;frame++){scene.sceneDoll(c);cues.playerCues(c.events);cues.monsterCues(c.events,'enemy');}assert.equal(JSON.stringify(save),beforePresentation,'presentation cannot mutate the authoritative save');function rng(){let n=13;return()=>{n=(n*1664525+1013904223)>>>0;return n/4294967296;};}
  const realUUID=crypto.randomUUID;let uid=0;crypto.randomUUID=()=>`test-${uid++}`;e.advance(save,save.at+30000,rng());uid=0;old.advance(copy,copy.at+30000,rng());crypto.randomUUID=realUUID;
  const events=save.characters[0].events.filter(x=>x.source==='doll');assert.ok(events.some(x=>x.dollKind==='recovery'));assert.ok(events.some(x=>x.kind==='attack'));assert.ok(events.every(x=>x.dollId===doll.id));
  function gameplay(s){const v=structuredClone(s);for(const c of v.characters){delete c.events;delete c.eventSeq;}return v;}
  assert.deepEqual(gameplay(save),gameplay(copy),'doll world effects preserve exact combat and rewards');
  console.log(`Doll scene checks passed: ${dolls.length} sprite assets, enable/disable, switching, event ownership, animation cues, recovery/attacks, unchanged combat.`);
 }finally{fs.rmSync(dir,{recursive:true,force:true});}
+

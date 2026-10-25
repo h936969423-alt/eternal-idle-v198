@@ -47,6 +47,7 @@ try {
  c.zone=teacher.GILEN_ZONE;assert.throws(()=>e.action(save,{type:'learn',npc:customId,skill:'sk_sunlight'},t),/目前村莊/);assert.equal(c.gold,8000);c.zone=customZone;
  c.npcConfig=npc.updateNpcConfig(custom,{action:'visibility',zone:customZone,npc:customId,visible:false},'gm',t);assert.throws(()=>e.action(save,{type:'learn',npc:customId,skill:'sk_sunlight'},t),/沒有販售/);assert.equal(c.gold,8000);
  assert.ok(!teacher.isGilenTeacher('town_silent',npc.findNpc('town_silent','npc_saedia')),'other teachers keep their original service');
-  const publicRaw=JSON.parse(fs.readFileSync(path.join(root,'public/gamedata.json')));assert.deepEqual(publicRaw.towns.town_talking.npcs.find(n=>n.id===teacher.GILEN_ID),npc.findNpc(teacher.GILEN_ZONE,teacher.GILEN_ID));
+  const publicRaw=JSON.parse(fs.readFileSync(path.join(root,'lib/game/gamedata.json')));assert.deepEqual(publicRaw.towns.town_talking.npcs.find(n=>n.id===teacher.GILEN_ID),npc.findNpc(teacher.GILEN_ZONE,teacher.GILEN_ID));
  console.log('PASS: Gilen sells 24 general spellbooks (8 per tier), 2000 gold each; direct learning, duplicate/no-book guards, level/class/tier checks; authoritative GM/single/bulk prices; atomic insufficient-gold failures; book delivery/use and class checks; wrong-town, hidden/service guards; legacy GM profile compatibility.');
 } finally {fs.rmSync(dir,{recursive:true,force:true});}
+
