@@ -21,12 +21,9 @@ export function pushCue(state:MotionClock,cue:MotionCue,now:number,duration:(kin
  if(cue.immediate)return {kind:cue.kind,at:cue.kind==='skill'&&Number.isFinite(cue.displayAt)?Math.min(now,cue.displayAt!):now,duration:cue.durationMs??duration(cue.kind),pending:[]};
  const active=now<state.at+state.duration;
  if(attackPriority&&active&&(state.kind==='attack'||state.kind==='skill')&&cue.kind==='hurt')return state;
- // Match Sunrise Kingdom's pending-attack handoff: while a skill pose is
- // active, retain the latest confirmed swing and start it as soon as the
- // skill pose ends. This is presentation-only; combat timing stays server-owned.
- // Do not queue a second copy of the same swing or prolong the cast.
- if(attackPriority&&active&&state.kind==='skill'&&cue.kind==='attack')
-  return {...state,pending:[cue]};
+ // Confirmed attacks must take over a lingering cast pose immediately.
+ // The server has already decided when the swing landed; queuing it behind
+ // the cosmetic skill would reintroduce the reported post-cast pause.
  // A confirmed player action replaces a visual cast/flinch immediately. Skill
  // cooldowns are enforced by the server; replaying the pose must not add a lock.
  if(attackPriority&&((cue.kind==='attack'&&state.kind==='skill')||((cue.kind==='attack'||cue.kind==='skill')&&state.kind==='hurt')))
