@@ -19,8 +19,6 @@ function play(path:string,volume=.3){
  }).catch(()=>{buffers.delete(path);});return;}
  voices=voices.filter(a=>!a.paused);if(voices.length>=12)return;const audio=new Audio(path);fallbackVolumes.set(audio,volume);audio.volume=volume*masterVolume;voices.push(audio);void audio.play().catch(()=>{});
 }
-let importedHurtSound:string|undefined,lastImportedHurt=-Infinity;
-export function setImportedHurtSound(path:string|undefined){importedHurtSound=path;}
 function mapped(map:Record<string,string|number>,name:string){return map[name]||map[name.replace(/[（(][^）)]*[）)]/g,'').replace(/^(遺忘之島|夢幻之島|變種|強化|巨大|冰原)/,'').trim()];}
 function number(id:string|number|undefined,volume=.3){if(id!==undefined)play(`/assets/sfx/${id}.ogg`,volume);}
 const spellTimes=new Map<string,number>();
@@ -48,7 +46,7 @@ export function combatSound(c:Character,e:CombatEvent){
   if(e.visualPhase!=='launch'&&!e.miss&&e.damage){number(mapped(S.MOB_HURT_SFX,name),.2);if(e.mobHp===0)number(S.MOB_KILL_SFX[name]||57,.25);}
  }
  if(e.kind==='magic'&&e.skill)spell(e,c.id);
- if(e.kind==='hurt'){if(!e.miss&&e.damage&&!e.petUid&&!e.summonUid&&importedHurtSound&&performance.now()-lastImportedHurt>3000){lastImportedHurt=performance.now();play(importedHurtSound,.25);}number(mapped(S.MOB_ATTACK_SFX,name),.25);if(!e.miss&&e.damage){if(special)play(`/assets/morphsnd/${poly}/hurt.ogg`,.3);else if(poly==='死亡騎士')play('/assets/sprites/deathknight/hurt/88.wav',.3);else{const cls={knight:'騎士',elf:'妖精',mage:'法師',dark:'妖精'}[c.cls];number(poly&&mapped(S.MOB_HURT_SFX,poly)||S.HURT_SFX[(c.gender==='f'?'女':'男')+cls],.3);}}}
+ if(e.kind==='hurt'){number(mapped(S.MOB_ATTACK_SFX,name),.25);if(!e.miss&&e.damage){if(special)play(`/assets/morphsnd/${poly}/hurt.ogg`,.3);else if(poly==='死亡騎士')play('/assets/sprites/deathknight/hurt/88.wav',.3);else{const cls={knight:'騎士',elf:'妖精',mage:'法師',dark:'妖精'}[c.cls];number(poly&&mapped(S.MOB_HURT_SFX,poly)||S.HURT_SFX[(c.gender==='f'?'女':'男')+cls],.3);}}}
 }
 
 export function preloadCombatAudio(c:Character){

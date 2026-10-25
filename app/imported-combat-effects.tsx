@@ -8,7 +8,7 @@ export function EffectAtlas({clip,age,width=150}:{clip:EffectClip;age:number;wid
  const n=importedFrame(clip,age),scale=Math.min(width/clip.width,190/clip.height,1.5),w=clip.width*scale,h=clip.height*scale;
  return <span aria-hidden="true" style={{display:'block',width:w,height:h,backgroundImage:`url(/assets/dasu-v1/${clip.sheet})`,backgroundSize:`${clip.cols*w}px ${Math.ceil(clip.count/clip.cols)*h}px`,backgroundPosition:`-${n%clip.cols*w}px -${Math.floor(n/clip.cols)*h}px`,backgroundRepeat:'no-repeat'}}/>;
 }
-type Anchor={left:string;top:string;hurtTop:string};
+type Anchor={left:string;top:string};
 export default function ImportedCombatEffects({c,view,arena}:{c:Character;view:BattleView;arena:RefObject<HTMLDivElement|null>}){
  const config=useCombatEffects(),[clock,setClock]=useState(0),anchors=useRef(new Map<number,Anchor>());
  // Resolve only events that actually have an enabled visual, once per packet.
@@ -16,11 +16,9 @@ export default function ImportedCombatEffects({c,view,arena}:{c:Character;view:B
   if(e.visualPhase==='launch')return [];
   const triple=e.kind==='magic'&&e.skill==='sk_elf_triple';
   const tripleIds=triple?importedEffects.triple.filter(id=>importedEffects.entries[id].code==='11764-0'):e.kind==='attack'&&e.skill==='sk_elf_triple'&&!e.miss?importedEffects.triple.filter(id=>importedEffects.entries[id].code==='4394-0'):[];
-  const clips=[...tripleIds].map(id=>({id,entry:importedEffects.entries[id],clip:importedEffects.clips[importedEffects.entries[id].clip]}));
-  // Picture-based hurt reactions and imported weapon attack visuals are disabled; keep triple-arrow spell visuals.
-  const hurt=undefined;
-  if(!clips.length&&!hurt)return [];
-  return [{e,clips,hurt,player:triple||!!hurt,lifetime:Math.max(hurt?700:0,...clips.map(x=>x.clip.count/x.clip.fps*1000))}];
+  const clips=tripleIds.map(id=>({id,entry:importedEffects.entries[id],clip:importedEffects.clips[importedEffects.entries[id].clip]}));
+  if(!clips.length)return [];
+  return [{e,clips,player:triple,lifetime:Math.max(...clips.map(x=>x.clip.count/x.clip.fps*1000))}];
  }),[view.actions,c,config]);
  useLayoutEffect(()=>{
   const now=performance.now(),host=arena.current,live=new Set(effects.map(x=>x.e.seq));
@@ -31,7 +29,7 @@ export default function ImportedCombatEffects({c,view,arena}:{c:Character;view:B
   if(host&&fresh.length){const root=host.getBoundingClientRect();if(root.width&&root.height){
    const measured=new Map<string,Anchor>();
    for(const x of fresh){const selector=x.player?'.character-sprite':`[data-monster-slot="${x.e.slot}"] .four-monster-art`;let anchor=measured.get(selector);
-    if(!anchor){const node=host.querySelector(selector);if(!node)continue;const r=node.getBoundingClientRect();anchor={left:`${(r.left-root.left+r.width/2)/root.width*100}%`,top:`${(r.top-root.top+r.height*.55)/root.height*100}%`,hurtTop:`${(r.top-root.top-10)/root.height*100}%`};measured.set(selector,anchor);}
+    if(!anchor){const node=host.querySelector(selector);if(!node)continue;const r=node.getBoundingClientRect();anchor={left:`${(r.left-root.left+r.width/2)/root.width*100}%`,top:`${(r.top-root.top+r.height*.55)/root.height*100}%`};measured.set(selector,anchor);}
     anchors.current.set(x.e.seq,anchor);
    }
   }}
@@ -43,7 +41,7 @@ export default function ImportedCombatEffects({c,view,arena}:{c:Character;view:B
    const active=effects.filter(x=>now>=x.e.shownAt&&now-x.e.shownAt<x.lifetime);
    // The source atlases normally run at 12 fps. A 60 Hz browser callback must
    // not rerender React or remeasure every actor when no atlas frame changed.
-   const signature=active.map(x=>`${x.e.seq}:${x.clips.map(y=>now-x.e.shownAt<y.clip.count/y.clip.fps*1000?importedFrame(y.clip,now-x.e.shownAt):-1).join(',')}:${x.hurt&&now-x.e.shownAt<700?1:0}`).join('|');
+   const signature=active.map(x=>`${x.e.seq}:${x.clips.map(y=>now-x.e.shownAt<y.clip.count/y.clip.fps*1000?importedFrame(y.clip,now-x.e.shownAt):-1).join(',')}`).join('|');
    if(signature!==last){last=signature;setClock(now);}
    if(active.length)raf=requestAnimationFrame(tick);
   };
@@ -53,7 +51,6 @@ export default function ImportedCombatEffects({c,view,arena}:{c:Character;view:B
   const age=clock-x.e.shownAt,anchor=anchors.current.get(x.e.seq);if(!anchor||age<0||age>=x.lifetime)return [];
   const style:CSSProperties={position:'absolute',pointerEvents:'none',zIndex:12,left:anchor.left,top:anchor.top,transform:'translate(-50%,-65%)'};
   const result=x.clips.flatMap(({id,entry,clip})=>age>=clip.count/clip.fps*1000?[]:[<span key={`${x.e.seq}:${id}`} style={{...style,mixBlendMode:'screen'}} data-effect-code={entry.code}><EffectAtlas clip={clip} age={age}/></span>]);
-  if(x.hurt&&age<700)result.push(<img key={`hurt:${x.e.seq}`} src={x.hurt.image} alt="受擊特效" style={{...style,width:125,maxHeight:80,objectFit:'contain',top:anchor.hurtTop}}/>);
   return result;
  })}</>;
 }

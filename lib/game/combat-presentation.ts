@@ -41,20 +41,24 @@ export function scheduleReplay<T extends CombatEvent&{due:number}>(events:T[],no
  return events.map(e=>({...e,due:start+(span>0?(e.due-first)/span*window:0)}));
 }
 
-/** Use one clock for animation, HP and damage. After an urgent cast, keep that
- * confirmed live clock instead of rebuilding a buffer in the middle of combat. */
-export function enqueueCombatReplay<T extends CombatEvent>(queued:(T&{due:number})[],fresh:T[],now:number,previous:number|null,live=false){
+/** Keep the ordinary buffered clock across urgent casts. Only the confirmed
+ * urgent history bypasses the buffer; it must not put all future combat into
+ * arrival-time playback. Already queued launches retain their deadlines.
+ */
+export function enqueueCombatReplay<T extends CombatEvent>(queued:(T&{due:number})[],fresh:T[],now:number,previous:number|null,_live=false){
  const manual=fresh.some(e=>e.manual),triple=tripleReplayOffset(fresh,now);
- const pendingTriple=queued.some(e=>e.kind==='attack'&&e.skill==='sk_elf_triple');
- const immediate=manual||triple!==null||pendingTriple||live;
- const offset=manual?manualReplayOffset(fresh,now):triple??((pendingTriple||live)&&previous!==null?previous:replayOffset(fresh,now,previous));
+ const urgentOffset=manual?manualReplayOffset(fresh,now):triple;
+ const urgentSeq=urgentOffset!==null?Math.max(...fresh.filter(e=>manual?e.manual:e.skill==='sk_elf_triple').map(e=>e.seq)):-Infinity;
+ const normal=fresh.filter(e=>e.seq>urgentSeq);
+ const offset=normal.length?replayOffset(normal,now,previous):previous??replayOffset(fresh,now,null);
  if(offset===null)return {queue:queued,offset};
- const shifted=queued.map(e=>({...e,due:previous===null?e.due:e.due+offset-previous}));
- const known=new Set(shifted.map(e=>e.seq));
+ const known=new Set(queued.map(e=>e.seq));
  const unique=fresh.filter(e=>{if(known.has(e.seq))return false;known.add(e.seq);return true;});
- const combined=[...shifted,...unique.map(e=>({...e,due:e.at+offset}))].sort((a,b)=>a.due-b.due||a.seq-b.seq);
- // Re-pacing overdue history here would put the urgent burst at the back again.
- return {queue:immediate?combined:scheduleReplay(combined,now),offset};
+ // Historical state before an urgent cast must be applied first. Never shift
+ // another arrow's deadline when a subsequent state/poll response arrives.
+ const carried=queued.map(e=>urgentOffset!==null&&e.seq<urgentSeq?{...e,due:Math.min(now,e.due)}:e);
+ const added=unique.map(e=>({...e,due:e.at+(urgentOffset!==null&&e.seq<=urgentSeq?urgentOffset:offset)}));
+ return {queue:[...carried,...(urgentOffset===null?scheduleReplay(added,now):added)].sort((a,b)=>a.due-b.due||a.seq-b.seq),offset};
 }
 
 export type BattleView={healthCredits?:Record<string,number>;actions?:(CombatEvent&{shownAt:number})[];petHurt?:CombatEvent;petEntities?:PetSnapshot[];summonEntities?:SummonEntity[];hp:number;mp:number;arena:Encounter[];target?:number;attack?:CombatEvent;magic?:CombatEvent;hurt?:CombatEvent;casts?:(CombatEvent&{shownAt:number})[];floats:CombatFloat[]};
@@ -108,4 +112,5 @@ export function applyCombatViewEvent(v:BattleView,next:PresentationEvent,now:num
  if(next.slot!==undefined&&arena[next.slot]?.uid===next.uid&&next.targetEffects)arena[next.slot].effects=next.targetEffects;
  return {healthCredits,actions,petHurt:next.petUid&&next.source==='monster'?next:v.petHurt,petEntities:next.petEntities||v.petEntities,summonEntities:next.summonEntities||v.summonEntities,hp:staged?v.hp:next.hp,mp:staged?v.mp:next.mp,arena,target:next.target??v.target,attack:next.kind==='attack'&&next.visualPhase!=='impact'?next:v.attack,magic:next.kind==='magic'?next:v.magic,hurt:next.kind==='hurt'?next:v.hurt,casts:[...(v.casts||[]).filter(f=>now-f.shownAt<magicEffectLifetime(f)),...(!staged&&((next.weaponProc&&!!lineageWEffectDefinition(next.skill))||(next.kind==='magic'&&(next.source==='monster'||next.slot!==undefined||!next.skill||(raw.skills as any)[next.skill]?.type!=='atk'))||(next.kind==='attack'&&next.skill&&!next.miss&&next.source!=='poison'&&next.source!=='summon'))?[{...next,shownAt:now}]:[])],floats:['attack','hurt','heal'].includes(next.kind)?addCombatFloat(v.floats,next,now):v.floats.filter(f=>now-f.shownAt<800)};
 }
+
 
