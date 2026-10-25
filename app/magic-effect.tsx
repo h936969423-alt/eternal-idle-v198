@@ -26,24 +26,25 @@ export default function MagicEffect({event,loopUntil}:{event:CombatEvent;loopUnt
   position();
   const observer=config.atlas&&typeof ResizeObserver!=='undefined'?new ResizeObserver(position):undefined;
   if(observer&&(root||parent))observer.observe((root||parent)!);
-  let request=0;
+  let timer:ReturnType<typeof setTimeout>|undefined;
   const started=event.visualAt??performance.now();
-  // Animation is usually 8–15 fps; don't force a React render on every 60 Hz
-  // display frame. Update only when the visible sprite frame actually changes.
+  // Schedule at the effect's actual frame rate instead of running a separate
+  // 60 Hz requestAnimationFrame loop for every active spell.
   let lastIndex=0;
-  const tick=(now:number)=>{
+  const tick=()=>{
+   const now=performance.now();
    const expired=!!loopUntil&&Date.now()>=loopUntil;
    const index=expired?-1:magicFrame(now-started,config.fps,count,!!loopUntil);
    if(index!==lastIndex){lastIndex=index;setFrame(index);}
-   if(index>=0)request=requestAnimationFrame(tick);
+   if(index>=0)timer=setTimeout(tick,Math.max(16,1000/Math.max(1,config.fps)));
   };
   const visibility=()=>{
-   if(document.hidden){cancelAnimationFrame(request);setFrame(-1);}
-   else if(loopUntil&&Date.now()<loopUntil)request=requestAnimationFrame(tick);
+   if(document.hidden){if(timer)clearTimeout(timer);timer=undefined;setFrame(-1);}
+   else if(!timer&&(!loopUntil||Date.now()<loopUntil))timer=setTimeout(tick,0);
   };
   document.addEventListener('visibilitychange',visibility);
-  if(!document.hidden)request=requestAnimationFrame(tick);else setFrame(-1);
-  return()=>{cancelAnimationFrame(request);observer?.disconnect();document.removeEventListener('visibilitychange',visibility);};
+  if(!document.hidden)timer=setTimeout(tick,0);else setFrame(-1);
+  return()=>{if(timer)clearTimeout(timer);observer?.disconnect();document.removeEventListener('visibilitychange',visibility);};
  },[event.seq,loopUntil,config,count]);
  if(lineageWEffectDefinition(event.skill))return <LineageWEquipmentEffect event={event}/>;
  if(mythicProcDefinition(event.skill))return <MythicWeaponEffect event={event}/>;
