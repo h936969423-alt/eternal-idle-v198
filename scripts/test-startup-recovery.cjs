@@ -1,6 +1,6 @@
 const assert=require('node:assert/strict'),fs=require('node:fs'),vm=require('node:vm'),ts=require('typescript'),path=require('node:path');
 function compile(p,mocks={}){const module={exports:{}};vm.runInNewContext(ts.transpileModule(fs.readFileSync(path.join(__dirname,'..',p),'utf8'),{compilerOptions:{module:ts.ModuleKind.CommonJS,target:ts.ScriptTarget.ES2022}}).outputText,{module,exports:module.exports,require:n=>mocks[n]});return module.exports;}
-const startup=compile('lib/game/startup-recovery.ts'),poll=compile('lib/game/client-poll.ts',{'./sync-policy':{syncDelay:()=>1500}});
+const startup=compile('lib/game/startup-recovery.ts'),poll=compile('lib/game/client-poll.ts',{'./sync-policy':{nextSyncDelay:()=>1500}});
 function surface(){const listeners={};return {listeners,addEventListener(k,v){(listeners[k]??=new Set()).add(v);},removeEventListener(k,v){listeners[k]?.delete(v);},emit(k,e={}){for(const fn of listeners[k]||[])fn(e);}};}
 function boot({query='',data=new Map(),blocked=false,pathname='/'}={}){const win=surface(),box={hidden:true},link={},calls=[],replaced=[],timers=new Map();let next=0;const storage={getItem:k=>{if(blocked)throw Error('blocked');return data.get(k)||null;},setItem:(k,v)=>{if(blocked)throw Error('blocked');data.set(k,v);}};const location={pathname,href:'https://game.test'+pathname+query,replace:url=>replaced.push(url)};
  vm.runInNewContext(startup.STARTUP_RECOVERY_SCRIPT,{window:win,document:{visibilityState:'hidden',getElementById:id=>id==='game-startup-recovery'?box:link},sessionStorage:storage,location,URL,Date,fetch:(url,o)=>{calls.push(JSON.parse(o.body));return Promise.resolve();},setTimeout:(fn,delay)=>{timers.set(++next,{fn,delay});return next;},clearTimeout:id=>timers.delete(id)});
@@ -20,4 +20,5 @@ async function run(){
  console.log('PASS: first character fetch while hidden; foreground and bfcache restores; paused background interval; cleanup; inline recovery before React, manual cache-busting reload without interrupting slow downloads, blocked storage/manual fallback, no GM reload, startup phases.');
 }
 run().catch(e=>{console.error(e);process.exitCode=1;});
+
 
