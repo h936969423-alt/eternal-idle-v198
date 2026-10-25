@@ -1,3 +1,4 @@
+import {calculateOfflineGains,MAP_EFFICIENCY,DEFAULT_OFFLINE_EFFICIENCY,MAX_OFFLINE_SECONDS} from './offline-gains';
 import {lineageWProjectileStrike} from './lineagew-projectile';
 import {LW_MYTHIC_FIELDS,mythicMonsterMagicDamage,mythicHealing,applyWaterErosion,waterErosionActive,mythicCancelHit} from './lineagew-mythic-effects';
 import {lineageWDefenseStats,lineageWCounterDamage,LW_CONDITIONAL_FIELDS} from './lineagew-conditions';
@@ -544,83 +545,61 @@ function stopHuntOnCharacterSwitch(save:Save,nextId:string,now:number){
   if(character.running){character.running=false;log(character,'切換角色，狩獵與離線收益已暫停。','info',now);}
  }
 }
-/** Settle a bounded offline batch without replaying hours of visual snapshots.
- * A pending catchup has already applied the twelve-hour cap; do not cap it again.
+/** Login-only arithmetic settlement. save.at is the server-owned last-save timestamp.
+ * Existing CAS persistence commits both rewards and this timestamp atomically.
+ * Legacy catchup rewards are already in the character: carry their receipt only.
  */
-// Keep exact combat and rewards, but bound each D1 transaction's CPU time.
-// Twenty-minute batches could exceed the Worker/request timeout and leave the
-// login catchup progress stuck. Commit small batches atomically; the next GET
-// resumes from save.at, with the reward ledger preserved in save.catchup.
-export const ADVANCE_BATCH_MS=120_000;
-export const OFFLINE_EVENT_TAIL_MS=4000;
-/** Strictly inert secondary characters require no per-second combat clock.
- * Do not shortcut buffs, pets, summons, monsters, resource regeneration,
- * transformations, dolls or any character currently hunting.
- * The shortcut never changes loot rolls or the active hunter's timeline.
- */
-function isInertOfflineCharacter(c:Character,now:number){
- if(c.running||c.hp<=0||c.healingOverTime||c.doll||c.poly?.until&&c.poly.until>now)return false;
- if(Object.keys(c.buffs||{}).length||Object.keys(c.bossRooms||{}).length)return false;
- if(c.petActive||c.petActives?.length||c.summons||c.summonContract?.entities?.length)return false;
- if(c.arena?.length||!DATA.towns[c.zone])return false;
- const b=stats(c,now);
- return c.hp>=b.maxHp&&c.mp>=b.maxMp;
+export function settleOfflineGains(save:Save,now:number,rng:()=>number=Math.random){
+ const prior=save.catchup;
+ const elapsed=Math.max(0,Math.floor((now-save.at)/1000));
+ const priorSeconds=Math.max(0,prior?.seconds||0);
+ const seconds=Math.min(elapsed,Math.max(0,MAX_OFFLINE_SECONDS-priorSeconds));
+ singleHunt(save);bindBossRooms(save);bindDollCollections(save);bindPolymorphUnlocks(save);
+ const hunter=save.characters.find(c=>c.id===prior?.characterId)||save.characters.find(c=>c.running);
+ let xp=0,gold=0,effectiveMinutes=0,isDead=false;
+ if(hunter?.running&&hunter.hp>0&&!DATA.towns[hunter.zone]&&!playableBoss(hunter.zone)&&mapPool(hunter.zone,hunter.mapPools).length&&mapIsOpen(hunter.zone,hunter.mapAccess,now)){
+  const rate=MAP_EFFICIENCY[hunter.zone]||DEFAULT_OFFLINE_EFFICIENCY;
+  const gains=calculateOfflineGains(seconds,rate,rng);
+  ({xp,gold,effectiveMinutes,isDead}=gains);
+  upgradeAbilityPoints(hunter);hunter.xp+=xp;hunter.gold+=gold;
+  // Bounded by the 99-level cap, never by offline duration.
+  while(hunter.xp>=xpNeed(hunter.lv)&&hunter.lv<99){hunter.xp-=xpNeed(hunter.lv);hunter.points+=levelPointGain(hunter.lv,hunter.lv+1);hunter.lv++;const b=stats(hunter,now);hunter.hp=b.maxHp;hunter.mp=b.maxMp;}
+  if(isDead)defeat(hunter,now,rng);
+ }
+ for(const c of save.characters){
+  c.events=[];c.atkClock=now;c.mobClock=now;
+  for(const m of c.arena||[]){m.clock=now;for(const key of Object.keys(m.magicClocks||{}))m.magicClocks![key]=now;}
+  event(c,'state',now);
+ }
+ save.at=Math.max(save.at,now);delete save.catchup;
+ const report={seconds:priorSeconds+seconds,kills:prior?.kills||0,gold:(prior?.gold||0)+gold,xp:(prior?.xp||0)+xp,drops:{...(prior?.drops||{})},characterName:prior?.characterName||hunter?.name||'冒險者',characterId:prior?.characterId||hunter?.id,pendingSeconds:0,offline:!!hunter||!!prior,effectiveMinutes:prior?undefined:effectiveMinutes,isDead};
+ rememberOfflineIncome(save,report,save.at);
+ return report;
 }
-export function advance(save:Save,now=Date.now(),rng:()=>number=Math.random,config:WorldRules|WorldConfig=DEFAULT_WORLD_RULES,budgetMs=Infinity){
+/** Online polling retains exact combat; offline intervals use arithmetic above. */
+export function advance(save:Save,now=Date.now(),rng:()=>number=Math.random,config:WorldRules|WorldConfig=DEFAULT_WORLD_RULES,_budgetMs=Infinity){
+ if(!Number.isFinite(now)||!Number.isFinite(save.at))throw Error('無效的存檔時間');
+ if(now<=save.at)return {seconds:0,kills:0,gold:0,xp:0,drops:{},pendingSeconds:0,offline:false};
  if(save.characterDeletions){bindBossRooms(save);bindDollCollections(save);bindPolymorphUnlocks(save);settleCharacterDeletions(save,now);}
- // Freeze the finish line when catchup starts: each request resumes the same
- // interval instead of chasing an ever-moving Date.now() while the user waits.
- const targetAt=save.catchup?.targetAt??now;
- // 阿肥-style eligibility: only a character already hunting when the offline
- // interval began can generate a new offline hunting income receipt. A pending
- // catchup retains the original hunter identity even if they died meanwhile.
- const offlineHunter=save.catchup?.characterId||save.characters.find(c=>c.running)?.id;
- const old=save.at,start=save.catchup?Math.min(save.at,targetAt):Math.max(Math.min(save.at,targetAt),targetAt-43200000);
- // Short foreground syncs (including entering a character after successful
- // login catchup) must finish together instead of opening another offline
- // settlement progress screen. Bound them to <= 5 seconds of game time.
- const foregroundSync=!save.catchup&&targetAt-start<=5000;
- const effectiveBudget=foregroundSync?Infinity:budgetMs;
- let end=save.characters.length?Math.min(targetAt,start+ADVANCE_BATCH_MS):targetAt;
- const accelerated=end-start>OFFLINE_EVENT_TAIL_MS,recordAfter=end<now?Infinity:end-OFFLINE_EVENT_TAIL_MS;if(accelerated)for(const c of save.characters){offlineEventRecordingAfter.set(c,recordAfter);c.events=(c.events||[]).filter(e=>e.at>=recordAfter);}
- try{
+ if(save.catchup||now-save.at>30000)return settleOfflineGains(save,now,rng);
+ const start=save.at;
  singleHunt(save);bindBossRooms(save);bindDollCollections(save);bindPolymorphUnlocks(save);
  for(const c of save.characters){migrateDolls(c);upgradeAbilityPoints(c);upgradeSupply(c,start);}
- const ledger:IncomeLedger={xp:save.catchup?.xp||0,drops:{...(save.catchup?.drops||{})}};const beneficiary=save.characters.find(c=>c.id===save.catchup?.characterId)||save.characters.find(c=>c.running)||save.characters.find(c=>c.id===save.active);const characterName=save.catchup?.characterName||beneficiary?.name||'冒險者';const characterId=save.catchup?.characterId||beneficiary?.id;// Attribute rewards to the character that was hunting, not all account characters.
- // Previously multiple character ledgers shared the same aggregate receipt.
+ const ledger:IncomeLedger={xp:0,drops:{}};
+ const beneficiary=save.characters.find(c=>c.running)||save.characters.find(c=>c.id===save.active);
  if(beneficiary)incomeLedgers.set(beneficiary,ledger);
  const before=save.characters.reduce((a,c)=>a+c.kills,0),gold=save.characters.reduce((a,c)=>a+c.gold,0);
- // Resolve world rules once for stable intervals, rather than scanning the
- // full GM settings history once per simulated second. Advance the cursor only
- // when the actual rule-change timestamp is reached.
- const changes='history' in config?[...config.history].sort((a,b)=>a.at-b.at):[];
- let changeIndex=0;while(changeIndex<changes.length&&changes[changeIndex].at<=start)changeIndex++;
- let rules=worldRulesAt(config,start);
- const characters=save.characters;
- const budgetStart=performance.now();
- // Only completely inert town characters can skip second-by-second updates.
- // Recompute this once per batch, never for the hunting character.
- const inert=new Set(characters.filter(c=>isInertOfflineCharacter(c,start)));
- for(let t=start;t<end;){
-  const next=Math.min(end,t+1000);
-  while(changeIndex<changes.length&&changes[changeIndex].at<=next){rules=changes[changeIndex];changeIndex++;}
-  for(const c of characters)if(!inert.has(c))second(c,next,rng,rules,next-t);
-  for(const c of characters)settleBossRewards(c,next,rng);
-  t=next;
-  // Yield only between fully completed seconds: all combat rolls, inventory
-  // changes and boss rewards for the tick have been resolved together.
-  // This avoids timing out and losing a whole 120-second D1 transaction.
-  if(Number.isFinite(effectiveBudget)&&t<end&&t-start>=1000&&performance.now()-budgetStart>=effectiveBudget){end=t;break;}
- }
- for(const c of save.characters){const dollMsg=renewDoll(c,end);if(dollMsg)log(c,dollMsg,'info',end);const msg=tickPolymorph(c,end,rng);if(msg)log(c,msg,'magic',end);}
- for(const c of save.characters)incomeLedgers.delete(c);bindDollCollections(save);save.at=end;
- const prior=save.catchup,report={xp:ledger.xp,drops:ledger.drops,characterName,characterId,seconds:(prior?.seconds||0)+(end-start)/1000,kills:(prior?.kills||0)+save.characters.reduce((a,c)=>a+c.kills,0)-before,gold:(prior?.gold||0)+save.characters.reduce((a,c)=>a+c.gold,0)-gold};
- const pendingSeconds=Math.max(0,Math.ceil((targetAt-end)/1000));
- if(pendingSeconds)save.catchup={...report,targetAt};else delete save.catchup;
- const result={...report,pendingSeconds,offline:!pendingSeconds&&!!offlineHunter&&(!!prior||targetAt-old>30000)};
- rememberOfflineIncome(save,result,end);
- return result;
- }finally{if(accelerated)for(const c of save.characters)offlineEventRecordingAfter.delete(c);}
+ try{
+  for(let t=start;t<now;){
+   const next=Math.min(now,t+1000),rules=worldRulesAt(config,next);
+   for(const c of save.characters)second(c,next,rng,rules,next-t);
+   for(const c of save.characters)settleBossRewards(c,next,rng);
+   t=next;
+  }
+  for(const c of save.characters){const dollMsg=renewDoll(c,now);if(dollMsg)log(c,dollMsg,'info',now);const msg=tickPolymorph(c,now,rng);if(msg)log(c,msg,'magic',now);}
+  bindDollCollections(save);save.at=now;
+  return {xp:ledger.xp,drops:ledger.drops,characterName:beneficiary?.name||'冒險者',characterId:beneficiary?.id,seconds:(now-start)/1000,kills:save.characters.reduce((a,c)=>a+c.kills,0)-before,gold:save.characters.reduce((a,c)=>a+c.gold,0)-gold,pendingSeconds:0,offline:false};
+ }finally{for(const c of save.characters)incomeLedgers.delete(c);}
 }
 
 export function action(save:Save,a:any,now=Date.now(),rng:()=>number=Math.random){if(a.type==='interfaceTheme'){if(a.theme!=='classic'&&a.theme!=='ice')throw Error('不支援的介面色系');save.interfaceTheme=a.theme;return;}if(a.type==='bossVictoryDismiss'){const c=save.characters.find(c=>c.id===a.characterId);if(c)acknowledgeBossVictory(c,a.id);return;}if(a.type==='offlineIncomeDismiss'){acknowledgeOfflineIncome(save,a.id);return;}singleHunt(save);bindBossRooms(save);bindDollCollections(save);bindPolymorphUnlocks(save);if(a.type==='create'){if(save.characters.length>=MAX_CHARACTERS)throw new Error('最多建立三位角色');const c=createCharacter(String(a.name||''),String(a.cls),String(a.gender),a.allocation||{},now);stopHuntOnCharacterSwitch(save,c.id,now);save.characters.push(c);bindPolymorphUnlocks(save);save.active=c.id;return;}
@@ -684,3 +663,4 @@ export function action(save:Save,a:any,now=Date.now(),rng:()=>number=Math.random
  }
  for(const ch of save.characters)settleBossRewards(ch,now,rng);bindDollCollections(save);bindPolymorphUnlocks(save);ensureArena(c,rng,now);const b=stats(c,now);c.hp=clamp(c.hp,1,b.maxHp);event(c,'state',now);c.mp=clamp(c.mp,0,b.maxMp);
 }
+

@@ -7,7 +7,7 @@ function roundTrip(save){return JSON.parse(JSON.stringify(sync.persistedSave(sav
 try{
  const now=1000000,s=e.emptySave(now),base=e.BASES.knight,allocation={};let left=base.pts;for(const k of ['str','dex','con','int','wis','cha']){allocation[k]=Math.min(left,20-base[k]);left-=allocation[k];}e.action(s,{type:'create',name:'收益測試',cls:'knight',gender:'m',allocation},now);const c=s.characters[0];c.lv=60;c.attrs.con=40;c.attrs.str=40;c.gold=100000000;c.bag.potion_heal=100000;c.hp=e.stats(c,now).maxHp;e.action(s,{type:'run',value:true},now);
  e.advance(s,now+1000,()=>.5);assert.equal(s.offlineIncome,undefined,'normal polling must not create a receipt');
- const report=e.advance(s,now+121000,()=>.5);assert.equal(report.offline,true);assert.ok(report.kills>0);assert.equal(s.offlineIncome.seconds,120);assert.equal(s.offlineIncome.xp,report.xp);assert.equal(s.offlineIncome.kills,report.kills);assert.equal(s.offlineIncome.gold,report.gold);assert.deepEqual(s.offlineIncome.drops,report.drops);assert.equal(s.offlineIncome.characterName,'收益測試');
+ const report=e.advance(s,now+121000,()=>.5);assert.equal(report.offline,true);assert.equal(report.kills,0);assert.equal(report.xp,200);assert.equal(report.gold,100);assert.equal(s.offlineIncome.seconds,120);assert.equal(s.offlineIncome.xp,report.xp);assert.equal(s.offlineIncome.kills,report.kills);assert.equal(s.offlineIncome.gold,report.gold);assert.deepEqual(s.offlineIncome.drops,report.drops);assert.equal(s.offlineIncome.characterName,'收益測試');
  // The first response was lost: another GET sees the persisted receipt even
  // though its own simulation report no longer says offline.
  const retry=roundTrip(s),receipt=structuredClone(retry.offlineIncome),sameTime=e.advance(retry,s.at,()=>.5);assert.equal(sameTime.offline,false);assert.deepEqual(retry.offlineIncome,receipt);assert.deepEqual(retry.characters[0].bag,c.bag);assert.equal(retry.characters[0].gold,c.gold);assert.equal(income.unreadOfflineIncome(retry).id,receipt.id);
@@ -18,3 +18,4 @@ try{
  const noIncome=e.emptySave(now);income.rememberOfflineIncome(noIncome,{offline:true,pendingSeconds:1,seconds:120,kills:0,gold:0},now);assert.equal(noIncome.offlineIncome,undefined);income.rememberOfflineIncome(noIncome,{offline:true,pendingSeconds:0,seconds:59,kills:0,gold:0},now);assert.equal(noIncome.offlineIncome,undefined);
  console.log('PASS: offline receipt survives lost responses, polling, CAS recovery and reload; dismissal and manual re-open never award income again; stale acknowledgement cannot hide a new report.');
 }finally{fs.rmSync(dir,{recursive:true,force:true});}
+

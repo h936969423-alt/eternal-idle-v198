@@ -12,6 +12,7 @@ async function scenario(conflicts,mutate=false,invalid=false,pending=false){
  '../../../lib/game/world-store':{isGameMaster:()=>false},'../../../lib/game/world-rules':{worldRulesAt:()=>({})},
  '../../../lib/game/engine':{advance:s=>{s.at=2000;return {pendingSeconds:pending?1000:0};},action:s=>{if(invalid)throw Error('invalid action');s.gold-=5;},stats:()=>({}),emptySave:()=>({characters:[]})}
  };
+ for(const name of ['lineagew-mythic-migration','control-ring-restoration','lineagew-hl-migration','lineagew-migration']){const fn={ 'lineagew-mythic-migration':'ensureLineageWMythicMigration','control-ring-restoration':'ensureControlRingRestoration','lineagew-hl-migration':'ensureLineageWHLMigration','lineagew-migration':'ensureLineageWMigration'}[name];mocks['@/lib/game/'+name+'-store']={[fn]:async(db,owner,row)=>row};}
  const module={exports:{}};vm.runInNewContext(ts.transpileModule(fs.readFileSync(root+'/app/api/game/route.ts','utf8'),{compilerOptions:{module:ts.ModuleKind.CommonJS,target:ts.ScriptTarget.ES2022}}).outputText,{module,exports:module.exports,require:n=>{assert.ok(n in mocks,n);return mocks[n];},Response,Request,Date,Math,console,setTimeout,performance,URL});
  const req=new Request('https://game.test/api/game',{method:mutate?'POST':'GET',...(mutate?{body:'{}'}:{})});
  const res=await module.exports[mutate?'POST':'GET'](req),data=await res.json();
@@ -25,8 +26,9 @@ async function connectionChecks(){
  const timeoutDurations=[];const trackedTimeout=(fn,ms)=>{timeoutDurations.push(ms);return setTimeout(fn,ms);};
  const module={exports:{}};vm.runInNewContext(ts.transpileModule(fs.readFileSync(root+'/lib/game/game-connection.ts','utf8'),{compilerOptions:{module:ts.ModuleKind.CommonJS,target:ts.ScriptTarget.ES2022}}).outputText,{module,exports:module.exports,fetch,AbortController,setTimeout:trackedTimeout,clearTimeout,Promise,Error,URLSearchParams});
  let calls=0;const fake=async()=>Response.json(++calls===1?{error:'conflict'}:{save:{}},{status:calls===1?409:200});
- assert.equal((await module.exports.fetchGameState(undefined,fake)).res.status,200);assert.equal(calls,2);assert.deepEqual(timeoutDurations,[30000,30000],'reads must use the 30-second budget');timeoutDurations.length=0;
+ assert.equal((await module.exports.fetchGameState(undefined,fake)).res.status,200);assert.equal(calls,2);assert.deepEqual(timeoutDurations,[30000,650,30000],'reads must use the 30-second budget');timeoutDurations.length=0;
  calls=0;assert.equal((await module.exports.fetchGameState({type:'buy'},fake)).res.status,409);assert.equal(calls,1);assert.deepEqual(timeoutDurations,[8000],'actions retain a bounded timeout and are never replayed');
  calls=0;await assert.rejects(module.exports.fetchGameState({type:'buy'},async()=>{calls++;throw Error('lost response');}));assert.equal(calls,1);
 }
 (async()=>{for(const mutate of [false,true])for(const conflicts of [0,1,3,8])await scenario(conflicts,mutate);await scenario(0,true,true);await scenario(1,true,false,true);await connectionChecks();console.log('PASS: reads and actions recover from conflicts using latest save; bounded contention; invalid actions never write.');})().catch(e=>{console.error(e);process.exitCode=1;});
+
