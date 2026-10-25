@@ -2,7 +2,7 @@ export type MotionKind='idle'|'walk'|'spawn'|'attack'|'skill'|'hurt'|'death';
 export type MotionCue={seq:number;kind:MotionKind;at:number;key?:string;immediate?:boolean;durationMs?:number;displayAt?:number};
 export type MotionClock={kind:MotionKind;at:number;duration:number;pending:MotionCue[]};
 export const priority:Record<MotionKind,number>={idle:0,walk:0,spawn:5,attack:2,skill:3,hurt:4,death:6};
-export function frameMs(interval:number,count:number){return interval>0&&count>0?Math.min(125,interval*1000/count):125;}
+export function frameMs(interval:number,count:number){return interval>0&&count>0?Math.max(45,Math.min(125,interval*1000/count)):125;}
 // A player swing spans the real attack interval; a 125ms frame cap left idle gaps at slower speeds.
 export function durationFor(kind:MotionKind,count:number,attackInterval=0,castInterval=0,hurtMultiplier=1){if(kind==='attack'&&attackInterval>0)return attackInterval*1000;return Math.max(1,count)*(kind==='skill'?frameMs(castInterval,count):125)*(kind==='hurt'?Math.max(.05,Math.min(1,hurtMultiplier)):1);}
 export function pushCue(state:MotionClock,cue:MotionCue,now:number,duration:(kind:MotionKind)=>number,retriggerAttack=false,attackPriority=false){
