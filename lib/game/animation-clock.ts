@@ -13,6 +13,7 @@ export function pushCue(state:MotionClock,cue:MotionCue,now:number,duration:(kin
   return {...state,duration:Math.min(state.duration,now-state.at+(cue.durationMs??duration('attack')))};
  // A confirmed player swing owns its display deadline. Never build a second
  // attack queue behind the previous swing because a render arrived late.
+ if(attackPriority&&state.kind==='skill'&&cue.kind==='attack'&&now<state.at+state.duration)return {...state,pending:[cue]};
  if(attackPriority&&state.kind!=='spawn'&&cue.kind==='attack'&&!cue.immediate&&Number.isFinite(cue.displayAt))
   return {kind:cue.kind,at:Math.min(now,cue.displayAt!),duration:cue.durationMs??duration(cue.kind),pending:[]};
  // Sunrise-style handoff for *local* visual attacks: a skill keeps its
