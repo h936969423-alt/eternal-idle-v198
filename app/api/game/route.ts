@@ -38,7 +38,7 @@ async function handle(request:Request,mutate:boolean){
   timings.read=performance.now()-readAt;
   const settingsKey=['lineagew-mythic-v1-controls1',settings.maps.revision,settings.monsters.revision,settings.dolls.revision,settings.world.revision,settings.appearance.revision,settings.mapAccess.revision,settings.npcs.revision].map(n=>n||0).join(':');
   const query=new URL(request.url).searchParams,after=Number(query.get('after'));
-  const cursor:GameSyncCursor|undefined=!mutate&&query.has('after')&&Number.isSafeInteger(after)&&after>=0?{character:query.get('character')||'',after,settingsKey:query.get('settings')||''}:undefined;
+  const cursor:GameSyncCursor|undefined=query.has('after')&&Number.isSafeInteger(after)&&after>=0?{character:query.get('character')||'',after,settingsKey:query.get('settings')||''}:undefined;
   const reply=(data:any,status=200)=>{const encodeAt=performance.now(),body=JSON.stringify(data);timings.encode=performance.now()-encodeAt;timings.total=performance.now()-started;if(timings.total>=300)console.info('game-timing',JSON.stringify({method:request.method,status,...timings,chars:body.length}));return new Response(body,{status,headers:{'Content-Type':'application/json','Cache-Control':'no-store','Server-Timing':Object.entries(timings).map(([key,ms])=>`${key};dur=${ms.toFixed(1)}`).join(', ')}});};
   // Retry only a confirmed failed compare-and-swap. Each attempt starts from
   // the latest committed save, so discarded combat/actions cannot overwrite it.
@@ -80,3 +80,4 @@ async function handle(request:Request,mutate:boolean){
 }
 export const GET=(r:Request)=>handle(r,false);
 export const POST=(r:Request)=>handle(r,true);
+

@@ -27,18 +27,18 @@ async function requestJson(url:string,init:RequestInit,fetcher:typeof fetch,time
 export async function fetchRecoveryState(fetcher:typeof fetch=fetch,signal?:AbortSignal){
  return requestJson('/api/game?mode=recovery',{cache:'no-store'},fetcher,8000,signal);
 }
-export async function fetchGameState(action?:unknown,fetcher:typeof fetch=fetch,timeoutMs=action===undefined?30000:8000,cursor?:GameSyncCursor,signal?:AbortSignal):Promise<{res:Response;data:any}>{
+export async function fetchGameState(action?:unknown,fetcher:typeof fetch=fetch,timeoutMs=action===undefined||(action&&typeof action==='object'&&'type' in action&&action.type==='select')?30000:8000,cursor?:GameSyncCursor,signal?:AbortSignal):Promise<{res:Response;data:any}>{
  if(signal?.aborted)throw abortError();
  const attempts=action===undefined?2:1;
  for(let attempt=0;attempt<attempts;attempt++){
   let result:{res:Response;data:any};
   try{
-   const query=action===undefined&&cursor?'?'+new URLSearchParams({character:cursor.character,after:String(cursor.after),settings:cursor.settingsKey}).toString():'';
+   const query=cursor?'?'+new URLSearchParams({character:cursor.character,after:String(cursor.after),settings:cursor.settingsKey}).toString():'';
    result=await requestJson('/api/game'+query,{method:action===undefined?'GET':'POST',headers:action===undefined?undefined:{'Content-Type':'application/json'},body:action===undefined?undefined:JSON.stringify(action),cache:'no-store'},fetcher,timeoutMs,signal);
   }catch(e){
    if(signal?.aborted)throw abortError();
    if(attempt+1<attempts){await retryDelay(signal);continue;}
-   throw Error(action===undefined?`連線中斷：${e instanceof Error?e.message:'未知網路錯誤'}。正在重新連線…`:'連線中斷，操作結果尚待確認；畫面恢復後請先確認結果，避免重複操作。');
+   throw Error(action===undefined?`連線中斷：${e instanceof Error?e.message:'未知網路錯誤'}。正在重新連線…`:`操作結果尚待確認（${e instanceof Error?e.message:'網路請求失敗'}）；正在讀取伺服器存檔，請勿重複操作。`);
   }
   if(action===undefined&&(result.res.status===409||result.res.status>=500)&&attempt+1<attempts){await retryDelay(signal);continue;}
   return result;

@@ -10,6 +10,12 @@ function fixture(level=60,zone='talking_island'){
  const c=s.characters[0];c.lv=level;c.zone=zone;c.arenaZone=zone;c.arena=[];c.running=true;c.gold=0;c.xp=0;c.hp=e.stats(c,s.at).maxHp;return s;
 }
 try{
+ // CPU-limited ONLINE simulation resumes exactly; it must not become arithmetic offline income.
+ const online=fixture();e.ensureArena(online.characters[0],()=>.5,online.at);const reference=structuredClone(online),finish=online.at+4000;
+ const full=e.advance(reference,finish,()=>.5);
+ let partial=e.advance(online,finish,()=>.5,undefined,0);assert.equal(partial.pendingSeconds,3);assert.equal(online.catchup.mode,'online');
+ while(partial.pendingSeconds){const serialized=JSON.parse(JSON.stringify(sync.persistedSave(online)));Object.assign(online,serialized);partial=e.advance(online,finish,()=>.5,undefined,0);}
+ assert.equal(online.at,finish);assert.equal(partial.offline,false);assert.equal(partial.gold,full.gold);assert.equal(partial.xp,full.xp);assert.deepEqual(JSON.parse(JSON.stringify(online.characters)),JSON.parse(JSON.stringify(reference.characters)));assert.equal(online.offlineIncome,undefined);
  // Exact arithmetic and VIP-free eligibility at/above the old paywall.
  for(const level of [1,39,40,60,99]){
   const s=fixture(level),c=s.characters[0],r=e.advance(s,s.at+3_600_000,()=>.99);

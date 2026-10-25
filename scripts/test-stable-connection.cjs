@@ -19,6 +19,10 @@ async function run(){
  outcome=c.fetchGameState(undefined,async()=>{calls++;return Response.json(calls===1?{error:'busy'}:{save:{characters:[]}},{status:calls===1?503:200});},8000);await flush();t.fire(650);await flush();assert.equal((await outcome).res.status,200);assert.equal(calls,2);assert.equal(t.jobs.size,0);
  t=timers();c=load('lib/game/game-connection.ts',t);calls=0;
  outcome=c.fetchGameState(undefined,async()=>{calls++;return Response.json({error:'expired'},{status:401});});await flush();assert.equal((await outcome).res.status,401);assert.equal(calls,1,'expired session does not retry forever');
+ // Entering a character transfers a full snapshot and must not use the 8s action timeout.
+ t=timers();c=load('lib/game/game-connection.ts',t);calls=0;let complete;
+ outcome=c.fetchGameState({type:'select',id:'hero'},(url,init)=>{calls++;assert.match(url,/character=hero/);assert.match(url,/settings=known/);assert.equal(init.method,'POST');return new Promise(resolve=>{complete=()=>resolve(Response.json({save:{active:'hero',characters:[]}}));});},undefined,{character:'hero',after:10,settingsKey:'known'});
+ await flush();assert.equal([...t.jobs.values()][0].delay,30000);complete();await flush();assert.equal((await outcome).data.save.active,'hero');assert.equal(calls,1);assert.equal(t.jobs.size,0);
  const doc=surface(),win=surface();t=timers();let pendingResolve,count=0,aborts=0,concurrent=0,maxConcurrent=0;
  const poll=load('lib/game/client-poll.ts',t,{'./sync-policy':{syncDelay:()=>3000}});
  const stop=poll.startGamePolling({doc,win,getState:()=>({running:true,failures:0,pending:false}),hasPending:()=>false,abortRead:()=>{aborts++;pendingResolve?.();},request:async()=>{count++;concurrent++;maxConcurrent=Math.max(maxConcurrent,concurrent);if(count===1)await new Promise(resolve=>{pendingResolve=resolve;});concurrent--;},schedule:t.set.bind(t),cancel:t.clear.bind(t)});
