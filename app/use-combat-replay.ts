@@ -10,7 +10,7 @@ import { combatSound } from './combat-audio';
 import {applyCombatViewEvent,drainCombatPresentation,enqueueCombatReplay,prepareCombatHealth,type BattleView,type TimedCombatEvent} from '@/lib/game/combat-presentation';
 export type {BattleView} from '@/lib/game/combat-presentation';
 export function useCombatReplay(c:Character|null,sound:boolean){
- const [view,setView]=useState<BattleView>({hp:0,mp:0,arena:[],floats:[]});const latest=useRef(c),soundOn=useRef(sound),owner=useRef(''),zone=useRef(''),seen=useRef(0),queue=useRef<TimedCombatEvent[]>([]),offset=useRef<number|null>(null),impacts=useRef<TimedCombatEvent[]>([]),health=useRef(new Map<string,number>());
+ const [view,setView]=useState<BattleView>({hp:0,mp:0,arena:[],floats:[]});const viewRef=useRef(view);viewRef.current=view;const latest=useRef(c),soundOn=useRef(sound),owner=useRef(''),zone=useRef(''),seen=useRef(0),queue=useRef<TimedCombatEvent[]>([]),offset=useRef<number|null>(null),impacts=useRef<TimedCombatEvent[]>([]),health=useRef(new Map<string,number>());
  latest.current=c;soundOn.current=sound;
  useEffect(()=>{if(!c)return;const fresh=(c.events||[]).filter(e=>e.seq>seen.current);const reset=owner.current!==c.id||zone.current!==c.zone||fresh.length&&(replayHasGap(fresh,seen.current)||(c.eventSeq||0)-seen.current>160||Date.now()-fresh[0].at>6000)||document.visibilityState==='hidden';
  if(reset){owner.current=c.id;zone.current=c.zone;seen.current=c.eventSeq||0;queue.current=[];impacts.current=[];offset.current=null;health.current=new Map((c.arena||[]).map(m=>[m.uid,m.hp]));setView({petEntities:petSnapshot(c,Date.now()),summonEntities:c.summonContract?.entities||[],hp:c.hp,mp:c.mp,target:c.arenaTarget||0,arena:(c.arena||[]).map(m=>({...m})),floats:[]});return;}
@@ -43,7 +43,10 @@ export function useCombatReplay(c:Character|null,sound:boolean){
    // cleanup update on every 60 FPS frame. Animation still uses rAF.
    const cleanup=now-lastCleanup>=100;
    if(cleanup)lastCleanup=now;
-   if(ready.length||cleanup)setView(previous=>{
+   // Skip idle React updates: only expire visible transient effects when due.
+   const v=viewRef.current;
+   const expired=cleanup&&((v.actions||[]).some(e=>now-e.shownAt>=5000)||v.floats.some(f=>now-f.shownAt>=800)||(v.casts||[]).some(f=>now-f.shownAt>=magicEffectLifetime(f)));
+   if(ready.length||expired)setView(previous=>{
     let result=previous;
     for(const next of ready)result=applyCombatViewEvent(result,next,now);
     if(cleanup&&(result.actions||[]).some(e=>now-e.shownAt>=5000)||cleanup&&result.floats.some(f=>now-f.shownAt>=800)||cleanup&&(result.casts||[]).some(f=>now-f.shownAt>=magicEffectLifetime(f))){
