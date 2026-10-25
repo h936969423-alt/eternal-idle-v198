@@ -30,7 +30,7 @@ function attachSettings(save:Save,settings:Awaited<ReturnType<typeof getGameSett
  }
 }
 export default {
- async scheduled(_event:ScheduledEvent,workerEnv:WorkerEnv,_ctx:ExecutionContext){
+ async scheduled(_event:ScheduledController,workerEnv:WorkerEnv,_ctx:ExecutionContext){
   const now=Date.now();
   // Ignore recently active accounts. Only offline hunters or interrupted
   // catchups are eligible. This query has no migrations or writes.
@@ -73,3 +73,4 @@ export default {
   }
  }
 } satisfies ExportedHandler<WorkerEnv>;
+
