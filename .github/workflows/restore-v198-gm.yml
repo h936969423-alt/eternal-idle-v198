@@ -1,0 +1,60 @@
+name: Restore existing v198 GM account
+on:
+  workflow_dispatch:
+  push:
+    branches: [hotfix-v198-gm-20261025]
+permissions:
+  contents: read
+concurrency:
+  group: eternal-idle-v198-test-deploy
+  cancel-in-progress: false
+jobs:
+  restore:
+    runs-on: ubuntu-latest
+    timeout-minutes: 6
+    env:
+      CLOUDFLARE_ACCOUNT_ID: 9bf17726da5739f20d3e5ec454ae3d91
+      CLOUDFLARE_API_TOKEN: ${{ secrets.CLOUDFLARE_API_TOKEN }}
+      WRANGLER_SEND_METRICS: 'false'
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '22'
+      - name: Install pinned deployment CLI
+        run: npm install --prefix /tmp/v198-gm wrangler@4.92.0 --no-audit --no-fund
+      - name: Verify isolated Worker and prior GM identity
+        run: |
+          curl --silent --show-error --fail-with-body -H "Authorization: Bearer $CLOUDFLARE_API_TOKEN" \
+            "https://api.cloudflare.com/client/v4/accounts/$CLOUDFLARE_ACCOUNT_ID/workers/scripts/eternal-idle-v198-test/settings" -o /tmp/gm-settings.json
+          python3 - <<'PY'
+          import json
+          data=json.load(open('/tmp/gm-settings.json'));assert data.get('success')
+          bindings=data['result'].get('bindings',[])
+          assert any(b.get('name')=='DB' and b.get('id')=='827dd8d1-53b2-460c-9594-2435db824432' for b in bindings), 'Unexpected database; refusing to modify GM setting'
+          gm=next((b for b in bindings if b.get('name')=='GM_OWNER_EMAIL'),None)
+          if gm and gm.get('type')=='plain_text':assert gm.get('text','').strip().lower() in ('','a145086@eternal.invalid'), 'Different existing GM; refusing to replace'
+          print(json.dumps({'gmBindingPresent':bool(gm),'gmBindingType':gm.get('type') if gm else None,'isolatedDatabaseVerified':True}))
+          PY
+          /tmp/v198-gm/node_modules/.bin/wrangler d1 execute eternal-idle-v198-test-db --config wrangler.offline-test.json --remote --command "SELECT COUNT(*) AS account_exists FROM game_accounts WHERE owner='standalone:a145086'" --json > /tmp/gm-account.json
+          python3 - <<'PY'
+          import json
+          results=json.load(open('/tmp/gm-account.json'))
+          assert results[0]['results'][0]['account_exists']==1, 'Prior GM account not found'
+          print('Verified the previously authorized GM account exists')
+          PY
+      - name: Restore only the previously authorized GM setting
+        run: |
+          printf '%s' 'a145086@eternal.invalid' | /tmp/v198-gm/node_modules/.bin/wrangler secret put GM_OWNER_EMAIL --name eternal-idle-v198-test --config wrangler.offline-test.json
+      - name: Verify GM setting is retained as a protected binding
+        run: |
+          curl --silent --show-error --fail-with-body -H "Authorization: Bearer $CLOUDFLARE_API_TOKEN" \
+            "https://api.cloudflare.com/client/v4/accounts/$CLOUDFLARE_ACCOUNT_ID/workers/scripts/eternal-idle-v198-test/settings" -o /tmp/gm-after.json
+          python3 - <<'PY'
+          import json
+          data=json.load(open('/tmp/gm-after.json'));assert data.get('success')
+          bindings=data['result'].get('bindings',[])
+          assert any(b.get('name')=='GM_OWNER_EMAIL' and b.get('type')=='secret_text' for b in bindings)
+          assert any(b.get('name')=='DB' and b.get('id')=='827dd8d1-53b2-460c-9594-2435db824432' for b in bindings)
+          print('GM binding restored; isolated database binding retained; gameplay code not redeployed')
+          PY

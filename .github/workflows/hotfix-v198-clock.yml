@@ -73,7 +73,7 @@ jobs:
           print('Isolated test D1 and R2 bindings checked; production not modified')
           PY
       - name: Deploy named test-only Worker
-        run: pnpm exec wrangler deploy --config dist/server/wrangler.json --name eternal-idle-v198-test
+        run: pnpm exec wrangler deploy --config dist/server/wrangler.json --name eternal-idle-v198-test --keep-vars
       - name: Print deployment location
         run: echo 'Check Cloudflare Workers dashboard for eternal-idle-v198-test workers.dev URL'
 

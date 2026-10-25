@@ -1,0 +1,11 @@
+const fs=require('node:fs'),vm=require('node:vm'),assert=require('node:assert/strict'),ts=require('typescript');
+const env={GM_OWNER_EMAIL:'a145086@eternal.invalid'},moduleObject={exports:{}};
+vm.runInNewContext(ts.transpileModule(fs.readFileSync(require('node:path').join(__dirname,'../lib/game/world-store.ts'),'utf8'),{compilerOptions:{module:ts.ModuleKind.CommonJS,target:ts.ScriptTarget.ES2022}}).outputText,{module:moduleObject,exports:moduleObject.exports,require:n=>n==='cloudflare:workers'?{env}:{DEFAULT_WORLD_RULES:{}}});
+const check=moduleObject.exports.isGameMaster;
+assert.equal(check(null),false);
+assert.equal(check({userId:'standalone:a145086',email:'a145086@eternal.invalid'}),true);
+assert.equal(check({email:'A145086@ETERNAL.INVALID'}),true);
+assert.equal(check({userId:'standalone:other',displayName:'a145086',email:'other@eternal.invalid'}),false);
+assert.equal(check({email:'a145086@eternal.invalid.attacker.test'}),false);
+delete env.GM_OWNER_EMAIL;assert.equal(check({email:'a145086@eternal.invalid'}),false);
+console.log('PASS: configured prior GM only, case normalization, missing setting/login denied, similar names and email suffixes denied.');
