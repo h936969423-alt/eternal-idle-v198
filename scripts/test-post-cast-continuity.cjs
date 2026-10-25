@@ -20,7 +20,7 @@ assert.equal(queued.at,1000);
 // Reproduce the long cast pose covering a normal attack which already landed.
 let state={kind:'skill',at:0,duration:1400,pending:[]};
 state=pushCue(state,{seq:2,kind:'attack',at:200},200,duration,false,true);
-assert.equal(state.kind,'attack');assert.equal(state.at,200);assert.equal(state.pending.length,0);
+assert.equal(state.kind,'skill');assert.equal(state.pending.length,1);state=advanceMotion(state,1400,duration);assert.equal(state.kind,'attack');assert.equal(state.at,1400);
 assert.equal(advanceMotion(state,700,duration).kind,'attack');
 // Incoming damage cannot reset a player's cast; a real new cast can replace flinch.
 state={kind:'skill',at:0,duration:1400,pending:[]};
@@ -37,7 +37,7 @@ for(const [seq,at,arrived] of [[2,1200,5300],[3,2400,6600],[4,3600,7900],[5,4800
  replay=enqueueCombatReplay(replay.queue,[{...base,seq,at,kind:'attack',source:'physical',damage:10}],arrived,replay.offset,true);
  assert.equal(replay.offset,clock,'post-cast packets retain the ordinary buffered clock');
  const displayed=Math.max(arrived,at+clock);const shown=drainCombatPresentation(replay.queue,[],displayed);assert.equal(shown.length,1);assert.equal(shown[0].seq,seq);
- const cue=playerCues(shown)[0];state=pushCue({kind:'skill',at:arrived-100,duration:1400,pending:[]},cue,displayed,duration,false,true);assert.equal(state.kind,'attack');assert.equal(state.at,displayed);
+ const cue=playerCues(shown)[0];state=pushCue({kind:'skill',at:arrived-100,duration:1400,pending:[]},cue,displayed,duration,false,true);assert.equal(state.kind,'skill');assert.equal(state.pending.length,1);state=advanceMotion(state,arrived+1300,duration);assert.equal(state.kind,'attack');
 }
 // Confirmed bow attacks retain their actual flight deadline and late lethal ordering.
 const pending=[];replay=enqueueCombatReplay([],[{...base,seq:6,at:5000,kind:'attack',damage:100,source:'physical',mobHp:0},{...base,seq:7,at:5000,kind:'loot',item:'test'}],9400,clock,true);
