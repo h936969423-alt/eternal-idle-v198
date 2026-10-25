@@ -1,55 +1,55 @@
-# 永夜 v198 第二輪修正與驗證（2026-10-25）
+# 永夜 v198 第三輪修正與驗證（2026-10-25）
 
-基準：8d2cb0a2c82db6df2274a9b3f634aee0679c2aef。只更新 codex/v198-combat-regression-fixes-20261025，未合併 main、未部署、未寫入遠端正式／測試資料庫；原 Sites 僅唯讀取得歷史測試基準。
+基準提交：2193b67700301ea7fe8c4da7be1d432f66f8a799。
+本輪修正仍在 codex/v198-combat-regression-fixes-20261025，未合併 main、未寫入遠端資料庫或正式站。提交後會自動觸發僅驗證的 Node 22 CI，不會自動部署。
 
-## 本輪程式修正
+## 實際程式修正
 
-- 背景讀取遇到衝突或伺服器錯誤時的 650ms 重試等待可立即取消。玩家操作可中止舊背景讀取，避免操作隊列多等一次重試；新增回歸確認取消後不發出第二次舊讀取。
-- 已封存裝備的顯示名稱可從精簡封存索引讀取；神話分類維持可讀。保留 GM 自訂名稱／分類與實例 ID，沒有重新啟用已封存裝備或放寬 GM 寫入檢查。
+- 精通武器清單以 base ID 查詢資料，修復帶 @ 實例 ID 的武器無法顯示／選擇，以及綁定名稱顯示問題。
+- 當前精通階段若要求現行目錄沒有的材料，介面顯示未開放並停用餵養／突破；伺服器同樣先拒絕，避免投入無法突破的配方。既有進度、已取得能力與光環保留；沒有任意替換材料或恢復封存裝備。
+- 會心一擊的確認傷害事件補上 heavy 標記；以技能、來源、目標 UID 與時間選取自己的物理事件，避免誤標其他事件。未改傷害公式、HP/MP 消耗或冷卻。
+- 四龍的產物選圖規則抽成共用純函式，建置與測試共用相同邏輯。保持原本 heading=6、340 組素材、停用龍種與陰影／附著圖層選取規則。
 
-## 測試與素材修復
+## 原先 7 項的處理方式
 
-- 修正路由測試對 catalog migration 匯入的模擬，保留既有 CAS／重複發獎斷言。存檔競爭、GM Exactly-once、VIP888 並行領取均通過。
-- 啟動提示測試對齊現行 35 秒提示／60 秒逾時，不縮短下載時間或自動重新整理。吉倫 UI 測試補齊 GearName 呈現依賴。
-- 素材上傳測試確認獨立 Worker 必須回傳 403，且任何方法都不得改寫 R2；沒有為了測試打開上傳權限。
-- 長施法測試完成全部兩分鐘離線批次，再判斷二十分鐘結果。離線測試比較一分鐘／兩分鐘批次的相同戰鬥、收益、寵物／召喚結果，完整驗證 12 小時上限及凍結終點；沒有提高 production CPU 批次上限。
-- 從原 Sites 儲存庫找回 14 份真實 Git blob，打包在 tests/fixtures。每份保留原提交／路徑／blob SHA-1，壓縮檔另有 SHA-256，讀取時全部驗證。GitHub 測試不再依賴另一個儲存庫才有的提交。
-- 普通／高級／稀有歷史驗證涵蓋三階段封存資料。掉落保留雜湊比對固定到實際的歷史匯入版本，當前非裝備掉落仍另外驗證；沒有改寫歷史預期雜湊。
-- 娃娃呈現測試改為比較同一版引擎在有／無呈現查詢時的結果，另驗證呈現查詢不修改存檔，避免把後續生成規則改動誤判為娃娃畫面造成。
-- 變身素材同時保留原匯入來源記錄並核對發布版本的精確 SHA-256、大小、PNG 格式及圖層索引，避免將後續合法素材正規化誤判為毀損。
-- 已從隔離測試站補齊並驗證發布清單中全部 25,780 個素材，合計 192,248,665 bytes；每檔核對長度與 SHA-256。一次 503 的檔案重試後通過。這是發布版本素材，不代表所有歷史方向素材均已找回。
+| 檢查 | 處理與覆蓋範圍 |
+|---|---|
+| 一般賦予 | 真實目錄的 noAffix 裝備仍須拒絕且狀態不變；四類詞條機制使用 qa_ 前綴、僅寫入臨時測試目錄的受控裝備測四系邊界、隔離、詛咒與扣卷軸，不放寬正式裝備限制 |
+| 四龍 | 對實際發布的全部 340 組檢查每個圖集頁與 3,337 個可達姿勢，並與獨立固定的發布清單核對；缺必要組必須失敗。原始 8 方向審核獨立保留，未執行的歷史方向不能聲稱通過 |
+| 3.81 替換 | 核對 2,248 份來源資料均仍在現役或封存、459 件現役 3.81 裝備、2 個現行套裝及全部 82 份來源套裝；保留穿戴／有限數值、傷害骰、強化、備份、CAS、寵物／進度與冪等性測試。封存裝備規則只在測試記憶體中暫時注入、結束即移除 |
+| 永夜雙刀 | 按已批准的替換後契約，確認舊 ID 不會重新出現在目錄／GM 清單或可新發放；舊存檔的數量、強化、詞條精確備份，替換不改等級金幣技能，重跑不重複清除。沒有宣稱已恢復該武器舊能力 |
+| GM 贈送 | 真實現役裝備與禁止類別照現行目錄驗證；通用武器詞條機制用明確隔離的 qa_ 測試武器。保留安全整數、無上限 GM 強化、實例隔離、實際加成、存檔與普通強化限制測試 |
+| 魔法 | 按已存在的固定 INT 治癒值、2 秒共享治癒間隔、會心一擊保留 1 HP/MP 與五次 HOT 檢查；classic helper 另保留骰子案例。沒有為舊斷言改回已淘汰規格，並修好實際漏標 heavy 的問題 |
+| 精通 | 12 種配方算法使用隔離的歷史材料案例驗證；另移除所有 qa_ 材料還原真實目錄，驗證材料缺失時餵養／突破均不能改金幣、背包或進度。實例武器與鎖定亦有檢查 |
 
-## 最新有效結果
+qa_ 定義只存在 scripts 的臨時測試目錄，不寫回 lib/game/gamedata.json，不進入遊戲目錄或資料庫。自動測試全通過不等於已恢復每一項封存內容，也不等於真實目錄的全部 12 種精通配方都可取得材料。
 
-環境：Linux、Node v24.22.1、pnpm 11.25.0、TypeScript 5.9.3。遠端 CI 的 Node 22 尚未在本輪執行。
+## 最新本機驗證結果
+
+執行環境：Linux、Node v24.22.1、pnpm 11.25.0、TypeScript 5.9.3。
 
 | 項目 | 結果 |
 |---|---|
-| 動畫、音效、診斷單元測試 | 13/13 通過 |
+| node scripts/verify-regressions.mjs | 65/65 支腳本通過，退出碼 0，沒有略過任何已列入的腳本 |
+| 動畫、音效、診斷測試 | 13/13 通過 |
 | TypeScript --noEmit | 通過 |
-| verify-combat.mjs | 通過，包含 9 支相關回歸 |
-| verify-regressions.mjs | 58/65 通過，7 支未通過，正確回傳非零退出碼 |
-| 原有 64 支腳本 | 57 通過、7 未通過；另新增 1 支封存標籤測試通過 |
-| 完整 pnpm run build | 通過，包括四龍處理、25,780 檔素材雜湊與大小驗證 |
-| 最終展開建置大小 | 23,447,276 bytes |
+| node scripts/verify-combat.mjs | 通過 |
+| 完整 pnpm run build | 通過，包括四龍處理、25,780 個發布素材的大小與 SHA-256 |
+| 展開產物大小 | 23,448,725 bytes |
+| 真實本機 Worker / D1 HTTP 操作 | 9 個流程通過，見下方 |
+| 遠端 Node 22 CI | 本文件建立時等待此次推送觸發，最新狀態以 PR / Actions 為準 |
 
-本輪沒有先前已通過項目退步。上一輪原有腳本為 25/64 通過，本輪提高至 57/64；新增的封存標籤測試另計，不以新增測試灌高原有通過數。
+HTTP 實際檢查：未登入拒絕、臨時帳號註冊／Secure+HttpOnly+SameSite cookie、創角、實例武器精通綁定、缺配方拒絕且不扣資源、唯讀 recovery、登出失效、重登讀回相同角色與綁定、狩獵輪詢推進存檔事件。觀察到 attack/hurt/spawn/state 事件；沒有把事件觀察等同視覺動畫驗證。
+12 小時離線結算、不同批次一致性、寵物／召喚、CAS、GM Exactly-once 與 VIP888 防重複領取均由回歸腳本通過。
 
-## 仍未通過的 7 項
+## 尚未驗證／未變更
 
-| 腳本 | 阻擋原因 |
-|---|---|
-| check-element-system.cjs | 現行裝備庫無符合舊測試完整四部位／騎士限制／可一般賦予的組合；未擅自放寬 noAffix 或恢復被替換裝備 |
-| test-dragon381.cjs | 要求所有歷史動作與 8 方向元資料；發布版只有實際選定方向／動作，首先缺 123-0/frames.json。原來源歷史樹仍列出未發布物件，但批次讀取回報 bad revision，未偽造檔案 |
-| test-equipment381-replacement.cjs | 仍期待 2,248 件 3.81 全部在當前遊戲；現行已替換成 W 裝備，apang381 來源剩 464（含 5 種補給品），未把已封存物品加回 |
-| test-eternal-night-dual.cjs | 舊 ID wpn_eternal_night_dual 不在現行可用裝備庫，不能驗證其舊專屬能力 |
-| test-gm-gift.cjs | 仍以全部 2,248 件舊 3.81 裝備及已封存武器作測試資料，與當前目錄不符；並行發放安全測試已另通過 |
-| test-magic-reference.cjs | 舊治癒規格期待 classic dice 得 6，現行固定 INT 規格得 21；新魔法公式測試已通過，沒有為舊斷言覆寫現行規格 |
-| test-mastery.cjs | 舊配方要求已不存在的力量魔法頭盔等材料；沒有任意替換材料或恢復已封存裝備 |
+- 官方預覽 CLI 報告 http://terminal.local:4173/ 正常啟動，但雲端瀏覽器實際連線得到 ERR_CONNECTION_REFUSED。依預覽指引停止，不繞過網路或用修改應用程式的方式掩蓋環境問題。
+- 因此登入後完整遊戲畫面、iPhone 實機，以及未發布的四龍 8 方向原始素材仍未驗證，不宣稱完成。
+- 完整來源審核可另執行：V198_VALIDATE_ARCHIVED_DIRECTIONS=1 node scripts/test-dragon381.cjs；需要完整原始素材，發布版不包含的方向不在本輪 65 支發布回歸的涵蓋範圍。
+- 未更新正式站、未合併 main。部署工作流程仍是手動，這次新增的 push 觸發只跑驗證。
 
-這些項目需要補齊未發布來源或調整舊功能與現行目錄的規格，尚未宣稱修好。登入後完整遊戲畫面、手機實機及四龍所有方向仍未驗證。禁止因部分測試通過而部署。
-
-## 驗證／測試版部署方式
+## 驗證與隔離測試部署方式
 
 ```sh
 pnpm install --frozen-lockfile
@@ -58,14 +58,17 @@ node scripts/verify-regressions.mjs
 pnpm run build
 ```
 
-在 GitHub Actions 選 Verify v198 test deployment build、本修正分支，可使用既有私有 R2 還原流程在不部署的情況下執行驗證。剩餘檢查不通過時門檻會停止。部署仍須全部相關檢查通過，才可執行 Deploy v198 isolated Cloudflare test；本輪沒有觸發任何部署工作流程。
+1. GitHub Actions 的 Verify v198 test deployment build 會對本修正分支自動執行 Node 22、私人 R2 還原、65 支回歸與完整建置，過程不部署。
+2. 確認相同 SHA 的遠端驗證通過後，才可手動選 Deploy v198 isolated Cloudflare test → 本修正分支 → Run workflow。
+3. 部署工作流程仍會再次檢查全部門檻及隔離 D1/R2，目標 Worker 為 eternal-idle-v198-test；正式 Sites 不受影響。
+4. 部署後需登入測試帳號驗證最新 SHA 的畫面與手機操作，不能以舊測試站取代最新版驗證。
 
 ## 全部腳本結果
 
 | 腳本 | 結果 |
 |---|---|
 | check-doll-system.cjs | 通過 |
-| check-element-system.cjs | 未通過 |
+| check-element-system.cjs | 通過 |
 | test-account-theme.cjs | 通過 |
 | test-advanced-equipment.cjs | 通過 |
 | test-afei-drops.cjs | 通過 |
@@ -79,13 +82,13 @@ pnpm run build
 | test-control-ring-restoration.cjs | 通過 |
 | test-dialog-positioning.cjs | 通過 |
 | test-doll-scene.cjs | 通過 |
-| test-dragon381.cjs | 未通過 |
+| test-dragon381.cjs | 通過 |
 | test-equipment381-preparation.cjs | 通過 |
-| test-equipment381-replacement.cjs | 未通過 |
-| test-eternal-night-dual.cjs | 未通過 |
+| test-equipment381-replacement.cjs | 通過 |
+| test-eternal-night-dual.cjs | 通過 |
 | test-gilen-entry.cjs | 通過 |
 | test-gilen-shop-ui.cjs | 通過 |
-| test-gm-gift.cjs | 未通過 |
+| test-gm-gift.cjs | 通過 |
 | test-gm-grant-conflicts.cjs | 通過 |
 | test-hybrid-loot.cjs | 通過 |
 | test-interface-preferences.cjs | 通過 |
@@ -100,10 +103,10 @@ pnpm run build
 | test-lineagew-mythic.cjs | 通過 |
 | test-loot-appearance.cjs | 通過 |
 | test-magic-formulas.cjs | 通過 |
-| test-magic-reference.cjs | 未通過 |
+| test-magic-reference.cjs | 通過 |
 | test-manual-triple-latency.cjs | 通過 |
 | test-map-access.cjs | 通過 |
-| test-mastery.cjs | 未通過 |
+| test-mastery.cjs | 通過 |
 | test-monster-ground.cjs | 通過 |
 | test-morph-cast-catalog.cjs | 通過 |
 | test-normal-equipment.cjs | 通過 |
@@ -130,208 +133,14 @@ pnpm run build
 | test-vip888.cjs | 通過 |
 | test-world-boss-loot.cjs | 通過 |
 
-## 未通過項目的有效輸出（前 2,000 字）
-
-### check-element-system.cjs
+## 最後建置訊息
 
 ```text
-node:internal/assert/utils:77
-    throw err;
-    ^
+  λ API  ƒ Dynamic
 
-AssertionError [ERR_ASSERTION]: The expression evaluated to a falsy value:
+  Build complete. Run `vinext start` to start the production server.
 
-  assert(weapon&&armor&&belt&&ring)
-
-    at Object.<anonymous> (/workspace/scratch/dc0bbe63132f/eternal-idle-v198/scripts/check-element-system.cjs:6:92)
-    at Module._compile (node:internal/modules/cjs/loader:1929:14)
-    at Object..js (node:internal/modules/cjs/loader:2060:10)
-    at Module.load (node:internal/modules/cjs/loader:1651:32)
-    at Module._load (node:internal/modules/cjs/loader:1443:12)
-    at wrapModuleLoad (node:internal/modules/cjs/loader:261:19)
-    at Module.executeUserEntryPoint [as runMain] (node:internal/modules/run_main:154:5)
-    at node:internal/main/run_main_module:33:47 {
-  generatedMessage: true,
-  code: 'ERR_ASSERTION',
-  actual: undefined,
-  expected: true,
-  operator: '==',
-  diff: 'simple'
-}
-
-Node.js v24.22.1
-FAIL: check-element-system.cjs
-
-```
-
-### test-dragon381.cjs
-
-```text
-node:internal/assert/utils:77
-    throw err;
-    ^
-
-AssertionError [ERR_ASSERTION]: 123-0
-    at Object.<anonymous> (/workspace/scratch/dc0bbe63132f/eternal-idle-v198/scripts/test-dragon381.cjs:34:355)
-    at Module._compile (node:internal/modules/cjs/loader:1929:14)
-    at Object..js (node:internal/modules/cjs/loader:2060:10)
-    at Module.load (node:internal/modules/cjs/loader:1651:32)
-    at Module._load (node:internal/modules/cjs/loader:1443:12)
-    at wrapModuleLoad (node:internal/modules/cjs/loader:261:19)
-    at Module.executeUserEntryPoint [as runMain] (node:internal/modules/run_main:154:5)
-    at node:internal/main/run_main_module:33:47 {
-  generatedMessage: false,
-  code: 'ERR_ASSERTION',
-  actual: false,
-  expected: true,
-  operator: '==',
-  diff: 'simple'
-}
-
-Node.js v24.22.1
-FAIL: test-dragon381.cjs
-
-```
-
-### test-equipment381-replacement.cjs
-
-```text
-AssertionError [ERR_ASSERTION]: Expected values to be strictly equal:
-
-464 !== 2248
-
-    at run (/workspace/scratch/dc0bbe63132f/eternal-idle-v198/scripts/test-equipment381-replacement.cjs:9:8)
-    at Object.<anonymous> (/workspace/scratch/dc0bbe63132f/eternal-idle-v198/scripts/test-equipment381-replacement.cjs:30:1)
-    at Module._compile (node:internal/modules/cjs/loader:1929:14)
-    at Object..js (node:internal/modules/cjs/loader:2060:10)
-    at Module.load (node:internal/modules/cjs/loader:1651:32)
-    at Module._load (node:internal/modules/cjs/loader:1443:12)
-    at wrapModuleLoad (node:internal/modules/cjs/loader:261:19)
-    at Module.executeUserEntryPoint [as runMain] (node:internal/modules/run_main:154:5)
-    at node:internal/main/run_main_module:33:47 {
-  generatedMessage: true,
-  code: 'ERR_ASSERTION',
-  actual: 464,
-  expected: 2248,
-  operator: 'strictEqual',
-  diff: 'simple'
-}
-FAIL: test-equipment381-replacement.cjs
-
-```
-
-### test-eternal-night-dual.cjs
-
-```text
-/workspace/scratch/dc0bbe63132f/eternal-idle-v198/scripts/test-eternal-night-dual.cjs:8
- assert.deepEqual([item.n,item.req,item.wcat,item.dmgS,item.dmgL,item.hit,item.str,item.dex,item.safe],['永夜雙刀','dark','雙刀',200,200,5,100,100,6]);
-                        ^
-
-TypeError: Cannot read properties of undefined (reading 'n')
-    at Object.<anonymous> (/workspace/scratch/dc0bbe63132f/eternal-idle-v198/scripts/test-eternal-night-dual.cjs:8:25)
-    at Module._compile (node:internal/modules/cjs/loader:1929:14)
-    at Object..js (node:internal/modules/cjs/loader:2060:10)
-    at Module.load (node:internal/modules/cjs/loader:1651:32)
-    at Module._load (node:internal/modules/cjs/loader:1443:12)
-    at wrapModuleLoad (node:internal/modules/cjs/loader:261:19)
-    at Module.executeUserEntryPoint [as runMain] (node:internal/modules/run_main:154:5)
-    at node:internal/main/run_main_module:33:47
-
-Node.js v24.22.1
-FAIL: test-eternal-night-dual.cjs
-
-```
-
-### test-gm-gift.cjs
-
-```text
-node:assert:152
-  throw new AssertionError(obj);
-  ^
-
-AssertionError [ERR_ASSERTION]: Expected values to be strictly equal:
-
-464 !== 2248
-
-    at Object.<anonymous> (/workspace/scratch/dc0bbe63132f/eternal-idle-v198/scripts/test-gm-gift.cjs:7:85)
-    at Module._compile (node:internal/modules/cjs/loader:1929:14)
-    at Object..js (node:internal/modules/cjs/loader:2060:10)
-    at Module.load (node:internal/modules/cjs/loader:1651:32)
-    at Module._load (node:internal/modules/cjs/loader:1443:12)
-    at wrapModuleLoad (node:internal/modules/cjs/loader:261:19)
-    at Module.executeUserEntryPoint [as runMain] (node:internal/modules/run_main:154:5)
-    at node:internal/main/run_main_module:33:47 {
-  generatedMessage: true,
-  code: 'ERR_ASSERTION',
-  actual: 464,
-  expected: 2248,
-  operator: 'strictEqual',
-  diff: 'simple'
-}
-
-Node.js v24.22.1
-FAIL: test-gm-gift.cjs
-
-```
-
-### test-magic-reference.cjs
-
-```text
-node:assert:152
-  throw new AssertionError(obj);
-  ^
-
-AssertionError [ERR_ASSERTION]: classic heal uses three D4, times two
-
-21 !== 6
-
-    at Object.<anonymous> (/workspace/scratch/dc0bbe63132f/eternal-idle-v198/scripts/test-magic-reference.cjs:12:9)
-    at Module._compile (node:internal/modules/cjs/loader:1929:14)
-    at Object..js (node:internal/modules/cjs/loader:2060:10)
-    at Module.load (node:internal/modules/cjs/loader:1651:32)
-    at Module._load (node:internal/modules/cjs/loader:1443:12)
-    at wrapModuleLoad (node:internal/modules/cjs/loader:261:19)
-    at Module.executeUserEntryPoint [as runMain] (node:internal/modules/run_main:154:5)
-    at node:internal/main/run_main_module:33:47 {
-  generatedMessage: false,
-  code: 'ERR_ASSERTION',
-  actual: 21,
-  expected: 6,
-  operator: 'strictEqual',
-  diff: 'simple'
-}
-
-Node.js v24.22.1
-FAIL: test-magic-reference.cjs
-
-```
-
-### test-mastery.cjs
-
-```text
-node:internal/assert/utils:77
-    throw err;
-    ^
-
-AssertionError [ERR_ASSERTION]: 力量魔法頭盔
-    at give (/workspace/scratch/dc0bbe63132f/eternal-idle-v198/scripts/test-mastery.cjs:7:122)
-    at Object.<anonymous> (/workspace/scratch/dc0bbe63132f/eternal-idle-v198/scripts/test-mastery.cjs:13:155)
-    at Module._compile (node:internal/modules/cjs/loader:1929:14)
-    at Object..js (node:internal/modules/cjs/loader:2060:10)
-    at Module.load (node:internal/modules/cjs/loader:1651:32)
-    at Module._load (node:internal/modules/cjs/loader:1443:12)
-    at wrapModuleLoad (node:internal/modules/cjs/loader:261:19)
-    at Module.executeUserEntryPoint [as runMain] (node:internal/modules/run_main:154:5)
-    at node:internal/main/run_main_module:33:47 {
-  generatedMessage: false,
-  code: 'ERR_ASSERTION',
-  actual: undefined,
-  expected: true,
-  operator: '==',
-  diff: 'simple'
-}
-
-Node.js v24.22.1
-FAIL: test-mastery.cjs
-
+Dragon deployment: 340 required groups; 0 unused-facing groups omitted from generated output.
+Independent asset storage: 25780 verified files (192248665 bytes) excluded from deployment.
+Expanded deployment output: 23448725 bytes.
 ```

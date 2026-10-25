@@ -1,6 +1,9 @@
 name: Verify v198 test deployment build
 on:
   workflow_dispatch:
+  push:
+    branches:
+      - codex/v198-combat-regression-fixes-20261025
 permissions:
   contents: read
 jobs:
