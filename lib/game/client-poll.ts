@@ -1,4 +1,4 @@
-import {syncDelay} from './sync-policy';
+import {nextSyncDelay} from './sync-policy';
 type SyncState={running:boolean;failures:number;pending:boolean};
 /** One read at a time. Wake events cancel stale reads and coalesce into one refresh. */
 export function startGamePolling({request,getState,hasPending,abortRead=()=>{},doc=document,win=window,clock=()=>performance.now(),schedule=setTimeout,cancel=clearTimeout}:{request:()=>Promise<unknown>;getState:()=>SyncState;hasPending:()=>boolean;abortRead?:()=>void;doc?:Pick<Document,'visibilityState'|'addEventListener'|'removeEventListener'>;win?:Pick<Window,'addEventListener'|'removeEventListener'>;clock?:()=>number;schedule?:typeof setTimeout;cancel?:typeof clearTimeout}){
@@ -6,7 +6,7 @@ export function startGamePolling({request,getState,hasPending,abortRead=()=>{},d
  const clear=()=>{if(timer!==undefined){cancel(timer);timer=undefined;}};
  const poll=async(force=false)=>{
   if(stopped||suspended||polling)return;
-  clear();polling=true;
+  clear();polling=true;const began=clock();
   try{if(!hasPending()&&(force||doc.visibilityState==='visible'||getState().pending))await request();}
   catch{/* The request reports its error; the scheduler must still recover. */}
   finally{
@@ -14,7 +14,7 @@ export function startGamePolling({request,getState,hasPending,abortRead=()=>{},d
    if(!stopped&&!suspended){
     const immediate=wakeRequested;wakeRequested=false;
     const s=getState();
-    timer=schedule(()=>void poll(immediate),immediate?0:syncDelay(s.running,s.failures,s.pending));
+    timer=schedule(()=>void poll(immediate),immediate?0:nextSyncDelay(s.running,s.failures,s.pending,clock()-began));
    }
   }
  };
@@ -30,3 +30,4 @@ export function startGamePolling({request,getState,hasPending,abortRead=()=>{},d
  doc.addEventListener('visibilitychange',visible);win.addEventListener('pageshow',wake);win.addEventListener('focus',wake);win.addEventListener('offline',offline);win.addEventListener('online',online);
  return ()=>{stopped=true;clear();abortRead();doc.removeEventListener('visibilitychange',visible);win.removeEventListener('pageshow',wake);win.removeEventListener('focus',wake);win.removeEventListener('offline',offline);win.removeEventListener('online',online);};
 }
+
