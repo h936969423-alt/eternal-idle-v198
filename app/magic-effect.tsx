@@ -28,10 +28,13 @@ export default function MagicEffect({event,loopUntil}:{event:CombatEvent;loopUnt
   if(observer&&(root||parent))observer.observe((root||parent)!);
   let request=0;
   const started=event.visualAt??performance.now();
+  // Animation is usually 8–15 fps; don't force a React render on every 60 Hz
+  // display frame. Update only when the visible sprite frame actually changes.
+  let lastIndex=0;
   const tick=(now:number)=>{
    const expired=!!loopUntil&&Date.now()>=loopUntil;
    const index=expired?-1:magicFrame(now-started,config.fps,count,!!loopUntil);
-   setFrame(index);
+   if(index!==lastIndex){lastIndex=index;setFrame(index);}
    if(index>=0)request=requestAnimationFrame(tick);
   };
   const visibility=()=>{
