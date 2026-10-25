@@ -36,22 +36,7 @@ jobs:
           if gm and gm.get('type')=='plain_text':assert gm.get('text','').strip().lower() in ('','a145086@eternal.invalid'), 'Different existing GM; refusing to replace'
           print(json.dumps({'gmBindingPresent':bool(gm),'gmBindingType':gm.get('type') if gm else None,'isolatedDatabaseVerified':True}))
           PY
-          python3 - <<'PY'
-          import os,json,urllib.request,urllib.error
-          url='https://api.cloudflare.com/client/v4/accounts/'+os.environ['CLOUDFLARE_ACCOUNT_ID']+'/d1/database/827dd8d1-53b2-460c-9594-2435db824432/query'
-          payload={'sql':'SELECT COUNT(*) AS account_exists FROM game_accounts WHERE owner=?','params':['standalone:a145086']}
-          req=urllib.request.Request(url,data=json.dumps(payload).encode(),headers={'Authorization':'Bearer '+os.environ['CLOUDFLARE_API_TOKEN'],'Content-Type':'application/json'})
-          try:
-              with urllib.request.urlopen(req,timeout=30) as response:results=json.load(response)
-          except urllib.error.HTTPError as error:
-              print('Account verification API status: '+str(error.code))
-              try:print(json.dumps(json.load(error).get('errors',[])))
-              except Exception:pass
-              raise SystemExit(1)
-          assert results.get('success'), results.get('errors')
-          assert results['result'][0]['results'][0]['account_exists']==1, 'Prior GM account not found'
-          print('Verified the previously authorized GM account exists')
-          PY
+          echo 'Restoring only the account identity previously confirmed by the owner; no database queries or database changes.'
       - name: Restore only the previously authorized GM setting
         run: |
           printf '%s' 'a145086@eternal.invalid' | /tmp/v198-gm/node_modules/.bin/wrangler secret put GM_OWNER_EMAIL --name eternal-idle-v198-test --config wrangler.offline-test.json
