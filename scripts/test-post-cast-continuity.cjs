@@ -21,7 +21,7 @@ assert.equal(queued.at,1000);
 let state={kind:'skill',at:0,duration:1400,pending:[]};
 state=pushCue(state,{seq:2,kind:'attack',at:200},200,duration,false,true);
 assert.equal(state.kind,'skill');assert.equal(state.pending.length,1);state=advanceMotion(state,1400,duration);assert.equal(state.kind,'attack');assert.equal(state.at,1400);
-assert.equal(advanceMotion(state,700,duration).kind,'attack');
+assert.equal(advanceMotion(state,1500,duration).kind,'attack','attack remains active after cast handoff');
 // Incoming damage cannot reset a player's cast; a real new cast can replace flinch.
 state={kind:'skill',at:0,duration:1400,pending:[]};
 assert.deepEqual(pushCue(state,{seq:3,kind:'hurt',at:100},100,duration,false,true),state);
