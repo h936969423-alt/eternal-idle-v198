@@ -15,6 +15,12 @@ export function pushCue(state:MotionClock,cue:MotionCue,now:number,duration:(kin
  // attack queue behind the previous swing because a render arrived late.
  if(attackPriority&&state.kind!=='spawn'&&cue.kind==='attack'&&!cue.immediate&&Number.isFinite(cue.displayAt))
   return {kind:cue.kind,at:Math.min(now,cue.displayAt!),duration:cue.durationMs??duration(cue.kind),pending:[]};
+ // Sunrise-style handoff for *local* visual attacks: a skill keeps its
+ // priority until its pose completes, then the newest pending swing starts.
+ // Confirmed server attacks below still take over immediately at their
+ // authoritative display deadline (no extra combat cooldown or damage).
+ if(attackPriority&&cue.immediate&&cue.kind==='attack'&&state.kind==='skill'&&now<state.at+state.duration)
+  return {...state,pending:[cue]};
  // A browser already played this confirmed spell's windup. An acknowledgement
  // arriving after it ends must not restart it or interrupt a normal swing.
  if(cue.immediate&&cue.kind==='skill'&&Number.isFinite(cue.displayAt)&&now-cue.displayAt!>=(cue.durationMs??duration(cue.kind)))return state;
