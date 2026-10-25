@@ -17,7 +17,8 @@ export default function ImportedCombatEffects({c,view,arena}:{c:Character;view:B
   const triple=e.kind==='magic'&&e.skill==='sk_elf_triple',weapon=importedWeaponEffect(c,config,e);
   const tripleIds=triple?importedEffects.triple.filter(id=>importedEffects.entries[id].code==='11764-0'):e.kind==='attack'&&e.skill==='sk_elf_triple'&&!e.miss?importedEffects.triple.filter(id=>importedEffects.entries[id].code==='4394-0'):[];
   const clips=[...(weapon?[weapon.id]:[]),...tripleIds].map(id=>({id,entry:importedEffects.entries[id],clip:importedEffects.clips[importedEffects.entries[id].clip]}));
-  const hurt=e.kind==='hurt'&&!e.miss&&!!e.damage&&!e.petUid&&!e.summonUid?importedEffects.hurt.find(h=>h.id===config.hurt):undefined;
+  // Picture-based hurt reactions are disabled; keep weapon and spell visuals.
+  const hurt=undefined;
   if(!clips.length&&!hurt)return [];
   return [{e,clips,hurt,player:triple||!!hurt,lifetime:Math.max(hurt?700:0,...clips.map(x=>x.clip.count/x.clip.fps*1000))}];
  }),[view.actions,c,config]);
