@@ -21,7 +21,14 @@ export default function MagicEffect({event,loopUntil}:{event:CombatEvent;loopUnt
   const position=()=>{if(config.imported&&parent&&(sprite||config.atlas)){
    const box=parent.getBoundingClientRect(),r=sprite?.getBoundingClientRect()||{left:box.left+box.width*.5,top:box.top+box.height*.6,width:0,height:0},p=caster?.getBoundingClientRect();
    const facing=magicDirection(config,r.left+r.width*.5-(p?p.left+p.width*.6:r.left),r.top+r.height*.55-(p?p.top+p.height*.55:r.top+r.height));
-   setPlacement(config.atlas?targetSpellLayout(config.atlas,box,r,root?.getBoundingClientRect()||box,config.targetVc):{left:r.left-box.left+r.width*.5,top:r.top-box.top+r.height*(config.oh ? .15 : config.targetVc??.55),...facing});
+   // Sunrise's playSpellFx anchors every effect to the live target sprite,
+   // not the battle panel. Clamp the anchor inside the arena so an oversized
+   // target or a moving layout cannot send a spell off-screen.
+   const arenaRect=root?.getBoundingClientRect()||box;
+   const clamp=(v:number,lo:number,hi:number)=>Math.max(lo,Math.min(hi,v));
+   const impactX=clamp(r.left+r.width*.5,arenaRect.left+2,arenaRect.right-2);
+   const impactY=clamp(r.top+r.height*(config.oh?.15:config.targetVc??.55),arenaRect.top+2,arenaRect.bottom-2);
+   setPlacement(config.atlas?targetSpellLayout(config.atlas,box,r,arenaRect,config.targetVc):{left:impactX-box.left,top:impactY-box.top,...facing});
   }};
   position();
   const observer=config.atlas&&typeof ResizeObserver!=='undefined'?new ResizeObserver(position):undefined;
