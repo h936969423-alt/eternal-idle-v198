@@ -32,37 +32,34 @@ jobs:
           d=json.load(open('/tmp/v198-settings.json'))
           print(json.dumps({'settingsSuccess':d.get('success'),'limits':d.get('result',{}).get('limits'),'usageModel':d.get('result',{}).get('usage_model')}))
           PY
-      - name: Capture a 90-second diagnostic window and print sanitized errors
-        shell: bash
+      - name: Query retained test Worker errors without printing request data
         run: |
-          echo 'DIAGNOSTIC_WINDOW_START: POST requests to the isolated test Worker only'
-          set +e
-          timeout --signal=INT 90s /tmp/v198-diagnostic/node_modules/.bin/wrangler tail eternal-idle-v198-test --format json --method POST > /tmp/v198-tail.json 2>/tmp/v198-tail-stderr.txt
-          code=$?
-          set -e
-          python3 - <<'PY'
-          import json,re
-          from urllib.parse import urlsplit
-          text=open('/tmp/v198-tail.json').read();decoder=json.JSONDecoder();pos=0;count=0
-          while pos<len(text):
-              start=text.find('{',pos)
-              if start<0:break
-              try:d,length=decoder.raw_decode(text[start:])
-              except json.JSONDecodeError:pos=start+1;continue
-              pos=start+length
-              if not isinstance(d,dict) or 'outcome' not in d:continue
-              event=d.get('event') or {};request=event.get('request') or {};response=event.get('response') or {}
-              errors=[{'name':e.get('name'),'message':str(e.get('message',''))[:400]} for e in d.get('exceptions',[])]
-              logs=[]
-              for entry in d.get('logs',[]):
-                  message=entry.get('message',[])
-                  if isinstance(message,list) and message and str(message[0]) in ('game-api-error','game-timing'):
-                      logs.append(message)
-              print(json.dumps({'timestamp':d.get('eventTimestamp'),'outcome':d.get('outcome'),'path':urlsplit(request.get('url','')).path,'status':response.get('status'),'cpuTime':d.get('cpuTime'),'wallTime':d.get('wallTime'),'exceptions':errors,'logs':logs},ensure_ascii=False))
-              count+=1
-          print('SANITIZED_INVOCATIONS='+str(count))
-          # Raw tail data can contain request headers. Never print or upload it.
-          for line in open('/tmp/v198-tail-stderr.txt'):
-              if 'Authentication error' in line or 'permission' in line.lower():print('Tail authorization failed; no credentials or raw logs printed.')
-          PY
-          if [ "$code" -ne 0 ] && [ "$code" -ne 124 ] && [ "$code" -ne 130 ]; then echo "Diagnostic CLI exit: $code"; exit "$code"; fi
+          python3 - <<'PYH'
+          import os,json,time,urllib.request,urllib.error
+          end=int(time.time()*1000)
+          payload={'queryId':'v198-entry-history','timeframe':{'from':end-3600000,'to':end},'limit':200,'dry':True,'parameters':{'view':'events','filters':[{'key':'$metadata.service','operation':'eq','type':'string','value':'eternal-idle-v198-test'}]}}
+          url='https://api.cloudflare.com/client/v4/accounts/'+os.environ['CLOUDFLARE_ACCOUNT_ID']+'/workers/observability/telemetry/query'
+          request=urllib.request.Request(url,data=json.dumps(payload).encode(),headers={'Authorization':'Bearer '+os.environ['CLOUDFLARE_API_TOKEN'],'Content-Type':'application/json'})
+          try:
+              with urllib.request.urlopen(request,timeout=30) as response:data=json.load(response)
+          except urllib.error.HTTPError as error:
+              print('HISTORY_HTTP_STATUS='+str(error.code))
+              try:print(json.dumps(json.load(error).get('errors',[])))
+              except Exception:pass
+              raise SystemExit(0)
+          print('HISTORY_SUCCESS='+str(data.get('success')))
+          print('HISTORY_ERRORS='+json.dumps(data.get('errors',[])))
+          count=0
+          def inspect(obj):
+              global count
+              if isinstance(obj,dict):
+                  if '$metadata' in obj:
+                      meta=obj.get('$metadata') or {};worker=obj.get('$workers') or {};event=worker.get('event') or {};response=event.get('response') or {}
+                      print(json.dumps({'timestamp':obj.get('timestamp'),'level':meta.get('level'),'type':meta.get('type'),'error':str(meta.get('error',''))[:500],'message':str(meta.get('message',''))[:500],'outcome':worker.get('outcome'),'status':response.get('status'),'cpuTimeMs':worker.get('cpuTimeMs'),'wallTimeMs':worker.get('wallTimeMs')},ensure_ascii=False))
+                      count+=1
+                  else:
+                      for value in obj.values():inspect(value)
+              elif isinstance(obj,list):
+                  for value in obj:inspect(value)
+          inspect(data.get('result',{}));print('HISTORY_EVENTS='+str(count))
+          PYH
