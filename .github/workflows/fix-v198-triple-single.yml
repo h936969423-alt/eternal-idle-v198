@@ -1,0 +1,89 @@
+name: Deploy v198 single target triple fix
+on:
+  workflow_dispatch:
+  push:
+    branches: [fix-v198-triple-single-20261025]
+permissions:
+  contents: read
+concurrency:
+  group: eternal-idle-v198-test-deploy
+  cancel-in-progress: false
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+    timeout-minutes: 45
+    env:
+      CLOUDFLARE_ACCOUNT_ID: 9bf17726da5739f20d3e5ec454ae3d91
+      CLOUDFLARE_API_TOKEN: ${{ secrets.CLOUDFLARE_API_TOKEN }}
+    steps:
+      - uses: actions/checkout@v4
+      - name: Check required deployment secrets
+        shell: bash
+        run: |
+          if [ -z "$CLOUDFLARE_API_TOKEN" ]; then echo "::error::Missing CLOUDFLARE_API_TOKEN GitHub secret"; exit 1; fi
+      - name: Verify Cloudflare API token before expensive build
+        shell: bash
+        run: |
+          curl --silent --show-error --fail-with-body \
+            -H "Authorization: Bearer $CLOUDFLARE_API_TOKEN" \
+            -H "Content-Type: application/json" \
+            "https://api.cloudflare.com/client/v4/user/tokens/verify" \
+            -o /tmp/cloudflare-token-status.json || { echo "::error::Cloudflare did not accept the API token. Update CLOUDFLARE_API_TOKEN."; exit 1; }
+          python3 - <<'PY'
+          import json
+          data=json.load(open('/tmp/cloudflare-token-status.json'))
+          if not data.get('success') or data.get('result',{}).get('status') != 'active':
+              print('::error::Cloudflare API token is not active or was not accepted.')
+              raise SystemExit(1)
+          print('Cloudflare API token active; build can proceed.')
+          PY
+      - name: Restore game assets from isolated private R2
+        env:
+          AWS_ACCESS_KEY_ID: ${{ secrets.R2_ACCESS_KEY_ID }}
+          AWS_SECRET_ACCESS_KEY: ${{ secrets.R2_SECRET_ACCESS_KEY }}
+          AWS_DEFAULT_REGION: auto
+        run: python3 scripts/restore-r2-bundles.py
+      - uses: pnpm/action-setup@v4
+        with:
+          version: 11.25.0
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '22'
+          cache: pnpm
+      - run: pnpm install --frozen-lockfile
+      - name: Verify monster animation regression tests before deploying
+        run: node --experimental-strip-types --test tests/animation-clock.test.mjs
+      - name: Verify migrated magic assets and spellbook rules
+        run: |
+          python3 scripts/restore-magic-import.py
+          node scripts/test-magic-migration.cjs
+          node scripts/test-magic-renderer.cjs
+          node scripts/test-npc-magic.cjs
+          node scripts/test-auto-spell-timing.cjs
+          node scripts/test-triple-impact-sync.cjs
+          node scripts/test-offline-income.cjs
+          node scripts/test-offline-catchup.cjs
+          node scripts/test-gm-authorization.cjs
+          node node_modules/typescript/bin/tsc --noEmit --incremental false
+      - name: Build complete Cloudflare Worker
+        run: pnpm run build
+      - name: Assert strict isolation from live resources
+        run: |
+          python3 - <<'PY'
+          import json
+          p='dist/server/wrangler.json'
+          c=json.load(open(p))
+          db=c.get('d1_databases',[])
+          r2=c.get('r2_buckets',[])
+          assert len(db)==1 and db[0].get('binding')=='DB'
+          assert db[0].get('database_id')=='827dd8d1-53b2-460c-9594-2435db824432'
+          assert db[0].get('database_name')=='eternal-idle-v198-test-db'
+          assert len(r2)==1 and r2[0].get('binding')=='BUCKET'
+          assert r2[0].get('bucket_name')=='eternal-idle-v198-test-assets'
+          print('Isolated test D1 and R2 bindings checked; production not modified')
+          PY
+      - name: Deploy named test-only Worker
+        run: pnpm exec wrangler deploy --config dist/server/wrangler.json --name eternal-idle-v198-test --keep-vars
+      - name: Print deployment location
+        run: echo 'Check Cloudflare Workers dashboard for eternal-idle-v198-test workers.dev URL'
+
