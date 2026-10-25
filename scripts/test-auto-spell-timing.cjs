@@ -15,6 +15,26 @@ function fixture(cls='elf'){
 const casts=(c,id)=>c.events.filter(x=>x.kind==='magic'&&x.skill===id);
 const run=(s,end)=>e.advance(s,end,()=>.5);
 try{
+
+ // Triple and its triggered effects must remain on the selected monster.
+ for(const lethal of [false,true]){
+  const {c}=fixture();const original=c.arena[0];
+  c.arena=[original,...[1,2].map(i=>({...structuredClone(original),uid:'other-'+i}))];
+  c.arenaTarget=0;c.mob=original.id;c.mobHp=original.hp;
+  if(lethal)original.hp=1;
+  const untouched=c.arena.slice(1).map(m=>m.hp);
+  e.cast(c,'sk_elf_triple',time,()=>.5);
+  assert.ok(c.events.filter(x=>x.kind==='attack').every(x=>x.uid===original.uid),'triple must not transfer damage on kill');
+  assert.deepEqual(c.arena.slice(1).map(m=>m.hp),untouched);
+ }
+ {const {c}=fixture();const original=c.arena[0];c.arena=[original,...[1,2].map(i=>({...structuredClone(original),uid:'aoe-other-'+i}))];
+ const weapon=e.DATA.items[c.equipment.weapon.id],oldProc=weapon.attackProc,oldTarget=e.DATA.skills.sk_blaze.target;
+ weapon.attackProc={skill:'sk_blaze',rate:100};e.DATA.skills.sk_blaze.target='all';
+ try{const untouched=c.arena.slice(1).map(m=>m.hp);e.cast(c,'sk_elf_triple',time,()=>.5);
+ assert.ok(c.events.filter(x=>x.kind==='attack').every(x=>x.uid===original.uid),'triple weapon magic cannot spread to other monsters');
+ assert.deepEqual(c.arena.slice(1).map(m=>m.hp),untouched);
+ }finally{if(oldProc)weapon.attackProc=oldProc;else delete weapon.attackProc;if(oldTarget)e.DATA.skills.sk_blaze.target=oldTarget;else delete e.DATA.skills.sk_blaze.target;}}
+ console.log('PASS: triple stays on one of three monsters, stops on kill, and confines triggered area weapon magic.');
  // Triple is three full weapon attacks, using one arrow and one MP payment.
  const {playerStrike}=require(path.join(dir,'attack-rules.js')),runtime=require(path.join(dir,'monster-runtime.js')),supplies=require(path.join(dir,'auto-supplies.js')),spellRules=require(path.join(dir,'spell-rules.js')),affix=require(path.join(dir,'affix-rules.js'));
  const summary=require(path.join(dir,'magic.js')).skillSummary('sk_elf_triple');assert.ok(summary.includes('3 次完整普攻')&&summary.includes('1 支箭')&&summary.includes('70 毫秒'));
