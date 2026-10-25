@@ -30,7 +30,7 @@ jobs:
           python3 - <<'PY'
           import json
           d=json.load(open('/tmp/v198-settings.json'))
-          print(json.dumps({'settingsSuccess':d.get('success'),'limits':d.get('result',{}).get('limits'),'usageModel':d.get('result',{}).get('usage_model')}))
+          print(json.dumps({'settingsSuccess':d.get('success'),'limits':d.get('result',{}).get('limits'),'usageModel':d.get('result',{}).get('usage_model'),'observability':d.get('result',{}).get('observability')}))
           PY
       - name: Query retained test Worker errors without printing request data
         run: |
@@ -61,5 +61,5 @@ jobs:
                       for value in obj.values():inspect(value)
               elif isinstance(obj,list):
                   for value in obj:inspect(value)
-          inspect(data.get('result',{}));print('HISTORY_EVENTS='+str(count))
+          result=data.get('result',{});print('HISTORY_RESULT_SHAPE='+json.dumps({k:({'type':type(v).__name__,'count':len(v) if hasattr(v,'__len__') else None,'keys':list(v)[:15] if isinstance(v,dict) else None}) for k,v in result.items()}));inspect(result);print('HISTORY_EVENTS='+str(count))
           PYH
