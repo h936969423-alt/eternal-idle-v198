@@ -15,3 +15,16 @@ with zipfile.ZipFile(p) as z:
   body=z.read(name);assert hashlib.sha256(body).hexdigest()==expected
   (out/name).write_bytes(body)
 print('Verified imported effects:',len(manifest['files']),'files')
+
+# Target-centered heavy spells use one composite atlas each.
+pack=root/'assets/target-spells-v1.zip'
+integrity=json.loads((root/'lib/game/target-spell-assets.json').read_text())
+assert hashlib.sha256(pack.read_bytes()).hexdigest()==integrity['sha256']
+with zipfile.ZipFile(pack) as z:
+ assert set(z.namelist())==set(integrity['files'])
+ dest=root/'public/assets/target-spells-v1';dest.mkdir(parents=True,exist_ok=True)
+ for name,expected in integrity['files'].items():
+  assert Path(name).name==name
+  body=z.read(name);assert hashlib.sha256(body).hexdigest()==expected
+  (dest/name).write_bytes(body)
+print('Verified target spell atlases:',len(integrity['files']))

@@ -11,7 +11,7 @@ function preload(paths:string[]){
 function paths(skill:string,full:boolean){
  const {config}=magicVisual({skill});
  if(!config)return [];
- return full?magicVisualPaths(config):config.frames.slice(0,2);
+ return config.atlas?[config.atlas.src]:full?magicVisualPaths(config):config.frames.slice(0,2);
 }
 export function preloadSkillEffect(skill:string){preload(paths(skill,true));}
 // Predecode full animation sequences for learned offensive spells while the
@@ -26,3 +26,4 @@ export function preloadLearnedEffects(skills:string[]){
  const utility=skills.filter(id=>!OFFENSIVE_FX.has(definitions[id]?.n)).flatMap(id=>paths(id,false)).slice(0,Math.max(0,100-offensive.length));
  preload([...offensive,...utility]);
 }
+

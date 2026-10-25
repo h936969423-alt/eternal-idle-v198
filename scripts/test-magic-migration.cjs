@@ -10,6 +10,7 @@ const v=require(path.join(dir,'magic-visuals.js')),p=require(path.join(dir,'comb
 const fx=require('../lib/game/magic-fx.json'),manifest=require('../lib/game/magic-import.json');
 assert.equal(manifest.commit,'5f00f4a86389aaa7309c24d7a7c1ab060c47b500');
 for(const name of manifest.importedEffects){const c=fx[name];assert.ok(c.frames.length&&c.fps>0,name);for(const url of v.magicVisualPaths(c)){
+ if(url.startsWith('/assets/target-spells-v1/')){const integrity=require('../lib/game/target-spell-assets.json'),file=url.split('/').at(-1),body=fs.readFileSync(path.join(root,'public/assets/target-spells-v1',file));assert.equal(crypto.createHash('sha256').update(body).digest('hex'),integrity.files[file],url);continue;}
  if(url.startsWith('/assets/dasu-v1/')){const integrity=require('../lib/game/dasu-asset-integrity.json'),file=url.split('/').at(-1),body=fs.readFileSync(path.join(root,'public/assets/dasu-v1',file));assert.equal(crypto.createHash('sha256').update(body).digest('hex'),integrity.files[file],url);continue;}
  const rel=decodeURIComponent(url.replace('/assets/fx-import/','')),entry=manifest.files[rel];assert.ok(entry,url);
  const body=fs.readFileSync(path.join(root,'public/assets/fx-import',rel));
