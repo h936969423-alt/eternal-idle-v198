@@ -1,0 +1,68 @@
+name: Diagnose v198 character-entry errors
+on:
+  workflow_dispatch:
+  push:
+    branches: [main]
+    paths: [.github/workflows/diagnose-v198-entry.yml]
+permissions:
+  contents: read
+concurrency:
+  group: v198-entry-diagnostic
+  cancel-in-progress: false
+jobs:
+  diagnose:
+    runs-on: ubuntu-latest
+    timeout-minutes: 6
+    env:
+      CLOUDFLARE_ACCOUNT_ID: 9bf17726da5739f20d3e5ec454ae3d91
+      CLOUDFLARE_API_TOKEN: ${{ secrets.CLOUDFLARE_API_TOKEN }}
+      WRANGLER_SEND_METRICS: 'false'
+    steps:
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '22'
+      - name: Install pinned diagnostic CLI
+        run: npm install --prefix /tmp/v198-diagnostic wrangler@4.92.0 --no-audit --no-fund
+      - name: Read configured resource limits only
+        run: |
+          curl --silent --show-error --fail-with-body -H "Authorization: Bearer $CLOUDFLARE_API_TOKEN" \
+            "https://api.cloudflare.com/client/v4/accounts/$CLOUDFLARE_ACCOUNT_ID/workers/scripts/eternal-idle-v198-test/settings" -o /tmp/v198-settings.json
+          python3 - <<'PY'
+          import json
+          d=json.load(open('/tmp/v198-settings.json'))
+          print(json.dumps({'settingsSuccess':d.get('success'),'limits':d.get('result',{}).get('limits'),'usageModel':d.get('result',{}).get('usage_model')}))
+          PY
+      - name: Capture a 90-second diagnostic window and print sanitized errors
+        shell: bash
+        run: |
+          echo 'DIAGNOSTIC_WINDOW_START: POST requests to the isolated test Worker only'
+          set +e
+          timeout --signal=INT 90s /tmp/v198-diagnostic/node_modules/.bin/wrangler tail eternal-idle-v198-test --format json --method POST > /tmp/v198-tail.json 2>/tmp/v198-tail-stderr.txt
+          code=$?
+          set -e
+          python3 - <<'PY'
+          import json,re
+          from urllib.parse import urlsplit
+          text=open('/tmp/v198-tail.json').read();decoder=json.JSONDecoder();pos=0;count=0
+          while pos<len(text):
+              start=text.find('{',pos)
+              if start<0:break
+              try:d,length=decoder.raw_decode(text[start:])
+              except json.JSONDecodeError:pos=start+1;continue
+              pos=start+length
+              if not isinstance(d,dict) or 'outcome' not in d:continue
+              event=d.get('event') or {};request=event.get('request') or {};response=event.get('response') or {}
+              errors=[{'name':e.get('name'),'message':str(e.get('message',''))[:400]} for e in d.get('exceptions',[])]
+              logs=[]
+              for entry in d.get('logs',[]):
+                  message=entry.get('message',[])
+                  if isinstance(message,list) and message and str(message[0]) in ('game-api-error','game-timing'):
+                      logs.append(message)
+              print(json.dumps({'timestamp':d.get('eventTimestamp'),'outcome':d.get('outcome'),'path':urlsplit(request.get('url','')).path,'status':response.get('status'),'cpuTime':d.get('cpuTime'),'wallTime':d.get('wallTime'),'exceptions':errors,'logs':logs},ensure_ascii=False))
+              count+=1
+          print('SANITIZED_INVOCATIONS='+str(count))
+          # Raw tail data can contain request headers. Never print or upload it.
+          for line in open('/tmp/v198-tail-stderr.txt'):
+              if 'Authentication error' in line or 'permission' in line.lower():print('Tail authorization failed; no credentials or raw logs printed.')
+          PY
+          if [ "$code" -ne 0 ] && [ "$code" -ne 124 ] && [ "$code" -ne 130 ]; then echo "Diagnostic CLI exit: $code"; exit "$code"; fi
