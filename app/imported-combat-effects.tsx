@@ -1,6 +1,6 @@
 'use client';
 import {useEffect,useLayoutEffect,useMemo,useRef,useState,type CSSProperties,type RefObject} from 'react';
-import {importedEffects,importedWeaponEffect,importedFrame,type EffectClip} from '@/lib/game/imported-effects';
+import {importedEffects,importedFrame,type EffectClip} from '@/lib/game/imported-effects';
 import type {Character} from '@/lib/game/engine';
 import type {BattleView} from '@/lib/game/combat-presentation';
 import {useCombatEffects} from './combat-effects-context';
@@ -14,10 +14,10 @@ export default function ImportedCombatEffects({c,view,arena}:{c:Character;view:B
  // Resolve only events that actually have an enabled visual, once per packet.
  const effects=useMemo(()=>!config.enabled?[]:(view.actions||[]).flatMap(e=>{
   if(e.visualPhase==='launch')return [];
-  const triple=e.kind==='magic'&&e.skill==='sk_elf_triple',weapon=importedWeaponEffect(c,config,e);
+  const triple=e.kind==='magic'&&e.skill==='sk_elf_triple';
   const tripleIds=triple?importedEffects.triple.filter(id=>importedEffects.entries[id].code==='11764-0'):e.kind==='attack'&&e.skill==='sk_elf_triple'&&!e.miss?importedEffects.triple.filter(id=>importedEffects.entries[id].code==='4394-0'):[];
-  const clips=[...(weapon?[weapon.id]:[]),...tripleIds].map(id=>({id,entry:importedEffects.entries[id],clip:importedEffects.clips[importedEffects.entries[id].clip]}));
-  // Picture-based hurt reactions are disabled; keep weapon and spell visuals.
+  const clips=[...tripleIds].map(id=>({id,entry:importedEffects.entries[id],clip:importedEffects.clips[importedEffects.entries[id].clip]}));
+  // Picture-based hurt reactions and imported weapon attack visuals are disabled; keep triple-arrow spell visuals.
   const hurt=undefined;
   if(!clips.length&&!hurt)return [];
   return [{e,clips,hurt,player:triple||!!hurt,lifetime:Math.max(hurt?700:0,...clips.map(x=>x.clip.count/x.clip.fps*1000))}];
