@@ -1,29 +1,58 @@
 'use client';
-import {useEffect,useState,type CSSProperties, type RefObject} from 'react';
+import {useEffect,useLayoutEffect,useMemo,useRef,useState,type CSSProperties,type RefObject} from 'react';
 import {importedEffects,importedWeaponEffect,importedFrame,type EffectClip} from '@/lib/game/imported-effects';
-import type {Character,CombatEvent} from '@/lib/game/engine';
+import type {Character} from '@/lib/game/engine';
 import type {BattleView} from '@/lib/game/combat-presentation';
 import {useCombatEffects} from './combat-effects-context';
 export function EffectAtlas({clip,age,width=150}:{clip:EffectClip;age:number;width?:number}){
  const n=importedFrame(clip,age),scale=Math.min(width/clip.width,190/clip.height,1.5),w=clip.width*scale,h=clip.height*scale;
  return <span aria-hidden="true" style={{display:'block',width:w,height:h,backgroundImage:`url(/assets/dasu-v1/${clip.sheet})`,backgroundSize:`${clip.cols*w}px ${Math.ceil(clip.count/clip.cols)*h}px`,backgroundPosition:`-${n%clip.cols*w}px -${Math.floor(n/clip.cols)*h}px`,backgroundRepeat:'no-repeat'}}/>;
 }
+type Anchor={left:string;top:string;hurtTop:string};
 export default function ImportedCombatEffects({c,view,arena}:{c:Character;view:BattleView;arena:RefObject<HTMLDivElement|null>}){
- const config=useCombatEffects(),[clock,setClock]=useState(0);
- // A single clock drives all active atlases; completed effects do not keep an extra loop alive.
- const events=(view.actions||[]).filter(e=>e.visualPhase!=='launch'&&(!e.visualAt||e.visualAt<=performance.now()));
- useEffect(()=>{let raf=0;const tick=(now:number)=>{setClock(now);if(events.some(e=>now-e.shownAt<3500))raf=requestAnimationFrame(tick);};raf=requestAnimationFrame(tick);return()=>cancelAnimationFrame(raf);},[view.actions]);
- if(!config.enabled||!arena.current)return null;
- const root=arena.current.getBoundingClientRect();
- return <>{events.flatMap(e=>{
- const age=Math.max(0,clock-e.shownAt),triple=e.kind==='magic'&&e.skill==='sk_elf_triple';
- const weapon=importedWeaponEffect(c,config,e),hurt=e.kind==='hurt'&&!e.miss&&!!e.damage&&!e.petUid&&!e.summonUid;
- const tripleIds=triple?importedEffects.triple.filter(id=>importedEffects.entries[id].code==='11764-0'):e.kind==='attack'&&e.skill==='sk_elf_triple'&&!e.miss?importedEffects.triple.filter(id=>importedEffects.entries[id].code==='4394-0'):[];
- const selected=[...(weapon?[weapon.id]:[]),...tripleIds];
- const node=arena.current?.querySelector(triple||hurt?'.character-sprite':`[data-monster-slot="${e.slot}"] .four-monster-art`);if(!node)return [];
- const rect=node.getBoundingClientRect(),style:CSSProperties={position:'absolute',pointerEvents:'none',zIndex:12,left:rect.left-root.left+rect.width/2,top:rect.top-root.top+rect.height*.55,transform:'translate(-50%,-65%)'};
- const result=selected.flatMap(id=>{const entry=importedEffects.entries[id],clip=importedEffects.clips[entry.clip];return age>=clip.count/clip.fps*1000?[]:[<span key={`${e.seq}:${id}`} style={{...style,mixBlendMode:'screen'}} data-effect-code={entry.code}><EffectAtlas clip={clip} age={age}/></span>];});
- const h=importedEffects.hurt.find(h=>h.id===config.hurt);if(hurt&&h&&age<700)result.push(<img key={`hurt:${e.seq}`} src={h.image} alt="受擊特效" style={{...style,width:125,maxHeight:80,objectFit:'contain',top:rect.top-root.top-10}}/>);
- return result;
+ const config=useCombatEffects(),[clock,setClock]=useState(0),anchors=useRef(new Map<number,Anchor>());
+ // Resolve only events that actually have an enabled visual, once per packet.
+ const effects=useMemo(()=>!config.enabled?[]:(view.actions||[]).flatMap(e=>{
+  if(e.visualPhase==='launch')return [];
+  const triple=e.kind==='magic'&&e.skill==='sk_elf_triple',weapon=importedWeaponEffect(c,config,e);
+  const tripleIds=triple?importedEffects.triple.filter(id=>importedEffects.entries[id].code==='11764-0'):e.kind==='attack'&&e.skill==='sk_elf_triple'&&!e.miss?importedEffects.triple.filter(id=>importedEffects.entries[id].code==='4394-0'):[];
+  const clips=[...(weapon?[weapon.id]:[]),...tripleIds].map(id=>({id,entry:importedEffects.entries[id],clip:importedEffects.clips[importedEffects.entries[id].clip]}));
+  const hurt=e.kind==='hurt'&&!e.miss&&!!e.damage&&!e.petUid&&!e.summonUid?importedEffects.hurt.find(h=>h.id===config.hurt):undefined;
+  if(!clips.length&&!hurt)return [];
+  return [{e,clips,hurt,player:triple||!!hurt,lifetime:Math.max(hurt?700:0,...clips.map(x=>x.clip.count/x.clip.fps*1000))}];
+ }),[view.actions,c,config]);
+ useLayoutEffect(()=>{
+  const now=performance.now(),host=arena.current,live=new Set(effects.map(x=>x.e.seq));
+  for(const seq of anchors.current.keys())if(!live.has(seq))anchors.current.delete(seq);
+  // No layout reads for expired histories or nonvisual combat events. Cache the
+  // contact point for an effect's lifetime so deaths/respawns cannot move it.
+  const fresh=effects.filter(x=>!anchors.current.has(x.e.seq)&&now>=x.e.shownAt&&now-x.e.shownAt<x.lifetime);
+  if(host&&fresh.length){const root=host.getBoundingClientRect();if(root.width&&root.height){
+   const measured=new Map<string,Anchor>();
+   for(const x of fresh){const selector=x.player?'.character-sprite':`[data-monster-slot="${x.e.slot}"] .four-monster-art`;let anchor=measured.get(selector);
+    if(!anchor){const node=host.querySelector(selector);if(!node)continue;const r=node.getBoundingClientRect();anchor={left:`${(r.left-root.left+r.width/2)/root.width*100}%`,top:`${(r.top-root.top+r.height*.55)/root.height*100}%`,hurtTop:`${(r.top-root.top-10)/root.height*100}%`};measured.set(selector,anchor);}
+    anchors.current.set(x.e.seq,anchor);
+   }
+  }}
+  setClock(now);
+ },[effects,arena]);
+ useEffect(()=>{
+  let raf=0,last='';
+  const tick=(now:number)=>{
+   const active=effects.filter(x=>now>=x.e.shownAt&&now-x.e.shownAt<x.lifetime);
+   // The source atlases normally run at 12 fps. A 60 Hz browser callback must
+   // not rerender React or remeasure every actor when no atlas frame changed.
+   const signature=active.map(x=>`${x.e.seq}:${x.clips.map(y=>now-x.e.shownAt<y.clip.count/y.clip.fps*1000?importedFrame(y.clip,now-x.e.shownAt):-1).join(',')}:${x.hurt&&now-x.e.shownAt<700?1:0}`).join('|');
+   if(signature!==last){last=signature;setClock(now);}
+   if(active.length)raf=requestAnimationFrame(tick);
+  };
+  raf=requestAnimationFrame(tick);return()=>cancelAnimationFrame(raf);
+ },[effects]);
+ return <>{effects.flatMap(x=>{
+  const age=clock-x.e.shownAt,anchor=anchors.current.get(x.e.seq);if(!anchor||age<0||age>=x.lifetime)return [];
+  const style:CSSProperties={position:'absolute',pointerEvents:'none',zIndex:12,left:anchor.left,top:anchor.top,transform:'translate(-50%,-65%)'};
+  const result=x.clips.flatMap(({id,entry,clip})=>age>=clip.count/clip.fps*1000?[]:[<span key={`${x.e.seq}:${id}`} style={{...style,mixBlendMode:'screen'}} data-effect-code={entry.code}><EffectAtlas clip={clip} age={age}/></span>]);
+  if(x.hurt&&age<700)result.push(<img key={`hurt:${x.e.seq}`} src={x.hurt.image} alt="受擊特效" style={{...style,width:125,maxHeight:80,objectFit:'contain',top:anchor.hurtTop}}/>);
+  return result;
  })}</>;
 }
