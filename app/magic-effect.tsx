@@ -27,7 +27,7 @@ export default function MagicEffect({event,loopUntil}:{event:CombatEvent;loopUnt
    const arenaRect=root?.getBoundingClientRect()||box;
    const clamp=(v:number,lo:number,hi:number)=>Math.max(lo,Math.min(hi,v));
    const impactX=clamp(r.left+r.width*.5,arenaRect.left+2,arenaRect.right-2);
-   const impactY=clamp(r.top+r.height*(config.oh?.15:config.targetVc??.55),arenaRect.top+2,arenaRect.bottom-2);
+   const impactY=clamp(r.top+r.height*((config.oh ? .15 : (config.targetVc ?? .55))),arenaRect.top+2,arenaRect.bottom-2);
    setPlacement(config.atlas?targetSpellLayout(config.atlas,box,r,arenaRect,config.targetVc):{left:impactX-box.left,top:impactY-box.top,...facing});
   }};
   position();
