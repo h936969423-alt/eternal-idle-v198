@@ -15,8 +15,6 @@ type Sample = {
   hidden:boolean;
 };
 
-type LongTaskEntry = PerformanceEntry & {duration:number};
-
 export default function PerfDiagnostic(){
   const [enabled,setEnabled]=useState(false);
   const [running,setRunning]=useState(false);
@@ -38,14 +36,6 @@ export default function PerfDiagnostic(){
     mounted.current=true;
     setEnabled(new URLSearchParams(window.location.search).get('perfdiag')==='1');
     return()=>{mounted.current=false;if(raf.current!==undefined)cancelAnimationFrame(raf.current);observer.current?.disconnect();};
-  },[]);
-
-  const stop=useCallback(()=>{
-    if(raf.current!==undefined)cancelAnimationFrame(raf.current);
-    raf.current=undefined;
-    observer.current?.disconnect();
-    setRunning(false);
-    setMessage('偵測完成。請複製報告傳回來。');
   },[]);
 
   const start=useCallback(()=>{
@@ -93,7 +83,8 @@ export default function PerfDiagnostic(){
           heapMB:typeof memory?.usedJSHeapSize==='number'?Math.round(memory.usedJSHeapSize/1048576*10)/10:null,
           hidden:document.hidden
         };
-        setSamples(prev=>[...prev,sample]);
+        samplesRef.current=[...samplesRef.current,sample];
+        setSamples(samplesRef.current);
         frames.current=0;
         frameMs.current=0;
         lastSampleAt.current=now;
@@ -135,7 +126,7 @@ export default function PerfDiagnostic(){
   },[report]);
 
   if(!enabled)return null;
-  return <section aria-label="20 秒效能偵測" style={{position:'fixed',right:10,bottom:10,zIndex:2147483000,width:'min(390px,calc(100vw - 20px)',maxHeight:'75vh',overflow:'auto',background:'#101820',color:'#eef6ff',border:'1px solid #6c8ba8',borderRadius:12,padding:12,boxShadow:'0 8px 32px #0009',fontSize:12}}>
+  return <section aria-label="20 秒效能偵測" style={{position:'fixed',right:10,bottom:10,zIndex:2147483000,width:'min(390px,calc(100vw - 20px))',maxHeight:'75vh',overflow:'auto',background:'#101820',color:'#eef6ff',border:'1px solid #6c8ba8',borderRadius:12,padding:12,boxShadow:'0 8px 32px #0009',fontSize:12}}>
     <div style={{display:'flex',alignItems:'center',justifyContent:'space-between',gap:8}}>
       <strong style={{fontSize:14}}>20 秒效能偵測</strong>
       <button type="button" onClick={()=>setEnabled(false)} disabled={running} style={{padding:'4px 8px'}}>關閉</button>
