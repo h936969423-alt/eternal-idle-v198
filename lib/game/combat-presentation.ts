@@ -24,7 +24,7 @@ export type CombatFloat=CombatEvent&{shownAt:number;lane:number};
 /** Assign a free vertical lane per actor; consecutive hits never reuse a live lane. */
 export function addCombatFloat(floats:CombatFloat[],event:CombatEvent,now:number):CombatFloat[]{
  const active=floats.filter(f=>now-f.shownAt<800);
- const key=(e:CombatEvent)=>e.kind==='attack'?`${e.slot}:${e.uid}`:'player';
+ const key=(e:CombatEvent)=>e.kind==='attack'?`slot:${e.slot}`:'player';
  const used=new Set(active.filter(f=>key(f)===key(event)).map(f=>f.lane));
  let lane=0;while(used.has(lane))lane++;
  return [...active,{...event,shownAt:now,lane}];
