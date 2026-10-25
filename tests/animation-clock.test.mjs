@@ -43,3 +43,14 @@ test('monster pending attack queue remains bounded',()=>{
  for(let i=1;i<=10;i++)state=pushCue(state,cue(i,'attack'),i*10,duration,true,false);
  assert.deepEqual(state.pending.map(e=>e.seq),[7,8,9,10]);
 });
+test('new monster attacks do not overtake queued attacks after spawn',()=>{
+ let state={kind:'spawn',at:0,duration:500,pending:[]};
+ for(let seq=1;seq<=3;seq++)state=pushCue(state,cue(seq,'attack'),seq*50,duration,true,false);
+ state=advanceMotion(state,501,duration);
+ state=pushCue(state,cue(4,'attack'),600,duration,true,false);
+ assert.equal(state.at,501,'new attack must not restart the current pose');
+ assert.deepEqual(state.pending.map(e=>e.seq),[2,3,4]);
+ state=advanceMotion(state,1002,duration);
+ assert.deepEqual(state.pending.map(e=>e.seq),[3,4]);
+});
+

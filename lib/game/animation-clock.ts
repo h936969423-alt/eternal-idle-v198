@@ -21,6 +21,8 @@ export function pushCue(state:MotionClock,cue:MotionCue,now:number,duration:(kin
  // A pose represents current combat, not a second history of every attack.
  // Keep only the newest deferred pose while preserving death/skill priority.
  const defer=()=>({...state,pending:retriggerAttack?[...state.pending,cue].slice(-4):[cue]});
+ // New monster attacks cannot jump ahead of attacks already deferred by spawn/skill.
+ if(active&&retriggerAttack&&state.kind==='attack'&&cue.kind==='attack'&&state.pending.length)return defer();
  if(active&&(state.kind==='spawn'||state.kind==='skill')&&cue.kind!=='death'&&cue.kind!=='hurt')return defer();
  if(active&&!(attackPriority&&cue.kind==='attack'&&state.kind==='hurt')&&priority[cue.kind]<priority[state.kind])return defer();
  if(active&&!retriggerAttack&&cue.kind===state.kind&&cue.kind==='attack')return defer();
@@ -34,3 +36,4 @@ export function advanceMotion(state:MotionClock,now:number,duration:(kind:Motion
 }
 export function facing(dx:number,dy:number){const oct=Math.round(Math.atan2(dy,dx)*4/Math.PI);return ({0:3,1:4,2:5,3:6,4:7,'-4':7,'-3':0,'-2':1,'-1':2} as Record<string,number>)[oct]??6;}
 export function projectileCount(){return 1;}
+

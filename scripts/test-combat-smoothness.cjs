@@ -62,3 +62,18 @@ let slowState=pushCue({kind:'idle',at:0,duration:Infinity,pending:[]},{seq:1,kin
 assert.equal(advanceMotion(slowState,1599,slow).kind,'attack');
 assert.equal(pushCue(slowState,{seq:2,kind:'hurt',at:800},800,slow,false,true).kind,'attack');
 assert.equal(durationFor('attack',4,0),500,'monster default timing unchanged');
+
+
+// Dense and multi-packet histories share one bounded horizon, without moving in-flight impacts.
+const {enqueueCombatReplay,drainCombatPresentation}=require('../lib/game/combat-presentation.ts');
+const {replayFrameExpired}=require('../lib/game/replay-timing.ts');
+const dense=scheduleReplay(Array.from({length:200},(_,seq)=>({seq,at:seq*100,due:seq*100,kind:'attack',hp:10,mp:0})),25000);
+assert.equal(dense.at(-1).due,26500);assert.ok(dense.every((e,i)=>!i||e.due>=dense[i-1].due));
+const futureBacklog=scheduleReplay([{seq:1,at:0,due:1100},{seq:2,at:0,due:10000}],1000);assert.equal(futureBacklog.at(-1).due,2500);
+const event={seq:1,at:0,kind:'attack',slot:0,uid:'old',damage:10,mobHp:0,hp:100,mp:0};
+let packet=enqueueCombatReplay([],[event,event],1000,null);assert.equal(packet.queue.length,1,'duplicate packet events do not create duplicate hits');
+const flying=[];drainCombatPresentation(packet.queue,flying,packet.queue[0].due,true);const landing=flying[0].due;
+packet=enqueueCombatReplay(packet.queue,[{...event,seq:2,at:2000}],2000,packet.offset);
+assert.equal(flying[0].due,landing,'re-pacing a new batch cannot move a launched arrow');
+assert.equal(replayFrameExpired(1000,7000),false);assert.equal(replayFrameExpired(1000,7001),true);assert.equal(replayFrameExpired(null,10000),false);
+console.log('PASS: 200-event horizon, future backlog bounds, packet deduplication, fixed in-flight impact and suspended-frame reset.');

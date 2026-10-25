@@ -2,6 +2,8 @@ import type {CombatEvent} from './engine';
 // Buffer confirmed events briefly so variable response times do not become burst/pause playback.
 export const REPLAY_BUFFER_MS=650;
 export const REPLAY_MAX_AHEAD_MS=1500;
+/** A suspended render loop restores canonical state instead of replaying stale hits. */
+export function replayFrameExpired(previous:number|null,now:number){return previous!==null&&now-previous>6000;}
 export function replayOffset(events:Pick<CombatEvent,'at'>[],now:number,previous:number|null){
  if(!events.length)return previous;
  const oldest=Math.min(...events.map(e=>e.at)),newest=Math.max(...events.map(e=>e.at));
@@ -26,3 +28,4 @@ export function tripleReplayOffset(events:Pick<CombatEvent,'at'|'kind'|'skill'>[
  const start=casts.length?Math.max(...casts.map(e=>e.at)):Math.min(...hits.map(e=>e.at));
  return now-start;
 }
+

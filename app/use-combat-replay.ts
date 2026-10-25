@@ -4,7 +4,7 @@ import type { Character,CombatEvent } from '@/lib/game/engine';
 import raw from '@/lib/game/gamedata.json';
 import {baseItem} from '@/lib/game/gear';
 import {petSnapshot} from '@/lib/game/engine';
-import {replayHasGap} from '@/lib/game/replay-timing';
+import {replayHasGap,replayFrameExpired} from '@/lib/game/replay-timing';
 import { combatSound } from './combat-audio';
 import {applyCombatViewEvent,drainCombatPresentation,enqueueCombatReplay,prepareCombatHealth,type BattleView,type TimedCombatEvent} from '@/lib/game/combat-presentation';
 export type {BattleView} from '@/lib/game/combat-presentation';
@@ -19,8 +19,18 @@ export function useCombatReplay(c:Character|null,sound:boolean){
  useEffect(()=>{
   let animation=0;
   let lastCleanup=0;
+  let lastFrame:number|null=null;
+  let restore=false;
+  const pause=()=>{if(document.visibilityState==='hidden'){restore=true;queue.current=[];impacts.current=[];}};
+  document.addEventListener('visibilitychange',pause);
   const tick=()=>{
    const now=performance.now();
+   if(restore||replayFrameExpired(lastFrame,now)){
+    restore=false;queue.current=[];impacts.current=[];offset.current=null;live.current=false;
+    const current=latest.current;
+    if(current){seen.current=current.eventSeq||0;health.current=new Map((current.arena||[]).map(m=>[m.uid,m.hp]));setView({petEntities:petSnapshot(current,Date.now()),summonEntities:current.summonContract?.entities||[],hp:current.hp,mp:current.mp,target:current.arenaTarget||0,arena:(current.arena||[]).map(m=>({...m})),floats:[]});}
+   }
+   lastFrame=now;
    const ready=drainCombatPresentation(queue.current,impacts.current,now,!!(raw.items as any)[baseItem(latest.current?.equipment.weapon?.id||'')]?.ranged);
    for(const next of ready)if(soundOn.current&&latest.current&&now-(next.visualAt??(next as TimedCombatEvent).due??now)<=250)combatSound(latest.current,next);
    // One React update per animation frame, rather than one per attack plus a
@@ -38,8 +48,9 @@ export function useCombatReplay(c:Character|null,sound:boolean){
    animation=requestAnimationFrame(tick);
   };
   animation=requestAnimationFrame(tick);
-  return()=>cancelAnimationFrame(animation);
+  return()=>{cancelAnimationFrame(animation);document.removeEventListener('visibilitychange',pause);};
  },[]);
 
  return c&&owner.current!==c.id?{petEntities:petSnapshot(c,Date.now()),summonEntities:c.summonContract?.entities||[],hp:c.hp,mp:c.mp,arena:c.arena||[],target:c.arenaTarget||0,floats:[]}:view;
 }
+

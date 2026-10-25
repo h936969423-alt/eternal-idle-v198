@@ -4,7 +4,7 @@ import type {CombatEvent,Encounter,PetSnapshot} from './engine';
 import type {SummonEntity} from './summon-system';
 import raw from './gamedata.json';
 import {TRIPLE_FLIGHT_MS,ARROW_FLIGHT_MS} from './player-sprite-layout';
-import {manualReplayOffset,replayOffset,tripleReplayOffset} from './replay-timing';
+import {manualReplayOffset,replayOffset,tripleReplayOffset,REPLAY_MAX_AHEAD_MS} from './replay-timing';
 export type PresentationEvent=CombatEvent&{visualHpDelta?:number};
 /** Convert canonical snapshots in server sequence order before sorting by flight time. */
 export function prepareCombatHealth(events:CombatEvent[],health:Map<string,number>):PresentationEvent[]{
@@ -28,14 +28,16 @@ export function addCombatFloat(floats:CombatFloat[],event:CombatEvent,now:number
  let lane=0;while(used.has(lane))lane++;
  return [...active,{...event,shownAt:now,lane}];
 }
-/** Preserve normal hit spacing; only compress a substantial backlog, never below its real span by default. */
+/** Pace overdue history within the same 1500ms horizon as the network buffer.
+ * This schedules launches only; already flying arrows retain their impact clock.
+ */
 export function scheduleReplay<T extends CombatEvent&{due:number}>(events:T[],now:number):T[]{
- if(!events.length||events[0].due>=now)return events;
+ if(!events.length)return events;
  const first=events[0].due,last=events.at(-1)!.due,span=last-first;
- // Preserve the actual timing between swings across the ~3.5s network poll.
- // Compress only exceptionally large backlogs to avoid burst-then-pause combat.
- const window=Math.min(4000,span);
- return events.map(e=>({...e,due:now+(span>0?(e.due-first)/span*window:0)}));
+ if(first>=now&&last<=now+REPLAY_MAX_AHEAD_MS)return events;
+ const start=Math.min(now+REPLAY_MAX_AHEAD_MS,Math.max(now,first));
+ const window=Math.min(Math.max(0,now+REPLAY_MAX_AHEAD_MS-start),span);
+ return events.map(e=>({...e,due:start+(span>0?(e.due-first)/span*window:0)}));
 }
 
 /** Use one clock for animation, HP and damage. After an urgent cast, keep that
@@ -47,7 +49,9 @@ export function enqueueCombatReplay<T extends CombatEvent>(queued:(T&{due:number
  const offset=manual?manualReplayOffset(fresh,now):triple??((pendingTriple||live)&&previous!==null?previous:replayOffset(fresh,now,previous));
  if(offset===null)return {queue:queued,offset};
  const shifted=queued.map(e=>({...e,due:previous===null?e.due:e.due+offset-previous}));
- const combined=[...shifted,...fresh.map(e=>({...e,due:e.at+offset}))].sort((a,b)=>a.due-b.due||a.seq-b.seq);
+ const known=new Set(shifted.map(e=>e.seq));
+ const unique=fresh.filter(e=>{if(known.has(e.seq))return false;known.add(e.seq);return true;});
+ const combined=[...shifted,...unique.map(e=>({...e,due:e.at+offset}))].sort((a,b)=>a.due-b.due||a.seq-b.seq);
  // Re-pacing overdue history here would put the urgent burst at the back again.
  return {queue:immediate?combined:scheduleReplay(combined,now),offset};
 }
@@ -102,3 +106,4 @@ export function applyCombatViewEvent(v:BattleView,next:PresentationEvent,now:num
  if(next.slot!==undefined&&arena[next.slot]?.uid===next.uid&&next.targetEffects)arena[next.slot].effects=next.targetEffects;
  return {healthCredits,actions,petHurt:next.petUid&&next.source==='monster'?next:v.petHurt,petEntities:next.petEntities||v.petEntities,summonEntities:next.summonEntities||v.summonEntities,hp:staged?v.hp:next.hp,mp:staged?v.mp:next.mp,arena,target:next.target??v.target,attack:next.kind==='attack'&&next.visualPhase!=='impact'?next:v.attack,magic:next.kind==='magic'?next:v.magic,hurt:next.kind==='hurt'?next:v.hurt,casts:[...(v.casts||[]).filter(f=>now-f.shownAt<2000),...(!staged&&((next.weaponProc&&!!lineageWEffectDefinition(next.skill))||(next.kind==='magic'&&(next.source==='monster'||next.slot!==undefined||!next.skill||(raw.skills as any)[next.skill]?.type!=='atk'))||(next.kind==='attack'&&next.skill&&!next.miss&&next.source!=='poison'&&next.source!=='summon'))?[{...next,shownAt:now}]:[])],floats:['attack','hurt','heal'].includes(next.kind)?addCombatFloat(v.floats,next,now):v.floats.filter(f=>now-f.shownAt<800)};
 }
+
