@@ -1,8 +1,9 @@
+import type {TargetSpellAtlas} from './spell-effect-layout';
 import effects from './magic-fx.json';
 import raw from './gamedata.json';
 import type {CombatEvent} from './engine';
 
-export type MagicVisual={frames:string[];fps:number;self:boolean;proj?:number|boolean;layers?:string[][];shadowFrames?:string[];directions?:string[][];shadowDirections?:string[][];dirs?:number;nw?:number;nh?:number;oh?:number|boolean;h?:number;w?:number;width?:number;blend?:string;ax?:number;ay?:number;targetVc?:number;projScale?:number;imported?:boolean};
+export type MagicVisual={atlas?:TargetSpellAtlas;frames:string[];fps:number;self:boolean;proj?:number|boolean;layers?:string[][];shadowFrames?:string[];directions?:string[][];shadowDirections?:string[][];dirs?:number;nw?:number;nh?:number;oh?:number|boolean;h?:number;w?:number;width?:number;blend?:string;ax?:number;ay?:number;targetVc?:number;projScale?:number;imported?:boolean};
 export function magicVisual(event:Pick<CombatEvent,'skill'|'effectName'|'item'>){
  const name=event.effectName||(event.skill?(raw.skills as Record<string,{n:string}>)[event.skill]?.n:event.item?((raw.items as Record<string,any>)[event.item]?.eff==='magicbarrier'?'魔法屏障':(raw.items as Record<string,any>)[event.item]?.n):'');
  return {name,config:(effects as Record<string,MagicVisual>)[name]};
@@ -21,8 +22,9 @@ export function magicFrame(elapsed:number,fps:number,count:number,loop=false){
  const frame=Math.floor(Math.max(0,elapsed)*fps/1000);
  return loop?frame%count:frame<count?frame:-1;
 }
-export function magicVisualPaths(config:MagicVisual){return [...new Set([config.frames,...(config.layers||[]),config.shadowFrames||[],...(config.directions||[]),...(config.shadowDirections||[])].flat())];}
+export function magicVisualPaths(config:MagicVisual){if(config.atlas)return [config.atlas.src];return [...new Set([config.frames,...(config.layers||[]),config.shadowFrames||[],...(config.directions||[]),...(config.shadowDirections||[])].flat())];}
 export function magicEffectLifetime(event:CombatEvent){
  const {config}=magicVisual(event);
  return config?Math.max(2000,Math.ceil(Math.max(config.frames.length,...(config.layers||[]).map(layer=>layer.length))*1000/config.fps)+100):2000;
 }
+

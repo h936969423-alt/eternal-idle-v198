@@ -1,0 +1,7 @@
+# Meteor and Disintegrate target alignment
+
+Both imported effects used 1.9× fixed height, automatic width and a percentage bottom anchor despite large transparent source canvases. Their visible impacts could be above the monster or beyond the phone arena. Composite each spell into one stable lossless atlas, retaining all animation frames and combining Disintegrate's three source layers at their original offsets. Source impact pivots (Meteor 184,285; Disintegrate 210,370) follow the landing ring/lightning contact point; transparent outer margins are trimmed consistently across all frames.
+
+The renderer preserves aspect ratio, maps that source pivot to the monster's body, and scales the full canvas to the available arena bounds. A ResizeObserver recalculates on orientation/layout changes, with a standalone GM preview fallback. One atlas replaces 20 Meteor and 63 Disintegrate per-frame/layer requests; learned/manual preload uses that atlas. Neither image loading nor effect lifetime blocks confirmed attack events or changes damage.
+
+Validation: 32 portrait/landscape target placements with exact pivot/bounds assertions, real React atlas rendering and frame completion, GM preview without an actor, multi-target cast deduplication, immediate confirmed normal attack, existing cast handoff, polling continuity and arrow impact regressions. Live game login/visual verification still requires an authenticated session.
