@@ -1,0 +1,672 @@
+[
+  {
+    "id": "sk_lightarrow",
+    "name": "光箭",
+    "sha": "be593878eaa79d264330fa92c6cfe010d965f415"
+  },
+  {
+    "id": "sk_holy_wpn",
+    "name": "神聖武器",
+    "sha": "14f73ae20a705e09d47524afe174aa2d79276b50"
+  },
+  {
+    "id": "sk_antidote",
+    "name": "解毒術",
+    "sha": "828122593faba5c53a22f3ca773fb80a172db4ab"
+  },
+  {
+    "id": "sk_windblade",
+    "name": "風刃",
+    "sha": "7aa63daf4d40b567829b77206f68c687e1e26b7f"
+  },
+  {
+    "id": "sk_shield",
+    "name": "保護罩",
+    "sha": "37fe816c7b45a7025613bfcb0ef0107fd7d50403"
+  },
+  {
+    "id": "sk_sunlight",
+    "name": "日光術",
+    "sha": "21bd6192b24e875f4d47f925fc4e2cee23e4a32a"
+  },
+  {
+    "id": "sk_icearrow",
+    "name": "冰箭",
+    "sha": "d8981cf85b7b8832405f0115517f8b969a7ab3d8"
+  },
+  {
+    "id": "sk_cold_shiver",
+    "name": "寒冷戰慄",
+    "sha": "8a4c57728f25566383358f968adf27275893e362"
+  },
+  {
+    "id": "sk_heal1",
+    "name": "初級治癒術",
+    "sha": "6eecb28f773f6165ab9b4da619e41fd6cdfa279d"
+  },
+  {
+    "id": "sk_reveal",
+    "name": "無所遁形術",
+    "sha": "36ba65588e4cf64840097f2a58387214884e7e48"
+  },
+  {
+    "id": "sk_poison_curse",
+    "name": "毒咒",
+    "sha": "85dea3fb111f12cfe2e4d4b24b2e6df3e3d4b4c8"
+  },
+  {
+    "id": "sk_teleport",
+    "name": "傳送術",
+    "sha": "d35d97998c4f12f57e22aa17a28909a0e21d7baa"
+  },
+  {
+    "id": "sk_load_up",
+    "name": "負重強化",
+    "sha": "a6dee544778933324befa5ef69d05501681ceb05"
+  },
+  {
+    "id": "sk_aurora",
+    "name": "極光雷電",
+    "sha": "4ea4115f0304626ca616c0f4fbd1427910bd02aa"
+  },
+  {
+    "id": "sk_hell_fang",
+    "name": "地獄之牙",
+    "sha": "065dc8333698d0a4b798a174827eae68271ea898"
+  },
+  {
+    "id": "sk_ench_wpn",
+    "name": "擬似魔法武器",
+    "sha": "633a3e3c4a490ae47386e115277b0109807f1f9d"
+  },
+  {
+    "id": "sk_firearrow",
+    "name": "火箭",
+    "sha": "96507c0df2b1c685911f6a67d8fb1d7f8cad669d"
+  },
+  {
+    "id": "sk_undead_bane",
+    "name": "起死回生術",
+    "sha": "27e20108258860fde210ffb381d68f3a6d64d65b"
+  },
+  {
+    "id": "sk_heal_mid",
+    "name": "中級治癒術",
+    "sha": "cb5422bd2aabe9259f55910d5d14925aa3f806ea"
+  },
+  {
+    "id": "sk_chill",
+    "name": "寒冰氣息",
+    "sha": "ac5d4db2f5de3292beac69adbdc14e6a9d270f49"
+  },
+  {
+    "id": "sk_fireball",
+    "name": "燃燒的火球",
+    "sha": "ce8b3d10f2efc24e467eb2834dbe0e6a3340bb73"
+  },
+  {
+    "id": "sk_dark_blind",
+    "name": "闇盲咒術",
+    "sha": "1dceda0997a3e1fcd373cbd279bf1d1b711c424f"
+  },
+  {
+    "id": "sk_energy_sense",
+    "name": "能量感測",
+    "sha": "6bc6784b7fd06276e875eeaf41db9cef135b2ede"
+  },
+  {
+    "id": "sk_vampire",
+    "name": "吸血鬼之吻",
+    "sha": "6987182ac1c8339b2f94ba3284c5745b418854a0"
+  },
+  {
+    "id": "sk_shield2",
+    "name": "鎧甲護持",
+    "sha": "96b3a46f3edc1a2c75aadb11a3676d7d5549f23b"
+  },
+  {
+    "id": "sk_break",
+    "name": "壞物術",
+    "sha": "25514b2ca361a66c2910c5cfd2ceecbc4f1a8961"
+  },
+  {
+    "id": "sk_dex_up",
+    "name": "通暢氣脈術",
+    "sha": "a2f0eff20245f5da87dd197fd92003b4c968ac77"
+  },
+  {
+    "id": "sk_meditation",
+    "name": "冥想術",
+    "sha": "7fd1371c3068eb402970fa0a5ff56dd38690de78"
+  },
+  {
+    "id": "sk_charm",
+    "name": "迷魅術",
+    "sha": "209d3b0260695dd83b01532132c92989c2199f95"
+  },
+  {
+    "id": "sk_magic_shield",
+    "name": "魔法屏障",
+    "sha": "7d0bf2d68a5497d9477d65d2684ad05978eb241e"
+  },
+  {
+    "id": "sk_rock_prison",
+    "name": "岩牢",
+    "sha": "353f28e021f726489ebe8bbbda41cc51c4cbcd77"
+  },
+  {
+    "id": "sk_mummy_curse",
+    "name": "木乃伊的詛咒",
+    "sha": "832121c8bb2690ecc09cf91a89a2f2a5e1dd2ce2"
+  },
+  {
+    "id": "sk_holy_light",
+    "name": "聖潔之光",
+    "sha": "23a5d121dd70463470b403c5dd76607dcd624367"
+  },
+  {
+    "id": "sk_slow",
+    "name": "緩速術",
+    "sha": "9eb963140081e767fd1b668411f673f8b93b5e24"
+  },
+  {
+    "id": "sk_thunder",
+    "name": "極道落雷",
+    "sha": "f44378204d89b73fbe8d97c3fca8164dd836b533"
+  },
+  {
+    "id": "sk_ice_spike",
+    "name": "冰錐",
+    "sha": "1e43f686d366dfab223ca0b4a1491235e46ef5ac"
+  },
+  {
+    "id": "sk_heal2",
+    "name": "高級治癒術",
+    "sha": "342322434eab47faaa56207ac257cbe23e9bc0ef"
+  },
+  {
+    "id": "sk_mana_drain",
+    "name": "魔力奪取",
+    "sha": "78c4656fbff6944f743bbaf23452bef340f1049d"
+  },
+  {
+    "id": "sk_dark_shadow",
+    "name": "黑闇之影",
+    "sha": "8fe1d03d3ceb761a5b014408b1d9f3133ede15f1"
+  },
+  {
+    "id": "sk_haste_spell",
+    "name": "加速術",
+    "sha": "c1154f8182f052e6b7dfc3c8a7fed4e4fb43ddc6"
+  },
+  {
+    "id": "sk_cancel",
+    "name": "魔法相消術",
+    "sha": "5a8a1092f0ea7995ce2444fb6126213641dfe794"
+  },
+  {
+    "id": "sk_zombie",
+    "name": "造屍術",
+    "sha": "3511698029104fbeec00ae5cc535cb21b25cd265"
+  },
+  {
+    "id": "sk_bless_wpn",
+    "name": "祝福魔法武器",
+    "sha": "efec0b09773eac984d9ac023fab96c0f6aca2d3e"
+  },
+  {
+    "id": "sk_earthquake",
+    "name": "地裂術",
+    "sha": "55bc4db3bec37d78d8c89aca9f4484b9272f0961"
+  },
+  {
+    "id": "sk_blaze",
+    "name": "烈炎術",
+    "sha": "4558327c9926aac4dca1185c70151b5e6f5e4b21"
+  },
+  {
+    "id": "sk_str_up",
+    "name": "體魄強健術",
+    "sha": "0a659c66231f172e7f88458e823f6b36ba4a3b5f"
+  },
+  {
+    "id": "sk_weaken",
+    "name": "弱化術",
+    "sha": "db14d05520de2cb64ead43ea7cbe7d5cc15d500e"
+  },
+  {
+    "id": "sk_regen",
+    "name": "體力回復術",
+    "sha": "83bfba85c9e80c9860821f7e631d6702081d7e1a"
+  },
+  {
+    "id": "sk_ice_lance",
+    "name": "冰矛圍籬",
+    "sha": "77ff4dc125a4e4d1ee03e543578038fbfa8c10fc"
+  },
+  {
+    "id": "sk_greater_haste",
+    "name": "強力加速術",
+    "sha": "4e6d75fe472deaf976e9e12fb700a48bc85a4089"
+  },
+  {
+    "id": "sk_tornado",
+    "name": "龍捲風",
+    "sha": "402a500f05e26c39749bcc7d274cc12a5621fbad"
+  },
+  {
+    "id": "sk_holy_dash",
+    "name": "神聖疾走",
+    "sha": "201f4806bbaf7615862ffc3ffaf3bac8334e1525"
+  },
+  {
+    "id": "sk_disease",
+    "name": "疾病術",
+    "sha": "708b34f10a8ac39fdf472e0395ecbfe1a925b7dd"
+  },
+  {
+    "id": "sk_blizzard",
+    "name": "冰雪暴",
+    "sha": "dd8361ab40c868b8a229aeb4ffff33d3ae498954"
+  },
+  {
+    "id": "sk_full_heal",
+    "name": "全部治癒術",
+    "sha": "1c4b662f083e0b0f70b342b7208e415d0b491168"
+  },
+  {
+    "id": "sk_blizzard_storm",
+    "name": "冰雪颶風",
+    "sha": "6bf66e4cd6e1af53b21cc4bda5eb7b90c53ff59e"
+  },
+  {
+    "id": "sk_quake",
+    "name": "震裂術",
+    "sha": "72683f521831cc3724b9f9d05f72fae30149c8d8"
+  },
+  {
+    "id": "sk_fire_prison",
+    "name": "火牢",
+    "sha": "de1f3b62b4cb486ba12a3086568748d512020555"
+  },
+  {
+    "id": "sk_invisible",
+    "name": "隱身術",
+    "sha": "9568eeed7df9825be7b098d8cc76a688d3da3d3b"
+  },
+  {
+    "id": "sk_heal_energy_storm",
+    "name": "治癒能量風暴",
+    "sha": "213b2f212d661cd59fde23b1897713139e4f5906"
+  },
+  {
+    "id": "sk_berserk",
+    "name": "狂暴術",
+    "sha": "3b8bbc61fddc451a2b673ea4c4408fd0179f22ff"
+  },
+  {
+    "id": "sk_seal",
+    "name": "魔法封印",
+    "sha": "70f3790a8b1183e40723eb9a9ee2ca8b8d0ef34f"
+  },
+  {
+    "id": "sk_sleep_mist",
+    "name": "沉睡之霧",
+    "sha": "bc2e7f5fa27241922c9159d28051a35c8846bb0c"
+  },
+  {
+    "id": "sk_frost_spike",
+    "name": "寒冰尖刺",
+    "sha": "d2fe355b867236d8f42c01bfbe77a2af200fa520"
+  },
+  {
+    "id": "sk_resurrection",
+    "name": "返生術",
+    "sha": "33da7d7398526e83c3daf7b8f2d924ab957316db"
+  },
+  {
+    "id": "sk_thunder_storm",
+    "name": "雷霆風暴",
+    "sha": "0e6e4693ece9ec2dde636b0d5a71ee97614b8c36"
+  },
+  {
+    "id": "sk_summon",
+    "name": "召喚術",
+    "sha": "5b9d8c5272f23f95db4d847b880a0cc0942abcd1"
+  },
+  {
+    "id": "sk_meteor",
+    "name": "流星雨",
+    "sha": "d443355b651851ddfb8c645644f0abe6e5f7a3f4"
+  },
+  {
+    "id": "sk_disintegrate",
+    "name": "究極光裂術",
+    "sha": "c3b6ddc1845ee31ecd10d658245afcac1c76a239"
+  },
+  {
+    "id": "sk_holy_barrier",
+    "name": "聖結界",
+    "sha": "1d829ae44e7313447489a372c1c8f75464a885ac"
+  },
+  {
+    "id": "sk_soul_up",
+    "name": "靈魂昇華",
+    "sha": "fff62eec88e1b40ba5f91a6748b3741e21013b87"
+  },
+  {
+    "id": "sk_reduction_armor",
+    "name": "增幅防禦",
+    "sha": "aa4b7fd3b8fe173712c15acd0c5ff01cd136d710"
+  },
+  {
+    "id": "sk_solid_shield",
+    "name": "堅固防護",
+    "sha": "dad92acda1d1b4c465e53a16577f80556f175775"
+  },
+  {
+    "id": "sk_counter_barrier",
+    "name": "反擊屏障",
+    "sha": "ed30e17f94247c7949c96e77b31031f953d4f373"
+  },
+  {
+    "id": "sk_spike_armor",
+    "name": "尖刺盔甲",
+    "sha": "53b0fd210d40c962029eb7a3460f9077cbb56e92"
+  },
+  {
+    "id": "sk_shock_stun",
+    "name": "衝擊之暈",
+    "sha": "416012a5b0c6f3a5653b123c827ee3c061821aae"
+  },
+  {
+    "id": "sk_fire_storm",
+    "name": "火風暴",
+    "sha": "ad8d44909f965b8204cff918a05e35646d14e902"
+  },
+  {
+    "id": "sk_abs_barrier",
+    "name": "絕對屏障",
+    "sha": "3dea552b399d35309ea57d0b5d8dacae23d1d9a5"
+  },
+  {
+    "id": "sk_elf_mr",
+    "name": "魔法防禦",
+    "sha": "8265d1dfd722d7e0e22d9fec7400ccca96bd4864"
+  },
+  {
+    "id": "sk_elf_mind",
+    "name": "心靈轉換",
+    "sha": "61be36ceda8a4706a65db6b8b341ab473dce1c0a"
+  },
+  {
+    "id": "sk_elf_worldtree",
+    "name": "世界樹的呼喚",
+    "sha": "ae08844fab52baf7ff52aeae0495058f2322539e"
+  },
+  {
+    "id": "sk_elf_triple",
+    "name": "三重矢",
+    "sha": "5123b2493b1f96b8fb3b88dc31f97d99897bd035"
+  },
+  {
+    "id": "sk_elf_release",
+    "name": "釋放元素",
+    "sha": "f605ff5005a055b2881c46f67be455de00d8260a"
+  },
+  {
+    "id": "sk_elf_soul",
+    "name": "魂體轉換",
+    "sha": "2f3de2265649f78eb261b9f04abd92441d6631fa"
+  },
+  {
+    "id": "sk_elf_firewpn",
+    "name": "火焰武器",
+    "sha": "a4ff23369ac547e07fcd9ffa55f0771734620fec"
+  },
+  {
+    "id": "sk_elf_eleres",
+    "name": "屬性防禦",
+    "sha": "f3ea0f80e267d2405623265b7b9f4b010d99b924"
+  },
+  {
+    "id": "sk_elf_singleres",
+    "name": "單屬性防禦",
+    "sha": "20a5fffce0db7add2737df5d661319e8af3e4281"
+  },
+  {
+    "id": "sk_elf_windshot",
+    "name": "風之神射",
+    "sha": "f5b089837666493ff67f5065e176652bb4aa48eb"
+  },
+  {
+    "id": "sk_elf_earthguard",
+    "name": "大地防護",
+    "sha": "17d063b7e4713ec639dcaf7271e915748a412481"
+  },
+  {
+    "id": "sk_elf_purify",
+    "name": "淨化精神",
+    "sha": "b923ec0d36bba70156d7096472343ab2fef8da16"
+  },
+  {
+    "id": "sk_elf_groundtrap",
+    "name": "地面障礙",
+    "sha": "e4485021b98d53423a0b18431da9eac5fe5e49cb"
+  },
+  {
+    "id": "sk_elf_magicerase",
+    "name": "魔法消除",
+    "sha": "bb918314de70e462a2809e1a7487cd40f5689679"
+  },
+  {
+    "id": "sk_elf_summon",
+    "name": "召喚屬性精靈",
+    "sha": "d18ebfb54ec699549fe6a31403119bf26b64007d"
+  },
+  {
+    "id": "sk_elf_dancefire",
+    "name": "舞躍之火",
+    "sha": "71367b1a7491cf141db5fa557bf695c27638182c"
+  },
+  {
+    "id": "sk_elf_stormeye",
+    "name": "暴風之眼",
+    "sha": "9423833ccc72ee1699368bc2a990973de2bbadfc"
+  },
+  {
+    "id": "sk_elf_winddash",
+    "name": "風之疾走",
+    "sha": "8d0e61ac4bb6d643815cf368280a6263555c147d"
+  },
+  {
+    "id": "sk_elf_earthshield",
+    "name": "大地屏障",
+    "sha": "0ae7a9c9d69c623d53dfa0f4e765196af097cab7"
+  },
+  {
+    "id": "sk_elf_lifespring",
+    "name": "生命之泉",
+    "sha": "329cec2eb51ba6b90a7db3fd7bb0121fa63422cd"
+  },
+  {
+    "id": "sk_elf_earthbless",
+    "name": "大地的祝福",
+    "sha": "9bf60b756ff84b93b599038fd730e4e8c31b8631"
+  },
+  {
+    "id": "sk_elf_summon2",
+    "name": "召喚強力屬性精靈",
+    "sha": "8800ea1477a7dd25bd08ec1e18c2336f887c9147"
+  },
+  {
+    "id": "sk_elf_seal",
+    "name": "封印禁地",
+    "sha": "0e274d62e43aa42aee32ddaa1fa8102cf960c09b"
+  },
+  {
+    "id": "sk_elf_muddywater",
+    "name": "污濁之水",
+    "sha": "e9949ef7cacba5a47bf6b7f8c9fa52a7bafb4c9f"
+  },
+  {
+    "id": "sk_elf_blazewpn",
+    "name": "烈炎武器",
+    "sha": "2cdeb4c3d55535636def5dbfdec55211a5bdba8f"
+  },
+  {
+    "id": "sk_elf_watervital",
+    "name": "水之元氣",
+    "sha": "3442089c25b772417f2bbe2bc5393d308725178e"
+  },
+  {
+    "id": "sk_elf_preciseshot",
+    "name": "精準射擊",
+    "sha": "88595906965ee04b9357dd3f4365a76944e40d42"
+  },
+  {
+    "id": "sk_elf_flamesoul",
+    "name": "烈焰之魂",
+    "sha": "25762d4aa71bbc4814e63ec61fc3ca6be587ad37"
+  },
+  {
+    "id": "sk_elf_attrfire",
+    "name": "屬性之火",
+    "sha": "92dc6929f6b49b8f36caf2c5ce7ef8ffdc6999bd"
+  },
+  {
+    "id": "sk_elf_lifebless",
+    "name": "生命的祝福",
+    "sha": "4f014173c32e51ac322e128390e823a3731d664c"
+  },
+  {
+    "id": "sk_elf_stormshot",
+    "name": "暴風神射",
+    "sha": "ba67dcca045cbf00c037b49eb324fbe2e2d0496a"
+  },
+  {
+    "id": "sk_elf_steelguard",
+    "name": "鋼鐵防護",
+    "sha": "9f81091f3f168e101a38d356a49e8157b8927b17"
+  },
+  {
+    "id": "sk_elf_physboost",
+    "name": "體能激發",
+    "sha": "b810a6c332e90276f4452046d7756c71bd7f40d8"
+  },
+  {
+    "id": "sk_dark_str",
+    "name": "力量提升",
+    "sha": "0d96e9eb765dd13442a2c22387a4003520497999"
+  },
+  {
+    "id": "sk_dark_mrup",
+    "name": "影之防護",
+    "sha": "8700ebd12b2a6065837d3d4e54351d95e12e25f2"
+  },
+  {
+    "id": "sk_dark_stealth",
+    "name": "暗隱術",
+    "sha": "9c550cf4c9ef93cfc62e7fa4ccc95734d9f0c159"
+  },
+  {
+    "id": "sk_elf_energyboost",
+    "name": "能量激發",
+    "sha": "dbc38413aafbcf4bda68e2a56755cd55d93011e3"
+  },
+  {
+    "id": "sk_elf_mirror",
+    "name": "鏡反射",
+    "sha": "9196ab5eca2164523d13c83cda46870adf74c650"
+  },
+  {
+    "id": "sk_dark_poison",
+    "name": "附加劇毒",
+    "sha": "5c45bc9a3be00755253b4429a1d5b3d44931644e"
+  },
+  {
+    "id": "sk_dark_dex",
+    "name": "敏捷提升",
+    "sha": "d7707fe7894936a9301159bb26d4b5235e9a99c4"
+  },
+  {
+    "id": "sk_dark_poisonres",
+    "name": "毒性抵抗",
+    "sha": "8a0bc1bf7ea1b8a8a3e72bfb1b247ac9f0667f8b"
+  },
+  {
+    "id": "sk_dark_refine",
+    "name": "提煉魔石",
+    "sha": "7ab93ae03473721e556c4cbbb8ac2e56f67fe96e"
+  },
+  {
+    "id": "sk_dark_crit",
+    "name": "會心一擊",
+    "sha": "51f6298f3910fa6f3091ec32964782f97b0630ac"
+  },
+  {
+    "id": "sk_dark_dodge",
+    "name": "暗影閃避",
+    "sha": "c34614ff5bb66f5d5d2fb8773e47b949fd56d5e7"
+  },
+  {
+    "id": "sk_dark_double",
+    "name": "雙重破壞",
+    "sha": "36823087d9c816f47cf3307c5b69b558a4c41888"
+  },
+  {
+    "id": "sk_dark_walkhaste",
+    "name": "行走加速",
+    "sha": "38d83326da06ed6fbbf5cabeffa3a86c70f714bc"
+  },
+  {
+    "id": "sk_dark_erup",
+    "name": "迴避提升",
+    "sha": "a3f9ad7091492dd9eb7dc8b6a1c48fb3dfa2318b"
+  },
+  {
+    "id": "sk_dark_armorbreak",
+    "name": "破壞盔甲",
+    "sha": "a5b5e923453bbed03fd8cee4b93730e76a58ab86"
+  },
+  {
+    "id": "sk_royal_callally",
+    "name": "呼喚盟友",
+    "sha": "e7033e1231360d59482c7ad9638e7df2f4643733"
+  },
+  {
+    "id": "sk_dark_fang",
+    "name": "暗影之牙",
+    "sha": "dbad1e4199439f8ee01f1fdd890a6464f3ef5e63"
+  },
+  {
+    "id": "sk_royal_precise",
+    "name": "精準目標",
+    "sha": "40f7e2b9753bf759c4b8032c185a808f2886b7d1"
+  },
+  {
+    "id": "sk_royal_bravewill",
+    "name": "勇猛意志",
+    "sha": "f16870e8302b91ad1883a291cc20532db8d3de4f"
+  },
+  {
+    "id": "sk_royal_burnweapon",
+    "name": "灼熱武器",
+    "sha": "f0db038cd08c5e317283aaf9a5622e2cccc2b80e"
+  },
+  {
+    "id": "sk_royal_kingguard",
+    "name": "王者加護",
+    "sha": "d4b24c492f5b528c3eefc3de1d8c6989d6f13bc3"
+  },
+  {
+    "id": "sk_dark_burn",
+    "name": "燃燒鬥志",
+    "sha": "aa2da752bf63c3839517d0cd90d264e7082adf74"
+  },
+  {
+    "id": "sk_royal_shield",
+    "name": "閃亮之盾",
+    "sha": "2e7d2105475a10101f49206cc5c3f36556dd5315"
+  }
+]

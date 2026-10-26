@@ -5,4 +5,5 @@ export const TARGET_EFFECTS:Record<string,{key:string;seconds:number;value:numbe
 export const AREA_SKILLS=new Set(Object.entries(raw.skills as Record<string,any>).filter(([,s])=>s.target==='all').map(([id])=>id));
 export function skillElement(id:string){return (raw.skills as Record<string,any>)[id]?.ele||'none';}
 export function resistanceDamage(damage:number,mr:number,resistance=0,flat=0){return Math.max(0,Math.floor(damage*(1-Math.max(0,Math.min(100,mr))*.005)*(1-Math.max(0,Math.min(100,resistance))/100)-Math.max(0,flat)));}
-export function specialSkillSupported(id:string,type:string){return !['sk_dark_refine','sk_resurrection'].includes(id)&&(type!=='passive'||['sk_load_up','sk_elf_worldtree'].includes(id));}
+export function specialSkillSupported(id:string,type:string){return (raw.skills as Record<string,any>)[id]!==undefined;}
+

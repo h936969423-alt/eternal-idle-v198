@@ -16,7 +16,7 @@ import {useCastFeedback} from './use-cast-feedback';
 import type {CastIntent} from '@/lib/game/cast-feedback';
 import {useActorMotion} from './use-actor-motion';
 import type {BattleView} from './use-combat-replay';
-export default function CombatSprite({c,view,interval,pendingCast}:{c:Character;view:BattleView;interval:number;pendingCast?:CastIntent}){const poly=c.polyLook!==false?activeForm(c):undefined,ranged=(raw.items as any)[baseItem(c.equipment.weapon?.id||'')]?.isBow,base=c.cls==='knight'?(c.gender==='f'?'knight_f':'knight_2hsword'):c.cls==='elf'?`elf_${c.gender==='f'?'f':'m'}_${ranged?'ranged':'melee'}`:c.cls==='mage'?(c.gender==='f'?'mage_f':'mage_m'):'darkelf',frames=amap.frames as Record<string,string[]>,direction=playerBattleDirection(view.target,poly);
+export default function CombatSprite({c,view,interval,pendingCast}:{c:Character;view:BattleView;interval:number;pendingCast?:CastIntent}){const poly=c.polyLook!==false?activeForm(c):undefined,ranged=(raw.items as any)[baseItem(c.equipment.weapon?.id||'')]?.isBow,base=c.cls==='royal'?`royal_${c.gender==='f'?'f':'m'}`:c.cls==='knight'?(c.gender==='f'?'knight_f':'knight_2hsword'):c.cls==='elf'?`elf_${c.gender==='f'?'f':'m'}_${ranged?'ranged':'melee'}`:c.cls==='mage'?(c.gender==='f'?'mage_f':'mage_m'):'darkelf',frames=amap.frames as Record<string,string[]>,direction=playerBattleDirection(view.target,poly);
  const castClip=poly?morphCastFor(poly,direction):undefined,attackClip=poly?morphAttackFor(poly,direction):undefined;
  const clips=useMemo(()=>playerAnimationClips(base,frames,direction,poly?{...poly.frames,...(attackClip?{attack:attackClip.body}:{}),...(castClip?{skill:castClip.body}:{})}:undefined),[base,poly?.id,direction,castClip,attackClip]);
  // Decode every displayed body and overlay before the first swing, including
@@ -28,4 +28,5 @@ export default function CombatSprite({c,view,interval,pendingCast}:{c:Character;
  const activeClip=pose.kind==='skill'?castClip:pose.kind==='attack'?attackClip:undefined;
  return seq.length?<PlayerSpriteFrame className="character-sprite" data-action={pose.kind} data-direction={direction} data-polymorph={poly?.id} formId={poly?.id} src={seq[frame]} clip={activeClip} frame={frame} alt={c.name}/>:null;
 }
+
 
