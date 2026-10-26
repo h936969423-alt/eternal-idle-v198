@@ -64,12 +64,24 @@ export function enqueueCombatReplay<T extends CombatEvent>(queued:(T&{due:number
 export type BattleView={healthCredits?:Record<string,number>;actions?:(CombatEvent&{shownAt:number})[];petHurt?:CombatEvent;petEntities?:PetSnapshot[];summonEntities?:SummonEntity[];hp:number;mp:number;arena:Encounter[];target?:number;attack?:CombatEvent;magic?:CombatEvent;hurt?:CombatEvent;casts?:(CombatEvent&{shownAt:number})[];floats:CombatFloat[]};
 export type TimedCombatEvent=PresentationEvent&{due:number};
 /** Flight deadlines use the display clock and never move with a later network packet. */
-export function drainCombatPresentation(queue:TimedCombatEvent[],pending:TimedCombatEvent[],now:number,bow=false,spellFlight?:(event:CombatEvent)=>number){
+export function drainCombatPresentation(queue:TimedCombatEvent[],pending:TimedCombatEvent[],now:number,bow=false,spellFlight?:(event:CombatEvent)=>number,allowPhysical?:(event:CombatEvent)=>boolean){
  const visible:PresentationEvent[]=[];
  const flightFor=(event:CombatEvent)=>isFlyingMagic(event)?Math.max(140,Math.min(380,spellFlight?.(event)??magicFlightMs(320))):event.skill==='sk_elf_triple'?TRIPLE_FLIGHT_MS:ARROW_FLIGHT_MS;
  while((queue[0]?.due??Infinity)<=now||(pending[0]?.due??Infinity)<=now){
   const impactFirst=!!pending.length&&(!queue.length||pending[0].due<=queue[0].due);
   const next=(impactFirst?pending:queue).shift()!;
+  const normal=next.kind==='attack'&&!next.skill&&!next.weaponProc&&(!next.source||next.source==='physical');
+  if(!impactFirst&&normal&&allowPhysical){
+   const earlier=queue.find(e=>e.seq<next.seq&&e.uid===next.uid&&e.kind==='attack'&&!e.skill&&!e.weaponProc&&(!e.source||e.source==='physical'));
+   if(earlier){queue.push({...next,due:Math.max(now+16,earlier.due)});queue.sort((a,b)=>a.due-b.due||a.seq-b.seq);continue;}
+   if(!allowPhysical(next)){queue.push({...next,due:now+16});queue.sort((a,b)=>a.due-b.due||a.seq-b.seq);continue;}
+   next.visualAt=now;
+  }
+  // A weapon proc cannot overtake the normal hit waiting for its visible contact.
+  if(!impactFirst&&next.weaponProc&&allowPhysical){
+   const parent=queue.find(e=>e.kind==='attack'&&!e.skill&&!e.weaponProc&&e.uid===next.uid&&e.at===next.at);
+   if(parent){queue.push({...next,due:Math.max(now+16,parent.due)});queue.sort((a,b)=>a.due-b.due||a.seq-b.seq);continue;}
+  }
   if(!impactFirst&&next.kind==='attack'&&(isFlyingMagic(next)||next.skill==='sk_elf_triple'||next.magicProjectile||bow&&!next.skill&&!next.weaponProc&&(!next.source||next.source==='physical'))){
    const flight=flightFor(next);
    pending.push({...next,visualPhase:'impact',visualAt:now+flight,visualFlightMs:flight,due:now+flight});
@@ -146,3 +158,4 @@ export function enqueueSunriseReplay<T extends PresentationEvent>(queued:(T&{due
  const earlySeq=new Set(early.map(e=>e.seq));
  return {queue:[...queued,...early.map(e=>({...e,visualOnly:true,due:now})),...unique.map(e=>({...e,...(earlySeq.has(e.seq)?{visualEffectPreviewed:true}:{}),due:e.at+offset}))].sort((a,b)=>a.due-b.due||a.seq-b.seq),offset};
 }
+

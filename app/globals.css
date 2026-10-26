@@ -660,3 +660,6 @@ body:has(.game-root.display-landscape) .game-dialog :is(input,select,textarea){f
  display:flex;justify-content:flex-start;align-items:center;flex-wrap:wrap;
  width:max-content;max-width:calc(100% - 16px);gap:6px;margin:0;z-index:30;
 }
+
+/* Confirmed monster HP must land with its damage number, without a second tween. */
+.game-root .battle-scene .four-monster .four-target [data-slot=progress-indicator]{transition:none!important}

@@ -4,12 +4,13 @@ import fs from 'node:fs';
 import vm from 'node:vm';
 import {stripTypeScriptTypes} from 'node:module';
 import * as motion from '../lib/game/sunrise-player-motion.ts';
+import * as hitSync from '../lib/game/local-hit-sync.ts';
 
 const timing={counts:{idle:2,attack:4,skill:4,hurt:2,death:4},attackSeconds:.4,castSeconds:.4};
 function harness(){
  let now=0,index=0,nextId=0,slots=[],pending=[],calls=[],props={identity:'one:zone',cues:[],timing,hp:100,intent:undefined,local:{running:true,hasTarget:true,blocked:false}};
  const timers=new Map(),listeners=new Map(),document={hidden:false,addEventListener:(k,v)=>listeners.set(k,v),removeEventListener:k=>listeners.delete(k)};
- const context={document,performance:{now:()=>now},Set,...motion,
+ const context={document,performance:{now:()=>now},Set,...motion,...hitSync,
   triggerSunriseMotion:(state,kind,at,t)=>{calls.push({kind,at});return motion.triggerSunriseMotion(state,kind,at,t);},
   useRef:value=>{const i=index++;return slots[i]??=( {current:value});},
   useState:value=>{const i=index++;slots[i]??={value};return [slots[i].value,v=>{slots[i].value=typeof v==='function'?v(slots[i].value):v;}];},
@@ -59,3 +60,12 @@ test('no target, control effects, death and hidden tabs suppress attacks without
  const h=harness();h.advance(300);h.hide(true);h.advance(10000);assert.equal(h.calls.length,0);
  h.hide(false);h.advance(10300);assert.equal(h.calls.length,0);h.advance(10400);assert.equal(h.calls.length,1);h.unmount();
 });
+test('the real 125ms motion sampler releases HP only at its displayed contact frame',()=>{
+ const h=harness(),ownerKey='sampler:zone';
+ h.render({identity:ownerKey,local:{running:true,hasTarget:true,blocked:false,ownerKey,targetUid:'mob'}});
+ h.advance(624);assert.equal(hitSync.allowLocalHit(ownerKey,'mob',1,624),false);
+ h.advance(625);assert.equal(hitSync.allowLocalHit(ownerKey,'mob',1,625),true);
+ assert.equal(hitSync.allowLocalHit(ownerKey,'mob',2,625),false);
+ h.unmount();assert.equal(hitSync.allowLocalHit(ownerKey,'mob',3,626),true);
+});
+
