@@ -39,7 +39,8 @@ export function recordLocalContact(key:string,uid:string,at:number,seq?:number){
  owner.contacts.push({uid,seq,at,consumed:false});
 }
 export function allowLocalHit(key:string,uid:string|undefined,seq:number,now:number){
- const owner=owners.get(key);if(!owner?.active||!uid)return true;
+ const owner=owners.get(key);
+ if(!owner?.active||!uid){if(owner)owner.pending=owner.pending.filter(e=>e.seq!==seq);return true;}
  if(owner.retired.delete(seq))return true;
  owner.contacts=owner.contacts.filter(c=>!c.consumed&&now-c.at<=80);
  const contact=owner.contacts.find(c=>c.uid===uid&&(c.seq===undefined||c.seq===seq)&&c.at<=now);

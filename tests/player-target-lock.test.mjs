@@ -29,6 +29,12 @@ test('timeout cannot release another live target while swinging at a different U
  const key='lock:two';clearLocalHits(key);setLocalHitActive(key,true,.4);beginLocalSwing(key,{uid:'left',slot:0});
  assert.equal(allowLocalHit(key,'right',2,0),false);assert.equal(allowLocalHit(key,'right',2,5000),false);
 });
+test('confirmed hits drained while stopped cannot become ghost targets on restart',()=>{
+ const key='lock:stop';clearLocalHits(key);setLocalHitActive(key,true,.4);
+ queueLocalHitTargets(key,[hit(1,'old',0)]);setLocalHitActive(key,false,.4);
+ assert.equal(allowLocalHit(key,'old',1,100),true);setLocalHitActive(key,true,.4);
+ assert.deepEqual(beginLocalSwing(key,{uid:'new',slot:1},['old','new']),{uid:'new',slot:1});
+});
 test('normal results remain globally ordered across targets; stale UID cannot damage a replacement',()=>{
  const queue=[{...hit(1,'left',0),due:100},hit(2,'right',1)],pending=[];
  assert.equal(ctx.drainCombatPresentation(queue,pending,0,false,undefined,()=>true).length,0);
