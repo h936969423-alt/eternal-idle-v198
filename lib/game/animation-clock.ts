@@ -13,8 +13,8 @@ export function pushCue(state:MotionClock,cue:MotionCue,now:number,duration:(kin
   return {...state,duration:Math.min(state.duration,now-state.at+(cue.durationMs??duration('attack')))};
  // A confirmed player swing owns its display deadline. Never build a second
  // attack queue behind the previous swing because a render arrived late.
- if(attackPriority&&state.kind==='skill'&&cue.kind==='attack'&&now<state.at+state.duration)return {...state,pending:[cue]};
- if(attackPriority&&state.kind!=='spawn'&&cue.kind==='attack'&&!cue.immediate&&Number.isFinite(cue.displayAt))
+ if(attackPriority&&state.kind==='skill'&&cue.kind==='attack'&&!Number.isFinite(cue.displayAt)&&now<state.at+state.duration)return {...state,pending:[cue]};
+ if(attackPriority&&state.kind!=='spawn'&&cue.kind==='attack'&&Number.isFinite(cue.displayAt))
   return {kind:cue.kind,at:Math.min(now,cue.displayAt!),duration:cue.durationMs??duration(cue.kind),pending:[]};
  // Sunrise-style handoff for *local* visual attacks: a skill keeps its
  // priority until its pose completes, then the newest pending swing starts.
@@ -53,6 +53,7 @@ export function advanceMotion(state:MotionClock,now:number,duration:(kind:Motion
 }
 export function facing(dx:number,dy:number){const oct=Math.round(Math.atan2(dy,dx)*4/Math.PI);return ({0:3,1:4,2:5,3:6,4:7,'-4':7,'-3':0,'-2':1,'-1':2} as Record<string,number>)[oct]??6;}
 export function projectileCount(){return 1;}
+
 
 
 

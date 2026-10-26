@@ -71,6 +71,10 @@ jobs:
           node scripts/test-post-cast-continuity.cjs
           node scripts/test-cast-click-feedback.cjs
           node scripts/test-spell-start-sync.cjs
+          node scripts/test-spell-visual-ownership.cjs
+          node scripts/test-save-conflicts.cjs
+          node scripts/test-offline-income-notices.cjs
+          node scripts/test-stable-connection.cjs
           node scripts/test-continuous-combat-poll.cjs
           node node_modules/typescript/bin/tsc --noEmit --incremental false
       - name: Build complete Cloudflare Worker
@@ -94,5 +98,6 @@ jobs:
         run: pnpm exec wrangler deploy --config dist/server/wrangler.json --name eternal-idle-v198-test --keep-vars
       - name: Print deployment location
         run: echo 'Check Cloudflare Workers dashboard for eternal-idle-v198-test workers.dev URL'
+
 
 
