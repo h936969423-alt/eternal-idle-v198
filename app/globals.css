@@ -524,3 +524,8 @@ body.ice-blue .game-root .source-bag-cell .enhance{color:#ffd66c!important;backg
 .four-monster[data-dead="true"] > .four-target [role="progressbar"],
 .four-monster[data-dead="true"] > .four-target .mythic-target-status{visibility:hidden}
 @media (prefers-reduced-motion:reduce){.four-monster[data-dead="true"] > .four-target{animation-duration:.01ms}}
+
+/* A short visual acknowledgment for the existing automatic return-to-town death flow. */
+.scene-death-notice{position:absolute;left:50%;top:16%;transform:translateX(-50%);z-index:20;white-space:nowrap;padding:7px 12px;border:1px solid #ad7558;border-radius:7px;background:rgba(24,12,15,.88);color:#ffe1cb;font-weight:700;font-size:13px;pointer-events:none;animation:eternal-death-notice 1.1s ease-out both}
+@keyframes eternal-death-notice{0%{opacity:0;transform:translate(-50%,8px)}18%,72%{opacity:1;transform:translate(-50%,0)}100%{opacity:0;transform:translate(-50%,-6px)}}
+@media (prefers-reduced-motion:reduce){.scene-death-notice{animation:none}}
