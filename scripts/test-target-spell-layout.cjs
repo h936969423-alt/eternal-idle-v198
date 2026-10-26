@@ -19,3 +19,4 @@ for(const skill of ['sk_meteor','sk_disintegrate']){
  state=pushCue(state,{seq:5,at:1200,kind:'attack'},200,duration,false,true);assert.equal(state.kind,'skill');assert.equal(state.pending.length,1,'normal attack waits for the cast pose');
 }
 console.log(`PASS: ${cases} phone/landscape target placements; exact impact pivots; shared source-layer clock; one resource per spell; one cast for meteor targets; immediate confirmed normal attack after either spell.`);
+

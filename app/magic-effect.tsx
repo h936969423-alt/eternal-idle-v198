@@ -71,3 +71,4 @@ export default function MagicEffect({event,loopUntil}:{event:CombatEvent;loopUnt
  return <span ref={host} style={{display:'contents'}}>{layers.map(({frames,shadow},i)=>frames.length&&(loopUntil||frame<frames.length)?<img key={i} className="magic-effect" src={frames[frame%frames.length]} style={{...style,mixBlendMode:shadow?'normal':sceneBlend(config.blend)}} alt={shadow?'':`${name}施法特效`}/>:null)}</span>;
 }
 
+

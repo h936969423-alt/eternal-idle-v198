@@ -55,3 +55,4 @@ export function facing(dx:number,dy:number){const oct=Math.round(Math.atan2(dy,d
 export function projectileCount(){return 1;}
 
 
+

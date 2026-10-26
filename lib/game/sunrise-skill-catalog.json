@@ -1,0 +1,1915 @@
+{
+  "version": "sunrise-five-20261026",
+  "sourceVersion": "v3.8.34",
+  "count": 134,
+  "skills": {
+    "sk_heal1": {
+      "n": "初級治癒術",
+      "type": "heal",
+      "justiceHeal": true,
+      "tier": 1,
+      "reqM": 4,
+      "reqE": 8,
+      "reqK": 16,
+      "mp": 4,
+      "valBase": 0,
+      "valDice": [
+        1,
+        15
+      ],
+      "healDice": [
+        1,
+        20
+      ],
+      "healBase": 20,
+      "classicHeal": {
+        "baseDice": 2,
+        "sides": 4
+      },
+      "msg": "你感覺舒服了一點。"
+    },
+    "sk_sunlight": {
+      "n": "日光術",
+      "type": "buff",
+      "tier": 1,
+      "reqM": 4,
+      "reqE": 8,
+      "reqK": 16,
+      "reqI": 10,
+      "reqDk": 15,
+      "mp": 4,
+      "dur": 7200,
+      "msg": "你更容易被怪物發現了。"
+    },
+    "sk_shield": {
+      "n": "保護罩",
+      "type": "buff",
+      "tier": 1,
+      "reqM": 4,
+      "reqE": 8,
+      "reqK": 16,
+      "mp": 2,
+      "dur": 1200,
+      "d": {
+        "ac": 2
+      }
+    },
+    "sk_lightarrow": {
+      "n": "光箭",
+      "type": "atk",
+      "tier": 1,
+      "reqM": 4,
+      "reqE": 8,
+      "reqK": 16,
+      "mp": 3,
+      "dmgType": "magic",
+      "ele": "none",
+      "dmgDice": [
+        1,
+        10
+      ],
+      "dmgBase": 8
+    },
+    "sk_teleport": {
+      "n": "傳送術",
+      "type": "manual",
+      "tier": 1,
+      "reqM": 4,
+      "reqE": 8,
+      "reqK": 16,
+      "reqI": 10,
+      "reqDk": 15,
+      "mp": 5,
+      "mEff": "teleport"
+    },
+    "sk_icearrow": {
+      "n": "冰箭",
+      "type": "atk",
+      "tier": 1,
+      "reqM": 4,
+      "reqE": 8,
+      "reqK": 16,
+      "mp": 3,
+      "dmgType": "magic",
+      "ele": "water",
+      "dmgDice": [
+        1,
+        10
+      ],
+      "dmgBase": 10
+    },
+    "sk_windblade": {
+      "n": "風刃",
+      "type": "atk",
+      "tier": 1,
+      "reqM": 4,
+      "reqE": 8,
+      "reqK": 16,
+      "mp": 3,
+      "dmgType": "magic",
+      "ele": "wind",
+      "dmgDice": [
+        1,
+        10
+      ],
+      "dmgBase": 10
+    },
+    "sk_holy_wpn": {
+      "n": "神聖武器",
+      "type": "buff",
+      "tier": 1,
+      "reqM": 4,
+      "reqE": 8,
+      "reqK": 16,
+      "mp": 10,
+      "dur": 1200,
+      "d": {
+        "extraDmg": 1,
+        "extraHit": 1
+      },
+      "msg": "你的武器暫時被注入了神聖力量。"
+    },
+    "sk_antidote": {
+      "n": "解毒術",
+      "type": "heal",
+      "tier": 2,
+      "reqM": 8,
+      "reqE": 16,
+      "mp": 8,
+      "msg": "你感覺毒素消退了。"
+    },
+    "sk_cold_shiver": {
+      "n": "寒冷戰慄",
+      "type": "atk",
+      "tier": 2,
+      "reqM": 8,
+      "reqE": 16,
+      "mp": 9,
+      "dmgType": "magic",
+      "ele": "none",
+      "dmgDice": [
+        2,
+        10
+      ],
+      "dmgBase": 10,
+      "lifesteal": true,
+      "healSlot": true
+    },
+    "sk_poison_curse": {
+      "n": "毒咒",
+      "type": "atk",
+      "tier": 2,
+      "reqM": 8,
+      "reqE": 16,
+      "mp": 10,
+      "dmgType": "magic",
+      "status": {
+        "kind": "poison",
+        "pbase": 100,
+        "dur": 15,
+        "tick": 3,
+        "dmg": [
+          1,
+          8
+        ]
+      },
+      "msg": "你使目標中毒了。"
+    },
+    "sk_ench_wpn": {
+      "n": "擬似魔法武器",
+      "type": "buff",
+      "tier": 2,
+      "reqM": 8,
+      "reqE": 16,
+      "mp": 20,
+      "dur": 1800,
+      "d": {
+        "extraDmg": 2
+      },
+      "msg": "你的武器暫時被注入了魔法力量。"
+    },
+    "sk_reveal": {
+      "n": "無所遁形術",
+      "type": "buff",
+      "tier": 2,
+      "reqM": 8,
+      "reqE": 16,
+      "mp": 8,
+      "dur": 180
+    },
+    "sk_load_up": {
+      "n": "負重強化",
+      "type": "buff",
+      "tier": 2,
+      "reqM": 8,
+      "reqE": 16,
+      "reqD": 16,
+      "mp": 10,
+      "dur": 1800,
+      "label": "增益",
+      "msg": "感覺到身體變輕了。"
+    },
+    "sk_firearrow": {
+      "n": "火箭",
+      "type": "atk",
+      "tier": 2,
+      "reqM": 8,
+      "reqE": 16,
+      "mp": 3,
+      "dmgType": "magic",
+      "ele": "fire",
+      "dmgDice": [
+        2,
+        10
+      ],
+      "dmgBase": 10
+    },
+    "sk_hell_fang": {
+      "n": "地獄之牙",
+      "type": "atk",
+      "tier": 2,
+      "reqM": 8,
+      "reqE": 16,
+      "mp": 3,
+      "dmgType": "magic",
+      "ele": "earth",
+      "dmgDice": [
+        2,
+        10
+      ],
+      "dmgBase": 10
+    },
+    "sk_aurora": {
+      "n": "極光雷電",
+      "type": "atk",
+      "tier": 3,
+      "reqM": 12,
+      "reqE": 24,
+      "mp": 13,
+      "dmgType": "magic",
+      "ele": "wind",
+      "target": "all",
+      "dmgDice": [
+        4,
+        10
+      ]
+    },
+    "sk_undead_bane": {
+      "n": "起死回生術",
+      "type": "atk",
+      "tier": 3,
+      "reqM": 12,
+      "reqE": 24,
+      "mp": 15,
+      "dmgType": "magic",
+      "instakill": {
+        "tag": "undead",
+        "cap": 12
+      }
+    },
+    "sk_heal_mid": {
+      "n": "中級治癒術",
+      "type": "heal",
+      "justiceHeal": true,
+      "tier": 3,
+      "reqM": 12,
+      "reqE": 24,
+      "mp": 11,
+      "valDice": [
+        1,
+        30
+      ],
+      "healDice": [
+        1,
+        50
+      ],
+      "healBase": 50,
+      "classicHeal": {
+        "baseDice": 4,
+        "sides": 8
+      },
+      "msg": "你感覺舒服了一點。"
+    },
+    "sk_dark_blind": {
+      "n": "闇盲咒術",
+      "type": "atk",
+      "tier": 3,
+      "reqM": 12,
+      "reqE": 24,
+      "mp": 20,
+      "dmgType": "magic",
+      "status": {
+        "kind": "blind",
+        "pbase": 150,
+        "hit": 4,
+        "dur": 10
+      }
+    },
+    "sk_shield2": {
+      "n": "鎧甲護持",
+      "type": "buff",
+      "tier": 3,
+      "reqM": 12,
+      "reqE": 24,
+      "mp": 20,
+      "dur": 1800,
+      "d": {
+        "ac": 3
+      },
+      "msg": "你的盔甲暫時被注入了魔法力量。"
+    },
+    "sk_chill": {
+      "n": "寒冰氣息",
+      "type": "atk",
+      "tier": 3,
+      "reqM": 12,
+      "reqE": 24,
+      "mp": 9,
+      "dmgType": "magic",
+      "ele": "water",
+      "target": "all",
+      "dmgDice": [
+        5,
+        5
+      ],
+      "dmgBase": 5
+    },
+    "sk_energy_sense": {
+      "n": "能量感測",
+      "type": "manual",
+      "tier": 3,
+      "reqM": 12,
+      "reqE": 24,
+      "mp": 8,
+      "mEff": "sense"
+    },
+    "sk_fireball": {
+      "n": "燃燒的火球",
+      "type": "atk",
+      "tier": 4,
+      "reqM": 16,
+      "reqE": 32,
+      "mp": 16,
+      "dmgType": "magic",
+      "ele": "fire",
+      "target": "all",
+      "dmgDice": [
+        5,
+        9
+      ]
+    },
+    "sk_dex_up": {
+      "n": "通暢氣脈術",
+      "type": "buff",
+      "tier": 4,
+      "reqM": 16,
+      "reqE": 32,
+      "mp": 45,
+      "dur": 1200,
+      "d": {
+        "dex": 5
+      },
+      "msg": "你覺得身手變得更靈活。"
+    },
+    "sk_break": {
+      "n": "壞物術",
+      "type": "atk",
+      "tier": 4,
+      "reqM": 16,
+      "reqE": 32,
+      "mp": 20,
+      "dmgType": "magic",
+      "status": {
+        "kind": "broken",
+        "pbase": 150,
+        "dur": 25
+      }
+    },
+    "sk_vampire": {
+      "n": "吸血鬼之吻",
+      "type": "atk",
+      "tier": 4,
+      "reqM": 16,
+      "reqE": 32,
+      "mp": 13,
+      "dmgType": "magic",
+      "ele": "none",
+      "dmgDice": [
+        3,
+        10
+      ],
+      "dmgBase": 15,
+      "lifesteal": true,
+      "healSlot": true
+    },
+    "sk_slow": {
+      "n": "緩速術",
+      "type": "atk",
+      "tier": 4,
+      "reqM": 16,
+      "reqE": 32,
+      "mp": 20,
+      "dmgType": "magic",
+      "status": {
+        "kind": "slow",
+        "pbase": 150,
+        "dur": 30
+      }
+    },
+    "sk_rock_prison": {
+      "n": "岩牢",
+      "type": "atk",
+      "tier": 4,
+      "reqM": 16,
+      "reqE": 32,
+      "mp": 11,
+      "dmgType": "magic",
+      "ele": "earth",
+      "target": "all",
+      "dmgDice": [
+        5,
+        8
+      ]
+    },
+    "sk_magic_shield": {
+      "n": "魔法屏障",
+      "type": "buff",
+      "tier": 4,
+      "reqM": 16,
+      "reqE": 32,
+      "mp": 16,
+      "dur": 16
+    },
+    "sk_meditation": {
+      "n": "冥想術",
+      "type": "buff",
+      "tier": 4,
+      "reqM": 16,
+      "reqE": 32,
+      "hpCost": 40,
+      "mp": 10,
+      "dur": 600,
+      "d": {
+        "mpR": 5
+      }
+    },
+    "sk_mummy_curse": {
+      "n": "木乃伊的詛咒",
+      "type": "atk",
+      "tier": 5,
+      "reqM": 20,
+      "reqE": 40,
+      "mp": 35,
+      "dmgType": "magic",
+      "status": {
+        "kind": "stone",
+        "pbase": 100,
+        "dur": 6
+      }
+    },
+    "sk_charm": {
+      "n": "迷魅術",
+      "type": "manual",
+      "tier": 5,
+      "reqM": 20,
+      "reqE": 40,
+      "mp": 30,
+      "mEff": "charm"
+    },
+    "sk_thunder": {
+      "n": "極道落雷",
+      "type": "atk",
+      "tier": 5,
+      "reqM": 20,
+      "reqE": 40,
+      "mp": 25,
+      "dmgType": "magic",
+      "ele": "wind",
+      "dmgDice": [
+        5,
+        8
+      ],
+      "dmgBase": 40
+    },
+    "sk_heal2": {
+      "n": "高級治癒術",
+      "type": "heal",
+      "justiceHeal": true,
+      "tier": 5,
+      "reqM": 20,
+      "reqE": 40,
+      "mp": 20,
+      "valDice": [
+        2,
+        30
+      ],
+      "healDice": [
+        1,
+        100
+      ],
+      "healBase": 100,
+      "classicHeal": {
+        "baseDice": 10,
+        "sides": 8
+      },
+      "msg": "你感覺舒服了一點。"
+    },
+    "sk_holy_light": {
+      "n": "聖潔之光",
+      "type": "heal",
+      "tier": 5,
+      "reqM": 20,
+      "reqE": 40,
+      "mp": 10,
+      "msg": "神聖光芒驅散了詛咒。"
+    },
+    "sk_ice_spike": {
+      "n": "冰錐",
+      "type": "atk",
+      "tier": 5,
+      "reqM": 20,
+      "reqE": 40,
+      "mp": 21,
+      "dmgType": "magic",
+      "ele": "water",
+      "dmgDice": [
+        5,
+        6
+      ],
+      "dmgBase": 40
+    },
+    "sk_mana_drain": {
+      "n": "魔力奪取",
+      "type": "convert",
+      "tier": 5,
+      "reqM": 20,
+      "reqE": 40,
+      "hpCost": 50,
+      "drain": true
+    },
+    "sk_dark_shadow": {
+      "n": "黑闇之影",
+      "type": "atk",
+      "tier": 5,
+      "reqM": 20,
+      "reqE": 40,
+      "mp": 25,
+      "dmgType": "magic",
+      "status": {
+        "kind": "blind",
+        "pbase": 150,
+        "hit": 5,
+        "dur": 20
+      }
+    },
+    "sk_zombie": {
+      "n": "造屍術",
+      "type": "buff",
+      "tier": 6,
+      "reqM": 24,
+      "reqE": 48,
+      "mp": 35,
+      "dur": 3600,
+      "desc": "以死靈魔法喚醒倒下的人形軀殼，使其服從施術者並肩作戰。施術者的力量越成熟，甦醒的亡者也越強韌。",
+      "summon": {
+        "n": "隨從：人形殭屍",
+        "dmgDice": [
+          1,
+          12
+        ],
+        "dmgDiv": 5,
+        "dmgLvDiv": 20,
+        "dmgMult": 0.9,
+        "interval": 20,
+        "kind": "melee",
+        "hitLvOff": 0
+      }
+    },
+    "sk_haste_spell": {
+      "n": "加速術",
+      "type": "buff",
+      "tier": 6,
+      "reqM": 24,
+      "reqE": 48,
+      "mp": 40,
+      "dur": 1200,
+      "haste": true,
+      "msg": "你感到身體變得非常輕盈。"
+    },
+    "sk_cancel": {
+      "n": "魔法相消術",
+      "type": "heal",
+      "tier": 6,
+      "reqM": 24,
+      "reqE": 48,
+      "mp": 40,
+      "msg": "你全身上下感到涼意。"
+    },
+    "sk_earthquake": {
+      "n": "地裂術",
+      "type": "atk",
+      "tier": 6,
+      "reqM": 24,
+      "reqE": 48,
+      "mp": 25,
+      "dmgType": "magic",
+      "ele": "earth",
+      "dmgDice": [
+        5,
+        3
+      ],
+      "dmgBase": 50
+    },
+    "sk_blaze": {
+      "n": "烈炎術",
+      "type": "atk",
+      "tier": 6,
+      "reqM": 24,
+      "reqE": 48,
+      "mp": 30,
+      "dmgType": "magic",
+      "ele": "fire",
+      "dmgDice": [
+        16,
+        5
+      ],
+      "dmgBase": 40
+    },
+    "sk_str_up": {
+      "n": "體魄強健術",
+      "type": "buff",
+      "tier": 6,
+      "reqM": 24,
+      "reqE": 48,
+      "mp": 50,
+      "dur": 1200,
+      "d": {
+        "str": 5
+      },
+      "msg": "你覺得身體充滿了力量。"
+    },
+    "sk_bless_wpn": {
+      "n": "祝福魔法武器",
+      "type": "buff",
+      "tier": 6,
+      "reqM": 24,
+      "reqE": 48,
+      "mp": 20,
+      "dur": 1200,
+      "d": {
+        "extraDmg": 2,
+        "extraHit": 2
+      },
+      "msg": "你的武器暫時被注入了魔法力量。"
+    },
+    "sk_weaken": {
+      "n": "弱化術",
+      "type": "atk",
+      "tier": 6,
+      "reqM": 24,
+      "reqE": 48,
+      "mp": 25,
+      "dmgType": "magic",
+      "status": {
+        "kind": "weaken",
+        "pbase": 150,
+        "dur": 30
+      }
+    },
+    "sk_regen": {
+      "n": "體力回復術",
+      "type": "heal",
+      "justiceHeal": true,
+      "tier": 7,
+      "reqM": 28,
+      "mp": 35,
+      "valDice": [
+        1,
+        20
+      ],
+      "healDice": [
+        1,
+        30
+      ],
+      "healBase": 30,
+      "classicHeal": {
+        "baseDice": 10,
+        "sides": 8,
+        "mult": 0.8
+      },
+      "groupHeal": true,
+      "healCooldownTicks": 30,
+      "msg": "治癒之光立即籠罩全隊。"
+    },
+    "sk_greater_haste": {
+      "n": "強力加速術",
+      "type": "buff",
+      "tier": 7,
+      "reqM": 28,
+      "mp": 60,
+      "dur": 2400,
+      "haste": true,
+      "msg": "你感到身體變得非常輕盈。"
+    },
+    "sk_ice_lance": {
+      "n": "冰矛圍籬",
+      "type": "atk",
+      "tier": 7,
+      "reqM": 28,
+      "mp": 30,
+      "dmgType": "magic",
+      "ele": "water",
+      "dmgDice": [
+        10,
+        6
+      ],
+      "dmgBase": 45,
+      "freeze": 200
+    },
+    "sk_tornado": {
+      "n": "龍捲風",
+      "type": "atk",
+      "tier": 7,
+      "reqM": 28,
+      "mp": 45,
+      "dmgType": "magic",
+      "ele": "wind",
+      "target": "all",
+      "multiDmg": [
+        [
+          2,
+          10
+        ],
+        [
+          2,
+          10
+        ],
+        [
+          2,
+          10
+        ],
+        [
+          2,
+          10
+        ],
+        [
+          2,
+          10
+        ],
+        [
+          2,
+          10
+        ]
+      ]
+    },
+    "sk_berserk": {
+      "n": "狂暴術",
+      "type": "buff",
+      "tier": 7,
+      "reqM": 28,
+      "mp": 40,
+      "dur": 1200,
+      "d": {
+        "meleeDmg": 5,
+        "ac": -10
+      },
+      "msg": "你的野性逐漸支配理智。"
+    },
+    "sk_summon": {
+      "n": "召喚術",
+      "type": "buff",
+      "tier": 7,
+      "reqM": 28,
+      "mp": 50,
+      "dur": 3600,
+      "summon": {
+        "tiered": true
+      }
+    },
+    "sk_holy_dash": {
+      "n": "神聖疾走",
+      "type": "buff",
+      "tier": 7,
+      "reqM": 28,
+      "mp": 20,
+      "dur": 64,
+      "moveSpeedMult": 1.33,
+      "msg": "你覺得身體變輕了。"
+    },
+    "sk_disease": {
+      "n": "疾病術",
+      "type": "atk",
+      "tier": 7,
+      "reqM": 28,
+      "mp": 30,
+      "dmgType": "magic",
+      "status": {
+        "kind": "disease",
+        "pbase": 150,
+        "dur": 30
+      }
+    },
+    "sk_full_heal": {
+      "n": "全部治癒術",
+      "type": "heal",
+      "justiceHeal": true,
+      "tier": 8,
+      "reqM": 32,
+      "mp": 30,
+      "valDice": [
+        3,
+        30
+      ],
+      "healDice": [
+        3,
+        50
+      ],
+      "healBase": 150,
+      "classicHeal": {
+        "baseDice": 12,
+        "sides": 12
+      },
+      "msg": "你感覺舒服了不少。"
+    },
+    "sk_blizzard": {
+      "n": "冰雪暴",
+      "type": "atk",
+      "tier": 8,
+      "reqM": 32,
+      "mp": 60,
+      "dmgType": "magic",
+      "ele": "water",
+      "target": "all",
+      "multiDmg": [
+        [
+          2,
+          10
+        ],
+        [
+          2,
+          10
+        ],
+        [
+          2,
+          10
+        ],
+        [
+          2,
+          10
+        ],
+        [
+          2,
+          10
+        ],
+        [
+          2,
+          10
+        ],
+        [
+          2,
+          10
+        ],
+        [
+          2,
+          10
+        ]
+      ]
+    },
+    "sk_blizzard_storm": {
+      "n": "冰雪颶風",
+      "type": "buff",
+      "tier": 10,
+      "reqM": 40,
+      "mp": 60,
+      "dur": 32,
+      "ele": "water",
+      "target": "all",
+      "noRefresh": true,
+      "stormInterval": 40,
+      "dmgDice": [
+        2,
+        10
+      ],
+      "freezeHitOff": -3,
+      "msg": "冰雪颶風在你周身成形。"
+    },
+    "sk_fire_prison": {
+      "n": "火牢",
+      "type": "buff",
+      "tier": 8,
+      "reqM": 32,
+      "mp": 60,
+      "dur": 10,
+      "ele": "fire",
+      "target": "all",
+      "noRefresh": true,
+      "stormInterval": 20,
+      "dmgDice": [
+        2,
+        15
+      ],
+      "msg": "熊熊火牢在你周身燃起。"
+    },
+    "sk_quake": {
+      "n": "震裂術",
+      "type": "atk",
+      "tier": 8,
+      "reqM": 32,
+      "mp": 40,
+      "dmgType": "magic",
+      "ele": "earth",
+      "target": "all",
+      "dmgDice": [
+        8,
+        10
+      ],
+      "dmgBase": 30
+    },
+    "sk_invisible": {
+      "n": "隱身術",
+      "type": "buff",
+      "tier": 8,
+      "reqM": 32,
+      "hpCost": 20,
+      "mp": 45,
+      "dur": 64
+    },
+    "sk_resurrection": {
+      "n": "返生術",
+      "type": "passive",
+      "tier": 8,
+      "reqM": 32,
+      "mp": 50
+    },
+    "sk_seal": {
+      "n": "魔法封印",
+      "type": "atk",
+      "tier": 8,
+      "reqM": 32,
+      "mp": 30,
+      "dmgType": "magic",
+      "status": {
+        "kind": "vacuum",
+        "pbase": 100,
+        "dur": 16
+      }
+    },
+    "sk_heal_energy_storm": {
+      "n": "治癒能量風暴",
+      "type": "buff",
+      "tier": 8,
+      "reqM": 32,
+      "mp": 20,
+      "dur": 320,
+      "noRefresh": true,
+      "hpRegenIv": 30,
+      "desc": "HP自然恢復時間變成3秒",
+      "msg": "治癒的能量風暴環繞著你，生命力快速匯聚。"
+    },
+    "sk_holy_barrier": {
+      "n": "聖結界",
+      "type": "buff",
+      "tier": 9,
+      "reqM": 36,
+      "mp": 30,
+      "dur": 32,
+      "msg": "一道神聖的防禦屏障保護著你。"
+    },
+    "sk_sleep_mist": {
+      "n": "沉睡之霧",
+      "type": "atk",
+      "tier": 9,
+      "reqM": 36,
+      "mp": 40,
+      "dmgType": "magic",
+      "target": "all",
+      "status": {
+        "kind": "sleep",
+        "pbase": 100,
+        "dur": 8
+      }
+    },
+    "sk_thunder_storm": {
+      "n": "雷霆風暴",
+      "type": "atk",
+      "tier": 9,
+      "reqM": 36,
+      "mp": 48,
+      "dmgType": "magic",
+      "ele": "wind",
+      "target": "all",
+      "multiDmg": [
+        [
+          2,
+          10
+        ],
+        [
+          2,
+          10
+        ],
+        [
+          2,
+          10
+        ],
+        [
+          2,
+          10
+        ],
+        [
+          2,
+          10
+        ],
+        [
+          2,
+          10
+        ],
+        [
+          2,
+          10
+        ],
+        [
+          2,
+          10
+        ]
+      ]
+    },
+    "sk_fire_storm": {
+      "n": "火風暴",
+      "type": "atk",
+      "tier": 9,
+      "reqM": 36,
+      "mp": 48,
+      "dmgType": "magic",
+      "ele": "fire",
+      "target": "all",
+      "multiDmg": [
+        [
+          4,
+          10
+        ],
+        [
+          4,
+          10
+        ],
+        [
+          4,
+          10
+        ],
+        [
+          4,
+          10
+        ]
+      ]
+    },
+    "sk_frost_spike": {
+      "n": "寒冰尖刺",
+      "type": "atk",
+      "tier": 10,
+      "reqM": 40,
+      "mp": 30,
+      "dmgType": "magic",
+      "ele": "water",
+      "dmgDice": [
+        5,
+        20
+      ],
+      "dmgBase": 20,
+      "status": {
+        "kind": "freeze",
+        "force": true,
+        "pct": 50,
+        "dur": 4
+      }
+    },
+    "sk_meteor": {
+      "n": "流星雨",
+      "type": "atk",
+      "tier": 10,
+      "reqM": 40,
+      "mp": 60,
+      "dmgType": "magic",
+      "ele": "fire",
+      "target": "all",
+      "multiDmg": [
+        [
+          2,
+          9
+        ],
+        [
+          2,
+          9
+        ],
+        [
+          2,
+          9
+        ],
+        [
+          2,
+          9
+        ],
+        [
+          2,
+          9
+        ],
+        [
+          2,
+          9
+        ],
+        [
+          2,
+          9
+        ],
+        [
+          2,
+          9
+        ],
+        [
+          2,
+          9
+        ],
+        [
+          2,
+          9
+        ],
+        [
+          2,
+          9
+        ],
+        [
+          2,
+          9
+        ]
+      ]
+    },
+    "sk_soul_up": {
+      "n": "靈魂昇華",
+      "type": "buff",
+      "tier": 10,
+      "reqM": 40,
+      "mp": 20,
+      "dur": 1200,
+      "msg": "你覺得身體充滿了活力。"
+    },
+    "sk_abs_barrier": {
+      "n": "絕對屏障",
+      "type": "manual",
+      "tier": 10,
+      "reqM": 40,
+      "mp": 30,
+      "mEff": "barrier",
+      "dur": 7,
+      "label": "增益",
+      "msg": "你感覺身體與這個世界隔絕了。"
+    },
+    "sk_disintegrate": {
+      "n": "究極光裂術",
+      "type": "atk",
+      "reqJustice": true,
+      "tier": 10,
+      "reqM": 40,
+      "mp": 70,
+      "dmgType": "magic",
+      "ele": "none",
+      "dmgDice": [
+        10,
+        20
+      ],
+      "dmgBase": 100
+    },
+    "sk_solid_shield": {
+      "n": "堅固防護",
+      "type": "buff",
+      "tier": 2,
+      "reqK": 40,
+      "hpCost": 30,
+      "mp": 5,
+      "dur": 180,
+      "reqShield": true,
+      "d": {
+        "er": 15
+      }
+    },
+    "sk_reduction_armor": {
+      "n": "增幅防禦",
+      "type": "buff",
+      "tier": 1,
+      "reqK": 30,
+      "mp": 10,
+      "dur": 1200
+    },
+    "sk_shock_stun": {
+      "n": "衝擊之暈",
+      "type": "atk",
+      "tier": 1,
+      "reqK": 30,
+      "mp": 12,
+      "dmgType": "physical",
+      "reqWpn": "w2h",
+      "skillAddDmg": 10,
+      "stunChance": 0.1,
+      "stun": 150
+    },
+    "sk_spike_armor": {
+      "n": "尖刺盔甲",
+      "type": "buff",
+      "tier": 1,
+      "reqK": 30,
+      "mp": 10,
+      "dur": 1200,
+      "d": {
+        "meleeHit": 5
+      }
+    },
+    "sk_counter_barrier": {
+      "n": "反擊屏障",
+      "type": "buff",
+      "tier": 1,
+      "reqK": 30,
+      "mp": 10,
+      "dur": 64,
+      "label": "增益",
+      "msg": "你擺出了反擊的架式。"
+    },
+    "sk_elf_mr": {
+      "n": "魔法防禦",
+      "type": "buff",
+      "tier": 1,
+      "reqE": 10,
+      "mp": 10,
+      "dur": 1200,
+      "d": {
+        "mr": 10
+      }
+    },
+    "sk_elf_mind": {
+      "n": "心靈轉換",
+      "type": "convert",
+      "tier": 1,
+      "reqE": 10,
+      "hpCost": 8,
+      "mpGain": 2
+    },
+    "sk_elf_worldtree": {
+      "n": "世界樹的呼喚",
+      "type": "passive",
+      "tier": 1,
+      "reqE": 10
+    },
+    "sk_elf_triple": {
+      "n": "三重矢",
+      "type": "atk",
+      "tier": 1,
+      "reqE": 10,
+      "mp": 15,
+      "dmgType": "physical",
+      "ranged": true,
+      "reqWpn": "bow",
+      "hits": 3
+    },
+    "sk_elf_purify": {
+      "n": "淨化精神",
+      "type": "buff",
+      "tier": 2,
+      "reqE": 20,
+      "mp": 10,
+      "dur": 1200,
+      "d": {
+        "wis": 3
+      }
+    },
+    "sk_elf_eleres": {
+      "n": "屬性防禦",
+      "type": "buff",
+      "tier": 2,
+      "reqE": 20,
+      "mp": 10,
+      "dur": 1200,
+      "d": {
+        "resFire": 10,
+        "resWater": 10,
+        "resEarth": 10,
+        "resWind": 10
+      }
+    },
+    "sk_elf_release": {
+      "n": "釋放元素",
+      "type": "atk",
+      "tier": 2,
+      "reqE": 20,
+      "mp": 30,
+      "dmgType": "magic",
+      "instakill": {
+        "tag": "element",
+        "cap": 12
+      }
+    },
+    "sk_elf_soul": {
+      "n": "魂體轉換",
+      "type": "convert",
+      "tier": 2,
+      "reqE": 20,
+      "hpCost": 50,
+      "mpGain": 15
+    },
+    "sk_elf_singleres": {
+      "n": "單屬性防禦",
+      "type": "buff",
+      "tier": 3,
+      "reqE": 30,
+      "mp": 10,
+      "dur": 64,
+      "reqEleAny": true
+    },
+    "sk_elf_firewpn": {
+      "n": "火焰武器",
+      "type": "buff",
+      "tier": 3,
+      "reqE": 30,
+      "mp": 20,
+      "dur": 1200,
+      "reqEle": "fire",
+      "d": {
+        "meleeDmg": 3
+      }
+    },
+    "sk_elf_windshot": {
+      "n": "風之神射",
+      "type": "buff",
+      "tier": 3,
+      "reqE": 30,
+      "mp": 15,
+      "dur": 1200,
+      "reqEle": "wind",
+      "d": {
+        "rangedHit": 5
+      }
+    },
+    "sk_elf_winddash": {
+      "n": "風之疾走",
+      "type": "buff",
+      "tier": 3,
+      "reqE": 30,
+      "mp": 20,
+      "dur": 1200,
+      "reqEle": "wind",
+      "moveSpeedMult": 1.33,
+      "moveSpeedReplacesCookie": true
+    },
+    "sk_elf_earthguard": {
+      "n": "大地防護",
+      "type": "buff",
+      "tier": 3,
+      "reqE": 30,
+      "mp": 15,
+      "dur": 1200,
+      "reqEle": "earth",
+      "d": {
+        "ac": 4
+      }
+    },
+    "sk_elf_groundtrap": {
+      "n": "地面障礙",
+      "type": "atk",
+      "tier": 3,
+      "reqE": 30,
+      "mp": 20,
+      "dmgType": "magic",
+      "reqEle": "earth",
+      "target": "all",
+      "status": {
+        "kind": "slow",
+        "pbase": 150,
+        "dur": 30
+      }
+    },
+    "sk_elf_watervital": {
+      "n": "水之元氣",
+      "type": "buff",
+      "tier": 3,
+      "reqE": 30,
+      "mp": 1,
+      "dur": 64,
+      "reqEle": "water",
+      "noRefresh": true,
+      "msg": "水之元氣環繞著你。"
+    },
+    "sk_elf_magicerase": {
+      "n": "魔法消除",
+      "type": "atk",
+      "tier": 4,
+      "reqE": 40,
+      "mp": 30,
+      "dmgType": "magic",
+      "status": {
+        "kind": "mrhalf",
+        "pbase": 150,
+        "dur": 16
+      }
+    },
+    "sk_elf_summon": {
+      "n": "召喚屬性精靈",
+      "type": "buff",
+      "tier": 4,
+      "reqE": 40,
+      "mp": 30,
+      "dur": 3600,
+      "reqEleAny": true,
+      "desc": "向締結契約的元素祈求援助，召來與自身屬性相同的精靈並肩作戰。",
+      "summon": {
+        "n": "夥伴：{ele}之精靈",
+        "dmgDice": [
+          1,
+          40
+        ],
+        "elemScale": 20,
+        "dmgMult": 1,
+        "mrPenBase": 10,
+        "interval": 10,
+        "kind": "ranged",
+        "eleFromPlayer": true,
+        "hitLvOff": 10
+      }
+    },
+    "sk_elf_dancefire": {
+      "n": "舞躍之火",
+      "type": "buff",
+      "tier": 4,
+      "reqE": 40,
+      "mp": 30,
+      "dur": 1200,
+      "reqEle": "fire",
+      "d": {
+        "meleeDmg": 3
+      },
+      "msg": "舞動的火焰環繞全隊，所有隊員的近距離傷害提升。"
+    },
+    "sk_elf_stormeye": {
+      "n": "暴風之眼",
+      "type": "buff",
+      "tier": 4,
+      "reqE": 40,
+      "mp": 40,
+      "dur": 1200,
+      "reqEle": "wind",
+      "d": {
+        "rangedDmg": 2,
+        "rangedHit": 2
+      }
+    },
+    "sk_elf_earthshield": {
+      "n": "大地屏障",
+      "type": "buff",
+      "tier": 4,
+      "reqE": 40,
+      "mp": 50,
+      "dur": 8,
+      "reqEle": "earth"
+    },
+    "sk_elf_lifespring": {
+      "n": "生命之泉",
+      "type": "heal",
+      "tier": 4,
+      "reqE": 40,
+      "mp": 50,
+      "reqEle": "water",
+      "valDice": [
+        4,
+        35
+      ],
+      "healDice": [
+        5,
+        50
+      ],
+      "healBase": 250,
+      "fullRestore": true,
+      "ignoreWaterVital": true,
+      "healCooldownTicks": 200,
+      "msg": "生命之泉使傷勢完全復原。"
+    },
+    "sk_elf_earthbless": {
+      "n": "大地的祝福",
+      "type": "buff",
+      "tier": 4,
+      "reqE": 40,
+      "mp": 35,
+      "dur": 1200,
+      "reqEle": "earth",
+      "d": {
+        "ac": 7
+      }
+    },
+    "sk_elf_summon2": {
+      "n": "召喚強力屬性精靈",
+      "type": "buff",
+      "tier": 5,
+      "reqE": 50,
+      "mp": 50,
+      "dur": 3600,
+      "reqEleAny": true,
+      "desc": "以更深的元素契約呼喚高位精靈。精通精靈之道的妖精，甚至能使精靈王親臨戰場。",
+      "summon": {
+        "n": "夥伴：強力{ele}之精靈",
+        "dmgDice": [
+          2,
+          40
+        ],
+        "elemScale": 10,
+        "dmgMult": 1.18,
+        "mrPenBase": 20,
+        "interval": 10,
+        "kind": "ranged",
+        "eleFromPlayer": true,
+        "hitLvOff": 20
+      }
+    },
+    "sk_elf_lifebless": {
+      "n": "生命的祝福",
+      "type": "heal",
+      "justiceHeal": true,
+      "tier": 5,
+      "reqE": 50,
+      "mp": 30,
+      "reqEle": "water",
+      "valDice": [
+        1,
+        20
+      ],
+      "healDice": [
+        1,
+        28
+      ],
+      "healBase": 28,
+      "classicHeal": {
+        "baseDice": 12,
+        "sides": 12,
+        "mult": 0.8
+      },
+      "groupHeal": true,
+      "healCooldownTicks": 60,
+      "msg": "生命的祝福立即治癒全隊。"
+    },
+    "sk_elf_seal": {
+      "n": "封印禁地",
+      "type": "atk",
+      "tier": 5,
+      "reqE": 50,
+      "mp": 40,
+      "dmgType": "magic",
+      "reqEleAny": true,
+      "status": {
+        "kind": "magicseal",
+        "pbase": 100,
+        "dur": 8
+      }
+    },
+    "sk_elf_muddywater": {
+      "n": "污濁之水",
+      "type": "atk",
+      "tier": 5,
+      "reqE": 50,
+      "mp": 20,
+      "dmgType": "magic",
+      "ele": "water",
+      "reqEle": "water",
+      "bossOnly": true,
+      "status": {
+        "kind": "muddywater",
+        "force": true,
+        "dur": 32
+      },
+      "desc": "只能對頭目施放；必定命中，使其HP自然恢復量減半",
+      "msg": "污濁的水流纏繞著目標，阻滯其生命力的匯聚。"
+    },
+    "sk_elf_blazewpn": {
+      "n": "烈炎武器",
+      "type": "buff",
+      "tier": 5,
+      "reqE": 50,
+      "mp": 30,
+      "dur": 1200,
+      "reqEle": "fire",
+      "d": {
+        "meleeDmg": 5,
+        "meleeHit": 5
+      }
+    },
+    "sk_elf_flamesoul": {
+      "n": "烈焰之魂",
+      "type": "buff",
+      "tier": 5,
+      "reqE": 50,
+      "mp": 30,
+      "dur": 1280,
+      "reqEle": "fire",
+      "noRefresh": true
+    },
+    "sk_elf_stormshot": {
+      "n": "暴風神射",
+      "type": "buff",
+      "tier": 5,
+      "reqE": 50,
+      "mp": 30,
+      "dur": 1200,
+      "reqEle": "wind",
+      "d": {
+        "rangedDmg": 6,
+        "rangedHit": 3
+      }
+    },
+    "sk_elf_preciseshot": {
+      "n": "精準射擊",
+      "type": "buff",
+      "tier": 5,
+      "reqE": 50,
+      "mp": 15,
+      "dur": 64,
+      "reqEle": "wind",
+      "noRefresh": true,
+      "msg": "你的目光變得無比銳利，攻擊精準無比。"
+    },
+    "sk_elf_steelguard": {
+      "n": "鋼鐵防護",
+      "type": "buff",
+      "tier": 5,
+      "reqE": 50,
+      "mp": 30,
+      "dur": 1200,
+      "reqEle": "earth",
+      "d": {
+        "ac": 10
+      }
+    },
+    "sk_elf_attrfire": {
+      "n": "屬性之火",
+      "type": "buff",
+      "tier": 5,
+      "reqE": 50,
+      "mp": 20,
+      "dur": 320,
+      "reqEle": "fire",
+      "noRefresh": true,
+      "msg": "屬性之火在你的攻擊中燃燒。"
+    },
+    "sk_elf_physboost": {
+      "n": "體能激發",
+      "type": "buff",
+      "tier": 5,
+      "reqE": 50,
+      "mp": 30,
+      "dur": 960,
+      "reqEle": "earth",
+      "noRefresh": true,
+      "loadFreeRegen": true,
+      "msg": "體能激發，負重之下仍能調息。"
+    },
+    "sk_elf_energyboost": {
+      "n": "能量激發",
+      "type": "buff",
+      "tier": 5,
+      "reqE": 50,
+      "mp": 30,
+      "dur": 960,
+      "reqEle": "fire",
+      "noRefresh": true,
+      "loadFreeRegen": true,
+      "msg": "能量激發，負重之下仍能調息。"
+    },
+    "sk_elf_mirror": {
+      "n": "鏡反射",
+      "type": "buff",
+      "tier": 5,
+      "reqE": 50,
+      "mp": 10,
+      "dur": 16,
+      "msg": "你的周身浮現一面鏡子。"
+    },
+    "sk_dark_str": {
+      "n": "力量提升",
+      "type": "buff",
+      "tier": 1,
+      "reqD": 15,
+      "mp": 10,
+      "dur": 960,
+      "d": {
+        "str": 3
+      },
+      "msg": "你感到力量湧現。"
+    },
+    "sk_dark_mrup": {
+      "n": "影之防護",
+      "type": "buff",
+      "tier": 1,
+      "reqD": 15,
+      "mp": 12,
+      "dur": 960,
+      "d": {
+        "mr": 5
+      },
+      "msg": "暗影包覆了你。"
+    },
+    "sk_dark_stealth": {
+      "n": "暗隱術",
+      "type": "buff",
+      "tier": 1,
+      "reqD": 15,
+      "mp": 10,
+      "dur": 32,
+      "darkStealth": true,
+      "msg": "你隱沒於暗影之中。"
+    },
+    "sk_dark_poison": {
+      "n": "附加劇毒",
+      "type": "buff",
+      "tier": 1,
+      "reqD": 15,
+      "mp": 10,
+      "dur": 320,
+      "darkPoison": true,
+      "msg": "你的武器淬上了劇毒。"
+    },
+    "sk_dark_refine": {
+      "n": "提煉魔石",
+      "type": "passive",
+      "tier": 1,
+      "reqD": 15
+    },
+    "sk_dark_dex": {
+      "n": "敏捷提升",
+      "type": "buff",
+      "tier": 2,
+      "reqD": 30,
+      "mp": 10,
+      "dur": 960,
+      "d": {
+        "dex": 3
+      },
+      "msg": "你的身手更敏捷了。"
+    },
+    "sk_dark_poisonres": {
+      "n": "毒性抵抗",
+      "type": "buff",
+      "tier": 2,
+      "reqD": 30,
+      "mp": 20,
+      "dur": 320,
+      "msg": "你對毒素產生了抵抗。"
+    },
+    "sk_dark_burn": {
+      "n": "燃燒鬥志",
+      "type": "buff",
+      "tier": 2,
+      "reqD": 30,
+      "mp": 20,
+      "dur": 300,
+      "msg": "鬥志在你體內燃燒。"
+    },
+    "sk_dark_walkhaste": {
+      "n": "行走加速",
+      "type": "buff",
+      "tier": 2,
+      "reqD": 30,
+      "mp": 10,
+      "dur": 960,
+      "msg": "你的步伐如影般輕快。"
+    },
+    "sk_dark_fang": {
+      "n": "暗影之牙",
+      "type": "buff",
+      "tier": 3,
+      "reqD": 45,
+      "mp": 20,
+      "dur": 192,
+      "d": {
+        "extraDmg": 5
+      },
+      "msg": "暗影凝聚成獠牙。"
+    },
+    "sk_dark_dodge": {
+      "n": "暗影閃避",
+      "type": "buff",
+      "tier": 3,
+      "reqD": 45,
+      "mp": 20,
+      "dur": 32,
+      "msg": "你能看穿魔法的軌跡。"
+    },
+    "sk_dark_crit": {
+      "n": "會心一擊",
+      "type": "atk",
+      "tier": 3,
+      "reqD": 45,
+      "darkCrit": true,
+      "dmgType": "physical",
+      "msg": "你凝聚全身之力，致命一擊！"
+    },
+    "sk_dark_erup": {
+      "n": "迴避提升",
+      "type": "buff",
+      "tier": 3,
+      "reqD": 45,
+      "mp": 20,
+      "dur": 192,
+      "d": {
+        "er": 12
+      },
+      "msg": "你的迴避能力提升了。"
+    },
+    "sk_dark_double": {
+      "n": "雙重破壞",
+      "type": "buff",
+      "tier": 3,
+      "reqD": 45,
+      "mp": 20,
+      "dur": 192,
+      "msg": "你的攻擊蘊含雙重之力。"
+    },
+    "sk_dark_armorbreak": {
+      "n": "破壞盔甲",
+      "type": "atk",
+      "tier": 3,
+      "reqD": 45,
+      "mp": 32,
+      "dmgType": "magic",
+      "status": {
+        "kind": "armorbreak",
+        "dur": 8
+      },
+      "msg": "你撕裂了目標的防護，使其受到的傷害提高。"
+    },
+    "sk_royal_precise": {
+      "n": "精準目標",
+      "type": "buff",
+      "label": "增益",
+      "cat": "royal",
+      "reqRoy": 15,
+      "mp": 2,
+      "dur": 16,
+      "noRefresh": true,
+      "msg": "你鎖定全場敵人，使其露出破綻。",
+      "tier": 1
+    },
+    "sk_royal_callally": {
+      "n": "呼喚盟友",
+      "type": "atk",
+      "label": "攻擊",
+      "cat": "royal",
+      "reqRoy": 30,
+      "mp": 30,
+      "callAllies": true,
+      "tier": 2
+    },
+    "sk_royal_burnweapon": {
+      "n": "灼熱武器",
+      "type": "buff",
+      "label": "增益",
+      "cat": "royal",
+      "reqRoy": 40,
+      "mp": 25,
+      "dur": 640,
+      "noRefresh": true,
+      "d": {
+        "extraDmg": 5,
+        "extraHit": 5
+      },
+      "msg": "灼熱之炎籠罩全隊武器，所有隊員的額外傷害與命中提升。",
+      "tier": 3
+    },
+    "sk_royal_bravewill": {
+      "n": "勇猛意志",
+      "type": "buff",
+      "label": "增益",
+      "cat": "royal",
+      "reqRoy": 50,
+      "mp": 25,
+      "dur": 640,
+      "noRefresh": true,
+      "msg": "勇猛的意志充盈你的全身。",
+      "tier": 4
+    },
+    "sk_royal_shield": {
+      "n": "閃亮之盾",
+      "type": "buff",
+      "label": "增益",
+      "cat": "royal",
+      "reqRoy": 50,
+      "mp": 25,
+      "dur": 640,
+      "noRefresh": true,
+      "d": {
+        "ac": 8
+      },
+      "msg": "閃亮的護盾環繞全隊，使所有隊員的防禦提升。",
+      "tier": 4
+    },
+    "sk_royal_kingguard": {
+      "n": "王者加護",
+      "type": "passive",
+      "label": "被動",
+      "cat": "royal",
+      "reqRoy": 50,
+      "desc": "亞丁王族不屈的意志護持身心，使邪術與撼動神智的攻擊更難得逞。",
+      "tier": 4
+    }
+  },
+  "sharedPolicy": "Each class uses the source req fields; no invented dark-elf common magic."
+}
