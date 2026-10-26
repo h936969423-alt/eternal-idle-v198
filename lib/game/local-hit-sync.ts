@@ -49,8 +49,9 @@ export function allowLocalHit(key:string,uid:string|undefined,seq:number,now:num
  const since=owner.waiting.get(seq)??now;owner.waiting.set(seq,since);
  // Missing frames/old targets must not hold canonical results indefinitely.
  const limit=Math.min(5000,Math.max(2000,owner.period*2000));
- if(now-since>=limit&&(!owner.swing||owner.swing.uid===uid)){complete();return true;}
+ if(now-since>=limit&&owner.swing?.uid===uid){complete();return true;}
  if(owner.waiting.size>160)owner.waiting.delete(owner.waiting.keys().next().value!);
  return false;
 }
+
 

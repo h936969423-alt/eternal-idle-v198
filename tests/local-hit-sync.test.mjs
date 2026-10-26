@@ -3,7 +3,7 @@ import assert from 'node:assert/strict';
 import fs from 'node:fs';
 import vm from 'node:vm';
 import {stripTypeScriptTypes} from 'node:module';
-import {setLocalHitActive,clearLocalHits,recordLocalContact,allowLocalHit,localContactFrame} from '../lib/game/local-hit-sync.ts';
+import {setLocalHitActive,clearLocalHits,recordLocalContact,allowLocalHit,localContactFrame,beginLocalSwing} from '../lib/game/local-hit-sync.ts';
 // Execute the real presentation functions with unrelated catalogue lookups stubbed.
 const source=stripTypeScriptTypes(fs.readFileSync(new URL('../lib/game/combat-presentation.ts',import.meta.url),'utf8')).replace(/^import .*;\s*$/gm,'').replaceAll('export ','');
 const ctx={lineageWEffectDefinition:()=>({}),mythicProcDefinition:()=>({}),raw:{skills:{}},isFlyingMagic:()=>false,magicFlightMs:()=>200,magicEffectLifetime:()=>800,TRIPLE_FLIGHT_MS:200,ARROW_FLIGHT_MS:200,REPLAY_MAX_AHEAD_MS:1500};
@@ -44,7 +44,7 @@ test('weapon proc waits for its normal hit; bow HP still waits another 200ms for
  assert.equal(ctx.drainCombatPresentation(queue,pending,325,true,undefined,gate(325))[0].visualPhase,'impact');
 });
 test('stop/reset releases confirmed state and removes stale contacts; missing frames have a bounded fallback',()=>{
- begin();assert.equal(allowLocalHit(owner,'mob',1,0),false);assert.equal(allowLocalHit(owner,'mob',1,1999),false);assert.equal(allowLocalHit(owner,'mob',1,2000),true);
+ begin();beginLocalSwing(owner,{uid:'mob',slot:0});assert.equal(allowLocalHit(owner,'mob',1,0),false);assert.equal(allowLocalHit(owner,'mob',1,1999),false);assert.equal(allowLocalHit(owner,'mob',1,2000),true);
  recordLocalContact(owner,'mob',2100);clearLocalHits(owner);assert.equal(allowLocalHit(owner,'mob',2,2100),true);
  begin();assert.equal(allowLocalHit(owner,'mob',3,2100),false);setLocalHitActive(owner,false,.4);assert.equal(allowLocalHit(owner,'mob',3,2101),true);
 });
@@ -52,3 +52,8 @@ test('contact frame stays reachable at fast speeds and remains mid-swing for ord
  assert.equal(localContactFrame(4,.4),2);assert.equal(localContactFrame(8,.19),0);
  for(const seconds of [.1,.19,.4489,.8,1.3,2.5])for(const count of [1,4,8,16]){const f=localContactFrame(count,seconds);assert.ok(f>=0&&f<count);}
 });
+test('a timeout before any real swing cannot flush damage across multiple monsters',()=>{
+ begin();assert.equal(allowLocalHit(owner,'left',1,0),false);assert.equal(allowLocalHit(owner,'right',2,0),false);
+ assert.equal(allowLocalHit(owner,'left',1,5000),false);assert.equal(allowLocalHit(owner,'right',2,5000),false);
+});
+
