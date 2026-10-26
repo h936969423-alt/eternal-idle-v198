@@ -30,3 +30,15 @@ assert.equal(render(undefined),undefined,'rejection/cancellation immediately res
 const triple={...intent,skill:'sk_elf_triple',at:1500};assert.equal(feedback.castFeedbackPose(triple,'mage',1500,5,1),undefined,'triple still waits for confirmed launch and 70ms release timing');assert.equal(feedback.attachCastFeedback(save,triple),save);
 for(const f of cleanups)f?.();assert.equal(raf.size,0);
 console.log('PASS: actual hook casts on first click render during a simulated 1.2s response wait; confirmed poses hand off without replay, expired previews cannot stop normal swings; failed/other/dead actors and triple are isolated; no predicted MP, damage, projectiles or loot.');
+
+
+// One visual owner across preview and confirmed AoE/status packets.
+const predicted={...intent,effectPreviewed:true},annotated=feedback.attachCastFeedback(save,predicted);
+let visual={hp:100,mp:100,arena:[{uid:'mob',id:'test',hp:100,clock:0},{uid:'other',id:'test',hp:100,clock:0}],floats:[]};
+for(const event of annotated.characters[0].events.filter(e=>[11,12,13].includes(e.seq)))visual=require('../lib/game/combat-presentation.ts').applyCombatViewEvent(visual,event,1300);
+assert.equal((visual.casts||[]).length,0,'confirmation cannot replay an already previewed graphic');
+assert.equal(visual.floats.filter(x=>x.kind==='attack').length,2,'all authoritative damage numbers still render');
+assert.ok(feedback.canPreviewSpellEffect('sk_meteor'));
+for(const skill of ['sk_shock_stun','sk_elf_triple','sk_lightarrow','sk_shield'])assert.equal(feedback.canPreviewSpellEffect(skill),false,skill+' retains confirmed-only effect');
+const arena=fs.readFileSync('app/battle-arena.tsx','utf8');assert.ok(arena.includes('pendingCast?.effectPreviewed'));assert.ok(!arena.includes('!((view.casts||[]).some'),'confirmation must not unmount the preview and replace it with a second effect');
+console.log('PASS: one click / one effect; fast and late AoE confirmations do not create extra graphics; damage, poses, projectiles, buffs and stun success remain authoritative.');
