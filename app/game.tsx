@@ -1,5 +1,5 @@
 'use client';
-import {attachCastFeedback,canPreviewSpellEffect,type CastIntent} from '@/lib/game/cast-feedback';
+import {attachCastFeedback,canPreviewSpellEffect,spellEffectPreviewDuration,type CastIntent} from '@/lib/game/cast-feedback';
 import type {CSSProperties} from 'react';
 import {itemTextColor,itemRarity,RARITY_COLORS} from '@/lib/game/loot-appearance';
 import {startGamePolling} from '@/lib/game/client-poll';
@@ -116,7 +116,7 @@ function Game({signedIn,signIn,gmAllowed=false}:{signedIn:boolean;signIn:string;
  // Diagnose the saved character without invoking CPU-heavy offline simulation.
  // This is read-only and does not acknowledge, alter or reaward any income.
  try{const {res,data:status}=await fetchRecoveryState(fetch,controller?.signal);if(!controller?.signal.aborted&&res.ok)setRecovery(status);}catch{}
- }}return null;}finally{if(pollAbort.current===controller)pollAbort.current=null;setLoading(false);}},!!a);}finally{if(a){pendingActions.current--;setBusy(pendingActions.current>0);if(a.type==='cast'){setPendingSkill(current=>current===a.skill?null:current);if(intent){const castId=intent.id;setTimeout(()=>setPendingCast(current=>current?.id===castId?undefined:current),1200);}}}}},[accept]);
+ }}return null;}finally{if(pollAbort.current===controller)pollAbort.current=null;setLoading(false);}},!!a);}finally{if(a){pendingActions.current--;setBusy(pendingActions.current>0);if(a.type==='cast'){setPendingSkill(current=>current===a.skill?null:current);if(intent){const castId=intent.id;setTimeout(()=>setPendingCast(current=>current?.id===castId?undefined:current),Math.max(1200,spellEffectPreviewDuration(intent.skill)));}}}}},[accept]);
  const act=useCallback(async(a:any)=>{if(c&&['useScroll','potion'].includes(a.type)&&D.items[a.item]?.eff==='poly'&&hasPolyControl(c)){if(c.locked?.includes(a.item)){toast.error('請先解除卷軸鎖定');return null;}setInspect(null);setPolyScroll(a.item);return null;}return await request(a);},[request,c]);
  const leaveWorldBoss=useCallback(async()=>{if(c&&playableBoss(c.zone)){const result=await act({type:'zone',zone:'town_silver_knight'});if(!result)return;}setHuntView('lobby');setTab('hunt');},[c?.zone,act]);
  const previousLocation=useRef<{character:string;zone:string}|null>(null);

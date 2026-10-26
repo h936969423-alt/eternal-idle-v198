@@ -42,3 +42,5 @@ assert.ok(feedback.canPreviewSpellEffect('sk_meteor'));
 for(const skill of ['sk_shock_stun','sk_elf_triple','sk_lightarrow','sk_shield'])assert.equal(feedback.canPreviewSpellEffect(skill),false,skill+' retains confirmed-only effect');
 const arena=fs.readFileSync('app/battle-arena.tsx','utf8');assert.ok(arena.includes('pendingCast?.effectPreviewed'));assert.ok(!arena.includes('!((view.casts||[]).some'),'confirmation must not unmount the preview and replace it with a second effect');
 console.log('PASS: one click / one effect; fast and late AoE confirmations do not create extra graphics; damage, poses, projectiles, buffs and stun success remain authoritative.');
+
+assert.ok(feedback.spellEffectPreviewDuration('sk_blizzard')>=1438,'preview survives every source frame, including clips longer than 1200ms');
