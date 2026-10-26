@@ -29,7 +29,10 @@ export function sunriseMotionDuration(kind:SunriseAction,timing:SunriseTiming){
 export function triggerSunriseMotion(state:SunriseClock,kind:Exclude<SunriseAction,'idle'>,now:number,timing:SunriseTiming):SunriseClock{
  if(state.act==='death')return state;
  const active=state.act&&now-state.t<sunriseMotionDuration(state.act,timing);
- const current=active?SUNRISE_PLAYER_PRIORITY[state.act!]:0;
+ // Hurt is cosmetic: repeated incoming hits must not cancel an attack's contact,
+ // interrupt a cast, or keep restarting hurt until outgoing attacks starve.
+ if(kind==='hurt'&&active)return state;
+ const current=active&&state.act!=='hurt'?SUNRISE_PLAYER_PRIORITY[state.act!]:0;
  if(SUNRISE_PLAYER_PRIORITY[kind]<current)return kind==='attack'?{...state,pendAtk:true}:state;
  return {act:kind,t:now,pendAtk:false};
 }
@@ -42,6 +45,7 @@ export function sunriseMotionPose(state:SunriseClock,now:number,timing:SunriseTi
  const step=kind==='attack'?sunriseFrameMs(timing.attackSeconds,count):kind==='skill'?sunriseFrameMs(timing.castSeconds,count):125;
  return {kind,frame:kind==='idle'?Math.floor(now/125)%count:Math.min(count-1,Math.max(0,Math.floor((now-state.t)/step)))};
 }
+
 
 
 

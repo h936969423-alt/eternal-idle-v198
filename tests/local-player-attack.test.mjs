@@ -78,5 +78,58 @@ test('changing selection during a swing cannot redirect its contact to another m
  h.advance(625);assert.equal(hitSync.allowLocalHit(ownerKey,'right',2,625),false);assert.equal(hitSync.allowLocalHit(ownerKey,'left',1,625),true);
  h.advance(1025);assert.equal(hitSync.allowLocalHit(ownerKey,'right',2,1025),true);h.unmount();
 });
+test('incoming hits from five monsters cannot starve normal attack contacts',()=>{
+ const h=harness(),ownerKey='five-incoming:zone';
+ h.render({identity:ownerKey,local:{running:true,hasTarget:true,blocked:false,ownerKey,targetUid:'mob',liveTargetUids:['mob']}});
+ let landed=0;
+ for(let at=100;at<=3000;at+=25){
+  h.advance(at);
+  if(at%100===0)h.render({hp:100-at/100});
+  if(hitSync.allowLocalHit(ownerKey,'mob',landed+1,at))landed++;
+ }
+ assert.ok(landed>=5,`only ${landed} visible contacts in 3 seconds`);
+ h.unmount();
+});
+test('hurt cannot cancel an active attack/cast or continually restart; attack and death can replace hurt',()=>{
+ for(const kind of ['attack','skill']){
+  const state=motion.triggerSunriseMotion(motion.emptySunriseClock(),kind,0,timing);
+  assert.deepEqual(motion.triggerSunriseMotion(state,'hurt',100,timing),state);
+ }
+ const hurt=motion.triggerSunriseMotion(motion.emptySunriseClock(),'hurt',0,timing);
+ assert.deepEqual(motion.triggerSunriseMotion(hurt,'hurt',100,timing),hurt);
+ assert.equal(motion.triggerSunriseMotion(hurt,'attack',100,timing).act,'attack');
+ assert.equal(motion.triggerSunriseMotion(hurt,'death',100,timing).act,'death');
+});
+test('real motion + buffered replay: five incoming attackers and jitter do not stall or burst five outgoing victims',()=>{
+ const replaySource=stripTypeScriptTypes(fs.readFileSync(new URL('../lib/game/combat-presentation.ts',import.meta.url),'utf8')).replace(/^import .*;\s*$/gm,'').replaceAll('export ','');
+ const timingSource=stripTypeScriptTypes(fs.readFileSync(new URL('../lib/game/replay-timing.ts',import.meta.url),'utf8')).replace(/^import .*;\s*$/gm,'').replaceAll('export ','');
+ const ctx={lineageWEffectDefinition:()=>undefined,mythicProcDefinition:()=>undefined,raw:{skills:{}},isFlyingMagic:()=>false,magicFlightMs:()=>200,magicEffectLifetime:()=>800,TRIPLE_FLIGHT_MS:200,ARROW_FLIGHT_MS:200};
+ vm.createContext(ctx);vm.runInContext(timingSource+'\n'+replaySource,ctx);
+ const h=harness(),ownerKey='network-under-fire:zone';
+ let view={hp:1000,mp:100,target:0,arena:Array.from({length:5},(_,slot)=>({uid:`mob${slot}`,id:'ant',hp:30,maxHp:30})),floats:[]};
+ const events=[];let seq=0;
+ for(let at=100;at<=6000;at+=100){
+  if(at%400===0){const strike=at/400-1,slot=Math.floor(strike/3);events.push({seq:++seq,at,kind:'attack',source:'physical',slot,uid:`mob${slot}`,damage:10,mobHp:30-(strike%3+1)*10,hp:1000-at/100,mp:100});}
+  events.push({seq:++seq,at,kind:'hurt',slot:at/100%5,uid:`mob${at/100%5}`,damage:1,hp:1000-at/100,mp:100});
+ }
+ const packets=[];for(let cutoff=350,i=0;cutoff<=6300;cutoff+=350,i++)packets.push({cutoff,arrival:cutoff+[100,260,90][i%3]});
+ const health=new Map(view.arena.map(m=>[m.uid,m.hp])),pending=[],shown=[];let queue=[],offset=null,cursor=0,packet=0,maxPerFrame=0;
+ const render=()=>h.render({identity:ownerKey,hp:view.hp,local:{running:true,hasTarget:view.arena.some(m=>m.hp>0),blocked:false,ownerKey,targetUid:view.arena[view.target]?.uid,liveTargetUids:view.arena.filter(m=>m.hp>0).map(m=>m.uid)}});
+ render();
+ for(let now=0;now<=10000;now+=25){
+  h.advance(now);
+  while(packets[packet]?.arrival<=now){const fresh=[];while(events[cursor]?.at<=packets[packet].cutoff)fresh.push(events[cursor++]);packet++;hitSync.queueLocalHitTargets(ownerKey,fresh);const next=ctx.enqueueSunriseReplay(queue,ctx.prepareCombatHealth(fresh,health),now,offset);queue=next.queue;offset=next.offset;}
+  const ready=ctx.drainCombatPresentation(queue,pending,now,false,undefined,e=>hitSync.allowLocalHit(ownerKey,e.uid,e.seq,now));
+  const hits=ready.filter(e=>e.kind==='attack');maxPerFrame=Math.max(maxPerFrame,hits.length);shown.push(...hits.map(e=>({...e,shownAt:now})));
+  for(const e of ready)view=ctx.applyCombatViewEvent(view,e,now);
+  render();
+ }
+ assert.equal(shown.length,15);assert.equal(new Set(shown.map(e=>e.seq)).size,15);
+ assert.equal(maxPerFrame,1,'one displayed contact cannot drain a batch of normal hits');
+ assert.ok(view.arena.every(m=>m.hp===0));assert.equal(queue.length,0);
+ assert.ok(shown.every(e=>e.shownAt-e.at<1600),'no multi-second timeout-driven HP stall');
+ h.unmount();
+});
+
 
 

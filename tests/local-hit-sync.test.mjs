@@ -22,10 +22,11 @@ test('early confirmed HP waits for visible contact; HP and float update together
  view=ctx.applyCombatViewEvent(view,ready[0],125);assert.equal(view.arena[0].hp,90);assert.equal(view.floats.length,1);assert.equal(view.floats[0].shownAt,125);
  assert.equal(ctx.drainCombatPresentation(queue,pending,250,false,undefined,gate(250)).length,0);
 });
-test('late results wait for the next contact rather than using an old swing',()=>{
+test('buffered results can consume one retained contact, never duplicate it',()=>{
  begin();recordLocalContact(owner,'mob',100);
- assert.equal(allowLocalHit(owner,'mob',1,300),false);
- recordLocalContact(owner,'mob',500);assert.equal(allowLocalHit(owner,'mob',1,500),true);assert.equal(allowLocalHit(owner,'mob',2,500),false);
+ assert.equal(allowLocalHit(owner,'mob',1,300),true);
+ assert.equal(allowLocalHit(owner,'mob',2,300),false);
+ recordLocalContact(owner,'mob',500);assert.equal(allowLocalHit(owner,'mob',2,500),true);assert.equal(allowLocalHit(owner,'mob',3,500),false);
  recordLocalContact(owner,'other',625);assert.equal(allowLocalHit(owner,'mob',2,625),false);
 });
 test('lethal loot and replacement cannot overtake the waiting hit',()=>{
@@ -43,8 +44,8 @@ test('weapon proc waits for its normal hit; bow HP still waits another 200ms for
  assert.equal(ctx.drainCombatPresentation(queue,pending,324,true,undefined,gate(324)).length,0);
  assert.equal(ctx.drainCombatPresentation(queue,pending,325,true,undefined,gate(325))[0].visualPhase,'impact');
 });
-test('stop/reset releases confirmed state and removes stale contacts; missing frames have a bounded fallback',()=>{
- begin();beginLocalSwing(owner,{uid:'mob',slot:0});assert.equal(allowLocalHit(owner,'mob',1,0),false);assert.equal(allowLocalHit(owner,'mob',1,1999),false);assert.equal(allowLocalHit(owner,'mob',1,2000),true);
+test('stop/reset releases confirmed state; time alone cannot replace a contact',()=>{
+ begin();beginLocalSwing(owner,{uid:'mob',slot:0});assert.equal(allowLocalHit(owner,'mob',1,0),false);assert.equal(allowLocalHit(owner,'mob',1,1999),false);assert.equal(allowLocalHit(owner,'mob',1,2000),false);
  recordLocalContact(owner,'mob',2100);clearLocalHits(owner);assert.equal(allowLocalHit(owner,'mob',2,2100),true);
  begin();assert.equal(allowLocalHit(owner,'mob',3,2100),false);setLocalHitActive(owner,false,.4);assert.equal(allowLocalHit(owner,'mob',3,2101),true);
 });
@@ -55,5 +56,13 @@ test('contact frame stays reachable at fast speeds and remains mid-swing for ord
 test('a timeout before any real swing cannot flush damage across multiple monsters',()=>{
  begin();assert.equal(allowLocalHit(owner,'left',1,0),false);assert.equal(allowLocalHit(owner,'right',2,0),false);
  assert.equal(allowLocalHit(owner,'left',1,5000),false);assert.equal(allowLocalHit(owner,'right',2,5000),false);
+});
+test('overdue results for the current victim cannot all bypass a missing contact',()=>{
+ begin();beginLocalSwing(owner,{uid:'mob',slot:0});
+ for(let seq=1;seq<=5;seq++)assert.equal(allowLocalHit(owner,'mob',seq,0),false);
+ for(let seq=1;seq<=5;seq++)assert.equal(allowLocalHit(owner,'mob',seq,5000),false);
+ recordLocalContact(owner,'mob',5125);
+ assert.equal(allowLocalHit(owner,'mob',1,5125),true);
+ for(let seq=2;seq<=5;seq++)assert.equal(allowLocalHit(owner,'mob',seq,5125),false);
 });
 
