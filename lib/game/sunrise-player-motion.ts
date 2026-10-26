@@ -24,7 +24,7 @@ export function advanceSunriseMotion(state:SunriseClock,now:number,timing:Sunris
  return state.pendAtk&&(timing.counts.attack||0)>0?{act:'attack',t:now,pendAtk:false}:{...state,act:null,pendAtk:false};
 }
 export function sunriseMotionPose(state:SunriseClock,now:number,timing:SunriseTiming):{kind:SunriseAction;frame:number}{
- const kind=state.act||'idle',count=timing.counts[kind]||1;
+ const kind=state.act&&(timing.counts[state.act]||0)>0?state.act:'idle',count=timing.counts[kind]||1;
  const step=kind==='attack'?sunriseFrameMs(timing.attackSeconds,count):kind==='skill'?sunriseFrameMs(timing.castSeconds,count):125;
  return {kind,frame:kind==='idle'?Math.floor(now/125)%count:Math.min(count-1,Math.max(0,Math.floor((now-state.t)/step)))};
 }

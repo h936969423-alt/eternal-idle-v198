@@ -3,14 +3,14 @@ require.extensions['.ts']=(m,f)=>m._compile(ts.transpileModule(fs.readFileSync(f
 const motion=require('../lib/game/sunrise-player-motion.ts'),{sunrisePlayerCues}=require('../lib/game/sunrise-player-cues.ts'),{enqueueSunriseReplay,drainCombatPresentation}=require('../lib/game/combat-presentation.ts');
 const source=fs.readFileSync(path.join(__dirname,'../tests/fixtures/sunrise-player-motion-source.js'),'utf8');
 function oracle(timing){
- const frames=Object.fromEntries(Object.entries(timing.counts).map(([k,n])=>[k,Array.from({length:n},(_,i)=>({src:`${k}:${i}`,naturalWidth:100}))]));frames.shadow={};frames.weapon={};
+ const frames=Object.fromEntries(Object.entries(timing.counts).filter(([,n])=>n>0).map(([k,n])=>[k,Array.from({length:n},(_,i)=>({src:`${k}:${i}`,naturalWidth:100}))]));frames.shadow={};frames.weapon={};
  const bv={classList:{contains:k=>k==='area-fit'},appendChild:()=>{}},img=()=>({src:'',style:{}}),el={style:{},parentElement:bv};
  const context={now:0,Date:{now:()=>context.now},MOB_ANIM_FPS:8,PLAYER_BATTLE_WALK:false,_teleportFxUntil:0,CLASS_ANIM_8DIR:new Set(),MORPH_ANIM_3DIR:new Set(),_PM_PRIO:{death:5,hurt:4,skill:3,attack:2,idle:1},_morphBattleCache:{test:frames},_pmState:{act:null,t:0,pendAtk:false,name:'test',el,imgs:{bd:img(),sh:img(),wp:img(),cr:img()}},player:{hp:100,dead:false,avatar:'knight',d:{aspd:timing.attackSeconds,castLock:timing.castSeconds*10}},document:{getElementById:()=>bv},_playerBattleForm:()=>({key:'test',domKey:'test'}),_partySpritePos:()=>({P:{x:'45%',b:2}}),_playerMorphYOffset:()=>0,_playerBattleCrownApply:()=>{},_playerMorphName:()=>null};
  vm.createContext(context);vm.runInContext(source,context);return context;
 }
 let comparisons=0;
 for(const cls of ['royal','knight','elf','mage','dark'])for(const speed of [.19,.4489,.8,1.3,2.5]){
- const timing={counts:{idle:4,attack:8,skill:8,hurt:3,death:5},attackSeconds:speed,castSeconds:speed},ref=oracle(timing);let state=motion.emptySunriseClock();
+ const bases={royal:'royal_m',knight:'knight_2hsword',elf:'elf_m_melee',mage:'mage_m',dark:'darkelf'},frames=require('../lib/game/asset-map.json').frames,clips=require('../lib/game/player-animation.ts').playerAnimationClips(bases[cls],frames,2),counts=Object.fromEntries(Object.entries(clips).map(([k,v])=>[k,v.length])),timing={counts,attackSeconds:speed,castSeconds:speed},ref=oracle(timing);let state=motion.emptySunriseClock();
  const events=new Map([[0,'attack'],[130,'skill'],[200,'attack'],[300,'hurt'],[350,'skill'],[500,'attack'],[1000,'skill'],[1200,'attack'],[1250,'attack'],[2000,'attack'],[2500,'skill'],[2600,'attack'],[3000,'hurt'],[4000,'death']]);
  for(let now=0;now<=4800;now+=10){ref.now=now;if(events.has(now)){const kind=events.get(now);if(kind==='death')ref.player.dead=true;ref._playerMorphTrigger(kind,'sk_test');state=motion.triggerSunriseMotion(state,kind,now,timing);}
   ref._playerMorphApply();state=motion.advanceSunriseMotion(state,now,timing);const p=motion.sunriseMotionPose(state,now,timing),expected=ref._pmState.imgs.bd.src;
