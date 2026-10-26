@@ -31,7 +31,8 @@ test('timeout cannot release another live target while swinging at a different U
 });
 test('confirmed hits drained while stopped cannot become ghost targets on restart',()=>{
  const key='lock:stop';clearLocalHits(key);setLocalHitActive(key,true,.4);
- queueLocalHitTargets(key,[hit(1,'old',0)]);setLocalHitActive(key,false,.4);
+ queueLocalHitTargets(key,[hit(1,'old',0)]);beginLocalSwing(key,{uid:'old',slot:0});setLocalHitActive(key,false,.4);
+ assert.equal(currentLocalSwing(key),undefined);
  assert.equal(allowLocalHit(key,'old',1,100),true);setLocalHitActive(key,true,.4);
  assert.deepEqual(beginLocalSwing(key,{uid:'new',slot:1},['old','new']),{uid:'new',slot:1});
 });

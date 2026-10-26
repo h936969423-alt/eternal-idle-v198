@@ -16,7 +16,7 @@ export function localContactFrame(count:number,seconds:number){
 export function setLocalHitActive(key:string,active:boolean,period:number){
  const owner:Owner=owners.get(key)||createOwner();
  owner.active=active;owner.period=period;
- if(!active){owner.contacts=[];owner.waiting.clear();}
+ if(!active){owner.contacts=[];owner.waiting.clear();owner.swing=undefined;}
  owners.set(key,owner);
 }
 export function clearLocalHits(key:string){owners.delete(key);}
