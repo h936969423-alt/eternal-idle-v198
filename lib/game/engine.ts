@@ -302,7 +302,7 @@ export function cast(c:Character,k:string,now=Date.now(),rng:()=>number=Math.ran
     const dealt=normalWeaponAttack(c,live,now,rng,undefined,k,b);total+=dealt;
     if(dealt>0&&live.hp>0){if(playableBoss(c.zone)){
      if(!(live.effects?.stun?.until!>now)&&!(live.effects?.stunImmune?.until!>now)&&rng()<Math.min(.95,.3+(b.stunHit||0)/100)){live.effects||={};live.effects.stun={until:now+2000,value:1};live.effects.stunImmune={until:now+4000,value:1};event(c,'magic',now,{skill:k,slot,uid:live.uid,targetEffects:structuredClone(live.effects)});}
-    }else applySpellStatus(c,live,def,{kind:'stun',dur:6},k,b,now,rng);}
+    }else if(!def.boss)applySpellStatus(c,live,def,{kind:'stun',dur:6,force:true},k,b,now,rng);}
     if((c.events||[]).filter(e=>e.kind==='magic'&&e.skill===k&&e.slot===slot).length===stunEventCount)event(c,'state',now,{skill:k,slot,uid:live.uid,effect:'衝暈失敗'});
     continue;
    }
