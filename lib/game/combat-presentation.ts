@@ -123,3 +123,23 @@ export function applyCombatViewEvent(v:BattleView,next:PresentationEvent,now:num
 
 
 
+
+
+/** Live adapter for the Sunrise synchronous trigger model. The old 650ms
+ * history buffer is retained for compatibility tests, but is not used by the
+ * live battle hook. A late packet is applied once, without replaying every old
+ * action at a second buffered deadline. Future events (e.g. 70ms triple arrows)
+ * keep their server-relative deadlines and flight impacts remain independent.
+ */
+export function enqueueSunriseReplay<T extends CombatEvent>(queued:(T&{due:number})[],fresh:T[],now:number,previous:number|null){
+ if(!fresh.length)return {queue:queued,offset:previous};
+ const known=new Set(queued.map(e=>e.seq));
+ const unique=fresh.filter(e=>{if(known.has(e.seq))return false;known.add(e.seq);return true;});
+ if(!unique.length)return {queue:queued,offset:previous};
+ const immediate=unique.filter(e=>e.visualPhase!=='impact');
+ const cast=immediate.find(e=>e.manual&&e.kind==='magic');
+ const triple=immediate.filter(e=>e.skill==='sk_elf_triple');
+ const anchor=cast?.at??(triple.length?Math.min(...triple.map(e=>e.at)):Math.max(...unique.map(e=>e.at)));
+ const offset=now-anchor;
+ return {queue:[...queued,...unique.map(e=>({...e,due:Math.max(now,e.at+offset)}))].sort((a,b)=>a.due-b.due||a.seq-b.seq),offset};
+}
