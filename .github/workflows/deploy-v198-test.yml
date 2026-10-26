@@ -63,6 +63,8 @@ jobs:
         run: node --experimental-strip-types --test tests/animation-clock.test.mjs tests/attack-phase.test.mjs tests/battle-layout.test.mjs
       - name: Verify alignment mechanics and save compatibility
         run: node scripts/test-alignment.cjs
+      - name: Verify click-preview handoff and hasted cast timing
+        run: node scripts/test-cast-pose-handoff.cjs
       - name: Build complete Cloudflare Worker
         run: pnpm run build
       - name: Assert strict isolation from live resources

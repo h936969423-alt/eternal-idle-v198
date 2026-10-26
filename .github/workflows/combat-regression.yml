@@ -40,4 +40,5 @@ jobs:
           corepack prepare pnpm@11.25.0 --activate
           pnpm install --frozen-lockfile
           node scripts/test-alignment.cjs
+          node scripts/test-cast-pose-handoff.cjs
           pnpm exec tsc --noEmit

@@ -29,3 +29,19 @@ export function attachCastFeedback(save:Save,intent:CastIntent):Save{
  })};
 }
 
+
+/** The click preview must relinquish the sprite when a later confirmed action
+ * is displayed. Otherwise its older frame masks the live attack underneath. */
+export function castPreviewSuperseded(intent:CastIntent|undefined,cues:import('./animation-clock').MotionCue[]):boolean{
+ if(!intent)return false;
+ const own=cues.filter(c=>c.previewed&&c.displayAt===intent.at);
+ const after=Math.max(intent.afterSeq,...own.map(c=>c.seq));
+ return cues.some(c=>c.seq>after&&(c.kind==='attack'||c.kind==='skill')&&Number.isFinite(c.displayAt)&&c.displayAt!>=intent.at&&!(c.previewed&&c.displayAt===intent.at));
+}
+export function resolvePlayerPose<T>(feedback:T|undefined,confirmed:T,intent:CastIntent|undefined,cues:import('./animation-clock').MotionCue[]):T{
+ return feedback&&!castPreviewSuperseded(intent,cues)?feedback:confirmed;
+}
+/** The server has already applied haste and morph speed to this duration. */
+export function playerCastInterval(serverSeconds:number|undefined,fallback:number):number{
+ return typeof serverSeconds==='number'&&Number.isFinite(serverSeconds)&&serverSeconds>0?serverSeconds:fallback;
+}
