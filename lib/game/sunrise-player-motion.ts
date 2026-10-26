@@ -10,7 +10,7 @@ export const emptySunriseClock=():SunriseClock=>({act:null,t:0,pendAtk:false});
 export const SUNRISE_ATTACK_TICK_MS=100;
 export const SUNRISE_PLAYER_FRAME_MS=125;
 export type LocalAttackClock={elapsed:number;period:number};
-export type LocalAttackInput={running:boolean;hasTarget:boolean;blocked:boolean;ownerKey?:string;targetUid?:string};
+export type LocalAttackInput={running:boolean;hasTarget:boolean;blocked:boolean;ownerKey?:string;targetUid?:string;targetSlot?:number;liveTargetUids?:string[]};
 /** Local progress only; damage, rewards and saves remain server-owned. */
 export function tickLocalPlayerAttack(clock:LocalAttackClock,seconds:number,enabled:boolean){
  const period=Number.isFinite(seconds)&&seconds>0?Math.max(.1,seconds):1;
@@ -42,5 +42,6 @@ export function sunriseMotionPose(state:SunriseClock,now:number,timing:SunriseTi
  const step=kind==='attack'?sunriseFrameMs(timing.attackSeconds,count):kind==='skill'?sunriseFrameMs(timing.castSeconds,count):125;
  return {kind,frame:kind==='idle'?Math.floor(now/125)%count:Math.min(count-1,Math.max(0,Math.floor((now-state.t)/step)))};
 }
+
 
 

@@ -679,7 +679,7 @@ export function action(save:Save,a:any,now=Date.now(),rng:()=>number=Math.random
  case 'learn':{const sk=DATA.skills[a.skill];if(!sk||!specialSkillSupported(a.skill,sk.type)||c.skills.includes(a.skill)||c.lv<skillLevel(c,sk))throw Error('未符合職業或等級需求，或已學會此魔法');const reason=elementError(c,sk);if(reason)throw Error(reason);if(a.npc!==undefined){if(!isGilenTeacher(c.zone,findNpc(c.zone,String(a.npc),c.npcConfig)))throw Error('請至目前村莊的吉倫學習');const book=Object.keys(gilenBookStock()).find(id=>DATA.items[id].sk===a.skill);if(!book)throw Error('吉倫僅傳授 1～3 級一般魔法');const cost=purchaseCost(c.zone,String(a.npc),book,1,c.npcConfig);if(c.gold<cost)throw Error('金幣不足');c.gold-=cost;}else{const book=a.book!==undefined?String(a.book):availableSkillBook(c,a.skill);if(book&&(!c.bag[book]||c.locked?.includes(book)||DATA.items[baseItem(book)]?.type!=='skillbk'||DATA.items[baseItem(book)]?.sk!==a.skill))throw Error('需要背包中未鎖定的對應技能書');if(!book)throw Error('需要背包中未鎖定的對應技能書');consume(c,book);}c.skills.push(a.skill);log(c,`學會 ${sk.n}`,'magic',now);break;}
  case 'cast':{const before=c.eventSeq||0;cast(c,a.skill,now,rng);for(const event of c.events||[])if(event.seq>before)event.manual=true;break;}
  case 'autoSkill':if(!c.skills.includes(a.skill))throw new Error('尚未學習');c.autoSkills=c.autoSkills.includes(a.skill)?c.autoSkills.filter(k=>k!==a.skill):[...c.autoSkills,a.skill].slice(-4);if(c.autoConfig){const kind=DATA.skills[a.skill]?.type;if(kind==='buff'){const buffs=c.autoConfig.buffs;c.autoConfig=validateAutoConfig(c,{buffs:buffs.includes(a.skill)?buffs.filter(id=>id!==a.skill):[...buffs,a.skill]});}else if(['atk','heal','convert'].includes(kind)){const key=kind==='atk'?'attack':kind;c.autoConfig=validateAutoConfig(c,{[key]:c.autoConfig[key as 'attack'|'heal'|'convert']===a.skill?'':a.skill});}}break;
- case 'target':if(!Number.isInteger(a.slot)||!c.arena?.[a.slot]?.hp)throw new Error('目標不存在');c.arenaTarget=a.slot;syncTarget(c);break;
+ case 'target':if(!Number.isInteger(a.slot)||!c.arena?.[a.slot]?.hp)throw new Error('目標不存在');c.arenaTarget=a.slot;syncTarget(c);event(c,'state',now,{effect:'target-selected',slot:a.slot,uid:c.arena![a.slot].uid});break;
  case 'enhance':if(a.expectedEn!==undefined&&a.expectedEn!==(c.enh[a.item]||0))throw new Error('裝備強化值已變更，請重新點選');log(c,enhanceGear(c,String(a.item),String(a.mode||'normal'),rng),'loot',now);break;
  case 'affix':log(c,affixGear(c,String(a.item),rng,String(a.npc||''),a.material===undefined?undefined:String(a.material)),'loot',now);break;
  case 'attrMagic':log(c,weaponMagicGear(c,String(a.item),rng,String(a.npc||''),undefined,a.element||'fire',Number(a.goal||0),Number(a.maxCount||1)),'loot',now);break;
@@ -695,5 +695,6 @@ export function action(save:Save,a:any,now=Date.now(),rng:()=>number=Math.random
  }
  for(const ch of save.characters)settleBossRewards(ch,now,rng);bindDollCollections(save);bindPolymorphUnlocks(save);ensureArena(c,rng,now);const b=stats(c,now);c.hp=clamp(c.hp,1,b.maxHp);event(c,'state',now);c.mp=clamp(c.mp,0,b.maxMp);
 }
+
 
 

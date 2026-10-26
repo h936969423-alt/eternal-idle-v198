@@ -68,4 +68,15 @@ test('the real 125ms motion sampler releases HP only at its displayed contact fr
  assert.equal(hitSync.allowLocalHit(ownerKey,'mob',2,625),false);
  h.unmount();assert.equal(hitSync.allowLocalHit(ownerKey,'mob',3,626),true);
 });
+test('changing selection during a swing cannot redirect its contact to another monster',()=>{
+ const h=harness(),ownerKey='mid-swing:zone';
+ h.render({identity:ownerKey,local:{running:true,hasTarget:true,blocked:false,ownerKey,targetUid:'left',targetSlot:0,liveTargetUids:['left','right']}});
+ hitSync.queueLocalHitTargets(ownerKey,[{seq:1,kind:'attack',uid:'left',slot:0}]);
+ h.advance(450);
+ h.render({local:{running:true,hasTarget:true,blocked:false,ownerKey,targetUid:'right',targetSlot:1,liveTargetUids:['left','right']}});
+ hitSync.queueLocalHitTargets(ownerKey,[{seq:2,kind:'attack',uid:'right',slot:1}]);
+ h.advance(625);assert.equal(hitSync.allowLocalHit(ownerKey,'right',2,625),false);assert.equal(hitSync.allowLocalHit(ownerKey,'left',1,625),true);
+ h.advance(1025);assert.equal(hitSync.allowLocalHit(ownerKey,'right',2,1025),true);h.unmount();
+});
+
 

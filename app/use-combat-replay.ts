@@ -7,7 +7,7 @@ import {baseItem} from '@/lib/game/gear';
 import {petSnapshot} from '@/lib/game/engine';
 import {replayHasGap,replayFrameExpired} from '@/lib/game/replay-timing';
 import { combatSound } from './combat-audio';
-import {localHitOwner,allowLocalHit,clearLocalHits} from '@/lib/game/local-hit-sync';
+import {localHitOwner,allowLocalHit,clearLocalHits,queueLocalHitTargets,currentLocalSwing} from '@/lib/game/local-hit-sync';
 import {applyCombatViewEvent,drainCombatPresentation,enqueueSunriseReplay,prepareCombatHealth,type BattleView,type TimedCombatEvent} from '@/lib/game/combat-presentation';
 export type {BattleView} from '@/lib/game/combat-presentation';
 export function useCombatReplay(c:Character|null,sound:boolean){
@@ -15,7 +15,7 @@ export function useCombatReplay(c:Character|null,sound:boolean){
  latest.current=c;soundOn.current=sound;
  useEffect(()=>{if(!c)return;const fresh=(c.events||[]).filter(e=>e.seq>seen.current);const reset=owner.current!==c.id||zone.current!==c.zone||fresh.length&&(replayHasGap(fresh,seen.current)||(c.eventSeq||0)-seen.current>160||Date.now()-fresh[0].at>6000)||document.visibilityState==='hidden';
  if(reset){if(owner.current)clearLocalHits(localHitOwner(owner.current,zone.current));owner.current=c.id;zone.current=c.zone;seen.current=c.eventSeq||0;queue.current=[];impacts.current=[];offset.current=null;health.current=new Map((c.arena||[]).map(m=>[m.uid,m.hp]));setView({petEntities:petSnapshot(c,Date.now()),summonEntities:c.summonContract?.entities||[],hp:c.hp,mp:c.mp,target:c.arenaTarget||0,arena:(c.arena||[]).map(m=>({...m})),floats:[]});return;}
- if(fresh.length){const prepared=enqueueSunriseReplay(queue.current,prepareCombatHealth(fresh,health.current),performance.now(),offset.current);queue.current=prepared.queue;offset.current=prepared.offset;seen.current=c.eventSeq||seen.current;}
+ if(fresh.length){queueLocalHitTargets(localHitOwner(c.id,c.zone),fresh);const prepared=enqueueSunriseReplay(queue.current,prepareCombatHealth(fresh,health.current),performance.now(),offset.current);queue.current=prepared.queue;offset.current=prepared.offset;seen.current=c.eventSeq||seen.current;}
  else if(!queue.current.length&&!impacts.current.length){if(!c.running){offset.current=null;}health.current=new Map((c.arena||[]).map(m=>[m.uid,m.hp]));setView(v=>({...v,petEntities:petSnapshot(c,Date.now()),summonEntities:c.summonContract?.entities||[],hp:c.hp,mp:c.mp,target:c.arenaTarget||0,arena:(c.arena||[]).map(m=>({...m}))}));}
  },[c]);
  useEffect(()=>{
@@ -33,6 +33,8 @@ export function useCombatReplay(c:Character|null,sound:boolean){
     if(current){seen.current=current.eventSeq||0;health.current=new Map((current.arena||[]).map(m=>[m.uid,m.hp]));setView({petEntities:petSnapshot(current,Date.now()),summonEntities:current.summonContract?.entities||[],hp:current.hp,mp:current.mp,target:current.arenaTarget||0,arena:(current.arena||[]).map(m=>({...m})),floats:[]});}
    }
    lastFrame=now;
+   const character=latest.current;
+   if(character)queueLocalHitTargets(localHitOwner(character.id,character.zone),queue.current);
    const ready=drainCombatPresentation(queue.current,impacts.current,now,!!(raw.items as any)[baseItem(latest.current?.equipment.weapon?.id||'')]?.isBow,event=>{
     const root=document.querySelector('.static-arena'),player=root?.querySelector(event.source==='doll'?'.doll-companion-art':'.character-sprite'),monster=root?.querySelector(`[data-monster-slot="${event.slot}"] .four-monster-art`);
     if(!player||!monster)return magicFlightMs(320);
@@ -50,6 +52,8 @@ export function useCombatReplay(c:Character|null,sound:boolean){
     if(cleanup&&(result.actions||[]).some(e=>now-e.shownAt>=5000)||cleanup&&result.floats.some(f=>now-f.shownAt>=800)||cleanup&&(result.casts||[]).some(f=>now-f.shownAt>=magicEffectLifetime(f))){
      result={...result,actions:(result.actions||[]).filter(e=>now-e.shownAt<5000),casts:(result.casts||[]).filter(f=>now-f.shownAt<magicEffectLifetime(f)),floats:result.floats.filter(f=>now-f.shownAt<800)};
     }
+    const c=latest.current,swing=c&&currentLocalSwing(localHitOwner(c.id,c.zone)),slot=swing?result.arena.findIndex(m=>m.uid===swing.uid&&m.hp>0):-1;
+    if(slot>=0&&result.target!==slot)result={...result,target:slot};
     return result;
    });
    animation=requestAnimationFrame(tick);
@@ -60,6 +64,7 @@ export function useCombatReplay(c:Character|null,sound:boolean){
 
  return c&&owner.current!==c.id?{petEntities:petSnapshot(c,Date.now()),summonEntities:c.summonContract?.entities||[],hp:c.hp,mp:c.mp,arena:c.arena||[],target:c.arenaTarget||0,floats:[]}:view;
 }
+
 
 
 
