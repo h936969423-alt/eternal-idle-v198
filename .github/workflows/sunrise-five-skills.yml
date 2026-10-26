@@ -70,6 +70,7 @@ jobs:
           node scripts/test-cast-route-auth.cjs
           node scripts/test-post-cast-continuity.cjs
           node scripts/test-cast-click-feedback.cjs
+          node scripts/test-spell-start-sync.cjs
           node scripts/test-continuous-combat-poll.cjs
           node node_modules/typescript/bin/tsc --noEmit --incremental false
       - name: Build complete Cloudflare Worker

@@ -39,8 +39,10 @@ for(const event of annotated.characters[0].events.filter(e=>[11,12,13].includes(
 assert.equal((visual.casts||[]).length,0,'confirmation cannot replay an already previewed graphic');
 assert.equal(visual.floats.filter(x=>x.kind==='attack').length,2,'all authoritative damage numbers still render');
 assert.ok(feedback.canPreviewSpellEffect('sk_meteor'));
-for(const skill of ['sk_shock_stun','sk_elf_triple','sk_lightarrow','sk_shield'])assert.equal(feedback.canPreviewSpellEffect(skill),false,skill+' retains confirmed-only effect');
+for(const skill of ['sk_shock_stun','sk_elf_triple','sk_dark_crit'])assert.equal(feedback.canPreviewSpellEffect(skill),false,skill+' retains confirmed-only effect');
 const arena=fs.readFileSync('app/battle-arena.tsx','utf8');assert.ok(arena.includes('pendingCast?.effectPreviewed'));assert.ok(!arena.includes('!((view.casts||[]).some'),'confirmation must not unmount the preview and replace it with a second effect');
 console.log('PASS: one click / one effect; fast and late AoE confirmations do not create extra graphics; damage, poses, projectiles, buffs and stun success remain authoritative.');
 
 assert.ok(feedback.spellEffectPreviewDuration('sk_blizzard')>=1438,'preview survives every source frame, including clips longer than 1200ms');
+
+for(const skill of ['sk_lightarrow','sk_shield','sk_heal1','sk_teleport'])assert.ok(feedback.canPreviewSpellEffect(skill),skill+' starts with the cast pose');assert.equal(feedback.spellPreviewNeedsTarget('sk_shield'),false);assert.equal(feedback.spellPreviewNeedsTarget('sk_lightarrow'),true);
