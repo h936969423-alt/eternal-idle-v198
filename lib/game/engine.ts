@@ -18,6 +18,7 @@ import {TRIPLE_SHOT_GAP_MS,ARROW_FLIGHT_MS} from './projectile-timing';
 import {mapIsOpen,SAFE_MAP,type MapAccessState} from './map-access';
 import {lootAppearance,type ItemRarity,type LootNotice,type LootAppearanceConfig} from './loot-appearance';
 import {requiredSkillLevel,elementError,availableSkillBook,skillMpCost,rollDice,abnormalHit,healingAmount,weaponRequirement,spellClockKey,spellDamage,buffModifiers} from './spell-rules';
+import {availableSkills,hasSkill} from './skill-access';
 import {AUTO_SPELL_CHECK_MS,spellChannel,spellIntervalMs,spellReady,nextSpellAt,type SpellCooldowns} from './spell-timing';
 import {bossMemberDrops,bossGoldRange} from './boss-loot';
 import {activeSpeedStages,legacySpeedStage,useReusableSpeed} from './reusable-speed';
@@ -241,7 +242,7 @@ attack.critical=strike.critical;attack.heavy=strike.heavy;attack.graze=strike.gr
  return dealt;
 }
 export function cast(c:Character,k:string,now=Date.now(),rng:()=>number=Math.random,silent=false){
- const s=DATA.skills[k],oldHp=c.hp;if(!s||!c.skills.includes(k))throw Error('尚未學習此技能');
+ const s=DATA.skills[k],oldHp=c.hp;if(!s||!hasSkill(c,k))throw Error('尚未學習此技能');
  if(['silence','stun','stone','freeze','sleep','paralyze'].some(x=>c.buffs['status_'+x]?.until>now)||c.buffs.sk_abs_barrier?.until>now)throw Error('目前無法施法');
  if(!specialSkillSupported(k,s.type)||s.type==='passive')throw Error('此技能目前不能主動施放');
  const reason=elementError(c,s);if(reason)throw Error(reason);
