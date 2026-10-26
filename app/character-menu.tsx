@@ -3,7 +3,7 @@ import {useEffect,useState} from 'react';
 import {Button} from '@/components/ui/button';
 import {MAX_CHARACTERS} from '@/lib/game/character-menu';
 import type {Save} from '@/lib/game/engine';
-const classes:Record<string,string>={knight:'騎士',elf:'妖精',mage:'法師',dark:'黑暗妖精'};
+const classes:Record<string,string>={royal:'王族',knight:'騎士',elf:'妖精',mage:'法師',dark:'黑暗妖精'};
 export default function CharacterMenu({save,busy,error,serverOffset,onEnter,onCreate,act,onRefresh}:{save:Save;busy:boolean;error:string;serverOffset:number;onEnter:(id:string)=>Promise<void>;onCreate:()=>void;act:(a:any)=>Promise<any>;onRefresh:()=>void}){
  const [now,setNow]=useState(()=>Date.now());
  const hasPending=!!Object.keys(save.characterDeletions||{}).length;
@@ -16,3 +16,4 @@ export default function CharacterMenu({save,busy,error,serverOffset,onEnter,onCr
  </article>;
  })}{save.characters.length<MAX_CHARACTERS&&<button className="character-menu-card character-menu-create" disabled={busy} onClick={onCreate}><span aria-hidden="true">＋</span><strong>建立角色</strong><small>尚可建立 {MAX_CHARACTERS-save.characters.length} 位</small></button>}</section><footer><p>每個帳號最多建立 3 位角色。刪除後，該角色與隨身裝備、背包及角色倉庫會一併移除。</p><p>按下刪除後倒數 10 秒，期間可取消刪除；倒數結束後無法復原。</p></footer></main>;
 }
+

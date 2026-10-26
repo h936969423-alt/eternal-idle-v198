@@ -8,7 +8,7 @@ import {baseItem} from '@/lib/game/gear';
 import type {Character,CombatEvent} from '@/lib/game/engine';
 export default function CombatProjectile({event,c,arena,interval}:{event:CombatEvent;c:Character;interval:number;arena:RefObject<HTMLDivElement|null>}){
  const [shots,setShots]=useState<{x:number;y:number;src:string;flip:boolean;width:number;blend:'screen'|'normal';angle:number}[]>([]);
- useEffect(()=>{const root=arena.current,player=root?.querySelector(event.source==='doll'?'.doll-companion-art':'.character-sprite'),monster=root?.querySelector(`[data-monster-slot="${event.slot}"] .four-monster-art`);if(event.visualPhase==='impact'||!root||!player||!monster||monster.closest('[data-monster-uid]')?.getAttribute('data-monster-uid')!==event.uid||event.source==='summon'||event.source==='poison'||event.source==='pet')return;
+ useEffect(()=>{const root=arena.current,player=root?.querySelector(event.source==='doll'?'.doll-companion-art':'.character-sprite'),monster=root?.querySelector(`[data-monster-slot="${event.slot}"] .four-monster-art`);if(event.visualEffectPreviewed||event.visualPhase==='impact'||!root||!player||!monster||monster.closest('[data-monster-uid]')?.getAttribute('data-monster-uid')!==event.uid||event.source==='summon'||event.source==='poison'||event.source==='pet')return;
  const {config}=magicVisual(event),weapon=(raw.items as any)[baseItem(c.equipment.weapon?.id||'')],arrow=event.source!=='doll'&&(!event.skill||event.skill==='sk_elf_triple')&&(weapon?.isBow||event.magicProjectile)&&!event.weaponProc&&event.source!=='magic';if(!arrow&&!config?.proj)return;
  const r=root.getBoundingClientRect(),p=player.getBoundingClientRect(),m=monster.getBoundingClientRect(),from={x:p.left-r.left+p.width*.6,y:p.top-r.top+p.height*.55},to={x:m.left-r.left+m.width/2,y:m.top-r.top+m.height*.55};
  const facing=config?magicDirection(config,to.x-from.x,to.y-from.y):undefined;
@@ -21,3 +21,4 @@ export default function CombatProjectile({event,c,arena,interval}:{event:CombatE
  },[event.seq]);
  return <>{shots.map((shot,i)=><img key={i} className="combat-projectile" src={shot.src} alt="" style={{mixBlendMode:shot.blend,left:shot.x,top:shot.y,width:shot.width,transform:`translate(-50%,-50%) rotate(${shot.angle}deg) scaleX(${shot.flip?-1:1})`}}/>)}</>;
 }
+

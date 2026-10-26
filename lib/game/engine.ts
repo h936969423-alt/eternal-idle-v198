@@ -18,6 +18,7 @@ import {TRIPLE_SHOT_GAP_MS,ARROW_FLIGHT_MS} from './projectile-timing';
 import {mapIsOpen,SAFE_MAP,type MapAccessState} from './map-access';
 import {lootAppearance,type ItemRarity,type LootNotice,type LootAppearanceConfig} from './loot-appearance';
 import {requiredSkillLevel,elementError,availableSkillBook,skillMpCost,rollDice,abnormalHit,healingAmount,weaponRequirement,spellClockKey,spellDamage,buffModifiers} from './spell-rules';
+import {availableSkills,hasSkill} from './skill-access';
 import {AUTO_SPELL_CHECK_MS,spellChannel,spellIntervalMs,spellReady,nextSpellAt,type SpellCooldowns} from './spell-timing';
 import {bossMemberDrops,bossGoldRange} from './boss-loot';
 import {activeSpeedStages,legacySpeedStage,useReusableSpeed} from './reusable-speed';
@@ -67,7 +68,7 @@ export const DATA = raw as unknown as {items:Record<string,any>;mobs:Record<stri
 DATA.items=new Proxy(DATA.items,{get:(target,key)=>typeof key==='string'?(Object.prototype.hasOwnProperty.call(target,baseItem(key))?target[baseItem(key)]:undefined):Reflect.get(target,key)});
 export const BASES = bases as Record<string,Record<string,number>>;
 export type Encounter={spawnPoint?:{x:number;y:number};dragonState?:DragonMemory;summonedBy?:string;expiresAt?:number;retiring?:boolean;definition?:MonsterDefinition;mp?:number;maxMp?:number;createdAt?:number;regenAt?:number;uid:string;id:string;hp:number;maxHp?:number;clock:number;effects?:Record<string,{until:number;value:number;nextAt?:number;tickMs?:number}>;magicClocks?:Record<string,number>;respawnAt?:number};
-export type CombatEvent={magicProjectile?:boolean;visualPhase?:'launch'|'impact';visualAt?:number;visualCastAt?:number;visualFlightMs?:number;loot?:LootNotice;dragonAction?:number;dragonGfx?:number;dragonEffect?:number;dragonSkill?:number;dragonNpc?:number;dragonDuration?:number;weaponProc?:boolean;motion?:'attack'|'skill';petName?:string;petUid?:string;petEntities?:PetSnapshot[];critical?:boolean;heavy?:boolean;graze?:boolean;summonUid?:string;summonEntities?:SummonEntity[];summonName?:string;manual?:boolean;seq:number;at:number;kind:'attack'|'hurt'|'heal'|'spawn'|'state'|'magic'|'loot';slot?:number;uid?:string;mob?:string;damage?:number;source?:'physical'|'magic'|'summon'|'poison'|'pet'|'monster'|'doll';dollId?:string;dollKind?:'attack'|'recovery'|'guard';pet?:string;miss?:boolean;hp:number;mp:number;mobHp?:number;spawn?:Encounter;targetEffects?:Encounter['effects'];target?:number;polyName?:string;casterSlot?:number;monsterMp?:number;skill?:string;effectName?:string;effect?:string;item?:string};
+export type CombatEvent={visualEffectPreviewed?:boolean;magicProjectile?:boolean;visualPhase?:'launch'|'impact';visualAt?:number;visualCastAt?:number;visualFlightMs?:number;loot?:LootNotice;dragonAction?:number;dragonGfx?:number;dragonEffect?:number;dragonSkill?:number;dragonNpc?:number;dragonDuration?:number;weaponProc?:boolean;motion?:'attack'|'skill';petName?:string;petUid?:string;petEntities?:PetSnapshot[];critical?:boolean;heavy?:boolean;graze?:boolean;summonUid?:string;summonEntities?:SummonEntity[];summonName?:string;manual?:boolean;seq:number;at:number;kind:'attack'|'hurt'|'heal'|'spawn'|'state'|'magic'|'loot';slot?:number;uid?:string;mob?:string;damage?:number;source?:'physical'|'magic'|'summon'|'poison'|'pet'|'monster'|'doll';dollId?:string;dollKind?:'attack'|'recovery'|'guard';pet?:string;miss?:boolean;hp:number;mp:number;mobHp?:number;spawn?:Encounter;targetEffects?:Encounter['effects'];target?:number;polyName?:string;casterSlot?:number;monsterMp?:number;skill?:string;effectName?:string;effect?:string;item?:string};
 export type BossRoom={ledger?:BossBattleLedger;generation?:BossGeneration;dropDefinition?:BossDropDefinition;arena:Encounter[];respawnAt:number;regenAt?:number};
 export type PetSnapshot={uid:string;form:string;lv:number;hp:number;mp:number;maxHp:number;maxMp:number;deadAt?:number};
 export type Character={restoredControlRings?:{key:string;from:import('./lineagew-migration').RetiredEquipment;at:number}[];protectionShield?:number;retiredEquipment?:import('./lineagew-migration').RetiredEquipment[];hybridPity?:Record<string,PityRecord>;npcConfig?:NpcConfig;healingOverTime?:{skill:string;amount:number;nextAt:number;remaining:number};tripleNeedsNormal?:boolean;tripleResumeAt?:number;mapAccess?:MapAccessState;lootAppearance?:LootAppearanceConfig;elfEle?:string;skillCooldowns?:Record<string,number>;stormClocks?:Record<string,number>;spellCooldowns?:SpellCooldowns;lastBossVictory?:BossVictoryReceipt;masteries?:MasteryState;petActives?:string[];summonChoice?:string;summonContract?:SummonContract;mastery?:string;dollSystemVersion?:2;dollSeed?:string;dollSeq?:number;dollPity?:Record<number,number>;dollCollection?:string[];dollCardDex?:Record<string,number>;mapPools?:Record<string,MapGeneration>;bossGeneration?:Record<string,BossGeneration>;monsterDefinitions?:Record<string,MonsterDefinition>;bossDropDefinitions?:Record<string,BossDropDefinition>;dollDefinitions?:Record<string,DollDefinition>;dollStartedAt?:number;mobKills?:Record<string,number>;collection?:string[];blueDiamonds?:number;pets?:Record<string,PetProgress>;petTraining?:string;petActive?:string;petClock?:number;dollUntil?:number;dollUnlocks?:string[];dollFragments?:Record<number,number>;panaceaUsed?:number;summons?:{skill:string;until:number;damage:number;count:number;lastAt:number};autoSupplyVersion?:1;bossRooms?:Record<string,BossRoom>;id:string;name:string;cls:string;gender:string;lv:number;xp:number;gold:number;hp:number;mp:number;attrs:Record<string,number>;points:number;levelPointsVersion?:2;bag:Record<string,number>;equipment:Record<string,{id:string;en:number}>;enh:Record<string,number>;skills:string[];autoSkills:string[];zone:string;running:boolean;mob:string|null;mobHp:number;atkClock:number;mobClock:number;autoConfig?:AutoConfig;openedUid?:string;lastOffensiveAt?:number;autoPotion:boolean;potion:string;threshold:number;buffs:Record<string,{until:number;d:Record<string,number>}>;kills:number;deaths:number;logs:{time:number;text:string;kind:string;item?:string;rarity?:ItemRarity}[];lastHit:number;lastTaken:number;doll:string|null;bank:Record<string,number>;arena?:Encounter[];arenaZone?:string;arenaTarget?:number;events?:CombatEvent[];eventSeq?:number;affixes?:Record<string,Affix>;darkAffixes?:Record<string,DarkAffix[]>;lastGear?:{key:string;result:string;nonce:string};locked?:string[];autoSell?:string[];magicBarrierCooldown?:number;poly?:{id:string;until:number};polyUnlocked?:string[];polyPreferred?:string;autoPoly?:boolean;autoBuyPoly?:boolean;polyLook?:boolean;population?:{zone:string;countMultiplier:number;slots:{id:string;killedAt:number}[]};targetSlot?:number;mapPopulations?:Record<string,{zone:string;countMultiplier:number;slots:{id:string;killedAt:number}[]}>;};
@@ -241,7 +242,7 @@ attack.critical=strike.critical;attack.heavy=strike.heavy;attack.graze=strike.gr
  return dealt;
 }
 export function cast(c:Character,k:string,now=Date.now(),rng:()=>number=Math.random,silent=false){
- const s=DATA.skills[k],oldHp=c.hp;if(!s||!c.skills.includes(k))throw Error('尚未學習此技能');
+ const s=DATA.skills[k],oldHp=c.hp;if(!s||!hasSkill(c,k))throw Error('尚未學習此技能');
  if(['silence','stun','stone','freeze','sleep','paralyze'].some(x=>c.buffs['status_'+x]?.until>now)||c.buffs.sk_abs_barrier?.until>now)throw Error('目前無法施法');
  if(!specialSkillSupported(k,s.type)||s.type==='passive')throw Error('此技能目前不能主動施放');
  const reason=elementError(c,s);if(reason)throw Error(reason);
@@ -298,10 +299,20 @@ export function cast(c:Character,k:string,now=Date.now(),rng:()=>number=Math.ran
     continue;
    }
    if(k==='sk_shock_stun'){
-    const dealt=normalWeaponAttack(c,live,now,rng,undefined,k,b);total+=dealt;
-    if(dealt>0&&live.hp>0){if(playableBoss(c.zone)){
-     if(!(live.effects?.stun?.until!>now)&&!(live.effects?.stunImmune?.until!>now)&&rng()<Math.min(.95,.3+(b.stunHit||0)/100)){live.effects||={};live.effects.stun={until:now+2000,value:1};live.effects.stunImmune={until:now+4000,value:1};event(c,'magic',now,{skill:k,slot,uid:live.uid,targetEffects:structuredClone(live.effects)});}
-    }else applySpellStatus(c,live,def,{kind:'stun',dur:6},k,b,now,rng);}
+    // A control skill is one skill strike, never the full normal-attack proc chain.
+    const strike=playerStrike(c,b,def,rng,undefined,now,{skill:true});
+    if(strike.miss){
+     event(c,'attack',now,{slot,uid:live.uid,mob:live.id,mobHp:live.hp,damage:0,miss:true,skill:k,source:'physical'});
+    }else{
+     const damage=Math.max(1,strike.damage+(s.skillAddDmg||0)+elementalWeaponDamage(c,def.e||'none'));
+     damageMonster(c,damage,now,rng,k,'physical');total+=c.lastHit;
+     const hit=c.events?.findLast(e=>e.kind==='attack'&&e.skill===k&&e.uid===live.uid);
+     if(hit){hit.critical=strike.critical;hit.heavy=strike.heavy;hit.graze=strike.graze;}
+    }
+    let stunned=false;
+    if(!strike.miss&&live.hp>0&&!(live.effects?.stun?.until!>now)&&rng()<(s.stunChance??.1))
+     stunned=!!applySpellStatus(c,live,def,{kind:'stun',dur:6},k,b,now,rng);
+    if(!stunned)event(c,'state',now,{skill:k,slot,uid:live.uid,mob:live.id,miss:true,effect:'衝暈失敗'});
     continue;
    }
    if(s.darkCrit){const max=w?(def.s==='L'?w.dmgL:w.dmgS)||2:2,damage=Math.max(0,max+b.meleeDmg+b.extraDmg-(def.dr||0))*(1+b.meleeCritDmg/100)*critMult;damageMonster(c,damage,now,rng,k,'physical');total+=c.lastHit;const hit=c.events?.findLast(e=>e.kind==='attack');if(hit)hit.critical=true;continue;}
@@ -323,7 +334,7 @@ function applySpellStatus(c:Character,target:Encounter,m:any,status:any,id:strin
  if(m.boss)return;
  if(status.pct!==undefined&&rng()*100>=status.pct||!status.force&&!abnormalHit(c.lv,b,m,rng,20,(status.hitOff||0)+(status.kind==='stun'?b.stunHit||0:status.kind==='blind'?b.blindHit||0:0)))return;
  const key=statusKey(status.kind),value=key==='poison'?rollDice(...(status.dmg||[1,8]) as [number,number],rng):key==='blind'?status.hit||4:key==='slow'?100:key==='vulnerable'?58:key==='weak'?5:1;
- target.effects||={};target.effects[key]={until:now+(status.dur||6)*1000,value,nextAt:now+(status.tick||3)*1000};event(c,'magic',now,{slot:c.arena!.indexOf(target),uid:target.uid,mob:target.id,skill:id,targetEffects:structuredClone(target.effects)});
+ target.effects||={};target.effects[key]={until:now+(status.dur||6)*1000,value,nextAt:now+(status.tick||3)*1000};event(c,'magic',now,{slot:c.arena!.indexOf(target),uid:target.uid,mob:target.id,skill:id,...(id==='sk_shock_stun'?{effect:'狀態命中'}:{}),targetEffects:structuredClone(target.effects)});return true;
 }
 function applyLineageWAbsorption(c:Character,target:Encounter,dealt:number,now:number,rng:()=>number){
  const eq=c.equipment.weapon,p=lineageWEffectProfile(DATA.items[eq?.id||''],eq?.en||0);if(!p||dealt<=0)return;

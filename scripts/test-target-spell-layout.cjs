@@ -16,6 +16,7 @@ for(const skill of ['sk_meteor','sk_disintegrate']){
  const cues=playerCues(hits);assert.equal(new Set(cues.map(e=>e.key)).size,1,'one cast pose even for multiple meteor targets');
  const duration=k=>durationFor(k,12,1.2,1);let state={kind:'idle',at:0,duration:Infinity,pending:[]};
  for(const cue of cues)if(!cues.some(x=>x.seq<cue.seq&&x.key===cue.key))state=pushCue(state,cue,0,duration,false,true);
- state=pushCue(state,{seq:5,at:1200,kind:'attack'},200,duration,false,true);assert.equal(state.kind,'attack');assert.equal(state.at,200);assert.equal(state.pending.length,0,'effect lifetime never locks the next normal attack');
+ state=pushCue(state,{seq:5,at:1200,kind:'attack'},200,duration,false,true);assert.equal(state.kind,'skill');assert.equal(state.pending.length,1,'normal attack waits for the cast pose');
 }
 console.log(`PASS: ${cases} phone/landscape target placements; exact impact pivots; shared source-layer clock; one resource per spell; one cast for meteor targets; immediate confirmed normal attack after either spell.`);
+

@@ -8,11 +8,20 @@ const {pushCue,advanceMotion,durationFor}=game('animation-clock');
 const {playerCues}=game('animation-cues');
 const {enqueueCombatReplay,drainCombatPresentation}=game('combat-presentation');
 const duration=k=>durationFor(k,12,1.2,1.4);
+assert.equal(durationFor('skill',8,0,1.2),1000,'Sunrise cast runs at 125ms/frame for an 8-frame cast');
+assert.equal(durationFor('skill',8,0,.1),360,'Sunrise fast casts never run below 45ms/frame');
+let queued={kind:'skill',at:0,duration:1000,pending:[]};
+queued=pushCue(queued,{seq:101,kind:'attack',at:250,immediate:true},250,duration,false,true);
+assert.equal(queued.kind,'skill','local attack waits for the cast pose');
+assert.equal(queued.pending.length,1);
+queued=advanceMotion(queued,1000,duration);
+assert.equal(queued.kind,'attack','pending local attack begins as soon as casting ends');
+assert.equal(queued.at,1000);
 // Reproduce the long cast pose covering a normal attack which already landed.
 let state={kind:'skill',at:0,duration:1400,pending:[]};
 state=pushCue(state,{seq:2,kind:'attack',at:200},200,duration,false,true);
-assert.equal(state.kind,'attack');assert.equal(state.at,200);assert.equal(state.pending.length,0);
-assert.equal(advanceMotion(state,700,duration).kind,'attack');
+assert.equal(state.kind,'skill');assert.equal(state.pending.length,1);state=advanceMotion(state,1400,duration);assert.equal(state.kind,'attack');assert.equal(state.at,1400);
+assert.equal(advanceMotion(state,1500,duration).kind,'attack','attack remains active after cast handoff');
 // Incoming damage cannot reset a player's cast; a real new cast can replace flinch.
 state={kind:'skill',at:0,duration:1400,pending:[]};
 assert.deepEqual(pushCue(state,{seq:3,kind:'hurt',at:100},100,duration,false,true),state);
@@ -28,7 +37,7 @@ for(const [seq,at,arrived] of [[2,1200,5300],[3,2400,6600],[4,3600,7900],[5,4800
  replay=enqueueCombatReplay(replay.queue,[{...base,seq,at,kind:'attack',source:'physical',damage:10}],arrived,replay.offset,true);
  assert.equal(replay.offset,clock,'post-cast packets retain the ordinary buffered clock');
  const displayed=Math.max(arrived,at+clock);const shown=drainCombatPresentation(replay.queue,[],displayed);assert.equal(shown.length,1);assert.equal(shown[0].seq,seq);
- const cue=playerCues(shown)[0];state=pushCue({kind:'skill',at:arrived-100,duration:1400,pending:[]},cue,displayed,duration,false,true);assert.equal(state.kind,'attack');assert.equal(state.at,displayed);
+ const cue=playerCues(shown)[0];state=pushCue({kind:'skill',at:arrived-100,duration:1400,pending:[]},cue,displayed,duration,false,true);assert.equal(state.kind,'skill');assert.equal(state.pending.length,1);state=advanceMotion(state,arrived+1300,duration);assert.equal(state.kind,'attack');
 }
 // Confirmed bow attacks retain their actual flight deadline and late lethal ordering.
 const pending=[];replay=enqueueCombatReplay([],[{...base,seq:6,at:5000,kind:'attack',damage:100,source:'physical',mobHp:0},{...base,seq:7,at:5000,kind:'loot',item:'test'}],9400,clock,true);
@@ -44,4 +53,5 @@ const c=e.createCharacter('銜接測試','mage','m',allocation,start),save=e.emp
 console.log('PASS: cast-to-normal handoff has no visual lock; hit reaction cannot stall casting; ordinary replay keeps its buffered clock after an immediate cast; bow impact/loot order and triple cadence retained; monster/spawn/death priority unchanged.');
 
 }finally{fs.rmSync(dir,{recursive:true,force:true});}
+
 

@@ -16,38 +16,32 @@ const casts=(c,id)=>c.events.filter(x=>x.kind==='magic'&&x.skill===id);
 const run=(s,end)=>e.advance(s,end,()=>.5);
 try{
  const f=require(path.join(dir,'magic-formulas.js')),r=require(path.join(dir,'spell-rules.js'));
- for(const [int,expected] of [[25,[4,2,6,16,0]],[40,[8,8,10,26,2]],[60,[15,18,15,30,7]]]){
-  const b=f.magicIntBonuses(int);assert.deepEqual(Object.values(b),expected);
-  for(const cls of ['knight','mage','elf','dark']){const {c}=fixture(cls);c.equipment={};c.attrs.int=int;const st=e.stats(c,time);for(const key of ['mdmg','sp','magicHit','magicCrit','mpReduce'])assert.equal(st[key],b[key],cls+key);}
- }
- assert.deepEqual(f.magicIntBonuses(200),f.magicIntBonuses(75));
- for(const [mr,expected]of [[0,1],[10,.95],[60,.7],[100,.5],[200,.4],[600,0]])assert.equal(f.spellMrMultiplier(mr),expected);
- const b={...f.magicIntBonuses(40),int:40},spell={dmgDice:[1,6],tier:1};
- assert.equal(r.spellDamage(spell,b,{mr:0},()=>.5,'elf'),23);
- assert.equal(r.spellDamage(spell,b,{mr:0},()=>.5,'mage'),35);
- assert.equal(r.spellDamage(spell,b,{mr:100},()=>.5,'mage'),17);
- const crit={critical:false};assert.equal(r.spellDamage(spell,{...b,magicCrit:100},{mr:0},()=>.5,'mage',crit),45);assert.equal(crit.critical,true);
- assert.equal(r.spellDamage({...spell,ele:'fire'},b,{mr:0,e:'earth'},()=>.5,'elf'),29);
- assert.equal(r.healingAmount(e.DATA.skills.sk_heal1,{...b,sp:9999},999,()=>0),35);
- assert.equal(r.healingAmount(e.DATA.skills.sk_heal1,b,999,()=>.999),35);
- assert.equal(r.healingAmount(e.DATA.skills.sk_heal2,b,999,()=>0),243);
- assert.equal(r.healingAmount(e.DATA.skills.sk_full_heal,b,999,()=>0),389);
- assert.equal(r.healingAmount(e.DATA.skills.sk_elf_lifespring,b,999,()=>0),672);
- assert.equal(r.healingAmount(e.DATA.skills.sk_heal2,b,10,()=>0),10);
- assert.equal(r.skillMpCost({mp:20},b),15);assert.equal(r.skillMpCost({mp:1},{mpReduce:100}),1);
- assert.equal(r.abnormalHit(1,{magicHit:0},{lv:99,mr:100},()=>.999),true);assert.equal(r.abnormalHit(99,{magicHit:99},{lv:1,mr:0},()=>0),false);
- {const {c}=fixture('mage');c.skills.push('sk_regen');c.hp=1;e.cast(c,'sk_regen',time,()=>.5);assert.equal(c.hp,1);assert.equal(c.healingOverTime.remaining,5);const save={...e.emptySave(time),characters:[c],active:c.id};for(let t=1000;t<=15000;t+=1000)e.advance(save,time+t,()=>.5);assert.equal(c.healingOverTime,undefined);assert.deepEqual(c.events.filter(x=>x.kind==='heal'&&x.skill==='sk_regen').map(x=>x.at-time),[3000,6000,9000,12000,15000]);}
- {const {c}=fixture('mage');c.hp=1;e.cast(c,'sk_heal1',time,()=>.5);assert.equal(c.spellCooldowns.heal,time+2000);const before=c.mp;assert.throws(()=>e.cast(c,'sk_heal1',time+1999,()=>.5),/冷卻/);assert.equal(c.mp,before);}
- {const {c}=fixture('mage');c.hp=1;c.buffs.sk_haste_spell={until:time+99999,d:{}};e.cast(c,'sk_heal1',time,()=>.5);assert.equal(c.spellCooldowns.heal,time+1340);}
- {const {c}=fixture('dark');c.skills.push('sk_dark_crit');c.hp=2;c.mp=2;const hp=c.arena[0].hp;e.cast(c,'sk_dark_crit',time,()=>.5);assert.equal(c.hp,1);assert.equal(c.mp,1);assert.equal(c.skillCooldowns.sk_dark_crit,time+30000);assert.ok(c.arena[0].hp<=hp);assert.equal(c.events.find(x=>x.kind==='attack'&&x.skill==='sk_dark_crit').critical,true);}
- {const {c}=fixture();c.skills.push('sk_vampire');c.hp=1;e.cast(c,'sk_vampire',time,()=>.5);assert.equal(c.hp,1);assert.equal(c.events.find(x=>x.kind==='attack'&&x.skill==='sk_vampire').critical,false);}
- {const {c}=fixture();c.skills.push('sk_ice_lance');e.cast(c,'sk_ice_lance',time,()=>.5);assert.equal(c.arena[0].effects?.freeze,undefined);}
- {const {c}=fixture('knight');const weapon=Object.keys(e.DATA.items).find(id=>e.DATA.items[id].wcat==='tohandsword');assert.ok(weapon);c.equipment={weapon:{id:weapon,en:0}};c.skills.push('sk_shock_stun');c.attrs.int=40;e.cast(c,'sk_shock_stun',time,()=>.5);assert.equal(c.events.filter(x=>x.kind==='attack'&&x.skill==='sk_shock_stun').length,1);assert.equal(c.arena[0].effects.stun.until,time+6000);assert.equal(c.skillCooldowns.sk_shock_stun,time+6000);assert.throws(()=>e.cast(c,'sk_shock_stun',time+5999,()=>.5),/冷卻/);}
- {const {c}=fixture('dark');c.skills.push('sk_dark_armorbreak','sk_lightarrow');c.attrs.int=40;e.cast(c,'sk_dark_armorbreak',time,()=>.5);assert.equal(c.arena[0].effects.vulnerable.value,58);const st=e.stats(c,time+1500),mob=require(path.join(dir,'monster-runtime.js')).monsterData(c,c.arena[0].id,c.arena[0]),base=r.spellDamage(e.DATA.skills.sk_lightarrow,st,mob,()=>.5,'dark');e.cast(c,'sk_lightarrow',time+1500,()=>.5);assert.equal(c.events.findLast(x=>x.kind==='attack').damage,Math.floor(base*1.58));}
- {const {c}=fixture();const strike=require(path.join(dir,'attack-rules.js')).playerStrike;const id='lw_equipment_903100';assert.ok(id);c.equipment={weapon:{id,en:0}};const st={...e.stats(c,time),meleeCrit:0,doubleChance:0},mob={lv:1,ac:10,dr:0};c.buffs.sk_dark_double={until:time+1000,d:{}};const yes=strike(c,st,mob,()=>.199,undefined,time,{forceHit:true}),no=strike(c,st,mob,()=>.2,undefined,time,{forceHit:true});delete c.buffs.sk_dark_double;const baseline=strike(c,st,mob,()=>.199,undefined,time,{forceHit:true});assert.equal(yes.damage,baseline.damage*2);assert.equal(no.damage,baseline.damage);}
- {const legacy={int:40,sp:4,mdmg:2,magicCrit:0},augmented={...legacy,intMagicApplied:1};for(const k of ['sp','mdmg','magicCrit'])augmented[k]+=f.magicIntBonuses(40)[k];assert.deepEqual(f.legacyProcStats(augmented),{...legacy,intMagicApplied:1});const w=require(path.join(dir,'weapon-magic.js')),def=require(path.join(dir,'weapon-proc-skills.json')).sk_blaze;assert.equal(w.weaponMagicDamage(def,legacy,{mr:20},()=>.5),w.weaponMagicDamage(def,augmented,{mr:20},()=>.5));}
-
- function incoming({magic=false,dodge=false,barrier=false,dr=0}={}){const {c,s}=fixture('dark');c.autoConfig.attack='';c.equipment={};c.buffs.incoming_test={until:time+10000,d:{er:-1000,ac:-1000,dr}};if(dodge)c.buffs.sk_dark_dodge={until:time+10000,d:{}};if(barrier)c.buffs.sk_magic_shield={until:time+10000,d:{magicBarrier:1}};for(const target of c.arena)target.definition.damageMax=target.definition.damageMin=0;const target=c.arena[0];target.definition.lv=999;target.definition.attackInterval=1;if(magic)target.definition.spells=[{id:'sk_lightarrow',min:100,max:100,element:'none',mp:0,chance:100,cooldown:1,duration:1,value:0,hpBelow:100,enabled:true}];else target.definition.damageMin=target.definition.damageMax=100;e.advance(s,time+1000,()=>.1);return {c,hits:c.events.filter(x=>x.kind==='hurt')};}
- {const plain=incoming(),dodged=incoming({dodge:true});assert.ok(plain.hits.length&&plain.hits[0].damage>0);assert.equal(dodged.hits[0].damage,0);assert.ok(dodged.c.buffs.sk_dark_dodge);assert.equal(dodged.c.skillCooldowns?.sk_dark_dodge,undefined);const spell=incoming({magic:true}),protectedSpell=incoming({magic:true,dodge:true});assert.ok(spell.hits[0].damage>0);assert.equal(protectedSpell.hits[0].damage,spell.hits[0].damage);assert.equal(incoming({magic:true,dr:5}).hits[0].damage,spell.hits[0].damage-5);const shielded=incoming({barrier:true});assert.equal(shielded.hits[0].damage,0);assert.equal(shielded.c.buffs.sk_magic_shield,undefined);assert.equal(shielded.c.magicBarrierCooldown,time+4000);}
- console.log('PASS: INT table/classes/cap; magic dice, MR, mage multiplier, critical dice, elemental +6; fixed INT-only healing, five timed HoT ticks, HP cap and heal cooldown; MP and D20; shock stun, armor break, double destruction, dark critical resources; vampire/ice-lance rules; unchanged independent weapon proc formula.');
+ for(const [int,expected] of [[25,[4,2,6,16,0]],[40,[8,8,10,26,2]],[60,[15,18,15,30,7]],[100,[35,32,35,30,15]]])assert.deepEqual(Object.values(f.magicIntBonuses(int)),expected);
+ assert.deepEqual(f.magicIntBonuses(200),f.magicIntBonuses(100));
+ for(const [mr,expected]of [[0,1],[10,.95],[100,.5],[200,.4],[400,.25],[600,.13],[800,.05],[1000,.01]])assert.ok(Math.abs(f.spellMrMultiplier(mr)-expected)<1e-12);
+ const b={int:40,mdmg:8,sp:10,intMagicApplied:1,magicCrit:0,magicCritDmg:50},spell={dmgDice:[1,6],tier:1};
+ assert.equal(r.spellDamage(spell,b,{mr:0},()=>.5,'elf'),25);
+ assert.equal(r.spellDamage(spell,b,{mr:0},()=>.5,'mage'),25,'no invented mage multiplier');
+ assert.equal(r.spellDamage(spell,b,{mr:100},()=>.5,'mage'),12);
+ assert.equal(r.spellDamage({...spell,dmgBase:10},b,{mr:0},()=>.5),46,'flat skill damage is not omitted');
+ const crit={critical:false};assert.equal(r.spellDamage(spell,{...b,magicCrit:100},{mr:0},()=>.5,'mage',crit),38);assert.equal(crit.critical,true);
+ assert.equal(r.spellDamage({...spell,ele:'fire'},b,{mr:0,e:'earth'},()=>.5),35);
+ assert.equal(r.spellDamage({...spell,multiDmg:[[1,6],[1,6]]},b,{mr:0},()=>.5),33,'character magic damage added once, with per-hit rounding');
+ assert.equal(r.healingAmount(e.DATA.skills.sk_heal1,{...b,sp:9999},999,()=>0),30);
+ assert.equal(r.healingAmount(e.DATA.skills.sk_heal1,b,999,()=>.999),120);
+ assert.equal(r.healingAmount(e.DATA.skills.sk_heal2,b,999,()=>0),46);
+ assert.equal(r.healingAmount(e.DATA.skills.sk_elf_lifespring,b,999,()=>0),999);
+ assert.equal(r.skillMpCost({mp:20},{mpReduce:26}),15);
+ assert.equal(r.abnormalHit(1,{magicHit:0},{lv:999,mr:100},()=>.999),true);assert.equal(r.abnormalHit(99,{magicHit:99},{lv:1,mr:0},()=>0),false);
+ assert.equal(Array.from({length:20},(_,i)=>r.abnormalHit(999,{magicHit:99},{lv:1,mr:0},()=>(i+.5)/20,12)).filter(Boolean).length,12);
+ {const {c}=fixture('mage');c.skills.push('sk_regen');c.hp=1;e.cast(c,'sk_regen',time,()=>.5);assert.ok(c.hp>1);assert.equal(c.healingOverTime,undefined,'source regen is an immediate group heal');}
+ {const {c}=fixture('dark');c.skills.push('sk_dark_crit');const before=e.stats(c,time).maxHp;c.hp=before;c.mp=e.stats(c,time).maxMp;e.cast(c,'sk_dark_crit',time,()=>.5);assert.equal(c.hp,1,'dark critical leaves the caster at 1 HP');assert.equal(c.mp,1,'dark critical leaves the caster at 1 MP');assert.equal(c.skillCooldowns?.sk_dark_crit,time+30000,'dark critical cooldown is 30 seconds');assert.equal(c.events.find(x=>x.kind==='attack'&&x.skill==='sk_dark_crit').critical,true);}
+  {const {c}=fixture('knight');const weapon=Object.keys(e.DATA.items).find(id=>e.DATA.items[id].wcat==='tohandsword');c.equipment={weapon:{id:weapon,en:0}};c.skills.push('sk_shock_stun');e.cast(c,'sk_shock_stun',time,()=>.5);assert.equal(c.events.filter(x=>x.kind==='attack'&&x.skill==='sk_shock_stun').length,1);assert.equal(c.arena[0].effects?.stun,undefined,'shock control fails its 10% gate at rng 0.5');assert.ok(c.events.some(x=>x.kind==='state'&&x.effect==='衝暈失敗'),'failed control emits target status');assert.equal(c.skillCooldowns?.sk_shock_stun,time+6000,'shock stun applies its 6-second cooldown');}
+ {const {c}=fixture('dark');c.skills.push('sk_dark_armorbreak');e.cast(c,'sk_dark_armorbreak',time,()=>.5);assert.equal(c.arena[0].effects.vulnerable.value,58);}
+  {const {c}=fixture('royal');c.skills=['sk_royal_kingguard','sk_royal_precise','sk_royal_burnweapon'];const kingguard=require(path.join(dir,'sunrise-skill-catalog.json')).skills.sk_royal_kingguard;assert.equal(kingguard.type,'passive');assert.equal(kingguard.cat,'royal');e.cast(c,'sk_royal_precise',time,()=>.5);assert.equal(c.buffs.sk_royal_precise.until,time+16000);e.cast(c,'sk_royal_burnweapon',time+2000,()=>.5);assert.equal(e.stats(c,time+2000).extraDmg,5);assert.equal(r.requiredSkillLevel(c,e.DATA.skills.sk_royal_precise),15);assert.equal(r.requiredSkillLevel(c,e.DATA.skills.sk_lightarrow),Infinity);}
+ const catalog=require(path.join(dir,'sunrise-skill-catalog.json'));assert.equal(Object.keys(catalog.skills).length,134);
+ const assets=require(path.join(dir,'asset-map.json'));for(const [id,source]of Object.entries(catalog.skills)){const actual=e.DATA.skills[id];for(const [k,v]of Object.entries(source))assert.deepEqual(actual[k],v,id+'.'+k);const icon=assets.icons.skills[source.n];assert.ok(icon,id+' icon');assert.equal(fs.readFileSync(path.join(root,'public',icon)).subarray(0,8).toString('hex'),'89504e470d0a1a0a');}
+ {const {c}=fixture('mage');c.skills=[];c.equipment={ring:{id:'relic_mage_scrap_note',en:0}};const access=require(path.join(dir,'skill-access.js'));assert.ok(access.hasSkill(c,'sk_frost_spike'));assert.ok(!c.skills.includes('sk_frost_spike'));e.cast(c,'sk_frost_spike',time,()=>.5);delete c.equipment.ring;assert.ok(!access.hasSkill(c,'sk_frost_spike'));assert.throws(()=>e.cast(c,'sk_frost_spike',time+2000,()=>.5),/尚未學習/);}const armorClass='mage';assert.ok(e.DATA.skills.sk_frost_spike);assert.ok(!r.skillBooks('sk_frost_spike').length,'gear-granted spell is not freely learnable');
+ {const legacy={int:40,sp:4,mdmg:2,magicCrit:0},augmented={...legacy,intMagicApplied:1};for(const k of ['sp','mdmg','magicCrit'])augmented[k]+=f.magicIntBonuses(40)[k];assert.deepEqual(f.legacyProcStats(augmented),{...legacy,intMagicApplied:1});}
+ console.log('PASS: 134 source definitions, 134 local PNGs, source INT/MR/element/crit/multihit/healing, class restrictions, royal passives/auras, dark critical resources, shock multi-stage failure, retained proc stats.');
 }finally{fs.rmSync(dir,{recursive:true,force:true});}
