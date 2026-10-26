@@ -572,3 +572,18 @@ body.ice-blue .game-root .source-bag-cell .enhance{color:#ffd66c!important;backg
  .game-root .battle-scene:not(.world-boss-scene) .static-arena .four-monsters:has(>.four-monster:nth-child(5)) .four-target img{width:clamp(38px,10vw,56px);height:clamp(38px,10vw,56px)}
  .game-root .battle-scene:not(.world-boss-scene) .static-arena .four-monsters:has(>.four-monster:nth-child(5)) .monster-ground-name{font-size:10px!important}
 }
+
+/* Character HP/MP: pin to the map's upper-left corner in both orientations. */
+.game-root .battle-scene .four-battle.static-arena .battle-vitals,
+.game-root.display-portrait .battle-scene .four-battle.static-arena .battle-vitals,
+.game-root.display-landscape .battle-scene .four-battle.static-arena .battle-vitals{
+ position:absolute;left:8px;top:8px;right:auto;bottom:auto;
+ width:clamp(104px,25%,175px);gap:4px;z-index:12;
+ pointer-events:none;
+}
+@media(max-width:540px){
+ .game-root .battle-scene .four-battle.static-arena .battle-vitals,
+ .game-root.display-portrait .battle-scene .four-battle.static-arena .battle-vitals{
+  left:5px;top:5px;width:clamp(98px,29%,138px);gap:3px;
+ }
+}
