@@ -534,3 +534,23 @@ body.ice-blue .game-root .source-bag-cell .enhance{color:#ffd66c!important;backg
 .game-root.display-portrait .battle-scene .four-battle.static-arena,
 .game-root.display-portrait .battle-scene .four-battle.static-arena.crowded-arena{aspect-ratio:16/9;height:auto;min-height:0}
 .game-root.display-landscape .battle-scene .four-battle.static-arena{width:100%;aspect-ratio:16/9;height:auto;min-height:0;flex:0 0 auto;box-sizing:border-box}
+
+/* Sunrise-style scene composition: landscape image, fixed ground band, and responsive 16:9 viewport.
+   Keep absolute actor coordinates untouched so projectile and hit FX retain their target anchors. */
+.game-root .battle-scene:not(.world-boss-scene) .four-battle.static-arena{
+  position:relative;isolation:isolate;overflow:hidden;background-position:center center;background-size:cover;
+  width:100%;max-width:100%;aspect-ratio:16/9;height:auto;min-height:0;box-sizing:border-box;padding:0;
+}
+.game-root .battle-scene:not(.world-boss-scene) .four-battle.static-arena .four-monsters{
+  position:absolute;inset:0;width:100%!important;max-width:none!important;height:100%;margin:0;
+}
+/* Preserve a ground-level visual zone without changing actor positions or event coordinates. */
+.game-root .battle-scene:not(.world-boss-scene) .four-battle.static-arena .four-monster-art,
+.game-root .battle-scene:not(.world-boss-scene) .four-battle.static-arena .character-sprite{
+  object-fit:contain;
+}
+@media (orientation:landscape) and (max-height:500px){
+  .game-root.display-landscape .battle-scene:not(.world-boss-scene) .four-battle.static-arena{
+    flex:0 0 auto;min-height:0;padding:0;aspect-ratio:16/9;
+  }
+}
