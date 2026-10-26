@@ -6,7 +6,7 @@ import raw from './gamedata.json';
 import {isFlyingMagic,magicFlightMs,magicEffectLifetime} from './magic-visuals';
 import {TRIPLE_FLIGHT_MS,ARROW_FLIGHT_MS} from './player-sprite-layout';
 import {manualReplayOffset,replayOffset,tripleReplayOffset,REPLAY_MAX_AHEAD_MS} from './replay-timing';
-export type PresentationEvent=CombatEvent&{visualHpDelta?:number};
+export type PresentationEvent=CombatEvent&{visualHpDelta?:number;visualOnly?:boolean};
 /** Convert canonical snapshots in server sequence order before sorting by flight time. */
 export function prepareCombatHealth(events:CombatEvent[],health:Map<string,number>):PresentationEvent[]{
  return [...events].sort((a,b)=>a.seq-b.seq).map(event=>{
@@ -100,6 +100,10 @@ function hasSpellVisual(view:BattleView,event:CombatEvent){
  return !!event.skill&&(view.casts||[]).some(e=>e.skill===event.skill&&e.at===event.at&&e.uid===event.uid&&e.slot===event.slot&&!!e.weaponProc===!!event.weaponProc&&actor(e)===actor(event)&&e.petUid===event.petUid&&e.summonUid===event.summonUid&&e.dollId===event.dollId);
 }
 export function applyCombatViewEvent(v:BattleView,next:PresentationEvent,now:number):BattleView{
+ if(next.visualOnly){
+  const result=applyCombatViewEvent(v,{...next,visualOnly:false,hp:v.hp,mp:v.mp,visualHpDelta:undefined,mobHp:undefined,targetEffects:undefined},now);
+  return {...v,actions:result.actions,casts:result.casts,floats:result.floats};
+ }
  const staged=!!next.visualPhase;
  if(staged&&(next.slot===undefined||v.arena[next.slot]?.uid!==next.uid))return v;
  const actions=[...(v.actions||[]).filter(e=>now-e.shownAt<5000),{...next,shownAt:now}];
@@ -117,7 +121,7 @@ export function applyCombatViewEvent(v:BattleView,next:PresentationEvent,now:num
  if(next.kind==='spawn'&&next.slot!==undefined&&next.spawn){if(arena[next.slot])delete healthCredits[arena[next.slot].uid];arena[next.slot]={...next.spawn};}
  if(next.kind==='attack'&&next.slot!==undefined&&next.slot!==next.casterSlot)updateHp(next.slot);
  if(next.slot!==undefined&&arena[next.slot]?.uid===next.uid&&next.targetEffects)arena[next.slot].effects=next.targetEffects;
- return {healthCredits,actions,petHurt:next.petUid&&next.source==='monster'?next:v.petHurt,petEntities:next.petEntities||v.petEntities,summonEntities:next.summonEntities||v.summonEntities,hp:staged?v.hp:next.hp,mp:staged?v.mp:next.mp,arena,target:next.target??v.target,attack:next.kind==='attack'&&next.visualPhase!=='impact'?next:v.attack,magic:next.kind==='magic'?next:v.magic,hurt:next.kind==='hurt'?next:v.hurt,casts:[...(v.casts||[]).filter(f=>now-f.shownAt<magicEffectLifetime(f)),...(!staged&&!next.visualEffectPreviewed&&!next.miss&&!hasSpellVisual(v,next)&&(next.skill!=='sk_shock_stun'||next.kind==='magic'&&next.effect==='狀態命中')&&((next.weaponProc&&!!lineageWEffectDefinition(next.skill))||(next.kind==='magic'&&(next.source==='monster'||next.slot!==undefined||!next.skill||(raw.skills as any)[next.skill]?.type!=='atk'))||(next.kind==='attack'&&next.skill&&!next.miss&&next.source!=='poison'&&next.source!=='summon'))?[{...next,shownAt:now}]:[])],floats:(['attack','hurt','heal'].includes(next.kind)||(next.kind==='state'&&next.skill==='sk_shock_stun'&&next.effect==='衝暈失敗'))?addCombatFloat(v.floats,next,now):v.floats.filter(f=>now-f.shownAt<800)};
+ return {healthCredits,actions,petHurt:next.petUid&&next.source==='monster'?next:v.petHurt,petEntities:next.petEntities||v.petEntities,summonEntities:next.summonEntities||v.summonEntities,hp:staged?v.hp:next.hp,mp:staged?v.mp:next.mp,arena,target:next.target??v.target,attack:next.kind==='attack'&&next.visualPhase!=='impact'?next:v.attack,magic:next.kind==='magic'?next:v.magic,hurt:next.kind==='hurt'?next:v.hurt,casts:[...(v.casts||[]).filter(f=>now-f.shownAt<magicEffectLifetime(f)),...(!staged&&!next.visualEffectPreviewed&&!next.miss&&!hasSpellVisual(v,next)&&(next.skill!=='sk_shock_stun'||next.kind==='magic'&&next.effect==='狀態命中')&&((next.weaponProc&&!!lineageWEffectDefinition(next.skill))||(next.kind==='magic'&&(next.source==='monster'||next.slot!==undefined||!next.skill||(raw.skills as any)[next.skill]?.type!=='atk'))||(next.kind==='attack'&&next.skill&&!next.miss&&next.source!=='poison'&&next.source!=='summon'))?[{...next,shownAt:now}]:[])],floats:(['attack','hurt','heal'].includes(next.kind)||(next.kind==='state'&&next.skill==='sk_shock_stun'&&next.effect==='衝暈失敗'&&!next.visualEffectPreviewed))?addCombatFloat(v.floats,next,now):v.floats.filter(f=>now-f.shownAt<800)};
 }
 
 
@@ -125,21 +129,20 @@ export function applyCombatViewEvent(v:BattleView,next:PresentationEvent,now:num
 
 
 
-/** Live adapter for the Sunrise synchronous trigger model. The old 650ms
- * history buffer is retained for compatibility tests, but is not used by the
- * live battle hook. A late packet is applied once, without replaying every old
- * action at a second buffered deadline. Future events (e.g. 70ms triple arrows)
- * keep their server-relative deadlines and flight impacts remain independent.
+/** A network-fed game needs one stable server-to-display clock. Never rebase
+ * each packet or flush queued swings when a manual spell is acknowledged.
+ * Confirmed manual control feedback can display immediately without advancing
+ * HP, damage, drops or the ordinary attack timeline.
  */
-export function enqueueSunriseReplay<T extends CombatEvent>(queued:(T&{due:number})[],fresh:T[],now:number,previous:number|null){
+export function enqueueSunriseReplay<T extends PresentationEvent>(queued:(T&{due:number})[],fresh:T[],now:number,previous:number|null){
  if(!fresh.length)return {queue:queued,offset:previous};
  const known=new Set(queued.map(e=>e.seq));
  const unique=fresh.filter(e=>{if(known.has(e.seq))return false;known.add(e.seq);return true;});
  if(!unique.length)return {queue:queued,offset:previous};
- const immediate=unique.filter(e=>e.visualPhase!=='impact');
- const cast=immediate.find(e=>e.manual&&e.kind==='magic');
- const triple=immediate.filter(e=>e.skill==='sk_elf_triple');
- const anchor=cast?.at??(triple.length?Math.min(...triple.map(e=>e.at)):Math.max(...unique.map(e=>e.at)));
- const offset=now-anchor;
- return {queue:[...queued,...unique.map(e=>({...e,due:Math.max(now,e.at+offset)}))].sort((a,b)=>a.due-b.due||a.seq-b.seq),offset};
+ const offset=previous??replayOffset(unique,now,null)!;
+ const early=unique.filter(e=>e.manual&&!e.visualEffectPreviewed&&(
+  e.kind==='magic'&&e.skill&&(e.skill!=='sk_shock_stun'||e.effect==='狀態命中')||
+  e.kind==='state'&&e.skill==='sk_shock_stun'&&e.effect==='衝暈失敗'));
+ const earlySeq=new Set(early.map(e=>e.seq));
+ return {queue:[...queued,...early.map(e=>({...e,visualOnly:true,due:now})),...unique.map(e=>({...e,...(earlySeq.has(e.seq)?{visualEffectPreviewed:true}:{}),due:e.at+offset}))].sort((a,b)=>a.due-b.due||a.seq-b.seq),offset};
 }

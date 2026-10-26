@@ -65,6 +65,8 @@ jobs:
         run: node scripts/test-alignment.cjs
       - name: Verify player motion against original Sunrise functions
         run: node scripts/test-sunrise-player-motion.cjs
+      - name: Verify batched network attack cadence
+        run: node scripts/test-network-combat-cadence.cjs
       - name: Build complete Cloudflare Worker
         run: pnpm run build
       - name: Assert strict isolation from live resources
