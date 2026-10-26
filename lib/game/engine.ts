@@ -299,10 +299,20 @@ export function cast(c:Character,k:string,now=Date.now(),rng:()=>number=Math.ran
     continue;
    }
    if(k==='sk_shock_stun'){
-    const dealt=normalWeaponAttack(c,live,now,rng,undefined,k,b);total+=dealt;
-    if(dealt>0&&live.hp>0){if(playableBoss(c.zone)){
-     if(!(live.effects?.stun?.until!>now)&&!(live.effects?.stunImmune?.until!>now)&&rng()<Math.min(.95,.3+(b.stunHit||0)/100)){live.effects||={};live.effects.stun={until:now+2000,value:1};live.effects.stunImmune={until:now+4000,value:1};event(c,'magic',now,{skill:k,slot,uid:live.uid,targetEffects:structuredClone(live.effects)});}
-    }else applySpellStatus(c,live,def,{kind:'stun',dur:6},k,b,now,rng);}
+    // A control skill is one skill strike, never the full normal-attack proc chain.
+    const strike=playerStrike(c,b,def,rng,undefined,now,{skill:true});
+    if(strike.miss){
+     event(c,'attack',now,{slot,uid:live.uid,mob:live.id,mobHp:live.hp,damage:0,miss:true,skill:k,source:'physical'});
+    }else{
+     const damage=Math.max(1,strike.damage+(s.skillAddDmg||0)+elementalWeaponDamage(c,def.e||'none'));
+     damageMonster(c,damage,now,rng,k,'physical');total+=c.lastHit;
+     const hit=c.events?.findLast(e=>e.kind==='attack'&&e.skill===k&&e.uid===live.uid);
+     if(hit){hit.critical=strike.critical;hit.heavy=strike.heavy;hit.graze=strike.graze;}
+    }
+    let stunned=false;
+    if(!strike.miss&&live.hp>0&&!(live.effects?.stun?.until!>now)&&rng()<(s.stunChance??.1))
+     stunned=!!applySpellStatus(c,live,def,{kind:'stun',dur:6},k,b,now,rng);
+    if(!stunned)event(c,'state',now,{skill:k,slot,uid:live.uid,mob:live.id,miss:true,effect:'衝暈失敗'});
     continue;
    }
    if(s.darkCrit){const max=w?(def.s==='L'?w.dmgL:w.dmgS)||2:2,damage=Math.max(0,max+b.meleeDmg+b.extraDmg-(def.dr||0))*(1+b.meleeCritDmg/100)*critMult;damageMonster(c,damage,now,rng,k,'physical');total+=c.lastHit;const hit=c.events?.findLast(e=>e.kind==='attack');if(hit)hit.critical=true;continue;}
@@ -324,7 +334,7 @@ function applySpellStatus(c:Character,target:Encounter,m:any,status:any,id:strin
  if(m.boss)return;
  if(status.pct!==undefined&&rng()*100>=status.pct||!status.force&&!abnormalHit(c.lv,b,m,rng,20,(status.hitOff||0)+(status.kind==='stun'?b.stunHit||0:status.kind==='blind'?b.blindHit||0:0)))return;
  const key=statusKey(status.kind),value=key==='poison'?rollDice(...(status.dmg||[1,8]) as [number,number],rng):key==='blind'?status.hit||4:key==='slow'?100:key==='vulnerable'?58:key==='weak'?5:1;
- target.effects||={};target.effects[key]={until:now+(status.dur||6)*1000,value,nextAt:now+(status.tick||3)*1000};event(c,'magic',now,{slot:c.arena!.indexOf(target),uid:target.uid,mob:target.id,skill:id,targetEffects:structuredClone(target.effects)});
+ target.effects||={};target.effects[key]={until:now+(status.dur||6)*1000,value,nextAt:now+(status.tick||3)*1000};event(c,'magic',now,{slot:c.arena!.indexOf(target),uid:target.uid,mob:target.id,skill:id,...(id==='sk_shock_stun'?{effect:'狀態命中'}:{}),targetEffects:structuredClone(target.effects)});return true;
 }
 function applyLineageWAbsorption(c:Character,target:Encounter,dealt:number,now:number,rng:()=>number){
  const eq=c.equipment.weapon,p=lineageWEffectProfile(DATA.items[eq?.id||''],eq?.en||0);if(!p||dealt<=0)return;

@@ -9,16 +9,17 @@ export function spellEffectPreviewDuration(skill:string){const c=magicVisual({sk
 export function spellPreviewNeedsTarget(skill:string){return !magicVisual({skill}).config?.self;}
 export function canPreviewSpellEffect(skill:string){const config=magicVisual({skill}).config;return playerActionKind(skill)==='skill'&&(raw.skills as Record<string,any>)[skill]?.type!=='passive'&&!!config;}
 export function castFeedbackPose(intent:CastIntent|undefined,characterId:string,now:number,count:number,castInterval:number,dead=false){
- if(!intent||dead||intent.characterId!==characterId||playerActionKind(intent.skill)!=='skill'||count<1)return undefined;
- const age=Math.max(0,now-intent.at),duration=durationFor('skill',count,0,castInterval);
- return age<duration?{kind:'skill' as const,frame:Math.min(count-1,Math.floor(age/duration*count))}:undefined;
+ if(!intent||dead||intent.characterId!==characterId||(playerActionKind(intent.skill)!=='skill'&&intent.skill!=='sk_shock_stun')||count<1)return undefined;
+ const kind=intent.skill==='sk_shock_stun'?'attack' as const:'skill' as const;
+ const age=Math.max(0,now-intent.at),duration=durationFor(kind,count,castInterval,castInterval);
+ return age<duration?{kind,frame:Math.min(count-1,Math.floor(age/duration*count))}:undefined;
 }
 /** Annotate only this response's latest confirmed manual spell. The pose can
  * continue from its click time without replaying the windup a second time.
  * This does not move the spell's release, HP/MP, hit, loot or projectile clock.
  */
 export function attachCastFeedback(save:Save,intent:CastIntent):Save{
- if(playerActionKind(intent.skill)!=='skill')return save;
+ if(playerActionKind(intent.skill)!=='skill'&&intent.skill!=='sk_shock_stun')return save;
  return {...save,characters:save.characters.map(c=>{
   if(c.id!==intent.characterId)return c;
   const matches=(c.events||[]).filter(e=>e.seq>intent.afterSeq&&e.manual&&e.skill===intent.skill&&!e.weaponProc);
