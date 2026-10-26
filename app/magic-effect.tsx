@@ -27,7 +27,9 @@ export default function MagicEffect({event,loopUntil}:{event:CombatEvent;loopUnt
   const observer=config.atlas&&typeof ResizeObserver!=='undefined'?new ResizeObserver(position):undefined;
   if(observer&&(root||parent))observer.observe((root||parent)!);
   let timer:ReturnType<typeof setTimeout>|undefined;
-  const started=event.visualAt??performance.now();
+  // Match the player's cast pose clock: manual cast feedback starts at click time,
+  // even when the server acknowledgement arrives later. All these timestamps use performance.now().
+  const started=event.visualCastAt??event.visualAt??(event as CombatEvent&{shownAt?:number}).shownAt??performance.now();
   // Schedule at the effect's actual frame rate instead of running a separate
   // 60 Hz requestAnimationFrame loop for every active spell.
   let lastIndex=0;
