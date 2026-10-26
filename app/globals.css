@@ -512,3 +512,15 @@ body.ice-blue .game-root .source-bag-cell .enhance{color:#ffd66c!important;backg
 @keyframes eternal-damage-float{0%{opacity:0;transform:translateY(8px) scale(.55)}18%{opacity:1;transform:translateY(-10px) scale(1.06)}72%{opacity:1;transform:translateY(-27px) scale(1)}100%{opacity:0;transform:translateY(-45px) scale(.9)}}
 @keyframes eternal-monster-damage-float{0%{opacity:0;transform:translateX(-50%) translateY(8px) scale(.55)}18%{opacity:1;transform:translateX(-50%) translateY(-10px) scale(1.06)}72%{opacity:1;transform:translateX(-50%) translateY(-27px) scale(1)}100%{opacity:0;transform:translateX(-50%) translateY(-45px) scale(.9)}}
 @keyframes eternal-critical-float{0%{opacity:0;transform:translateY(8px) scale(.65)}14%{opacity:1;transform:translateY(-8px) scale(1.35)}32%{transform:translateY(-16px) scale(1.08)}72%{opacity:1;transform:translateY(-34px) scale(1.12)}100%{opacity:0;transform:translateY(-55px) scale(1)}}
+
+/* Sunrise-style death playback: retain the sprite long enough for its death pose.
+   The earlier immediate-hide rule suppressed the animation entirely. */
+@keyframes eternal-monster-death-exit{0%,75%{opacity:1}100%{opacity:0}}
+.four-monster[data-dead="true"] > .four-target,
+.four-monster[data-dead="true"] > .four-target .four-monster-art,
+.four-monster[data-dead="true"] > .four-target .four-monster-art *{visibility:visible;pointer-events:none}
+.four-monster[data-dead="true"] > .four-target{animation:eternal-monster-death-exit .9s linear both;cursor:default}
+.four-monster[data-dead="true"] > .four-target .monster-ground-name,
+.four-monster[data-dead="true"] > .four-target [role="progressbar"],
+.four-monster[data-dead="true"] > .four-target .mythic-target-status{visibility:hidden}
+@media (prefers-reduced-motion:reduce){.four-monster[data-dead="true"] > .four-target{animation-duration:.01ms}}
