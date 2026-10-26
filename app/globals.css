@@ -660,3 +660,49 @@ body:has(.game-root.display-landscape) .game-dialog :is(input,select,textarea){f
  display:flex;justify-content:flex-start;align-items:center;flex-wrap:wrap;
  width:max-content;max-width:calc(100% - 16px);gap:6px;margin:0;z-index:30;
 }
+
+/* Sunrise source sizing. This scope wins over old phone/five-slot square boxes. */
+.game-root:is(.display-portrait,.display-landscape) .battle-scene .four-battle.static-arena{
+ --sunrise-ground-height:242px;position:relative;width:800px;max-width:100%;
+ aspect-ratio:16/9;height:auto;min-height:0;padding:0;margin-inline:auto;flex:0 0 auto;overflow:hidden;
+}
+.game-root:is(.display-portrait,.display-landscape) .battle-scene .four-battle.static-arena .four-monsters{
+ inset:auto 0 0!important;height:var(--sunrise-ground-height)!important;width:100%!important;
+}
+.game-root:is(.display-portrait,.display-landscape) .battle-scene .four-battle.static-arena .four-player{
+ left:39%!important;top:auto!important;bottom:2px!important;
+ width:max-content!important;max-width:none!important;transform:translateX(-50%);gap:0;
+}
+.game-root:is(.display-portrait,.display-landscape) .battle-scene .four-battle.static-arena:has(.four-monster:nth-child(5)) .four-player{left:45.5%!important}
+.game-root:is(.display-portrait,.display-landscape) .battle-scene .four-battle.static-arena .character-sprite{
+ width:auto!important;height:auto!important;max-width:none!important;max-height:none!important;
+ aspect-ratio:auto!important;object-fit:contain;image-rendering:pixelated;flex-shrink:0;
+}
+.game-root:is(.display-portrait,.display-landscape) .battle-scene .four-battle.static-arena .character-sprite.polymorph-cast-sprite{
+ width:var(--native-player-width)!important;height:var(--native-player-height)!important;
+}
+.game-root:is(.display-portrait,.display-landscape) .battle-scene .four-battle.static-arena .four-monster{
+ width:100px!important;max-width:none!important;
+}
+.game-root:is(.display-portrait,.display-landscape) .battle-scene .four-battle.static-arena .four-target{
+ min-height:0;gap:3px;
+}
+.game-root:is(.display-portrait,.display-landscape) .battle-scene .four-battle.static-arena .four-monster-art{
+ width:max-content!important;height:134px!important;max-width:none!important;aspect-ratio:auto;
+ display:flex;align-items:flex-end;justify-content:center;overflow:visible!important;
+ transform:none!important;
+}
+.game-root:is(.display-portrait,.display-landscape) .battle-scene .four-battle.static-arena .four-monster[data-boss=true] .four-monster-art{height:185px!important}
+.game-root:is(.display-portrait,.display-landscape) .battle-scene .four-battle.static-arena .four-monster-art .native-monster-sprite{
+ width:var(--native-monster-width)!important;height:var(--native-monster-height)!important;
+ max-width:none!important;max-height:none!important;aspect-ratio:auto;flex-shrink:0;transform:none!important;
+}
+.game-root:is(.display-portrait,.display-landscape) .battle-scene .four-battle.static-arena .four-monster-art>img{
+ width:auto!important;height:134px!important;max-width:none!important;max-height:100%!important;object-fit:contain;object-position:center bottom;
+ transform:scale(1.285);transform-origin:center bottom;
+}
+.game-root:is(.display-portrait,.display-landscape) .battle-scene .four-battle.static-arena .four-monster[data-boss=true] .four-monster-art>img{transform:scale(1.78)}
+.game-root:is(.display-portrait,.display-landscape) .battle-scene .four-battle.static-arena .dragon381-sprite{
+ width:197.333px!important;height:185px!important;min-height:0;transform:none!important;flex-shrink:0;
+}
+

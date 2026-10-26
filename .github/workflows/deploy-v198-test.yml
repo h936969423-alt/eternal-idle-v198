@@ -66,7 +66,7 @@ jobs:
       - name: Verify player motion against original Sunrise functions
         run: node scripts/test-sunrise-player-motion.cjs
       - name: Verify local 100ms attacks and 125ms player animation
-        run: node --experimental-strip-types --test tests/local-player-attack.test.mjs
+        run: node --experimental-strip-types --test tests/local-player-attack.test.mjs tests/sunrise-sprite-size.test.mjs
       - name: Verify batched network attack cadence
         run: node scripts/test-network-combat-cadence.cjs
       - name: Build complete Cloudflare Worker
