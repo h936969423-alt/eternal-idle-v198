@@ -1,0 +1,36 @@
+name: Combat regression checks
+on:
+  push:
+    branches: [main]
+    paths:
+      - 'lib/game/engine.ts'
+      - 'lib/game/combat-clock.ts'
+      - 'lib/game/animation-clock.ts'
+      - 'app/combat-sprite.tsx'
+      - 'app/monster-motion.tsx'
+      - 'app/scene-transition.tsx'
+      - 'app/globals.css'
+      - 'tests/**'
+      - '.github/workflows/combat-regression.yml'
+  pull_request:
+    paths:
+      - 'lib/game/**'
+      - 'app/combat-sprite.tsx'
+      - 'app/monster-motion.tsx'
+      - 'app/scene-transition.tsx'
+      - 'app/globals.css'
+      - 'tests/**'
+      - '.github/workflows/combat-regression.yml'
+permissions:
+  contents: read
+jobs:
+  combat-tests:
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '22'
+      - name: Run combat timing regressions
+        run: node --experimental-strip-types --test tests/animation-clock.test.mjs tests/attack-phase.test.mjs
