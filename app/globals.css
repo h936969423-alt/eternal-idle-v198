@@ -501,3 +501,14 @@ body.ice-blue .game-root .source-bag-cell .enhance{color:#ffd66c!important;backg
 
 /* Keep the configuration action readable on mobile instead of an unlabeled slider icon. */
 .header-config-text{font-size:14px!important;white-space:nowrap;min-width:48px;padding:0 8px!important;color:#f4d58b!important;font-weight:600}
+
+/* Eternal damage float timing: Sunrise reference v20260825-1924 */
+.combat-float{animation:eternal-damage-float .85s ease-out both;will-change:transform,opacity;pointer-events:none;font-variant-numeric:tabular-nums;font-weight:800;-webkit-text-stroke:1px rgba(5,5,5,.96);paint-order:stroke fill;text-shadow:0 1px 0 #000,0 2px 2px rgba(0,0,0,.94)}
+.combat-float.monster-float{animation:eternal-monster-damage-float .85s ease-out both}
+.combat-float.monster-float.critical,.combat-float.critical{animation:eternal-critical-float 1.05s cubic-bezier(.18,.85,.25,1) both;font-size:clamp(24px,3.5vw,32px);color:#ff3b30}
+.combat-float.miss{animation-duration:.85s;color:rgba(203,213,225,.78);font-size:14px;font-weight:500;-webkit-text-stroke:.15px rgba(15,23,42,.62)}
+.combat-float.player-float.incoming-damage{color:#ff8789}
+.combat-float.player-float.healing{color:#80e69e}
+@keyframes eternal-damage-float{0%{opacity:0;transform:translateY(8px) scale(.55)}18%{opacity:1;transform:translateY(-10px) scale(1.06)}72%{opacity:1;transform:translateY(-27px) scale(1)}100%{opacity:0;transform:translateY(-45px) scale(.9)}}
+@keyframes eternal-monster-damage-float{0%{opacity:0;transform:translateX(-50%) translateY(8px) scale(.55)}18%{opacity:1;transform:translateX(-50%) translateY(-10px) scale(1.06)}72%{opacity:1;transform:translateX(-50%) translateY(-27px) scale(1)}100%{opacity:0;transform:translateX(-50%) translateY(-45px) scale(.9)}}
+@keyframes eternal-critical-float{0%{opacity:0;transform:translateY(8px) scale(.65)}14%{opacity:1;transform:translateY(-8px) scale(1.35)}32%{transform:translateY(-16px) scale(1.08)}72%{opacity:1;transform:translateY(-34px) scale(1.12)}100%{opacity:0;transform:translateY(-55px) scale(1)}}
