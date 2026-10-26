@@ -34,3 +34,9 @@ jobs:
           node-version: '22'
       - name: Run combat timing regressions
         run: node --experimental-strip-types --test tests/animation-clock.test.mjs tests/attack-phase.test.mjs
+      - name: Verify TypeScript type safety
+        run: |
+          corepack enable
+          corepack prepare pnpm@11.25.0 --activate
+          pnpm install --frozen-lockfile
+          pnpm exec tsc --noEmit
