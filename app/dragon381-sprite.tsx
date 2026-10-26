@@ -44,10 +44,6 @@ function drawNode(ctx:CanvasRenderingContext2D,defs:SpriteDefinitions,id:number,
  return true;
 }
 function prewarm(defs:SpriteDefinitions,gfx:number,heading:number,action:number){const node=spriteNode(defs,gfx);if(!node)return;for(const phase of [0,.2,.5,.8]){const pose=sampleDragonPose(node,action,heading,phase);if(!pose)continue;const key=`${node.base}-${pose.group}`,g=group(key);const warm=()=>{const data=groups.get(key);for(const f of data?.frames.filter(f=>!f.empty).slice(0,1)||[])image(key,f.page||0,performance.now());};if(g)warm();else pendingGroups.get(key)?.then(warm);}}
-function scenePoint(arena:HTMLDivElement|null,node:Element|null,fallback:{x:number;y:number}){
- if(!arena||!node)return fallback;const a=arena.getBoundingClientRect(),b=node.getBoundingClientRect();
- return a.width>0&&a.height>0?{x:(b.left+b.width/2-a.left)/a.width*100,y:(b.top+b.height*.55-a.top)/a.height*100}:fallback;
-}
 function prepareCanvas(canvas:HTMLCanvasElement,w:number,h:number){const dpr=Math.min(2,window.devicePixelRatio||1);if(canvas.width!==Math.round(w*dpr)||canvas.height!==Math.round(h*dpr)){canvas.width=Math.round(w*dpr);canvas.height=Math.round(h*dpr);}const ctx=canvas.getContext('2d');ctx?.setTransform(dpr,0,0,dpr,0,0);return ctx;}
 export default function DragonSprite({gfx,npcId,name,uid,hp,actions,fallback,summon=false}:{gfx:number;npcId?:number;name:string;uid:string;hp:number;actions:CombatEvent[];fallback?:string;summon?:boolean}){
  const renderLayout=(layouts.nodes as Record<string,{headings:Record<string,{scale:number;anchorX:number;anchorY:number}>}>)[String(resolveGraphic(gfx))]?.headings[String(DRAGON381_HEADING)];
@@ -78,8 +74,8 @@ export function DragonEffects({events,arena,actors}:{events:(CombatEvent&{shownA
   loadDefinitions().then(defs=>{if(!alive)return;stop=subscribe(now=>{if(!canvas.current)return;const ctx=prepareCanvas(canvas.current,w,h);if(!ctx)return;ctx.clearRect(0,0,w,h);
    const visible=latest.current.events.filter(e=>e.source==='monster'&&e.dragonEffect&&e.casterSlot!==undefined&&latest.current.actors[e.casterSlot]?.uid===e.uid).slice(-4);
    const drawn=new Set<string>();for(const e of visible){const key=`${e.at}:${e.uid}:${e.dragonEffect}`;if(drawn.has(key))continue;drawn.add(key);const phase=(now-(e.shownAt??now))/(e.dragonDuration||1600);if(phase<0||phase>=1)continue;
-    let gfx=resolveGraphic(e.dragonEffect!),from=scenePoint(arena.current,arena.current?.querySelector(`[data-monster-slot="${e.casterSlot}"] .four-monster-art`)||null,dragon381EffectPosition(e.casterSlot!,w,window.innerWidth)),to=scenePoint(arena.current,arena.current?.querySelector('.character-sprite')||null,{x:39,y:90}),position=to,local=phase;const projectile=[4156,4160,4163,4166].includes(gfx);
-    if(e.slot!==undefined)position=scenePoint(arena.current,arena.current?.querySelector(`[data-monster-slot="${e.slot}"] .four-monster-art`)||null,dragon381EffectPosition(e.slot,w,window.innerWidth));
+    let gfx=resolveGraphic(e.dragonEffect!),from=dragon381EffectPosition(e.casterSlot!,w,window.innerWidth),to={x:24,y:62},position=to,local=phase;const projectile=[4156,4160,4163,4166].includes(gfx);
+    if(e.slot!==undefined)position=dragon381EffectPosition(e.slot,w,window.innerWidth);
     if(projectile){const flight=Math.min(1,phase/.65);position={x:from.x+(to.x-from.x)*flight,y:from.y+(to.y-from.y)*flight};if(phase>.65){const n=spriteNode(defs,gfx),impact=n&&attributeValues(n,109)[1];if(impact&&spriteNode(defs,impact)){gfx=impact;local=(phase-.65)/.35;}}}
     drawNode(ctx,defs,gfx,0,DRAGON381_HEADING,local,false,w*position.x/100,h*position.y/100,Math.min(1,w/500),now);
    }
@@ -87,4 +83,3 @@ export function DragonEffects({events,arena,actors}:{events:(CombatEvent&{shownA
   return()=>{alive=false;observer.disconnect();stop?.();};
  },[arena]);return <canvas className="dragon381-effects" ref={canvas} aria-hidden="true"/>;
 }
-

@@ -7,23 +7,3 @@
 本次只修改顯示，保留怪物尺寸、死亡騎士尺寸、傷害、攻速、加速倍率與掉落結算。普通箭以外的魔法投射物保留既有方向素材。
 
 驗證：test-player-sprite-layout.cjs、test-polymorph-animation.cjs、test-polymorph-cast-assets.cjs、test-combat-smoothness.cjs；使用實際素材離線檢查比例與腳底。未做 Safari 實機動畫驗證。
-
-
-## Sunrise source dimensions (2026-10-26)
-
-The battlefield is 800 CSS pixels wide (max 100%) with a 16:9 aspect ratio and a
-242px ground band. Player PNGs render at natural pixel size; layered polymorph
-SVGs use their source canvas dimensions, retaining the audited layer/foot anchor.
-The old portrait, landscape, five-slot and boss square-box rules are overridden
-in the battle scope. Atlas monsters use their source frame aspect ratio and
-never scale up. Normal art uses a stable 134px allowance within the ground band
-(the reference CSS documents approximately 134px after its UI rows); bosses and
-the source large-canvas list use 185px. This fixed normal allowance adapts the
-reference's dynamic remaining image height to Eternal's different status rows.
-All 293 imported monster animation groups share one canvas size across actions.
-The 3.81 renderer retains its source coordinate system inside an 185px viewport;
-its older additional 1.5x boss transform is removed in this layout. Dragon effect
-origins and destinations are measured from displayed actors, including the
-bottom-anchored player, rather than the old hardcoded player position.
-
-The lower-left hunt/return controls and upper-left HP/MP remain in place.
