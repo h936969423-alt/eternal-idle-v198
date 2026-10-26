@@ -8,7 +8,16 @@ export type BossGeneration={enabled:boolean;count:number;respawnSeconds:number};
 export type MapPoolConfig={revision:number;maps:Record<string,MapGeneration>;bosses:Record<string,BossGeneration>;history:{at:number;by:string;kind:'map'|'boss';zone:string;before:MapGeneration|BossGeneration|null;after:MapGeneration|BossGeneration|null}[]};
 export function defaultMapGeneration(zone:string):MapGeneration{const count:Record<string,number>={};for(const id of (raw.maps as Record<string,string[]>)[zone]||[])count[id]=(count[id]||0)+1;return {spawnMode:'fixed',spawnPoints:defaultSpawnPoints(3),enabled:true,count:3,respawnSeconds:5,respawnRulesVersion:2,entries:Object.entries(count).map(([id,weight])=>({id,weight,enabled:true}))};}
 export function defaultSpawnPoints(count:number):SpawnPoint[]{return Array.from({length:count},(_,slot)=>({...monsterPosition(slot,count)}));}
-export function normalizeMapGeneration(g:MapGeneration):MapGeneration{return {...g,...(g.respawnRulesVersion===2?{}:{respawnSeconds:5,respawnRulesVersion:2 as const}),spawnMode:g.spawnMode||'fixed',spawnPoints:g.spawnPoints||defaultSpawnPoints(g.count)};}
+/** Migrate only legacy default coordinates; never replace GM-customized positions. */
+function normalizedSpawnPoints(g:MapGeneration):SpawnPoint[]{
+ const points=g.spawnPoints;
+ if(!points||points.length!==g.count)return defaultSpawnPoints(g.count);
+ if(g.count!==5||g.spawnMode==='random')return points;
+ const legacy=[{x:54,y:32},{x:83,y:32},{x:54,y:58},{x:83,y:58},{x:54,y:84}];
+ const same=points.every((p,i)=>Math.abs(p.x-legacy[i].x)<.01&&Math.abs(p.y-legacy[i].y)<.01);
+ return same?defaultSpawnPoints(5):points;
+}
+export function normalizeMapGeneration(g:MapGeneration):MapGeneration{return {...g,...(g.respawnRulesVersion===2?{}:{respawnSeconds:5,respawnRulesVersion:2 as const}),spawnMode:g.spawnMode||'fixed',spawnPoints:normalizedSpawnPoints(g)};}
 /** Positions are scene percentages; keep clear of the player, vitals and controls. */
 export function chooseSpawnPoint(g:MapGeneration,slot:number,occupied:SpawnPoint[],rng:()=>number,previous?:SpawnPoint):SpawnPoint{
  if(g.spawnMode!=='random')return {...(g.spawnPoints?.[slot]||defaultSpawnPoints(g.count)[slot])};
