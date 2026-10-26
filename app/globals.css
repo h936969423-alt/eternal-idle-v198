@@ -623,3 +623,6 @@ body.ice-blue .game-root .source-bag-cell .enhance{color:#ffd66c!important;backg
  .game-root.display-landscape .reference-hud{grid-template-columns:30px minmax(0,1fr) auto}
  .game-root.display-landscape .hud-currency button{display:none}
 }
+
+/* Landscape: keep the player sprite clear of the level/name label. */
+.game-root.display-landscape .four-player > .actor-name{display:none!important}
