@@ -3,8 +3,8 @@ export const WORLD_BOSS_VISUAL_SCALE=1.5;
 export function monsterPosition(slot:number,count:number){
  const normal=[{x:56,y:65},{x:80,y:39},{x:83,y:82}];
  if(count<=3)return normal[slot]||normal[0];
- const rows=Math.ceil(count/2),row=Math.floor(slot/2);
- return {x:slot%2?83:54,y:rows<=1?62:32+row*52/(rows-1)};
+ const formation=[{x:49,y:77},{x:73,y:77},{x:92,y:77},{x:61,y:43},{x:84,y:43}];
+ return formation[slot]||{x:73,y:60};
 }
 
 /** Bosses face the player, leaving the top health bars and bottom controls clear. */
