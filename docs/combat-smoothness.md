@@ -1,5 +1,29 @@
 # 戰鬥順暢度修正
 
+## Local player attack loop (2026-10-26)
+
+Normal player swings now use a browser-owned 100ms progress clock. Reaching the
+attack interval directly calls the local playerAttack animation entry point.
+Network normal-attack cues are ignored by the player motion hook, so a delayed
+packet cannot restart or duplicate a swing. Fractional progress survives speed
+changes. Player frames are sampled by a separate 125ms interval instead of rAF.
+The existing death > hurt > skill > attack priority and single pending-attack
+flag remain: a blocked swing is supplemented once after the higher action ends.
+
+Stopping, no living displayed targets, disabling status, missing arrows, death,
+map/character changes and tab visibility changes clear pending local attacks.
+Background time never produces a burst of browser swings on return.
+
+This change moves normal swing scheduling and animation to the browser. Damage,
+MP costs, rewards, projectiles, hit effects and stored progress remain on the
+authoritative server event timeline; this is not a browser-side damage engine.
+Auto-cast spell cues still come from confirmed events; manual previews retain
+their confirmation deduplication.
+
+Validation: tests/local-player-attack.test.mjs covers fractional attack timing,
+speed changes, single pending swings, packet-free attacks, packet burst
+deduplication, manual cast confirmation, stop/control/death and hidden tabs.
+
 - 回放沿用原事件時間間距，但延遲封包不再提高永久播放延遲；新封包的末筆事件最多排到收到後 350ms。積壓事件依序套用真實傷害與血量，不更改戰鬥計算。
 - 高攻速動畫依攻擊間隔縮放影格時間，取消每格至少 45ms 的限制。優先動作最多保留一個最新待播姿勢，死亡仍有最高優先權。
 - 狩獵同步以請求開始時間計算間隔；不再收到回應後額外等 300ms。請求仍單線執行，錯誤退避、暫停背景同步、操作不自動重送維持原規則。
@@ -9,3 +33,4 @@
 - API 回傳 Server-Timing，耗時超過 300ms 時記錄 auth、read、simulation、persistEncode、write、view、encode 與 total，用於後續定位线上延遲。紀錄不含帳號、物品或存檔內容。
 
 驗證：延遲後恢復、高攻速、優先動作與死亡、增量資料重建、GM 設定變更、存檔重新載入、競爭寫入、離線結算、93 張地圖補怪與變身外觀回歸測試。實機 FPS 尚未驗證，HTTP 網路往返延遲仍存在。
+

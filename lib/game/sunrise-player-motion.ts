@@ -7,6 +7,20 @@ export type SunriseClock={act:Exclude<SunriseAction,'idle'>|null;t:number;pendAt
 export type SunriseTiming={counts:Partial<Record<SunriseAction,number>>;attackSeconds:number;castSeconds:number};
 export const SUNRISE_PLAYER_PRIORITY={death:5,hurt:4,skill:3,attack:2,idle:1};
 export const emptySunriseClock=():SunriseClock=>({act:null,t:0,pendAtk:false});
+export const SUNRISE_ATTACK_TICK_MS=100;
+export const SUNRISE_PLAYER_FRAME_MS=125;
+export type LocalAttackClock={elapsed:number;period:number};
+export type LocalAttackInput={running:boolean;hasTarget:boolean;blocked:boolean};
+/** Local progress only; damage, rewards and saves remain server-owned. */
+export function tickLocalPlayerAttack(clock:LocalAttackClock,seconds:number,enabled:boolean){
+ const period=Number.isFinite(seconds)&&seconds>0?Math.max(.1,seconds):1;
+ if(!enabled)return {clock:{elapsed:0,period},attack:false};
+ let elapsed=Number.isFinite(clock.elapsed)&&clock.elapsed>=0?clock.elapsed:0;
+ if(clock.period>0&&clock.period!==period)elapsed=elapsed/clock.period*period;
+ elapsed+=SUNRISE_ATTACK_TICK_MS/1000;
+ const attack=elapsed+1e-9>=period;
+ return {clock:{elapsed:Math.max(0,attack?elapsed-period:elapsed),period},attack};
+}
 export function sunriseFrameMs(seconds:number,count:number){return seconds>0&&count>0?Math.max(45,Math.min(125,seconds*1000/count)):125;}
 export function sunriseMotionDuration(kind:SunriseAction,timing:SunriseTiming){
  const count=timing.counts[kind]||0;
@@ -28,3 +42,4 @@ export function sunriseMotionPose(state:SunriseClock,now:number,timing:SunriseTi
  const step=kind==='attack'?sunriseFrameMs(timing.attackSeconds,count):kind==='skill'?sunriseFrameMs(timing.castSeconds,count):125;
  return {kind,frame:kind==='idle'?Math.floor(now/125)%count:Math.min(count-1,Math.max(0,Math.floor((now-state.t)/step)))};
 }
+

@@ -21,11 +21,13 @@ export default function CombatSprite({c,view,interval,pendingCast,castInterval:s
  // base classes. Only the active battle direction needs layered frames.
  useEffect(()=>{const paths=new Set(Object.values(clips).flat());for(const clip of [castClip,attackClip])if(clip)for(const path of [...clip.body,...clip.shadow,...clip.weapon])if(path)paths.add(path);preloadSprites([...paths]);},[clips,castClip,attackClip]);
  const counts=useMemo(()=>Object.fromEntries(Object.entries(clips).map(([k,v])=>[k,v.length])),[clips]),actions=view.actions||[],cues=useMemo(()=>sunrisePlayerCues(actions),[actions]);
- const castInterval=playerCastInterval(serverCastInterval,(poly&&(castSpeeds as Record<string,number>)[poly.name])||({knight:1.3,elf:1.2,mage:1,dark:1.4,royal:1.4,dragon:1.3,warrior:1.4,illusion:1} as Record<string,number>)[c.cls]||1.2),pose=useSunrisePlayerMotion(`${c.id}:${base}:${poly?.id||''}`,cues,{counts,attackSeconds:interval,castSeconds:castInterval},view.hp,pendingCast?.characterId===c.id?pendingCast:undefined),seq=clips[pose.kind as keyof typeof clips]?.length?clips[pose.kind as keyof typeof clips]:clips.idle;
+ const local={running:c.running,hasTarget:view.arena.some(m=>m.hp>0),blocked:['status_stun','status_freeze','status_stone','sk_abs_barrier'].some(k=>c.buffs[k]?.until>Date.now())||!!ranged&&!Object.entries(c.bag).some(([id,n])=>n>0&&!c.locked?.includes(id)&&(raw.items as any)[baseItem(id)]?.isArrow)};
+ const castInterval=playerCastInterval(serverCastInterval,(poly&&(castSpeeds as Record<string,number>)[poly.name])||({knight:1.3,elf:1.2,mage:1,dark:1.4,royal:1.4,dragon:1.3,warrior:1.4,illusion:1} as Record<string,number>)[c.cls]||1.2),pose=useSunrisePlayerMotion(`${c.id}:${c.zone}:${base}:${poly?.id||''}`,cues,{counts,attackSeconds:interval,castSeconds:castInterval},view.hp,pendingCast?.characterId===c.id?pendingCast:undefined,local),seq=clips[pose.kind as keyof typeof clips]?.length?clips[pose.kind as keyof typeof clips]:clips.idle;
  const frame=Math.min(seq.length-1,pose.frame);
  const activeClip=pose.kind==='skill'?castClip:pose.kind==='attack'?attackClip:undefined;
  return seq.length?<PlayerSpriteFrame className="character-sprite" data-action={pose.kind} data-direction={direction} data-polymorph={poly?.id} formId={poly?.id} src={seq[frame]} clip={activeClip} frame={frame} alt={c.name}/>:null;
 }
+
 
 
 
