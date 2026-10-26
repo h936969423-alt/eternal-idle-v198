@@ -529,3 +529,8 @@ body.ice-blue .game-root .source-bag-cell .enhance{color:#ffd66c!important;backg
 .scene-death-notice{position:absolute;left:50%;top:16%;transform:translateX(-50%);z-index:20;white-space:nowrap;padding:7px 12px;border:1px solid #ad7558;border-radius:7px;background:rgba(24,12,15,.88);color:#ffe1cb;font-weight:700;font-size:13px;pointer-events:none;animation:eternal-death-notice 1.1s ease-out both}
 @keyframes eternal-death-notice{0%{opacity:0;transform:translate(-50%,8px)}18%,72%{opacity:1;transform:translate(-50%,0)}100%{opacity:0;transform:translate(-50%,-6px)}}
 @media (prefers-reduced-motion:reduce){.scene-death-notice{animation:none}}
+
+/* Sunrise-inspired 800x450 (16:9) battle viewport. Keep all actors and effects in the same scaled arena coordinate space. */
+.game-root.display-portrait .battle-scene .four-battle.static-arena,
+.game-root.display-portrait .battle-scene .four-battle.static-arena.crowded-arena{aspect-ratio:16/9;height:auto;min-height:0}
+.game-root.display-landscape .battle-scene .four-battle.static-arena{width:100%;aspect-ratio:16/9;height:auto;min-height:0;flex:0 0 auto;box-sizing:border-box}
