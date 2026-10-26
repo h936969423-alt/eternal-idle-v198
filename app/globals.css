@@ -554,3 +554,21 @@ body.ice-blue .game-root .source-bag-cell .enhance{color:#ffd66c!important;backg
     flex:0 0 auto;min-height:0;padding:0;aspect-ratio:16/9;
   }
 }
+
+/* Five-monster formations: scale art to the arena so front/back actors do not collide on phones.
+   Keep each .four-monster's position/transform intact: combat FX anchor to that element. */
+.game-root .battle-scene:not(.world-boss-scene) .static-arena .four-monsters:has(>.four-monster:nth-child(5))>.four-monster{
+  width:clamp(48px,10vw,90px);
+}
+.game-root .battle-scene:not(.world-boss-scene) .static-arena .four-monsters:has(>.four-monster:nth-child(5)) .four-monster-art,
+.game-root .battle-scene:not(.world-boss-scene) .static-arena .four-monsters:has(>.four-monster:nth-child(5)) .four-monster-art .sequence-art,
+.game-root .battle-scene:not(.world-boss-scene) .static-arena .four-monsters:has(>.four-monster:nth-child(5)) .four-target img{
+  width:clamp(42px,8vw,72px);height:clamp(42px,8vw,72px);max-width:100%;object-fit:contain;
+}
+@media(max-width:540px){
+ .game-root .battle-scene:not(.world-boss-scene) .static-arena .four-monsters:has(>.four-monster:nth-child(5))>.four-monster{width:clamp(43px,12vw,64px)}
+ .game-root .battle-scene:not(.world-boss-scene) .static-arena .four-monsters:has(>.four-monster:nth-child(5)) .four-monster-art,
+ .game-root .battle-scene:not(.world-boss-scene) .static-arena .four-monsters:has(>.four-monster:nth-child(5)) .four-monster-art .sequence-art,
+ .game-root .battle-scene:not(.world-boss-scene) .static-arena .four-monsters:has(>.four-monster:nth-child(5)) .four-target img{width:clamp(38px,10vw,56px);height:clamp(38px,10vw,56px)}
+ .game-root .battle-scene:not(.world-boss-scene) .static-arena .four-monsters:has(>.four-monster:nth-child(5)) .monster-ground-name{font-size:10px!important}
+}
