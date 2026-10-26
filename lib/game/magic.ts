@@ -17,7 +17,10 @@ export function skillSummary(id:string,stats?:Record<string,number>){
  if(s.healCooldownTicks)text+=` · 本招冷卻${s.healCooldownTicks/10}秒`;
  if(s.hpCost&&s.type!=='convert')text+=` · 消耗HP ${s.hpCost}`;
  if(s.reqEle)text+=' · '+({fire:'火',water:'水',wind:'風',earth:'地'} as Record<string,string>)[s.reqEle]+'屬性限定';
+ if(s.justiceHeal)text+=' · 施法者正義值越高恢復量越高，滿正義+20%';
+ if(s.reqJustice)text+=' · 需要正義值≥1000';
  if(s.noRefresh)text+=' · 生效中不可刷新';
  return text||s.msg||s.desc||'被動技能';
 }
+
 

@@ -1,3 +1,4 @@
+import {justiceHealMultiplier} from './alignment';
 import {lineageWMagicStats,lineageWMagicTarget,isPlayerTarget} from './lineagew-conditions';
 import {targetMagicHit} from './lineagew-equipment-effects';
 // Rules pinned to pp771007/idle-lineage-class 5f00f4a86389aaa7309c24d7a7c1ab060c47b500.
@@ -16,7 +17,14 @@ export function skillMpCost(s:any,b:Record<string,number>){return s.mp?Math.max(
 export const rollDice=(n:number,sides:number,rng:()=>number)=>{let v=0;for(let i=0;i<n;i++)v+=1+Math.floor(rng()*sides);return v;};
 export function abnormalHit(lv:number,b:Record<string,number>,m:any,rng:()=>number,cap=20,offset=0){const hv=Math.max(0,Math.min(cap,lv+targetMagicHit(b,m)+offset-((m.lv||0)-10)-(m.mr||0)/10)),r=rollDice(1,20,rng);return r===20||r!==1&&hv>=r;}
 export function healIntBonus(int:number){int=Math.floor(int);return int<=9?-1:int<=11?0:int<=14?1:int<=17?2:int===18?3:int<=25?int-15:Math.min(21,10+Math.floor((int-25)/5));}
-export function healingAmount(s:any,b:Record<string,number>,missing:number,rng:()=>number,groupMult=1){if(s.fixedHeal)return Math.min(missing,fixedHealing(s.fixedHeal,b));if(s.fullRestore)return missing;if(s.classicHeal){const x=s.classicHeal;return Math.max(1,Math.floor(rollDice(Math.max(1,x.baseDice+healIntBonus(b.int)),x.sides,rng)*2*(x.mult||1)*(s.groupHeal?groupMult:1)));}if(s.healDice)return Math.max(1,Math.floor((rollDice(...s.healDice as [number,number],rng)+(s.healBase||0))*(1+3*(b.mdmg||0)/32)));return s.valDice?rollDice(...s.valDice as [number,number],rng)+(s.valBase||0):0;}
+export function healingAmount(s:any,b:Record<string,number>,missing:number,rng:()=>number,groupMult=1,alignment:unknown=0){
+ if(s.fixedHeal)return Math.min(missing,fixedHealing(s.fixedHeal,b));
+ if(s.fullRestore)return missing;
+ const justice=s.justiceHeal?justiceHealMultiplier(alignment):1;
+ if(s.classicHeal){const x=s.classicHeal;return Math.max(1,Math.floor(rollDice(Math.max(1,x.baseDice+healIntBonus(b.int)),x.sides,rng)*2*(x.mult||1)*(s.groupHeal?groupMult:1)*justice));}
+ if(s.healDice)return Math.max(1,Math.floor((rollDice(...s.healDice as [number,number],rng)+(s.healBase||0))*(1+3*(b.mdmg||0)/32)*justice));
+ return s.valDice?Math.max(1,Math.floor((rollDice(...s.valDice as [number,number],rng)+(s.valBase||0))*justice)):0;
+}
 export function weaponRequirement(s:any,w:any,shield:any){if(s.reqWpn==='bow'&&!w?.isBow)return '需要裝備弓';if(s.reqWpn==='w2h'&&!(!w?.isBow&&(w?.twohanded||w?.w2h||w?.wcat==='tohandsword')))return '需要雙手劍';if(s.reqWpnMelee&&(!w||w.isBow))return '需要近戰武器';if(s.reqShield&&!shield)return '需要裝備盾牌';return '';}
 export function spellClockKey(id:string,s:any){return s.type==='manual'?'manual:'+id:s.type==='heal'&&!s.fixedHeal&&!s.valDice&&!s.hot?'purify':s.type==='atk'?'attack':['heal','convert'].includes(s.type)?s.type:undefined;}
 export function spellDamage(s:any,b:Record<string,number>,m:any,rng:()=>number,cls='elf',out?:{critical:boolean}){
@@ -34,4 +42,5 @@ export function buffModifiers(id:string,s:any,lv:number,ele?:string){const out={
  if(id==='sk_elf_singleres'&&ele)out['res'+ele[0].toUpperCase()+ele.slice(1)]=50;
  return {...out,...special[id]};
 }
+
 
