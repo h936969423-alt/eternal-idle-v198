@@ -17,7 +17,11 @@ function normalizedSpawnPoints(g:MapGeneration):SpawnPoint[]{
  const same=points.every((p,i)=>Math.abs(p.x-legacy[i].x)<.01&&Math.abs(p.y-legacy[i].y)<.01);
  return same?defaultSpawnPoints(5):points;
 }
-export function normalizeMapGeneration(g:MapGeneration):MapGeneration{return {...g,...(g.respawnRulesVersion===2?{}:{respawnSeconds:5,respawnRulesVersion:2 as const}),spawnMode:g.spawnMode||'fixed',spawnPoints:normalizedSpawnPoints(g)};}
+export function normalizeMapGeneration(g:MapGeneration):MapGeneration{
+ const oldDefault=g.count===3&&(g.spawnMode===undefined||g.spawnMode==='fixed')&&g.respawnSeconds===5&&(!g.spawnPoints||g.spawnPoints.length===3&&g.spawnPoints.every((p,i)=>{const old=[{x:56,y:65},{x:80,y:39},{x:83,y:82}][i];return p.x===old.x&&p.y===old.y;}));
+ const next=oldDefault?{...g,count:5,spawnPoints:defaultSpawnPoints(5)}:g;
+ return {...next,...(next.respawnRulesVersion===2?{}:{respawnSeconds:5,respawnRulesVersion:2 as const}),spawnMode:next.spawnMode||'fixed',spawnPoints:normalizedSpawnPoints(next)};
+}
 /** Positions are scene percentages; keep clear of the player, vitals and controls. */
 export function chooseSpawnPoint(g:MapGeneration,slot:number,occupied:SpawnPoint[],rng:()=>number,previous?:SpawnPoint):SpawnPoint{
  if(g.spawnMode!=='random')return {...(g.spawnPoints?.[slot]||defaultSpawnPoints(g.count)[slot])};
