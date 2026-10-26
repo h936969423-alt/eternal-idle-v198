@@ -653,3 +653,10 @@ body:has(.game-root.display-landscape) :is(.game-dialog,.bian-dialog) [data-slot
 body:has(.game-root.display-landscape) :is(.game-dialog,.bian-dialog) [data-slot=button] svg{width:15px;height:15px}
 body:has(.game-root.display-landscape) .detail-dialog[data-slot=dialog-content]{padding:0!important}
 body:has(.game-root.display-landscape) .game-dialog :is(input,select,textarea){font-size:16px;max-width:100%}
+
+/* Anchor hunt and lobby actions to the map floor, below-left of the player. */
+.game-root .battle-scene .static-arena .battle-bottom-controls{
+ position:absolute;left:8px;right:auto;top:auto;bottom:6px;
+ display:flex;justify-content:flex-start;align-items:center;flex-wrap:wrap;
+ width:max-content;max-width:calc(100% - 16px);gap:6px;margin:0;z-index:30;
+}
