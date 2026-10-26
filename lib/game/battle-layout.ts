@@ -3,7 +3,7 @@ export const WORLD_BOSS_VISUAL_SCALE=1.5;
 export function monsterPosition(slot:number,count:number){
  const normal=[{x:56,y:65},{x:80,y:39},{x:83,y:82}];
  if(count<=3)return normal[slot]||normal[0];
- const formation=[{x:49,y:77},{x:73,y:77},{x:92,y:77},{x:61,y:43},{x:84,y:43}];
+ const formation=[{x:49,y:77},{x:68,y:77},{x:87,y:77},{x:59,y:43},{x:79,y:43}];
  return formation[slot]||{x:73,y:60};
 }
 
