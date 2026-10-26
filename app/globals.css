@@ -626,3 +626,30 @@ body.ice-blue .game-root .source-bag-cell .enhance{color:#ffd66c!important;backg
 
 /* Landscape: keep the player sprite clear of the level/name label. */
 .game-root.display-landscape .four-player > .actor-name{display:none!important}
+
+/* Compact every landscape tool page while retaining the battle viewport. */
+.game-root.display-landscape .main-tabs > [data-slot=tabs-content]{
+ zoom:.82;min-width:0;max-width:100%;overflow-wrap:anywhere;
+}
+.game-root.display-landscape .main-heading{padding:8px 0 10px;gap:6px}
+.game-root.display-landscape .main-heading h1{font-size:19px;margin-top:0;letter-spacing:1px}
+.game-root.display-landscape .main-heading .eyebrow{display:none}
+.game-root.display-landscape .main-heading .status-tag{font-size:10px;padding:3px 5px}
+.game-root.display-landscape .main-tabs > [data-slot=tabs-content] :is(.ability-layout,.skill-card,.source-inventory,.catalog-grid){min-width:0}
+.game-root.display-landscape .main-tabs > [data-slot=tabs-content] .ability-layout{grid-template-columns:minmax(0,1fr);gap:10px}
+.game-root.display-landscape .main-tabs > [data-slot=tabs-content] .source-inventory{padding:10px;margin-bottom:10px}
+.game-root.display-landscape .main-tabs > [data-slot=tabs-content] .skill-card{padding:9px;gap:8px}
+.game-root.display-landscape .main-tabs > [data-slot=tabs-content] .catalog-card{padding:10px 5px;min-height:100px}
+/* Dialogs render in a portal outside game-root, so follow the selected mode. */
+body:has(.game-root.display-landscape) :is(.game-dialog,.bian-dialog)[data-slot=dialog-content]{
+ width:min(600px,calc(100vw - 24px - env(safe-area-inset-left) - env(safe-area-inset-right)))!important;
+ max-width:calc(100vw - 24px - env(safe-area-inset-left) - env(safe-area-inset-right))!important;
+ max-height:calc(100dvh - 24px - env(safe-area-inset-top) - env(safe-area-inset-bottom))!important;
+ padding:12px!important;gap:10px;font-size:13px;line-height:1.45;overscroll-behavior:contain;
+}
+body:has(.game-root.display-landscape) .game-dialog [data-slot=dialog-title]{font-size:18px;letter-spacing:1px}
+body:has(.game-root.display-landscape) .game-dialog [data-slot=dialog-description]{font-size:12px;line-height:1.45}
+body:has(.game-root.display-landscape) :is(.game-dialog,.bian-dialog) [data-slot=button]{height:32px;min-height:32px;font-size:12px;padding:4px 9px}
+body:has(.game-root.display-landscape) :is(.game-dialog,.bian-dialog) [data-slot=button] svg{width:15px;height:15px}
+body:has(.game-root.display-landscape) .detail-dialog[data-slot=dialog-content]{padding:0!important}
+body:has(.game-root.display-landscape) .game-dialog :is(input,select,textarea){font-size:16px;max-width:100%}
