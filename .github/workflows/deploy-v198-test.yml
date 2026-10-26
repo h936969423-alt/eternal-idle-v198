@@ -49,8 +49,8 @@ jobs:
           node-version: '22'
           cache: pnpm
       - run: pnpm install --frozen-lockfile
-      - name: Verify monster animation regression tests before deploying
-        run: node --experimental-strip-types --test tests/animation-clock.test.mjs
+      - name: Verify combat animation and attack-phase regression tests before deploying
+        run: node --experimental-strip-types --test tests/animation-clock.test.mjs tests/attack-phase.test.mjs
       - name: Build complete Cloudflare Worker
         run: pnpm run build
       - name: Assert strict isolation from live resources
