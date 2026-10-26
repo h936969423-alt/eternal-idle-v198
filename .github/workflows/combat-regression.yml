@@ -33,7 +33,7 @@ jobs:
         with:
           node-version: '22'
       - name: Run combat timing regressions
-        run: node --experimental-strip-types --test tests/animation-clock.test.mjs tests/attack-phase.test.mjs
+        run: node --experimental-strip-types --test tests/animation-clock.test.mjs tests/attack-phase.test.mjs tests/battle-layout.test.mjs
       - name: Verify TypeScript type safety
         run: |
           corepack enable
