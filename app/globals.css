@@ -832,3 +832,20 @@ body:has(.game-root.map-first-layout) .map-function-dialog[data-slot=dialog-cont
 .game-root.screenshot-layout.map-first-layout .map-top-status .active-status-icon:focus-visible{
  outline:2px solid #e7cb89;outline-offset:1px;
 }
+
+
+/* Persistent log between skill shortcuts and navigation; no standalone logout footer. */
+.game-root.screenshot-layout.map-first-layout{--map-log-height:112px}
+.game-root.screenshot-layout.map-first-layout .main-panel{padding-bottom:calc(var(--map-nav-height) + var(--map-skill-height) + var(--map-log-height))!important}
+.game-root.screenshot-layout.map-first-layout .map-skill-dock{bottom:calc(var(--map-nav-height) + var(--map-log-height))}
+.game-root.screenshot-layout.map-first-layout .map-log-dock{position:absolute;left:0;right:0;bottom:var(--map-nav-height);height:var(--map-log-height);overflow:hidden;background:#101b20;z-index:34;border-top:1px solid #8f784d66}
+.game-root.screenshot-layout.map-first-layout .map-log-dock>.log-panel{display:flex;flex-direction:column;height:100%;min-height:0;width:100%;border:0;border-radius:0;background:transparent;margin:0}
+.game-root.screenshot-layout.map-first-layout .map-log-dock .section-head{flex:0 0 26px;height:26px;min-height:26px;padding:3px 10px;border-bottom:1px solid #8f784d33;gap:8px}
+.game-root.screenshot-layout.map-first-layout .map-log-dock .section-head h2{font-size:12px;line-height:18px;gap:5px}
+.game-root.screenshot-layout.map-first-layout .map-log-dock .section-head h2 svg{width:13px;height:13px}
+.game-root.screenshot-layout.map-first-layout .map-log-dock .section-head>span{font-size:10px}
+.game-root.screenshot-layout.map-first-layout .map-log-dock .log-list{flex:1 1 auto;height:auto;min-height:0;padding:2px 10px;overflow-y:auto;overscroll-behavior:contain}
+.game-root.screenshot-layout.map-first-layout .map-log-dock .log-line{padding:2px 0;font-size:11px;line-height:16px;gap:8px}
+.game-root.screenshot-layout.map-first-layout .map-log-dock .log-line time{font-size:10px}
+.game-root.screenshot-layout.map-first-layout .map-log-dock .empty-note{font-size:11px;padding:8px 0;margin:0}
+@media(max-height:500px){.game-root.screenshot-layout.map-first-layout{--map-log-height:58px}.game-root.screenshot-layout.map-first-layout .map-log-dock .section-head{flex-basis:22px;height:22px;min-height:22px}}

@@ -6,6 +6,7 @@ on:
     paths:
       - 'lib/game/**'
       - 'app/combat-sprite.tsx'
+      - 'app/combat-audio.ts'
       - 'app/monster-motion.tsx'
       - 'app/scene-transition.tsx'
       - 'app/globals.css'
@@ -67,6 +68,8 @@ jobs:
         run: node scripts/test-sunrise-player-motion.cjs
       - name: Verify local 100ms attacks and 125ms player animation
         run: node --experimental-strip-types --test tests/local-player-attack.test.mjs tests/local-hit-sync.test.mjs tests/player-target-lock.test.mjs tests/normal-attack-target.test.mjs
+      - name: Verify audio activation and interruption recovery
+        run: node --experimental-strip-types --test tests/combat-audio.test.mjs
       - name: Verify batched network attack cadence
         run: node scripts/test-network-combat-cadence.cjs
       - name: Build complete Cloudflare Worker
@@ -90,5 +93,6 @@ jobs:
         run: pnpm exec wrangler deploy --config dist/server/wrangler.json --name eternal-idle-v198-test --keep-vars
       - name: Print deployment location
         run: echo 'Check Cloudflare Workers dashboard for eternal-idle-v198-test workers.dev URL'
+
 
 

@@ -2,21 +2,51 @@ import sounds from '@/lib/game/sounds.json';
 import raw from '@/lib/game/gamedata.json';
 import { baseItem } from '@/lib/game/gear';
 import type { Character,CombatEvent } from '@/lib/game/engine';
-const S=sounds as Record<string,Record<string,string|number>>,items=raw.items as Record<string,any>,mobs=raw.mobs as Record<string,any>;let voices:HTMLAudioElement[]=[];let context:AudioContext|null=null;let enabled=false;let generation=0;let masterGain:GainNode|null=null;const fallbackVolumes=new WeakMap<HTMLAudioElement,number>();const buffers=new Map<string,Promise<AudioBuffer>>();const active=new Set<AudioBufferSourceNode>();
+const S=sounds as Record<string,Record<string,string|number>>,items=raw.items as Record<string,any>,mobs=raw.mobs as Record<string,any>;let voices:HTMLAudioElement[]=[];let context:AudioContext|null=null;let enabled=false;let generation=0;let masterGain:GainNode|null=null;const fallbackVolumes=new WeakMap<HTMLAudioElement,number>();const buffers=new Map<string,Promise<AudioBuffer>>();const active=new Set<AudioBufferSourceNode|OscillatorNode>();
 export function stopCombatVoices(){generation++;for(const source of active){try{source.stop();}catch{}}active.clear();for(const audio of voices)audio.pause();voices=[];}
+/** Safari's default Web Audio session can follow the phone's silent switch. */
+function playbackSession(on:boolean){
+ try{const session=(navigator as Navigator&{audioSession?:{type:string}}).audioSession;if(session)session.type=on?'playback':'auto';}catch{}
+}
 export function unlockCombatAudio(on:boolean){
- if(enabled!==on)generation++;enabled=on;if(!on){stopCombatVoices();return;}
+ if(enabled!==on)generation++;enabled=on;playbackSession(on);
+ if(!on){stopCombatVoices();void context?.suspend().catch(()=>{});return;}
  const C=window.AudioContext||(window as any).webkitAudioContext;
- if(C&&!context){context=new C();masterGain=context!.createGain();masterGain.gain.value=masterVolume;masterGain.connect(context!.destination);document.addEventListener('visibilitychange',()=>{if(document.hidden)stopCombatVoices();});}
+ if(C&&(!context||context.state==='closed')){
+  if(context)stopCombatVoices();
+  try{context=new C();masterGain=context!.createGain();masterGain.gain.value=masterVolume;masterGain.connect(context!.destination);}
+  catch(error){context=null;masterGain=null;console.warn('Combat audio initialization failed',error);}
+ }
  void context?.resume().catch(()=>{});
 }
+/** Gesture-triggered confirmation, independent of asset download/decode latency. */
+export async function previewCombatAudio(){
+ if(!enabled||!context||document.visibilityState==='hidden')return false;
+ const ctx=context,epoch=generation;
+ try{
+  await ctx.resume();
+  if(!enabled||epoch!==generation||ctx!==context||ctx.state!=='running'||document.hidden)return false;
+  const start=ctx.currentTime;
+  for(const [offset,hz]of [[0,660],[.08,880]]){
+   const oscillator=ctx.createOscillator(),gain=ctx.createGain();oscillator.type='sine';oscillator.frequency.value=hz;
+   gain.gain.setValueAtTime(0,start+offset);gain.gain.linearRampToValueAtTime(.1,start+offset+.01);gain.gain.exponentialRampToValueAtTime(.001,start+offset+.075);
+   oscillator.connect(gain);gain.connect(masterGain||ctx.destination);active.add(oscillator);
+   oscillator.onended=()=>{active.delete(oscillator);oscillator.disconnect();gain.disconnect();};oscillator.start(start+offset);oscillator.stop(start+offset+.08);
+  }
+  return true;
+ }catch{return false;}
+}
+if(typeof document!=='undefined')document.addEventListener('visibilitychange',()=>{
+ if(document.hidden)stopCombatVoices();else if(enabled)unlockCombatAudio(true);
+});
+
 function play(path:string,volume=.3){
  const requested=performance.now(),epoch=generation;if(!enabled||document.visibilityState==='hidden')return;
- if(context){const ctx=context;if(!buffers.has(path))buffers.set(path,fetch(path).then(r=>{if(!r.ok)throw Error('sound unavailable');return r.arrayBuffer();}).then(b=>ctx.decodeAudioData(b)));
+ if(context){const ctx=context;if(ctx.state!=='running')void ctx.resume().catch(()=>{});if(!buffers.has(path))buffers.set(path,fetch(path).then(r=>{if(!r.ok)throw Error('sound unavailable');return r.arrayBuffer();}).then(b=>ctx.decodeAudioData(b)));
  void buffers.get(path)!.then(buffer=>{if(!enabled||epoch!==generation||document.visibilityState==='hidden'||active.size>=12||performance.now()-requested>500)return;
  const source=ctx.createBufferSource(),gain=ctx.createGain();source.buffer=buffer;gain.gain.value=volume;source.connect(gain);gain.connect(masterGain||ctx.destination);active.add(source);
  source.onended=()=>{active.delete(source);source.disconnect();gain.disconnect();};source.start();
- }).catch(()=>{buffers.delete(path);});return;}
+ }).catch(error=>{buffers.delete(path);console.warn('Combat audio playback failed',path,error);});return;}
  voices=voices.filter(a=>!a.paused);if(voices.length>=12)return;const audio=new Audio(path);fallbackVolumes.set(audio,volume);audio.volume=volume*masterVolume;voices.push(audio);void audio.play().catch(()=>{});
 }
 function mapped(map:Record<string,string|number>,name:string){return map[name]||map[name.replace(/[（(][^）)]*[）)]/g,'').replace(/^(遺忘之島|夢幻之島|變種|強化|巨大|冰原)/,'').trim()];}
@@ -58,5 +88,6 @@ export function preloadCombatAudio(c:Character){
  for(const id of ids){const path=`/assets/sfx/${id}.ogg`;if(!buffers.has(path))buffers.set(path,fetch(path).then(r=>{if(!r.ok)throw Error('sound unavailable');return r.arrayBuffer();}).then(b=>ctx.decodeAudioData(b)).catch(error=>{buffers.delete(path);throw error;}));void buffers.get(path)!.catch(()=>{});}
  const transform='/assets/client-audio/124.wav';if(!buffers.has(transform))buffers.set(transform,fetch(transform).then(r=>r.arrayBuffer()).then(b=>ctx.decodeAudioData(b)));void buffers.get(transform)!.catch(()=>{buffers.delete(transform);});
 }
+
 
 
