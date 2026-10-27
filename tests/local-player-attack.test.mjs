@@ -130,6 +130,36 @@ test('real motion + buffered replay: five incoming attackers and jitter do not s
  assert.ok(shown.every(e=>e.shownAt-e.at<1600),'no multi-second timeout-driven HP stall');
  h.unmount();
 });
+test('real rAF requeue + delayed spawn cannot pin later swings to a completed normal event',()=>{
+ const replaySource=stripTypeScriptTypes(fs.readFileSync(new URL('../lib/game/combat-presentation.ts',import.meta.url),'utf8')).replace(/^import .*;\s*$/gm,'').replaceAll('export ','');
+ const timingSource=stripTypeScriptTypes(fs.readFileSync(new URL('../lib/game/replay-timing.ts',import.meta.url),'utf8')).replace(/^import .*;\s*$/gm,'').replaceAll('export ','');
+ const ctx={lineageWEffectDefinition:()=>undefined,mythicProcDefinition:()=>undefined,raw:{skills:{}},isFlyingMagic:()=>false,magicFlightMs:()=>200,magicEffectLifetime:()=>800,TRIPLE_FLIGHT_MS:200,ARROW_FLIGHT_MS:200};
+ vm.createContext(ctx);vm.runInContext(timingSource+'\n'+replaySource,ctx);
+ const h=harness(),ownerKey='respawn-under-replay:zone';
+ let view={hp:100,mp:100,target:0,arena:['old','other'].map(uid=>({uid,id:'ant',hp:100,maxHp:100})),floats:[]};
+ const fresh=[{seq:1,at:0,kind:'spawn',slot:0,spawn:{uid:'new',id:'ant',hp:100,maxHp:100},hp:100,mp:100}];
+ for(let i=0;i<20;i++)fresh.push({seq:i+2,at:i*400,kind:'attack',source:'physical',attackId:`p:${i+2}`,uid:'new',slot:0,damage:1,mobHp:99-i,hp:100,mp:100});
+ // Deliver future packets over time, rather than pre-retiring every attack
+ // before the target spawns. Each packet joins the established 650ms timeline.
+ const queue=[],pending=[],shown=[],health=new Map();let cursor=0;
+ const render=()=>h.render({identity:ownerKey,hp:view.hp,local:{running:true,hasTarget:true,blocked:false,ownerKey,targetUid:view.arena[0].uid,targetSlot:0,liveTargetUids:view.arena.filter(m=>m.hp>0).map(m=>m.uid)}});
+ render();
+ for(let now=0;now<=10500;now+=25){
+  h.advance(now);
+  const packet=[];while(fresh[cursor]?.at<=now)packet.push(fresh[cursor++]);
+  queue.push(...ctx.prepareCombatHealth(packet,health).map(e=>({...e,due:e.at+650})));
+  queue.sort((a,b)=>a.due-b.due||a.seq-b.seq);
+  // Match useCombatReplay's actual ordering: rebuild targets on every rAF,
+  // then drain events, then commit their spawn/HP updates to the rendered view.
+  hitSync.queueLocalHitTargets(ownerKey,queue);
+  const ready=ctx.drainCombatPresentation(queue,pending,now,false,undefined,e=>hitSync.allowLocalHit(ownerKey,e.uid,e.seq,now));
+  for(const e of ready){view=ctx.applyCombatViewEvent(view,e,now);if(e.kind==='attack')shown.push(e.seq);}
+  render();
+ }
+ assert.equal(shown.length,20,'normal damage must continue after the first spawned-target hit');
+ assert.equal(new Set(shown).size,20);assert.equal(view.arena[0].hp,80);assert.equal(queue.length,0);
+ h.unmount();
+});
 
 
 

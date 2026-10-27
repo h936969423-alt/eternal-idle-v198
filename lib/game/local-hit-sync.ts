@@ -49,7 +49,9 @@ export function allowLocalHit(key:string,uid:string|undefined,seq:number,now:num
  // normal-hit receipt ledger suppresses its duplicate HP/number application.
  if(owner?.completed.has(seq))return true;
  if(!owner?.active||!uid){complete();return true;}
- if(owner.retired.delete(seq))return true;
+ // Retired results also leave the replay queue. Finalize them just like a
+ // contacted result, or a per-frame requeue leaves a ghost at pending[0].
+ if(owner.retired.delete(seq)){complete();return true;}
  owner.contacts=owner.contacts.filter(c=>!c.consumed);
  const contact=owner.contacts.find(c=>c.uid===uid&&(c.seq===undefined||c.seq===seq)&&c.at<=now);
  if(contact){contact.consumed=true;complete();return true;}

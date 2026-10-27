@@ -29,6 +29,22 @@ test('timeout cannot release another live target while swinging at a different U
  const key='lock:two';clearLocalHits(key);setLocalHitActive(key,true,.4);beginLocalSwing(key,{uid:'left',slot:0});
  assert.equal(allowLocalHit(key,'right',2,0),false);assert.equal(allowLocalHit(key,'right',2,5000),false);
 });
+test('a retired hit requeued before drain cannot remain as the next swing target after a spawn',()=>{
+ const key='lock:spawn-stall';clearLocalHits(key);setLocalHitActive(key,true,.4);
+ const first=hit(1,'new',0),second=hit(2,'new',0);
+ queueLocalHitTargets(key,[first]);
+ // The confirmed target exists on the server, but its spawn is not visible yet.
+ beginLocalSwing(key,{uid:'old',slot:0},['old']);
+ // The replay's next rAF repopulates its target list before draining events.
+ queueLocalHitTargets(key,[first]);
+ assert.equal(allowLocalHit(key,'new',1,125),true);
+ // Spawn is now visible and the first (nonlethal) hit has left the replay queue.
+ queueLocalHitTargets(key,[second]);
+ const next=beginLocalSwing(key,{uid:'new',slot:0},['new']);
+ assert.equal(next.seq,2,'a drained seq=1 must not permanently capture every later swing');
+ recordLocalContact(key,next.uid,525,next.seq,500);
+ assert.equal(allowLocalHit(key,'new',2,525),true);
+});
 test('confirmed hits drained while stopped cannot become ghost targets on restart',()=>{
  const key='lock:stop';clearLocalHits(key);setLocalHitActive(key,true,.4);
  queueLocalHitTargets(key,[hit(1,'old',0)]);beginLocalSwing(key,{uid:'old',slot:0});setLocalHitActive(key,false,.4);
@@ -48,3 +64,4 @@ test('target vector selects real directional assets with the Sunrise three-direc
  for(const [x,y,d]of vectors)assert.equal(playerTargetDirection(x,y,true),d);
  assert.equal(playerTargetDirection(-10,0),0);assert.equal(playerTargetDirection(0,-10),1);assert.equal(playerTargetDirection(10,0),2);
 });
+
