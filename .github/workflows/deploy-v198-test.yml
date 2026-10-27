@@ -85,7 +85,9 @@ jobs:
       - name: Typecheck five-class skill integration
         run: pnpm exec tsc --noEmit
       - name: Verify five-class W skill mechanics and legacy save compatibility
-        run: node scripts/test-lineagew-skills.cjs
+        run: |
+          python3 scripts/restore-lineagew-skills.py
+          node scripts/test-lineagew-skills.cjs
       - name: Build complete Cloudflare Worker
         run: pnpm run build
       - name: Publish verified W skill icons to isolated R2
