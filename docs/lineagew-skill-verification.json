@@ -1,0 +1,970 @@
+{
+  "skills": 231,
+  "checks": 241,
+  "results": [
+    {
+      "name": "lw_skill_10 光箭",
+      "result": "pass"
+    },
+    {
+      "name": "lw_skill_30 保護盾",
+      "result": "pass"
+    },
+    {
+      "name": "lw_skill_40 傳送術",
+      "result": "pass"
+    },
+    {
+      "name": "lw_skill_50 解毒術",
+      "result": "pass"
+    },
+    {
+      "name": "lw_skill_60 負重強化",
+      "result": "pass"
+    },
+    {
+      "name": "lw_skill_70 無所遁形術",
+      "result": "pass"
+    },
+    {
+      "name": "lw_skill_90 鎧甲護持",
+      "result": "pass"
+    },
+    {
+      "name": "lw_skill_630 精準目標",
+      "result": "pass"
+    },
+    {
+      "name": "lw_skill_640 灼熱靈氣",
+      "result": "pass"
+    },
+    {
+      "name": "lw_skill_650 閃灼靈氣",
+      "result": "pass"
+    },
+    {
+      "name": "lw_skill_660 勇猛意志",
+      "result": "pass"
+    },
+    {
+      "name": "lw_skill_690 霸體",
+      "result": "pass"
+    },
+    {
+      "name": "lw_skill_710 王者之劍",
+      "result": "pass"
+    },
+    {
+      "name": "lw_skill_8620 血之聯合",
+      "result": "pass"
+    },
+    {
+      "name": "lw_skill_8623 究極恢復",
+      "result": "pass"
+    },
+    {
+      "name": "lw_skill_10288 襲擊",
+      "result": "pass"
+    },
+    {
+      "name": "lw_skill_10825 勇猛意志 (大師) : 被動",
+      "result": "pass"
+    },
+    {
+      "name": "lw_skill_10988 閃灼靈氣 (大師) : 被動",
+      "result": "pass"
+    },
+    {
+      "name": "lw_skill_11387 灼熱靈氣 (大師) : 被動",
+      "result": "pass"
+    },
+    {
+      "name": "lw_skill_11999 專注靈氣",
+      "result": "pass"
+    },
+    {
+      "name": "lw_skill_12539 精通閃避",
+      "result": "pass"
+    },
+    {
+      "name": "lw_skill_12657 魔法抵抗",
+      "result": "pass"
+    },
+    {
+      "name": "lw_skill_12658 提升強健",
+      "result": "pass"
+    },
+    {
+      "name": "lw_skill_12659 強健復原",
+      "result": "pass"
+    },
+    {
+      "name": "lw_skill_12660 提升負重",
+      "result": "pass"
+    },
+    {
+      "name": "lw_skill_12661 增加裝甲",
+      "result": "pass"
+    },
+    {
+      "name": "lw_skill_12662 增加傷害",
+      "result": "pass"
+    },
+    {
+      "name": "lw_skill_12663 強健恢復",
+      "result": "pass"
+    },
+    {
+      "name": "lw_skill_12664 增加武器",
+      "result": "pass"
+    },
+    {
+      "name": "lw_skill_12665 裝甲加持",
+      "result": "pass"
+    },
+    {
+      "name": "lw_skill_12666 迴避加持",
+      "result": "pass"
+    },
+    {
+      "name": "lw_skill_12667 減免加持",
+      "result": "pass"
+    },
+    {
+      "name": "lw_skill_12668 傷害加持",
+      "result": "pass"
+    },
+    {
+      "name": "lw_skill_12669 減免擴展",
+      "result": "pass"
+    },
+    {
+      "name": "lw_skill_12670 致命迴避",
+      "result": "pass"
+    },
+    {
+      "name": "lw_skill_12671 能力擴展",
+      "result": "pass"
+    },
+    {
+      "name": "lw_skill_12672 免疫昏迷擴展",
+      "result": "pass"
+    },
+    {
+      "name": "lw_skill_12673 迴避遽升",
+      "result": "pass"
+    },
+    {
+      "name": "lw_skill_12674 能力遽升",
+      "result": "pass"
+    },
+    {
+      "name": "lw_skill_12675 貫穿防禦",
+      "result": "pass"
+    },
+    {
+      "name": "lw_skill_12676 免疫昏迷遽升",
+      "result": "pass"
+    },
+    {
+      "name": "lw_skill_13055 特殊攻擊 : 王族",
+      "result": "pass"
+    },
+    {
+      "name": "lw_skill_13237 生存的吶喊",
+      "result": "pass"
+    },
+    {
+      "name": "lw_skill_13240 生存的吶喊 (強化無限) : 被動",
+      "result": "pass"
+    },
+    {
+      "name": "lw_skill_13241 生存的吶喊 (無限) : 被動",
+      "result": "pass"
+    },
+    {
+      "name": "lw_skill_13489 鷹眼 - 偵察",
+      "result": "pass"
+    },
+    {
+      "name": "lw_skill_15808 勇猛攻擊",
+      "result": "pass"
+    },
+    {
+      "name": "lw_skill_15809 勇猛盔甲",
+      "result": "pass"
+    },
+    {
+      "name": "lw_skill_15811 王者之劍 (大師) : 被動",
+      "result": "pass"
+    },
+    {
+      "name": "lw_skill_15812 灼熱之劍",
+      "result": "pass"
+    },
+    {
+      "name": "lw_skill_15813 灼熱防護",
+      "result": "pass"
+    },
+    {
+      "name": "lw_skill_15814 帝國反擊",
+      "result": "pass"
+    },
+    {
+      "name": "lw_skill_15915 君主",
+      "result": "pass"
+    },
+    {
+      "name": "lw_skill_15973 帝國之路",
+      "result": "pass"
+    },
+    {
+      "name": "lw_skill_16044 魔力恢復",
+      "result": "pass"
+    },
+    {
+      "name": "lw_skill_16045 藥水強化",
+      "result": "pass"
+    },
+    {
+      "name": "lw_skill_16046 武器加持",
+      "result": "pass"
+    },
+    {
+      "name": "lw_skill_16047 無視裝甲",
+      "result": "pass"
+    },
+    {
+      "name": "lw_skill_16048 貫穿免疫昏迷",
+      "result": "pass"
+    },
+    {
+      "name": "lw_skill_16468 提升傷害",
+      "result": "pass"
+    },
+    {
+      "name": "lw_skill_16469 提升武器",
+      "result": "pass"
+    },
+    {
+      "name": "lw_skill_16470 增加致命",
+      "result": "pass"
+    },
+    {
+      "name": "lw_skill_16471 增加貫穿",
+      "result": "pass"
+    },
+    {
+      "name": "lw_skill_16472 強健加持",
+      "result": "pass"
+    },
+    {
+      "name": "lw_skill_16473 防禦加持",
+      "result": "pass"
+    },
+    {
+      "name": "lw_skill_16474 昏迷防護",
+      "result": "pass"
+    },
+    {
+      "name": "lw_skill_16475 無視昏迷裝甲",
+      "result": "pass"
+    },
+    {
+      "name": "lw_skill_16694 生存的吶喊 (終極無限) : 被動",
+      "result": "pass"
+    },
+    {
+      "name": "lw_skill_17388 傳喚沉默",
+      "result": "pass"
+    },
+    {
+      "name": "lw_skill_17390 隕石撞擊",
+      "result": "pass"
+    },
+    {
+      "name": "lw_skill_17676 護甲遽升",
+      "result": "pass"
+    },
+    {
+      "name": "lw_skill_17677 經驗遽升",
+      "result": "pass"
+    },
+    {
+      "name": "lw_skill_18601 支配",
+      "result": "pass"
+    },
+    {
+      "name": "lw_skill_18602 精準目標 (大師) : 被動",
+      "result": "pass"
+    },
+    {
+      "name": "lw_skill_18605 精準目標(強化大師) : 被動",
+      "result": "pass"
+    },
+    {
+      "name": "lw_skill_18608 勝利指揮",
+      "result": "pass"
+    },
+    {
+      "name": "lw_skill_18609 灼熱守護者",
+      "result": "pass"
+    },
+    {
+      "name": "lw_skill_18859 進階抵抗",
+      "result": "pass"
+    },
+    {
+      "name": "lw_skill_18860 高等抵抗",
+      "result": "pass"
+    },
+    {
+      "name": "lw_skill_18861 卓越抵抗",
+      "result": "pass"
+    },
+    {
+      "name": "lw_skill_18862 最終抵抗",
+      "result": "pass"
+    },
+    {
+      "name": "lw_skill_19920 精通閃避 (大師) : 被動",
+      "result": "pass"
+    },
+    {
+      "name": "lw_skill_100 起死回生術",
+      "result": "pass"
+    },
+    {
+      "name": "lw_skill_110 冥想術",
+      "result": "pass"
+    },
+    {
+      "name": "lw_skill_120 寒冰氣息",
+      "result": "pass"
+    },
+    {
+      "name": "lw_skill_130 燃燒的火球",
+      "result": "pass"
+    },
+    {
+      "name": "lw_skill_140 魔力奪取",
+      "result": "pass"
+    },
+    {
+      "name": "lw_skill_150 吸血鬼之吻",
+      "result": "pass"
+    },
+    {
+      "name": "lw_skill_160 魔法屏障",
+      "result": "pass"
+    },
+    {
+      "name": "lw_skill_180 治癒術",
+      "result": "pass"
+    },
+    {
+      "name": "lw_skill_190 聖潔之光",
+      "result": "pass"
+    },
+    {
+      "name": "lw_skill_210 加速術",
+      "result": "pass"
+    },
+    {
+      "name": "lw_skill_220 極道落雷",
+      "result": "pass"
+    },
+    {
+      "name": "lw_skill_230 烈炎術",
+      "result": "pass"
+    },
+    {
+      "name": "lw_skill_240 附魔強化",
+      "result": "pass"
+    },
+    {
+      "name": "lw_skill_250 地裂術",
+      "result": "pass"
+    },
+    {
+      "name": "lw_skill_251 精準強化",
+      "result": "pass"
+    },
+    {
+      "name": "lw_skill_260 體力回復術",
+      "result": "pass"
+    },
+    {
+      "name": "lw_skill_270 神聖疾走",
+      "result": "pass"
+    },
+    {
+      "name": "lw_skill_290 寒冰尖刺",
+      "result": "pass"
+    },
+    {
+      "name": "lw_skill_310 靈魂昇華",
+      "result": "pass"
+    },
+    {
+      "name": "lw_skill_330 魔法相消術",
+      "result": "pass"
+    },
+    {
+      "name": "lw_skill_340 龍捲風",
+      "result": "pass"
+    },
+    {
+      "name": "lw_skill_350 聖結界",
+      "result": "pass"
+    },
+    {
+      "name": "lw_skill_351 恢復屏障",
+      "result": "pass"
+    },
+    {
+      "name": "lw_skill_352 時間靜止",
+      "result": "pass"
+    },
+    {
+      "name": "lw_skill_360 沉睡之霧",
+      "result": "pass"
+    },
+    {
+      "name": "lw_skill_370 流星雨",
+      "result": "pass"
+    },
+    {
+      "name": "lw_skill_380 究極光裂術",
+      "result": "pass"
+    },
+    {
+      "name": "lw_skill_390 絕對屏障",
+      "result": "pass"
+    },
+    {
+      "name": "lw_skill_670 幽靈",
+      "result": "pass"
+    },
+    {
+      "name": "lw_skill_10828 精準強化 (古代) : 被動",
+      "result": "pass"
+    },
+    {
+      "name": "lw_skill_10991 靈魂昇華 (古代) : 被動",
+      "result": "pass"
+    },
+    {
+      "name": "lw_skill_11173 轉換",
+      "result": "pass"
+    },
+    {
+      "name": "lw_skill_11197 治癒逆行",
+      "result": "pass"
+    },
+    {
+      "name": "lw_skill_11349 聖結界 (古代) : 被動",
+      "result": "pass"
+    },
+    {
+      "name": "lw_skill_11603 魔法破壞",
+      "result": "pass"
+    },
+    {
+      "name": "lw_skill_11604 魔法相消術 (古代) : 被動",
+      "result": "pass"
+    },
+    {
+      "name": "lw_skill_12543 精通治癒",
+      "result": "pass"
+    },
+    {
+      "name": "lw_skill_13046 治癒逆行 (古代) : 被動",
+      "result": "pass"
+    },
+    {
+      "name": "lw_skill_13054 特殊攻擊 : 魔法師",
+      "result": "pass"
+    },
+    {
+      "name": "lw_skill_13729 釋放",
+      "result": "pass"
+    },
+    {
+      "name": "lw_skill_15977 死亡厄運",
+      "result": "pass"
+    },
+    {
+      "name": "lw_skill_18049 終極治癒",
+      "result": "pass"
+    },
+    {
+      "name": "lw_skill_18050 消除",
+      "result": "pass"
+    },
+    {
+      "name": "lw_skill_19924 精通治癒 (古代) : 被動",
+      "result": "pass"
+    },
+    {
+      "name": "lw_skill_400 衝擊之暈",
+      "result": "pass"
+    },
+    {
+      "name": "lw_skill_410 增幅防禦",
+      "result": "pass"
+    },
+    {
+      "name": "lw_skill_420 尖刺盔甲",
+      "result": "pass"
+    },
+    {
+      "name": "lw_skill_430 堅固防護",
+      "result": "pass"
+    },
+    {
+      "name": "lw_skill_440 反擊屏障",
+      "result": "pass"
+    },
+    {
+      "name": "lw_skill_441 龍嘯",
+      "result": "pass"
+    },
+    {
+      "name": "lw_skill_445 喚醒術",
+      "result": "pass"
+    },
+    {
+      "name": "lw_skill_680 狂襲",
+      "result": "pass"
+    },
+    {
+      "name": "lw_skill_10289 重擊",
+      "result": "pass"
+    },
+    {
+      "name": "lw_skill_10823 增幅防禦 (專家) : 被動",
+      "result": "pass"
+    },
+    {
+      "name": "lw_skill_10857 忍耐",
+      "result": "pass"
+    },
+    {
+      "name": "lw_skill_11000 堅固防護 (專家) : 被動",
+      "result": "pass"
+    },
+    {
+      "name": "lw_skill_11127 反擊屏障 (專家) : 被動",
+      "result": "pass"
+    },
+    {
+      "name": "lw_skill_11389 衝擊之暈 (專家) : 被動",
+      "result": "pass"
+    },
+    {
+      "name": "lw_skill_11900 尖刺盔甲 (專家) : 被動",
+      "result": "pass"
+    },
+    {
+      "name": "lw_skill_12540 精通武器",
+      "result": "pass"
+    },
+    {
+      "name": "lw_skill_13052 特殊攻擊 : 騎士",
+      "result": "pass"
+    },
+    {
+      "name": "lw_skill_13365 雙手武器大師",
+      "result": "pass"
+    },
+    {
+      "name": "lw_skill_13366 藥水加持",
+      "result": "pass"
+    },
+    {
+      "name": "lw_skill_13368 忍耐 (專家) : 被動",
+      "result": "pass"
+    },
+    {
+      "name": "lw_skill_13369 龍嘯 (專家) : 被動",
+      "result": "pass"
+    },
+    {
+      "name": "lw_skill_13372 牽引",
+      "result": "pass"
+    },
+    {
+      "name": "lw_skill_13376 血之騎士",
+      "result": "pass"
+    },
+    {
+      "name": "lw_skill_13377 進攻護盾",
+      "result": "pass"
+    },
+    {
+      "name": "lw_skill_13580 衝擊之暈 (強化專家) : 被動",
+      "result": "pass"
+    },
+    {
+      "name": "lw_skill_19620 氣場護甲",
+      "result": "pass"
+    },
+    {
+      "name": "lw_skill_19623 氣場之刃",
+      "result": "pass"
+    },
+    {
+      "name": "lw_skill_19921 精通武器 (專家) : 被動",
+      "result": "pass"
+    },
+    {
+      "name": "lw_skill_450 三重矢",
+      "result": "pass"
+    },
+    {
+      "name": "lw_skill_460 魂體轉換",
+      "result": "pass"
+    },
+    {
+      "name": "lw_skill_470 魔法消除",
+      "result": "pass"
+    },
+    {
+      "name": "lw_skill_480 封印禁地",
+      "result": "pass"
+    },
+    {
+      "name": "lw_skill_490 烈炎武器",
+      "result": "pass"
+    },
+    {
+      "name": "lw_skill_500 舞躍之火",
+      "result": "pass"
+    },
+    {
+      "name": "lw_skill_510 能量激發",
+      "result": "pass"
+    },
+    {
+      "name": "lw_skill_520 烈焰之魂",
+      "result": "pass"
+    },
+    {
+      "name": "lw_skill_530 水之元氣",
+      "result": "pass"
+    },
+    {
+      "name": "lw_skill_540 生命之泉",
+      "result": "pass"
+    },
+    {
+      "name": "lw_skill_550 生命的祝福",
+      "result": "pass"
+    },
+    {
+      "name": "lw_skill_560 污濁之水",
+      "result": "pass"
+    },
+    {
+      "name": "lw_skill_570 風之疾走",
+      "result": "pass"
+    },
+    {
+      "name": "lw_skill_580 暴風神射",
+      "result": "pass"
+    },
+    {
+      "name": "lw_skill_590 精準射擊",
+      "result": "pass"
+    },
+    {
+      "name": "lw_skill_600 鋼鐵防護",
+      "result": "pass"
+    },
+    {
+      "name": "lw_skill_610 大地守護者",
+      "result": "pass"
+    },
+    {
+      "name": "lw_skill_620 大地屏障",
+      "result": "pass"
+    },
+    {
+      "name": "lw_skill_720 大地斗篷",
+      "result": "pass"
+    },
+    {
+      "name": "lw_skill_730 風之防護",
+      "result": "pass"
+    },
+    {
+      "name": "lw_skill_10750 精靈大師 (精神) : 被動",
+      "result": "pass"
+    },
+    {
+      "name": "lw_skill_10830 水之元氣 (精神) : 被動",
+      "result": "pass"
+    },
+    {
+      "name": "lw_skill_10834 暴風神射 (精神) : 被動",
+      "result": "pass"
+    },
+    {
+      "name": "lw_skill_10994 大地守護者 (精神) : 被動",
+      "result": "pass"
+    },
+    {
+      "name": "lw_skill_10996 烈炎武器 (精神) : 被動",
+      "result": "pass"
+    },
+    {
+      "name": "lw_skill_11292 地面障礙",
+      "result": "pass"
+    },
+    {
+      "name": "lw_skill_11293 靈魂迴避",
+      "result": "pass"
+    },
+    {
+      "name": "lw_skill_11385 污濁之水 (精神) : 被動",
+      "result": "pass"
+    },
+    {
+      "name": "lw_skill_11443 精準射擊 (精神) : 被動",
+      "result": "pass"
+    },
+    {
+      "name": "lw_skill_11609 精靈反擊",
+      "result": "pass"
+    },
+    {
+      "name": "lw_skill_11614 烈焰之魂 (精神) : 被動",
+      "result": "pass"
+    },
+    {
+      "name": "lw_skill_11615 火焰狂襲",
+      "result": "pass"
+    },
+    {
+      "name": "lw_skill_12541 精通貫穿",
+      "result": "pass"
+    },
+    {
+      "name": "lw_skill_12934 精靈屏障",
+      "result": "pass"
+    },
+    {
+      "name": "lw_skill_12970 重水之疾",
+      "result": "pass"
+    },
+    {
+      "name": "lw_skill_12975 重水之疾 (精神) : 被動",
+      "result": "pass"
+    },
+    {
+      "name": "lw_skill_12976 精靈治癒",
+      "result": "pass"
+    },
+    {
+      "name": "lw_skill_13058 特殊攻擊 : 妖精",
+      "result": "pass"
+    },
+    {
+      "name": "lw_skill_16064 變形術",
+      "result": "pass"
+    },
+    {
+      "name": "lw_skill_16970 精靈大師",
+      "result": "pass"
+    },
+    {
+      "name": "lw_skill_16976 精靈迴避",
+      "result": "pass"
+    },
+    {
+      "name": "lw_skill_16980 魔法消除 (精神) : 被動",
+      "result": "pass"
+    },
+    {
+      "name": "lw_skill_16981 大地聯合",
+      "result": "pass"
+    },
+    {
+      "name": "lw_skill_19074 元素轉換 (汙染)",
+      "result": "pass"
+    },
+    {
+      "name": "lw_skill_19075 元素轉換 (淨化)",
+      "result": "pass"
+    },
+    {
+      "name": "lw_skill_19922 精通貫穿 (精神) : 被動",
+      "result": "pass"
+    },
+    {
+      "name": "lw_skill_9500 行走加速",
+      "result": "pass"
+    },
+    {
+      "name": "lw_skill_9510 毒性抵抗",
+      "result": "pass"
+    },
+    {
+      "name": "lw_skill_9520 暗隱術",
+      "result": "pass"
+    },
+    {
+      "name": "lw_skill_9550 燃燒鬥志",
+      "result": "pass"
+    },
+    {
+      "name": "lw_skill_9570 影之防護",
+      "result": "pass"
+    },
+    {
+      "name": "lw_skill_9580 暗影閃避",
+      "result": "pass"
+    },
+    {
+      "name": "lw_skill_9590 雙重破壞",
+      "result": "pass"
+    },
+    {
+      "name": "lw_skill_9600 迴避提升",
+      "result": "pass"
+    },
+    {
+      "name": "lw_skill_9610 暗影之牙",
+      "result": "pass"
+    },
+    {
+      "name": "lw_skill_9620 會心一撃",
+      "result": "pass"
+    },
+    {
+      "name": "lw_skill_9660 破壞盔甲",
+      "result": "pass"
+    },
+    {
+      "name": "lw_skill_10818 暗影之擊",
+      "result": "pass"
+    },
+    {
+      "name": "lw_skill_10908 影之弱化",
+      "result": "pass"
+    },
+    {
+      "name": "lw_skill_10910 影之束縛",
+      "result": "pass"
+    },
+    {
+      "name": "lw_skill_10936 暗隱術 (命運) : 被動",
+      "result": "pass"
+    },
+    {
+      "name": "lw_skill_10992 毒性抵抗 (命運) : 被動",
+      "result": "pass"
+    },
+    {
+      "name": "lw_skill_11034 影之弱化 (命運) : 被動",
+      "result": "pass"
+    },
+    {
+      "name": "lw_skill_11845 燃燒鬥志 (命運) : 被動",
+      "result": "pass"
+    },
+    {
+      "name": "lw_skill_12312 暗影閃避 (命運) : 被動",
+      "result": "pass"
+    },
+    {
+      "name": "lw_skill_12544 精通致命",
+      "result": "pass"
+    },
+    {
+      "name": "lw_skill_12841 暗影衝刺 (命運) : 被動",
+      "result": "pass"
+    },
+    {
+      "name": "lw_skill_12862 血影",
+      "result": "pass"
+    },
+    {
+      "name": "lw_skill_13056 特殊攻擊 : 黑暗妖精",
+      "result": "pass"
+    },
+    {
+      "name": "lw_skill_15981 幻影之步",
+      "result": "pass"
+    },
+    {
+      "name": "lw_skill_18122 雙重破壞 (命運) : 被動",
+      "result": "pass"
+    },
+    {
+      "name": "lw_skill_18129 暗影衝刺",
+      "result": "pass"
+    },
+    {
+      "name": "lw_skill_18170 影之迴避",
+      "result": "pass"
+    },
+    {
+      "name": "lw_skill_18173 影之迴避 (命運) : 被動",
+      "result": "pass"
+    },
+    {
+      "name": "lw_skill_18176 黑暗之幕",
+      "result": "pass"
+    },
+    {
+      "name": "lw_skill_18202 黑暗標記",
+      "result": "pass"
+    },
+    {
+      "name": "lw_skill_19925 精通致命 (命運) : 被動",
+      "result": "pass"
+    },
+    {
+      "name": "暈眩命中確實改變新技能狀態成功率",
+      "result": "pass"
+    },
+    {
+      "name": "非W武器也讀取防禦／迴避貫穿",
+      "result": "pass"
+    },
+    {
+      "name": "被動智力完整重算智力魔法表且不重複堆疊",
+      "result": "pass"
+    },
+    {
+      "name": "負重上限實際影響自然回復及等待且不刪除物品",
+      "result": "pass"
+    },
+    {
+      "name": "揭隱解除實際隱匿命中限制且保留目標UID",
+      "result": "pass"
+    },
+    {
+      "name": "隊伍增益獨立護盾、能力、到期、生命上限",
+      "result": "pass"
+    },
+    {
+      "name": "隊伍靈氣實際改變寵物與召喚物能力",
+      "result": "pass"
+    },
+    {
+      "name": "每招施放動作與攻擊類型一致且動畫可以到期",
+      "result": "pass"
+    },
+    {
+      "name": "持續控制抗性納入實際抵抗率",
+      "result": "pass"
+    },
+    {
+      "name": "技能狀態圖示與中文效果名稱涵蓋所有能力欄位",
+      "result": "pass"
+    }
+  ]
+}

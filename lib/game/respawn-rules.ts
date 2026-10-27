@@ -1,3 +1,4 @@
+import {carryLoad} from './carry-load';
 import {activeSpeedStages} from './reusable-speed';
 import raw from './gamedata.json';
 import {activeForm} from './polymorph';
@@ -23,9 +24,9 @@ export function moveDelayMultiplier(c:Character,now:number){
  if(movePct)mult/=1+Math.max(-95,movePct)/100;
  return Math.max(.001,mult);
 }
-export function ordinaryRespawnMs(c:Character,now:number){
+export function ordinaryRespawnMs(c:Character,now:number,stats?:Record<string,number>){
  const g=mapGeneration(c.zone,c.mapPools);
- let mult=moveDelayMultiplier(c,now);
+ let mult=moveDelayMultiplier(c,now)*(stats?carryLoad(c,stats).move:1);
  if(c.buffs.sk_sunlight?.until>now)mult*=.8;
  if(Object.entries(c.buffs).some(([id,b])=>/sherine|shilen/.test(id)&&b.until>now))mult*=.8;
  // Preserve 1–2% W boot bonuses instead of rounding them away at 100ms precision.

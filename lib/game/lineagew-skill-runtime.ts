@@ -1,7 +1,7 @@
 import {W_SKILLS,canonicalWSkill,learnedWSkills,wElementAllowed,wBuffModifiers,wUpgradeScale} from './lineagew-skill-data';
 import type {Character,Encounter,CombatEvent} from './engine';
 import {justiceSpellError,justiceHealMultiplier} from './alignment';
-export type WSkillHooks={definition:(target:Encounter)=>any;physical:(target:Encounter,forceCritical?:boolean)=>{damage:number;miss:boolean};magic:(s:any,target:Encounter)=>number;hit:(target:Encounter,damage:number,skill:string,source:'physical'|'magic')=>number;heal:(amount:number)=>number;event:(kind:CombatEvent['kind'],data:Partial<CombatEvent>)=>void;teleport:()=>void;party:()=>{hp:number;maxHp:number;apply:(value:number)=>void}[];consumeArrow:()=>void;weapon:any;shield:any;log:(text:string)=>void};
+export type WSkillHooks={definition:(target:Encounter)=>any;physical:(target:Encounter,forceCritical?:boolean)=>{damage:number;miss:boolean};magic:(s:any,target:Encounter)=>number;hit:(target:Encounter,damage:number,skill:string,source:'physical'|'magic')=>number;heal:(amount:number)=>number;event:(kind:CombatEvent['kind'],data:Partial<CombatEvent>)=>void;teleport:()=>void;party:()=>{hp:number;maxHp:number;apply:(value:number)=>void}[];shareBuff?:(id:string,buff:{until:number;d:Record<string,number>})=>void;consumeArrow:()=>void;weapon:any;shield:any;log:(text:string)=>void};
 const blocked=['stun','freeze','stone','silence','paralyze','sleep'];
 const control=new Set(['stun','freeze','paralyze','sleep','silence']);
 export function applyWSkillStatus(target:Encounter,definition:any,status:any,now:number,rng:()=>number,level:number,hit=0){
@@ -19,8 +19,8 @@ export function castWSkill(c:Character,input:string,b:Record<string,number>,h:WS
  const justiceError=justiceSpellError(s,c.lawful);if(justiceError)throw Error(justiceError);
  if(s.type==='passive')throw Error('此技能已被動生效');
  if(!wElementAllowed(c,s))throw Error('妖精屬性不符');
- // A toggle may always be turned off; it never spends MP or enters an auto-recast loop.
- if(s.lwToggle&&c.buffs[id]?.until>now){delete c.buffs[id];h.event('magic',{skill:id,effect:'關閉 '+s.n});return;}
+ // A toggle may always be turned off; it never spends 魔力 or enters an auto-recast loop.
+ if(s.lwToggle&&c.buffs[id]?.until>now){delete c.buffs[id];h.shareBuff?.(id,{until:now,d:{}});h.event('magic',{skill:id,effect:'關閉 '+s.n});return;}
  const escape=s.lwCleanse?.some((x:string)=>c.buffs['status_'+x]?.until>now)||id==='lw_skill_15981';
  if(!escape&&blocked.some(x=>c.buffs['status_'+x]?.until>now)||b.lwActionLock)throw Error('目前無法施法');
  const channel=s.type==='atk'?'attack':s.type==='heal'?'heal':s.type==='convert'?'convert':'w-support';
@@ -41,28 +41,30 @@ export function castWSkill(c:Character,input:string,b:Record<string,number>,h:WS
  for(const key of s.lwCleanse||[])delete c.buffs['status_'+key];
  if(s.type==='manual'){
   if(id==='lw_skill_40'){h.teleport();result='重新遭遇怪物';}
-  else{result=(c.arena||[]).filter(t=>t.hp>0).map(t=>{const m=h.definition(t);return `${m.n} HP ${Math.ceil(t.hp)}/${t.maxHp||m.hp}`;}).join('；')||'目前沒有敵人';}
+  else{result=(c.arena||[]).filter(t=>t.hp>0).map(t=>{const m=h.definition(t);return `${m.n} 生命 ${Math.ceil(t.hp)}/${t.maxHp||m.hp}`;}).join('；')||'目前沒有敵人';}
  }else if(s.type==='buff'){
-  if(s.lwExclusiveGroup)for(const [key,buff] of Object.entries(c.buffs))if(W_SKILLS[key]?.lwExclusiveGroup===s.lwExclusiveGroup)delete c.buffs[key];
+  if(s.lwExclusiveGroup)for(const [key,buff] of Object.entries(c.buffs))if(W_SKILLS[key]?.lwExclusiveGroup===s.lwExclusiveGroup){delete c.buffs[key];h.shareBuff?.(key,{until:now,d:{}});}
   const d=wBuffModifiers(c,id);if(d.lwShield)d.lwShieldRemaining=d.lwShield;
   c.buffs[id]={until:s.lwToggle?Number.MAX_SAFE_INTEGER:now+s.dur*scale*1000,d};
+  if(d.reveal)for(const t of c.arena||[]){if(t.hp<=0)continue;t.effects||={};delete t.effects.invisible;delete t.effects.disguised;t.effects.revealed={until:c.buffs[id].until,value:0};h.event('state',{slot:c.arena!.indexOf(t),uid:t.uid,mob:t.id,skill:id,targetEffects:structuredClone(t.effects)});}
+  if(/隊員|血盟成員/.test(s.lwSourceTarget||''))h.shareBuff?.(id,c.buffs[id]);
   if(d.lwActionLock)c.buffs.sk_abs_barrier={until:c.buffs[id].until,d:{}};
   result=s.lwToggle?'效果開啟':`效果持續 ${s.dur} 秒`;
  }else if(s.type==='heal'){
   const roll=()=>{let n=s.healBase||0;for(let j=0;j<(s.healDice?.[0]||0);j++)n+=1+Math.floor(rng()*s.healDice[1]);return Math.floor((n+(b.mdmg||0)+b.maxHp*(s.lwHealMaxPct||0))*scale*(1+(b.lwHealPct||0)/100)*(s.justiceHeal?justiceHealMultiplier(c.lawful):1));};
   const members=h.party();
-  // Equalize the current live party's HP ratio before the group heal; conserve HP.
+  // Equalize the current live party's 生命 ratio before the group heal; conserve 生命.
   if(s.lwShareHp&&members.length>1){const hp=members.reduce((n,m)=>n+m.hp,0),max=members.reduce((n,m)=>n+m.maxHp,0);for(const m of members)m.apply(Math.floor(m.maxHp*hp/max)-m.hp);}
   const double=Object.keys(c.buffs).find(key=>c.buffs[key].until>now&&c.buffs[key].d.lwDoubleHeal);
   const targets=s.groupHeal?members:members.slice(0,1);
   for(const m of targets){const amount=s.healBase||s.lwHealMaxPct?Math.min(m.maxHp-m.hp,roll()*(double?c.buffs[double].d.lwDoubleHeal:1)):0;if(amount>0){m.apply(amount);total+=amount;}}
-  if(double&&total>0)delete c.buffs[double];
+  if(double&&total>0){delete c.buffs[double];h.shareBuff?.(double,{until:now,d:{}});}
   if(Object.keys(s.lwD).length){const d=wBuffModifiers(c,id);if(d.lwShield)d.lwShieldRemaining=d.lwShield;c.buffs[id]={until:now+s.dur*1000,d};}
-  result=`恢復 ${Math.floor(total)} HP${s.lwCleanse?.length?'／解除對應異常':''}`;
+  result=`恢復 ${Math.floor(total)} 生命${s.lwCleanse?.length?'／解除對應異常':''}`;
  }else if(s.type==='convert'){
   let gain=Math.max(0,s.mpGain||0);
   if(s.drain&&target){const m=h.definition(target);if(rng()>=Math.max(.05,Math.min(.95,.65+(c.lv-(m.lv||c.lv))*.01)))gain=0;gain=Math.min(gain,target.mp||0);target.mp=Math.max(0,(target.mp||0)-gain);}
-  gain=Math.min(gain,b.maxMp-c.mp);c.mp+=gain;result=`恢復 ${gain} MP`;
+  gain=Math.min(gain,b.maxMp-c.mp);c.mp+=gain;result=`恢復 ${gain} 魔力`;
  }else if(s.type==='atk'){
   // Snapshot encounters. A kill/respawn can never redirect this cast to a new UID.
   const targets=s.target==='all'?(c.arena||[]).filter(t=>t.hp>0).slice():[target!];
@@ -82,13 +84,13 @@ export function castWSkill(c:Character,input:string,b:Record<string,number>,h:WS
      if(!miss&&t.hp>0&&s.lwStatus&&s.lwStatus.kind!=='cancel'){
       const status={...s.lwStatus,seconds:s.lwStatus.seconds*scale};
       if(status.kind==='lwMark'){status.value=0;status.force=true;}
-      if(applyWSkillStatus(t,m,status,now,rng,c.lv,b.magicHit||0))h.event('state',{slot:c.arena.indexOf(t),uid:t.uid,mob:t.id,skill:id,targetEffects:structuredClone(t.effects)});
+      if(applyWSkillStatus(t,m,status,now,rng,c.lv,(b.magicHit||0)+(status.kind==='stun'?b.stunHit||0:status.kind==='blind'?b.blindHit||0:0)))h.event('state',{slot:c.arena.indexOf(t),uid:t.uid,mob:t.id,skill:id,targetEffects:structuredClone(t.effects)});
       if(!amount)h.event('magic',{slot:c.arena.indexOf(t),uid:t.uid,mob:t.id,skill:id});
      }
     }
    }
   }
-  result=`攻擊實扣 ${Math.floor(total)} HP`;
+  result=`攻擊實扣 ${Math.floor(total)} 生命`;
  }
  c.skillCooldowns||={};let cooldown=s.lwCooldownMs||0;
  if(c.buffs.lw_skill_15977?.until>now&&['lw_skill_380','lw_skill_360','lw_skill_370','lw_skill_11197'].includes(id))cooldown*=.7;

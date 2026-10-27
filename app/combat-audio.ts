@@ -55,7 +55,13 @@ const spellTimes=new Map<string,number>();
 let masterVolume=1;
 export function setCombatVolume(value:number){masterVolume=Math.max(0,Math.min(1,Number.isFinite(value)?value:1));if(masterGain&&context){masterGain.gain.setValueAtTime(masterVolume,context.currentTime);}for(const audio of voices)audio.volume=(fallbackVolumes.get(audio)||0)*masterVolume;}
 export function sceneSound(kind:'transform'){if(kind==='transform')play('/assets/client-audio/124.wav',.3);}
-function spell(e:CombatEvent,owner:string){if(!e.skill||e.source==='summon'||e.source==='poison')return;const key=owner+':'+e.skill+':'+e.at;if(spellTimes.has(key))return;spellTimes.set(key,e.at);if(spellTimes.size>100)spellTimes.delete(spellTimes.keys().next().value!);const sk=(raw.skills as any)[e.skill],old=sk?.lwLegacyId?(raw.skills as any)[sk.lwLegacyId]?.n:undefined;number(S.SPELL_SFX[sk?.n]||(old?S.SPELL_SFX[old]:undefined)||(sk?.lwSourceId?S.SPELL_SFX['光箭']:undefined),.4);}
+function skillTone(sk:any){
+ if(!enabled||!context||context.state!=='running'||document.hidden||active.size>=12)return;
+ const start=context.currentTime,base=({fire:220,water:440,wind:660,earth:165} as Record<string,number>)[sk.ele]||330;
+ const steps=sk.type==='heal'?[1,1.25,1.5]:sk.type==='buff'?[1,1.5]:sk.dmgType==='physical'?[1.5,.75]:[1,1.33,1];
+ steps.forEach((step:number,i:number)=>{const oscillator=context!.createOscillator(),gain=context!.createGain();oscillator.type=sk.dmgType==='physical'?'triangle':'sine';oscillator.frequency.value=base*step;gain.gain.setValueAtTime(0,start+i*.055);gain.gain.linearRampToValueAtTime(.08,start+i*.055+.01);gain.gain.exponentialRampToValueAtTime(.001,start+i*.055+.12);oscillator.connect(gain);gain.connect(masterGain||context!.destination);active.add(oscillator);oscillator.onended=()=>{active.delete(oscillator);oscillator.disconnect();gain.disconnect();};oscillator.start(start+i*.055);oscillator.stop(start+i*.055+.13);});
+}
+function spell(e:CombatEvent,owner:string){if(!e.skill||e.source==='summon'||e.source==='poison')return;const key=owner+':'+e.skill+':'+e.at;if(spellTimes.has(key))return;spellTimes.set(key,e.at);if(spellTimes.size>100)spellTimes.delete(spellTimes.keys().next().value!);const sk=(raw.skills as any)[e.skill],old=sk?.lwLegacyId?(raw.skills as any)[sk.lwLegacyId]?.n:undefined;const sound=S.SPELL_SFX[sk?.n]||(old?S.SPELL_SFX[old]:undefined);if(sound!==undefined)number(sound,.4);else if(sk?.lwSourceId)skillTone(sk);}
 export function combatSound(c:Character,e:CombatEvent){
 
  const name=e.mob?mobs[e.mob]?.n||'':'';const poly=e.polyName;const special=poly&&['黃金死亡騎士','赤紅刺客首領','蒼藍歐瑞','凱莉紗','地獄傑克'].includes(poly);

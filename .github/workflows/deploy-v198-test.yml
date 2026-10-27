@@ -88,6 +88,7 @@ jobs:
         run: |
           python3 scripts/restore-lineagew-skills.py
           node scripts/test-lineagew-skills.cjs
+          W_SKILL_REPORT=docs/lineagew-skill-verification.json node scripts/test-lineagew-complete.cjs
       - name: Build complete Cloudflare Worker
         run: pnpm run build
       - name: Publish verified W skill icons to isolated R2

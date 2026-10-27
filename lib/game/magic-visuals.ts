@@ -1,3 +1,5 @@
+import {skillVisual} from './skill-visuals';
+import './lineagew-skill-data';
 import type {TargetSpellAtlas} from './spell-effect-layout';
 import effects from './magic-fx.json';
 import raw from './gamedata.json';
@@ -8,7 +10,7 @@ export function magicVisual(event:Pick<CombatEvent,'skill'|'effectName'|'item'>)
  const skill=event.skill?(raw.skills as Record<string,any>)[event.skill]:undefined;const original=skill?.lwLegacyId?(raw.skills as Record<string,any>)[skill.lwLegacyId]?.n:undefined;
  const name=event.effectName||(event.skill?(raw.skills as Record<string,{n:string}>)[event.skill]?.n:event.item?((raw.items as Record<string,any>)[event.item]?.eff==='magicbarrier'?'魔法屏障':(raw.items as Record<string,any>)[event.item]?.n):'');
  const fallback=skill?.lwSourceId?(skill.type==='heal'?'初級治癒術':skill.type==='buff'?'保護罩':skill.dmgType==='physical'?'衝擊之暈':'光箭'):undefined;
- return {name,config:(effects as Record<string,MagicVisual>)[name]||(original?(effects as Record<string,MagicVisual>)[original]:undefined)||(fallback?(effects as Record<string,MagicVisual>)[fallback]:undefined)};
+ return {name,config:(effects as Record<string,MagicVisual>)[name]||(original?(effects as Record<string,MagicVisual>)[original]:undefined)||(skill?.lwSourceId&&skill.type!=='passive'?skillVisual(event.skill!,skill):fallback?(effects as Record<string,MagicVisual>)[fallback]:undefined)};
 }
 export function magicDirection(config:MagicVisual,dx:number,dy:number){
  const base=Math.round((Math.atan2(dx,-dy)*180/Math.PI+360)%360/45)%8;
