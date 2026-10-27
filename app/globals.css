@@ -811,3 +811,24 @@ body:has(.game-root.map-first-layout) .map-function-dialog[data-slot=dialog-cont
  .game-root.screenshot-layout.map-first-layout .battle-scene:not(.world-boss-scene) .static-arena .four-monster:not([data-dragon=true]):not([data-dragon-summon=true]) .four-monster-art .sequence-art,
  .game-root.screenshot-layout.map-first-layout .battle-scene:not(.world-boss-scene) .static-arena .four-monster:not([data-dragon=true]):not([data-dragon-summon=true]) .four-target img{width:90px!important;height:90px!important}
 }
+
+/* Status icons begin immediately beside HP/MP, with no tiles or duration footer. */
+.game-root.screenshot-layout.map-first-layout .map-top-status{
+ top:10px;left:calc(20px + clamp(100px,23vw,180px));right:12px;
+}
+.game-root.screenshot-layout.map-first-layout .map-top-status .active-status-icons{
+ justify-content:flex-start;gap:6px;
+}
+.game-root.screenshot-layout.map-first-layout .map-top-status .active-status-icon{
+ flex:0 0 30px;width:30px;height:30px;min-width:30px;min-height:30px;
+ padding:0;background:transparent;border:0;border-radius:0;box-shadow:none;
+}
+.game-root.screenshot-layout.map-first-layout .map-top-status .active-status-icon img,
+.game-root.screenshot-layout.map-first-layout .map-top-status .active-status-icon svg{
+ display:block;width:28px;height:28px;object-fit:contain;
+}
+.game-root.screenshot-layout.map-first-layout .map-top-status .active-status-icon small,
+.game-root.screenshot-layout.map-first-layout .map-top-status .no-active-status{display:none}
+.game-root.screenshot-layout.map-first-layout .map-top-status .active-status-icon:focus-visible{
+ outline:2px solid #e7cb89;outline-offset:1px;
+}
