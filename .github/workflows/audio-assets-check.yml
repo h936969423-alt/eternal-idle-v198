@@ -1,0 +1,42 @@
+name: Inspect restored combat audio assets
+on:
+  push:
+    branches: [main]
+    paths: ['.github/workflows/audio-assets-check.yml']
+permissions:
+  contents: read
+jobs:
+  inspect:
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+    steps:
+      - uses: actions/checkout@v4
+      - name: Restore existing isolated assets for inspection
+        env:
+          AWS_ACCESS_KEY_ID: ${{ secrets.R2_ACCESS_KEY_ID }}
+          AWS_SECRET_ACCESS_KEY: ${{ secrets.R2_SECRET_ACCESS_KEY }}
+          AWS_DEFAULT_REGION: auto
+        run: python3 scripts/restore-r2-bundles.py
+      - name: Inspect mapped audio files and codecs
+        run: |
+          python3 - <<'PY'
+          import json, collections, shutil, subprocess
+          from pathlib import Path
+          sounds=json.loads(Path('lib/game/sounds.json').read_text())
+          ids={str(v) for group in sounds.values() for v in group.values()}
+          paths=[Path('public/assets/sfx')/(i+'.ogg') for i in sorted(ids)]
+          missing=[str(p) for p in paths if not p.is_file()]
+          print('Mapped sound IDs:',len(ids),'missing .ogg files:',len(missing))
+          print('Missing examples:',missing[:24])
+          for folder in ['sfx','sound','client-audio','morphsnd']:
+              base=Path('public/assets')/folder
+              files=[p for p in base.rglob('*') if p.is_file()] if base.is_dir() else []
+              print(folder, 'count:',len(files),'extensions:',dict(collections.Counter(p.suffix for p in files)))
+              print('Examples:',[str(p) for p in files[:12]])
+          print('ffprobe:',shutil.which('ffprobe'),'ffmpeg:',shutil.which('ffmpeg'))
+          for p in [Path('public/assets/sfx/attack_sword2.ogg'),Path('public/assets/sfx/57.ogg'),Path('public/assets/sound/music6.mp3')]:
+              if p.is_file():
+                  print(str(p),'size:',p.stat().st_size,'header:',p.read_bytes()[:16].hex())
+                  if shutil.which('ffprobe'):
+                      subprocess.run(['ffprobe','-v','error','-show_entries','stream=codec_name,sample_rate,channels','-of','json',str(p)],check=True)
+          PY
