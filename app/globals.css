@@ -849,3 +849,79 @@ body:has(.game-root.map-first-layout) .map-function-dialog[data-slot=dialog-cont
 .game-root.screenshot-layout.map-first-layout .map-log-dock .log-line time{font-size:10px}
 .game-root.screenshot-layout.map-first-layout .map-log-dock .empty-note{font-size:11px;padding:8px 0;margin:0}
 @media(max-height:500px){.game-root.screenshot-layout.map-first-layout{--map-log-height:58px}.game-root.screenshot-layout.map-first-layout .map-log-dock .section-head{flex-basis:22px;height:22px;min-height:22px}}
+
+/* Tool portals must shrink to the viewport even when a child has long labels. */
+.game-root.screenshot-layout.map-panel-scope {
+  min-width: 0;
+  max-width: 100% !important;
+  box-sizing: border-box;
+  overflow-x: hidden;
+}
+.map-panel-scope > [data-slot=tabs-content],
+.map-panel-scope [data-slot=tabs-content],
+.map-panel-scope .skill-book-grid {
+  min-width: 0;
+  max-width: 100%;
+  box-sizing: border-box;
+}
+.map-panel-scope .sub-tabs {
+  display: flex;
+  flex-wrap: wrap;
+  width: 100%;
+  height: auto !important;
+  gap: 6px;
+  margin-bottom: 10px;
+}
+.map-panel-scope .sub-tabs > [role=tab] {
+  flex: 1 1 72px;
+  min-width: 0;
+  white-space: normal;
+}
+.skill-book-grid .reference-view-tabs {
+  flex-wrap: wrap;
+  min-width: 0;
+  gap: 6px;
+}
+.skill-book-grid .reference-view-tabs button {
+  flex: 1 1 78px;
+  min-width: 0;
+  min-height: 40px;
+  padding: 8px 10px;
+  white-space: normal;
+}
+.skill-book-grid .reference-view-tabs[aria-label="技能品質篩選"] {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(76px, 1fr));
+}
+.skill-book-grid .reference-skill-search {
+  flex-wrap: wrap;
+  gap: 8px;
+}
+.skill-book-grid .reference-skill-search input {
+  min-width: 0;
+  max-width: 100%;
+  flex: 1 1 auto;
+  width: 100%;
+  height: 44px;
+  min-height: 44px;
+}
+.skill-book-grid .reference-skill-list article {
+  flex-wrap: wrap;
+  gap: 10px;
+  padding: 12px;
+  min-width: 0;
+}
+.skill-book-grid .reference-skill-list article > div {
+  min-width: 0;
+  flex: 1 1 140px;
+  overflow-wrap: anywhere;
+}
+.skill-book-grid .reference-skill-list article > img {
+  flex: 0 0 48px;
+  width: 48px;
+  height: 48px;
+}
+.skill-book-grid .reference-skill-list h3 { font-size: 16px; }
+.skill-book-grid .sb-row { min-width: 0; }
+.skill-book-grid .sb-tier { flex-basis: 56px; }
+.skill-book-grid .sb-grid { width: 0; }
