@@ -8,9 +8,17 @@ try{
  const all=data.W_SKILLS,raw=require(path.join(dir,'gamedata.json')),entries=Object.entries(all),assets=require(path.join(dir,'lineagew-skill-assets.json'));
  const totals={royal:82,mage:95,knight:75,elf:112,dark:82};
  check('231 distinct skills, all five class counts, 225 books and all local icons',()=>{
-  assert.equal(entries.length,231);assert.equal(Object.keys(data.W_BOOKS).length,225);assert.equal(Object.keys(assets.files).length,229);assert.equal(entries.filter(([,s])=>s.lwIcon).length,230);
+  assert.equal(entries.length,231);assert.equal(Object.keys(data.W_BOOKS).length,225);assert.equal(Object.keys(assets.files).length,282);assert.equal(entries.filter(([,s])=>s.lwIcon).length,230);
   for(const [cls,count] of Object.entries(totals)){const c={cls,skills:[]};assert.equal(book?book.bookSections(c).flatMap(g=>g.tiers.flatMap(t=>t.slots.filter(Boolean))).length:entries.filter(([,s])=>s.lwClasses.includes(cls)).length,count);}
   for(const [id,s] of entries){assert.ok(s.lwSourceId&&s.lwRuleVersion);assert.ok(['buff','atk','heal','convert','manual','passive'].includes(s.type),id);if(s.lwIcon)assert.ok(fs.existsSync(path.join(root,'public',s.lwIcon)),id);if(s.lwUpgradeOf)assert.ok(all[s.lwUpgradeOf]);}
+ });
+ check('221 verified item appearances, four explicit fallbacks and legacy books',()=>{
+  const iconMap=require(path.join(dir,'asset-map.json')).icons;
+  const books=Object.values(data.W_BOOKS),real=books.filter(b=>b.lwItemIconSource),missing=books.filter(b=>b.lwItemIconMissing);
+  assert.equal(real.length,221);assert.equal(missing.length,4);assert.equal(new Set(real.map(b=>b.lwIcon)).size,53);
+  for(const item of real){assert.ok(item.lwItemIconSource.includes('/Item/'));assert.notEqual(item.lwIcon,all[item.sk].lwIcon);assert.equal(iconMap.items[item.n],item.lwIcon);assert.ok(fs.existsSync(path.join(root,'public',item.lwIcon)));}
+  for(const item of missing)assert.equal(item.lwIcon,all[item.sk].lwIcon);
+  for(const item of Object.values(raw.items).filter(i=>i.type==='skillbk'&&data.W_LEGACY[i.sk])){const match=real.find(b=>b.sk===data.W_LEGACY[item.sk]);if(match)assert.equal(iconMap.items[item.n],match.lwIcon);}
  });
  const time=1_000_000;
  const b={maxHp:50000,maxMp:50000,mdmg:10,magicHit:10,int:20,mpReduce:0,castIntervalMs:500,healIntervalMs:500};

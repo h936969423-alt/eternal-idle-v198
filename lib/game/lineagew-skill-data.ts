@@ -19,7 +19,8 @@ for(const [id,item] of Object.entries(W_BOOKS)){
 for(const item of Object.values(items))if(item.type==='skillbk'&&W_LEGACY[item.sk]){
  const s=W_SKILLS[W_LEGACY[item.sk]];
  item.lwSkillBook=true;item.lwGrade=s.lwGrade;item.lwCanonicalSkill=W_LEGACY[item.sk];
- if(s.lwIcon)icons.items[item.n]=s.lwIcon;
+ const book=Object.values(W_BOOKS).find(b=>b.sk===W_LEGACY[item.sk]&&b.lwItemIconSource);
+ if(book?.lwIcon||s.lwIcon)icons.items[item.n]=book?.lwIcon||s.lwIcon;
 }
 export function canonicalWSkill(id:string,cls?:string){const candidate=W_LEGACY[id];return candidate&&(!cls||W_SKILLS[candidate]?.lwClasses.includes(cls))?candidate:id;}
 export function wSkill(id:string,cls?:string){return W_SKILLS[canonicalWSkill(id,cls)];}
