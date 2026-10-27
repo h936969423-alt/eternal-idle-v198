@@ -11,6 +11,7 @@ on:
       - 'app/scene-transition.tsx'
       - 'app/globals.css'
       - 'tests/**'
+      - 'scripts/restore-sunrise-maps.py'
       - '.github/workflows/deploy-v198-test.yml'
 permissions:
   contents: read
@@ -52,6 +53,8 @@ jobs:
           AWS_SECRET_ACCESS_KEY: ${{ secrets.R2_SECRET_ACCESS_KEY }}
           AWS_DEFAULT_REGION: auto
         run: python3 scripts/restore-r2-bundles.py
+      - name: Restore pinned Sunrise map backgrounds and verify all images
+        run: python3 scripts/restore-sunrise-maps.py
       - uses: pnpm/action-setup@v4
         with:
           version: 11.25.0
@@ -74,6 +77,8 @@ jobs:
         run: node scripts/test-network-combat-cadence.cjs
       - name: Build complete Cloudflare Worker
         run: pnpm run build
+      - name: Verify map routing and all backgrounds in final deployment
+        run: CHECK_BUILT_MAPS=1 node --test tests/sunrise-maps.test.mjs
       - name: Assert strict isolation from live resources
         run: |
           python3 - <<'PY'
@@ -93,6 +98,3 @@ jobs:
         run: pnpm exec wrangler deploy --config dist/server/wrangler.json --name eternal-idle-v198-test --keep-vars
       - name: Print deployment location
         run: echo 'Check Cloudflare Workers dashboard for eternal-idle-v198-test workers.dev URL'
-
-
-

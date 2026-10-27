@@ -1,0 +1,1462 @@
+{
+  "repository": "pp771007/idle-lineage-class",
+  "commit": "5f00f4a86389aaa7309c24d7a7c1ab060c47b500",
+  "files": {
+    "伊娃王國": {
+      "path": "assets/area/1920x1080/伊娃王國.jpg",
+      "gitBlob": "e25a8486b3ea5b8c61d1944c1386f7e95cb3956b",
+      "src": "/assets/sunrise-maps/e25a8486b3ea5b8c61d1944c1386f7e95cb3956b.jpg",
+      "width": 1920,
+      "height": 1080
+    },
+    "傲慢之塔11~20樓": {
+      "path": "assets/area/1920x1080/傲慢之塔11~20樓.jpg",
+      "gitBlob": "7a7ef02ea48a45fc890f9c902aaa3217db9b5ab0",
+      "src": "/assets/sunrise-maps/7a7ef02ea48a45fc890f9c902aaa3217db9b5ab0.jpg",
+      "width": 1920,
+      "height": 1080
+    },
+    "傲慢之塔1樓": {
+      "path": "assets/area/1920x1080/傲慢之塔1樓.jpg",
+      "gitBlob": "6c9c4b18e4b536378f55fa68dc5ece8f45d1da6d",
+      "src": "/assets/sunrise-maps/6c9c4b18e4b536378f55fa68dc5ece8f45d1da6d.jpg",
+      "width": 1920,
+      "height": 1080
+    },
+    "傲慢之塔2~10樓": {
+      "path": "assets/area/1920x1080/傲慢之塔2~10樓.jpg",
+      "gitBlob": "a45a4d07de0386abaa9466e178a18a5818887c04",
+      "src": "/assets/sunrise-maps/a45a4d07de0386abaa9466e178a18a5818887c04.jpg",
+      "width": 1920,
+      "height": 1080
+    },
+    "冥法軍訓練場": {
+      "path": "assets/area/1920x1080/冥法軍訓練場.jpg",
+      "gitBlob": "c41330829f425f423d3dfbdeeb27f0f6eb46dac6",
+      "src": "/assets/sunrise-maps/c41330829f425f423d3dfbdeeb27f0f6eb46dac6.jpg",
+      "width": 1920,
+      "height": 1080
+    },
+    "古魯丁": {
+      "path": "assets/area/1920x1080/古魯丁.jpg",
+      "gitBlob": "b84c96351c612b96eb5dd2fef17a14a1750b139a",
+      "src": "/assets/sunrise-maps/b84c96351c612b96eb5dd2fef17a14a1750b139a.jpg",
+      "width": 1920,
+      "height": 1080
+    },
+    "古魯丁地監1樓": {
+      "path": "assets/area/1920x1080/古魯丁地監1樓.jpg",
+      "gitBlob": "95231902afee7bcd4eccee4fc34cf2d137441f38",
+      "src": "/assets/sunrise-maps/95231902afee7bcd4eccee4fc34cf2d137441f38.jpg",
+      "width": 1920,
+      "height": 1080
+    },
+    "古魯丁地監2樓": {
+      "path": "assets/area/1920x1080/古魯丁地監2樓.jpg",
+      "gitBlob": "23023e6a9bc0761fc08f4d530cfc2dcc49e1f291",
+      "src": "/assets/sunrise-maps/23023e6a9bc0761fc08f4d530cfc2dcc49e1f291.jpg",
+      "width": 1920,
+      "height": 1080
+    },
+    "古魯丁地監3樓": {
+      "path": "assets/area/1920x1080/古魯丁地監3樓.jpg",
+      "gitBlob": "dab6360a268e299dce84a6d5ca698386945159d4",
+      "src": "/assets/sunrise-maps/dab6360a268e299dce84a6d5ca698386945159d4.jpg",
+      "width": 1920,
+      "height": 1080
+    },
+    "古魯丁地監4樓": {
+      "path": "assets/area/1920x1080/古魯丁地監4樓.jpg",
+      "gitBlob": "02182ea6d37d0f13b95986f34149cf8c0df02543",
+      "src": "/assets/sunrise-maps/02182ea6d37d0f13b95986f34149cf8c0df02543.jpg",
+      "width": 1920,
+      "height": 1080
+    },
+    "古魯丁地監5樓": {
+      "path": "assets/area/1920x1080/古魯丁地監5樓.jpg",
+      "gitBlob": "294820bf5ec72d962d4ad2da3ed8704efd6935d4",
+      "src": "/assets/sunrise-maps/294820bf5ec72d962d4ad2da3ed8704efd6935d4.jpg",
+      "width": 1920,
+      "height": 1080
+    },
+    "古魯丁地監6樓": {
+      "path": "assets/area/1920x1080/古魯丁地監6樓.jpg",
+      "gitBlob": "c34c8634c537d203e07fdfd80bff4b90a865376d",
+      "src": "/assets/sunrise-maps/c34c8634c537d203e07fdfd80bff4b90a865376d.jpg",
+      "width": 1920,
+      "height": 1080
+    },
+    "古魯丁地監7樓": {
+      "path": "assets/area/1920x1080/古魯丁地監7樓.jpg",
+      "gitBlob": "091e713c067bc1bcdb4c8de1e35e55cddf441239",
+      "src": "/assets/sunrise-maps/091e713c067bc1bcdb4c8de1e35e55cddf441239.jpg",
+      "width": 1920,
+      "height": 1080
+    },
+    "國境要塞": {
+      "path": "assets/area/1920x1080/國境要塞.jpg",
+      "gitBlob": "af7e5bb2a3864f2e59c7a2e0c9c8f79883f88416",
+      "src": "/assets/sunrise-maps/af7e5bb2a3864f2e59c7a2e0c9c8f79883f88416.jpg",
+      "width": 1920,
+      "height": 1080
+    },
+    "地下通道1樓": {
+      "path": "assets/area/1920x1080/地下通道1樓.jpg",
+      "gitBlob": "5356ee67d9fcdc689318cc3254ecf573b481f3e3",
+      "src": "/assets/sunrise-maps/5356ee67d9fcdc689318cc3254ecf573b481f3e3.jpg",
+      "width": 1920,
+      "height": 1080
+    },
+    "地下通道2樓": {
+      "path": "assets/area/1920x1080/地下通道2樓.jpg",
+      "gitBlob": "1a980f968d9d482edf266a84201d035b1d92106a",
+      "src": "/assets/sunrise-maps/1a980f968d9d482edf266a84201d035b1d92106a.jpg",
+      "width": 1920,
+      "height": 1080
+    },
+    "地下通道3樓": {
+      "path": "assets/area/1920x1080/地下通道3樓.jpg",
+      "gitBlob": "3982bcced2641ffe7a40e7a124ba5fbcb56f869a",
+      "src": "/assets/sunrise-maps/3982bcced2641ffe7a40e7a124ba5fbcb56f869a.jpg",
+      "width": 1920,
+      "height": 1080
+    },
+    "夢幻之島": {
+      "path": "assets/area/1920x1080/夢幻之島.jpg",
+      "gitBlob": "b601159f2c9d3d5623ce9f1631ab3f11ca54fd5e",
+      "src": "/assets/sunrise-maps/b601159f2c9d3d5623ce9f1631ab3f11ca54fd5e.jpg",
+      "width": 1920,
+      "height": 1080
+    },
+    "奇岩": {
+      "path": "assets/area/1920x1080/奇岩.jpg",
+      "gitBlob": "91ff2b8c088c408a5b07e0172c5450d9bb945554",
+      "src": "/assets/sunrise-maps/91ff2b8c088c408a5b07e0172c5450d9bb945554.jpg",
+      "width": 1920,
+      "height": 1080
+    },
+    "奇岩地監1樓": {
+      "path": "assets/area/1920x1080/奇岩地監1樓.jpg",
+      "gitBlob": "6383c681b90e763543a3f644d8c4c99fd6ad30af",
+      "src": "/assets/sunrise-maps/6383c681b90e763543a3f644d8c4c99fd6ad30af.jpg",
+      "width": 1920,
+      "height": 1080
+    },
+    "奇岩地監2樓": {
+      "path": "assets/area/1920x1080/奇岩地監2樓.jpg",
+      "gitBlob": "6aad779a45afe8ca48e3d01cd24682a427d37f92",
+      "src": "/assets/sunrise-maps/6aad779a45afe8ca48e3d01cd24682a427d37f92.jpg",
+      "width": 1920,
+      "height": 1080
+    },
+    "奇岩地監3樓": {
+      "path": "assets/area/1920x1080/奇岩地監3樓.jpg",
+      "gitBlob": "f1b5ce4574ee033dd4d9537721c06c0621c016e4",
+      "src": "/assets/sunrise-maps/f1b5ce4574ee033dd4d9537721c06c0621c016e4.jpg",
+      "width": 1920,
+      "height": 1080
+    },
+    "奇岩地監4樓": {
+      "path": "assets/area/1920x1080/奇岩地監4樓.jpg",
+      "gitBlob": "27e17bc6552534003e1017cccc6e26d1d1ef2eeb",
+      "src": "/assets/sunrise-maps/27e17bc6552534003e1017cccc6e26d1d1ef2eeb.jpg",
+      "width": 1920,
+      "height": 1080
+    },
+    "奇岩城鎮": {
+      "path": "assets/area/1920x1080/奇岩城鎮.jpg",
+      "gitBlob": "edae4113d14ede446a38a6f8420f086ed7a2b5b3",
+      "src": "/assets/sunrise-maps/edae4113d14ede446a38a6f8420f086ed7a2b5b3.jpg",
+      "width": 1920,
+      "height": 1080
+    },
+    "妖精森林周邊": {
+      "path": "assets/area/1920x1080/妖精森林周邊.jpg",
+      "gitBlob": "86ca18075bda97c1b048114c224ce2d5d933fcaf",
+      "src": "/assets/sunrise-maps/86ca18075bda97c1b048114c224ce2d5d933fcaf.jpg",
+      "width": 1920,
+      "height": 1080
+    },
+    "妖精森林村莊": {
+      "path": "assets/area/1920x1080/妖精森林村莊.jpg",
+      "gitBlob": "8169bd8a25e14b75f8edc03f1733890d2ae1c400",
+      "src": "/assets/sunrise-maps/8169bd8a25e14b75f8edc03f1733890d2ae1c400.jpg",
+      "width": 1920,
+      "height": 1080
+    },
+    "妖魔森林": {
+      "path": "assets/area/1920x1080/妖魔森林.jpg",
+      "gitBlob": "4786fe7e7b0a2212dcc1912310aa99608400079a",
+      "src": "/assets/sunrise-maps/4786fe7e7b0a2212dcc1912310aa99608400079a.jpg",
+      "width": 1920,
+      "height": 1080
+    },
+    "威頓村莊": {
+      "path": "assets/area/1920x1080/威頓村莊.jpg",
+      "gitBlob": "c8054737f0ccf1f5ebe71be3bf18bea2d2daa431",
+      "src": "/assets/sunrise-maps/c8054737f0ccf1f5ebe71be3bf18bea2d2daa431.jpg",
+      "width": 1920,
+      "height": 1080
+    },
+    "安塔瑞斯棲息地": {
+      "path": "assets/area/1920x1080/安塔瑞斯棲息地.jpg",
+      "gitBlob": "3513385651c15c5d4838a0baaaf0919e9b7d4ea2",
+      "src": "/assets/sunrise-maps/3513385651c15c5d4838a0baaaf0919e9b7d4ea2.jpg",
+      "width": 1920,
+      "height": 1080
+    },
+    "巴拉卡斯巢穴": {
+      "path": "assets/area/1920x1080/巴拉卡斯巢穴.jpg",
+      "gitBlob": "7b8c5a643fd31fec39d25aa9141ca57e6a3c6bae",
+      "src": "/assets/sunrise-maps/7b8c5a643fd31fec39d25aa9141ca57e6a3c6bae.jpg",
+      "width": 1920,
+      "height": 1080
+    },
+    "拉斯塔巴德地下洞穴1樓": {
+      "path": "assets/area/1920x1080/拉斯塔巴德地下洞穴1樓.jpg",
+      "gitBlob": "d6ae6973cf8547d000997834d0cc5c2efda3c17c",
+      "src": "/assets/sunrise-maps/d6ae6973cf8547d000997834d0cc5c2efda3c17c.jpg",
+      "width": 1920,
+      "height": 1080
+    },
+    "拉斯塔巴德地下洞穴2樓": {
+      "path": "assets/area/1920x1080/拉斯塔巴德地下洞穴2樓.jpg",
+      "gitBlob": "1e2acd83b0596055b0e4f8363bd4a40874c1137e",
+      "src": "/assets/sunrise-maps/1e2acd83b0596055b0e4f8363bd4a40874c1137e.jpg",
+      "width": 1920,
+      "height": 1080
+    },
+    "拉斯塔巴德地下洞穴3樓": {
+      "path": "assets/area/1920x1080/拉斯塔巴德地下洞穴3樓.jpg",
+      "gitBlob": "4fd1c8ad67e56b09fe4538f41bd8b43f6578ec0d",
+      "src": "/assets/sunrise-maps/4fd1c8ad67e56b09fe4538f41bd8b43f6578ec0d.jpg",
+      "width": 1920,
+      "height": 1080
+    },
+    "拉斯塔巴德正門": {
+      "path": "assets/area/1920x1080/拉斯塔巴德正門.jpg",
+      "gitBlob": "856794b67db8cf05fad8a17f0f6a12885e139ad9",
+      "src": "/assets/sunrise-maps/856794b67db8cf05fad8a17f0f6a12885e139ad9.jpg",
+      "width": 1920,
+      "height": 1080
+    },
+    "新兵修練場": {
+      "path": "assets/area/1920x1080/新兵修練場.jpg",
+      "gitBlob": "43f6f3504f01e178148aa66dd2c3b633cfe932ce",
+      "src": "/assets/sunrise-maps/43f6f3504f01e178148aa66dd2c3b633cfe932ce.jpg",
+      "width": 1920,
+      "height": 1080
+    },
+    "格蘭肯神殿．長老之室": {
+      "path": "assets/area/1920x1080/格蘭肯神殿．長老之室.jpg",
+      "gitBlob": "ec53340e81f6853cd0d83bbf730aeb2e5493c308",
+      "src": "/assets/sunrise-maps/ec53340e81f6853cd0d83bbf730aeb2e5493c308.jpg",
+      "width": 1920,
+      "height": 1080
+    },
+    "歐瑞": {
+      "path": "assets/area/1920x1080/歐瑞.jpg",
+      "gitBlob": "521c0370e955ce356d225cb80a6007c7e5e0bf4d",
+      "src": "/assets/sunrise-maps/521c0370e955ce356d225cb80a6007c7e5e0bf4d.jpg",
+      "width": 1920,
+      "height": 1080
+    },
+    "歐瑞村莊": {
+      "path": "assets/area/1920x1080/歐瑞村莊.jpg",
+      "gitBlob": "1d7eca3cf754a5268c845f9976cb8deee5634276",
+      "src": "/assets/sunrise-maps/1d7eca3cf754a5268c845f9976cb8deee5634276.jpg",
+      "width": 1920,
+      "height": 1080
+    },
+    "歐瑞雪原": {
+      "path": "assets/area/1920x1080/歐瑞雪原.jpg",
+      "gitBlob": "0e174ac4a8fc14d3fda73ac9ed503e669108a46b",
+      "src": "/assets/sunrise-maps/0e174ac4a8fc14d3fda73ac9ed503e669108a46b.jpg",
+      "width": 1920,
+      "height": 1080
+    },
+    "水晶洞穴1樓": {
+      "path": "assets/area/1920x1080/水晶洞穴1樓.jpg",
+      "gitBlob": "d5d5f2c0412573dafab2da525d8c2c4a3d33f167",
+      "src": "/assets/sunrise-maps/d5d5f2c0412573dafab2da525d8c2c4a3d33f167.jpg",
+      "width": 1920,
+      "height": 1080
+    },
+    "水晶洞穴2樓": {
+      "path": "assets/area/1920x1080/水晶洞穴2樓.jpg",
+      "gitBlob": "8a243180817ed3a9681ee54ba961a4501000dbfe",
+      "src": "/assets/sunrise-maps/8a243180817ed3a9681ee54ba961a4501000dbfe.jpg",
+      "width": 1920,
+      "height": 1080
+    },
+    "水晶洞穴3樓": {
+      "path": "assets/area/1920x1080/水晶洞穴3樓.jpg",
+      "gitBlob": "38f1884a0a7718f2e9753a62b6f094502f5d1c9d",
+      "src": "/assets/sunrise-maps/38f1884a0a7718f2e9753a62b6f094502f5d1c9d.jpg",
+      "width": 1920,
+      "height": 1080
+    },
+    "沉默洞穴": {
+      "path": "assets/area/1920x1080/沉默洞穴.jpg",
+      "gitBlob": "6f93eb2be4097481dad847c721b35af5de536837",
+      "src": "/assets/sunrise-maps/6f93eb2be4097481dad847c721b35af5de536837.jpg",
+      "width": 1920,
+      "height": 1080
+    },
+    "沙漠": {
+      "path": "assets/area/1920x1080/沙漠.jpg",
+      "gitBlob": "9b6e20c6a2f22b58cd530dbfa1fd6ee51bb23865",
+      "src": "/assets/sunrise-maps/9b6e20c6a2f22b58cd530dbfa1fd6ee51bb23865.jpg",
+      "width": 1920,
+      "height": 1080
+    },
+    "沙漠地監1樓": {
+      "path": "assets/area/1920x1080/沙漠地監1樓.jpg",
+      "gitBlob": "18ae1de7f23b3e400d37a557db150d784c0f019a",
+      "src": "/assets/sunrise-maps/18ae1de7f23b3e400d37a557db150d784c0f019a.jpg",
+      "width": 1920,
+      "height": 1080
+    },
+    "沙漠地監2樓": {
+      "path": "assets/area/1920x1080/沙漠地監2樓.jpg",
+      "gitBlob": "2279d4d869c21c942949ece93f60566f77b46234",
+      "src": "/assets/sunrise-maps/2279d4d869c21c942949ece93f60566f77b46234.jpg",
+      "width": 1920,
+      "height": 1080
+    },
+    "沙漠地監3樓": {
+      "path": "assets/area/1920x1080/沙漠地監3樓.jpg",
+      "gitBlob": "58b4b8d3c710a1e3563e48fe770dfe3d848bf197",
+      "src": "/assets/sunrise-maps/58b4b8d3c710a1e3563e48fe770dfe3d848bf197.jpg",
+      "width": 1920,
+      "height": 1080
+    },
+    "沙漠地監4樓": {
+      "path": "assets/area/1920x1080/沙漠地監4樓.jpg",
+      "gitBlob": "87b7ecf4490616faeb186ce7862299ef5530f801",
+      "src": "/assets/sunrise-maps/87b7ecf4490616faeb186ce7862299ef5530f801.jpg",
+      "width": 1920,
+      "height": 1080
+    },
+    "法利昂洞穴": {
+      "path": "assets/area/1920x1080/法利昂洞穴.jpg",
+      "gitBlob": "029c635dcadd8548a55c71fe02501c619790797c",
+      "src": "/assets/sunrise-maps/029c635dcadd8548a55c71fe02501c619790797c.jpg",
+      "width": 1920,
+      "height": 1080
+    },
+    "海音": {
+      "path": "assets/area/1920x1080/海音.jpg",
+      "gitBlob": "d65a74b45ce29df16aee98b5a67be3695d3fb940",
+      "src": "/assets/sunrise-maps/d65a74b45ce29df16aee98b5a67be3695d3fb940.jpg",
+      "width": 1920,
+      "height": 1080
+    },
+    "海音城鎮": {
+      "path": "assets/area/1920x1080/海音城鎮.jpg",
+      "gitBlob": "29c94bfcb2e64a93611e8920c31931e823ec8892",
+      "src": "/assets/sunrise-maps/29c94bfcb2e64a93611e8920c31931e823ec8892.jpg",
+      "width": 1920,
+      "height": 1080
+    },
+    "火龍窟": {
+      "path": "assets/area/1920x1080/火龍窟.jpg",
+      "gitBlob": "20dfc5962923ec48e6fa6a3a94cb0928ede38437",
+      "src": "/assets/sunrise-maps/20dfc5962923ec48e6fa6a3a94cb0928ede38437.jpg",
+      "width": 1920,
+      "height": 1080
+    },
+    "炎魔謁見所": {
+      "path": "assets/area/1920x1080/炎魔謁見所.jpg",
+      "gitBlob": "afdd36e35a8ca5eb0baa76fc975de80bca7e5c27",
+      "src": "/assets/sunrise-maps/afdd36e35a8ca5eb0baa76fc975de80bca7e5c27.jpg",
+      "width": 1920,
+      "height": 1080
+    },
+    "燃柳村莊": {
+      "path": "assets/area/1920x1080/燃柳村莊.jpg",
+      "gitBlob": "3e6d5d1a5774fa82443ee899b8c4fb0107df13df",
+      "src": "/assets/sunrise-maps/3e6d5d1a5774fa82443ee899b8c4fb0107df13df.jpg",
+      "width": 1920,
+      "height": 1080
+    },
+    "眠龍洞穴1樓": {
+      "path": "assets/area/1920x1080/眠龍洞穴1樓.jpg",
+      "gitBlob": "28e8f1962ca30d9c63d6c82e038783fd418208ac",
+      "src": "/assets/sunrise-maps/28e8f1962ca30d9c63d6c82e038783fd418208ac.jpg",
+      "width": 1920,
+      "height": 1080
+    },
+    "眠龍洞穴2樓": {
+      "path": "assets/area/1920x1080/眠龍洞穴2樓.jpg",
+      "gitBlob": "a05dc0db56d9b0bbf31ee989bb21f43a7831ccde",
+      "src": "/assets/sunrise-maps/a05dc0db56d9b0bbf31ee989bb21f43a7831ccde.jpg",
+      "width": 1920,
+      "height": 1080
+    },
+    "眠龍洞穴3樓": {
+      "path": "assets/area/1920x1080/眠龍洞穴3樓.jpg",
+      "gitBlob": "96ab209aa49f196b57df52e2bacbde6af4563aed",
+      "src": "/assets/sunrise-maps/96ab209aa49f196b57df52e2bacbde6af4563aed.jpg",
+      "width": 1920,
+      "height": 1080
+    },
+    "肯特": {
+      "path": "assets/area/1920x1080/肯特.jpg",
+      "gitBlob": "e678bc16254f43754e16022f7c348832a59a794c",
+      "src": "/assets/sunrise-maps/e678bc16254f43754e16022f7c348832a59a794c.jpg",
+      "width": 1920,
+      "height": 1080
+    },
+    "肯特內城": {
+      "path": "assets/area/1920x1080/肯特內城.jpg",
+      "gitBlob": "a105266ffc8be0556597ac99fb15ffd0e892841b",
+      "src": "/assets/sunrise-maps/a105266ffc8be0556597ac99fb15ffd0e892841b.jpg",
+      "width": 1920,
+      "height": 1080
+    },
+    "艾爾摩激戰地": {
+      "path": "assets/area/1920x1080/艾爾摩激戰地.jpg",
+      "gitBlob": "a6365097663608562da13380a43c8d6c17eda606",
+      "src": "/assets/sunrise-maps/a6365097663608562da13380a43c8d6c17eda606.jpg",
+      "width": 1920,
+      "height": 1080
+    },
+    "螞蟻洞窟1樓": {
+      "path": "assets/area/1920x1080/螞蟻洞窟1樓.jpg",
+      "gitBlob": "7236395c1d6afc4b6a14471aafad16fadcebab11",
+      "src": "/assets/sunrise-maps/7236395c1d6afc4b6a14471aafad16fadcebab11.jpg",
+      "width": 1920,
+      "height": 1080
+    },
+    "螞蟻洞窟2樓": {
+      "path": "assets/area/1920x1080/螞蟻洞窟2樓.jpg",
+      "gitBlob": "83ca7959a49794ea65486de870f6f383ae53d5b1",
+      "src": "/assets/sunrise-maps/83ca7959a49794ea65486de870f6f383ae53d5b1.jpg",
+      "width": 1920,
+      "height": 1080
+    },
+    "說話之島周邊": {
+      "path": "assets/area/1920x1080/說話之島周邊.jpg",
+      "gitBlob": "3d5b9a43f8a81a4582f43b06d1a16f3caf3d0d0a",
+      "src": "/assets/sunrise-maps/3d5b9a43f8a81a4582f43b06d1a16f3caf3d0d0a.jpg",
+      "width": 1920,
+      "height": 1080
+    },
+    "說話之島地監1樓": {
+      "path": "assets/area/1920x1080/說話之島地監1樓.jpg",
+      "gitBlob": "794a5f31ad63935a264f57a82a7ad720320a2e97",
+      "src": "/assets/sunrise-maps/794a5f31ad63935a264f57a82a7ad720320a2e97.jpg",
+      "width": 1920,
+      "height": 1080
+    },
+    "說話之島地監2樓": {
+      "path": "assets/area/1920x1080/說話之島地監2樓.jpg",
+      "gitBlob": "3ad38dc2b7a4dcad5bf2b9b59e5f1903a036aaed",
+      "src": "/assets/sunrise-maps/3ad38dc2b7a4dcad5bf2b9b59e5f1903a036aaed.jpg",
+      "width": 1920,
+      "height": 1080
+    },
+    "說話之島村莊": {
+      "path": "assets/area/1920x1080/說話之島村莊.jpg",
+      "gitBlob": "db3a64416be22494014ea36f0d8d24e0fd7dcafe",
+      "src": "/assets/sunrise-maps/db3a64416be22494014ea36f0d8d24e0fd7dcafe.jpg",
+      "width": 1920,
+      "height": 1080
+    },
+    "說話之島港口": {
+      "path": "assets/area/1920x1080/說話之島港口.jpg",
+      "gitBlob": "5b8ee13e0168cf7f98c46005a6b61b133bb84c8b",
+      "src": "/assets/sunrise-maps/5b8ee13e0168cf7f98c46005a6b61b133bb84c8b.jpg",
+      "width": 1920,
+      "height": 1080
+    },
+    "象牙塔4樓": {
+      "path": "assets/area/1920x1080/象牙塔4樓.jpg",
+      "gitBlob": "6c79470fa1dff64af0613efaa403c598505e72e6",
+      "src": "/assets/sunrise-maps/6c79470fa1dff64af0613efaa403c598505e72e6.jpg",
+      "width": 1920,
+      "height": 1080
+    },
+    "象牙塔5樓": {
+      "path": "assets/area/1920x1080/象牙塔5樓.jpg",
+      "gitBlob": "d27aa6097e6a04077575bf0cb1aa5ed24517840b",
+      "src": "/assets/sunrise-maps/d27aa6097e6a04077575bf0cb1aa5ed24517840b.jpg",
+      "width": 1920,
+      "height": 1080
+    },
+    "象牙塔6樓": {
+      "path": "assets/area/1920x1080/象牙塔6樓.jpg",
+      "gitBlob": "6846305f88fc3a27b73c84b4b0a733e6c739f219",
+      "src": "/assets/sunrise-maps/6846305f88fc3a27b73c84b4b0a733e6c739f219.jpg",
+      "width": 1920,
+      "height": 1080
+    },
+    "象牙塔7樓": {
+      "path": "assets/area/1920x1080/象牙塔7樓.jpg",
+      "gitBlob": "617c37b01ee36d9b7c74d5a31f26cf6558804a81",
+      "src": "/assets/sunrise-maps/617c37b01ee36d9b7c74d5a31f26cf6558804a81.jpg",
+      "width": 1920,
+      "height": 1080
+    },
+    "象牙塔8樓": {
+      "path": "assets/area/1920x1080/象牙塔8樓.jpg",
+      "gitBlob": "960830119a4225e6303bd7d5ecb23704db02488a",
+      "src": "/assets/sunrise-maps/960830119a4225e6303bd7d5ecb23704db02488a.jpg",
+      "width": 1920,
+      "height": 1080
+    },
+    "象牙塔（1~3樓）": {
+      "path": "assets/area/1920x1080/象牙塔（1~3樓）.jpg",
+      "gitBlob": "d1455cba11ccea0aeb944f4ef09f1c2804d85dc1",
+      "src": "/assets/sunrise-maps/d1455cba11ccea0aeb944f4ef09f1c2804d85dc1.jpg",
+      "width": 1920,
+      "height": 1080
+    },
+    "遺忘之島": {
+      "path": "assets/area/1920x1080/遺忘之島.jpg",
+      "gitBlob": "c509ec2f82f2546999474071966fc11a9563518b",
+      "src": "/assets/sunrise-maps/c509ec2f82f2546999474071966fc11a9563518b.jpg",
+      "width": 1920,
+      "height": 1080
+    },
+    "銀騎士地區": {
+      "path": "assets/area/1920x1080/銀騎士地區.jpg",
+      "gitBlob": "a27e6dbb7642b0ce35acfcaed352e365e5997100",
+      "src": "/assets/sunrise-maps/a27e6dbb7642b0ce35acfcaed352e365e5997100.jpg",
+      "width": 1920,
+      "height": 1080
+    },
+    "銀騎士村莊": {
+      "path": "assets/area/1920x1080/銀騎士村莊.jpg",
+      "gitBlob": "be72374d023a461f383f94cfed98b3e7106fe2fa",
+      "src": "/assets/sunrise-maps/be72374d023a461f383f94cfed98b3e7106fe2fa.jpg",
+      "width": 1920,
+      "height": 1080
+    },
+    "鏡子森林": {
+      "path": "assets/area/1920x1080/鏡子森林.jpg",
+      "gitBlob": "23cf73e175d2b882d539a9678fe6404b838dcb55",
+      "src": "/assets/sunrise-maps/23cf73e175d2b882d539a9678fe6404b838dcb55.jpg",
+      "width": 1920,
+      "height": 1080
+    },
+    "風木": {
+      "path": "assets/area/1920x1080/風木.jpg",
+      "gitBlob": "7589ef967568024e28b0e2d19675266325ef04e8",
+      "src": "/assets/sunrise-maps/7589ef967568024e28b0e2d19675266325ef04e8.jpg",
+      "width": 1920,
+      "height": 1080
+    },
+    "魔獸訓練場": {
+      "path": "assets/area/1920x1080/魔獸訓練場.jpg",
+      "gitBlob": "f0e64267a21b370a575f4022d0e1f8399aad8572",
+      "src": "/assets/sunrise-maps/f0e64267a21b370a575f4022d0e1f8399aad8572.jpg",
+      "width": 1920,
+      "height": 1080
+    },
+    "黃昏山脈": {
+      "path": "assets/area/1920x1080/黃昏山脈.jpg",
+      "gitBlob": "cb7488627f66d20ed702d417b03abf216b0fbdd1",
+      "src": "/assets/sunrise-maps/cb7488627f66d20ed702d417b03abf216b0fbdd1.jpg",
+      "width": 1920,
+      "height": 1080
+    },
+    "黑魔法研究室": {
+      "path": "assets/area/1920x1080/黑魔法研究室.jpg",
+      "gitBlob": "4cbc95bf96a0b4895d91123ae5e54dab477116f3",
+      "src": "/assets/sunrise-maps/4cbc95bf96a0b4895d91123ae5e54dab477116f3.jpg",
+      "width": 1920,
+      "height": 1080
+    },
+    "龍之谷": {
+      "path": "assets/area/1920x1080/龍之谷.jpg",
+      "gitBlob": "c77a6bf4d80e752b57542871163a3e72bb816b0e",
+      "src": "/assets/sunrise-maps/c77a6bf4d80e752b57542871163a3e72bb816b0e.jpg",
+      "width": 1920,
+      "height": 1080
+    },
+    "龍之谷地監1樓": {
+      "path": "assets/area/1920x1080/龍之谷地監1樓.jpg",
+      "gitBlob": "d043722d7d9bf288459fff5ac1b83704cd163709",
+      "src": "/assets/sunrise-maps/d043722d7d9bf288459fff5ac1b83704cd163709.jpg",
+      "width": 1920,
+      "height": 1080
+    },
+    "龍之谷地監2樓": {
+      "path": "assets/area/1920x1080/龍之谷地監2樓.jpg",
+      "gitBlob": "4f0c540082b7875df2887c6954d309c98e3897a5",
+      "src": "/assets/sunrise-maps/4f0c540082b7875df2887c6954d309c98e3897a5.jpg",
+      "width": 1920,
+      "height": 1080
+    },
+    "龍之谷地監3樓": {
+      "path": "assets/area/1920x1080/龍之谷地監3樓.jpg",
+      "gitBlob": "bf7182219ffbc26555911448f0594caed0e169eb",
+      "src": "/assets/sunrise-maps/bf7182219ffbc26555911448f0594caed0e169eb.jpg",
+      "width": 1920,
+      "height": 1080
+    },
+    "龍之谷地監4樓": {
+      "path": "assets/area/1920x1080/龍之谷地監4樓.jpg",
+      "gitBlob": "4162d619078f98d94da9add79a3d98cde89eeb88",
+      "src": "/assets/sunrise-maps/4162d619078f98d94da9add79a3d98cde89eeb88.jpg",
+      "width": 1920,
+      "height": 1080
+    },
+    "龍之谷地監5樓": {
+      "path": "assets/area/1920x1080/龍之谷地監5樓.jpg",
+      "gitBlob": "a7661ac7d56c6def328be4809c5243256d4c2a76",
+      "src": "/assets/sunrise-maps/a7661ac7d56c6def328be4809c5243256d4c2a76.jpg",
+      "width": 1920,
+      "height": 1080
+    },
+    "龍之谷地監6樓": {
+      "path": "assets/area/1920x1080/龍之谷地監6樓.jpg",
+      "gitBlob": "efa59191f6de8350c251dc22b9c247f2bbdd249f",
+      "src": "/assets/sunrise-maps/efa59191f6de8350c251dc22b9c247f2bbdd249f.jpg",
+      "width": 1920,
+      "height": 1080
+    }
+  },
+  "zones": {
+    "town_silver_knight": {
+      "name": "銀騎士村",
+      "asset": "銀騎士村莊",
+      "mapping": "alias-or-source-floor-group",
+      "src": "/assets/sunrise-maps/be72374d023a461f383f94cfed98b3e7106fe2fa.jpg"
+    },
+    "town_elf": {
+      "name": "妖精森林",
+      "asset": "妖精森林村莊",
+      "mapping": "alias-or-source-floor-group",
+      "src": "/assets/sunrise-maps/8169bd8a25e14b75f8edc03f1733890d2ae1c400.jpg"
+    },
+    "town_talking": {
+      "name": "說話之島",
+      "asset": "說話之島村莊",
+      "mapping": "alias-or-source-floor-group",
+      "src": "/assets/sunrise-maps/db3a64416be22494014ea36f0d8d24e0fd7dcafe.jpg"
+    },
+    "town_gludio": {
+      "name": "燃柳村",
+      "asset": "燃柳村莊",
+      "mapping": "alias-or-source-floor-group",
+      "src": "/assets/sunrise-maps/3e6d5d1a5774fa82443ee899b8c4fb0107df13df.jpg"
+    },
+    "town_giran": {
+      "name": "奇岩",
+      "asset": "奇岩城鎮",
+      "mapping": "alias-or-source-floor-group",
+      "src": "/assets/sunrise-maps/edae4113d14ede446a38a6f8420f086ed7a2b5b3.jpg"
+    },
+    "town_heine": {
+      "name": "海音",
+      "asset": "海音城鎮",
+      "mapping": "alias-or-source-floor-group",
+      "src": "/assets/sunrise-maps/29c94bfcb2e64a93611e8920c31931e823ec8892.jpg"
+    },
+    "town_oren": {
+      "name": "歐瑞村莊",
+      "asset": "歐瑞村莊",
+      "mapping": "name",
+      "src": "/assets/sunrise-maps/1d7eca3cf754a5268c845f9976cb8deee5634276.jpg"
+    },
+    "town_ivory_tower": {
+      "name": "象牙塔",
+      "asset": "象牙塔（1~3樓）",
+      "mapping": "alias-or-source-floor-group",
+      "src": "/assets/sunrise-maps/d1455cba11ccea0aeb944f4ef09f1c2804d85dc1.jpg"
+    },
+    "town_witon": {
+      "name": "威頓村",
+      "asset": "威頓村莊",
+      "mapping": "alias-or-source-floor-group",
+      "src": "/assets/sunrise-maps/c8054737f0ccf1f5ebe71be3bf18bea2d2daa431.jpg"
+    },
+    "town_silent": {
+      "name": "沉默洞穴",
+      "asset": "沉默洞穴",
+      "mapping": "name",
+      "src": "/assets/sunrise-maps/6f93eb2be4097481dad847c721b35af5de536837.jpg"
+    },
+    "training": {
+      "name": "新兵修練場",
+      "asset": "新兵修練場",
+      "mapping": "name",
+      "src": "/assets/sunrise-maps/43f6f3504f01e178148aa66dd2c3b633cfe932ce.jpg"
+    },
+    "silver_knight": {
+      "name": "銀騎士地區",
+      "asset": "銀騎士地區",
+      "mapping": "name",
+      "src": "/assets/sunrise-maps/a27e6dbb7642b0ce35acfcaed352e365e5997100.jpg"
+    },
+    "talking_island": {
+      "name": "說話之島周邊",
+      "asset": "說話之島周邊",
+      "mapping": "name",
+      "src": "/assets/sunrise-maps/3d5b9a43f8a81a4582f43b06d1a16f3caf3d0d0a.jpg"
+    },
+    "zone_01": {
+      "name": "妖精森林周邊",
+      "asset": "妖精森林周邊",
+      "mapping": "name",
+      "src": "/assets/sunrise-maps/86ca18075bda97c1b048114c224ce2d5d933fcaf.jpg"
+    },
+    "talking_island_port": {
+      "name": "說話之島港口",
+      "asset": "說話之島港口",
+      "mapping": "name",
+      "src": "/assets/sunrise-maps/5b8ee13e0168cf7f98c46005a6b61b133bb84c8b.jpg"
+    },
+    "elf_forest": {
+      "name": "妖魔森林",
+      "asset": "妖魔森林",
+      "mapping": "name",
+      "src": "/assets/sunrise-maps/4786fe7e7b0a2212dcc1912310aa99608400079a.jpg"
+    },
+    "gludio": {
+      "name": "古魯丁",
+      "asset": "古魯丁",
+      "mapping": "name",
+      "src": "/assets/sunrise-maps/b84c96351c612b96eb5dd2fef17a14a1750b139a.jpg"
+    },
+    "windwood": {
+      "name": "風木",
+      "asset": "風木",
+      "mapping": "name",
+      "src": "/assets/sunrise-maps/7589ef967568024e28b0e2d19675266325ef04e8.jpg"
+    },
+    "desert": {
+      "name": "沙漠",
+      "asset": "沙漠",
+      "mapping": "name",
+      "src": "/assets/sunrise-maps/9b6e20c6a2f22b58cd530dbfa1fd6ee51bb23865.jpg"
+    },
+    "kent": {
+      "name": "肯特",
+      "asset": "肯特",
+      "mapping": "name",
+      "src": "/assets/sunrise-maps/e678bc16254f43754e16022f7c348832a59a794c.jpg"
+    },
+    "dragon_valley": {
+      "name": "龍之谷",
+      "asset": "龍之谷",
+      "mapping": "name",
+      "src": "/assets/sunrise-maps/c77a6bf4d80e752b57542871163a3e72bb816b0e.jpg"
+    },
+    "fire_dragon": {
+      "name": "火龍窟",
+      "asset": "火龍窟",
+      "mapping": "name",
+      "src": "/assets/sunrise-maps/20dfc5962923ec48e6fa6a3a94cb0928ede38437.jpg"
+    },
+    "giran": {
+      "name": "奇岩",
+      "asset": "奇岩",
+      "mapping": "name",
+      "src": "/assets/sunrise-maps/91ff2b8c088c408a5b07e0172c5450d9bb945554.jpg"
+    },
+    "heine": {
+      "name": "海音",
+      "asset": "海音",
+      "mapping": "name",
+      "src": "/assets/sunrise-maps/d65a74b45ce29df16aee98b5a67be3695d3fb940.jpg"
+    },
+    "mirror_forest": {
+      "name": "鏡子森林",
+      "asset": "鏡子森林",
+      "mapping": "name",
+      "src": "/assets/sunrise-maps/23cf73e175d2b882d539a9678fe6404b838dcb55.jpg"
+    },
+    "zone_02": {
+      "name": "歐瑞",
+      "asset": "歐瑞",
+      "mapping": "name",
+      "src": "/assets/sunrise-maps/521c0370e955ce356d225cb80a6007c7e5e0bf4d.jpg"
+    },
+    "zone_03": {
+      "name": "歐瑞雪原",
+      "asset": "歐瑞雪原",
+      "mapping": "name",
+      "src": "/assets/sunrise-maps/0e174ac4a8fc14d3fda73ac9ed503e669108a46b.jpg"
+    },
+    "zone_04": {
+      "name": "艾爾摩激戰地",
+      "asset": "艾爾摩激戰地",
+      "mapping": "name",
+      "src": "/assets/sunrise-maps/a6365097663608562da13380a43c8d6c17eda606.jpg"
+    },
+    "zone_05": {
+      "name": "國境要塞",
+      "asset": "國境要塞",
+      "mapping": "name",
+      "src": "/assets/sunrise-maps/af7e5bb2a3864f2e59c7a2e0c9c8f79883f88416.jpg"
+    },
+    "dream_island": {
+      "name": "夢幻之島",
+      "asset": "夢幻之島",
+      "mapping": "name",
+      "src": "/assets/sunrise-maps/b601159f2c9d3d5623ce9f1631ab3f11ca54fd5e.jpg"
+    },
+    "oblivion_island": {
+      "name": "遺忘之島",
+      "asset": "遺忘之島",
+      "mapping": "name",
+      "src": "/assets/sunrise-maps/c509ec2f82f2546999474071966fc11a9563518b.jpg"
+    },
+    "twilight_mt": {
+      "name": "黃昏山脈",
+      "asset": "黃昏山脈",
+      "mapping": "name",
+      "src": "/assets/sunrise-maps/cb7488627f66d20ed702d417b03abf216b0fbdd1.jpg"
+    },
+    "zone_06": {
+      "name": "古魯丁地監1樓",
+      "asset": "古魯丁地監1樓",
+      "mapping": "name",
+      "src": "/assets/sunrise-maps/95231902afee7bcd4eccee4fc34cf2d137441f38.jpg"
+    },
+    "zone_07": {
+      "name": "古魯丁地監2樓",
+      "asset": "古魯丁地監2樓",
+      "mapping": "name",
+      "src": "/assets/sunrise-maps/23023e6a9bc0761fc08f4d530cfc2dcc49e1f291.jpg"
+    },
+    "zone_08": {
+      "name": "古魯丁地監3樓",
+      "asset": "古魯丁地監3樓",
+      "mapping": "name",
+      "src": "/assets/sunrise-maps/dab6360a268e299dce84a6d5ca698386945159d4.jpg"
+    },
+    "zone_09": {
+      "name": "古魯丁地監4樓",
+      "asset": "古魯丁地監4樓",
+      "mapping": "name",
+      "src": "/assets/sunrise-maps/02182ea6d37d0f13b95986f34149cf8c0df02543.jpg"
+    },
+    "zone_10": {
+      "name": "古魯丁地監5樓",
+      "asset": "古魯丁地監5樓",
+      "mapping": "name",
+      "src": "/assets/sunrise-maps/294820bf5ec72d962d4ad2da3ed8704efd6935d4.jpg"
+    },
+    "zone_11": {
+      "name": "古魯丁地監6樓",
+      "asset": "古魯丁地監6樓",
+      "mapping": "name",
+      "src": "/assets/sunrise-maps/c34c8634c537d203e07fdfd80bff4b90a865376d.jpg"
+    },
+    "zone_12": {
+      "name": "古魯丁地監7樓",
+      "asset": "古魯丁地監7樓",
+      "mapping": "name",
+      "src": "/assets/sunrise-maps/091e713c067bc1bcdb4c8de1e35e55cddf441239.jpg"
+    },
+    "zone_13": {
+      "name": "說話之島地監1樓",
+      "asset": "說話之島地監1樓",
+      "mapping": "name",
+      "src": "/assets/sunrise-maps/794a5f31ad63935a264f57a82a7ad720320a2e97.jpg"
+    },
+    "zone_14": {
+      "name": "說話之島地監2樓",
+      "asset": "說話之島地監2樓",
+      "mapping": "name",
+      "src": "/assets/sunrise-maps/3ad38dc2b7a4dcad5bf2b9b59e5f1903a036aaed.jpg"
+    },
+    "zone_15": {
+      "name": "眠龍洞穴1樓",
+      "asset": "眠龍洞穴1樓",
+      "mapping": "name",
+      "src": "/assets/sunrise-maps/28e8f1962ca30d9c63d6c82e038783fd418208ac.jpg"
+    },
+    "zone_16": {
+      "name": "眠龍洞穴2樓",
+      "asset": "眠龍洞穴2樓",
+      "mapping": "name",
+      "src": "/assets/sunrise-maps/a05dc0db56d9b0bbf31ee989bb21f43a7831ccde.jpg"
+    },
+    "zone_17": {
+      "name": "眠龍洞穴3樓",
+      "asset": "眠龍洞穴3樓",
+      "mapping": "name",
+      "src": "/assets/sunrise-maps/96ab209aa49f196b57df52e2bacbde6af4563aed.jpg"
+    },
+    "crystal_cave1": {
+      "name": "水晶洞穴1樓",
+      "asset": "水晶洞穴1樓",
+      "mapping": "name",
+      "src": "/assets/sunrise-maps/d5d5f2c0412573dafab2da525d8c2c4a3d33f167.jpg"
+    },
+    "crystal_cave2": {
+      "name": "水晶洞穴2樓",
+      "asset": "水晶洞穴2樓",
+      "mapping": "name",
+      "src": "/assets/sunrise-maps/8a243180817ed3a9681ee54ba961a4501000dbfe.jpg"
+    },
+    "crystal_cave3": {
+      "name": "水晶洞穴3樓",
+      "asset": "水晶洞穴3樓",
+      "mapping": "name",
+      "src": "/assets/sunrise-maps/38f1884a0a7718f2e9753a62b6f094502f5d1c9d.jpg"
+    },
+    "zone_18": {
+      "name": "奇岩地監1樓",
+      "asset": "奇岩地監1樓",
+      "mapping": "name",
+      "src": "/assets/sunrise-maps/6383c681b90e763543a3f644d8c4c99fd6ad30af.jpg"
+    },
+    "zone_19": {
+      "name": "奇岩地監2樓",
+      "asset": "奇岩地監2樓",
+      "mapping": "name",
+      "src": "/assets/sunrise-maps/6aad779a45afe8ca48e3d01cd24682a427d37f92.jpg"
+    },
+    "zone_20": {
+      "name": "奇岩地監3樓",
+      "asset": "奇岩地監3樓",
+      "mapping": "name",
+      "src": "/assets/sunrise-maps/f1b5ce4574ee033dd4d9537721c06c0621c016e4.jpg"
+    },
+    "zone_21": {
+      "name": "奇岩地監4樓",
+      "asset": "奇岩地監4樓",
+      "mapping": "name",
+      "src": "/assets/sunrise-maps/27e17bc6552534003e1017cccc6e26d1d1ef2eeb.jpg"
+    },
+    "zone_22": {
+      "name": "沙漠地監1樓",
+      "asset": "沙漠地監1樓",
+      "mapping": "name",
+      "src": "/assets/sunrise-maps/18ae1de7f23b3e400d37a557db150d784c0f019a.jpg"
+    },
+    "zone_23": {
+      "name": "沙漠地監2樓",
+      "asset": "沙漠地監2樓",
+      "mapping": "name",
+      "src": "/assets/sunrise-maps/2279d4d869c21c942949ece93f60566f77b46234.jpg"
+    },
+    "zone_24": {
+      "name": "沙漠地監3樓",
+      "asset": "沙漠地監3樓",
+      "mapping": "name",
+      "src": "/assets/sunrise-maps/58b4b8d3c710a1e3563e48fe770dfe3d848bf197.jpg"
+    },
+    "zone_25": {
+      "name": "沙漠地監4樓",
+      "asset": "沙漠地監4樓",
+      "mapping": "name",
+      "src": "/assets/sunrise-maps/87b7ecf4490616faeb186ce7862299ef5530f801.jpg"
+    },
+    "zone_26": {
+      "name": "龍之谷地監1樓",
+      "asset": "龍之谷地監1樓",
+      "mapping": "name",
+      "src": "/assets/sunrise-maps/d043722d7d9bf288459fff5ac1b83704cd163709.jpg"
+    },
+    "zone_27": {
+      "name": "龍之谷地監2樓",
+      "asset": "龍之谷地監2樓",
+      "mapping": "name",
+      "src": "/assets/sunrise-maps/4f0c540082b7875df2887c6954d309c98e3897a5.jpg"
+    },
+    "zone_28": {
+      "name": "龍之谷地監3樓",
+      "asset": "龍之谷地監3樓",
+      "mapping": "name",
+      "src": "/assets/sunrise-maps/bf7182219ffbc26555911448f0594caed0e169eb.jpg"
+    },
+    "zone_29": {
+      "name": "龍之谷地監4樓",
+      "asset": "龍之谷地監4樓",
+      "mapping": "name",
+      "src": "/assets/sunrise-maps/4162d619078f98d94da9add79a3d98cde89eeb88.jpg"
+    },
+    "zone_30": {
+      "name": "龍之谷地監5樓",
+      "asset": "龍之谷地監5樓",
+      "mapping": "name",
+      "src": "/assets/sunrise-maps/a7661ac7d56c6def328be4809c5243256d4c2a76.jpg"
+    },
+    "zone_31": {
+      "name": "龍之谷地監6樓",
+      "asset": "龍之谷地監6樓",
+      "mapping": "name",
+      "src": "/assets/sunrise-maps/efa59191f6de8350c251dc22b9c247f2bbdd249f.jpg"
+    },
+    "zone_32": {
+      "name": "螞蟻洞窟1樓",
+      "asset": "螞蟻洞窟1樓",
+      "mapping": "name",
+      "src": "/assets/sunrise-maps/7236395c1d6afc4b6a14471aafad16fadcebab11.jpg"
+    },
+    "zone_33": {
+      "name": "螞蟻洞窟2樓",
+      "asset": "螞蟻洞窟2樓",
+      "mapping": "name",
+      "src": "/assets/sunrise-maps/83ca7959a49794ea65486de870f6f383ae53d5b1.jpg"
+    },
+    "zone_34": {
+      "name": "地下通道1樓",
+      "asset": "地下通道1樓",
+      "mapping": "name",
+      "src": "/assets/sunrise-maps/5356ee67d9fcdc689318cc3254ecf573b481f3e3.jpg"
+    },
+    "zone_35": {
+      "name": "地下通道2樓",
+      "asset": "地下通道2樓",
+      "mapping": "name",
+      "src": "/assets/sunrise-maps/1a980f968d9d482edf266a84201d035b1d92106a.jpg"
+    },
+    "zone_36": {
+      "name": "地下通道3樓",
+      "asset": "地下通道3樓",
+      "mapping": "name",
+      "src": "/assets/sunrise-maps/3982bcced2641ffe7a40e7a124ba5fbcb56f869a.jpg"
+    },
+    "eva_kingdom": {
+      "name": "伊娃王國",
+      "asset": "伊娃王國",
+      "mapping": "name",
+      "src": "/assets/sunrise-maps/e25a8486b3ea5b8c61d1944c1386f7e95cb3956b.jpg"
+    },
+    "zone_37": {
+      "name": "象牙塔4樓",
+      "asset": "象牙塔4樓",
+      "mapping": "name",
+      "src": "/assets/sunrise-maps/6c79470fa1dff64af0613efaa403c598505e72e6.jpg"
+    },
+    "zone_38": {
+      "name": "象牙塔5樓",
+      "asset": "象牙塔5樓",
+      "mapping": "name",
+      "src": "/assets/sunrise-maps/d27aa6097e6a04077575bf0cb1aa5ed24517840b.jpg"
+    },
+    "zone_39": {
+      "name": "象牙塔6樓",
+      "asset": "象牙塔6樓",
+      "mapping": "name",
+      "src": "/assets/sunrise-maps/6846305f88fc3a27b73c84b4b0a733e6c739f219.jpg"
+    },
+    "zone_40": {
+      "name": "象牙塔7樓",
+      "asset": "象牙塔7樓",
+      "mapping": "name",
+      "src": "/assets/sunrise-maps/617c37b01ee36d9b7c74d5a31f26cf6558804a81.jpg"
+    },
+    "zone_41": {
+      "name": "象牙塔8樓",
+      "asset": "象牙塔8樓",
+      "mapping": "name",
+      "src": "/assets/sunrise-maps/960830119a4225e6303bd7d5ecb23704db02488a.jpg"
+    },
+    "rastabad_cave1": {
+      "name": "拉斯塔巴德地下洞穴1樓",
+      "asset": "拉斯塔巴德地下洞穴1樓",
+      "mapping": "name",
+      "src": "/assets/sunrise-maps/d6ae6973cf8547d000997834d0cc5c2efda3c17c.jpg"
+    },
+    "rastabad_cave2": {
+      "name": "拉斯塔巴德地下洞穴2樓",
+      "asset": "拉斯塔巴德地下洞穴2樓",
+      "mapping": "name",
+      "src": "/assets/sunrise-maps/1e2acd83b0596055b0e4f8363bd4a40874c1137e.jpg"
+    },
+    "rastabad_cave3": {
+      "name": "拉斯塔巴德地下洞穴3樓",
+      "asset": "拉斯塔巴德地下洞穴3樓",
+      "mapping": "name",
+      "src": "/assets/sunrise-maps/4fd1c8ad67e56b09fe4538f41bd8b43f6578ec0d.jpg"
+    },
+    "rastabad_gate": {
+      "name": "拉斯塔巴德正門",
+      "asset": "拉斯塔巴德正門",
+      "mapping": "name",
+      "src": "/assets/sunrise-maps/856794b67db8cf05fad8a17f0f6a12885e139ad9.jpg"
+    },
+    "rastabad_beast": {
+      "name": "魔獸訓練場",
+      "asset": "魔獸訓練場",
+      "mapping": "name",
+      "src": "/assets/sunrise-maps/f0e64267a21b370a575f4022d0e1f8399aad8572.jpg"
+    },
+    "dark_magic_lab": {
+      "name": "黑魔法研究室",
+      "asset": "黑魔法研究室",
+      "mapping": "name",
+      "src": "/assets/sunrise-maps/4cbc95bf96a0b4895d91123ae5e54dab477116f3.jpg"
+    },
+    "necro_training": {
+      "name": "冥法軍訓練場",
+      "asset": "冥法軍訓練場",
+      "mapping": "name",
+      "src": "/assets/sunrise-maps/c41330829f425f423d3dfbdeeb27f0f6eb46dac6.jpg"
+    },
+    "elder_room": {
+      "name": "格蘭肯神殿．長老之室",
+      "asset": "格蘭肯神殿．長老之室",
+      "mapping": "name",
+      "src": "/assets/sunrise-maps/ec53340e81f6853cd0d83bbf730aeb2e5493c308.jpg"
+    },
+    "pride_f1": {
+      "name": "傲慢之塔1樓",
+      "asset": "傲慢之塔1樓",
+      "mapping": "name",
+      "src": "/assets/sunrise-maps/6c9c4b18e4b536378f55fa68dc5ece8f45d1da6d.jpg"
+    },
+    "pride_f2": {
+      "name": "傲慢之塔2樓",
+      "asset": "傲慢之塔2~10樓",
+      "mapping": "alias-or-source-floor-group",
+      "src": "/assets/sunrise-maps/a45a4d07de0386abaa9466e178a18a5818887c04.jpg"
+    },
+    "pride_f3": {
+      "name": "傲慢之塔3樓",
+      "asset": "傲慢之塔2~10樓",
+      "mapping": "alias-or-source-floor-group",
+      "src": "/assets/sunrise-maps/a45a4d07de0386abaa9466e178a18a5818887c04.jpg"
+    },
+    "pride_f4": {
+      "name": "傲慢之塔4樓",
+      "asset": "傲慢之塔2~10樓",
+      "mapping": "alias-or-source-floor-group",
+      "src": "/assets/sunrise-maps/a45a4d07de0386abaa9466e178a18a5818887c04.jpg"
+    },
+    "pride_f5": {
+      "name": "傲慢之塔5樓",
+      "asset": "傲慢之塔2~10樓",
+      "mapping": "alias-or-source-floor-group",
+      "src": "/assets/sunrise-maps/a45a4d07de0386abaa9466e178a18a5818887c04.jpg"
+    },
+    "pride_f6": {
+      "name": "傲慢之塔6樓",
+      "asset": "傲慢之塔2~10樓",
+      "mapping": "alias-or-source-floor-group",
+      "src": "/assets/sunrise-maps/a45a4d07de0386abaa9466e178a18a5818887c04.jpg"
+    },
+    "pride_f7": {
+      "name": "傲慢之塔7樓",
+      "asset": "傲慢之塔2~10樓",
+      "mapping": "alias-or-source-floor-group",
+      "src": "/assets/sunrise-maps/a45a4d07de0386abaa9466e178a18a5818887c04.jpg"
+    },
+    "pride_f8": {
+      "name": "傲慢之塔8樓",
+      "asset": "傲慢之塔2~10樓",
+      "mapping": "alias-or-source-floor-group",
+      "src": "/assets/sunrise-maps/a45a4d07de0386abaa9466e178a18a5818887c04.jpg"
+    },
+    "pride_f9": {
+      "name": "傲慢之塔9樓",
+      "asset": "傲慢之塔2~10樓",
+      "mapping": "alias-or-source-floor-group",
+      "src": "/assets/sunrise-maps/a45a4d07de0386abaa9466e178a18a5818887c04.jpg"
+    },
+    "pride_f11": {
+      "name": "傲慢之塔11樓",
+      "asset": "傲慢之塔11~20樓",
+      "mapping": "alias-or-source-floor-group",
+      "src": "/assets/sunrise-maps/7a7ef02ea48a45fc890f9c902aaa3217db9b5ab0.jpg"
+    },
+    "pride_f12": {
+      "name": "傲慢之塔12樓",
+      "asset": "傲慢之塔11~20樓",
+      "mapping": "alias-or-source-floor-group",
+      "src": "/assets/sunrise-maps/7a7ef02ea48a45fc890f9c902aaa3217db9b5ab0.jpg"
+    },
+    "pride_f13": {
+      "name": "傲慢之塔13樓",
+      "asset": "傲慢之塔11~20樓",
+      "mapping": "alias-or-source-floor-group",
+      "src": "/assets/sunrise-maps/7a7ef02ea48a45fc890f9c902aaa3217db9b5ab0.jpg"
+    },
+    "pride_f14": {
+      "name": "傲慢之塔14樓",
+      "asset": "傲慢之塔11~20樓",
+      "mapping": "alias-or-source-floor-group",
+      "src": "/assets/sunrise-maps/7a7ef02ea48a45fc890f9c902aaa3217db9b5ab0.jpg"
+    },
+    "pride_f15": {
+      "name": "傲慢之塔15樓",
+      "asset": "傲慢之塔11~20樓",
+      "mapping": "alias-or-source-floor-group",
+      "src": "/assets/sunrise-maps/7a7ef02ea48a45fc890f9c902aaa3217db9b5ab0.jpg"
+    },
+    "pride_f16": {
+      "name": "傲慢之塔16樓",
+      "asset": "傲慢之塔11~20樓",
+      "mapping": "alias-or-source-floor-group",
+      "src": "/assets/sunrise-maps/7a7ef02ea48a45fc890f9c902aaa3217db9b5ab0.jpg"
+    },
+    "pride_f17": {
+      "name": "傲慢之塔17樓",
+      "asset": "傲慢之塔11~20樓",
+      "mapping": "alias-or-source-floor-group",
+      "src": "/assets/sunrise-maps/7a7ef02ea48a45fc890f9c902aaa3217db9b5ab0.jpg"
+    },
+    "pride_f18": {
+      "name": "傲慢之塔18樓",
+      "asset": "傲慢之塔11~20樓",
+      "mapping": "alias-or-source-floor-group",
+      "src": "/assets/sunrise-maps/7a7ef02ea48a45fc890f9c902aaa3217db9b5ab0.jpg"
+    },
+    "pride_f19": {
+      "name": "傲慢之塔19樓",
+      "asset": "傲慢之塔11~20樓",
+      "mapping": "alias-or-source-floor-group",
+      "src": "/assets/sunrise-maps/7a7ef02ea48a45fc890f9c902aaa3217db9b5ab0.jpg"
+    },
+    "antaras_lair": {
+      "name": "安塔瑞斯棲息地",
+      "asset": "安塔瑞斯棲息地",
+      "mapping": "name",
+      "src": "/assets/sunrise-maps/3513385651c15c5d4838a0baaaf0919e9b7d4ea2.jpg"
+    },
+    "fafurion_lair": {
+      "name": "法利昂洞穴",
+      "asset": "法利昂洞穴",
+      "mapping": "name",
+      "src": "/assets/sunrise-maps/029c635dcadd8548a55c71fe02501c619790797c.jpg"
+    },
+    "valakas_lair": {
+      "name": "巴拉卡斯巢穴",
+      "asset": "巴拉卡斯巢穴",
+      "mapping": "name",
+      "src": "/assets/sunrise-maps/7b8c5a643fd31fec39d25aa9141ca57e6a3c6bae.jpg"
+    },
+    "town_kent_castle": {
+      "name": "肯特城",
+      "asset": "肯特內城",
+      "mapping": "castle-interior",
+      "src": "/assets/sunrise-maps/a105266ffc8be0556597ac99fb15ffd0e892841b.jpg"
+    },
+    "wb_sema": {
+      "name": "wb_sema",
+      "asset": "眠龍洞穴3樓",
+      "mapping": "boss-habitat",
+      "src": "/assets/sunrise-maps/96ab209aa49f196b57df52e2bacbde6af4563aed.jpg"
+    },
+    "wb_batus": {
+      "name": "wb_batus",
+      "asset": "眠龍洞穴3樓",
+      "mapping": "boss-habitat",
+      "src": "/assets/sunrise-maps/96ab209aa49f196b57df52e2bacbde6af4563aed.jpg"
+    },
+    "wb_casper": {
+      "name": "wb_casper",
+      "asset": "眠龍洞穴3樓",
+      "mapping": "boss-habitat",
+      "src": "/assets/sunrise-maps/96ab209aa49f196b57df52e2bacbde6af4563aed.jpg"
+    },
+    "wb_marcus": {
+      "name": "wb_marcus",
+      "asset": "眠龍洞穴3樓",
+      "mapping": "boss-habitat",
+      "src": "/assets/sunrise-maps/96ab209aa49f196b57df52e2bacbde6af4563aed.jpg"
+    },
+    "wb_ifrit": {
+      "name": "wb_ifrit",
+      "asset": "火龍窟",
+      "mapping": "boss-habitat",
+      "src": "/assets/sunrise-maps/20dfc5962923ec48e6fa6a3a94cb0928ede38437.jpg"
+    },
+    "wb_wyvern": {
+      "name": "wb_wyvern",
+      "asset": "龍之谷",
+      "mapping": "boss-habitat",
+      "src": "/assets/sunrise-maps/c77a6bf4d80e752b57542871163a3e72bb816b0e.jpg"
+    },
+    "wb_blackelder": {
+      "name": "wb_blackelder",
+      "asset": "龍之谷",
+      "mapping": "boss-habitat",
+      "src": "/assets/sunrise-maps/c77a6bf4d80e752b57542871163a3e72bb816b0e.jpg"
+    },
+    "wb_doppel": {
+      "name": "wb_doppel",
+      "asset": "鏡子森林",
+      "mapping": "boss-habitat",
+      "src": "/assets/sunrise-maps/23cf73e175d2b882d539a9678fe6404b838dcb55.jpg"
+    },
+    "wb_baphomet": {
+      "name": "wb_baphomet",
+      "asset": "說話之島地監2樓",
+      "mapping": "boss-habitat",
+      "src": "/assets/sunrise-maps/3ad38dc2b7a4dcad5bf2b9b59e5f1903a036aaed.jpg"
+    },
+    "wb_kurt": {
+      "name": "wb_kurt",
+      "asset": "古魯丁地監7樓",
+      "mapping": "boss-habitat",
+      "src": "/assets/sunrise-maps/091e713c067bc1bcdb4c8de1e35e55cddf441239.jpg"
+    },
+    "wb_dk": {
+      "name": "wb_dk",
+      "asset": "古魯丁地監7樓",
+      "mapping": "boss-habitat",
+      "src": "/assets/sunrise-maps/091e713c067bc1bcdb4c8de1e35e55cddf441239.jpg"
+    },
+    "wb_ice": {
+      "name": "wb_ice",
+      "asset": "水晶洞穴3樓",
+      "mapping": "boss-habitat",
+      "src": "/assets/sunrise-maps/38f1884a0a7718f2e9753a62b6f094502f5d1c9d.jpg"
+    },
+    "wb_antqueen": {
+      "name": "wb_antqueen",
+      "asset": "螞蟻洞窟2樓",
+      "mapping": "boss-habitat",
+      "src": "/assets/sunrise-maps/83ca7959a49794ea65486de870f6f383ae53d5b1.jpg"
+    },
+    "wb_phoenix": {
+      "name": "wb_phoenix",
+      "asset": "火龍窟",
+      "mapping": "boss-habitat",
+      "src": "/assets/sunrise-maps/20dfc5962923ec48e6fa6a3a94cb0928ede38437.jpg"
+    },
+    "wb_demon": {
+      "name": "wb_demon",
+      "asset": "象牙塔8樓",
+      "mapping": "boss-habitat",
+      "src": "/assets/sunrise-maps/960830119a4225e6303bd7d5ecb23704db02488a.jpg"
+    },
+    "wb_twinwyvern": {
+      "name": "龍之谷雙龍",
+      "asset": "龍之谷",
+      "mapping": "boss-habitat",
+      "src": "/assets/sunrise-maps/c77a6bf4d80e752b57542871163a3e72bb816b0e.jpg"
+    },
+    "wb_fourcolor": {
+      "name": "歐林你這個背叛者",
+      "asset": "眠龍洞穴3樓",
+      "mapping": "boss-habitat",
+      "src": "/assets/sunrise-maps/96ab209aa49f196b57df52e2bacbde6af4563aed.jpg"
+    },
+    "wb_bigtaurus": {
+      "name": "wb_bigtaurus",
+      "asset": "遺忘之島",
+      "mapping": "boss-habitat",
+      "src": "/assets/sunrise-maps/c509ec2f82f2546999474071966fc11a9563518b.jpg"
+    },
+    "wb_pride_jenis": {
+      "name": "wb_pride_jenis",
+      "asset": "傲慢之塔2~10樓",
+      "mapping": "boss-habitat",
+      "src": "/assets/sunrise-maps/a45a4d07de0386abaa9466e178a18a5818887c04.jpg"
+    },
+    "wb_flame_demon": {
+      "name": "炎魔",
+      "asset": "炎魔謁見所",
+      "mapping": "boss-habitat",
+      "src": "/assets/sunrise-maps/afdd36e35a8ca5eb0baa76fc975de80bca7e5c27.jpg"
+    },
+    "wb_pride_phantom": {
+      "name": "wb_pride_phantom",
+      "asset": "傲慢之塔11~20樓",
+      "mapping": "boss-habitat",
+      "src": "/assets/sunrise-maps/7a7ef02ea48a45fc890f9c902aaa3217db9b5ab0.jpg"
+    },
+    "wb_castle": {
+      "name": "城堡守護者",
+      "asset": "肯特內城",
+      "mapping": "boss-habitat",
+      "src": "/assets/sunrise-maps/a105266ffc8be0556597ac99fb15ffd0e892841b.jpg"
+    },
+    "wb_dragon381_71026": {
+      "name": "法利昂(一) · 3.81",
+      "asset": "法利昂洞穴",
+      "mapping": "boss-habitat",
+      "src": "/assets/sunrise-maps/029c635dcadd8548a55c71fe02501c619790797c.jpg"
+    },
+    "wb_dragon381_71027": {
+      "name": "法利昂(二) · 3.81",
+      "asset": "法利昂洞穴",
+      "mapping": "boss-habitat",
+      "src": "/assets/sunrise-maps/029c635dcadd8548a55c71fe02501c619790797c.jpg"
+    },
+    "wb_dragon381_71028": {
+      "name": "法利昂(三) · 3.81",
+      "asset": "法利昂洞穴",
+      "mapping": "boss-habitat",
+      "src": "/assets/sunrise-maps/029c635dcadd8548a55c71fe02501c619790797c.jpg"
+    },
+    "wb_antaras_381": {
+      "name": "安塔瑞斯 · 3.81",
+      "asset": "安塔瑞斯棲息地",
+      "mapping": "boss-habitat",
+      "src": "/assets/sunrise-maps/3513385651c15c5d4838a0baaaf0919e9b7d4ea2.jpg"
+    },
+    "wb_fafurion_381": {
+      "name": "法利昂 · 3.81",
+      "asset": "法利昂洞穴",
+      "mapping": "boss-habitat",
+      "src": "/assets/sunrise-maps/029c635dcadd8548a55c71fe02501c619790797c.jpg"
+    },
+    "wb_valakas_381": {
+      "name": "巴拉卡斯 · 3.81",
+      "asset": "巴拉卡斯巢穴",
+      "mapping": "boss-habitat",
+      "src": "/assets/sunrise-maps/7b8c5a643fd31fec39d25aa9141ca57e6a3c6bae.jpg"
+    },
+    "wb_dragon381_71014": {
+      "name": "安塔瑞斯(一) · 3.81",
+      "asset": "安塔瑞斯棲息地",
+      "mapping": "boss-habitat",
+      "src": "/assets/sunrise-maps/3513385651c15c5d4838a0baaaf0919e9b7d4ea2.jpg"
+    },
+    "wb_dragon381_71015": {
+      "name": "安塔瑞斯(二) · 3.81",
+      "asset": "安塔瑞斯棲息地",
+      "mapping": "boss-habitat",
+      "src": "/assets/sunrise-maps/3513385651c15c5d4838a0baaaf0919e9b7d4ea2.jpg"
+    },
+    "wb_dragon381_71016": {
+      "name": "安塔瑞斯(三) · 3.81",
+      "asset": "安塔瑞斯棲息地",
+      "mapping": "boss-habitat",
+      "src": "/assets/sunrise-maps/3513385651c15c5d4838a0baaaf0919e9b7d4ea2.jpg"
+    },
+    "wb_dragon381_230267": {
+      "name": "巴拉卡斯 · 3.81",
+      "asset": "巴拉卡斯巢穴",
+      "mapping": "boss-habitat",
+      "src": "/assets/sunrise-maps/7b8c5a643fd31fec39d25aa9141ca57e6a3c6bae.jpg"
+    },
+    "wb_dragon381_230753": {
+      "name": "恐怖的 巴拉卡斯 · 3.81",
+      "asset": "巴拉卡斯巢穴",
+      "mapping": "boss-habitat",
+      "src": "/assets/sunrise-maps/7b8c5a643fd31fec39d25aa9141ca57e6a3c6bae.jpg"
+    },
+    "wb_dragon381_55408": {
+      "name": "恐怖的 安塔瑞斯 · 3.81",
+      "asset": "安塔瑞斯棲息地",
+      "mapping": "boss-habitat",
+      "src": "/assets/sunrise-maps/3513385651c15c5d4838a0baaaf0919e9b7d4ea2.jpg"
+    },
+    "wb_dragon381_56163": {
+      "name": "法利昂 · 3.81",
+      "asset": "法利昂洞穴",
+      "mapping": "boss-habitat",
+      "src": "/assets/sunrise-maps/029c635dcadd8548a55c71fe02501c619790797c.jpg"
+    },
+    "wb_dragon381_56295": {
+      "name": "巴拉卡斯 · 3.81",
+      "asset": "巴拉卡斯巢穴",
+      "mapping": "boss-habitat",
+      "src": "/assets/sunrise-maps/7b8c5a643fd31fec39d25aa9141ca57e6a3c6bae.jpg"
+    }
+  },
+  "unmatched": [
+    "wb_lindvior_381",
+    "wb_dragon381_97204",
+    "wb_dragon381_97205",
+    "wb_dragon381_97206",
+    "wb_dragon381_97207",
+    "wb_dragon381_97208",
+    "wb_dragon381_97209",
+    "wb_dragon381_55436"
+  ]
+}
