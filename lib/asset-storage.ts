@@ -1,5 +1,8 @@
 // Files are immutable SHA-256 addressed objects. The manifest is pinned per deployment.
 import config from './asset-storage-config.json';
+import sunriseMaps from './game/sunrise-maps.json';
+
+const sunriseFiles=new Map(Object.values(sunriseMaps.files).map(entry=>[entry.src,entry]));
 
 type Entry = [string, number, number, string, string];
 type Index = { version: 1; files: Record<string, Entry> };
@@ -26,6 +29,21 @@ export async function assetStorageFetch(request: Request, bucket?: Bucket): Prom
   // Never make the Site public/shared without adding explicit upload authorization.
   // Standalone Cloudflare testing does not inherit Sites owner-only upload authorization.
   if (pathname.startsWith(UPLOAD)) return new Response('Asset upload disabled', { status: 403 });
+  if(pathname.startsWith('/assets/sunrise-maps/')&&['GET','HEAD'].includes(request.method)){
+    const entry=sunriseFiles.get(pathname);
+    if(!entry)return new Response('Map not found',{status:404});
+    if(!bucket)return new Response('Asset storage unavailable',{status:503});
+    const etag='"'+entry.gitBlob+'"';
+    const headers=new Headers({'Content-Type':'image/jpeg','Cache-Control':'private, max-age=31536000, immutable','ETag':etag,'X-Content-Type-Options':'nosniff','X-Asset-Storage':'r2'});
+    if((request.headers.get('if-none-match')||'').split(',').map(s=>s.trim().replace(/^W\//,'')).some(s=>s===etag||s==='*'))return new Response(null,{status:304,headers});
+    try{
+      const key='sunrise-maps/v1/'+entry.gitBlob+'.jpg';
+      const object=request.method==='HEAD'?await bucket.head(key):await bucket.get(key);
+      if(!object)return new Response('Map temporarily unavailable',{status:503});
+      headers.set('Content-Length',String(object.size));
+      return new Response(request.method==='HEAD'?null:(object as R2ObjectBody).body,{headers});
+    }catch{return new Response('Map temporarily unavailable',{status:503,headers:{'Retry-After':'5'}});}
+  }
   if (!pathname.startsWith('/assets/') || !config.indexKey || !['GET', 'HEAD'].includes(request.method)) return null;
   if (!bucket) return new Response('Asset storage unavailable', { status: 503 });
   let entry: Entry | undefined;
