@@ -2,9 +2,9 @@
  * local swing's contact frame. No damage or reward is calculated here. */
 export type SwingTarget={uid:string;slot?:number;seq?:number};
 type Contact={uid:string;seq?:number;at:number;consumed:boolean};
-type Owner={active:boolean;contacts:Contact[];pending:SwingTarget[];swing?:SwingTarget;retired:Set<number>};
+type Owner={active:boolean;contacts:Contact[];pending:SwingTarget[];swing?:SwingTarget;retired:Set<number>;completed:Set<number>;contactSwing?:number};
 const owners=new Map<string,Owner>();
-const createOwner=():Owner=>({active:false,contacts:[],pending:[],retired:new Set()});
+const createOwner=():Owner=>({active:false,contacts:[],pending:[],retired:new Set(),completed:new Set()});
 export const localHitOwner=(id:string,zone:string)=>`${id}:${zone}`;
 /** At high attack speeds select a frame that the 125ms sampler can display
  * before the next 100ms attack tick replaces this swing. */
@@ -22,7 +22,7 @@ export function setLocalHitActive(key:string,active:boolean,_period:number){
 export function clearLocalHits(key:string){owners.delete(key);}
 export function queueLocalHitTargets(key:string,events:{seq:number;kind:string;uid?:string;slot?:number;skill?:string;weaponProc?:boolean;source?:string}[]){
  const owner=owners.get(key)||createOwner(),known=new Set(owner.pending.map(e=>e.seq));
- for(const e of events)if(e.kind==='attack'&&!e.skill&&!e.weaponProc&&(!e.source||e.source==='physical')&&e.uid&&!known.has(e.seq)){owner.pending.push({seq:e.seq,uid:e.uid,slot:e.slot});known.add(e.seq);}
+ for(const e of events)if(e.kind==='attack'&&!e.skill&&!e.weaponProc&&(!e.source||e.source==='physical')&&e.uid&&!known.has(e.seq)&&!owner.completed.has(e.seq)){owner.pending.push({seq:e.seq,uid:e.uid,slot:e.slot});known.add(e.seq);}
  owner.pending.sort((a,b)=>a.seq!-b.seq!);owner.pending=owner.pending.slice(0,160);owners.set(key,owner);
 }
 /** Capture the earliest confirmed normal-hit target once, at swing start. */
@@ -33,19 +33,25 @@ export function beginLocalSwing(key:string,fallback:SwingTarget,liveUids?:string
  const target=owner.pending[0]||fallback;owner.swing={...target};owners.set(key,owner);return {...target};
 }
 export function currentLocalSwing(key:string){const owner=owners.get(key);return owner?.active?owner.swing:undefined;}
-export function recordLocalContact(key:string,uid:string,at:number,seq?:number){
+export function recordLocalContact(key:string,uid:string,at:number,seq?:number,swingToken?:number){
  const owner=owners.get(key);if(!owner?.active)return;
+ // Contact-frame callbacks may run more than once, but a swing can only issue
+ // one hit permit, even after its first permit has already been consumed.
+ if(swingToken!==undefined){if(owner.contactSwing===swingToken)return;owner.contactSwing=swingToken;}
  // Retain one actual contact until consumed or replaced by the next contact.
  // An 80ms expiry discarded it before ordinary buffered/network results arrived.
  owner.contacts=[{uid,seq,at,consumed:false}];
 }
 export function allowLocalHit(key:string,uid:string|undefined,seq:number,now:number){
  const owner=owners.get(key);
- if(!owner?.active||!uid){if(owner)owner.pending=owner.pending.filter(e=>e.seq!==seq);return true;}
+ const complete=()=>{if(!owner)return;owner.completed.add(seq);if(owner.completed.size>512)owner.completed.delete(owner.completed.values().next().value!);owner.pending=owner.pending.filter(e=>e.seq!==seq);};
+ // A repeated result is drained without consuming another swing. The view's
+ // normal-hit receipt ledger suppresses its duplicate HP/number application.
+ if(owner?.completed.has(seq))return true;
+ if(!owner?.active||!uid){complete();return true;}
  if(owner.retired.delete(seq))return true;
  owner.contacts=owner.contacts.filter(c=>!c.consumed);
  const contact=owner.contacts.find(c=>c.uid===uid&&(c.seq===undefined||c.seq===seq)&&c.at<=now);
- const complete=()=>{owner.pending=owner.pending.filter(e=>e.seq!==seq);};
  if(contact){contact.consumed=true;complete();return true;}
  // An elapsed timeout is not a swing. Releasing every overdue hit here caused
  // burst HP updates without displayed contacts. Stop/restore handles resync.

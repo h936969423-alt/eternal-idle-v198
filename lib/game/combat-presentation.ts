@@ -61,7 +61,7 @@ export function enqueueCombatReplay<T extends CombatEvent>(queued:(T&{due:number
  return {queue:[...carried,...(urgentOffset===null?scheduleReplay(added,now):added)].sort((a,b)=>a.due-b.due||a.seq-b.seq),offset};
 }
 
-export type BattleView={healthCredits?:Record<string,number>;actions?:(CombatEvent&{shownAt:number})[];petHurt?:CombatEvent;petEntities?:PetSnapshot[];summonEntities?:SummonEntity[];hp:number;mp:number;arena:Encounter[];target?:number;attack?:CombatEvent;magic?:CombatEvent;hurt?:CombatEvent;casts?:(CombatEvent&{shownAt:number})[];floats:CombatFloat[]};
+export type BattleView={normalHitReceipts?:string[];healthCredits?:Record<string,number>;actions?:(CombatEvent&{shownAt:number})[];petHurt?:CombatEvent;petEntities?:PetSnapshot[];summonEntities?:SummonEntity[];hp:number;mp:number;arena:Encounter[];target?:number;attack?:CombatEvent;magic?:CombatEvent;hurt?:CombatEvent;casts?:(CombatEvent&{shownAt:number})[];floats:CombatFloat[]};
 export type TimedCombatEvent=PresentationEvent&{due:number};
 /** Flight deadlines use the display clock and never move with a later network packet. */
 export function drainCombatPresentation(queue:TimedCombatEvent[],pending:TimedCombatEvent[],now:number,bow=false,spellFlight?:(event:CombatEvent)=>number,allowPhysical?:(event:CombatEvent)=>boolean){
@@ -124,10 +124,15 @@ export function applyCombatViewEvent(v:BattleView,next:PresentationEvent,now:num
  const staged=!!next.visualPhase;
  const normal=next.kind==='attack'&&!next.skill&&!next.weaponProc&&(!next.source||next.source==='physical');
  if(normal&&next.slot!==undefined&&(v.arena[next.slot]?.uid!==next.uid||v.arena[next.slot]?.hp<=0))return v;
+ // The same server attack may be retransmitted or staged more than once.
+ // The attack ID belongs to the whole swing, not each target or render frame.
+ const receipt=normal?`${next.visualPhase==='launch'?'launch':'hit'}:${next.attackId||`seq:${next.seq}`}`:undefined;
+ if(receipt&&v.normalHitReceipts?.includes(receipt))return v;
+ const normalHitReceipts=receipt?[...(v.normalHitReceipts||[]),receipt].slice(-512):v.normalHitReceipts;
  const target=playerEventTarget(v.target,next);
  if(staged&&(next.slot===undefined||v.arena[next.slot]?.uid!==next.uid))return v;
  const actions=[...(v.actions||[]).filter(e=>now-e.shownAt<5000),{...next,shownAt:now}];
- if(next.visualPhase==='launch')return {...v,actions,hp:next.skill==='sk_elf_triple'?v.hp:next.hp,mp:next.skill==='sk_elf_triple'?v.mp:next.mp,attack:next,target};
+ if(next.visualPhase==='launch')return {...v,normalHitReceipts,actions,hp:next.skill==='sk_elf_triple'?v.hp:next.hp,mp:next.skill==='sk_elf_triple'?v.mp:next.mp,attack:next,target};
  const arena=v.arena.map(m=>({...m})),healthCredits={...v.healthCredits};
  const updateHp=(slot:number)=>{const m=arena[slot];if(!m||m.uid!==next.uid||next.mobHp===undefined)return;
   const delta=next.visualHpDelta??(next.kind==='attack'?-(next.miss?0:next.damage||0):undefined);
@@ -141,7 +146,7 @@ export function applyCombatViewEvent(v:BattleView,next:PresentationEvent,now:num
  if(next.kind==='spawn'&&next.slot!==undefined&&next.spawn){if(arena[next.slot])delete healthCredits[arena[next.slot].uid];arena[next.slot]={...next.spawn};}
  if(next.kind==='attack'&&next.slot!==undefined&&next.slot!==next.casterSlot)updateHp(next.slot);
  if(next.slot!==undefined&&arena[next.slot]?.uid===next.uid&&next.targetEffects)arena[next.slot].effects=next.targetEffects;
- return {healthCredits,actions,petHurt:next.petUid&&next.source==='monster'?next:v.petHurt,petEntities:next.petEntities||v.petEntities,summonEntities:next.summonEntities||v.summonEntities,hp:staged?v.hp:next.hp,mp:staged?v.mp:next.mp,arena,target,attack:next.kind==='attack'&&next.visualPhase!=='impact'?next:v.attack,magic:next.kind==='magic'?next:v.magic,hurt:next.kind==='hurt'?next:v.hurt,casts:[...(v.casts||[]).filter(f=>now-f.shownAt<magicEffectLifetime(f)),...(!staged&&!next.visualEffectPreviewed&&!next.miss&&!hasSpellVisual(v,next)&&(next.skill!=='sk_shock_stun'||next.kind==='magic'&&next.effect==='狀態命中')&&((next.weaponProc&&!!lineageWEffectDefinition(next.skill))||(next.kind==='magic'&&(next.source==='monster'||next.slot!==undefined||!next.skill||(raw.skills as any)[next.skill]?.type!=='atk'))||(next.kind==='attack'&&next.skill&&!next.miss&&next.source!=='poison'&&next.source!=='summon'))?[{...next,shownAt:now}]:[])],floats:(['attack','hurt','heal'].includes(next.kind)||(next.kind==='state'&&next.skill==='sk_shock_stun'&&next.effect==='衝暈失敗'&&!next.visualEffectPreviewed))?addCombatFloat(v.floats,next,now):v.floats.filter(f=>now-f.shownAt<800)};
+ return {normalHitReceipts,healthCredits,actions,petHurt:next.petUid&&next.source==='monster'?next:v.petHurt,petEntities:next.petEntities||v.petEntities,summonEntities:next.summonEntities||v.summonEntities,hp:staged?v.hp:next.hp,mp:staged?v.mp:next.mp,arena,target,attack:next.kind==='attack'&&next.visualPhase!=='impact'?next:v.attack,magic:next.kind==='magic'?next:v.magic,hurt:next.kind==='hurt'?next:v.hurt,casts:[...(v.casts||[]).filter(f=>now-f.shownAt<magicEffectLifetime(f)),...(!staged&&!next.visualEffectPreviewed&&!next.miss&&!hasSpellVisual(v,next)&&(next.skill!=='sk_shock_stun'||next.kind==='magic'&&next.effect==='狀態命中')&&((next.weaponProc&&!!lineageWEffectDefinition(next.skill))||(next.kind==='magic'&&(next.source==='monster'||next.slot!==undefined||!next.skill||(raw.skills as any)[next.skill]?.type!=='atk'))||(next.kind==='attack'&&next.skill&&!next.miss&&next.source!=='poison'&&next.source!=='summon'))?[{...next,shownAt:now}]:[])],floats:(['attack','hurt','heal'].includes(next.kind)||(next.kind==='state'&&next.skill==='sk_shock_stun'&&next.effect==='衝暈失敗'&&!next.visualEffectPreviewed))?addCombatFloat(v.floats,next,now):v.floats.filter(f=>now-f.shownAt<800)};
 }
 
 
@@ -166,5 +171,6 @@ export function enqueueSunriseReplay<T extends PresentationEvent>(queued:(T&{due
  const earlySeq=new Set(early.map(e=>e.seq));
  return {queue:[...queued,...early.map(e=>({...e,visualOnly:true,due:now})),...unique.map(e=>({...e,...(earlySeq.has(e.seq)?{visualEffectPreviewed:true}:{}),due:e.at+offset}))].sort((a,b)=>a.due-b.due||a.seq-b.seq),offset};
 }
+
 
 

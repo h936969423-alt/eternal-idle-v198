@@ -27,7 +27,7 @@ test('buffered results can consume one retained contact, never duplicate it',()=
  assert.equal(allowLocalHit(owner,'mob',1,300),true);
  assert.equal(allowLocalHit(owner,'mob',2,300),false);
  recordLocalContact(owner,'mob',500);assert.equal(allowLocalHit(owner,'mob',2,500),true);assert.equal(allowLocalHit(owner,'mob',3,500),false);
- recordLocalContact(owner,'other',625);assert.equal(allowLocalHit(owner,'mob',2,625),false);
+ recordLocalContact(owner,'other',625);assert.equal(allowLocalHit(owner,'mob',3,625),false);
 });
 test('lethal loot and replacement cannot overtake the waiting hit',()=>{
  begin();const queue=[{...hit(),damage:100,mobHp:0}, {seq:2,at:0,due:0,kind:'loot',uid:'mob',slot:0}, {seq:3,at:0,due:0,kind:'spawn',uid:'new',slot:0,spawn:{uid:'new',id:'ant',hp:100}}],pending=[];
@@ -64,5 +64,41 @@ test('overdue results for the current victim cannot all bypass a missing contact
  recordLocalContact(owner,'mob',5125);
  assert.equal(allowLocalHit(owner,'mob',1,5125),true);
  for(let seq=2;seq<=5;seq++)assert.equal(allowLocalHit(owner,'mob',seq,5125),false);
+});
+test('repeated contact callbacks within one swing cannot grant a second target damage',()=>{
+ begin();recordLocalContact(owner,'mob',125,1,100);
+ assert.equal(allowLocalHit(owner,'mob',1,125),true);
+ for(const at of [150,175,200]){
+  recordLocalContact(owner,'other',at,2,100);
+  assert.equal(allowLocalHit(owner,'other',2,at),false);
+ }
+ recordLocalContact(owner,'other',525,2,500);
+ assert.equal(allowLocalHit(owner,'other',2,525),true);
+});
+test('a retransmitted normal result does not spend the next swing permit',()=>{
+ begin();recordLocalContact(owner,'mob',125,1,100);
+ assert.equal(allowLocalHit(owner,'mob',1,125),true);
+ recordLocalContact(owner,'mob',525,2,500);
+ assert.equal(allowLocalHit(owner,'mob',1,525),true,'duplicate drains without another contact');
+ assert.equal(allowLocalHit(owner,'mob',2,525),true,'next real attack retains its contact');
+});
+test('one normal attack ID applies HP and one number once across repeated frames/targets',()=>{
+ begin();let view={hp:100,mp:100,arena:Array.from({length:5},(_,slot)=>({uid:`mob${slot}`,id:'ant',hp:100,maxHp:100})),floats:[]};
+ const event={...hit(),attackId:'player:swing1',uid:'mob0'};
+ view=ctx.applyCombatViewEvent(view,event,125);
+ for(let slot=0;slot<5;slot++)view=ctx.applyCombatViewEvent(view,{...event,slot,uid:`mob${slot}`,seq:slot+2},150+slot*25);
+ assert.deepEqual(Array.from(view.arena,m=>m.hp),[90,100,100,100,100]);assert.equal(view.floats.length,1);
+ view=ctx.applyCombatViewEvent(view,{...event,attackId:'player:swing2',seq:10},525);
+ assert.equal(view.arena[0].hp,80);assert.equal(view.floats.length,2);
+});
+test('legacy events deduplicate by sequence and bow launch does not consume its impact receipt',()=>{
+ let view={hp:100,mp:100,arena:[{uid:'mob',id:'ant',hp:100,maxHp:100}],floats:[]};
+ const launch={...hit(),attackId:'bow:one',visualPhase:'launch'};
+ view=ctx.applyCombatViewEvent(view,launch,125);const once=view;
+ assert.equal(view.arena[0].hp,100);assert.equal(ctx.applyCombatViewEvent(view,launch,150),once);
+ view=ctx.applyCombatViewEvent(view,{...launch,visualPhase:'impact'},325);const impact=view;
+ assert.equal(view.arena[0].hp,90);assert.equal(view.floats.length,1);assert.equal(ctx.applyCombatViewEvent(view,{...launch,visualPhase:'impact'},350),impact);
+ view=ctx.applyCombatViewEvent(view,hit(2),525);const legacy=view;
+ assert.equal(view.arena[0].hp,80);assert.equal(ctx.applyCombatViewEvent(view,hit(2),550),legacy);
 });
 

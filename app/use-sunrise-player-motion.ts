@@ -59,7 +59,7 @@ export function useSunrisePlayerMotion(identity:string,cues:SunriseCue[],timing:
    const local=latest.current.local,count=latest.current.timing.counts.attack||1;
    if(local.ownerKey)setLocalHitActive(local.ownerKey,local.running&&local.hasTarget&&!local.blocked&&latest.current.hp>0,latest.current.timing.attackSeconds);
    if(local.ownerKey&&swing.current?.uid&&next.kind==='attack'&&next.frame>=localContactFrame(count,latest.current.timing.attackSeconds)&&contact.current!==state.current.t){
-    contact.current=state.current.t;recordLocalContact(local.ownerKey,swing.current.uid,now,swing.current.seq);
+    contact.current=state.current.t;recordLocalContact(local.ownerKey,swing.current.uid,now,swing.current.seq,state.current.t);
    }
    setPose(p=>p.kind===next.kind&&p.frame===next.frame&&p.targetUid===next.targetUid?p:next);
   },SUNRISE_PLAYER_FRAME_MS);
@@ -75,6 +75,7 @@ export function useSunrisePlayerMotion(identity:string,cues:SunriseCue[],timing:
  },[identity]);
  return pose;
 }
+
 
 
 

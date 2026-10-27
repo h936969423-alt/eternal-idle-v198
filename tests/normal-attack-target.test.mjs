@@ -43,3 +43,16 @@ test('visible secondary-source captions distinguish real extra damage without ch
  for(const [e,label] of [[{source:'doll'},'娃娃'],[{source:'pet'},'寵物'],[{source:'summon'},'召喚'],[{weaponProc:true,source:'magic'},'武器魔法']])assert.equal(damageSourceLabel(e),label);
  assert.equal(damageDisplay({damage:45,source:'magic'}).text,'✦ -45');
 });
+test('server normal attacks issue stable distinct IDs; proc and skill damage remain independent',()=>{
+ const eventSource=section('event','function replacement');
+ const ctx={offlineEventRecordingAfter:new WeakMap(),petNamesOut:()=>[],ensurePet:()=>{},petSnapshot:()=>[],POLYMORPH:{forms:[]}};
+ vm.createContext(ctx);vm.runInContext(stripTypeScriptTypes(eventSource),ctx);
+ const c={id:'player1',eventSeq:0,hp:100,mp:100};
+ ctx.event(c,'attack',0,{uid:'A',source:'physical'});
+ ctx.event(c,'attack',400,{uid:'A',source:'physical'});
+ ctx.event(c,'attack',400,{uid:'A',source:'magic',skill:'proc',weaponProc:true});
+ ctx.event(c,'attack',800,{uid:'B',source:'physical',skill:'sk_elf_triple'});
+ assert.equal(c.events[0].attackId,'player1:1');assert.equal(c.events[1].attackId,'player1:2');
+ assert.equal(c.events[2].attackId,undefined);assert.equal(c.events[3].attackId,undefined);
+ assert.equal(structuredClone(c.events[0]).attackId,c.events[0].attackId);
+});
