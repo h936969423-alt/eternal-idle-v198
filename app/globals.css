@@ -799,7 +799,7 @@ body:has(.game-root.map-first-layout) .map-function-dialog[data-slot=dialog-cont
 .game-root.screenshot-layout.map-first-layout .battle-scene:not(.world-boss-scene) .static-arena .four-monster:not([data-dragon=true]):not([data-dragon-summon=true]){width:var(--map-mob-width);max-width:160px}
 .game-root.screenshot-layout.map-first-layout .battle-scene:not(.world-boss-scene) .static-arena .four-monster:not([data-dragon=true]):not([data-dragon-summon=true]) .four-monster-art,
 .game-root.screenshot-layout.map-first-layout .battle-scene:not(.world-boss-scene) .static-arena .four-monster:not([data-dragon=true]):not([data-dragon-summon=true]) .four-monster-art .sequence-art,
-.game-root.screenshot-layout.map-first-layout .battle-scene:not(.world-boss-scene) .static-arena .four-monster:not([data-dragon=true]):not([data-dragon-summon=true]) .four-target>img{width:var(--map-mob-art)!important;height:var(--map-mob-art)!important;max-width:none;aspect-ratio:auto;object-fit:contain}
+.game-root.screenshot-layout.map-first-layout .battle-scene:not(.world-boss-scene) .static-arena .four-monster:not([data-dragon=true]):not([data-dragon-summon=true]) .four-target img{width:var(--map-mob-art)!important;height:var(--map-mob-art)!important;max-width:none;aspect-ratio:auto;object-fit:contain}
 .game-root.screenshot-layout.map-first-layout .static-arena .four-monsters:has(>.four-monster:nth-child(5)){--map-mob-art:clamp(76px,22vw,140px);--map-mob-width:clamp(96px,24vw,154px)}
 .game-root.screenshot-layout.map-first-layout .battle-scene:not(.world-boss-scene) .static-arena .four-monster .four-target{min-height:0;gap:3px;overflow:visible}
 .game-root.screenshot-layout.map-first-layout .battle-scene:not(.world-boss-scene) .static-arena .four-monster .monster-ground-name{display:block;max-width:100%;overflow:hidden;text-overflow:ellipsis;white-space:nowrap;font-size:12px!important;line-height:16px}
@@ -809,5 +809,5 @@ body:has(.game-root.map-first-layout) .map-function-dialog[data-slot=dialog-cont
  .game-root.screenshot-layout.map-first-layout .map-top-status{top:42px;max-height:100px}
  .game-root.screenshot-layout.map-first-layout .battle-scene:not(.world-boss-scene) .static-arena .four-monster:not([data-dragon=true]):not([data-dragon-summon=true]) .four-monster-art,
  .game-root.screenshot-layout.map-first-layout .battle-scene:not(.world-boss-scene) .static-arena .four-monster:not([data-dragon=true]):not([data-dragon-summon=true]) .four-monster-art .sequence-art,
- .game-root.screenshot-layout.map-first-layout .battle-scene:not(.world-boss-scene) .static-arena .four-monster:not([data-dragon=true]):not([data-dragon-summon=true]) .four-target>img{width:90px!important;height:90px!important}
+ .game-root.screenshot-layout.map-first-layout .battle-scene:not(.world-boss-scene) .static-arena .four-monster:not([data-dragon=true]):not([data-dragon-summon=true]) .four-target img{width:90px!important;height:90px!important}
 }
