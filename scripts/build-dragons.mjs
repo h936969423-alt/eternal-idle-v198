@@ -1,4 +1,5 @@
 import {spawnSync as restoreProcess} from 'node:child_process';
+const wSkills=restoreProcess('python3',['scripts/restore-lineagew-skills.py'],{stdio:'inherit'});if(wSkills.status!==0)process.exit(wSkills.status||1);
 const mapBackgrounds=restoreProcess('python3',['scripts/restore-sunrise-maps.py'],{stdio:'inherit'});if(mapBackgrounds.status!==0)process.exit(mapBackgrounds.status||1);
 const sunrise=restoreProcess('python3',['scripts/restore-sunrise-assets.py'],{stdio:'inherit'});if(sunrise.status!==0)process.exit(sunrise.status||1);
 const effects=restoreProcess('python3',['scripts/restore-dasu-effects.py'],{stdio:'inherit'});if(effects.status!==0)process.exit(effects.status||1);

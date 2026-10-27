@@ -1,0 +1,2298 @@
+{
+  "version": 1,
+  "files": {
+    "https://6sword.com/icons/lw/Skill/EnchantStatus.webp": {
+      "url": "https://6sword.com/icons/lw/Skill/EnchantStatus.webp",
+      "sha256": "b80d4138bc3c8ab9cedc5b809b4ccc2ff76e498d06f276163bf374c82ccd342c",
+      "bytes": 20002,
+      "width": 128,
+      "height": 128,
+      "contentType": "image/webp",
+      "src": "/assets/lw-skills/b80d4138bc3c8ab9cedc5b809b4ccc2ff76e498d06f276163bf374c82ccd342c.webp",
+      "offset": 0
+    },
+    "https://6sword.com/icons/lw/Skill/Passive_DA_ShadowEvasion_PU1.webp": {
+      "url": "https://6sword.com/icons/lw/Skill/Passive_DA_ShadowEvasion_PU1.webp",
+      "sha256": "05e709fddd2c4163d766062b7a047650ce5914f7ec191f6c37845b8fc8ee946f",
+      "bytes": 22404,
+      "width": 128,
+      "height": 128,
+      "contentType": "image/webp",
+      "src": "/assets/lw-skills/05e709fddd2c4163d766062b7a047650ce5914f7ec191f6c37845b8fc8ee946f.webp",
+      "offset": 83442
+    },
+    "https://6sword.com/icons/lw/Skill/Passive_DA_ShadowDash_PU1.webp": {
+      "url": "https://6sword.com/icons/lw/Skill/Passive_DA_ShadowDash_PU1.webp",
+      "sha256": "cfe91d582430ea3a7450e88474fb3fbbcb0a2cfdd4d45c8482dafbe65b8392cd",
+      "bytes": 20612,
+      "width": 128,
+      "height": 128,
+      "contentType": "image/webp",
+      "src": "/assets/lw-skills/cfe91d582430ea3a7450e88474fb3fbbcb0a2cfdd4d45c8482dafbe65b8392cd.webp",
+      "offset": 62830
+    },
+    "https://6sword.com/icons/lw/Skill/Passive_DA_DoubleBreak_PU1.webp": {
+      "url": "https://6sword.com/icons/lw/Skill/Passive_DA_DoubleBreak_PU1.webp",
+      "sha256": "c54127caf56dab31bf86dd75fd2bdad7058936fc525d75e5de01aa7d09dfc375",
+      "bytes": 22642,
+      "width": 128,
+      "height": 128,
+      "contentType": "image/webp",
+      "src": "/assets/lw-skills/c54127caf56dab31bf86dd75fd2bdad7058936fc525d75e5de01aa7d09dfc375.webp",
+      "offset": 40188
+    },
+    "https://6sword.com/icons/lw/Skill/Passive_PR_PrimeRecovery.webp": {
+      "url": "https://6sword.com/icons/lw/Skill/Passive_PR_PrimeRecovery.webp",
+      "sha256": "26f1869dd08902e2b47f9e6d8edc2a8be1a4e532fda70d79fde36bd5db050740",
+      "bytes": 19548,
+      "width": 128,
+      "height": 128,
+      "contentType": "image/webp",
+      "src": "/assets/lw-skills/26f1869dd08902e2b47f9e6d8edc2a8be1a4e532fda70d79fde36bd5db050740.webp",
+      "offset": 105846
+    },
+    "https://6sword.com/icons/lw/Skill/Excalibur.webp": {
+      "url": "https://6sword.com/icons/lw/Skill/Excalibur.webp",
+      "sha256": "e52387b50e2d0332174f1c1f0eedeb5193c1364094877f663785d8c47f531bcb",
+      "bytes": 20186,
+      "width": 128,
+      "height": 128,
+      "contentType": "image/webp",
+      "src": "/assets/lw-skills/e52387b50e2d0332174f1c1f0eedeb5193c1364094877f663785d8c47f531bcb.webp",
+      "offset": 20002
+    },
+    "https://6sword.com/icons/lw/Skill/Passive_Skill_BlindHiding_PU1.webp": {
+      "url": "https://6sword.com/icons/lw/Skill/Passive_Skill_BlindHiding_PU1.webp",
+      "sha256": "81ffdfded2196732f779db3bc0af5dd6cd32ddae08e6725909824bcd0612c996",
+      "bytes": 20922,
+      "width": 128,
+      "height": 128,
+      "contentType": "image/webp",
+      "src": "/assets/lw-skills/81ffdfded2196732f779db3bc0af5dd6cd32ddae08e6725909824bcd0612c996.webp",
+      "offset": 183850
+    },
+    "https://6sword.com/icons/lw/Skill/Passive_Skill_Bounceattack_PU1.webp": {
+      "url": "https://6sword.com/icons/lw/Skill/Passive_Skill_Bounceattack_PU1.webp",
+      "sha256": "476d332a676e9603013d4fde148a08e3c778b5100c49dc6448f09e467a7d1245",
+      "bytes": 20446,
+      "width": 128,
+      "height": 128,
+      "contentType": "image/webp",
+      "src": "/assets/lw-skills/476d332a676e9603013d4fde148a08e3c778b5100c49dc6448f09e467a7d1245.webp",
+      "offset": 204772
+    },
+    "https://6sword.com/icons/lw/Skill/Passive_Skill_AdvanceSpirit.webp": {
+      "url": "https://6sword.com/icons/lw/Skill/Passive_Skill_AdvanceSpirit.webp",
+      "sha256": "8402a47215218bbaf083068421a0f06fa56f38c1f9a255382691659b6b30febf",
+      "bytes": 19516,
+      "width": 128,
+      "height": 128,
+      "contentType": "image/webp",
+      "src": "/assets/lw-skills/8402a47215218bbaf083068421a0f06fa56f38c1f9a255382691659b6b30febf.webp",
+      "offset": 125394
+    },
+    "https://6sword.com/icons/lw/Skill/Passive_Skill_Blessedarmor.webp": {
+      "url": "https://6sword.com/icons/lw/Skill/Passive_Skill_Blessedarmor.webp",
+      "sha256": "7d37fb0415d01408ae6c9503cb07cec438434b8c55aded82d3c17dd786a7d77e",
+      "bytes": 18792,
+      "width": 128,
+      "height": 128,
+      "contentType": "image/webp",
+      "src": "/assets/lw-skills/7d37fb0415d01408ae6c9503cb07cec438434b8c55aded82d3c17dd786a7d77e.webp",
+      "offset": 165058
+    },
+    "https://6sword.com/icons/lw/Skill/Passive_Skill_AdvanceSpirit_PU1.webp": {
+      "url": "https://6sword.com/icons/lw/Skill/Passive_Skill_AdvanceSpirit_PU1.webp",
+      "sha256": "a18b5f893c68681e9c8e9cc08f27cc16a575358568d26a2a77614c9e3498f8d2",
+      "bytes": 20148,
+      "width": 128,
+      "height": 128,
+      "contentType": "image/webp",
+      "src": "/assets/lw-skills/a18b5f893c68681e9c8e9cc08f27cc16a575358568d26a2a77614c9e3498f8d2.webp",
+      "offset": 144910
+    },
+    "https://6sword.com/icons/lw/Skill/Passive_Skill_BraveMental_PU1.webp": {
+      "url": "https://6sword.com/icons/lw/Skill/Passive_Skill_BraveMental_PU1.webp",
+      "sha256": "39543eb7769ff8a8cb89f1d6b77233a980c44de78fa5f23357762c738b76fea7",
+      "bytes": 21600,
+      "width": 128,
+      "height": 128,
+      "contentType": "image/webp",
+      "src": "/assets/lw-skills/39543eb7769ff8a8cb89f1d6b77233a980c44de78fa5f23357762c738b76fea7.webp",
+      "offset": 225218
+    },
+    "https://6sword.com/icons/lw/Skill/Passive_Skill_CB_ClassSpecialResistance_02.webp": {
+      "url": "https://6sword.com/icons/lw/Skill/Passive_Skill_CB_ClassSpecialResistance_02.webp",
+      "sha256": "6021d39b6c770398fe9b86674e592c191f992e372b9a8169defc152fb9071487",
+      "bytes": 19324,
+      "width": 128,
+      "height": 128,
+      "contentType": "image/webp",
+      "src": "/assets/lw-skills/6021d39b6c770398fe9b86674e592c191f992e372b9a8169defc152fb9071487.webp",
+      "offset": 311510
+    },
+    "https://6sword.com/icons/lw/Skill/Passive_Skill_BurningWeapon_PU1.webp": {
+      "url": "https://6sword.com/icons/lw/Skill/Passive_Skill_BurningWeapon_PU1.webp",
+      "sha256": "24a52a53988bbd4d121186b8b4ba6796953d4d48c46b7ad2e27a5a2e7c04be3f",
+      "bytes": 22102,
+      "width": 128,
+      "height": 128,
+      "contentType": "image/webp",
+      "src": "/assets/lw-skills/24a52a53988bbd4d121186b8b4ba6796953d4d48c46b7ad2e27a5a2e7c04be3f.webp",
+      "offset": 267432
+    },
+    "https://6sword.com/icons/lw/Skill/Passive_Skill_CB_BoostPotion.webp": {
+      "url": "https://6sword.com/icons/lw/Skill/Passive_Skill_CB_BoostPotion.webp",
+      "sha256": "6bfc00809022322c39ca43e47e1bbc2a7a7d6320a3ee4a23c81a4ef16b0049f5",
+      "bytes": 21976,
+      "width": 128,
+      "height": 128,
+      "contentType": "image/webp",
+      "src": "/assets/lw-skills/6bfc00809022322c39ca43e47e1bbc2a7a7d6320a3ee4a23c81a4ef16b0049f5.webp",
+      "offset": 289534
+    },
+    "https://6sword.com/icons/lw/Skill/Passive_Skill_CB_ClassSpecialResistance_03.webp": {
+      "url": "https://6sword.com/icons/lw/Skill/Passive_Skill_CB_ClassSpecialResistance_03.webp",
+      "sha256": "c3c6c3760c5bdaccb0fb7ab215c62d7625bee0fc1d17051481f296216d19e946",
+      "bytes": 19616,
+      "width": 128,
+      "height": 128,
+      "contentType": "image/webp",
+      "src": "/assets/lw-skills/c3c6c3760c5bdaccb0fb7ab215c62d7625bee0fc1d17051481f296216d19e946.webp",
+      "offset": 330834
+    },
+    "https://6sword.com/icons/lw/Skill/Passive_Skill_CB_ClassSpecialResistance_04.webp": {
+      "url": "https://6sword.com/icons/lw/Skill/Passive_Skill_CB_ClassSpecialResistance_04.webp",
+      "sha256": "f64a4b9dccc62ae8854d1849ffaf104159ba2c9dff55bf6c0df1b10263c86f11",
+      "bytes": 20056,
+      "width": 128,
+      "height": 128,
+      "contentType": "image/webp",
+      "src": "/assets/lw-skills/f64a4b9dccc62ae8854d1849ffaf104159ba2c9dff55bf6c0df1b10263c86f11.webp",
+      "offset": 350450
+    },
+    "https://6sword.com/icons/lw/Skill/Passive_Skill_BurningSpirit_PU1.webp": {
+      "url": "https://6sword.com/icons/lw/Skill/Passive_Skill_BurningSpirit_PU1.webp",
+      "sha256": "a8bb4a895248301bd68e6c9874d696f433becb24e5a42106d58f1496edc8f6a3",
+      "bytes": 20614,
+      "width": 128,
+      "height": 128,
+      "contentType": "image/webp",
+      "src": "/assets/lw-skills/a8bb4a895248301bd68e6c9874d696f433becb24e5a42106d58f1496edc8f6a3.webp",
+      "offset": 246818
+    },
+    "https://6sword.com/icons/lw/Skill/Passive_Skill_CB_CriticalEvasion_02.webp": {
+      "url": "https://6sword.com/icons/lw/Skill/Passive_Skill_CB_CriticalEvasion_02.webp",
+      "sha256": "f4b3bc0e7c857490760cfdb6098d3ee04295aba25a1407a3fc190275338975e3",
+      "bytes": 22056,
+      "width": 128,
+      "height": 128,
+      "contentType": "image/webp",
+      "src": "/assets/lw-skills/f4b3bc0e7c857490760cfdb6098d3ee04295aba25a1407a3fc190275338975e3.webp",
+      "offset": 412096
+    },
+    "https://6sword.com/icons/lw/Skill/Passive_Skill_CB_ClassSpecialResistance_05.webp": {
+      "url": "https://6sword.com/icons/lw/Skill/Passive_Skill_CB_ClassSpecialResistance_05.webp",
+      "sha256": "32922e4a58d7128a66b2460cd6b4f7d8c7346f4896bda89ec8e93abc1adc929f",
+      "bytes": 20142,
+      "width": 128,
+      "height": 128,
+      "contentType": "image/webp",
+      "src": "/assets/lw-skills/32922e4a58d7128a66b2460cd6b4f7d8c7346f4896bda89ec8e93abc1adc929f.webp",
+      "offset": 370506
+    },
+    "https://6sword.com/icons/lw/Skill/Passive_Skill_CB_DisdainArmor.webp": {
+      "url": "https://6sword.com/icons/lw/Skill/Passive_Skill_CB_DisdainArmor.webp",
+      "sha256": "c18d6bd49c6cd342f14e2fca3a4deef1224e294c7bb3b3b9d578512181f9b1a1",
+      "bytes": 21722,
+      "width": 128,
+      "height": 128,
+      "contentType": "image/webp",
+      "src": "/assets/lw-skills/c18d6bd49c6cd342f14e2fca3a4deef1224e294c7bb3b3b9d578512181f9b1a1.webp",
+      "offset": 455822
+    },
+    "https://6sword.com/icons/lw/Skill/Passive_Skill_CB_DisdainStunArmor.webp": {
+      "url": "https://6sword.com/icons/lw/Skill/Passive_Skill_CB_DisdainStunArmor.webp",
+      "sha256": "ad20b7d5388644195522c67c8d8d9cd70a4419b1ca178f8100108f4d75be6f5f",
+      "bytes": 22376,
+      "width": 128,
+      "height": 128,
+      "contentType": "image/webp",
+      "src": "/assets/lw-skills/ad20b7d5388644195522c67c8d8d9cd70a4419b1ca178f8100108f4d75be6f5f.webp",
+      "offset": 477544
+    },
+    "https://6sword.com/icons/lw/Skill/Passive_Skill_CB_DefenseArmor.webp": {
+      "url": "https://6sword.com/icons/lw/Skill/Passive_Skill_CB_DefenseArmor.webp",
+      "sha256": "d91357512bd0c61d09be404344ef789fe7b90d2ea4e9e20a135f94355325f399",
+      "bytes": 21670,
+      "width": 128,
+      "height": 128,
+      "contentType": "image/webp",
+      "src": "/assets/lw-skills/d91357512bd0c61d09be404344ef789fe7b90d2ea4e9e20a135f94355325f399.webp",
+      "offset": 434152
+    },
+    "https://6sword.com/icons/lw/Skill/Passive_Skill_CB_CriticalEvasion.webp": {
+      "url": "https://6sword.com/icons/lw/Skill/Passive_Skill_CB_CriticalEvasion.webp",
+      "sha256": "6a6ea662cc0ef5b7e605c2d3eb741d89f190ad0803a28c8583f04c01eed58b50",
+      "bytes": 21448,
+      "width": 128,
+      "height": 128,
+      "contentType": "image/webp",
+      "src": "/assets/lw-skills/6a6ea662cc0ef5b7e605c2d3eb741d89f190ad0803a28c8583f04c01eed58b50.webp",
+      "offset": 390648
+    },
+    "https://6sword.com/icons/lw/Skill/Passive_Skill_CB_ImmunityStun_02.webp": {
+      "url": "https://6sword.com/icons/lw/Skill/Passive_Skill_CB_ImmunityStun_02.webp",
+      "sha256": "4de550800bc8710ba1e65c6302aa3dafe22d2029b44107f05ac8105a5212882f",
+      "bytes": 22294,
+      "width": 128,
+      "height": 128,
+      "contentType": "image/webp",
+      "src": "/assets/lw-skills/4de550800bc8710ba1e65c6302aa3dafe22d2029b44107f05ac8105a5212882f.webp",
+      "offset": 584974
+    },
+    "https://6sword.com/icons/lw/Skill/Passive_Skill_CB_ImprovHealth.webp": {
+      "url": "https://6sword.com/icons/lw/Skill/Passive_Skill_CB_ImprovHealth.webp",
+      "sha256": "9cfcadf11c6cc6190d644cf7d905612fa087073a74cb5896b11d182458c65ca6",
+      "bytes": 22754,
+      "width": 128,
+      "height": 128,
+      "contentType": "image/webp",
+      "src": "/assets/lw-skills/9cfcadf11c6cc6190d644cf7d905612fa087073a74cb5896b11d182458c65ca6.webp",
+      "offset": 607268
+    },
+    "https://6sword.com/icons/lw/Skill/Passive_Skill_CB_ImmunityStun.webp": {
+      "url": "https://6sword.com/icons/lw/Skill/Passive_Skill_CB_ImmunityStun.webp",
+      "sha256": "e92a4e250728c86652e537d6b7861331529b58393abf091f8b75c34c94a524bd",
+      "bytes": 21470,
+      "width": 128,
+      "height": 128,
+      "contentType": "image/webp",
+      "src": "/assets/lw-skills/e92a4e250728c86652e537d6b7861331529b58393abf091f8b75c34c94a524bd.webp",
+      "offset": 563504
+    },
+    "https://6sword.com/icons/lw/Skill/Passive_Skill_CB_HealthRecovery_02.webp": {
+      "url": "https://6sword.com/icons/lw/Skill/Passive_Skill_CB_HealthRecovery_02.webp",
+      "sha256": "74ac4841feb7ed60f5f48bd8743dc49994c784e14d6dbeb2c4fccae2536909b0",
+      "bytes": 21530,
+      "width": 128,
+      "height": 128,
+      "contentType": "image/webp",
+      "src": "/assets/lw-skills/74ac4841feb7ed60f5f48bd8743dc49994c784e14d6dbeb2c4fccae2536909b0.webp",
+      "offset": 541974
+    },
+    "https://6sword.com/icons/lw/Skill/Passive_Skill_CB_GrowCriDamage.webp": {
+      "url": "https://6sword.com/icons/lw/Skill/Passive_Skill_CB_GrowCriDamage.webp",
+      "sha256": "3865f5d5694947e35d036ebb9d4594357f0199262b5a99cbd7ee97fbb1046413",
+      "bytes": 20904,
+      "width": 128,
+      "height": 128,
+      "contentType": "image/webp",
+      "src": "/assets/lw-skills/3865f5d5694947e35d036ebb9d4594357f0199262b5a99cbd7ee97fbb1046413.webp",
+      "offset": 499920
+    },
+    "https://6sword.com/icons/lw/Skill/Passive_Skill_CB_HealthRecovery.webp": {
+      "url": "https://6sword.com/icons/lw/Skill/Passive_Skill_CB_HealthRecovery.webp",
+      "sha256": "911831293de8bddc08129ecd63ce712b959307addb4ef5163cebd32f0f5cbfb7",
+      "bytes": 21150,
+      "width": 128,
+      "height": 128,
+      "contentType": "image/webp",
+      "src": "/assets/lw-skills/911831293de8bddc08129ecd63ce712b959307addb4ef5163cebd32f0f5cbfb7.webp",
+      "offset": 520824
+    },
+    "https://6sword.com/icons/lw/Skill/Passive_Skill_CB_ImproveWeapon.webp": {
+      "url": "https://6sword.com/icons/lw/Skill/Passive_Skill_CB_ImproveWeapon.webp",
+      "sha256": "ec3549a99e27b5508814f88c3cdbcf5fa755a7ceac6b0a158f6c7f29539da35c",
+      "bytes": 21938,
+      "width": 128,
+      "height": 128,
+      "contentType": "image/webp",
+      "src": "/assets/lw-skills/ec3549a99e27b5508814f88c3cdbcf5fa755a7ceac6b0a158f6c7f29539da35c.webp",
+      "offset": 670524
+    },
+    "https://6sword.com/icons/lw/Skill/Passive_Skill_CB_IncreaseArmor_02.webp": {
+      "url": "https://6sword.com/icons/lw/Skill/Passive_Skill_CB_IncreaseArmor_02.webp",
+      "sha256": "ca36a431f9942395ecd370b470f244961441d3b7e96b9353c1c3515713152f39",
+      "bytes": 21564,
+      "width": 128,
+      "height": 128,
+      "contentType": "image/webp",
+      "src": "/assets/lw-skills/ca36a431f9942395ecd370b470f244961441d3b7e96b9353c1c3515713152f39.webp",
+      "offset": 713906
+    },
+    "https://6sword.com/icons/lw/Skill/Passive_Skill_CB_IncreaseDamage.webp": {
+      "url": "https://6sword.com/icons/lw/Skill/Passive_Skill_CB_IncreaseDamage.webp",
+      "sha256": "2286b292bf982549822767e81382241e7e1cbcc269620f4c07c5d390c328394b",
+      "bytes": 20512,
+      "width": 128,
+      "height": 128,
+      "contentType": "image/webp",
+      "src": "/assets/lw-skills/2286b292bf982549822767e81382241e7e1cbcc269620f4c07c5d390c328394b.webp",
+      "offset": 735470
+    },
+    "https://6sword.com/icons/lw/Skill/Passive_Skill_CB_ImproveDamage.webp": {
+      "url": "https://6sword.com/icons/lw/Skill/Passive_Skill_CB_ImproveDamage.webp",
+      "sha256": "f95ca3034a43015709a503fc150cbdfc3fab3382dddddd3f1ca71267bd8d5541",
+      "bytes": 20866,
+      "width": 128,
+      "height": 128,
+      "contentType": "image/webp",
+      "src": "/assets/lw-skills/f95ca3034a43015709a503fc150cbdfc3fab3382dddddd3f1ca71267bd8d5541.webp",
+      "offset": 649658
+    },
+    "https://6sword.com/icons/lw/Skill/Passive_Skill_CB_IncreaseArmor.webp": {
+      "url": "https://6sword.com/icons/lw/Skill/Passive_Skill_CB_IncreaseArmor.webp",
+      "sha256": "65fae06b0adce94aeecb3d40967fbb5860771bc6ad4d9642034bdb7a9cdcdd6a",
+      "bytes": 21444,
+      "width": 128,
+      "height": 128,
+      "contentType": "image/webp",
+      "src": "/assets/lw-skills/65fae06b0adce94aeecb3d40967fbb5860771bc6ad4d9642034bdb7a9cdcdd6a.webp",
+      "offset": 692462
+    },
+    "https://6sword.com/icons/lw/Skill/Passive_Skill_CB_ImprovWeapon.webp": {
+      "url": "https://6sword.com/icons/lw/Skill/Passive_Skill_CB_ImprovWeapon.webp",
+      "sha256": "cbef51fe7a88ee9ee4a6d0e9113682ff93c0fb5edd9624cd624f39119a7d8f53",
+      "bytes": 19636,
+      "width": 128,
+      "height": 128,
+      "contentType": "image/webp",
+      "src": "/assets/lw-skills/cbef51fe7a88ee9ee4a6d0e9113682ff93c0fb5edd9624cd624f39119a7d8f53.webp",
+      "offset": 630022
+    },
+    "https://6sword.com/icons/lw/Skill/Passive_Skill_CB_IncreaseReduction_02.webp": {
+      "url": "https://6sword.com/icons/lw/Skill/Passive_Skill_CB_IncreaseReduction_02.webp",
+      "sha256": "cda60eb7d3666d84db49e68061f7c3aa2b3e9fb4c567b8418ee928e252896348",
+      "bytes": 22028,
+      "width": 128,
+      "height": 128,
+      "contentType": "image/webp",
+      "src": "/assets/lw-skills/cda60eb7d3666d84db49e68061f7c3aa2b3e9fb4c567b8418ee928e252896348.webp",
+      "offset": 843400
+    },
+    "https://6sword.com/icons/lw/Skill/Passive_Skill_CB_IncreaseDamage_02.webp": {
+      "url": "https://6sword.com/icons/lw/Skill/Passive_Skill_CB_IncreaseDamage_02.webp",
+      "sha256": "dc2fd4a132c944c4aff9b2d7894583f9c59d48ac26af827009d6e60440284efd",
+      "bytes": 21980,
+      "width": 128,
+      "height": 128,
+      "contentType": "image/webp",
+      "src": "/assets/lw-skills/dc2fd4a132c944c4aff9b2d7894583f9c59d48ac26af827009d6e60440284efd.webp",
+      "offset": 755982
+    },
+    "https://6sword.com/icons/lw/Skill/Passive_Skill_CB_IncreaseHealth.webp": {
+      "url": "https://6sword.com/icons/lw/Skill/Passive_Skill_CB_IncreaseHealth.webp",
+      "sha256": "7f4aae1a6226b89a2fa22ac37d0a3ef7c818e6382065d6d2c4ee0f3aab2d9950",
+      "bytes": 21834,
+      "width": 128,
+      "height": 128,
+      "contentType": "image/webp",
+      "src": "/assets/lw-skills/7f4aae1a6226b89a2fa22ac37d0a3ef7c818e6382065d6d2c4ee0f3aab2d9950.webp",
+      "offset": 800148
+    },
+    "https://6sword.com/icons/lw/Skill/Passive_Skill_CB_IncreaseEvasion.webp": {
+      "url": "https://6sword.com/icons/lw/Skill/Passive_Skill_CB_IncreaseEvasion.webp",
+      "sha256": "d0bd931d33b416a89aac1cd5c6c3026416ba67bbc11417502665b9feeae003e9",
+      "bytes": 22186,
+      "width": 128,
+      "height": 128,
+      "contentType": "image/webp",
+      "src": "/assets/lw-skills/d0bd931d33b416a89aac1cd5c6c3026416ba67bbc11417502665b9feeae003e9.webp",
+      "offset": 777962
+    },
+    "https://6sword.com/icons/lw/Skill/Passive_Skill_CB_IncreaseReduction.webp": {
+      "url": "https://6sword.com/icons/lw/Skill/Passive_Skill_CB_IncreaseReduction.webp",
+      "sha256": "77eb4dba22fd3c563906ff6869070bf870a69f2e46ada5a834b67e5a0b01f2a4",
+      "bytes": 21418,
+      "width": 128,
+      "height": 128,
+      "contentType": "image/webp",
+      "src": "/assets/lw-skills/77eb4dba22fd3c563906ff6869070bf870a69f2e46ada5a834b67e5a0b01f2a4.webp",
+      "offset": 821982
+    },
+    "https://6sword.com/icons/lw/Skill/Passive_Skill_CB_IncreaseStatus.webp": {
+      "url": "https://6sword.com/icons/lw/Skill/Passive_Skill_CB_IncreaseStatus.webp",
+      "sha256": "7e1bfadee5a596dc0962a2841e98be08a7ae3923ed15d203587bde57c64abe59",
+      "bytes": 20108,
+      "width": 128,
+      "height": 128,
+      "contentType": "image/webp",
+      "src": "/assets/lw-skills/7e1bfadee5a596dc0962a2841e98be08a7ae3923ed15d203587bde57c64abe59.webp",
+      "offset": 865428
+    },
+    "https://6sword.com/icons/lw/Skill/Passive_Skill_CB_IncreaseWeight.webp": {
+      "url": "https://6sword.com/icons/lw/Skill/Passive_Skill_CB_IncreaseWeight.webp",
+      "sha256": "6071bccbb58292e316a0bb12ac1389390af4e3e0390a301ca5e63a382e6b76e0",
+      "bytes": 20536,
+      "width": 128,
+      "height": 128,
+      "contentType": "image/webp",
+      "src": "/assets/lw-skills/6071bccbb58292e316a0bb12ac1389390af4e3e0390a301ca5e63a382e6b76e0.webp",
+      "offset": 927622
+    },
+    "https://6sword.com/icons/lw/Skill/Passive_Skill_CB_ManaRecovery.webp": {
+      "url": "https://6sword.com/icons/lw/Skill/Passive_Skill_CB_ManaRecovery.webp",
+      "sha256": "cb0c671813f9af50e813cfd7c89a88665f4ba427ebc89f154a74c290b33e548c",
+      "bytes": 20860,
+      "width": 128,
+      "height": 128,
+      "contentType": "image/webp",
+      "src": "/assets/lw-skills/cb0c671813f9af50e813cfd7c89a88665f4ba427ebc89f154a74c290b33e548c.webp",
+      "offset": 971086
+    },
+    "https://6sword.com/icons/lw/Skill/Passive_Skill_CB_PierceDefense.webp": {
+      "url": "https://6sword.com/icons/lw/Skill/Passive_Skill_CB_PierceDefense.webp",
+      "sha256": "f9aa93ada0b6510d1261dcc4824ab5f3537ec562246fd598385fde905a9b25aa",
+      "bytes": 22442,
+      "width": 128,
+      "height": 128,
+      "contentType": "image/webp",
+      "src": "/assets/lw-skills/f9aa93ada0b6510d1261dcc4824ab5f3537ec562246fd598385fde905a9b25aa.webp",
+      "offset": 991946
+    },
+    "https://6sword.com/icons/lw/Skill/Passive_Skill_CB_IncreaseStatus_02.webp": {
+      "url": "https://6sword.com/icons/lw/Skill/Passive_Skill_CB_IncreaseStatus_02.webp",
+      "sha256": "c7e69559667f138b0cc381f2067a04ce04f040334c474e26c3c3a2d901bd9289",
+      "bytes": 19832,
+      "width": 128,
+      "height": 128,
+      "contentType": "image/webp",
+      "src": "/assets/lw-skills/c7e69559667f138b0cc381f2067a04ce04f040334c474e26c3c3a2d901bd9289.webp",
+      "offset": 885536
+    },
+    "https://6sword.com/icons/lw/Skill/Passive_Skill_CB_IncreaseWeapon.webp": {
+      "url": "https://6sword.com/icons/lw/Skill/Passive_Skill_CB_IncreaseWeapon.webp",
+      "sha256": "c475724ae435a5e59a1d3d11a4d18361b7b43db62ea560c84a1afc2af951947c",
+      "bytes": 22254,
+      "width": 128,
+      "height": 128,
+      "contentType": "image/webp",
+      "src": "/assets/lw-skills/c475724ae435a5e59a1d3d11a4d18361b7b43db62ea560c84a1afc2af951947c.webp",
+      "offset": 905368
+    },
+    "https://6sword.com/icons/lw/Skill/Passive_Skill_CB_MagicResist.webp": {
+      "url": "https://6sword.com/icons/lw/Skill/Passive_Skill_CB_MagicResist.webp",
+      "sha256": "5d4ddc9d1e3f96da14cf1af4cd445fbc0ca5545746592f7d02ab4b8e601b5931",
+      "bytes": 22928,
+      "width": 128,
+      "height": 128,
+      "contentType": "image/webp",
+      "src": "/assets/lw-skills/5d4ddc9d1e3f96da14cf1af4cd445fbc0ca5545746592f7d02ab4b8e601b5931.webp",
+      "offset": 948158
+    },
+    "https://6sword.com/icons/lw/Skill/Passive_Skill_CB_SoaringHealth.webp": {
+      "url": "https://6sword.com/icons/lw/Skill/Passive_Skill_CB_SoaringHealth.webp",
+      "sha256": "01ac3d3f42c6c212e0b3af05e8da5c486fe9803d10e51f3ececfb936d6ed1531",
+      "bytes": 22868,
+      "width": 128,
+      "height": 128,
+      "contentType": "image/webp",
+      "src": "/assets/lw-skills/01ac3d3f42c6c212e0b3af05e8da5c486fe9803d10e51f3ececfb936d6ed1531.webp",
+      "offset": 1103072
+    },
+    "https://6sword.com/icons/lw/Skill/Passive_Skill_CB_PierceEvasion.webp": {
+      "url": "https://6sword.com/icons/lw/Skill/Passive_Skill_CB_PierceEvasion.webp",
+      "sha256": "b7365c63cb06aa04372a66c65bb6d6dea3d68727e76063a9f34ccfa4827acb0e",
+      "bytes": 22592,
+      "width": 128,
+      "height": 128,
+      "contentType": "image/webp",
+      "src": "/assets/lw-skills/b7365c63cb06aa04372a66c65bb6d6dea3d68727e76063a9f34ccfa4827acb0e.webp",
+      "offset": 1014388
+    },
+    "https://6sword.com/icons/lw/Skill/Passive_Skill_CB_SoaringExp.webp": {
+      "url": "https://6sword.com/icons/lw/Skill/Passive_Skill_CB_SoaringExp.webp",
+      "sha256": "a5c9185fbcf96c4578b3effb93c492222e68599fda9c9d73c56a9d419322db3f",
+      "bytes": 22006,
+      "width": 128,
+      "height": 128,
+      "contentType": "image/webp",
+      "src": "/assets/lw-skills/a5c9185fbcf96c4578b3effb93c492222e68599fda9c9d73c56a9d419322db3f.webp",
+      "offset": 1081066
+    },
+    "https://6sword.com/icons/lw/Skill/Passive_Skill_CB_Survival_PU1.webp": {
+      "url": "https://6sword.com/icons/lw/Skill/Passive_Skill_CB_Survival_PU1.webp",
+      "sha256": "195a7874e9a42ef97a7b7eba8036808146c0f6d0e0f38b9421e26e84c9f32802",
+      "bytes": 21236,
+      "width": 128,
+      "height": 128,
+      "contentType": "image/webp",
+      "src": "/assets/lw-skills/195a7874e9a42ef97a7b7eba8036808146c0f6d0e0f38b9421e26e84c9f32802.webp",
+      "offset": 1125940
+    },
+    "https://6sword.com/icons/lw/Skill/Passive_Skill_CB_ProtectStun.webp": {
+      "url": "https://6sword.com/icons/lw/Skill/Passive_Skill_CB_ProtectStun.webp",
+      "sha256": "3f9da7a2779a8193ef3911e60b9e2e6446b303d5f139c246e6c6808095a17077",
+      "bytes": 22192,
+      "width": 128,
+      "height": 128,
+      "contentType": "image/webp",
+      "src": "/assets/lw-skills/3f9da7a2779a8193ef3911e60b9e2e6446b303d5f139c246e6c6808095a17077.webp",
+      "offset": 1058874
+    },
+    "https://6sword.com/icons/lw/Skill/Passive_Skill_CB_PierceHitStun.webp": {
+      "url": "https://6sword.com/icons/lw/Skill/Passive_Skill_CB_PierceHitStun.webp",
+      "sha256": "22379ee2b93c5b42c7b609d23acef7c775351c8120b24614ad0e4758aabf96a6",
+      "bytes": 21894,
+      "width": 128,
+      "height": 128,
+      "contentType": "image/webp",
+      "src": "/assets/lw-skills/22379ee2b93c5b42c7b609d23acef7c775351c8120b24614ad0e4758aabf96a6.webp",
+      "offset": 1036980
+    },
+    "https://6sword.com/icons/lw/Skill/Passive_Skill_CB_Survival_PU2.webp": {
+      "url": "https://6sword.com/icons/lw/Skill/Passive_Skill_CB_Survival_PU2.webp",
+      "sha256": "51390772b3b49fd31321a9bffa459905c061d9b0b24ee1a0fd3b568021f6a0ed",
+      "bytes": 21694,
+      "width": 128,
+      "height": 128,
+      "contentType": "image/webp",
+      "src": "/assets/lw-skills/51390772b3b49fd31321a9bffa459905c061d9b0b24ee1a0fd3b568021f6a0ed.webp",
+      "offset": 1147176
+    },
+    "https://6sword.com/icons/lw/Skill/Passive_Skill_CounterBarrier_PU1.webp": {
+      "url": "https://6sword.com/icons/lw/Skill/Passive_Skill_CounterBarrier_PU1.webp",
+      "sha256": "6794dfaebccf354e5c891a0c1966cca6bcfaa7c13c0cfe873a2d538d782107f6",
+      "bytes": 23424,
+      "width": 128,
+      "height": 128,
+      "contentType": "image/webp",
+      "src": "/assets/lw-skills/6794dfaebccf354e5c891a0c1966cca6bcfaa7c13c0cfe873a2d538d782107f6.webp",
+      "offset": 1219848
+    },
+    "https://6sword.com/icons/lw/Skill/Passive_Skill_CriticalMastery.webp": {
+      "url": "https://6sword.com/icons/lw/Skill/Passive_Skill_CriticalMastery.webp",
+      "sha256": "a76f6107165e8b1d0915bb88e23653d7fc31303886e1a1cbcfa03bf5934b4a5c",
+      "bytes": 21138,
+      "width": 128,
+      "height": 128,
+      "contentType": "image/webp",
+      "src": "/assets/lw-skills/a76f6107165e8b1d0915bb88e23653d7fc31303886e1a1cbcfa03bf5934b4a5c.webp",
+      "offset": 1243272
+    },
+    "https://6sword.com/icons/lw/Skill/Passive_Skill_DA_CriticalMastery_PU1.webp": {
+      "url": "https://6sword.com/icons/lw/Skill/Passive_Skill_DA_CriticalMastery_PU1.webp",
+      "sha256": "8429459a277b6241431320d34973fbbb4101bbb09759ceabebf56aa592b7c2b8",
+      "bytes": 23962,
+      "width": 128,
+      "height": 128,
+      "contentType": "image/webp",
+      "src": "/assets/lw-skills/8429459a277b6241431320d34973fbbb4101bbb09759ceabebf56aa592b7c2b8.webp",
+      "offset": 1264410
+    },
+    "https://6sword.com/icons/lw/Skill/Passive_Skill_CB_Survival_UPU1.webp": {
+      "url": "https://6sword.com/icons/lw/Skill/Passive_Skill_CB_Survival_UPU1.webp",
+      "sha256": "1f0fb6052443e04a5d526b4966cbc634d841d110e7209a7dca8c8dc795c20e7a",
+      "bytes": 31180,
+      "width": 128,
+      "height": 128,
+      "contentType": "image/webp",
+      "src": "/assets/lw-skills/1f0fb6052443e04a5d526b4966cbc634d841d110e7209a7dca8c8dc795c20e7a.webp",
+      "offset": 1168870
+    },
+    "https://6sword.com/icons/lw/Skill/Passive_Skill_Cancellation_PU1.webp": {
+      "url": "https://6sword.com/icons/lw/Skill/Passive_Skill_Cancellation_PU1.webp",
+      "sha256": "05abb1bbc78d745acb4e83962c0045ccc3d648d2cefaef411edc9ace299ad188",
+      "bytes": 19798,
+      "width": 128,
+      "height": 128,
+      "contentType": "image/webp",
+      "src": "/assets/lw-skills/05abb1bbc78d745acb4e83962c0045ccc3d648d2cefaef411edc9ace299ad188.webp",
+      "offset": 1200050
+    },
+    "https://6sword.com/icons/lw/Skill/Passive_Skill_Elf_ElementalEvasion.webp": {
+      "url": "https://6sword.com/icons/lw/Skill/Passive_Skill_Elf_ElementalEvasion.webp",
+      "sha256": "4159c2b75fe6da3c3d14884f6662218a91a27741e7941b2f146b37c3865ae37c",
+      "bytes": 21674,
+      "width": 128,
+      "height": 128,
+      "contentType": "image/webp",
+      "src": "/assets/lw-skills/4159c2b75fe6da3c3d14884f6662218a91a27741e7941b2f146b37c3865ae37c.webp",
+      "offset": 1399416
+    },
+    "https://6sword.com/icons/lw/Skill/Passive_Skill_DA_ShadowBlood.webp": {
+      "url": "https://6sword.com/icons/lw/Skill/Passive_Skill_DA_ShadowBlood.webp",
+      "sha256": "1eb77065bd97ca56dae0366c6da074d7a534368e94286a790008767ec1221596",
+      "bytes": 20524,
+      "width": 128,
+      "height": 128,
+      "contentType": "image/webp",
+      "src": "/assets/lw-skills/1eb77065bd97ca56dae0366c6da074d7a534368e94286a790008767ec1221596.webp",
+      "offset": 1288372
+    },
+    "https://6sword.com/icons/lw/Skill/Passive_Skill_DressEvasion.webp": {
+      "url": "https://6sword.com/icons/lw/Skill/Passive_Skill_DressEvasion.webp",
+      "sha256": "846724f92863adf18e450ecceb17d5780d161fdde5f72fcb7a22690ddbe8a1c1",
+      "bytes": 22890,
+      "width": 128,
+      "height": 128,
+      "contentType": "image/webp",
+      "src": "/assets/lw-skills/846724f92863adf18e450ecceb17d5780d161fdde5f72fcb7a22690ddbe8a1c1.webp",
+      "offset": 1333356
+    },
+    "https://6sword.com/icons/lw/Skill/Passive_Skill_DeathHeal_PU1.webp": {
+      "url": "https://6sword.com/icons/lw/Skill/Passive_Skill_DeathHeal_PU1.webp",
+      "sha256": "db8ef5d4c656252b2d10b0a6fbaab27c5e00787c273fde7605e1184441de35bd",
+      "bytes": 24460,
+      "width": 128,
+      "height": 128,
+      "contentType": "image/webp",
+      "src": "/assets/lw-skills/db8ef5d4c656252b2d10b0a6fbaab27c5e00787c273fde7605e1184441de35bd.webp",
+      "offset": 1308896
+    },
+    "https://6sword.com/icons/lw/Skill/Passive_Skill_EL_PierceMastery_PU1.webp": {
+      "url": "https://6sword.com/icons/lw/Skill/Passive_Skill_EL_PierceMastery_PU1.webp",
+      "sha256": "d2b39b5826821170ecab0cb95e90d90710002a1e97686210efbbecbb24c52568",
+      "bytes": 22280,
+      "width": 128,
+      "height": 128,
+      "contentType": "image/webp",
+      "src": "/assets/lw-skills/d2b39b5826821170ecab0cb95e90d90710002a1e97686210efbbecbb24c52568.webp",
+      "offset": 1356246
+    },
+    "https://6sword.com/icons/lw/Skill/Passive_Skill_EarthGuardian_PU1.webp": {
+      "url": "https://6sword.com/icons/lw/Skill/Passive_Skill_EarthGuardian_PU1.webp",
+      "sha256": "c0995e13e8632f8a6a2380b11ad8d72c3b248eb77443d688e8efa372a5b8456f",
+      "bytes": 20890,
+      "width": 128,
+      "height": 128,
+      "contentType": "image/webp",
+      "src": "/assets/lw-skills/c0995e13e8632f8a6a2380b11ad8d72c3b248eb77443d688e8efa372a5b8456f.webp",
+      "offset": 1378526
+    },
+    "https://6sword.com/icons/lw/Skill/Passive_Skill_EnchantAccuracy_PU1.webp": {
+      "url": "https://6sword.com/icons/lw/Skill/Passive_Skill_EnchantAccuracy_PU1.webp",
+      "sha256": "b0bd28d55546473049a36c55dc622d30a155759c4612e031a9be74f2c3a0c7b1",
+      "bytes": 22230,
+      "width": 128,
+      "height": 128,
+      "contentType": "image/webp",
+      "src": "/assets/lw-skills/b0bd28d55546473049a36c55dc622d30a155759c4612e031a9be74f2c3a0c7b1.webp",
+      "offset": 1528504
+    },
+    "https://6sword.com/icons/lw/Skill/Passive_Skill_EncannyDodge_PU1.webp": {
+      "url": "https://6sword.com/icons/lw/Skill/Passive_Skill_EncannyDodge_PU1.webp",
+      "sha256": "be30a8ec11690ea4e8b52d0446584c49cd863a4ccfcfb948779a1196ebb45581",
+      "bytes": 21250,
+      "width": 128,
+      "height": 128,
+      "contentType": "image/webp",
+      "src": "/assets/lw-skills/be30a8ec11690ea4e8b52d0446584c49cd863a4ccfcfb948779a1196ebb45581.webp",
+      "offset": 1485532
+    },
+    "https://6sword.com/icons/lw/Skill/Passive_Skill_Elf_ElementalMaster_PU.webp": {
+      "url": "https://6sword.com/icons/lw/Skill/Passive_Skill_Elf_ElementalMaster_PU.webp",
+      "sha256": "0da705f273f93c80bc2e600524866fadb97087352c2a42defab1cfebfe0f2e41",
+      "bytes": 21694,
+      "width": 128,
+      "height": 128,
+      "contentType": "image/webp",
+      "src": "/assets/lw-skills/0da705f273f93c80bc2e600524866fadb97087352c2a42defab1cfebfe0f2e41.webp",
+      "offset": 1421090
+    },
+    "https://6sword.com/icons/lw/Skill/Passive_Skill_EnchantAccuracy.webp": {
+      "url": "https://6sword.com/icons/lw/Skill/Passive_Skill_EnchantAccuracy.webp",
+      "sha256": "ca9152c77eb83d912e3ae9e555efe3e0fd16dd3ef75c1dcb8524014328a73d00",
+      "bytes": 21722,
+      "width": 128,
+      "height": 128,
+      "contentType": "image/webp",
+      "src": "/assets/lw-skills/ca9152c77eb83d912e3ae9e555efe3e0fd16dd3ef75c1dcb8524014328a73d00.webp",
+      "offset": 1506782
+    },
+    "https://6sword.com/icons/lw/Skill/Passive_Skill_Elf_EraseMagic_PU1.webp": {
+      "url": "https://6sword.com/icons/lw/Skill/Passive_Skill_Elf_EraseMagic_PU1.webp",
+      "sha256": "f6b18b5c75116ea6fe68fc672f02973839adcd4f3b00ce00f553ec85bd4a3928",
+      "bytes": 21870,
+      "width": 128,
+      "height": 128,
+      "contentType": "image/webp",
+      "src": "/assets/lw-skills/f6b18b5c75116ea6fe68fc672f02973839adcd4f3b00ce00f553ec85bd4a3928.webp",
+      "offset": 1442784
+    },
+    "https://6sword.com/icons/lw/Skill/Passive_Skill_Elf_WaterDisease_PU.webp": {
+      "url": "https://6sword.com/icons/lw/Skill/Passive_Skill_Elf_WaterDisease_PU.webp",
+      "sha256": "2a2f9fb607fdafc03eba1283488e4695cf1e60957693276ff677910dc0a09b8e",
+      "bytes": 20878,
+      "width": 128,
+      "height": 128,
+      "contentType": "image/webp",
+      "src": "/assets/lw-skills/2a2f9fb607fdafc03eba1283488e4695cf1e60957693276ff677910dc0a09b8e.webp",
+      "offset": 1464654
+    },
+    "https://6sword.com/icons/lw/Skill/Passive_Skill_EvasionMastery.webp": {
+      "url": "https://6sword.com/icons/lw/Skill/Passive_Skill_EvasionMastery.webp",
+      "sha256": "2b8913a8673e53a59e5f4b3e03a153980d15ccc17310d58472e54c7e547afdfb",
+      "bytes": 18528,
+      "width": 128,
+      "height": 128,
+      "contentType": "image/webp",
+      "src": "/assets/lw-skills/2b8913a8673e53a59e5f4b3e03a153980d15ccc17310d58472e54c7e547afdfb.webp",
+      "offset": 1550734
+    },
+    "https://6sword.com/icons/lw/Skill/Passive_Skill_ImmuneToHarmness_PU1.webp": {
+      "url": "https://6sword.com/icons/lw/Skill/Passive_Skill_ImmuneToHarmness_PU1.webp",
+      "sha256": "8a0ce5874acbf89e852b909696e246a491cfcbe3eb7c246ba85493062c1248fd",
+      "bytes": 20160,
+      "width": 128,
+      "height": 128,
+      "contentType": "image/webp",
+      "src": "/assets/lw-skills/8a0ce5874acbf89e852b909696e246a491cfcbe3eb7c246ba85493062c1248fd.webp",
+      "offset": 1610470
+    },
+    "https://6sword.com/icons/lw/Skill/Passive_Skill_KN_AuraBlade.webp": {
+      "url": "https://6sword.com/icons/lw/Skill/Passive_Skill_KN_AuraBlade.webp",
+      "sha256": "c43e7eba0365e3ad6ded8ab40d73bf57cad8b7ec91813039f94cc2ac665fd2fb",
+      "bytes": 21154,
+      "width": 128,
+      "height": 128,
+      "contentType": "image/webp",
+      "src": "/assets/lw-skills/c43e7eba0365e3ad6ded8ab40d73bf57cad8b7ec91813039f94cc2ac665fd2fb.webp",
+      "offset": 1630630
+    },
+    "https://6sword.com/icons/lw/Skill/Passive_Skill_HealMastery.webp": {
+      "url": "https://6sword.com/icons/lw/Skill/Passive_Skill_HealMastery.webp",
+      "sha256": "5bb9ddb4bdad84f986573e50a2144f2965daa54779a7d1bcf72c2d70e671797e",
+      "bytes": 20290,
+      "width": 128,
+      "height": 128,
+      "contentType": "image/webp",
+      "src": "/assets/lw-skills/5bb9ddb4bdad84f986573e50a2144f2965daa54779a7d1bcf72c2d70e671797e.webp",
+      "offset": 1590180
+    },
+    "https://6sword.com/icons/lw/Skill/Passive_Skill_KN_DragonRoar_PU1.webp": {
+      "url": "https://6sword.com/icons/lw/Skill/Passive_Skill_KN_DragonRoar_PU1.webp",
+      "sha256": "3cceb61c4a303819971a928fe3aa19ac2de71bb8cb4fb5863bbd8d154a13ea8c",
+      "bytes": 20530,
+      "width": 128,
+      "height": 128,
+      "contentType": "image/webp",
+      "src": "/assets/lw-skills/3cceb61c4a303819971a928fe3aa19ac2de71bb8cb4fb5863bbd8d154a13ea8c.webp",
+      "offset": 1651784
+    },
+    "https://6sword.com/icons/lw/Skill/Passive_Skill_GlowingAura_PU1.webp": {
+      "url": "https://6sword.com/icons/lw/Skill/Passive_Skill_GlowingAura_PU1.webp",
+      "sha256": "0b678cac56a23b4187170bc12bd962e92c4e06d8b118638f11f4582346e93f72",
+      "bytes": 20918,
+      "width": 128,
+      "height": 128,
+      "contentType": "image/webp",
+      "src": "/assets/lw-skills/0b678cac56a23b4187170bc12bd962e92c4e06d8b118638f11f4582346e93f72.webp",
+      "offset": 1569262
+    },
+    "https://6sword.com/icons/lw/Skill/Passive_Skill_Meditation.webp": {
+      "url": "https://6sword.com/icons/lw/Skill/Passive_Skill_Meditation.webp",
+      "sha256": "1c03e2a98a23b594a802107e28efaccb4185dbe79ba9e6ea9899debbb3515f89",
+      "bytes": 18820,
+      "width": 128,
+      "height": 128,
+      "contentType": "image/webp",
+      "src": "/assets/lw-skills/1c03e2a98a23b594a802107e28efaccb4185dbe79ba9e6ea9899debbb3515f89.webp",
+      "offset": 1777054
+    },
+    "https://6sword.com/icons/lw/Skill/Passive_Skill_KN_WeaponMastery_PU1.webp": {
+      "url": "https://6sword.com/icons/lw/Skill/Passive_Skill_KN_WeaponMastery_PU1.webp",
+      "sha256": "1650daef5bf4c8aa30817eb769c4eba8f77871f9d20f5eccc033800717fe45ca",
+      "bytes": 22442,
+      "width": 128,
+      "height": 128,
+      "contentType": "image/webp",
+      "src": "/assets/lw-skills/1650daef5bf4c8aa30817eb769c4eba8f77871f9d20f5eccc033800717fe45ca.webp",
+      "offset": 1731882
+    },
+    "https://6sword.com/icons/lw/Skill/Passive_Skill_KN_IncreasePotion.webp": {
+      "url": "https://6sword.com/icons/lw/Skill/Passive_Skill_KN_IncreasePotion.webp",
+      "sha256": "8d686a3d82398a277267f888e07aec01017b8cbf73bbb228d8cf5ff9cf440b70",
+      "bytes": 19392,
+      "width": 128,
+      "height": 128,
+      "contentType": "image/webp",
+      "src": "/assets/lw-skills/8d686a3d82398a277267f888e07aec01017b8cbf73bbb228d8cf5ff9cf440b70.webp",
+      "offset": 1693566
+    },
+    "https://6sword.com/icons/lw/Skill/Passive_Skill_KN_TwoHandedMaster.webp": {
+      "url": "https://6sword.com/icons/lw/Skill/Passive_Skill_KN_TwoHandedMaster.webp",
+      "sha256": "a59b7185ce804df9c8f45277bcff2e4f78d8d9011b37b071440ca36698b033d8",
+      "bytes": 18924,
+      "width": 128,
+      "height": 128,
+      "contentType": "image/webp",
+      "src": "/assets/lw-skills/a59b7185ce804df9c8f45277bcff2e4f78d8d9011b37b071440ca36698b033d8.webp",
+      "offset": 1712958
+    },
+    "https://6sword.com/icons/lw/Skill/Passive_Skill_KN_Endurance_PU1.webp": {
+      "url": "https://6sword.com/icons/lw/Skill/Passive_Skill_KN_Endurance_PU1.webp",
+      "sha256": "b7edf10661d8e1910663b728f47c3ceefe49f3682960f34a796a2f5fe0a124c6",
+      "bytes": 21252,
+      "width": 128,
+      "height": 128,
+      "contentType": "image/webp",
+      "src": "/assets/lw-skills/b7edf10661d8e1910663b728f47c3ceefe49f3682960f34a796a2f5fe0a124c6.webp",
+      "offset": 1672314
+    },
+    "https://6sword.com/icons/lw/Skill/Passive_Skill_MA_HealMastery_PU1.webp": {
+      "url": "https://6sword.com/icons/lw/Skill/Passive_Skill_MA_HealMastery_PU1.webp",
+      "sha256": "bfaf0a9c611dbe1c9480beaf3564f52d5e6ecd5cbcd1dc6fd5fcb6f42606e931",
+      "bytes": 22730,
+      "width": 128,
+      "height": 128,
+      "contentType": "image/webp",
+      "src": "/assets/lw-skills/bfaf0a9c611dbe1c9480beaf3564f52d5e6ecd5cbcd1dc6fd5fcb6f42606e931.webp",
+      "offset": 1754324
+    },
+    "https://6sword.com/icons/lw/Skill/Passive_Skill_OppensiveShield.webp": {
+      "url": "https://6sword.com/icons/lw/Skill/Passive_Skill_OppensiveShield.webp",
+      "sha256": "39b3adadfd1cd60a2026132b0dbfe040febeceb73ae7ccfbae886142cc1fde1f",
+      "bytes": 19682,
+      "width": 128,
+      "height": 128,
+      "contentType": "image/webp",
+      "src": "/assets/lw-skills/39b3adadfd1cd60a2026132b0dbfe040febeceb73ae7ccfbae886142cc1fde1f.webp",
+      "offset": 1795874
+    },
+    "https://6sword.com/icons/lw/Skill/Passive_Skill_PR_BraveAttack.webp": {
+      "url": "https://6sword.com/icons/lw/Skill/Passive_Skill_PR_BraveAttack.webp",
+      "sha256": "12f8792d57cb81ee6ff540418ee89867f143efdfe22328073d7e79d486d6e242",
+      "bytes": 20448,
+      "width": 128,
+      "height": 128,
+      "contentType": "image/webp",
+      "src": "/assets/lw-skills/12f8792d57cb81ee6ff540418ee89867f143efdfe22328073d7e79d486d6e242.webp",
+      "offset": 1836182
+    },
+    "https://6sword.com/icons/lw/Skill/Passive_Skill_PR_Excalibur_PU1.webp": {
+      "url": "https://6sword.com/icons/lw/Skill/Passive_Skill_PR_Excalibur_PU1.webp",
+      "sha256": "4ccbf4b3905e24ee3ac5a09d6d94f1dec65bd9256372117066bf19cd8fa20d4f",
+      "bytes": 21290,
+      "width": 128,
+      "height": 128,
+      "contentType": "image/webp",
+      "src": "/assets/lw-skills/4ccbf4b3905e24ee3ac5a09d6d94f1dec65bd9256372117066bf19cd8fa20d4f.webp",
+      "offset": 1877724
+    },
+    "https://6sword.com/icons/lw/Skill/Passive_Skill_PR_M_Truetarget_MPU.webp": {
+      "url": "https://6sword.com/icons/lw/Skill/Passive_Skill_PR_M_Truetarget_MPU.webp",
+      "sha256": "db3f948a22f08d656fc55384d2e9d23d450a7be6e7c2a547806eafb5341b1f5c",
+      "bytes": 22170,
+      "width": 128,
+      "height": 128,
+      "contentType": "image/webp",
+      "src": "/assets/lw-skills/db3f948a22f08d656fc55384d2e9d23d450a7be6e7c2a547806eafb5341b1f5c.webp",
+      "offset": 1899014
+    },
+    "https://6sword.com/icons/lw/Skill/Passive_Skill_PR_EvasionMastery_PU1.webp": {
+      "url": "https://6sword.com/icons/lw/Skill/Passive_Skill_PR_EvasionMastery_PU1.webp",
+      "sha256": "370405c783bb1288afb8448a3953c3c31fd552a6023bf3fd240d696ee3c6715f",
+      "bytes": 21094,
+      "width": 128,
+      "height": 128,
+      "contentType": "image/webp",
+      "src": "/assets/lw-skills/370405c783bb1288afb8448a3953c3c31fd552a6023bf3fd240d696ee3c6715f.webp",
+      "offset": 1856630
+    },
+    "https://6sword.com/icons/lw/Skill/Passive_Skill_PR_BraveArmor.webp": {
+      "url": "https://6sword.com/icons/lw/Skill/Passive_Skill_PR_BraveArmor.webp",
+      "sha256": "d8d94692ebb6759f8670e2a369de147b6fa4844ca65e1edcdb238ace6427983b",
+      "bytes": 20626,
+      "width": 128,
+      "height": 128,
+      "contentType": "image/webp",
+      "src": "/assets/lw-skills/d8d94692ebb6759f8670e2a369de147b6fa4844ca65e1edcdb238ace6427983b.webp",
+      "offset": 1815556
+    },
+    "https://6sword.com/icons/lw/Skill/Passive_Skill_ShadowArmor.webp": {
+      "url": "https://6sword.com/icons/lw/Skill/Passive_Skill_ShadowArmor.webp",
+      "sha256": "276a8fb846e97f765426560fecb1edd0bc1c860bd432ebcdf88f2046222d4636",
+      "bytes": 21134,
+      "width": 128,
+      "height": 128,
+      "contentType": "image/webp",
+      "src": "/assets/lw-skills/276a8fb846e97f765426560fecb1edd0bc1c860bd432ebcdf88f2046222d4636.webp",
+      "offset": 2008672
+    },
+    "https://6sword.com/icons/lw/Skill/Passive_Skill_PolluteWater_PU1.webp": {
+      "url": "https://6sword.com/icons/lw/Skill/Passive_Skill_PolluteWater_PU1.webp",
+      "sha256": "32cf2bd8f919fb7c0206c6a41e1c75dc6ee8994347e8f65bea34f31c61ccd77a",
+      "bytes": 23454,
+      "width": 128,
+      "height": 128,
+      "contentType": "image/webp",
+      "src": "/assets/lw-skills/32cf2bd8f919fb7c0206c6a41e1c75dc6ee8994347e8f65bea34f31c61ccd77a.webp",
+      "offset": 1963784
+    },
+    "https://6sword.com/icons/lw/Skill/Passive_Skill_PR_M_Truetarget_PU.webp": {
+      "url": "https://6sword.com/icons/lw/Skill/Passive_Skill_PR_M_Truetarget_PU.webp",
+      "sha256": "6265675a4afce8afc33822119d8f544640a4662cd06f2ca6869b12b440922594",
+      "bytes": 22612,
+      "width": 128,
+      "height": 128,
+      "contentType": "image/webp",
+      "src": "/assets/lw-skills/6265675a4afce8afc33822119d8f544640a4662cd06f2ca6869b12b440922594.webp",
+      "offset": 1921184
+    },
+    "https://6sword.com/icons/lw/Skill/Passive_Skill_PierceMastery.webp": {
+      "url": "https://6sword.com/icons/lw/Skill/Passive_Skill_PierceMastery.webp",
+      "sha256": "1f0b196dc5905a20e13185fb9cf9c0cbd884ed3d0aceb4ff25a845836e248adf",
+      "bytes": 19988,
+      "width": 128,
+      "height": 128,
+      "contentType": "image/webp",
+      "src": "/assets/lw-skills/1f0b196dc5905a20e13185fb9cf9c0cbd884ed3d0aceb4ff25a845836e248adf.webp",
+      "offset": 1943796
+    },
+    "https://6sword.com/icons/lw/Skill/Passive_Skill_ShadowFang.webp": {
+      "url": "https://6sword.com/icons/lw/Skill/Passive_Skill_ShadowFang.webp",
+      "sha256": "3feb0beecab9325fd6b4dd3add7c1e2949824c922486367cedd20829862ca1ec",
+      "bytes": 21914,
+      "width": 128,
+      "height": 128,
+      "contentType": "image/webp",
+      "src": "/assets/lw-skills/3feb0beecab9325fd6b4dd3add7c1e2949824c922486367cedd20829862ca1ec.webp",
+      "offset": 2029806
+    },
+    "https://6sword.com/icons/lw/Skill/Passive_Skill_ReductionArmor_PU1.webp": {
+      "url": "https://6sword.com/icons/lw/Skill/Passive_Skill_ReductionArmor_PU1.webp",
+      "sha256": "c58fa36a21b508ec94d0176f237385d515e66a1fc8cfa840ca0be04bedc1f219",
+      "bytes": 21434,
+      "width": 128,
+      "height": 128,
+      "contentType": "image/webp",
+      "src": "/assets/lw-skills/c58fa36a21b508ec94d0176f237385d515e66a1fc8cfa840ca0be04bedc1f219.webp",
+      "offset": 1987238
+    },
+    "https://6sword.com/icons/lw/Skill/Passive_Skill_ShockStun_MPU.webp": {
+      "url": "https://6sword.com/icons/lw/Skill/Passive_Skill_ShockStun_MPU.webp",
+      "sha256": "0aba98bf5399ec8be2afe4166edf6347c1ae03b2aa2b79fd088278e5d8530a2f",
+      "bytes": 28806,
+      "width": 128,
+      "height": 128,
+      "contentType": "image/webp",
+      "src": "/assets/lw-skills/0aba98bf5399ec8be2afe4166edf6347c1ae03b2aa2b79fd088278e5d8530a2f.webp",
+      "offset": 2093240
+    },
+    "https://6sword.com/icons/lw/Skill/Passive_Skill_ShiningShield_PU1.webp": {
+      "url": "https://6sword.com/icons/lw/Skill/Passive_Skill_ShiningShield_PU1.webp",
+      "sha256": "62f775bfadc2fe1c62496816565f053f920a1a81e1ab545a56f964583bcef32f",
+      "bytes": 19406,
+      "width": 128,
+      "height": 128,
+      "contentType": "image/webp",
+      "src": "/assets/lw-skills/62f775bfadc2fe1c62496816565f053f920a1a81e1ab545a56f964583bcef32f.webp",
+      "offset": 2073834
+    },
+    "https://6sword.com/icons/lw/Skill/Passive_Skill_SoulOfFlame_PU1.webp": {
+      "url": "https://6sword.com/icons/lw/Skill/Passive_Skill_SoulOfFlame_PU1.webp",
+      "sha256": "89c48fa4cbb39643ef657c76e42603babe57b7705b6305acf05e3507e1ca9da8",
+      "bytes": 23280,
+      "width": 128,
+      "height": 128,
+      "contentType": "image/webp",
+      "src": "/assets/lw-skills/89c48fa4cbb39643ef657c76e42603babe57b7705b6305acf05e3507e1ca9da8.webp",
+      "offset": 2164712
+    },
+    "https://6sword.com/icons/lw/Skill/Passive_Skill_ShadowWeakness_PU1.webp": {
+      "url": "https://6sword.com/icons/lw/Skill/Passive_Skill_ShadowWeakness_PU1.webp",
+      "sha256": "1baca635ae4c00a118ddcb95c57143db7bf53f3d0dffb5f7ad90f84533dcbf4a",
+      "bytes": 22114,
+      "width": 128,
+      "height": 128,
+      "contentType": "image/webp",
+      "src": "/assets/lw-skills/1baca635ae4c00a118ddcb95c57143db7bf53f3d0dffb5f7ad90f84533dcbf4a.webp",
+      "offset": 2051720
+    },
+    "https://6sword.com/icons/lw/Skill/Passive_Skill_ShockStun_PU1.webp": {
+      "url": "https://6sword.com/icons/lw/Skill/Passive_Skill_ShockStun_PU1.webp",
+      "sha256": "f029bd7c9bd04cae303a35e466d7038f594d81ce3dda1332803fcacaf0fb86bd",
+      "bytes": 21566,
+      "width": 128,
+      "height": 128,
+      "contentType": "image/webp",
+      "src": "/assets/lw-skills/f029bd7c9bd04cae303a35e466d7038f594d81ce3dda1332803fcacaf0fb86bd.webp",
+      "offset": 2122046
+    },
+    "https://6sword.com/icons/lw/Skill/Passive_Skill_SolidCarriage_PU1.webp": {
+      "url": "https://6sword.com/icons/lw/Skill/Passive_Skill_SolidCarriage_PU1.webp",
+      "sha256": "7248a92c672b29faf2db22051baab0b4ef9cdaca1cacb0c4eaf6f787d566679e",
+      "bytes": 21100,
+      "width": 128,
+      "height": 128,
+      "contentType": "image/webp",
+      "src": "/assets/lw-skills/7248a92c672b29faf2db22051baab0b4ef9cdaca1cacb0c4eaf6f787d566679e.webp",
+      "offset": 2143612
+    },
+    "https://6sword.com/icons/lw/Skill/Passive_Skill_StormShot_PU1.webp": {
+      "url": "https://6sword.com/icons/lw/Skill/Passive_Skill_StormShot_PU1.webp",
+      "sha256": "0618520a311167253a2d1a3d28d097af4c5cd960c482fc3d3c2ea1f66e46e2e4",
+      "bytes": 19068,
+      "width": 128,
+      "height": 128,
+      "contentType": "image/webp",
+      "src": "/assets/lw-skills/0618520a311167253a2d1a3d28d097af4c5cd960c482fc3d3c2ea1f66e46e2e4.webp",
+      "offset": 2187992
+    },
+    "https://6sword.com/icons/lw/Skill/Passive_Skill_WaterLife_PU1.webp": {
+      "url": "https://6sword.com/icons/lw/Skill/Passive_Skill_WaterLife_PU1.webp",
+      "sha256": "baf287b36f397fbb9ace0efb8fd937012c1f412222f31b16a8931cf8b656f7ac",
+      "bytes": 21352,
+      "width": 128,
+      "height": 128,
+      "contentType": "image/webp",
+      "src": "/assets/lw-skills/baf287b36f397fbb9ace0efb8fd937012c1f412222f31b16a8931cf8b656f7ac.webp",
+      "offset": 2250416
+    },
+    "https://6sword.com/icons/lw/Skill/Passive_Skill_VenomResist_PU1.webp": {
+      "url": "https://6sword.com/icons/lw/Skill/Passive_Skill_VenomResist_PU1.webp",
+      "sha256": "cf7b00e1e9c1d786b05862d76a8f42cf1f5477515018f811319d50ab2806bb68",
+      "bytes": 21658,
+      "width": 128,
+      "height": 128,
+      "contentType": "image/webp",
+      "src": "/assets/lw-skills/cf7b00e1e9c1d786b05862d76a8f42cf1f5477515018f811319d50ab2806bb68.webp",
+      "offset": 2228758
+    },
+    "https://6sword.com/icons/lw/Skill/Passive_Skill_WeaponMastery.webp": {
+      "url": "https://6sword.com/icons/lw/Skill/Passive_Skill_WeaponMastery.webp",
+      "sha256": "01966ed30defff5668ffc9e90c869da2b3d8dc143d819d5342ddcfc93fe2e193",
+      "bytes": 19768,
+      "width": 128,
+      "height": 128,
+      "contentType": "image/webp",
+      "src": "/assets/lw-skills/01966ed30defff5668ffc9e90c869da2b3d8dc143d819d5342ddcfc93fe2e193.webp",
+      "offset": 2271768
+    },
+    "https://6sword.com/icons/lw/Skill/Passive_Skill_VenomResist.webp": {
+      "url": "https://6sword.com/icons/lw/Skill/Passive_Skill_VenomResist.webp",
+      "sha256": "aa129a5553a442a457207d1d4c703347434653311977cb7143742ac84dc7d52e",
+      "bytes": 21698,
+      "width": 128,
+      "height": 128,
+      "contentType": "image/webp",
+      "src": "/assets/lw-skills/aa129a5553a442a457207d1d4c703347434653311977cb7143742ac84dc7d52e.webp",
+      "offset": 2207060
+    },
+    "https://6sword.com/icons/lw/Skill/Passive_Skill_haste.webp": {
+      "url": "https://6sword.com/icons/lw/Skill/Passive_Skill_haste.webp",
+      "sha256": "6e501239f7db4fff4c39b7f9446094475385bd552eb17ba21bbe3af53945a009",
+      "bytes": 20630,
+      "width": 128,
+      "height": 128,
+      "contentType": "image/webp",
+      "src": "/assets/lw-skills/6e501239f7db4fff4c39b7f9446094475385bd552eb17ba21bbe3af53945a009.webp",
+      "offset": 2291536
+    },
+    "https://6sword.com/icons/lw/Skill/Skill_Awakening.webp": {
+      "url": "https://6sword.com/icons/lw/Skill/Skill_Awakening.webp",
+      "sha256": "68e4c5a33b4dd4e8559cb272348c1cd0514e8bc4e64a6a66b385b8eb1391c573",
+      "bytes": 20370,
+      "width": 128,
+      "height": 128,
+      "contentType": "image/webp",
+      "src": "/assets/lw-skills/68e4c5a33b4dd4e8559cb272348c1cd0514e8bc4e64a6a66b385b8eb1391c573.webp",
+      "offset": 2374070
+    },
+    "https://6sword.com/icons/lw/Skill/Skill_BlindHiding.webp": {
+      "url": "https://6sword.com/icons/lw/Skill/Skill_BlindHiding.webp",
+      "sha256": "c89c08c8cfe7078f437a606e9d965cd088fea9e0e7860ac0219d2dc25c8f9c8b",
+      "bytes": 19300,
+      "width": 128,
+      "height": 128,
+      "contentType": "image/webp",
+      "src": "/assets/lw-skills/c89c08c8cfe7078f437a606e9d965cd088fea9e0e7860ac0219d2dc25c8f9c8b.webp",
+      "offset": 2394440
+    },
+    "https://6sword.com/icons/lw/Skill/Passive_StrikerGale_PU1.webp": {
+      "url": "https://6sword.com/icons/lw/Skill/Passive_StrikerGale_PU1.webp",
+      "sha256": "a1da0025cd8141b8aaa8de8db791cd2c2ac70f18a091f18a8e8c4de6347e89fa",
+      "bytes": 21108,
+      "width": 128,
+      "height": 128,
+      "contentType": "image/webp",
+      "src": "/assets/lw-skills/a1da0025cd8141b8aaa8de8db791cd2c2ac70f18a091f18a8e8c4de6347e89fa.webp",
+      "offset": 2331288
+    },
+    "https://6sword.com/icons/lw/Skill/Passive_Skill_holywalk.webp": {
+      "url": "https://6sword.com/icons/lw/Skill/Passive_Skill_holywalk.webp",
+      "sha256": "9210d7fef5116ce0220cf0fa65d4c2a99de654ab585bf436f97cb2d3ab29bb94",
+      "bytes": 19122,
+      "width": 128,
+      "height": 128,
+      "contentType": "image/webp",
+      "src": "/assets/lw-skills/9210d7fef5116ce0220cf0fa65d4c2a99de654ab585bf436f97cb2d3ab29bb94.webp",
+      "offset": 2312166
+    },
+    "https://6sword.com/icons/lw/Skill/Skill_ArmorBreak.webp": {
+      "url": "https://6sword.com/icons/lw/Skill/Skill_ArmorBreak.webp",
+      "sha256": "38daa68b0769eec30d4f20c302aa7a2b3ab718a60284ef1d50d01b6a511f2541",
+      "bytes": 21674,
+      "width": 128,
+      "height": 128,
+      "contentType": "image/webp",
+      "src": "/assets/lw-skills/38daa68b0769eec30d4f20c302aa7a2b3ab718a60284ef1d50d01b6a511f2541.webp",
+      "offset": 2352396
+    },
+    "https://6sword.com/icons/lw/Skill/Skill_BurningSpirit.webp": {
+      "url": "https://6sword.com/icons/lw/Skill/Skill_BurningSpirit.webp",
+      "sha256": "a2e31c59e6bc707bd46aa2e28484fa7c3e26799bf562a3e2f4a33d9ecf160c0a",
+      "bytes": 20910,
+      "width": 128,
+      "height": 128,
+      "contentType": "image/webp",
+      "src": "/assets/lw-skills/a2e31c59e6bc707bd46aa2e28484fa7c3e26799bf562a3e2f4a33d9ecf160c0a.webp",
+      "offset": 2413740
+    },
+    "https://6sword.com/icons/lw/Skill/Skill_CB_Survival.webp": {
+      "url": "https://6sword.com/icons/lw/Skill/Skill_CB_Survival.webp",
+      "sha256": "409643966ff4296333748e19867cb6b1d211746ac8763a79cd0063156440451b",
+      "bytes": 20694,
+      "width": 128,
+      "height": 128,
+      "contentType": "image/webp",
+      "src": "/assets/lw-skills/409643966ff4296333748e19867cb6b1d211746ac8763a79cd0063156440451b.webp",
+      "offset": 2434650
+    },
+    "https://6sword.com/icons/lw/Skill/Skill_DA_DarkMarker.webp": {
+      "url": "https://6sword.com/icons/lw/Skill/Skill_DA_DarkMarker.webp",
+      "sha256": "b3a6b8c114890746e9a6ef0918775ca56e679d13a3fa87d3cad10b2a15981a72",
+      "bytes": 20456,
+      "width": 128,
+      "height": 128,
+      "contentType": "image/webp",
+      "src": "/assets/lw-skills/b3a6b8c114890746e9a6ef0918775ca56e679d13a3fa87d3cad10b2a15981a72.webp",
+      "offset": 2495580
+    },
+    "https://6sword.com/icons/lw/Skill/Skill_DA_ShadowDash.webp": {
+      "url": "https://6sword.com/icons/lw/Skill/Skill_DA_ShadowDash.webp",
+      "sha256": "da06a53bfeb70e92df2eed1f425e9d603d6f15f8576189aaf1795eb7ea8c097a",
+      "bytes": 19158,
+      "width": 128,
+      "height": 128,
+      "contentType": "image/webp",
+      "src": "/assets/lw-skills/da06a53bfeb70e92df2eed1f425e9d603d6f15f8576189aaf1795eb7ea8c097a.webp",
+      "offset": 2516036
+    },
+    "https://6sword.com/icons/lw/Skill/Skill_DA_DarkCurtain.webp": {
+      "url": "https://6sword.com/icons/lw/Skill/Skill_DA_DarkCurtain.webp",
+      "sha256": "0a837c2741cdc3a6360cc14195d73d680c18a8daba7d68ed71abd52b0bd37bbb",
+      "bytes": 21412,
+      "width": 128,
+      "height": 128,
+      "contentType": "image/webp",
+      "src": "/assets/lw-skills/0a837c2741cdc3a6360cc14195d73d680c18a8daba7d68ed71abd52b0bd37bbb.webp",
+      "offset": 2474168
+    },
+    "https://6sword.com/icons/lw/Skill/Skill_CrashAttack.webp": {
+      "url": "https://6sword.com/icons/lw/Skill/Skill_CrashAttack.webp",
+      "sha256": "d58c8fa98b0fa7561fc9e79ab2727d697b819ff4bb818b08acf467ce0c97cf4c",
+      "bytes": 18824,
+      "width": 128,
+      "height": 128,
+      "contentType": "image/webp",
+      "src": "/assets/lw-skills/d58c8fa98b0fa7561fc9e79ab2727d697b819ff4bb818b08acf467ce0c97cf4c.webp",
+      "offset": 2455344
+    },
+    "https://6sword.com/icons/lw/Skill/Skill_DA_ShadowEvasion.webp": {
+      "url": "https://6sword.com/icons/lw/Skill/Skill_DA_ShadowEvasion.webp",
+      "sha256": "96da98634304e33ce1c4cef52a1d7f29389c4a05959348381212b83509c24a47",
+      "bytes": 22662,
+      "width": 128,
+      "height": 128,
+      "contentType": "image/webp",
+      "src": "/assets/lw-skills/96da98634304e33ce1c4cef52a1d7f29389c4a05959348381212b83509c24a47.webp",
+      "offset": 2535194
+    },
+    "https://6sword.com/icons/lw/Skill/Skill_DeathDoom.webp": {
+      "url": "https://6sword.com/icons/lw/Skill/Skill_DeathDoom.webp",
+      "sha256": "c9aa3bd135ce399abe3387947a018ff2de6910012cdf439e03360daee4065d99",
+      "bytes": 24824,
+      "width": 128,
+      "height": 128,
+      "contentType": "image/webp",
+      "src": "/assets/lw-skills/c9aa3bd135ce399abe3387947a018ff2de6910012cdf439e03360daee4065d99.webp",
+      "offset": 2557856
+    },
+    "https://6sword.com/icons/lw/Skill/Skill_DeathHeal.webp": {
+      "url": "https://6sword.com/icons/lw/Skill/Skill_DeathHeal.webp",
+      "sha256": "4bb35bb34ebba185040a75184629b4605033413a55b11696e134497f232be549",
+      "bytes": 18604,
+      "width": 128,
+      "height": 128,
+      "contentType": "image/webp",
+      "src": "/assets/lw-skills/4bb35bb34ebba185040a75184629b4605033413a55b11696e134497f232be549.webp",
+      "offset": 2582680
+    },
+    "https://6sword.com/icons/lw/Skill/Skill_Dispel.webp": {
+      "url": "https://6sword.com/icons/lw/Skill/Skill_Dispel.webp",
+      "sha256": "f22040d520be633b6fe2f29be5e9c85e2dfd939dfe410890de93ca2932f02d8f",
+      "bytes": 20680,
+      "width": 128,
+      "height": 128,
+      "contentType": "image/webp",
+      "src": "/assets/lw-skills/f22040d520be633b6fe2f29be5e9c85e2dfd939dfe410890de93ca2932f02d8f.webp",
+      "offset": 2601284
+    },
+    "https://6sword.com/icons/lw/Skill/Skill_EagleScout.webp": {
+      "url": "https://6sword.com/icons/lw/Skill/Skill_EagleScout.webp",
+      "sha256": "d427d1828d70af677a14df5018e02dd54d374dc5a9a17c53dc2b117e120eccfe",
+      "bytes": 19952,
+      "width": 128,
+      "height": 128,
+      "contentType": "image/webp",
+      "src": "/assets/lw-skills/d427d1828d70af677a14df5018e02dd54d374dc5a9a17c53dc2b117e120eccfe.webp",
+      "offset": 2664500
+    },
+    "https://6sword.com/icons/lw/Skill/Skill_DragonRoar.webp": {
+      "url": "https://6sword.com/icons/lw/Skill/Skill_DragonRoar.webp",
+      "sha256": "304825be416c77a4e5d49d5b6fb6ac466781a93ef7aba10115e02aa67a2586a3",
+      "bytes": 20094,
+      "width": 128,
+      "height": 128,
+      "contentType": "image/webp",
+      "src": "/assets/lw-skills/304825be416c77a4e5d49d5b6fb6ac466781a93ef7aba10115e02aa67a2586a3.webp",
+      "offset": 2644406
+    },
+    "https://6sword.com/icons/lw/Skill/Skill_DoubleBreak.webp": {
+      "url": "https://6sword.com/icons/lw/Skill/Skill_DoubleBreak.webp",
+      "sha256": "cca790d31744c5c226ec7384b72a94f40767d824ec26c207c936e24eaf9b4373",
+      "bytes": 22442,
+      "width": 128,
+      "height": 128,
+      "contentType": "image/webp",
+      "src": "/assets/lw-skills/cca790d31744c5c226ec7384b72a94f40767d824ec26c207c936e24eaf9b4373.webp",
+      "offset": 2621964
+    },
+    "https://6sword.com/icons/lw/Skill/Skill_Elf_ElementalCounter.webp": {
+      "url": "https://6sword.com/icons/lw/Skill/Skill_Elf_ElementalCounter.webp",
+      "sha256": "3d19502f0f9620c2b6ad8a30052ad649a2ae3e6274feca38df346ee5603fa733",
+      "bytes": 22776,
+      "width": 128,
+      "height": 128,
+      "contentType": "image/webp",
+      "src": "/assets/lw-skills/3d19502f0f9620c2b6ad8a30052ad649a2ae3e6274feca38df346ee5603fa733.webp",
+      "offset": 2774770
+    },
+    "https://6sword.com/icons/lw/Skill/Skill_Elf_EarthUnion.webp": {
+      "url": "https://6sword.com/icons/lw/Skill/Skill_Elf_EarthUnion.webp",
+      "sha256": "4b5812b3c0cd633b435c9024b533e83ad2b3d567103e3b00806efeb1f5dc5255",
+      "bytes": 20884,
+      "width": 128,
+      "height": 128,
+      "contentType": "image/webp",
+      "src": "/assets/lw-skills/4b5812b3c0cd633b435c9024b533e83ad2b3d567103e3b00806efeb1f5dc5255.webp",
+      "offset": 2684452
+    },
+    "https://6sword.com/icons/lw/Skill/Skill_Elf_ElementalCure.webp": {
+      "url": "https://6sword.com/icons/lw/Skill/Skill_Elf_ElementalCure.webp",
+      "sha256": "824b3d4d5a210ec82d32abb43112ef53d05f32c46825276506181b504da6e60f",
+      "bytes": 22182,
+      "width": 128,
+      "height": 128,
+      "contentType": "image/webp",
+      "src": "/assets/lw-skills/824b3d4d5a210ec82d32abb43112ef53d05f32c46825276506181b504da6e60f.webp",
+      "offset": 2797546
+    },
+    "https://6sword.com/icons/lw/Skill/Skill_Elf_ElementalConversionCompany.webp": {
+      "url": "https://6sword.com/icons/lw/Skill/Skill_Elf_ElementalConversionCompany.webp",
+      "sha256": "eab3a972887c483e700de168609722987fa2fd6635d6dbf7023f0ac71170448b",
+      "bytes": 22586,
+      "width": 128,
+      "height": 128,
+      "contentType": "image/webp",
+      "src": "/assets/lw-skills/eab3a972887c483e700de168609722987fa2fd6635d6dbf7023f0ac71170448b.webp",
+      "offset": 2729496
+    },
+    "https://6sword.com/icons/lw/Skill/Skill_Elf_ElementalBarrier.webp": {
+      "url": "https://6sword.com/icons/lw/Skill/Skill_Elf_ElementalBarrier.webp",
+      "sha256": "8bd26da632ff579f4ceccb6ede2079b487fe8cc3b0b926c6f529ebaa6893fad0",
+      "bytes": 24160,
+      "width": 128,
+      "height": 128,
+      "contentType": "image/webp",
+      "src": "/assets/lw-skills/8bd26da632ff579f4ceccb6ede2079b487fe8cc3b0b926c6f529ebaa6893fad0.webp",
+      "offset": 2705336
+    },
+    "https://6sword.com/icons/lw/Skill/Skill_Elf_ElementalConversionEnemy.webp": {
+      "url": "https://6sword.com/icons/lw/Skill/Skill_Elf_ElementalConversionEnemy.webp",
+      "sha256": "83cd1c749a33288dbc74870761b8a3b981b981463d70c377f95c9669c31cccb7",
+      "bytes": 22688,
+      "width": 128,
+      "height": 128,
+      "contentType": "image/webp",
+      "src": "/assets/lw-skills/83cd1c749a33288dbc74870761b8a3b981b981463d70c377f95c9669c31cccb7.webp",
+      "offset": 2752082
+    },
+    "https://6sword.com/icons/lw/Skill/Skill_Elf_FlameSword.webp": {
+      "url": "https://6sword.com/icons/lw/Skill/Skill_Elf_FlameSword.webp",
+      "sha256": "1ed85c7254ef02bc6fd27c6717aacae98f5a3e09f31b01516516cd5dcf957b8d",
+      "bytes": 23342,
+      "width": 128,
+      "height": 128,
+      "contentType": "image/webp",
+      "src": "/assets/lw-skills/1ed85c7254ef02bc6fd27c6717aacae98f5a3e09f31b01516516cd5dcf957b8d.webp",
+      "offset": 2842150
+    },
+    "https://6sword.com/icons/lw/Skill/Skill_Elf_ShapeChange.webp": {
+      "url": "https://6sword.com/icons/lw/Skill/Skill_Elf_ShapeChange.webp",
+      "sha256": "4c7e51fc362ffb10e4d2ce9cccda7c92d9bc45d51f078bd65b89a509ff430680",
+      "bytes": 22818,
+      "width": 128,
+      "height": 128,
+      "contentType": "image/webp",
+      "src": "/assets/lw-skills/4c7e51fc362ffb10e4d2ce9cccda7c92d9bc45d51f078bd65b89a509ff430680.webp",
+      "offset": 2865492
+    },
+    "https://6sword.com/icons/lw/Skill/Skill_Elf_ElementalMaster.webp": {
+      "url": "https://6sword.com/icons/lw/Skill/Skill_Elf_ElementalMaster.webp",
+      "sha256": "503c61a4fde355a51923003cc5f4dae22af2e0e4b0b36d4edb2e28ba7a5f1a98",
+      "bytes": 22422,
+      "width": 128,
+      "height": 128,
+      "contentType": "image/webp",
+      "src": "/assets/lw-skills/503c61a4fde355a51923003cc5f4dae22af2e0e4b0b36d4edb2e28ba7a5f1a98.webp",
+      "offset": 2819728
+    },
+    "https://6sword.com/icons/lw/Skill/Skill_Elf_WindGrab.webp": {
+      "url": "https://6sword.com/icons/lw/Skill/Skill_Elf_WindGrab.webp",
+      "sha256": "c249493ee327188e535245d80bb66f16bf033ed209f965ab3b474b1b4582bb7c",
+      "bytes": 20590,
+      "width": 128,
+      "height": 128,
+      "contentType": "image/webp",
+      "src": "/assets/lw-skills/c249493ee327188e535245d80bb66f16bf033ed209f965ab3b474b1b4582bb7c.webp",
+      "offset": 2931000
+    },
+    "https://6sword.com/icons/lw/Skill/Skill_Elf_SoulEvasion.webp": {
+      "url": "https://6sword.com/icons/lw/Skill/Skill_Elf_SoulEvasion.webp",
+      "sha256": "9b9c1b800fc1712124a7579debf60b41b94530f0c8f8d5536ac7986b336494fe",
+      "bytes": 22012,
+      "width": 128,
+      "height": 128,
+      "contentType": "image/webp",
+      "src": "/assets/lw-skills/9b9c1b800fc1712124a7579debf60b41b94530f0c8f8d5536ac7986b336494fe.webp",
+      "offset": 2888310
+    },
+    "https://6sword.com/icons/lw/Skill/Skill_Elf_WaterDisease.webp": {
+      "url": "https://6sword.com/icons/lw/Skill/Skill_Elf_WaterDisease.webp",
+      "sha256": "c2fdda18051069e3209a3c478986b03629ba5d4611a4ad6e608c2a00bd5482d2",
+      "bytes": 20678,
+      "width": 128,
+      "height": 128,
+      "contentType": "image/webp",
+      "src": "/assets/lw-skills/c2fdda18051069e3209a3c478986b03629ba5d4611a4ad6e608c2a00bd5482d2.webp",
+      "offset": 2910322
+    },
+    "https://6sword.com/icons/lw/Skill/Skill_Endurance.webp": {
+      "url": "https://6sword.com/icons/lw/Skill/Skill_Endurance.webp",
+      "sha256": "b0e722a3b119d8e185795beab79376b0accc606b13dc86c8ab62c12ce3052b57",
+      "bytes": 23204,
+      "width": 128,
+      "height": 128,
+      "contentType": "image/webp",
+      "src": "/assets/lw-skills/b0e722a3b119d8e185795beab79376b0accc606b13dc86c8ab62c12ce3052b57.webp",
+      "offset": 2972132
+    },
+    "https://6sword.com/icons/lw/Skill/Skill_FinalBurn.webp": {
+      "url": "https://6sword.com/icons/lw/Skill/Skill_FinalBurn.webp",
+      "sha256": "5f1ad848fedcfe991f40508a95ff1b848dbd57aadf1319a7138181d185e37b85",
+      "bytes": 20264,
+      "width": 128,
+      "height": 128,
+      "contentType": "image/webp",
+      "src": "/assets/lw-skills/5f1ad848fedcfe991f40508a95ff1b848dbd57aadf1319a7138181d185e37b85.webp",
+      "offset": 2995336
+    },
+    "https://6sword.com/icons/lw/Skill/Skill_IllusionStep.webp": {
+      "url": "https://6sword.com/icons/lw/Skill/Skill_IllusionStep.webp",
+      "sha256": "1e41c207d0ed99736941aaf3d8ee0810f3772a8fe9bb9e4dea0c106130793b1d",
+      "bytes": 23688,
+      "width": 128,
+      "height": 128,
+      "contentType": "image/webp",
+      "src": "/assets/lw-skills/1e41c207d0ed99736941aaf3d8ee0810f3772a8fe9bb9e4dea0c106130793b1d.webp",
+      "offset": 3035454
+    },
+    "https://6sword.com/icons/lw/Skill/Skill_ImperialLegion.webp": {
+      "url": "https://6sword.com/icons/lw/Skill/Skill_ImperialLegion.webp",
+      "sha256": "dbd251080fa5515fb272491ee045f3e1bde4af25de2200b468250ddba92a918a",
+      "bytes": 19240,
+      "width": 128,
+      "height": 128,
+      "contentType": "image/webp",
+      "src": "/assets/lw-skills/dbd251080fa5515fb272491ee045f3e1bde4af25de2200b468250ddba92a918a.webp",
+      "offset": 3059142
+    },
+    "https://6sword.com/icons/lw/Skill/Skill_GreatHeal.webp": {
+      "url": "https://6sword.com/icons/lw/Skill/Skill_GreatHeal.webp",
+      "sha256": "cfc7f4159bcc4aa6dae70c3076bced9d4be540e93976a0e36a44fbb8cc8f0338",
+      "bytes": 19854,
+      "width": 128,
+      "height": 128,
+      "contentType": "image/webp",
+      "src": "/assets/lw-skills/cfc7f4159bcc4aa6dae70c3076bced9d4be540e93976a0e36a44fbb8cc8f0338.webp",
+      "offset": 3015600
+    },
+    "https://6sword.com/icons/lw/Skill/Skill_EncannyDodge.webp": {
+      "url": "https://6sword.com/icons/lw/Skill/Skill_EncannyDodge.webp",
+      "sha256": "ffe68fec4b8da82751bb3ff3b3ce2d363f166f4befd1d143abb3b4951b23945c",
+      "bytes": 20542,
+      "width": 128,
+      "height": 128,
+      "contentType": "image/webp",
+      "src": "/assets/lw-skills/ffe68fec4b8da82751bb3ff3b3ce2d363f166f4befd1d143abb3b4951b23945c.webp",
+      "offset": 2951590
+    },
+    "https://6sword.com/icons/lw/Skill/Skill_ImperialRoad.webp": {
+      "url": "https://6sword.com/icons/lw/Skill/Skill_ImperialRoad.webp",
+      "sha256": "9476cb7d41325ef234e3fbdccff21e2394e023007f4ec26c1bc5ea1ec5b85c3b",
+      "bytes": 24344,
+      "width": 128,
+      "height": 128,
+      "contentType": "image/webp",
+      "src": "/assets/lw-skills/9476cb7d41325ef234e3fbdccff21e2394e023007f4ec26c1bc5ea1ec5b85c3b.webp",
+      "offset": 3078382
+    },
+    "https://6sword.com/icons/lw/Skill/Skill_MovingAcceleration.webp": {
+      "url": "https://6sword.com/icons/lw/Skill/Skill_MovingAcceleration.webp",
+      "sha256": "1e3e44b4008237dfdb4dbe7e79c79ecbe217bf7e68157fb226d43fd563a38bfb",
+      "bytes": 18960,
+      "width": 128,
+      "height": 128,
+      "contentType": "image/webp",
+      "src": "/assets/lw-skills/1e3e44b4008237dfdb4dbe7e79c79ecbe217bf7e68157fb226d43fd563a38bfb.webp",
+      "offset": 3143330
+    },
+    "https://6sword.com/icons/lw/Skill/Skill_PR_GlowingProtect.webp": {
+      "url": "https://6sword.com/icons/lw/Skill/Skill_PR_GlowingProtect.webp",
+      "sha256": "426cd25cd6f92a94ec2cae9c1baa0da8db39636960b71db209561653d02572f0",
+      "bytes": 20766,
+      "width": 128,
+      "height": 128,
+      "contentType": "image/webp",
+      "src": "/assets/lw-skills/426cd25cd6f92a94ec2cae9c1baa0da8db39636960b71db209561653d02572f0.webp",
+      "offset": 3182638
+    },
+    "https://6sword.com/icons/lw/Skill/Skill_PR_Blast.webp": {
+      "url": "https://6sword.com/icons/lw/Skill/Skill_PR_Blast.webp",
+      "sha256": "2f1d87cbe417fe1cf8291a31883bfddbad0935306a8f89eece1489067b021fa2",
+      "bytes": 20348,
+      "width": 128,
+      "height": 128,
+      "contentType": "image/webp",
+      "src": "/assets/lw-skills/2f1d87cbe417fe1cf8291a31883bfddbad0935306a8f89eece1489067b021fa2.webp",
+      "offset": 3162290
+    },
+    "https://6sword.com/icons/lw/Skill/Skill_MConcentration.webp": {
+      "url": "https://6sword.com/icons/lw/Skill/Skill_MConcentration.webp",
+      "sha256": "d00966f3a77108d4e27bb3494617b4647afff12b1271531fa82d6e6e1b5e7705",
+      "bytes": 19456,
+      "width": 128,
+      "height": 128,
+      "contentType": "image/webp",
+      "src": "/assets/lw-skills/d00966f3a77108d4e27bb3494617b4647afff12b1271531fa82d6e6e1b5e7705.webp",
+      "offset": 3123874
+    },
+    "https://6sword.com/icons/lw/Skill/Skill_KN_KnightBody.webp": {
+      "url": "https://6sword.com/icons/lw/Skill/Skill_KN_KnightBody.webp",
+      "sha256": "6b7c39687fb2bb3cfa177fdc62d3e1ad983ab2a12c7747241a8b2f68c08c285a",
+      "bytes": 21148,
+      "width": 128,
+      "height": 128,
+      "contentType": "image/webp",
+      "src": "/assets/lw-skills/6b7c39687fb2bb3cfa177fdc62d3e1ad983ab2a12c7747241a8b2f68c08c285a.webp",
+      "offset": 3102726
+    },
+    "https://6sword.com/icons/lw/Skill/Skill_PR_M_Domination.webp": {
+      "url": "https://6sword.com/icons/lw/Skill/Skill_PR_M_Domination.webp",
+      "sha256": "66ff78fb20bbb260e55a1f13c3996000a8cb74d7de18cb0a07bfa6e81df91187",
+      "bytes": 22886,
+      "width": 128,
+      "height": 128,
+      "contentType": "image/webp",
+      "src": "/assets/lw-skills/66ff78fb20bbb260e55a1f13c3996000a8cb74d7de18cb0a07bfa6e81df91187.webp",
+      "offset": 3244488
+    },
+    "https://6sword.com/icons/lw/Skill/Skill_PR_M_VictoryOrder.webp": {
+      "url": "https://6sword.com/icons/lw/Skill/Skill_PR_M_VictoryOrder.webp",
+      "sha256": "260a626ebd5ccca4c8c72a2dd52e6da59dfcbe758e322db9426d78709e64ac27",
+      "bytes": 21920,
+      "width": 128,
+      "height": 128,
+      "contentType": "image/webp",
+      "src": "/assets/lw-skills/260a626ebd5ccca4c8c72a2dd52e6da59dfcbe758e322db9426d78709e64ac27.webp",
+      "offset": 3289190
+    },
+    "https://6sword.com/icons/lw/Skill/Skill_Passive_Conversion.webp": {
+      "url": "https://6sword.com/icons/lw/Skill/Skill_Passive_Conversion.webp",
+      "sha256": "2d965d08454bfa66faf37261fe057a61b5ed1d2888ed1db0d70d2fd8dc12ed98",
+      "bytes": 21480,
+      "width": 128,
+      "height": 128,
+      "contentType": "image/webp",
+      "src": "/assets/lw-skills/2d965d08454bfa66faf37261fe057a61b5ed1d2888ed1db0d70d2fd8dc12ed98.webp",
+      "offset": 3311110
+    },
+    "https://6sword.com/icons/lw/Skill/Skill_PR_ImperialCounter.webp": {
+      "url": "https://6sword.com/icons/lw/Skill/Skill_PR_ImperialCounter.webp",
+      "sha256": "d87c0317da9c15e89d4b3f6cbc255d98207cd50be83cfe36201cf6d9cb6641f2",
+      "bytes": 19936,
+      "width": 128,
+      "height": 128,
+      "contentType": "image/webp",
+      "src": "/assets/lw-skills/d87c0317da9c15e89d4b3f6cbc255d98207cd50be83cfe36201cf6d9cb6641f2.webp",
+      "offset": 3224552
+    },
+    "https://6sword.com/icons/lw/Skill/Skill_PR_GlowingWarrior.webp": {
+      "url": "https://6sword.com/icons/lw/Skill/Skill_PR_GlowingWarrior.webp",
+      "sha256": "a6b8502c3d2453d7a7342fd85fa181b2e23c97a388982c19a66ff672ab538b4d",
+      "bytes": 21148,
+      "width": 128,
+      "height": 128,
+      "contentType": "image/webp",
+      "src": "/assets/lw-skills/a6b8502c3d2453d7a7342fd85fa181b2e23c97a388982c19a66ff672ab538b4d.webp",
+      "offset": 3203404
+    },
+    "https://6sword.com/icons/lw/Skill/Skill_PR_M_GloryingGuardian.webp": {
+      "url": "https://6sword.com/icons/lw/Skill/Skill_PR_M_GloryingGuardian.webp",
+      "sha256": "295c6035d4602892e41c427e42c700461c664bdeb37a255bd170bf84e37e2642",
+      "bytes": 21816,
+      "width": 128,
+      "height": 128,
+      "contentType": "image/webp",
+      "src": "/assets/lw-skills/295c6035d4602892e41c427e42c700461c664bdeb37a255bd170bf84e37e2642.webp",
+      "offset": 3267374
+    },
+    "https://6sword.com/icons/lw/Skill/Skill_SA_DA.webp": {
+      "url": "https://6sword.com/icons/lw/Skill/Skill_SA_DA.webp",
+      "sha256": "73af4375fc3bcddf5d3252ea001ac1a0810cffc9f3efa1e4056cb8c838743af5",
+      "bytes": 22838,
+      "width": 128,
+      "height": 128,
+      "contentType": "image/webp",
+      "src": "/assets/lw-skills/73af4375fc3bcddf5d3252ea001ac1a0810cffc9f3efa1e4056cb8c838743af5.webp",
+      "offset": 3418036
+    },
+    "https://6sword.com/icons/lw/Skill/Skill_Pulling.webp": {
+      "url": "https://6sword.com/icons/lw/Skill/Skill_Pulling.webp",
+      "sha256": "0205a04e5f1c8fd2b68a1ccba5d16713a5867e5a3c0af399fc49c56318ed706f",
+      "bytes": 21100,
+      "width": 128,
+      "height": 128,
+      "contentType": "image/webp",
+      "src": "/assets/lw-skills/0205a04e5f1c8fd2b68a1ccba5d16713a5867e5a3c0af399fc49c56318ed706f.webp",
+      "offset": 3356162
+    },
+    "https://6sword.com/icons/lw/Skill/Skill_SA_EF_Bow.webp": {
+      "url": "https://6sword.com/icons/lw/Skill/Skill_SA_EF_Bow.webp",
+      "sha256": "d5defce0cbe9d2edfe5303e2c7a4b99ea83f99188e12a2935d9da423211994a7",
+      "bytes": 23678,
+      "width": 128,
+      "height": 128,
+      "contentType": "image/webp",
+      "src": "/assets/lw-skills/d5defce0cbe9d2edfe5303e2c7a4b99ea83f99188e12a2935d9da423211994a7.webp",
+      "offset": 3440874
+    },
+    "https://6sword.com/icons/lw/Skill/Skill_Passive_FocusAura.webp": {
+      "url": "https://6sword.com/icons/lw/Skill/Skill_Passive_FocusAura.webp",
+      "sha256": "5e986efb026d0363e8983bd27fee952723cef8bdd79fb1128228f83b81a97e42",
+      "bytes": 23572,
+      "width": 128,
+      "height": 128,
+      "contentType": "image/webp",
+      "src": "/assets/lw-skills/5e986efb026d0363e8983bd27fee952723cef8bdd79fb1128228f83b81a97e42.webp",
+      "offset": 3332590
+    },
+    "https://6sword.com/icons/lw/Skill/Skill_Release.webp": {
+      "url": "https://6sword.com/icons/lw/Skill/Skill_Release.webp",
+      "sha256": "d9beebfc806367d31011606fd7297635968d97300795e8e44fc023fefdc7397c",
+      "bytes": 20526,
+      "width": 128,
+      "height": 128,
+      "contentType": "image/webp",
+      "src": "/assets/lw-skills/d9beebfc806367d31011606fd7297635968d97300795e8e44fc023fefdc7397c.webp",
+      "offset": 3397510
+    },
+    "https://6sword.com/icons/lw/Skill/Skill_RecoveryBarrier.webp": {
+      "url": "https://6sword.com/icons/lw/Skill/Skill_RecoveryBarrier.webp",
+      "sha256": "0f7699f877d782287a59b5d88f02e72a8942b6d37660424fa4ac85c6e122fcec",
+      "bytes": 20248,
+      "width": 128,
+      "height": 128,
+      "contentType": "image/webp",
+      "src": "/assets/lw-skills/0f7699f877d782287a59b5d88f02e72a8942b6d37660424fa4ac85c6e122fcec.webp",
+      "offset": 3377262
+    },
+    "https://6sword.com/icons/lw/Skill/Skill_SA_KN.webp": {
+      "url": "https://6sword.com/icons/lw/Skill/Skill_SA_KN.webp",
+      "sha256": "8174d93204c3f2aa57af6310a1752563176f2389d2a5678134d878b7c90a2fe5",
+      "bytes": 22936,
+      "width": 128,
+      "height": 128,
+      "contentType": "image/webp",
+      "src": "/assets/lw-skills/8174d93204c3f2aa57af6310a1752563176f2389d2a5678134d878b7c90a2fe5.webp",
+      "offset": 3464552
+    },
+    "https://6sword.com/icons/lw/Skill/Skill_ShadowGrab.webp": {
+      "url": "https://6sword.com/icons/lw/Skill/Skill_ShadowGrab.webp",
+      "sha256": "114233ce08762445baade27fbe07d50d48fdd380304ff239df66aaadf5c2e509",
+      "bytes": 21478,
+      "width": 128,
+      "height": 128,
+      "contentType": "image/webp",
+      "src": "/assets/lw-skills/114233ce08762445baade27fbe07d50d48fdd380304ff239df66aaadf5c2e509.webp",
+      "offset": 3556778
+    },
+    "https://6sword.com/icons/lw/Skill/Skill_SA_MA.webp": {
+      "url": "https://6sword.com/icons/lw/Skill/Skill_SA_MA.webp",
+      "sha256": "21b7488e09ee494a3bf15cc01e1ac52ae1e27dfb04ffc5cf98ba9d66a6e01f0d",
+      "bytes": 23844,
+      "width": 128,
+      "height": 128,
+      "contentType": "image/webp",
+      "src": "/assets/lw-skills/21b7488e09ee494a3bf15cc01e1ac52ae1e27dfb04ffc5cf98ba9d66a6e01f0d.webp",
+      "offset": 3487488
+    },
+    "https://6sword.com/icons/lw/Skill/Skill_ShadowStrike.webp": {
+      "url": "https://6sword.com/icons/lw/Skill/Skill_ShadowStrike.webp",
+      "sha256": "4d9f8cf2a0d2b15d1c3a514fe6018b4eb7cf213846e304826b5368fcbc3a46d3",
+      "bytes": 19604,
+      "width": 128,
+      "height": 128,
+      "contentType": "image/webp",
+      "src": "/assets/lw-skills/4d9f8cf2a0d2b15d1c3a514fe6018b4eb7cf213846e304826b5368fcbc3a46d3.webp",
+      "offset": 3578256
+    },
+    "https://6sword.com/icons/lw/Skill/Skill_SA_PR.webp": {
+      "url": "https://6sword.com/icons/lw/Skill/Skill_SA_PR.webp",
+      "sha256": "092bacd50ebc2b5be86b9f6ce710cd2b9820b17d8f4644fd743b05a04ae4ba7d",
+      "bytes": 23210,
+      "width": 128,
+      "height": 128,
+      "contentType": "image/webp",
+      "src": "/assets/lw-skills/092bacd50ebc2b5be86b9f6ce710cd2b9820b17d8f4644fd743b05a04ae4ba7d.webp",
+      "offset": 3511332
+    },
+    "https://6sword.com/icons/lw/Skill/Skill_Severance.webp": {
+      "url": "https://6sword.com/icons/lw/Skill/Skill_Severance.webp",
+      "sha256": "7475509e51aaa3d80a634555886b8db6cff97a0a7e436f9faba612fb7a609cc0",
+      "bytes": 22236,
+      "width": 128,
+      "height": 128,
+      "contentType": "image/webp",
+      "src": "/assets/lw-skills/7475509e51aaa3d80a634555886b8db6cff97a0a7e436f9faba612fb7a609cc0.webp",
+      "offset": 3534542
+    },
+    "https://6sword.com/icons/lw/Skill/Skill_Siege_MassStrike.webp": {
+      "url": "https://6sword.com/icons/lw/Skill/Skill_Siege_MassStrike.webp",
+      "sha256": "031bc00d8487a55bba40cac7227bee8ce58de6b1b4ce3dd75c5494b7f21f7170",
+      "bytes": 27238,
+      "width": 128,
+      "height": 128,
+      "contentType": "image/webp",
+      "src": "/assets/lw-skills/031bc00d8487a55bba40cac7227bee8ce58de6b1b4ce3dd75c5494b7f21f7170.webp",
+      "offset": 3647386
+    },
+    "https://6sword.com/icons/lw/Skill/Skill_Stop.webp": {
+      "url": "https://6sword.com/icons/lw/Skill/Skill_Stop.webp",
+      "sha256": "31f50a51b81429bffd10aea1e3684a1667e88d13b9a40750ba792890eab3feda",
+      "bytes": 18590,
+      "width": 128,
+      "height": 128,
+      "contentType": "image/webp",
+      "src": "/assets/lw-skills/31f50a51b81429bffd10aea1e3684a1667e88d13b9a40750ba792890eab3feda.webp",
+      "offset": 3674624
+    },
+    "https://6sword.com/icons/lw/Skill/Skill_ShadowWeakness.webp": {
+      "url": "https://6sword.com/icons/lw/Skill/Skill_ShadowWeakness.webp",
+      "sha256": "e1f05d82bd6d89357515d11d5e7016437e5f8b10b1e88672971e60f2882f2c2f",
+      "bytes": 22008,
+      "width": 128,
+      "height": 128,
+      "contentType": "image/webp",
+      "src": "/assets/lw-skills/e1f05d82bd6d89357515d11d5e7016437e5f8b10b1e88672971e60f2882f2c2f.webp",
+      "offset": 3597860
+    },
+    "https://6sword.com/icons/lw/Skill/absolutebarrier.webp": {
+      "url": "https://6sword.com/icons/lw/Skill/absolutebarrier.webp",
+      "sha256": "13671701628f28c7887ffc53ae63d6805a77c4b25a76441e9f96a72ea6672eba",
+      "bytes": 19466,
+      "width": 128,
+      "height": 128,
+      "contentType": "image/webp",
+      "src": "/assets/lw-skills/13671701628f28c7887ffc53ae63d6805a77c4b25a76441e9f96a72ea6672eba.webp",
+      "offset": 3713748
+    },
+    "https://6sword.com/icons/lw/Skill/Skill_StrikeAttack.webp": {
+      "url": "https://6sword.com/icons/lw/Skill/Skill_StrikeAttack.webp",
+      "sha256": "1f7241a9b57c433737fda4b9f0ccf10b6c128f07748494e31bdb48842594e2d6",
+      "bytes": 20534,
+      "width": 128,
+      "height": 128,
+      "contentType": "image/webp",
+      "src": "/assets/lw-skills/1f7241a9b57c433737fda4b9f0ccf10b6c128f07748494e31bdb48842594e2d6.webp",
+      "offset": 3693214
+    },
+    "https://6sword.com/icons/lw/Skill/Skill_Siege_MassSilence.webp": {
+      "url": "https://6sword.com/icons/lw/Skill/Skill_Siege_MassSilence.webp",
+      "sha256": "a0cd76fd6b2a041450dd657955470ad3fcb4b25a73f61c18c664fe2897b9c03a",
+      "bytes": 27518,
+      "width": 128,
+      "height": 128,
+      "contentType": "image/webp",
+      "src": "/assets/lw-skills/a0cd76fd6b2a041450dd657955470ad3fcb4b25a73f61c18c664fe2897b9c03a.webp",
+      "offset": 3619868
+    },
+    "https://6sword.com/icons/lw/Skill/areaofsilence.webp": {
+      "url": "https://6sword.com/icons/lw/Skill/areaofsilence.webp",
+      "sha256": "13d572db88b4fc4420b70904e2aa77d96d2dae7a9954b7003c6b38f78a9d224c",
+      "bytes": 22346,
+      "width": 128,
+      "height": 128,
+      "contentType": "image/webp",
+      "src": "/assets/lw-skills/13d572db88b4fc4420b70904e2aa77d96d2dae7a9954b7003c6b38f78a9d224c.webp",
+      "offset": 3776092
+    },
+    "https://6sword.com/icons/lw/Skill/bloodtosoul.webp": {
+      "url": "https://6sword.com/icons/lw/Skill/bloodtosoul.webp",
+      "sha256": "3f9136e235faad134959130cdf8edb22567665cc8ee9d6d91908386c0ca1e333",
+      "bytes": 20038,
+      "width": 128,
+      "height": 128,
+      "contentType": "image/webp",
+      "src": "/assets/lw-skills/3f9136e235faad134959130cdf8edb22567665cc8ee9d6d91908386c0ca1e333.webp",
+      "offset": 3798438
+    },
+    "https://6sword.com/icons/lw/Skill/bounceattack.webp": {
+      "url": "https://6sword.com/icons/lw/Skill/bounceattack.webp",
+      "sha256": "6619dbb76aef45433c1678ddb570aabce4497682b455c0ba1785fcc8bf77c075",
+      "bytes": 20162,
+      "width": 128,
+      "height": 128,
+      "contentType": "image/webp",
+      "src": "/assets/lw-skills/6619dbb76aef45433c1678ddb570aabce4497682b455c0ba1785fcc8bf77c075.webp",
+      "offset": 3838314
+    },
+    "https://6sword.com/icons/lw/Skill/blowattack.webp": {
+      "url": "https://6sword.com/icons/lw/Skill/blowattack.webp",
+      "sha256": "ea7def5539e77de711d80694729522ad2c8d4229b29acaadea9810b368557a27",
+      "bytes": 19838,
+      "width": 128,
+      "height": 128,
+      "contentType": "image/webp",
+      "src": "/assets/lw-skills/ea7def5539e77de711d80694729522ad2c8d4229b29acaadea9810b368557a27.webp",
+      "offset": 3818476
+    },
+    "https://6sword.com/icons/lw/Skill/aquaprotector.webp": {
+      "url": "https://6sword.com/icons/lw/Skill/aquaprotector.webp",
+      "sha256": "d015956c05d3b12f25472628ad3f511b73e39b98a9b42eb42f77c70eb0e33252",
+      "bytes": 20816,
+      "width": 128,
+      "height": 128,
+      "contentType": "image/webp",
+      "src": "/assets/lw-skills/d015956c05d3b12f25472628ad3f511b73e39b98a9b42eb42f77c70eb0e33252.webp",
+      "offset": 3755276
+    },
+    "https://6sword.com/icons/lw/Skill/addtionalfire.webp": {
+      "url": "https://6sword.com/icons/lw/Skill/addtionalfire.webp",
+      "sha256": "f3833f3e823f3ed17bf2baf2a0f152874d0709655c5358bdf00a36ef187d568e",
+      "bytes": 22062,
+      "width": 128,
+      "height": 128,
+      "contentType": "image/webp",
+      "src": "/assets/lw-skills/f3833f3e823f3ed17bf2baf2a0f152874d0709655c5358bdf00a36ef187d568e.webp",
+      "offset": 3733214
+    },
+    "https://6sword.com/icons/lw/Skill/cancellation.webp": {
+      "url": "https://6sword.com/icons/lw/Skill/cancellation.webp",
+      "sha256": "6848e82dc72fa38698b5018362092c428ecbc795eab764c8a0a52b7f47a75cab",
+      "bytes": 18710,
+      "width": 128,
+      "height": 128,
+      "contentType": "image/webp",
+      "src": "/assets/lw-skills/6848e82dc72fa38698b5018362092c428ecbc795eab764c8a0a52b7f47a75cab.webp",
+      "offset": 3922202
+    },
+    "https://6sword.com/icons/lw/Skill/counterbarrier.webp": {
+      "url": "https://6sword.com/icons/lw/Skill/counterbarrier.webp",
+      "sha256": "3502ab19346312f695235227c05e36ec1eee6d32bb5d4df1da706878b4660807",
+      "bytes": 20454,
+      "width": 128,
+      "height": 128,
+      "contentType": "image/webp",
+      "src": "/assets/lw-skills/3502ab19346312f695235227c05e36ec1eee6d32bb5d4df1da706878b4660807.webp",
+      "offset": 3940912
+    },
+    "https://6sword.com/icons/lw/Skill/countermagic.webp": {
+      "url": "https://6sword.com/icons/lw/Skill/countermagic.webp",
+      "sha256": "e03ed10c7ca18dbbe9c5b17e9ff18668763505c6dd4d0db86b68f5d2dce0da65",
+      "bytes": 19408,
+      "width": 128,
+      "height": 128,
+      "contentType": "image/webp",
+      "src": "/assets/lw-skills/e03ed10c7ca18dbbe9c5b17e9ff18668763505c6dd4d0db86b68f5d2dce0da65.webp",
+      "offset": 3961366
+    },
+    "https://6sword.com/icons/lw/Skill/burningweapon.webp": {
+      "url": "https://6sword.com/icons/lw/Skill/burningweapon.webp",
+      "sha256": "1298ff58dab76479719b255759552c0b8390160c8ae8462e75015c923b970612",
+      "bytes": 22746,
+      "width": 128,
+      "height": 128,
+      "contentType": "image/webp",
+      "src": "/assets/lw-skills/1298ff58dab76479719b255759552c0b8390160c8ae8462e75015c923b970612.webp",
+      "offset": 3878138
+    },
+    "https://6sword.com/icons/lw/Skill/bravemental.webp": {
+      "url": "https://6sword.com/icons/lw/Skill/bravemental.webp",
+      "sha256": "94f1ac2a0f8bf322c8ffdd55077ae2bd46f05bda81443ed1c99c4136bf0e09d8",
+      "bytes": 19662,
+      "width": 128,
+      "height": 128,
+      "contentType": "image/webp",
+      "src": "/assets/lw-skills/94f1ac2a0f8bf322c8ffdd55077ae2bd46f05bda81443ed1c99c4136bf0e09d8.webp",
+      "offset": 3858476
+    },
+    "https://6sword.com/icons/lw/Skill/calllightning.webp": {
+      "url": "https://6sword.com/icons/lw/Skill/calllightning.webp",
+      "sha256": "817778fc01fdb412af09c5d97af8b62b7b1fb3ae09d06c31318e7444ac9dad57",
+      "bytes": 21318,
+      "width": 128,
+      "height": 128,
+      "contentType": "image/webp",
+      "src": "/assets/lw-skills/817778fc01fdb412af09c5d97af8b62b7b1fb3ae09d06c31318e7444ac9dad57.webp",
+      "offset": 3900884
+    },
+    "https://6sword.com/icons/lw/Skill/curepoison.webp": {
+      "url": "https://6sword.com/icons/lw/Skill/curepoison.webp",
+      "sha256": "5c08c3d35794f24f274f1b439bd349fec72bd763fcb685d4407e5e04738571bd",
+      "bytes": 21590,
+      "width": 128,
+      "height": 128,
+      "contentType": "image/webp",
+      "src": "/assets/lw-skills/5c08c3d35794f24f274f1b439bd349fec72bd763fcb685d4407e5e04738571bd.webp",
+      "offset": 3980774
+    },
+    "https://6sword.com/icons/lw/Skill/earthbind.webp": {
+      "url": "https://6sword.com/icons/lw/Skill/earthbind.webp",
+      "sha256": "f444bf789de181098f4646f6459cfc5daf997ff96e4dad328bae66b63fc4d811",
+      "bytes": 21466,
+      "width": 128,
+      "height": 128,
+      "contentType": "image/webp",
+      "src": "/assets/lw-skills/f444bf789de181098f4646f6459cfc5daf997ff96e4dad328bae66b63fc4d811.webp",
+      "offset": 4063576
+    },
+    "https://6sword.com/icons/lw/Skill/dancingblaze.webp": {
+      "url": "https://6sword.com/icons/lw/Skill/dancingblaze.webp",
+      "sha256": "00f523d435d96c5200f3894a7228bb91b626ed80c11ef2adf9112f5a5fc5c6bb",
+      "bytes": 22006,
+      "width": 128,
+      "height": 128,
+      "contentType": "image/webp",
+      "src": "/assets/lw-skills/00f523d435d96c5200f3894a7228bb91b626ed80c11ef2adf9112f5a5fc5c6bb.webp",
+      "offset": 4002364
+    },
+    "https://6sword.com/icons/lw/Skill/disintegrate.webp": {
+      "url": "https://6sword.com/icons/lw/Skill/disintegrate.webp",
+      "sha256": "1ac30fe368b3c60b70ab2fd23c9b3d1dded389ace22da313d1e53a6a9f31a26e",
+      "bytes": 20062,
+      "width": 128,
+      "height": 128,
+      "contentType": "image/webp",
+      "src": "/assets/lw-skills/1ac30fe368b3c60b70ab2fd23c9b3d1dded389ace22da313d1e53a6a9f31a26e.webp",
+      "offset": 4043514
+    },
+    "https://6sword.com/icons/lw/Skill/detection.webp": {
+      "url": "https://6sword.com/icons/lw/Skill/detection.webp",
+      "sha256": "59fc70bf19060cfc1e86e646ed8cc44cada669de53606933cbea83904071a91b",
+      "bytes": 19144,
+      "width": 128,
+      "height": 128,
+      "contentType": "image/webp",
+      "src": "/assets/lw-skills/59fc70bf19060cfc1e86e646ed8cc44cada669de53606933cbea83904071a91b.webp",
+      "offset": 4024370
+    },
+    "https://6sword.com/icons/lw/Skill/earthguardian.webp": {
+      "url": "https://6sword.com/icons/lw/Skill/earthguardian.webp",
+      "sha256": "f036814b8943f501226f733c03d44098b74fbe0201d328032ad1836edb57bcb0",
+      "bytes": 20754,
+      "width": 128,
+      "height": 128,
+      "contentType": "image/webp",
+      "src": "/assets/lw-skills/f036814b8943f501226f733c03d44098b74fbe0201d328032ad1836edb57bcb0.webp",
+      "offset": 4085042
+    },
+    "https://6sword.com/icons/lw/Skill/fireball.webp": {
+      "url": "https://6sword.com/icons/lw/Skill/fireball.webp",
+      "sha256": "620271842830cef55165602806e664ef24eb4a74739015c08e2dfdeda6039642",
+      "bytes": 21754,
+      "width": 128,
+      "height": 128,
+      "contentType": "image/webp",
+      "src": "/assets/lw-skills/620271842830cef55165602806e664ef24eb4a74739015c08e2dfdeda6039642.webp",
+      "offset": 4163234
+    },
+    "https://6sword.com/icons/lw/Skill/fogofsleeping.webp": {
+      "url": "https://6sword.com/icons/lw/Skill/fogofsleeping.webp",
+      "sha256": "97307cac0a51222fa8f8bfce458370f66944e42572be73a0f8d4158e4a7b1b0b",
+      "bytes": 20138,
+      "width": 128,
+      "height": 128,
+      "contentType": "image/webp",
+      "src": "/assets/lw-skills/97307cac0a51222fa8f8bfce458370f66944e42572be73a0f8d4158e4a7b1b0b.webp",
+      "offset": 4184988
+    },
+    "https://6sword.com/icons/lw/Skill/erasemagic.webp": {
+      "url": "https://6sword.com/icons/lw/Skill/erasemagic.webp",
+      "sha256": "6ecfe1f65197ccbac11d587eafa77b694c18382532cf6371243fb30c901758d6",
+      "bytes": 19452,
+      "width": 128,
+      "height": 128,
+      "contentType": "image/webp",
+      "src": "/assets/lw-skills/6ecfe1f65197ccbac11d587eafa77b694c18382532cf6371243fb30c901758d6.webp",
+      "offset": 4124390
+    },
+    "https://6sword.com/icons/lw/Skill/eruption.webp": {
+      "url": "https://6sword.com/icons/lw/Skill/eruption.webp",
+      "sha256": "100f5108e3e80033b3e96fa54b18c389ca8384b29972133f23f0b3b3b2cd2986",
+      "bytes": 19392,
+      "width": 128,
+      "height": 128,
+      "contentType": "image/webp",
+      "src": "/assets/lw-skills/100f5108e3e80033b3e96fa54b18c389ca8384b29972133f23f0b3b3b2cd2986.webp",
+      "offset": 4143842
+    },
+    "https://6sword.com/icons/lw/Skill/energybolt.webp": {
+      "url": "https://6sword.com/icons/lw/Skill/energybolt.webp",
+      "sha256": "745d208951f16af9ff1ac7b8861d017e7b192f0461d16f13ae3bacd50252b94e",
+      "bytes": 18594,
+      "width": 128,
+      "height": 128,
+      "contentType": "image/webp",
+      "src": "/assets/lw-skills/745d208951f16af9ff1ac7b8861d017e7b192f0461d16f13ae3bacd50252b94e.webp",
+      "offset": 4105796
+    },
+    "https://6sword.com/icons/lw/Skill/frozencloud.webp": {
+      "url": "https://6sword.com/icons/lw/Skill/frozencloud.webp",
+      "sha256": "0514df63aba052df41a6aec1b9883457a8b65ced7558d87350dc98e27bfece3f",
+      "bytes": 21934,
+      "width": 128,
+      "height": 128,
+      "contentType": "image/webp",
+      "src": "/assets/lw-skills/0514df63aba052df41a6aec1b9883457a8b65ced7558d87350dc98e27bfece3f.webp",
+      "offset": 4205126
+    },
+    "https://6sword.com/icons/lw/Skill/ironskin.webp": {
+      "url": "https://6sword.com/icons/lw/Skill/ironskin.webp",
+      "sha256": "6ecb4318365c5031cc229073c4f357c9b4b2517ff83d7e1bc61da4bbcd9f9cc4",
+      "bytes": 21626,
+      "width": 128,
+      "height": 128,
+      "contentType": "image/webp",
+      "src": "/assets/lw-skills/6ecb4318365c5031cc229073c4f357c9b4b2517ff83d7e1bc61da4bbcd9f9cc4.webp",
+      "offset": 4329512
+    },
+    "https://6sword.com/icons/lw/Skill/glowingweapon.webp": {
+      "url": "https://6sword.com/icons/lw/Skill/glowingweapon.webp",
+      "sha256": "6f1033434e5021b7baa6142e1aea49d744f3d4a8e0e5525d5a52b5eef431274d",
+      "bytes": 19450,
+      "width": 128,
+      "height": 128,
+      "contentType": "image/webp",
+      "src": "/assets/lw-skills/6f1033434e5021b7baa6142e1aea49d744f3d4a8e0e5525d5a52b5eef431274d.webp",
+      "offset": 4227060
+    },
+    "https://6sword.com/icons/lw/Skill/greaterheal.webp": {
+      "url": "https://6sword.com/icons/lw/Skill/greaterheal.webp",
+      "sha256": "b1457ded3d2dc3e56cd4ad8fec777d47be98b4bac4d0cbf412b37e11e56adb3a",
+      "bytes": 20070,
+      "width": 128,
+      "height": 128,
+      "contentType": "image/webp",
+      "src": "/assets/lw-skills/b1457ded3d2dc3e56cd4ad8fec777d47be98b4bac4d0cbf412b37e11e56adb3a.webp",
+      "offset": 4246510
+    },
+    "https://6sword.com/icons/lw/Skill/healall.webp": {
+      "url": "https://6sword.com/icons/lw/Skill/healall.webp",
+      "sha256": "278a7fee27f066c19f4fb9c5603ba41002cb97a2c7fb5c0df277be9de5fb7f4b",
+      "bytes": 19876,
+      "width": 128,
+      "height": 128,
+      "contentType": "image/webp",
+      "src": "/assets/lw-skills/278a7fee27f066c19f4fb9c5603ba41002cb97a2c7fb5c0df277be9de5fb7f4b.webp",
+      "offset": 4266580
+    },
+    "https://6sword.com/icons/lw/Skill/immunetoharmness.webp": {
+      "url": "https://6sword.com/icons/lw/Skill/immunetoharmness.webp",
+      "sha256": "2ef40a31249763959f7a7b958fdf0443c770e244f3c332cc642e3ec9d558d142",
+      "bytes": 20434,
+      "width": 128,
+      "height": 128,
+      "contentType": "image/webp",
+      "src": "/assets/lw-skills/2ef40a31249763959f7a7b958fdf0443c770e244f3c332cc642e3ec9d558d142.webp",
+      "offset": 4309078
+    },
+    "https://6sword.com/icons/lw/Skill/icestalag.webp": {
+      "url": "https://6sword.com/icons/lw/Skill/icestalag.webp",
+      "sha256": "0be3454473e7ac246bacc997e3f7de6f9dff21d3c6a428e102dcaa64890cbf30",
+      "bytes": 22622,
+      "width": 128,
+      "height": 128,
+      "contentType": "image/webp",
+      "src": "/assets/lw-skills/0be3454473e7ac246bacc997e3f7de6f9dff21d3c6a428e102dcaa64890cbf30.webp",
+      "offset": 4286456
+    },
+    "https://6sword.com/icons/lw/Skill/pollutewater.webp": {
+      "url": "https://6sword.com/icons/lw/Skill/pollutewater.webp",
+      "sha256": "9b6f592d308219d4b45ee918ebe3d69548cd14eac2dbc4728dfd5797fa0fd631",
+      "bytes": 23556,
+      "width": 128,
+      "height": 128,
+      "contentType": "image/webp",
+      "src": "/assets/lw-skills/9b6f592d308219d4b45ee918ebe3d69548cd14eac2dbc4728dfd5797fa0fd631.webp",
+      "offset": 4454512
+    },
+    "https://6sword.com/icons/lw/Skill/manadrain.webp": {
+      "url": "https://6sword.com/icons/lw/Skill/manadrain.webp",
+      "sha256": "a56658f7d209d8cef3c8f00875fda82e91a484f4d5855d31721d0ef1deedc811",
+      "bytes": 20620,
+      "width": 128,
+      "height": 128,
+      "contentType": "image/webp",
+      "src": "/assets/lw-skills/a56658f7d209d8cef3c8f00875fda82e91a484f4d5855d31721d0ef1deedc811.webp",
+      "offset": 4370602
+    },
+    "https://6sword.com/icons/lw/Skill/naturestouch.webp": {
+      "url": "https://6sword.com/icons/lw/Skill/naturestouch.webp",
+      "sha256": "58e634c2ff192135cda28ea1f4d1abad1239c0737b84546010ae6b383450a363",
+      "bytes": 19928,
+      "width": 128,
+      "height": 128,
+      "contentType": "image/webp",
+      "src": "/assets/lw-skills/58e634c2ff192135cda28ea1f4d1abad1239c0737b84546010ae6b383450a363.webp",
+      "offset": 4434584
+    },
+    "https://6sword.com/icons/lw/Skill/naturesblessing.webp": {
+      "url": "https://6sword.com/icons/lw/Skill/naturesblessing.webp",
+      "sha256": "b18fb026d5a8ec11881c37845265086001985c4a223f7cc50fd1eed2af69d31f",
+      "bytes": 20748,
+      "width": 128,
+      "height": 128,
+      "contentType": "image/webp",
+      "src": "/assets/lw-skills/b18fb026d5a8ec11881c37845265086001985c4a223f7cc50fd1eed2af69d31f.webp",
+      "offset": 4413836
+    },
+    "https://6sword.com/icons/lw/Skill/meteorstrike.webp": {
+      "url": "https://6sword.com/icons/lw/Skill/meteorstrike.webp",
+      "sha256": "a6fde13191f599628a2ea440ad2a87c31fa341c89398c029df8e65b667121786",
+      "bytes": 22614,
+      "width": 128,
+      "height": 128,
+      "contentType": "image/webp",
+      "src": "/assets/lw-skills/a6fde13191f599628a2ea440ad2a87c31fa341c89398c029df8e65b667121786.webp",
+      "offset": 4391222
+    },
+    "https://6sword.com/icons/lw/Skill/majesty.webp": {
+      "url": "https://6sword.com/icons/lw/Skill/majesty.webp",
+      "sha256": "1635d4b9913413146e452f9fb5e54421ecec602feec7abbeaf5150e88f0246f9",
+      "bytes": 19464,
+      "width": 128,
+      "height": 128,
+      "contentType": "image/webp",
+      "src": "/assets/lw-skills/1635d4b9913413146e452f9fb5e54421ecec602feec7abbeaf5150e88f0246f9.webp",
+      "offset": 4351138
+    },
+    "https://6sword.com/icons/lw/Skill/shiningshield.webp": {
+      "url": "https://6sword.com/icons/lw/Skill/shiningshield.webp",
+      "sha256": "fbf6b1e92d960171488034abaf72a52d080209ac5fa6f9f8a5f2e2c7936707fc",
+      "bytes": 20924,
+      "width": 128,
+      "height": 128,
+      "contentType": "image/webp",
+      "src": "/assets/lw-skills/fbf6b1e92d960171488034abaf72a52d080209ac5fa6f9f8a5f2e2c7936707fc.webp",
+      "offset": 4555336
+    },
+    "https://6sword.com/icons/lw/Skill/shield.webp": {
+      "url": "https://6sword.com/icons/lw/Skill/shield.webp",
+      "sha256": "a3d805f02da2dcb85b928ebdee49d5b55b828f5ce0ea09c7d9f713139aabf49e",
+      "bytes": 19598,
+      "width": 128,
+      "height": 128,
+      "contentType": "image/webp",
+      "src": "/assets/lw-skills/a3d805f02da2dcb85b928ebdee49d5b55b828f5ce0ea09c7d9f713139aabf49e.webp",
+      "offset": 4535738
+    },
+    "https://6sword.com/icons/lw/Skill/removecurse.webp": {
+      "url": "https://6sword.com/icons/lw/Skill/removecurse.webp",
+      "sha256": "dcefec7f5a001ce83b6396577988c4b56d0f7a4c65c9ef90c2aae583d86cfe93",
+      "bytes": 19672,
+      "width": 128,
+      "height": 128,
+      "contentType": "image/webp",
+      "src": "/assets/lw-skills/dcefec7f5a001ce83b6396577988c4b56d0f7a4c65c9ef90c2aae583d86cfe93.webp",
+      "offset": 4496616
+    },
+    "https://6sword.com/icons/lw/Skill/shockstun.webp": {
+      "url": "https://6sword.com/icons/lw/Skill/shockstun.webp",
+      "sha256": "ba8a1845eabda9c96c9095aecff30c258baa54b156a27a9072c36f316ff28b84",
+      "bytes": 19484,
+      "width": 128,
+      "height": 128,
+      "contentType": "image/webp",
+      "src": "/assets/lw-skills/ba8a1845eabda9c96c9095aecff30c258baa54b156a27a9072c36f316ff28b84.webp",
+      "offset": 4576260
+    },
+    "https://6sword.com/icons/lw/Skill/reductionarmor.webp": {
+      "url": "https://6sword.com/icons/lw/Skill/reductionarmor.webp",
+      "sha256": "ce2b952c80de85918282ef93d0499406bf99e116733c16c6935f2e5f5601a231",
+      "bytes": 18548,
+      "width": 128,
+      "height": 128,
+      "contentType": "image/webp",
+      "src": "/assets/lw-skills/ce2b952c80de85918282ef93d0499406bf99e116733c16c6935f2e5f5601a231.webp",
+      "offset": 4478068
+    },
+    "https://6sword.com/icons/lw/Skill/resistmagic.webp": {
+      "url": "https://6sword.com/icons/lw/Skill/resistmagic.webp",
+      "sha256": "1aed7b8dba4a0834ce5b929f5656bf9c6b89b3d0719398801f74c6b6a89ac381",
+      "bytes": 19450,
+      "width": 128,
+      "height": 128,
+      "contentType": "image/webp",
+      "src": "/assets/lw-skills/1aed7b8dba4a0834ce5b929f5656bf9c6b89b3d0719398801f74c6b6a89ac381.webp",
+      "offset": 4516288
+    },
+    "https://6sword.com/icons/lw/Skill/stormshot.webp": {
+      "url": "https://6sword.com/icons/lw/Skill/stormshot.webp",
+      "sha256": "b8c81a5bc02124ff9dc005dcedbf8bfe42ce5bd038f1a7432f7c9cf4fc3415a2",
+      "bytes": 18344,
+      "width": 128,
+      "height": 128,
+      "contentType": "image/webp",
+      "src": "/assets/lw-skills/b8c81a5bc02124ff9dc005dcedbf8bfe42ce5bd038f1a7432f7c9cf4fc3415a2.webp",
+      "offset": 4634012
+    },
+    "https://6sword.com/icons/lw/Skill/sunburst.webp": {
+      "url": "https://6sword.com/icons/lw/Skill/sunburst.webp",
+      "sha256": "68ee9a950503ee9dca669990a8adac0afbfea3552a058d98112ddb2dc2e53681",
+      "bytes": 18914,
+      "width": 128,
+      "height": 128,
+      "contentType": "image/webp",
+      "src": "/assets/lw-skills/68ee9a950503ee9dca669990a8adac0afbfea3552a058d98112ddb2dc2e53681.webp",
+      "offset": 4671258
+    },
+    "https://6sword.com/icons/lw/Skill/soulofflame.webp": {
+      "url": "https://6sword.com/icons/lw/Skill/soulofflame.webp",
+      "sha256": "339184e8b3a0d32419ec7f2432fe541eb84742fcc1b520b918fa2907e35ad5ae",
+      "bytes": 19564,
+      "width": 128,
+      "height": 128,
+      "contentType": "image/webp",
+      "src": "/assets/lw-skills/339184e8b3a0d32419ec7f2432fe541eb84742fcc1b520b918fa2907e35ad5ae.webp",
+      "offset": 4614448
+    },
+    "https://6sword.com/icons/lw/Skill/solidcarriage.webp": {
+      "url": "https://6sword.com/icons/lw/Skill/solidcarriage.webp",
+      "sha256": "e6b69bc50fef594b464bbdea69e11a52e2add3234b22bba694b4cb1f9ef38eab",
+      "bytes": 18704,
+      "width": 128,
+      "height": 128,
+      "contentType": "image/webp",
+      "src": "/assets/lw-skills/e6b69bc50fef594b464bbdea69e11a52e2add3234b22bba694b4cb1f9ef38eab.webp",
+      "offset": 4595744
+    },
+    "https://6sword.com/icons/lw/Skill/strikergale.webp": {
+      "url": "https://6sword.com/icons/lw/Skill/strikergale.webp",
+      "sha256": "e8b479ec35a8976b801dbcd7e12f5f0247442d97a683fe9ea88750535706b9fc",
+      "bytes": 18902,
+      "width": 128,
+      "height": 128,
+      "contentType": "image/webp",
+      "src": "/assets/lw-skills/e8b479ec35a8976b801dbcd7e12f5f0247442d97a683fe9ea88750535706b9fc.webp",
+      "offset": 4652356
+    },
+    "https://6sword.com/icons/lw/Skill/teleport.webp": {
+      "url": "https://6sword.com/icons/lw/Skill/teleport.webp",
+      "sha256": "dfe9d1ee9c5ba614d38826e683daaa82b8b2f656dc49b7b0f6592f1f18f1737c",
+      "bytes": 18556,
+      "width": 128,
+      "height": 128,
+      "contentType": "image/webp",
+      "src": "/assets/lw-skills/dfe9d1ee9c5ba614d38826e683daaa82b8b2f656dc49b7b0f6592f1f18f1737c.webp",
+      "offset": 4690172
+    },
+    "https://6sword.com/icons/lw/Skill/vampirictouch.webp": {
+      "url": "https://6sword.com/icons/lw/Skill/vampirictouch.webp",
+      "sha256": "7c8f18ea079a87971c4e6bb5deb4357aece44f50dca853f1d3940e7913eec5c1",
+      "bytes": 18192,
+      "width": 128,
+      "height": 128,
+      "contentType": "image/webp",
+      "src": "/assets/lw-skills/7c8f18ea079a87971c4e6bb5deb4357aece44f50dca853f1d3940e7913eec5c1.webp",
+      "offset": 4785166
+    },
+    "https://6sword.com/icons/lw/Skill/truetarget.webp": {
+      "url": "https://6sword.com/icons/lw/Skill/truetarget.webp",
+      "sha256": "eb16079b3b1b1901b2b18b0c0625bab891d5c186ac5878c67299deebcd88befc",
+      "bytes": 19582,
+      "width": 128,
+      "height": 128,
+      "contentType": "image/webp",
+      "src": "/assets/lw-skills/eb16079b3b1b1901b2b18b0c0625bab891d5c186ac5878c67299deebcd88befc.webp",
+      "offset": 4747452
+    },
+    "https://6sword.com/icons/lw/Skill/waterlife.webp": {
+      "url": "https://6sword.com/icons/lw/Skill/waterlife.webp",
+      "sha256": "c65373b0d8460bfd4f37d62f8083c45631ac2b17b46ead35de199562e67caba9",
+      "bytes": 19706,
+      "width": 128,
+      "height": 128,
+      "contentType": "image/webp",
+      "src": "/assets/lw-skills/c65373b0d8460bfd4f37d62f8083c45631ac2b17b46ead35de199562e67caba9.webp",
+      "offset": 4803358
+    },
+    "https://6sword.com/icons/lw/Skill/tornado.webp": {
+      "url": "https://6sword.com/icons/lw/Skill/tornado.webp",
+      "sha256": "bbdec617e2ae4bbb17103287d6ed3f91edc21f116dec2a9b48a953c022144085",
+      "bytes": 18854,
+      "width": 128,
+      "height": 128,
+      "contentType": "image/webp",
+      "src": "/assets/lw-skills/bbdec617e2ae4bbb17103287d6ed3f91edc21f116dec2a9b48a953c022144085.webp",
+      "offset": 4708728
+    },
+    "https://6sword.com/icons/lw/Skill/triplearrow.webp": {
+      "url": "https://6sword.com/icons/lw/Skill/triplearrow.webp",
+      "sha256": "ce1da039dbb0ff572388ea00bd27cc51c8189ac59bf6ad28fee49997764f0388",
+      "bytes": 19870,
+      "width": 128,
+      "height": 128,
+      "contentType": "image/webp",
+      "src": "/assets/lw-skills/ce1da039dbb0ff572388ea00bd27cc51c8189ac59bf6ad28fee49997764f0388.webp",
+      "offset": 4727582
+    },
+    "https://6sword.com/icons/lw/Skill/turnundead.webp": {
+      "url": "https://6sword.com/icons/lw/Skill/turnundead.webp",
+      "sha256": "f0d4e7fbf72cd9406803fdd7eae3c7f1a893dbf4f67193d47c8cb67c283679b7",
+      "bytes": 18132,
+      "width": 128,
+      "height": 128,
+      "contentType": "image/webp",
+      "src": "/assets/lw-skills/f0d4e7fbf72cd9406803fdd7eae3c7f1a893dbf4f67193d47c8cb67c283679b7.webp",
+      "offset": 4767034
+    },
+    "https://6sword.com/icons/lw/Skill/windwalk.webp": {
+      "url": "https://6sword.com/icons/lw/Skill/windwalk.webp",
+      "sha256": "09fc1410bb98eac94514da879440c8c22f286a4afdd9761305c3f03d1435a161",
+      "bytes": 17878,
+      "width": 128,
+      "height": 128,
+      "contentType": "image/webp",
+      "src": "/assets/lw-skills/09fc1410bb98eac94514da879440c8c22f286a4afdd9761305c3f03d1435a161.webp",
+      "offset": 4823064
+    }
+  },
+  "errors": [],
+  "packSha256": "d73610b674392609a5f5a2d3854908dc5bcba230eeee21f32dd54500432469be",
+  "packBytes": 4840942
+}

@@ -14,6 +14,11 @@ on:
       - 'tests/**'
       - 'scripts/restore-sunrise-maps.py'
       - 'scripts/upload-sunrise-maps.py'
+      - 'scripts/restore-lineagew-skills.py'
+      - 'scripts/upload-lineagew-skills.py'
+      - 'app/skill-book-grid.tsx'
+      - 'app/active-status-bar.tsx'
+      - 'app/game.tsx'
       - '.github/workflows/deploy-v198-test.yml'
 permissions:
   contents: read
@@ -77,8 +82,18 @@ jobs:
         run: node --experimental-strip-types --test tests/combat-audio.test.mjs
       - name: Verify batched network attack cadence
         run: node scripts/test-network-combat-cadence.cjs
+      - name: Typecheck five-class skill integration
+        run: pnpm exec tsc --noEmit
+      - name: Verify five-class W skill mechanics and legacy save compatibility
+        run: node scripts/test-lineagew-skills.cjs
       - name: Build complete Cloudflare Worker
         run: pnpm run build
+      - name: Publish verified W skill icons to isolated R2
+        env:
+          AWS_ACCESS_KEY_ID: ${{ secrets.R2_ACCESS_KEY_ID }}
+          AWS_SECRET_ACCESS_KEY: ${{ secrets.R2_SECRET_ACCESS_KEY }}
+          AWS_DEFAULT_REGION: auto
+        run: python3 scripts/upload-lineagew-skills.py
       - name: Verify map routing and all backgrounds in final deployment
         run: CHECK_BUILT_MAPS=1 node --test tests/sunrise-maps.test.mjs tests/sunrise-map-storage.test.mjs
       - name: Publish verified maps to isolated R2 before deploying their routes

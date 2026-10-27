@@ -5,8 +5,10 @@ import type {CombatEvent} from './engine';
 
 export type MagicVisual={atlas?:TargetSpellAtlas;frames:string[];fps:number;self:boolean;proj?:number|boolean;layers?:string[][];shadowFrames?:string[];directions?:string[][];shadowDirections?:string[][];dirs?:number;nw?:number;nh?:number;oh?:number|boolean;h?:number;w?:number;width?:number;blend?:string;ax?:number;ay?:number;targetVc?:number;projScale?:number;imported?:boolean};
 export function magicVisual(event:Pick<CombatEvent,'skill'|'effectName'|'item'>){
+ const skill=event.skill?(raw.skills as Record<string,any>)[event.skill]:undefined;const original=skill?.lwLegacyId?(raw.skills as Record<string,any>)[skill.lwLegacyId]?.n:undefined;
  const name=event.effectName||(event.skill?(raw.skills as Record<string,{n:string}>)[event.skill]?.n:event.item?((raw.items as Record<string,any>)[event.item]?.eff==='magicbarrier'?'魔法屏障':(raw.items as Record<string,any>)[event.item]?.n):'');
- return {name,config:(effects as Record<string,MagicVisual>)[name]};
+ const fallback=skill?.lwSourceId?(skill.type==='heal'?'初級治癒術':skill.type==='buff'?'保護罩':skill.dmgType==='physical'?'衝擊之暈':'光箭'):undefined;
+ return {name,config:(effects as Record<string,MagicVisual>)[name]||(original?(effects as Record<string,MagicVisual>)[original]:undefined)||(fallback?(effects as Record<string,MagicVisual>)[fallback]:undefined)};
 }
 export function magicDirection(config:MagicVisual,dx:number,dy:number){
  const base=Math.round((Math.atan2(dx,-dy)*180/Math.PI+360)%360/45)%8;
@@ -27,4 +29,3 @@ export function magicEffectLifetime(event:CombatEvent){
  const {config}=magicVisual(event);
  return config?Math.max(2000,Math.ceil(Math.max(config.frames.length,...(config.layers||[]).map(layer=>layer.length))*1000/config.fps)+100):2000;
 }
-

@@ -1,3 +1,5 @@
+import './lineagew-skill-data';
+import {canonicalWSkill} from './lineagew-skill-data';
 import {justiceHealMultiplier} from './alignment';
 import {lineageWMagicStats,lineageWMagicTarget,isPlayerTarget} from './lineagew-conditions';
 import {targetMagicHit} from './lineagew-equipment-effects';
@@ -10,8 +12,8 @@ export function requiredSkillLevel(c:Pick<Character,'cls'>,s:any){
  const key=({royal:'reqRoy',knight:'reqK',elf:'reqE',mage:'reqM',dark:'reqD'} as Record<string,string>)[c.cls];
  return key&&s[key]!==undefined?Number(s[key]):Infinity;
 }
-export function elementError(c:Pick<Character,'cls'|'elfEle'>,s:any){if(c.cls!=='elf')return '';if((s.reqEleAny||s.reqEle)&&!c.elfEle)return '請先選擇妖精屬性';if(s.reqEle&&s.reqEle!==c.elfEle)return `需要${ELEMENT_NAMES[s.reqEle]}屬性`;return '';}
-export function skillBooks(id:string){return Object.entries(raw.items as Record<string,any>).filter(([,i])=>i.type==='skillbk'&&i.sk===id);}
+export function elementError(c:Pick<Character,'cls'|'elfEle'>&Partial<Pick<Character,'elfEle2'|'skills'>>,s:any){if(s.lwSourceId&&c.cls==='elf'&&s.reqEle===c.elfEle2&&c.skills?.includes('lw_skill_16970'))return '';if(c.cls!=='elf')return '';if((s.reqEleAny||s.reqEle)&&!c.elfEle)return '請先選擇妖精屬性';if(s.reqEle&&s.reqEle!==c.elfEle)return `需要${ELEMENT_NAMES[s.reqEle]}屬性`;return '';}
+export function skillBooks(id:string){return Object.entries(raw.items as Record<string,any>).filter(([,i])=>i.type==='skillbk'&&canonicalWSkill(i.sk)===canonicalWSkill(id));}
 export function availableSkillBook(c:Pick<Character,'bag'|'locked'>,id:string){return Object.keys(c.bag).find(k=>c.bag[k]>0&&!c.locked?.includes(k)&&skillBooks(id).some(([book])=>k.split('@')[0]===book));}
 export function skillMpCost(s:any,b:Record<string,number>){return s.mp?Math.max(1,Math.ceil(s.mp*(1-Math.min(100,b.mpReduce||0)/100))):0;}
 export const rollDice=(n:number,sides:number,rng:()=>number)=>{let v=0;for(let i=0;i<n;i++)v+=1+Math.floor(rng()*sides);return v;};
@@ -42,5 +44,3 @@ export function buffModifiers(id:string,s:any,lv:number,ele?:string){const out={
  if(id==='sk_elf_singleres'&&ele)out['res'+ele[0].toUpperCase()+ele.slice(1)]=50;
  return {...out,...special[id]};
 }
-
-

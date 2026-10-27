@@ -5,6 +5,7 @@ import normalEquipment from './normal-equipment-reference.json';
 export function isProgressionEquipment(i:any){return !!i&&['wpn','arm','acc'].includes(i.type)&&!i.noEquip&&!i.isArrow&&!i.doll&&!i.petEquip&&!i.petEquipment&&!i.petOnly&&!/^pet/.test(i.slot||'');}
 const mythic=new Set(['ap381_weapon_12','ap381_weapon_61','ap381_weapon_86','ap381_weapon_213','ap381_weapon_217']);
 export function defaultEquipmentRank(id:string,i:any):'normal'|'advanced'|'rare'|'hero'|'legend'|'mythic'{
+ if(i?.lwSkillBook)return i.lwGrade;
  if(i?.lwCatalogId)return i.lwGrade as 'normal'|'advanced'|'rare'|'hero'|'legend'|'mythic';
  if(isProgressionEquipment(i)&&i.source==='lineagew'&&i.lwMythicId)return 'mythic';
  if(!isProgressionEquipment(i)||i.source!=='apang381')return 'normal';

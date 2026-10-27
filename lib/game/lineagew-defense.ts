@@ -1,3 +1,4 @@
+import {wIncoming} from './lineagew-skill-runtime';
 import raw from './gamedata.json';
 import {mythicIncomingAmount} from './lineagew-mythic-effects';
 import {lineageWEffectDefinition,lineageWEffectProfile} from './lineagew-equipment-effects';
@@ -11,6 +12,7 @@ export function recoverLineageWShield(c:Character,b:Record<string,number>,begin:
 }
 export function lineageWIncomingDamage(c:Character,b:Record<string,number>,amount:number,now:number,rng:()=>number,magic=false,source:any={}){
  let damage=Math.max(0,Math.floor(amount)),guarded=false,evaded=false;const mythicEvents:{skill:string;heal?:number;effect:string}[]=[];
+ const w=wIncoming(c,b,damage,magic,now,rng);damage=w.damage;
  if(damage>0&&magic&&(b.magicEr||0)>0&&rng()*100<Math.min(95,b.magicEr)){damage=0;evaded=true;}
  if(damage>0&&(b.stunDamageReductionPct||0)>0&&c.buffs.status_stun?.until>now)damage=Math.floor(damage*(1-Math.min(95,b.stunDamageReductionPct)/100));
  if(damage>0){const items=raw.items as Record<string,any>;for(const eq of Object.values(c.equipment))for(const proc of lineageWEffectProfile(items[eq.id.split('@')[0]],eq.en)?.rates||[]){
@@ -21,5 +23,5 @@ export function lineageWIncomingDamage(c:Character,b:Record<string,number>,amoun
  }}
  damage=mythicIncomingAmount(c,b,damage,now,magic,source);
  const shield=Math.min(Math.max(0,c.protectionShield||0),Math.max(0,b.maxShield||0)),absorbed=Math.min(shield,damage);if(absorbed){c.protectionShield=shield-absorbed;damage-=absorbed;}
- return {damage,absorbed,guarded,evaded,...(mythicEvents.length?{mythicEvents}:{})};
+ return {damage,absorbed,guarded,evaded,wHealed:w.healed,wCounter:w.counterSkill&&source.uid?{skill:w.counterSkill,uid:String(source.uid),damage:Math.max(1,Math.floor(amount*(c.buffs[w.counterSkill]?.d.lwCounterMult||1)))}:undefined,...(mythicEvents.length?{mythicEvents}:{})};
 }

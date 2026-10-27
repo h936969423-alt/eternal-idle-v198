@@ -55,7 +55,7 @@ const spellTimes=new Map<string,number>();
 let masterVolume=1;
 export function setCombatVolume(value:number){masterVolume=Math.max(0,Math.min(1,Number.isFinite(value)?value:1));if(masterGain&&context){masterGain.gain.setValueAtTime(masterVolume,context.currentTime);}for(const audio of voices)audio.volume=(fallbackVolumes.get(audio)||0)*masterVolume;}
 export function sceneSound(kind:'transform'){if(kind==='transform')play('/assets/client-audio/124.wav',.3);}
-function spell(e:CombatEvent,owner:string){if(!e.skill||e.source==='summon'||e.source==='poison')return;const key=owner+':'+e.skill+':'+e.at;if(spellTimes.has(key))return;spellTimes.set(key,e.at);if(spellTimes.size>100)spellTimes.delete(spellTimes.keys().next().value!);number(S.SPELL_SFX[(raw.skills as any)[e.skill]?.n],.4);}
+function spell(e:CombatEvent,owner:string){if(!e.skill||e.source==='summon'||e.source==='poison')return;const key=owner+':'+e.skill+':'+e.at;if(spellTimes.has(key))return;spellTimes.set(key,e.at);if(spellTimes.size>100)spellTimes.delete(spellTimes.keys().next().value!);const sk=(raw.skills as any)[e.skill],old=sk?.lwLegacyId?(raw.skills as any)[sk.lwLegacyId]?.n:undefined;number(S.SPELL_SFX[sk?.n]||(old?S.SPELL_SFX[old]:undefined)||(sk?.lwSourceId?S.SPELL_SFX['光箭']:undefined),.4);}
 export function combatSound(c:Character,e:CombatEvent){
 
  const name=e.mob?mobs[e.mob]?.n||'':'';const poly=e.polyName;const special=poly&&['黃金死亡騎士','赤紅刺客首領','蒼藍歐瑞','凱莉紗','地獄傑克'].includes(poly);
@@ -81,13 +81,10 @@ export function combatSound(c:Character,e:CombatEvent){
 
 export function preloadCombatAudio(c:Character){
  if(!context)return;const ctx=context;const ids=new Set<string>();
- for(const id of c.skills||[]){const sound=S.SPELL_SFX[(raw.skills as any)[id]?.n];if(sound!==undefined)ids.add(String(sound));}
+ for(const id of c.skills||[]){const sk=(raw.skills as any)[id],old=sk?.lwLegacyId?(raw.skills as any)[sk.lwLegacyId]?.n:undefined,sound=S.SPELL_SFX[sk?.n]||(old?S.SPELL_SFX[old]:undefined)||(sk?.lwSourceId?S.SPELL_SFX['光箭']:undefined);if(sound!==undefined)ids.add(String(sound));}
  const weapon=items[baseItem(c.equipment.weapon?.id||'')];const weaponSound=(weapon&&S.WPN_CAT_SFX[weapon.wcat])||S.WPN_SFX[weapon?.isBow?'bow':c.cls==='mage'?'blunt':c.cls==='knight'?'sword2':'sword1'];if(weaponSound!==undefined)ids.add(String(weaponSound));
  for(const mob of c.arena||[]){const name=mobs[mob.id]?.n;for(const map of [S.MOB_ATTACK_SFX,S.MOB_HURT_SFX,S.MOB_KILL_SFX]){const sound=name&&mapped(map,name);if(sound!==undefined)ids.add(String(sound));}}
  for(const summon of c.summonContract?.entities||[]){for(const map of [S.MOB_ATTACK_SFX,S.MOB_HURT_SFX]){const sound=mapped(map,summon.form);if(sound!==undefined)ids.add(String(sound));}}
  for(const id of ids){const path=`/assets/sfx/${id}.ogg`;if(!buffers.has(path))buffers.set(path,fetch(path).then(r=>{if(!r.ok)throw Error('sound unavailable');return r.arrayBuffer();}).then(b=>ctx.decodeAudioData(b)).catch(error=>{buffers.delete(path);throw error;}));void buffers.get(path)!.catch(()=>{});}
  const transform='/assets/client-audio/124.wav';if(!buffers.has(transform))buffers.set(transform,fetch(transform).then(r=>r.arrayBuffer()).then(b=>ctx.decodeAudioData(b)));void buffers.get(transform)!.catch(()=>{buffers.delete(transform);});
 }
-
-
-

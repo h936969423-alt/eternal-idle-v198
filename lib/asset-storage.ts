@@ -1,8 +1,10 @@
 // Files are immutable SHA-256 addressed objects. The manifest is pinned per deployment.
 import config from './asset-storage-config.json';
 import sunriseMaps from './game/sunrise-maps.json';
+import skillAssets from './game/lineagew-skill-assets.json';
 
 const sunriseFiles=new Map(Object.values(sunriseMaps.files).map(entry=>[entry.src,entry]));
+const skillFiles=new Map(Object.values(skillAssets.files).map(entry=>[entry.src,entry]));
 
 type Entry = [string, number, number, string, string];
 type Index = { version: 1; files: Record<string, Entry> };
@@ -29,6 +31,15 @@ export async function assetStorageFetch(request: Request, bucket?: Bucket): Prom
   // Never make the Site public/shared without adding explicit upload authorization.
   // Standalone Cloudflare testing does not inherit Sites owner-only upload authorization.
   if (pathname.startsWith(UPLOAD)) return new Response('Asset upload disabled', { status: 403 });
+  if(pathname.startsWith('/assets/lw-skills/')&&['GET','HEAD'].includes(request.method)){
+    const entry=skillFiles.get(pathname);if(!entry)return new Response('Skill image not found',{status:404});
+    if(!bucket)return new Response('Asset storage unavailable',{status:503});
+    const etag='"'+entry.sha256+'"',headers=new Headers({'Content-Type':'image/webp','Content-Length':String(entry.bytes),'ETag':etag,'Cache-Control':'private, max-age=31536000, immutable','X-Content-Type-Options':'nosniff','X-Asset-Storage':'r2'});
+    if((request.headers.get('if-none-match')||'').split(',').map(s=>s.trim().replace(/^W\//,'')).some(s=>s===etag||s==='*'))return new Response(null,{status:304,headers});
+    if(request.method==='HEAD')return new Response(null,{headers});
+    try{const object=await bucket.get('lw-skills/v1/'+skillAssets.packSha256,{range:{offset:entry.offset,length:entry.bytes}});if(!object)return new Response('Skill image temporarily unavailable',{status:503});return new Response(object.body,{headers});}
+    catch{return new Response('Skill image temporarily unavailable',{status:503,headers:{'Retry-After':'5'}});}
+  }
   if(pathname.startsWith('/assets/sunrise-maps/')&&['GET','HEAD'].includes(request.method)){
     const entry=sunriseFiles.get(pathname);
     if(!entry)return new Response('Map not found',{status:404});

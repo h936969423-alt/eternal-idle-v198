@@ -65,6 +65,7 @@ import bases from '@/lib/game/classes.json';
 import amap from '@/lib/game/asset-map.json';
 import { unlockCombatAudio,previewCombatAudio,setCombatVolume,preloadCombatAudio,stopCombatVoices } from './combat-audio';
 import {sceneBackground} from '@/lib/game/scene-presentation';
+import {availableSkills} from '@/lib/game/skill-access';
 import BattleArena from './battle-arena';
 import {SummonParty} from './summon-panel';
 import {preloadSkillEffect,preloadLearnedEffects} from './magic-preload';
@@ -152,7 +153,7 @@ function Game({signedIn,signIn,gmAllowed=false}:{signedIn:boolean;signIn:string;
   unlockCombatAudio(on);setAudio(on);
   if(on){if(c)preloadCombatAudio(c);void previewCombatAudio().then(ok=>{if(!ok)toast.error('音效尚未啟動，請再點一次喇叭');});}
  };
- const quickMagic=c&&st&&c.skills.some(id=>!['manual','passive'].includes(D.skills[id]?.type))&&<div className={`quick-magic ${D.towns[c.zone]?'village-quick-magic':''}`}>{c.skills.filter(id=>!['manual','passive'].includes(D.skills[id]?.type)).map(id=><button key={id} aria-busy={pendingSkill===id} disabled={busy||c.mp<(D.skills[id].mp||0)} title={skillSummary(id,st)} onClick={()=>act({type:'cast',skill:id})}><IconImage name={D.skills[id].n} group="skills"/><span>{D.skills[id].n}<small>{pendingSkill===id?'施放中…':`MP ${D.skills[id].mp||0}`}</small></span></button>)}</div>;
+ const quickMagic=c&&st&&availableSkills(c).some(id=>!['manual','passive'].includes(D.skills[id]?.type))&&<div className={`quick-magic ${D.towns[c.zone]?'village-quick-magic':''}`}>{availableSkills(c).filter(id=>!['manual','passive'].includes(D.skills[id]?.type)).map(id=><button key={id} aria-busy={pendingSkill===id} disabled={busy||c.mp<(D.skills[id].mp||0)} title={skillSummary(id,st)} onClick={()=>act({type:'cast',skill:id})}><IconImage name={D.skills[id].n} group="skills"/><span>{D.skills[id].n}<small>{pendingSkill===id?'施放中…':`MP ${D.skills[id].mp||0}`}</small></span></button>)}</div>;
  const openCharacterCreation=()=>{stopCombatVoices();setCharacterOpen(false);setNewOpen(true);};
  const creationForm=(<section className="game-dialog character-create-page" aria-labelledby="character-create-title"><header className="create-dialog-header"><h1 id="character-create-title">建立冒險者</h1><p>選擇職業，分配初始能力。最多保留三位角色。</p></header><div className="create-dialog-body"><div className="class-choice">{Object.entries(classes).map(([k,v])=><button className={cls===k?'selected':''} key={k} onClick={()=>{setCls(k);setAlloc({});}}><img src={portrait(k,gender)} alt={v}/><strong>{v}</strong></button>)}</div><div className="create-fields"><label>角色名稱<input value={name} onChange={e=>setName(e.target.value)} maxLength={12} placeholder="輸入 1–12 字"/></label><div><span>性別</span><RadioGroup value={gender} onValueChange={setGender} className="gender-choice"><label><RadioGroupItem value="m"/>男性</label><label><RadioGroupItem value="f"/>女性</label></RadioGroup></div></div><div className="allocation-heading"><strong>初始能力</strong><span>出生可分配 {B[cls].pts} 點 · 剩餘 {B[cls].pts-Object.values(alloc).reduce((a,b)=>a+b,0)} 點</span></div><div className="allocation-grid">{Object.entries(attrs).map(([k,t])=><div key={k}><span>{t}</span><Button variant="outline" size="icon" disabled={!alloc[k]} aria-label={`減少${t}`} onClick={()=>setAlloc({...alloc,[k]:(alloc[k]||0)-1})}>−</Button><strong>{B[cls][k]+(alloc[k]||0)}</strong><Button variant="outline" size="icon" disabled={Object.values(alloc).reduce((a,b)=>a+b,0)>=B[cls].pts||B[cls][k]+(alloc[k]||0)>=20} aria-label={`增加初始${t}`} onClick={()=>setAlloc({...alloc,[k]:(alloc[k]||0)+1})}>+</Button></div>)}</div><p className="create-supplies">初始能力最高 20，須分配全部點數。51 級起每級取得 1 點能力。<br/>起始補給：3,000 金幣、100 紅水、10 橙水。</p></div><div className="create-footer"><p role="status">{!name.trim()?'請輸入角色名稱。':B[cls].pts-Object.values(alloc).reduce((a,b)=>a+b,0)>0?`尚有 ${B[cls].pts-Object.values(alloc).reduce((a,b)=>a+b,0)} 點初始能力待分配。`:'角色設定完成，可以確認建立。'}</p><div className="create-footer-actions"><Button variant="outline" disabled={busy} onClick={()=>setNewOpen(false)}>取消</Button><Button className="gold-button" disabled={busy||(save?.characters.length||0)>=MAX_CHARACTERS||!name.trim()||!signedIn||Object.values(alloc).reduce((a,b)=>a+b,0)!==B[cls].pts} onClick={async()=>{const r=await act({type:'create',name,cls,gender,allocation:alloc});if(r){setNewOpen(false);setTab('hunt');setName('');setAlloc({});}}}>確認建立角色 <Sword size={16}/></Button></div></div></section>);
  // Enter the character screen only after the authoritative offline settlement is complete.
@@ -192,10 +193,3 @@ function Game({signedIn,signIn,gmAllowed=false}:{signedIn:boolean;signIn:string;
 }
 
 export default function AuthenticatedGame(props:{signedIn:boolean;signIn:string;gmAllowed?:boolean}){return <GameLogin signedIn={props.signedIn} signIn={props.signIn}><Game {...props}/></GameLogin>;}
-
-
-
-
-
-
-
