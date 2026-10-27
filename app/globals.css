@@ -765,3 +765,49 @@ body:has(.game-root.map-first-layout) .map-function-dialog[data-slot=dialog-cont
 @media(max-height:500px){.game-root.screenshot-layout.map-first-layout .topbar{display:none!important}}
 .game-root.screenshot-layout.map-first-layout .main-panel{display:block!important;grid-template-columns:none!important;grid-template-rows:none!important;gap:0!important}
 .map-panel-scope .map-hunt-summary{font-size:12px;line-height:1.6;padding:8px 10px;margin:0 0 10px;border:1px solid #665437;border-radius:6px;color:#e1d2ae}
+
+/* Requested battle HUD: always-available skills below the map and wrapping statuses above. */
+.game-root.screenshot-layout.map-first-layout{--map-skill-height:76px}
+.game-root.screenshot-layout.map-first-layout .main-panel{padding-bottom:calc(var(--map-nav-height) + var(--map-skill-height))!important}
+.game-root.screenshot-layout.map-first-layout .map-skill-dock{
+ position:absolute;left:0;right:0;bottom:var(--map-nav-height);height:var(--map-skill-height);
+ display:flex;align-items:center;min-width:0;padding:4px 8px;overflow:hidden;
+ border-top:1px solid #8f784d66;background:#111d22;z-index:35;
+}
+.game-root.screenshot-layout.map-first-layout .map-skill-dock .quick-magic{display:flex!important;width:100%;min-width:0;gap:6px;overflow-x:auto;overflow-y:hidden;margin:0;padding:2px;overscroll-behavior-x:contain;scrollbar-width:thin;touch-action:pan-x}
+.game-root.screenshot-layout.map-first-layout .map-skill-dock .quick-magic>button{flex:0 0 auto;min-width:78px;min-height:58px;height:58px;padding:4px 7px;gap:5px;border-color:#8f784d77;background:#172a30}
+.game-root.screenshot-layout.map-first-layout .map-skill-dock .quick-magic>button:disabled{opacity:.45}
+.game-root.screenshot-layout.map-first-layout .map-skill-dock .quick-magic img,
+.game-root.screenshot-layout.map-first-layout .map-skill-dock .quick-magic .asset-icon{width:28px;height:28px;flex:0 0 28px;object-fit:contain}
+.game-root.screenshot-layout.map-first-layout .map-skill-dock .quick-magic span{font-size:12px;line-height:16px;white-space:nowrap}
+.game-root.screenshot-layout.map-first-layout .map-skill-dock .quick-magic small{display:block;font-size:10px;line-height:14px;color:#c9b581}
+.map-skill-empty{font-size:12px;color:#aeb7ab;padding:8px}
+.game-root.screenshot-layout.map-first-layout .map-top-status{
+ position:absolute;top:48px;right:12px;left:clamp(124px,32vw,200px);z-index:25;
+ max-height:min(15dvh,96px);overflow-y:auto;overflow-x:hidden;overscroll-behavior:contain;
+}
+.game-root.screenshot-layout.map-first-layout .map-top-status .active-status-bar{position:static!important;top:auto!important;display:block;min-height:0;width:100%;margin:0;padding:2px;border:0;background:transparent}
+.game-root.screenshot-layout.map-first-layout .map-top-status .status-caption{display:none}
+.game-root.screenshot-layout.map-first-layout .map-top-status .active-status-icons{display:flex;flex-wrap:wrap;justify-content:flex-end;align-items:flex-start;gap:5px;width:100%;max-width:100%;overflow:visible}
+.game-root.screenshot-layout.map-first-layout .map-top-status .active-status-icon{flex:0 0 32px;width:32px;height:42px;min-width:32px;min-height:42px;padding:2px;background:#07171bd9;border:1px solid #a18d5c88;border-radius:4px}
+.game-root.screenshot-layout.map-first-layout .map-top-status .active-status-icon img,
+.game-root.screenshot-layout.map-first-layout .map-top-status .active-status-icon svg{width:26px;height:26px;object-fit:contain}
+.game-root.screenshot-layout.map-first-layout .map-top-status .active-status-icon small{display:block;font-size:9px;line-height:10px;height:10px;color:#f0dba1}
+.game-root.screenshot-layout.map-first-layout .map-top-status .no-active-status{font-size:11px;color:#c5d0c7;background:#07171b99;padding:3px 6px;border-radius:4px}
+/* Give crowded ordinary monsters roughly twice their former art-box size. */
+.game-root.screenshot-layout.map-first-layout .static-arena{--map-mob-art:clamp(140px,35vw,180px);--map-mob-width:clamp(112px,28vw,160px)}
+.game-root.screenshot-layout.map-first-layout .battle-scene:not(.world-boss-scene) .static-arena .four-monster:not([data-dragon=true]):not([data-dragon-summon=true]){width:var(--map-mob-width);max-width:160px}
+.game-root.screenshot-layout.map-first-layout .battle-scene:not(.world-boss-scene) .static-arena .four-monster:not([data-dragon=true]):not([data-dragon-summon=true]) .four-monster-art,
+.game-root.screenshot-layout.map-first-layout .battle-scene:not(.world-boss-scene) .static-arena .four-monster:not([data-dragon=true]):not([data-dragon-summon=true]) .four-monster-art .sequence-art,
+.game-root.screenshot-layout.map-first-layout .battle-scene:not(.world-boss-scene) .static-arena .four-monster:not([data-dragon=true]):not([data-dragon-summon=true]) .four-target>img{width:var(--map-mob-art)!important;height:var(--map-mob-art)!important;max-width:none;aspect-ratio:auto;object-fit:contain}
+.game-root.screenshot-layout.map-first-layout .static-arena .four-monsters:has(>.four-monster:nth-child(5)){--map-mob-art:clamp(76px,22vw,140px);--map-mob-width:clamp(96px,24vw,154px)}
+.game-root.screenshot-layout.map-first-layout .battle-scene:not(.world-boss-scene) .static-arena .four-monster .four-target{min-height:0;gap:3px;overflow:visible}
+.game-root.screenshot-layout.map-first-layout .battle-scene:not(.world-boss-scene) .static-arena .four-monster .monster-ground-name{display:block;max-width:100%;overflow:hidden;text-overflow:ellipsis;white-space:nowrap;font-size:12px!important;line-height:16px}
+@media(max-height:500px){
+ .game-root.screenshot-layout.map-first-layout{--map-skill-height:60px}
+ .game-root.screenshot-layout.map-first-layout .map-skill-dock .quick-magic>button{height:48px;min-height:48px}
+ .game-root.screenshot-layout.map-first-layout .map-top-status{top:42px;max-height:100px}
+ .game-root.screenshot-layout.map-first-layout .battle-scene:not(.world-boss-scene) .static-arena .four-monster:not([data-dragon=true]):not([data-dragon-summon=true]) .four-monster-art,
+ .game-root.screenshot-layout.map-first-layout .battle-scene:not(.world-boss-scene) .static-arena .four-monster:not([data-dragon=true]):not([data-dragon-summon=true]) .four-monster-art .sequence-art,
+ .game-root.screenshot-layout.map-first-layout .battle-scene:not(.world-boss-scene) .static-arena .four-monster:not([data-dragon=true]):not([data-dragon-summon=true]) .four-target>img{width:90px!important;height:90px!important}
+}
