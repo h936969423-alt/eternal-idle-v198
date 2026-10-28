@@ -1,3 +1,4 @@
+import {withSkillCooldown} from './skill-cooldown';
 import {bindPetRoster,enforcePetCarry,controlledPet,deployPet,PET_ITEMS,usePetItem,capturePet,evolvePet} from './pet-roster';
 import {shareSkillBuff,partyMembers,partySkillStats,partySkillDamage,syncPartyHealth} from './skill-party';
 import {carryLoad} from './carry-load';
@@ -279,7 +280,12 @@ attack.critical=strike.critical;attack.heavy=strike.heavy;attack.graze=strike.gr
 }
 export function cast(c:Character,k:string,now=Date.now(),rng:()=>number=Math.random,silent=false){
  const canonical=canonicalWSkill(k,c.cls);if(W_SKILLS[canonical]){if(!hasSkill(c,canonical))throw Error('尚未學習此技能');return castWSkill(c,canonical,stats(c,now),wHooks(c,now,rng,silent),now,rng);}
- const s=DATA.skills[k],oldHp=c.hp;if(!s||!hasSkill(c,k))throw Error('尚未學習此技能');
+ const s=DATA.skills[k];if(!s||!hasSkill(c,k))throw Error('尚未學習此技能');
+ if(!specialSkillSupported(k,s.type)||s.type==='passive')throw Error('此技能目前不能主動施放');
+ return withSkillCooldown(c,k,stats(c,now),now,()=>castNative(c,k,now,rng,silent));
+}
+function castNative(c:Character,k:string,now:number,rng:()=>number,silent:boolean){
+ const s=DATA.skills[k],oldHp=c.hp;
  if(['silence','stun','stone','freeze','sleep','paralyze'].some(x=>c.buffs['status_'+x]?.until>now)||c.buffs.sk_abs_barrier?.until>now)throw Error('目前無法施法');
  if(!specialSkillSupported(k,s.type)||s.type==='passive')throw Error('此技能目前不能主動施放');
  const reason=elementError(c,s);if(reason)throw Error(reason);const justiceError=justiceSpellError(s,c.lawful);if(justiceError)throw Error(justiceError);
@@ -763,3 +769,4 @@ export function action(save:Save,a:any,now=Date.now(),rng:()=>number=Math.random
  }
  for(const ch of save.characters)settleBossRewards(ch,now,rng);bindDollCollections(save);bindPolymorphUnlocks(save);ensureArena(c,rng,now);const b=stats(c,now);c.hp=clamp(c.hp,1,b.maxHp);event(c,'state',now);c.mp=clamp(c.mp,0,b.maxMp);
 }
+

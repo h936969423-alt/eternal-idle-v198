@@ -1,3 +1,4 @@
+import {withSkillCooldown} from './skill-cooldown';
 import {W_SKILLS,canonicalWSkill,learnedWSkills,wElementAllowed,wBuffModifiers,wUpgradeScale} from './lineagew-skill-data';
 import type {Character,Encounter,CombatEvent} from './engine';
 import {justiceSpellError,justiceHealMultiplier} from './alignment';
@@ -14,6 +15,12 @@ export function applyWSkillStatus(target:Encounter,definition:any,status:any,now
  return true;
 }
 export function castWSkill(c:Character,input:string,b:Record<string,number>,h:WSkillHooks,now:number,rng:()=>number){
+ const id=canonicalWSkill(input,c.cls),s=W_SKILLS[id];if(!s)throw Error('技能不存在');if(!s.lwClasses.includes(c.cls))throw Error('職業不符');if(s.type==='passive')throw Error('此技能已被動生效');
+ // Cancelling an existing toggle is not another cast.
+ if(s.lwToggle&&c.buffs[id]?.until>now)return performWSkill(c,id,b,h,now,rng);
+ return withSkillCooldown(c,id,b,now,()=>performWSkill(c,id,b,h,now,rng));
+}
+function performWSkill(c:Character,input:string,b:Record<string,number>,h:WSkillHooks,now:number,rng:()=>number){
  const id=canonicalWSkill(input,c.cls),s=W_SKILLS[id];if(!s)throw Error('技能不存在');
  if(!s.lwClasses.includes(c.cls))throw Error('職業不符');
  const justiceError=justiceSpellError(s,c.lawful);if(justiceError)throw Error(justiceError);
@@ -92,9 +99,7 @@ export function castWSkill(c:Character,input:string,b:Record<string,number>,h:WS
   }
   result=`攻擊實扣 ${Math.floor(total)} 生命`;
  }
- c.skillCooldowns||={};let cooldown=s.lwCooldownMs||0;
- if(c.buffs.lw_skill_15977?.until>now&&['lw_skill_380','lw_skill_360','lw_skill_370','lw_skill_11197'].includes(id))cooldown*=.7;
- c.skillCooldowns[id]=now+Math.max(100,cooldown);
+
  c.spellCooldowns||={};c.spellCooldowns[channel]=now+Math.max(100,(s.type==='heal'?b.healIntervalMs:b.castIntervalMs)||1000);
  if(id==='lw_skill_450'){c.tripleNeedsNormal=true;delete c.tripleResumeAt;}
  if(c.hp>before)h.event('heal',{skill:id,damage:c.hp-before});
@@ -113,3 +118,4 @@ export function wIncoming(c:Character,b:Record<string,number>,amount:number,magi
  }
  return {damage,healed,counterSkill};
 }
+

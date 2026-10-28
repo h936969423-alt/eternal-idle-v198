@@ -1,0 +1,5 @@
+.game-root .quick-magic .skill-cooldown-button{height:auto;min-height:64px}
+.game-root .quick-magic .skill-cooldown-button>span{min-width:0}
+.game-root .quick-magic .skill-cooldown-seconds{display:block;font-variant-numeric:tabular-nums;white-space:nowrap;line-height:1.4;color:#eed08a}
+.game-root .quick-magic .skill-is-cooling{opacity:.55;cursor:not-allowed}
+.game-root .quick-magic .skill-is-cooling .skill-cooldown-seconds{color:#f4c866}

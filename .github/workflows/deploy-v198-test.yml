@@ -91,6 +91,8 @@ jobs:
           W_SKILL_REPORT=docs/lineagew-skill-verification.json node scripts/test-lineagew-complete.cjs
       - name: Verify shared Sunrise pet storage and lifecycle
         run: PET_REPORT=docs/sunrise-pet-verification.json node scripts/test-sunrise-pets.cjs
+      - name: Verify failed-cast cooldown persistence and manual-auto lock
+        run: node scripts/test-skill-cooldown.cjs
       - name: Build complete Cloudflare Worker
         run: pnpm run build
       - name: Publish verified W skill icons to isolated R2
@@ -126,3 +128,4 @@ jobs:
         run: pnpm exec wrangler deploy --config dist/server/wrangler.json --name eternal-idle-v198-test --keep-vars
       - name: Print deployment location
         run: echo 'Check Cloudflare Workers dashboard for eternal-idle-v198-test workers.dev URL'
+

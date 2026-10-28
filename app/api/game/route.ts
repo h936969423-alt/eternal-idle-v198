@@ -1,3 +1,4 @@
+import {isSkillCooldownFailure} from '@/lib/game/skill-cooldown';
 import {ensureLineageWMythicMigration} from '@/lib/game/lineagew-mythic-migration-store';
 import {ensureControlRingRestoration} from '@/lib/game/control-ring-restoration-store';
 import {ensureLineageWHLMigration} from '@/lib/game/lineagew-hl-migration-store';
@@ -50,10 +51,11 @@ async function handle(request:Request,mutate:boolean){
  row=await ensureLineageWHLMigration(env.DB,owner,row);
  row=await ensureControlRingRestoration(env.DB,owner,row);
  row=await ensureLineageWMythicMigration(env.DB,owner,row);
+  let actionError:string|undefined;
   const simulationAt=performance.now();
   const save=JSON.parse(row.payload) as Save,{maps:mapConfig,monsters,dolls,world}=settings;const requestedAt=Date.now();for(const c of save.characters){c.npcConfig={...settings.npcs,history:[]};c.mapAccess=settings.mapAccess;c.lootAppearance={...settings.appearance,history:[]};c.dollDefinitions=dolls.definitions;c.mapPools=mapConfig.maps;c.bossGeneration=mapConfig.bosses;c.monsterDefinitions=monsters.definitions;c.bossDropDefinitions=monsters.bossDrops;}const report=advance(save,requestedAt,Math.random,world,200);const now=save.at;
   if(!report.pendingSeconds)for(const c of save.characters){syncPopulation(c,worldRulesAt(world,now));ensureArena(c,Math.random,now);}
-  for(const c of save.characters){c.npcConfig={...settings.npcs,history:[]};c.mapAccess=settings.mapAccess;c.lootAppearance={...settings.appearance,history:[]};c.dollDefinitions=dolls.definitions;c.mapPools=mapConfig.maps;c.bossGeneration=mapConfig.bosses;c.monsterDefinitions=monsters.definitions;c.bossDropDefinitions=monsters.bossDrops;if(!report.pendingSeconds){const b=stats(c,now);c.hp=Math.min(c.hp,b.maxHp);c.mp=Math.min(c.mp,b.maxMp);}}if(payload&&!report.pendingSeconds)action(save,payload,now);for(const c of save.characters){c.npcConfig={...settings.npcs,history:[]};c.mapAccess=settings.mapAccess;c.lootAppearance={...settings.appearance,history:[]};c.dollDefinitions=dolls.definitions;c.mapPools=mapConfig.maps;c.bossGeneration=mapConfig.bosses;c.monsterDefinitions=monsters.definitions;c.bossDropDefinitions=monsters.bossDrops;}
+  for(const c of save.characters){c.npcConfig={...settings.npcs,history:[]};c.mapAccess=settings.mapAccess;c.lootAppearance={...settings.appearance,history:[]};c.dollDefinitions=dolls.definitions;c.mapPools=mapConfig.maps;c.bossGeneration=mapConfig.bosses;c.monsterDefinitions=monsters.definitions;c.bossDropDefinitions=monsters.bossDrops;if(!report.pendingSeconds){const b=stats(c,now);c.hp=Math.min(c.hp,b.maxHp);c.mp=Math.min(c.mp,b.maxMp);}}if(payload&&!report.pendingSeconds){try{action(save,payload,now);}catch(error){if(payload.type!=='cast'||!isSkillCooldownFailure(error))throw error;actionError=error.message;}}for(const c of save.characters){c.npcConfig={...settings.npcs,history:[]};c.mapAccess=settings.mapAccess;c.lootAppearance={...settings.appearance,history:[]};c.dollDefinitions=dolls.definitions;c.mapPools=mapConfig.maps;c.bossGeneration=mapConfig.bosses;c.monsterDefinitions=monsters.definitions;c.bossDropDefinitions=monsters.bossDrops;}
   if(!report.pendingSeconds)for(const c of save.characters){syncPopulation(c,worldRulesAt(world,now));ensureArena(c,Math.random,now);}
   timings.simulation=(timings.simulation||0)+performance.now()-simulationAt;
   const encodeAt=performance.now(),stored=JSON.stringify(persistedSave(save));timings.persistEncode=(timings.persistEncode||0)+performance.now()-encodeAt;const writeAt=performance.now();
@@ -72,12 +74,13 @@ async function handle(request:Request,mutate:boolean){
   }
   const viewAt=performance.now();const response=view(save,report,world,isGameMaster(user),settingsKey,cursor);timings.view=performance.now()-viewAt;
   if(payload&&report.pendingSeconds)return reply({...response,error:'離線進度正在結算，完成後請再操作'},409);
-  return reply(response);
+  return reply(actionError?{...response,error:actionError}:response,actionError?400:200);
   }
   return Response.json({error:'進度同步繁忙，請稍後重試'},{status:409,headers:{'Cache-Control':'no-store'}});
  }catch(e){const msg=e instanceof Error?e.message:'未知錯誤';const storage=/storage|table|database|D1|SQLITE|save not found/i.test(msg);console.error('game-api-error',JSON.stringify({method:request.method,storage,elapsedMs:Math.round(performance.now()-started),error:msg.slice(0,350)}));return Response.json({error:storage?'暫時無法讀取存檔，請稍後重試；你的進度未被覆寫。':msg},{status:storage?503:400});}
 }
 export const GET=(r:Request)=>handle(r,false);
 export const POST=(r:Request)=>handle(r,true);
+
 
 
