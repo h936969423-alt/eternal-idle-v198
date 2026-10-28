@@ -673,8 +673,8 @@ export function advance(save:Save,now=Date.now(),rng:()=>number=Math.random,conf
  for(const c of save.characters)repairCombatClocks(c);
  if(now<=save.at)return {seconds:0,kills:0,gold:0,xp:0,drops:{},pendingSeconds:0,offline:false};
  if(save.characterDeletions){bindBossRooms(save);bindDollCollections(save);bindPolymorphUnlocks(save);settleCharacterDeletions(save,now);}
- if(save.catchup?.mode!=='online'&&(save.catchup||now-save.at>30000))return settleOfflineGains(save,now,rng);
- const prior=save.catchup,target=prior?.targetAt??now,start=save.at;
+ if(save.catchup&&save.catchup.mode!=='online'||now-save.at>30000)return settleOfflineGains(save,now,rng);
+ const prior=save.catchup,target=now,start=save.at;
  singleHunt(save);bindBossRooms(save);bindDollCollections(save);bindPolymorphUnlocks(save);
  for(const c of save.characters){migrateDolls(c);upgradeAbilityPoints(c);upgradeSupply(c,start);}
  const ledger:IncomeLedger={xp:prior?.xp||0,drops:{...(prior?.drops||{})}};

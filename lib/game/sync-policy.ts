@@ -5,5 +5,5 @@ export function syncDelay(running:boolean,failures=0,pending=false){return failu
 /** Keep active polls on a start-to-start cadence; latency must not add another full wait. */
 export function nextSyncDelay(running:boolean,failures:number,pending:boolean,elapsedMs:number){
  const delay=syncDelay(running,failures,pending);
- return running&&!failures&&!pending?Math.max(50,delay-Math.max(0,elapsedMs)):delay;
+ return (running||pending)&&!failures?Math.max(50,delay-Math.max(0,elapsedMs)):delay;
 }
