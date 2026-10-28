@@ -946,18 +946,19 @@ body:has(.game-root.map-first-layout) .map-function-dialog[data-slot=dialog-cont
 
 /* Separate information controls from the arena attack targets. */
 .monster-inspect-toolbar{
- position:relative;z-index:3;display:flex;flex-wrap:wrap;gap:8px;
- padding:8px 12px;border-top:1px solid #6e5824;background:#141d20;
- flex-shrink:0;
+ position:relative;z-index:3;display:flex;flex-wrap:nowrap;gap:4px;
+ width:100%;min-width:0;box-sizing:border-box;overflow-x:auto;
+ padding:4px 6px;border-top:1px solid #6e5824;background:#141d20;
+ flex-shrink:0;overscroll-behavior-x:contain;
 }
 .monster-inspect-toolbar:empty{display:none}
 .monster-inspect-button{
- display:inline-flex;align-items:center;justify-content:center;gap:6px;
- min-width:44px;min-height:44px;max-width:100%;padding:8px 12px;
- border:1px solid #bca46a;border-radius:8px;background:#211e16;color:#ffe09a;
- font-size:14px;line-height:20px;touch-action:manipulation;
+ display:inline-flex;align-items:center;justify-content:center;gap:4px;flex:0 0 auto;
+ min-width:0;min-height:28px;height:28px;max-width:100%;padding:3px 6px;box-sizing:border-box;
+ border:1px solid #bca46a;border-radius:5px;background:#211e16;color:#ffe09a;
+ font-size:11px;line-height:18px;white-space:nowrap;touch-action:manipulation;
  user-select:none;-webkit-user-select:none;-webkit-touch-callout:none;cursor:pointer;
 }
-.monster-inspect-button > svg{flex-shrink:0;pointer-events:none}
-.monster-inspect-button > span{overflow-wrap:anywhere;pointer-events:none}
+.monster-inspect-button > svg{width:14px;height:14px;flex-shrink:0;pointer-events:none}
+.monster-inspect-button > span{white-space:nowrap;pointer-events:none}
 .monster-inspect-button:focus-visible{outline:2px solid #ffe09a;outline-offset:2px}
