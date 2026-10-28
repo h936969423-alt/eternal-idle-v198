@@ -19,6 +19,10 @@ on:
       - 'app/skill-book-grid.tsx'
       - 'app/active-status-bar.tsx'
       - 'app/game.tsx'
+      - 'app/api/game/route.ts'
+      - 'app/skill-cooldown-button.tsx'
+      - 'app/skill-cooldown-button.css'
+      - 'scripts/test-skill-cooldown.cjs'
       - '.github/workflows/deploy-v198-test.yml'
 permissions:
   contents: read
