@@ -26,6 +26,7 @@ on:
       - 'scripts/test-stun-once.cjs'
       - 'scripts/test-skill-computation.cjs'
       - 'scripts/test-live-settlement.cjs'
+      - 'scripts/test-live-http.py'
       - '.github/workflows/deploy-v198-test.yml'
 permissions:
   contents: read
@@ -139,6 +140,8 @@ jobs:
           PY
       - name: Deploy named test-only Worker
         run: pnpm exec wrangler deploy --config dist/server/wrangler.json --name eternal-idle-v198-test --keep-vars
+      - name: Verify real test-account login and continuous live polls
+        run: python3 scripts/test-live-http.py
       - name: Print deployment location
         run: echo 'Check Cloudflare Workers dashboard for eternal-idle-v198-test workers.dev URL'
 
