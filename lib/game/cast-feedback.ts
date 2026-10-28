@@ -1,3 +1,4 @@
+import {canonicalWSkill} from './lineagew-skill-data';
 import {magicVisual} from './magic-visuals';
 import raw from './gamedata.json';
 import {playerActionKind} from './animation-cues';
@@ -19,10 +20,10 @@ export function castFeedbackPose(intent:CastIntent|undefined,characterId:string,
  * This does not move the spell's release, HP/MP, hit, loot or projectile clock.
  */
 export function attachCastFeedback(save:Save,intent:CastIntent):Save{
- if(playerActionKind(intent.skill)!=='skill'&&intent.skill!=='sk_shock_stun')return save;
  return {...save,characters:save.characters.map(c=>{
   if(c.id!==intent.characterId)return c;
-  const matches=(c.events||[]).filter(e=>e.seq>intent.afterSeq&&e.manual&&e.skill===intent.skill&&!e.weaponProc);
+  const skill=canonicalWSkill(intent.skill,c.cls);
+  const matches=(c.events||[]).filter(e=>e.seq>intent.afterSeq&&e.manual&&e.skill&&canonicalWSkill(e.skill,c.cls)===skill&&!e.weaponProc);
   if(!matches.length)return c;
   const at=Math.max(...matches.map(e=>e.at)),seqs=new Set(matches.filter(e=>e.at===at).map(e=>e.seq));
   return {...c,events:(c.events||[]).map(e=>seqs.has(e.seq)?{...e,visualCastAt:intent.at,...(intent.effectPreviewed?{visualEffectPreviewed:true}:{})}:e)};
@@ -45,3 +46,4 @@ export function resolvePlayerPose<T>(feedback:T|undefined,confirmed:T,intent:Cas
 export function playerCastInterval(serverSeconds:number|undefined,fallback:number):number{
  return typeof serverSeconds==='number'&&Number.isFinite(serverSeconds)&&serverSeconds>0?serverSeconds:fallback;
 }
+

@@ -1,0 +1,33 @@
+const fs=require('fs'),path=require('path'),os=require('os'),assert=require('node:assert/strict'),ts=require('typescript');
+const root=path.resolve(__dirname,'..'),dir=fs.mkdtempSync(path.join(os.tmpdir(),'stun-once-')),at=1000000;let checks=0;
+const compile=s=>ts.transpileModule(s,{compilerOptions:{module:ts.ModuleKind.CommonJS,target:ts.ScriptTarget.ES2022,esModuleInterop:true}}).outputText;
+try{
+ fs.writeFileSync(path.join(dir,'package.json'),'{"type":"commonjs"}');for(const name of fs.readdirSync(path.join(root,'lib/game'))){const from=path.join(root,'lib/game',name);if(name.endsWith('.json'))fs.copyFileSync(from,path.join(dir,name));else if(name.endsWith('.ts'))fs.writeFileSync(path.join(dir,name.replace(/\.ts$/,'.js')),compile(fs.readFileSync(from,'utf8')));}
+ const e=require(path.join(dir,'engine.js')),feedback=require(path.join(dir,'cast-feedback.js')),presentation=require(path.join(dir,'combat-presentation.js')),cue=require(path.join(dir,'sunrise-player-cues.js')),motion=require(path.join(dir,'sunrise-player-motion.js')),raw=require(path.join(dir,'gamedata.json'));
+ function fixture(input='lw_skill_400'){
+  const allocation={};let left=e.BASES.knight.pts;for(const k of ['str','dex','con','int','wis','cha']){allocation[k]=Math.min(left,20-e.BASES.knight[k]);left-=allocation[k];}const c=e.createCharacter('衝暈驗證','knight','m',allocation,at);c.lv=99;c.lawful=32767;c.skills=['lw_skill_400'];c.zone='training';c.mp=100000;c.running=false;
+  const weapon=Object.entries(raw.items).find(([,w])=>w.type==='wpn'&&(w.twohanded||w.w2h||w.wcat==='tohandsword'));assert(weapon);c.equipment.weapon={id:weapon[0],en:0};e.ensureArena(c,()=>.5,at);c.arena.forEach(t=>{t.hp=t.maxHp=1000000;});const initial=c.arena.map(t=>({...t})),afterSeq=c.eventSeq||0,save={v:1,at,active:c.id,characters:[c]};e.action(save,{type:'cast',skill:input},at,()=>.1);
+  const intent={id:1,characterId:c.id,skill:input,at:1000,afterSeq,effectPreviewed:false};return {save,intent,initial,fresh:c.events.filter(e=>e.seq>afterSeq)};
+ }
+ const check=(name,fn)=>{fn();checks++;console.log('PASS',name);};
+ function hookTriggers(intent,cues){const effects=[],triggers=[],React={useRef:v=>({current:v}),useState:v=>[v,()=>{}],useEffect:fn=>effects.push(fn)};const mod={exports:{}};
+  const req=name=>name==='react'?React:name.endsWith('sunrise-player-motion')?{...motion,triggerSunriseMotion:(...args)=>{triggers.push(args[1]);return motion.triggerSunriseMotion(...args);}}:name.endsWith('local-hit-sync')?{}:null;
+  new Function('require','module','exports','document',compile(fs.readFileSync(path.join(root,'app/use-sunrise-player-motion.ts'),'utf8')))(req,mod,mod.exports,{hidden:false});
+  mod.exports.useSunrisePlayerMotion('character',cues,{counts:{attack:6,skill:6,idle:1},attackSeconds:1,castSeconds:1},100,intent,{running:false,hasTarget:true,blocked:false});for(const fn of effects.slice(0,3))fn();return triggers;
+ }
+ check('移植衝暈的確認事件沿用點擊時間，不更動傷害、魔力或事件時刻',()=>{const f=fixture(),before=JSON.stringify(f.save),result=feedback.attachCastFeedback(f.save,f.intent),fresh=result.characters[0].events.filter(e=>e.seq>f.intent.afterSeq);assert(fresh.some(e=>e.kind==='magic'&&e.skill==='lw_skill_400'));assert(fresh.filter(e=>e.skill==='lw_skill_400').every(e=>e.visualCastAt===1000));assert.equal(JSON.stringify(f.save),before);for(const x of fresh){const original=f.fresh.find(e=>e.seq===x.seq);for(const k of ['damage','mobHp','mp','hp','at','skill'])assert.equal(x[k],original[k]);}});
+ check('實際人物動作Hook只觸發一次施法，不在延遲確認時再播一次',()=>{const f=fixture(),confirmed=feedback.attachCastFeedback(f.save,f.intent),cues=cue.sunrisePlayerCues(confirmed.characters[0].events.filter(e=>e.seq>f.intent.afterSeq));assert.equal(cues.filter(e=>e.kind==='skill').length,1);assert.deepEqual(hookTriggers(f.intent,cues),['skill']);});
+ check('舊衝暈別名也對應到同一次移植技能',()=>{const f=fixture('sk_shock_stun'),confirmed=feedback.attachCastFeedback(f.save,f.intent);assert.deepEqual(hookTriggers(f.intent,cue.sunrisePlayerCues(confirmed.characters[0].events.filter(e=>e.seq>f.intent.afterSeq))),['skill']);});
+ check('自動施放沒有點擊預覽時，仍正常播放一次動作',()=>{const f=fixture(),events=f.fresh.map(e=>({...e,manual:false}));assert.deepEqual(hookTriggers(undefined,cue.sunrisePlayerCues(events)),['skill']);});
+ check('確認命中的特效立即顯示一次，傷害數字與扣血只在原排程出現一次',()=>{
+  const f=fixture(),confirmed=feedback.attachCastFeedback(f.save,f.intent),events=confirmed.characters[0].events.filter(e=>e.seq>f.intent.afterSeq),health=new Map(f.initial.map(t=>[t.uid,t.hp]));
+  const prepared=presentation.prepareCombatHealth(events,health),scheduled=presentation.enqueueSunriseReplay([],prepared,1900,3000-at),queue=scheduled.queue,pending=[];let view={hp:100,mp:100000,arena:f.initial.map(t=>({...t})),floats:[]};
+  const early=presentation.drainCombatPresentation(queue,pending,1900);assert(early.some(e=>e.skill==='lw_skill_400'&&e.kind==='attack'&&e.visualOnly));for(const next of early)view=presentation.applyCombatViewEvent(view,next,1900);
+  assert.equal(view.casts.filter(e=>e.skill==='lw_skill_400').length,1);assert.deepEqual(view.arena.map(t=>t.hp),f.initial.map(t=>t.hp));assert.equal(view.floats.filter(e=>e.kind==='attack').length,0);
+  const later=presentation.drainCombatPresentation(queue,pending,3000);for(const next of later)view=presentation.applyCombatViewEvent(view,next,3000);
+  assert.equal(view.casts.filter(e=>e.skill==='lw_skill_400').length,1);const hits=f.fresh.filter(e=>e.kind==='attack'&&e.skill==='lw_skill_400');assert.equal(hits.length,1);assert.equal(view.floats.filter(e=>e.kind==='attack'&&e.skill==='lw_skill_400').length,1);assert.equal(view.arena[0].hp,f.initial[0].hp-hits[0].damage);assert.equal(view.actions.filter(e=>e.seq===hits[0].seq).length,1);
+ });
+ check('未命中不播放命中特效，其他物理技能與普通攻擊不被提前',()=>{const f=fixture(),hit=f.fresh.find(e=>e.kind==='attack'&&e.skill==='lw_skill_400');for(const event of [{...hit,miss:true},{...hit,skill:'lw_skill_450'},{...hit,skill:undefined}]){const q=presentation.enqueueSunriseReplay([],[event],1900,3000-at).queue;assert(!q.some(e=>e.visualOnly));}});
+ check('不把其他自動施放或較早的手動施放誤認成本次確認',()=>{const f=fixture();const c=f.save.characters[0];c.events.push({...f.fresh.find(e=>e.kind==='magic'),seq:c.eventSeq+1,manual:false});const result=feedback.attachCastFeedback(f.save,f.intent);assert.equal(result.characters[0].events.at(-1).visualCastAt,undefined);});
+ console.log(`PASS ${checks} single-cast presentation checks`);
+}finally{fs.rmSync(dir,{recursive:true,force:true});}

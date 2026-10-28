@@ -119,7 +119,7 @@ export function playerEventTarget(current:number|undefined,next:CombatEvent){
 export function applyCombatViewEvent(v:BattleView,next:PresentationEvent,now:number):BattleView{
  if(next.visualOnly){
   const result=applyCombatViewEvent(v,{...next,visualOnly:false,hp:v.hp,mp:v.mp,visualHpDelta:undefined,mobHp:undefined,targetEffects:undefined},now);
-  return {...v,actions:result.actions,casts:result.casts,floats:result.floats};
+  return {...v,actions:result.actions,casts:result.casts,floats:next.kind==='attack'?v.floats:result.floats};
  }
  const staged=!!next.visualPhase;
  const normal=next.kind==='attack'&&!next.skill&&!next.weaponProc&&(!next.source||next.source==='physical');
@@ -131,7 +131,7 @@ export function applyCombatViewEvent(v:BattleView,next:PresentationEvent,now:num
  const normalHitReceipts=receipt?[...(v.normalHitReceipts||[]),receipt].slice(-512):v.normalHitReceipts;
  const target=playerEventTarget(v.target,next);
  if(staged&&(next.slot===undefined||v.arena[next.slot]?.uid!==next.uid))return v;
- const actions=[...(v.actions||[]).filter(e=>now-e.shownAt<5000),{...next,shownAt:now}];
+ const actions=[...(v.actions||[]).filter(e=>now-e.shownAt<5000&&(e.seq!==next.seq||e.visualPhase!==next.visualPhase)),{...next,shownAt:now}];
  if(next.visualPhase==='launch')return {...v,normalHitReceipts,actions,hp:next.skill==='sk_elf_triple'?v.hp:next.hp,mp:next.skill==='sk_elf_triple'?v.mp:next.mp,attack:next,target};
  const arena=v.arena.map(m=>({...m})),healthCredits={...v.healthCredits};
  const updateHp=(slot:number)=>{const m=arena[slot];if(!m||m.uid!==next.uid||next.mobHp===undefined)return;
@@ -167,10 +167,12 @@ export function enqueueSunriseReplay<T extends PresentationEvent>(queued:(T&{due
  const offset=previous??replayOffset(unique,now,null)!;
  const early=unique.filter(e=>e.manual&&!e.visualEffectPreviewed&&(
   e.kind==='magic'&&e.skill&&(e.skill!=='sk_shock_stun'||e.effect==='狀態命中')||
-  e.kind==='state'&&e.skill==='sk_shock_stun'&&e.effect==='衝暈失敗'));
+  e.kind==='state'&&e.skill==='sk_shock_stun'&&e.effect==='衝暈失敗'||
+  e.kind==='attack'&&e.skill==='lw_skill_400'&&!e.miss&&!e.weaponProc));
  const earlySeq=new Set(early.map(e=>e.seq));
  return {queue:[...queued,...early.map(e=>({...e,visualOnly:true,due:now})),...unique.map(e=>({...e,...(earlySeq.has(e.seq)?{visualEffectPreviewed:true}:{}),due:e.at+offset}))].sort((a,b)=>a.due-b.due||a.seq-b.seq),offset};
 }
+
 
 
 
