@@ -82,7 +82,7 @@ export function drainCombatPresentation(queue:TimedCombatEvent[],pending:TimedCo
    const parent=queue.find(e=>e.kind==='attack'&&!e.skill&&!e.weaponProc&&e.uid===next.uid&&e.at===next.at);
    if(parent){queue.push({...next,due:Math.max(now+16,parent.due)});queue.sort((a,b)=>a.due-b.due||a.seq-b.seq);continue;}
   }
-  if(!impactFirst&&next.kind==='attack'&&(isFlyingMagic(next)||next.skill==='sk_elf_triple'||next.magicProjectile||bow&&!next.skill&&!next.weaponProc&&(!next.source||next.source==='physical'))){
+  if(!impactFirst&&!next.visualEffectPreviewed&&next.kind==='attack'&&(isFlyingMagic(next)||next.skill==='sk_elf_triple'||next.magicProjectile||bow&&!next.skill&&!next.weaponProc&&(!next.source||next.source==='physical'))){
    const flight=flightFor(next);
    pending.push({...next,visualPhase:'impact',visualAt:now+flight,visualFlightMs:flight,due:now+flight});
    pending.sort((a,b)=>a.due-b.due||a.seq-b.seq);
@@ -176,7 +176,7 @@ export function enqueueSunriseReplay<T extends PresentationEvent>(queued:(T&{due
   // Manual and automatic spells share each skill's animation-frame clock.
   // Manual previews anchor to click time; automatic casts to replay time.
   // Projectile spells retain their separate flight/impact clock.
-  due:e.kind==='attack'&&!!e.skill&&!e.weaponProc&&!isFlyingMagic(e)
+  due:e.kind==='attack'&&!!e.skill&&!e.weaponProc&&(!isFlyingMagic(e)||!!e.visualEffectPreviewed)
    ?Math.max(now,(e.manual&&typeof e.visualCastAt==='number'?e.visualCastAt:e.at+offset)+spellImpactMs(e))
    :e.at+offset
  }))].sort((a,b)=>a.due-b.due||a.seq-b.seq),offset};
