@@ -3,7 +3,7 @@ import {mythicProcDefinition} from './lineagew-mythic-procs';
 import type {CombatEvent,Encounter,PetSnapshot} from './engine';
 import type {SummonEntity} from './summon-system';
 import raw from './gamedata.json';
-import {isFlyingMagic,magicFlightMs,magicEffectLifetime} from './magic-visuals';
+import {isFlyingMagic,magicFlightMs,magicEffectLifetime,spellImpactMs} from './magic-visuals';
 import {TRIPLE_FLIGHT_MS,ARROW_FLIGHT_MS} from './player-sprite-layout';
 import {manualReplayOffset,replayOffset,tripleReplayOffset,REPLAY_MAX_AHEAD_MS} from './replay-timing';
 export type PresentationEvent=CombatEvent&{visualHpDelta?:number;visualOnly?:boolean};
@@ -173,11 +173,11 @@ export function enqueueSunriseReplay<T extends PresentationEvent>(queued:(T&{due
  return {queue:[...queued,...early.map(e=>({...e,visualOnly:true,due:now})),...unique.map(e=>({
   ...e,
   ...(earlySeq.has(e.seq)?{visualEffectPreviewed:true}:{}),
-  // Manual and automatic attack spells use the same 500ms contact frame.
-  // Manual previews anchor to the click; automatic spells anchor to their
-  // confirmed replay start. Projectiles keep their existing flight clock.
+  // Manual and automatic spells share each skill's animation-frame clock.
+  // Manual previews anchor to click time; automatic casts to replay time.
+  // Projectile spells retain their separate flight/impact clock.
   due:e.kind==='attack'&&!!e.skill&&!e.weaponProc&&!isFlyingMagic(e)
-   ?Math.max(now,(e.manual&&typeof e.visualCastAt==='number'?e.visualCastAt:e.at+offset)+500)
+   ?Math.max(now,(e.manual&&typeof e.visualCastAt==='number'?e.visualCastAt:e.at+offset)+spellImpactMs(e))
    :e.at+offset
  }))].sort((a,b)=>a.due-b.due||a.seq-b.seq),offset};
 }
