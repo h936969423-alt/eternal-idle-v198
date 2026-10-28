@@ -23,7 +23,7 @@ try{
   const f=fixture(),confirmed=feedback.attachCastFeedback(f.save,f.intent),events=confirmed.characters[0].events.filter(e=>e.seq>f.intent.afterSeq),health=new Map(f.initial.map(t=>[t.uid,t.hp]));
   const prepared=presentation.prepareCombatHealth(events,health),scheduled=presentation.enqueueSunriseReplay([],prepared,1900,3000-at),queue=scheduled.queue,pending=[];let view={hp:100,mp:100000,arena:f.initial.map(t=>({...t})),floats:[]};
   const early=presentation.drainCombatPresentation(queue,pending,1900);assert(early.some(e=>e.skill==='lw_skill_400'&&e.kind==='attack'&&e.visualOnly));for(const next of early)view=presentation.applyCombatViewEvent(view,next,1900);
-  assert.equal(view.casts.filter(e=>e.skill==='lw_skill_400').length,1);assert.deepEqual(view.arena.map(t=>t.hp),f.initial.map(t=>t.hp));assert.equal(view.floats.filter(e=>e.kind==='attack').length,0);
+  assert.equal(view.casts.filter(e=>e.skill==='lw_skill_400').length,1);assert.equal(view.casts[0].visualCastAt,undefined);assert.equal(view.casts[0].shownAt,1900);assert.deepEqual(view.arena.map(t=>t.hp),f.initial.map(t=>t.hp));assert.equal(view.floats.filter(e=>e.kind==='attack').length,0);
   const later=presentation.drainCombatPresentation(queue,pending,3000);for(const next of later)view=presentation.applyCombatViewEvent(view,next,3000);
   assert.equal(view.casts.filter(e=>e.skill==='lw_skill_400').length,1);const hits=f.fresh.filter(e=>e.kind==='attack'&&e.skill==='lw_skill_400');assert.equal(hits.length,1);assert.equal(view.floats.filter(e=>e.kind==='attack'&&e.skill==='lw_skill_400').length,1);assert.equal(view.arena[0].hp,f.initial[0].hp-hits[0].damage);assert.equal(view.actions.filter(e=>e.seq===hits[0].seq).length,1);
  });
