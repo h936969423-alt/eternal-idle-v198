@@ -1,0 +1,8 @@
+/* Keep live defenses beside the character name, including the compact map HUD. */
+.game-root .reference-hud .hud-name-row{justify-content:flex-start;flex-wrap:wrap;gap:2px 8px;min-width:0}
+.game-root .reference-hud .hud-name-row h2{max-width:100%;min-width:0}
+.game-root .reference-hud .hud-inline-defenses{display:flex;flex-wrap:wrap;align-items:center;gap:2px 8px;min-width:0;color:var(--foreground,#eadfc6);font-size:12px;line-height:1.4}
+.game-root .reference-hud .hud-inline-defenses span{white-space:nowrap}
+.game-root .reference-hud .hud-inline-defenses b{color:var(--gold,#f4cf69);font-variant-numeric:tabular-nums}
+.game-root.screenshot-layout.map-first-layout .reference-hud{height:auto;min-height:40px}
+.game-root.display-landscape .reference-hud .hud-inline-defenses{font-size:10px;gap:2px 6px}
