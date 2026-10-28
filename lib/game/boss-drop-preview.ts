@@ -1,3 +1,4 @@
+import {isFourDragonZone,isDragonRewardItem,fourDragonPools} from './four-dragon-loot';
 import raw from './gamedata.json';
 import {bossMembers,playableBoss} from './boss-respawn';
 import {bossMemberDrops} from './boss-loot';
@@ -17,9 +18,10 @@ export function bossDropPreview(zone:string,c?:Character,definition?:BossDropDef
  const configured=definition||(room?room.dropDefinition:c?.bossDropDefinitions?.[zone]);
  const hasDefaultHybrid=!configured&&targets.some(m=>m.definition?.dropsMode!=='custom');
  const hybrid=configured?.hybrid||(hasDefaultHybrid?defaultHybridRule(level,hybridRoleForBoss(zone)):undefined);
+ const dragon=isFourDragonZone(zone),dragonGroups=dragon?fourDragonPools(c?.lootAppearance,now):[];
  const drops:BossPreviewDrop[]=[];
  const add=(entries:DropEntry[],source:string,mixed:boolean)=>{for(const d of entries){
-  const i=items[d.item];if(!d.enabled||d.chance<=0||!i||i.availFrom>now||mixed&&isProgressionEquipment(i))continue;
+  const i=items[d.item];if(!d.enabled||d.chance<=0||!i||i.availFrom>now||(mixed||dragon)&&isProgressionEquipment(i)||dragon&&isDragonRewardItem(i))continue;
   drops.push({...d,source});
  }};
  if(configured)add(configured.drops,configured.timing==='complete'?'整場完成':'每隻王擊殺',!!hybrid);
@@ -29,10 +31,10 @@ export function bossDropPreview(zone:string,c?:Character,definition?:BossDropDef
  });
  const pool=hybrid?hybridCandidates(hybrid,targets[0]?.id||playableBoss(zone)?.mob||'',zone,level,c?.lootAppearance,now,mapPool(zone,c?.mapPools).map(m=>m.id)):undefined;
  const total=hybrid?Object.values(hybrid.weights).reduce((sum,n)=>sum+n,0):0;
- const equipment=pool&&hybrid?Object.entries(pool).flatMap(([rank,ids])=>{
+ const equipment=!dragon&&pool&&hybrid?Object.entries(pool).flatMap(([rank,ids])=>{
   const chance=total?hybrid.equipmentChance*hybrid.weights[rank as DropRank]/total:0;
   return chance>0&&ids.length?[{rank:rank as DropRank,chance,items:ids.map(item=>({item,chance:chance/ids.length}))}]:[];
  }):[];
  const shards=hybrid?[{item:'mat_legend_shard',chance:hybrid.legendShardChance},{item:'mat_mythic_shard',chance:hybrid.mythicShardChance}].filter(d=>d.chance>0):[];
- return {drops,equipment,shards,conditionalHybrid:!!hybrid&&!configured&&targets.some(m=>m.definition?.dropsMode==='custom')};
+ return {drops,equipment,shards,dragonGroups,conditionalHybrid:!dragon&&!!hybrid&&!configured&&targets.some(m=>m.definition?.dropsMode==='custom')};
 }

@@ -112,6 +112,7 @@ jobs:
         run: |
           node scripts/test-weapon-growth.cjs
           node scripts/test-boss-drop-preview.cjs
+          node scripts/test-four-dragon-loot.cjs
           node scripts/test-lineagew-mythic-enhancement.cjs
       - name: Build complete Cloudflare Worker
         run: pnpm run build

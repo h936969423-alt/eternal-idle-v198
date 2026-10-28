@@ -10,6 +10,7 @@ try{
  for(const zone of Object.keys(raw.worldBosses).filter(boss.playableBoss)){
   c.zone=zone;e.ensureArena(c,()=>.5,1000000);
   const room=c.bossRooms[zone],lv=Math.max(...room.arena.map(m=>raw.mobs[m.id].lv)),rule=hybrid.defaultHybridRule(lv,hybrid.hybridRoleForBoss(zone)),pool=hybrid.hybridCandidates(rule,room.arena[0].id,zone,lv,undefined,1000000),view=preview(zone,c,undefined,1000000);
+  if(load('four-dragon-loot').isFourDragonZone(zone)){assert.equal(view.dragonGroups.length,3);assert.equal(view.equipment.length,0);checked++;continue;}
   const shown=view.equipment.flatMap(g=>g.items.map(d=>d.item)).sort(),actual=Object.keys(pool).flatMap(r=>rule.weights[r]>0?pool[r]:[]).sort();assert.deepEqual(shown,actual,zone);
   assert(!view.drops.some(d=>hybrid.isProgressionEquipment(raw.items[d.item])),'fixed pool must not claim replaced equipment');
   if(shown.includes(staff))found={zone,rule,pool,view};

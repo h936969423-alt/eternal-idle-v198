@@ -1,3 +1,4 @@
+import {isFourDragonZone,isDragonRewardItem,rollFourDragonLoot} from './four-dragon-loot';
 import {weaponEnhancementBonus} from './weapon-enhancement';
 import {withSkillCooldown} from './skill-cooldown';
 import {bindPetRoster,enforcePetCarry,controlledPet,deployPet,PET_ITEMS,usePetItem,capturePet,evolvePet} from './pet-roster';
@@ -230,7 +231,8 @@ function award(c:Character,mobId:string,rng:()=>number,now:number){const dead=c.
  const mixedMonster=!roomBoss&&(dead?.definition?.dropsMode??'hybrid')==='hybrid';
  const bossLevel=roomBoss?Math.max(...(c.arena||[]).map(target=>monsterData(c,target.id,target)?.lv||1)):m.lv;
  const mixedBoss=roomBoss?(roomDrop?.hybrid||(!roomDrop&&!customMonster?defaultHybridRule(bossLevel,hybridRoleForBoss(c.zone)):undefined)):undefined;
- const onlySupplies=(drops:{item:string;quantity:number}[])=>drops.filter(d=>!isProgressionEquipment(DATA.items[d.item]));
+ const fourDragon=!!roomBoss&&isFourDragonZone(c.zone);
+ const onlySupplies=(drops:{item:string;quantity:number}[])=>drops.filter(d=>!isProgressionEquipment(DATA.items[d.item])&&(!fourDragon||!isDragonRewardItem(DATA.items[d.item])));
  const grantMixed=(rule:ReturnType<typeof defaultHybridRule>,key:string,lv:number)=>{
   const pool=hybridCandidates(rule,mobId,c.zone,lv,c.lootAppearance,now,mapPool(c.zone,c.mapPools).map(entry=>entry.id));
   c.hybridPity||={};if(!c.hybridPity[key]&&Object.keys(c.hybridPity).length>=512)delete c.hybridPity[Object.keys(c.hybridPity)[0]];
@@ -238,16 +240,16 @@ function award(c:Character,mobId:string,rng:()=>number,now:number){const dead=c.
  };
  if(customMonster&&!roomBoss)grantDrops(rollConfiguredDrops(dead!.definition!.drops,rewards.dropPct,rng,now));
  if(roomBoss){
-  if(roomDrop){if(roomDrop.timing==='kill'||roomFinished){const drops=rollConfiguredDrops(roomDrop.drops,rewards.dropPct,rng,now);grantDrops(mixedBoss?onlySupplies(drops):drops);}}
-  else {const drops=rollConfiguredDrops(customMonster?dead!.definition!.drops:bossMemberDrops(c.zone,mobId),rewards.dropPct,rng,now);grantDrops(mixedBoss?onlySupplies(drops):drops);}
-  if(roomFinished){if(mixedBoss)grantMixed(mixedBoss,'boss:'+c.zone,bossLevel);grantDrops([{item:'mat_boss_crystal',quantity:1}]);}
+  if(roomDrop){if(roomDrop.timing==='kill'||roomFinished){const drops=rollConfiguredDrops(roomDrop.drops,rewards.dropPct,rng,now);grantDrops(mixedBoss||fourDragon?onlySupplies(drops):drops);}}
+  else {const drops=rollConfiguredDrops(customMonster?dead!.definition!.drops:bossMemberDrops(c.zone,mobId),rewards.dropPct,rng,now);grantDrops(mixedBoss||fourDragon?onlySupplies(drops):drops);}
+  if(roomFinished){if(fourDragon){grantDrops(rollFourDragonLoot(c.zone,c.lootAppearance,rng,now));if(mixedBoss)grantMixed({...mixedBoss,equipmentChance:0},'boss:'+c.zone,bossLevel);}else if(mixedBoss)grantMixed(mixedBoss,'boss:'+c.zone,bossLevel);grantDrops([{item:'mat_boss_crystal',quantity:1}]);}
  }else if(mixedMonster){
   const original=publicMonsterDrop(mobId,rng,now,rewards.dropPct);grantDrops(onlySupplies(original.items));
   if(!original.known&&m.lv>=POLYMORPH.crystalDropLevel&&rng()<POLYMORPH.crystalDropChance)grantDrops([{item:'mat_boss_crystal',quantity:1}]);
   grantDrops(onlySupplies(rollConfiguredDrops(dead?.definition?.drops||[],rewards.dropPct,rng,now)));
   grantMixed(dead?.definition?.hybrid||defaultHybridRule(m.lv),'monster:'+c.zone+':'+mobId,m.lv);
  }else if(!customMonster){const drop=publicMonsterDrop(mobId,rng,now,rewards.dropPct);if(drop.known){grantDrops(drop.items);}else{if(m.lv>=POLYMORPH.crystalDropLevel&&rng()<POLYMORPH.crystalDropChance){addItem(c,'mat_boss_crystal');recordDrop(c,'mat_boss_crystal');showLoot(c,'mat_boss_crystal',1,now);}if(rng()<Math.min(1,.12*(1+rewards.dropPct/100))){const budget=Math.max(500,m.lv*m.lv*150),pool=equipmentPool.filter(k=>DATA.items[k].p<=budget);if(pool.length)grantDrops([{item:pool[int(0,pool.length-1,rng)],quantity:1}]);}}}
- const areaDrops=areaMonsterDrops(c.zone,c.skills,rng,now,rewards.dropPct);grantDrops(mixedMonster||mixedBoss?onlySupplies(areaDrops):areaDrops);
+ const areaDrops=areaMonsterDrops(c.zone,c.skills,rng,now,rewards.dropPct);grantDrops(mixedMonster||mixedBoss||fourDragon?onlySupplies(areaDrops):areaDrops);
 
  while(c.xp>=xpNeed(c.lv)&&c.lv<99){c.xp-=xpNeed(c.lv);c.points+=levelPointGain(c.lv,c.lv+1);c.lv++;const b=stats(c,now);c.hp=b.maxHp;c.mp=b.maxMp;log(c,`升級！現在為 Lv.${c.lv}`,'level',now);}
  const boss=playableBoss(c.zone);const respawnAt=now+(boss?(c.bossRooms?.[c.zone]?.generation?.respawnSeconds||boss.respawnMs/1000)*1000:ordinaryRespawnMs(c,now,stats(c,now)));if(!boss){if(mapPool(c.zone,c.mapPools).length&&!dead?.retiring)c.arena![c.arenaTarget||0].respawnAt=respawnAt;else{delete c.arena![c.arenaTarget||0].respawnAt;if(!mapPool(c.zone,c.mapPools).length&&!c.arena?.some(m=>m.hp>0)){c.running=false;log(c,'此地圖沒有怪物配置，已停止狩獵。','info',now);}}}else if(roomFinished){finishBossBattle(c,now);settleBossRewards(c,now,rng);c.arena!.forEach(m=>m.respawnAt=respawnAt);c.bossRooms![c.zone].respawnAt=respawnAt;c.running=false;log(c,'世界王已被擊敗，等待重生。','info',now);}syncTarget(c);event(c,'state',now);
