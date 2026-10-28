@@ -944,17 +944,20 @@ body:has(.game-root.map-first-layout) .map-function-dialog[data-slot=dialog-cont
 .detail-dialog .detail-table th:last-child,.detail-dialog .detail-table td:last-child{width:58%;max-width:none;text-align:left}
 .detail-dialog .detail-table th,.detail-dialog .detail-table td{white-space:normal;overflow-wrap:anywhere;word-break:break-word;vertical-align:top}
 
-/* Keep inspection reachable during rapid kills and on touch screens. */
-.static-arena .four-monster > .four-inspect{
- display:inline-flex;align-items:center;justify-content:center;
- width:44px;height:44px;min-width:44px;min-height:44px;padding:0;
- right:-5px;bottom:-8px;border:1px solid #bca46a;border-radius:50%;
- background:rgba(20,16,10,.94);color:#ffe09a;opacity:1;
- touch-action:manipulation;user-select:none;-webkit-user-select:none;
- -webkit-touch-callout:none;cursor:pointer;pointer-events:auto;z-index:30;
+/* Separate information controls from the arena attack targets. */
+.monster-inspect-toolbar{
+ position:relative;z-index:3;display:flex;flex-wrap:wrap;gap:8px;
+ padding:8px 12px;border-top:1px solid #6e5824;background:#141d20;
+ flex-shrink:0;
 }
-.static-arena .four-monster[data-dead="true"] > .four-inspect{
- visibility:visible;pointer-events:auto;
+.monster-inspect-toolbar:empty{display:none}
+.monster-inspect-button{
+ display:inline-flex;align-items:center;justify-content:center;gap:6px;
+ min-width:44px;min-height:44px;max-width:100%;padding:8px 12px;
+ border:1px solid #bca46a;border-radius:8px;background:#211e16;color:#ffe09a;
+ font-size:14px;line-height:20px;touch-action:manipulation;
+ user-select:none;-webkit-user-select:none;-webkit-touch-callout:none;cursor:pointer;
 }
-.static-arena .four-inspect > svg{pointer-events:none}
-.static-arena .four-inspect:focus-visible{outline:2px solid #ffe09a;outline-offset:3px}
+.monster-inspect-button > svg{flex-shrink:0;pointer-events:none}
+.monster-inspect-button > span{overflow-wrap:anywhere;pointer-events:none}
+.monster-inspect-button:focus-visible{outline:2px solid #ffe09a;outline-offset:2px}
