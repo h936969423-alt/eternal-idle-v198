@@ -44,4 +44,5 @@ jobs:
           node scripts/test-network-combat-cadence.cjs
           pnpm exec tsc --noEmit
           node scripts/test-weapon-growth.cjs
+          node scripts/test-boss-drop-preview.cjs
           node scripts/test-lineagew-mythic-enhancement.cjs

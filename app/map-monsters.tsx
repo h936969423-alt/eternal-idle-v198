@@ -1,13 +1,16 @@
 'use client';
 import {playableBoss,bossMembers,bossName} from '@/lib/game/boss-respawn';
-import {bossMemberDrops,bossGoldRange} from '@/lib/game/boss-loot';
 import raw from '@/lib/game/gamedata.json';
+import {bossDropPreview} from '@/lib/game/boss-drop-preview';
+import type {Character} from '@/lib/game/engine';
+import {RARITY_NAMES} from '@/lib/game/loot-appearance';
 import {dropChance,type MonsterDefinition,type BossDropDefinition} from '@/lib/game/monster-config';
 import {PUBLIC_LOOT,WORLD_BOSS_LOOT,PUBLIC_DROP_RATES,AREA_DROP_RATES} from '@/lib/game/monster-loot';
 const D=raw as any;
-export function MonsterDrops({id,worldBoss=false,definition,bossDefinition}:{id:string;worldBoss?:boolean;definition?:MonsterDefinition;bossDefinition?:BossDropDefinition}){
+export function MonsterDrops({id,worldBoss=false,definition,bossDefinition,c}:{id:string;worldBoss?:boolean;definition?:MonsterDefinition;bossDefinition?:BossDropDefinition;c?:Character}){
  const custom=bossDefinition?.drops||(definition?.dropsMode==='custom'?definition.drops:null);
- if(worldBoss&&!custom)return <div className="monster-drop-list"><strong>必得：金幣、BOSS結晶 ×1／場</strong><p>整場完成統一入帳；中途離開或死亡會清除本次未結算獎勵。</p>{bossMembers(id).map((m:any,index:number)=>{const mob=D.mobs[m.mob],gold=bossGoldRange(mob||{});return <div key={index}><strong>{mob?.n||m.mob} · 金幣 {gold.min.toLocaleString()}–{gold.max.toLocaleString()}</strong><div>{bossMemberDrops(id,m.mob).map(d=><span className="monster-drop-chip" key={d.item}>{D.items[d.item]?.n||d.item} · {d.chance}%</span>)}</div></div>;})}<small>每隻王、每項獨立抽取，可同時掉多件。已有機率沿用資料庫；缺少機率或清單者採永夜補充設定。另計掉落加成。</small></div>;
+ const bossZone=worldBoss?id:c&&playableBoss(c.zone)&&bossMembers(c.zone).some((m:{mob:string})=>m.mob===id)?c.zone:undefined;
+ if(bossZone){const preview=bossDropPreview(bossZone,c,bossDefinition),pct=(n:number)=>Number(n.toPrecision(6)).toString();return <div className="monster-drop-list"><strong>{bossName(bossZone)} · 世界王整場掉落</strong><p>必得：金幣、BOSS結晶 ×1／場。整場完成統一入帳；中途離開或死亡會清除本次未結算獎勵。</p>{preview.drops.length>0&&<div><strong>固定掉落池 · 各項獨立判定</strong>{preview.drops.map((d,index)=><span className="monster-drop-chip" key={index}>{D.items[d.item]?.n||d.item} · {pct(d.chance)}% · ×{d.min}–{d.max}（{d.source}）</span>)}</div>}{preview.equipment.length>0&&<div><strong>混合裝備池 · 整場完成抽取一次</strong>{preview.equipment.map(group=><div key={group.rank}><p>{RARITY_NAMES[group.rank]} · 分類機率 {pct(group.chance)}%</p>{group.items.map(d=><span className="monster-drop-chip" key={d.item}>{D.items[d.item]?.n||d.item} · {pct(d.chance)}%</span>)}</div>)}{preview.conditionalHybrid&&<small>本場含自訂掉落成員，混合裝備抽獎須由採用混合掉落的成員作為最後擊殺。</small>}</div>}{preview.shards.length>0&&<div><strong>額外碎片 · 整場完成各自判定</strong>{preview.shards.map(d=><span className="monster-drop-chip" key={d.item}>{D.items[d.item]?.n||d.item} · {pct(d.chance)}%</span>)}</div>}<small>依實際世界王設定與裝備池列出；機率為未加成的單次判定值，另計角色掉落加成。混合裝備每次最多一件。</small></div>;}
  if(custom)return <div className="monster-drop-list"><strong>GM 自訂掉落物品</strong>{custom.filter(d=>d.enabled).map(d=><span className="monster-drop-chip" key={d.item}>{D.items[d.item]?.n||d.item} · {d.chance}% · ×{d.min}–{d.max}</span>)}{!custom.some(d=>d.enabled)&&<p>沒有啟用的掉落物品。</p>}<small>各項獨立判定，另計娃娃掉落加成。{bossDefinition?(bossDefinition.timing==='complete'?'整場完成抽取一次。':'每隻成員擊殺抽取一次。')+'整場完成統一入帳，另必得金幣與 BOSS結晶 ×1。':''}</small></div>;
  const published=!worldBoss?PUBLIC_DROP_RATES[id]:undefined;
  if(published!==undefined)return <div className="monster-drop-list"><strong>公開掉落表 · 基礎機率</strong>{published.length?<div>{published.map(d=><span className="monster-drop-chip" key={d.item}>{D.items[d.item]?.n||d.item} · {d.chance}%</span>)}</div>:<p>公開表未列掉落物品。</p>}<small>每項獨立判定，可同時掉落多種物品；另計掉落加成。</small></div>;
