@@ -9,6 +9,7 @@ on:
       - 'app/combat-sprite.tsx'
       - 'app/combat-audio.ts'
       - 'app/monster-motion.tsx'
+      - 'app/battle-arena.tsx'
       - 'app/scene-transition.tsx'
       - 'app/globals.css'
       - 'tests/**'
