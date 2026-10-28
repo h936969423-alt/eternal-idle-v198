@@ -170,7 +170,15 @@ export function enqueueSunriseReplay<T extends PresentationEvent>(queued:(T&{due
   e.kind==='state'&&e.skill==='sk_shock_stun'&&e.effect==='衝暈失敗'||
   e.kind==='attack'&&e.skill==='lw_skill_400'&&!e.miss&&!e.weaponProc));
  const earlySeq=new Set(early.map(e=>e.seq));
- return {queue:[...queued,...early.map(e=>({...e,visualOnly:true,due:now})),...unique.map(e=>({...e,...(earlySeq.has(e.seq)?{visualEffectPreviewed:true}:{}),due:e.at+offset}))].sort((a,b)=>a.due-b.due||a.seq-b.seq),offset};
+ return {queue:[...queued,...early.map(e=>({...e,visualOnly:true,due:now})),...unique.map(e=>({
+  ...e,
+  ...(earlySeq.has(e.seq)?{visualEffectPreviewed:true}:{}),
+  // Manual spells start their animation on click. Hold confirmed damage until
+  // the impact frame, without delaying the server's damage calculation.
+  due:e.manual&&e.kind==='attack'&&!!e.skill&&typeof e.visualCastAt==='number'
+   ?Math.max(now,e.visualCastAt+500)
+   :e.at+offset
+ }))].sort((a,b)=>a.due-b.due||a.seq-b.seq),offset};
 }
 
 
