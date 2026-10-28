@@ -1,0 +1,7 @@
+.sunrise-pet-panel{min-width:0;width:100%;overflow-wrap:anywhere}
+.sunrise-pet-panel input,.sunrise-pet-panel select{width:100%;max-width:100%;min-width:0;box-sizing:border-box;min-height:40px;height:auto;padding:8px;color:#e6d4ae;background:#15252b;border:1px solid #76613b;border-radius:6px}
+.sunrise-pet-panel label{display:block;margin:12px 0}
+.sunrise-pet-panel .pet-progress-card{min-width:0;max-width:100%;box-sizing:border-box;padding:12px}
+.sunrise-pet-panel button{max-width:100%;white-space:normal;height:auto;min-height:40px;margin:3px 0}
+.sunrise-pet-panel details{margin:16px 0}
+.sunrise-pet-panel summary{cursor:pointer;padding:10px;border:1px solid #76613b;border-radius:6px}

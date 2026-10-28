@@ -6,7 +6,7 @@ const runtimeKeys=['npcConfig','mapAccess','lootAppearance','dollDefinitions','m
 function withoutDefinitions(c:Character):Character{
  const out={...c};for(const key of runtimeKeys)delete out[key];return out;
 }
-export function persistedSave(s:Save):Save{return {...s,characters:s.characters.map(withoutDefinitions)};}
+export function persistedSave(s:Save):Save{return {...s,characters:s.characters.map(c=>{const out=withoutDefinitions(c);if(s.petRosterVersion===1)delete out.pets;return out;})};}
 export function responseSave(s:Save,settingsKey:string,cursor?:GameSyncCursor){
  const active=s.characters.find(c=>c.id===s.active);
  const reuse=!!active&&cursor?.character===active.id&&cursor.settingsKey===settingsKey;
