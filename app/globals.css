@@ -944,21 +944,33 @@ body:has(.game-root.map-first-layout) .map-function-dialog[data-slot=dialog-cont
 .detail-dialog .detail-table th:last-child,.detail-dialog .detail-table td:last-child{width:58%;max-width:none;text-align:left}
 .detail-dialog .detail-table th,.detail-dialog .detail-table td{white-space:normal;overflow-wrap:anywhere;word-break:break-word;vertical-align:top}
 
-/* Separate information controls from the arena attack targets. */
-.monster-inspect-toolbar{
- position:relative;z-index:3;display:flex;flex-wrap:nowrap;gap:4px;
- width:100%;min-width:0;box-sizing:border-box;overflow-x:auto;
- padding:4px 6px;border-top:1px solid #6e5824;background:#141d20;
- flex-shrink:0;overscroll-behavior-x:contain;
+/* Compact monster information controls with explicit horizontal navigation. */
+.monster-inspect-shell{
+ position:relative;z-index:3;display:flex;align-items:stretch;gap:3px;
+ width:100%;min-width:0;box-sizing:border-box;padding:4px 5px;
+ border-top:1px solid #6e5824;background:#141d20;flex-shrink:0;
 }
+.monster-inspect-toolbar{
+ display:flex;flex:1 1 auto;flex-wrap:nowrap;gap:3px;min-width:0;
+ box-sizing:border-box;overflow-x:auto;scrollbar-width:none;
+ overscroll-behavior-x:contain;scroll-behavior:smooth;
+}
+.monster-inspect-toolbar::-webkit-scrollbar{display:none}
 .monster-inspect-toolbar:empty{display:none}
+.monster-inspect-scroll{
+ display:flex;align-items:center;justify-content:center;flex:0 0 27px;
+ width:27px;min-width:27px;min-height:26px;padding:0;
+ border:1px solid #8e7748;border-radius:5px;background:#211e16;color:#ffe09a;
+ touch-action:manipulation;cursor:pointer;
+}
+.monster-inspect-scroll svg{pointer-events:none}
 .monster-inspect-button{
- display:inline-flex;align-items:center;justify-content:center;gap:4px;flex:0 0 auto;
- min-width:0;min-height:28px;height:28px;max-width:100%;padding:3px 6px;box-sizing:border-box;
+ display:inline-flex;align-items:center;justify-content:center;gap:3px;flex:0 0 auto;
+ min-width:0;min-height:26px;height:26px;max-width:100%;padding:2px 5px;box-sizing:border-box;
  border:1px solid #bca46a;border-radius:5px;background:#211e16;color:#ffe09a;
- font-size:11px;line-height:18px;white-space:nowrap;touch-action:manipulation;
+ font-size:10px;line-height:15px;white-space:nowrap;touch-action:manipulation;
  user-select:none;-webkit-user-select:none;-webkit-touch-callout:none;cursor:pointer;
 }
-.monster-inspect-button > svg{width:14px;height:14px;flex-shrink:0;pointer-events:none}
+.monster-inspect-button > svg{width:12px;height:12px;flex-shrink:0;pointer-events:none}
 .monster-inspect-button > span{white-space:nowrap;pointer-events:none}
-.monster-inspect-button:focus-visible{outline:2px solid #ffe09a;outline-offset:2px}
+.monster-inspect-button:focus-visible,.monster-inspect-scroll:focus-visible{outline:2px solid #ffe09a;outline-offset:2px}
