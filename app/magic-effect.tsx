@@ -9,7 +9,7 @@ import {targetSpellLayout} from '@/lib/game/spell-effect-layout';
 import {sceneBlend} from '@/lib/game/scene-presentation';
 import type {CombatEvent} from '@/lib/game/engine';
 
-export default function MagicEffect({event,loopUntil}:{event:CombatEvent;loopUntil?:number}){
+function StandardMagicEffect({event,loopUntil}:{event:CombatEvent;loopUntil?:number}){
  const host=useRef<HTMLSpanElement>(null),[frame,setFrame]=useState(0);
  const {name,config}=magicVisual(event);
  const [placement,setPlacement]=useState<{left?:number;top?:number;width?:number;height?:number;frames?:string[];shadow?:string[];flip?:boolean}>({});
@@ -66,3 +66,7 @@ export default function MagicEffect({event,loopUntil}:{event:CombatEvent;loopUnt
  return <span ref={host} style={{display:'contents'}}>{layers.map(({frames,shadow},i)=>frames.length&&(loopUntil||frame<frames.length)?<img key={i} className="magic-effect" src={frames[frame%frames.length]} style={{...style,mixBlendMode:shadow?'normal':sceneBlend(config.blend)}} alt={shadow?'':`${name}施法特效`}/>:null)}</span>;
 }
 
+
+
+// Primary four-dragon casts are drawn once by FourDragonSprite, with their source body timeline.
+export default function MagicEffect(props:{event:CombatEvent;loopUntil?:number}){return props.event.sunriseDragon?null:<StandardMagicEffect {...props}/>;}

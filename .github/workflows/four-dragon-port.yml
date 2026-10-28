@@ -1,0 +1,28 @@
+name: Four dragon port regression
+on:
+  push:
+    branches: [main]
+    paths: ['lib/game/**', 'app/*dragon*.tsx', 'app/magic-effect.tsx', 'public/assets/four-dragons/**', 'scripts/test-four-dragon-port.cjs', '.github/workflows/four-dragon-port.yml']
+  pull_request:
+    paths: ['lib/game/**', 'app/*dragon*.tsx', 'app/magic-effect.tsx', 'public/assets/four-dragons/**', 'scripts/test-four-dragon-port.cjs', '.github/workflows/four-dragon-port.yml']
+permissions:
+  contents: read
+jobs:
+  four-dragons:
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '22'
+      - name: Install isolated test dependencies
+        run: npm install --prefix "$RUNNER_TEMP/four-dragon-tools" --no-audit --no-fund typescript@5.9.3 react@19.2.0 react-dom@19.2.0
+      - name: Verify four dragons and spell timing
+        env:
+          NODE_PATH: ${{ runner.temp }}/four-dragon-tools/node_modules
+        run: |
+          node scripts/test-four-dragon-port.cjs
+          node scripts/test-four-dragon-loot.cjs
+          node scripts/test-spell-visual-ownership.cjs
+          node scripts/test-spell-start-sync.cjs

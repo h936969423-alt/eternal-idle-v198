@@ -1,0 +1,42 @@
+const assert=require('node:assert/strict'),fs=require('node:fs'),path=require('node:path'),os=require('node:os'),ts=require('typescript');
+const root=path.resolve(__dirname,'..'),dir=fs.mkdtempSync(path.join(os.tmpdir(),'four-dragon-port-'));
+fs.writeFileSync(path.join(dir,'package.json'),'{"type":"commonjs"}');
+for(const name of fs.readdirSync(path.join(root,'lib/game'))){const p=path.join(root,'lib/game',name);if(name.endsWith('.json'))fs.copyFileSync(p,path.join(dir,name));else if(name.endsWith('.ts')){let js=ts.transpileModule(fs.readFileSync(p,'utf8'),{compilerOptions:{module:ts.ModuleKind.CommonJS,target:ts.ScriptTarget.ES2023,esModuleInterop:true}}).outputText;if(name==='engine.ts')js+='\nexports.testDragonTurn=sourceDragonTurn;exports.testDragonDot=sourceDragonDot;';fs.writeFileSync(path.join(dir,name.replace(/\.ts$/,'.js')),js);}}
+const load=name=>require(path.join(dir,name+'.js')),e=load('engine'),d=load('four-dragons'),r=load('monster-runtime'),cfg=load('monster-config'),visual=load('four-dragon-visual'),now=1000000;
+function fixture(id='antaras'){
+ const base=e.BASES.dark,attrs={};let left=base.pts;for(const k of ['str','dex','con','int','wis','cha']){attrs[k]=Math.min(left,20-base[k]);left-=attrs[k];}
+ const c=e.createCharacter('四龍移植測試','dark','m',attrs,now),s=e.emptySave(now);s.characters=[c];s.active=c.id;c.lv=99;c.zone=Object.keys(e.DATA.worldBosses).find(z=>e.DATA.worldBosses[z].mob===id);c.autoPotion=false;c.running=true;c.buffs.test={until:now+1000000,d:{mhp:100000,damageReductionPct:100}};c.hp=e.stats(c,now).maxHp;c.atkClock=-1000;e.ensureArena(c,()=>.5,now);s.bossRooms=c.bossRooms;return {c,s,target:c.arena[0],mob:r.monsterData(c,id,c.arena[0])};
+}
+try{
+ const expected={antaras:[93,150000,-80,200,1.5,162,470],fafurion:[93,130000,-80,250,2,215,625],valakas:[95,200000,-99,200,4,425,1255],lindvior:[90,120000,-90,200,1,108,312]};
+ for(const [id,values]of Object.entries(expected)){const {target,mob}=fixture(id);assert.deepEqual([mob.lv,target.hp,mob.ac,mob.mr,mob.atkSpd,...d.dragonRange(mob.dmg,mob.db)],values);assert.deepEqual(r.magicKeys(mob),['mag','mag2','mag3']);assert.equal(mob.noAttack,false);assert.equal(target.mp,0);assert.equal(target.hardSkin,mob.lv*2);}
+ // Known post-normalization source spell ranges, not the raw declarations near line 2148.
+ const ranges={antaras:[[270,786],[275,821]],fafurion:[[267,786],[268,788],[265,789]],valakas:[[294,864],[379,1127]],lindvior:[[271,782],[275,821]]};
+ for(const [id,values]of Object.entries(ranges))assert.deepEqual(d.dragonSkillEntries(id).map(([,s])=>s).filter(s=>s.dmg).map(s=>d.dragonRange(s.dmg,s.db)),values);
+ assert.equal(d.dragonMagicDamage(d.fourDragon('valakas').mag3,{mr:100},false,()=>0),189);assert.equal(d.dragonMagicDamage(d.fourDragon('valakas').mag3,{mr:100},false,()=>.999999),563);
+ assert.ok(Math.abs(d.dragonMrMult(250)-.3625)<1e-12);assert.equal(d.dragonStatusChance(200,200),0);assert.equal(d.dragonStatusChance(250,100),.75);assert.equal(d.dragonStatusChance(350,0),1);
+ const ice=d.fourDragon('fafurion').mag3;assert.equal(d.dragonMagicDamage(ice,{mr:100},true,()=>0)-d.dragonMagicDamage(ice,{mr:100},false,()=>0),198);
+ // Every skill owns its own cooldown. Repeated polls cannot add or suppress casts.
+ {const {c,s}=fixture('fafurion');c.buffs.test.d.immStone=1;e.advance(s,now+21000,()=>.25);const casts=c.events.filter(x=>x.kind==='magic'&&x.sunriseDragon);assert.deepEqual(casts.filter(x=>x.effectName==='巨水炮').map(x=>x.at-now),[5000,10000,15000,20000]);assert.deepEqual(casts.filter(x=>x.effectName==='寒冰噴吐').map(x=>x.at-now),[7000,14000,21000]);assert.deepEqual(casts.filter(x=>x.effectName==='冰裂術').map(x=>x.at-now),[7000,14000,21000]);const count=casts.length;e.advance(s,now+21000,()=>.25);assert.equal(c.events.filter(x=>x.kind==='magic'&&x.sunriseDragon).length,count);}
+ {const {c,s,target,mob}=fixture();e.testDragonTurn(c,target,mob,0,now,()=>0,'mag');e.advance(s,now+12000,()=>.5);assert.deepEqual(c.events.filter(x=>x.dragonDot).map(x=>[x.at-now,x.damage]),[[3000,158],[6000,158],[9000,158],[12000,158]]);}
+ // Source DoT cadence includes the final tick, with no duplicate legacy poison ticks.
+ {const {c,target,mob}=fixture();e.testDragonTurn(c,target,mob,0,now,()=>0,'mag');assert.equal(c.events.filter(x=>x.kind==='magic'&&x.sunriseDragon).length,1);const key='poison:player',hp=c.hp;for(const t of [3000,6000,9000,12000])e.testDragonDot(c,key,now+t,()=>.5);assert.equal(hp-c.hp,632);assert.equal(c.events.filter(x=>x.dragonDot).length,4);assert.equal(c.dragonDots[key],undefined);}
+ {const {c,target,mob}=fixture('valakas');e.testDragonTurn(c,target,mob,0,now,()=>0,'mag');const hp=c.hp;for(let t=3000;t<=21000;t+=3000)e.testDragonDot(c,'burn:player',now+t,()=>.5);assert.equal(hp-c.hp,630);}
+ {const {c,target,mob}=fixture();e.testDragonTurn(c,target,mob,0,now,()=>0,'mag');delete c.buffs.status_poison;const hp=c.hp;e.testDragonDot(c,'poison:player',now+3000,()=>.5);assert.equal(c.hp,hp);assert.equal(c.dragonDots['poison:player'],undefined);}
+ // Distinct controls retain their own type and exact zero chance at sufficient MR.
+ {const {c,target,mob}=fixture('lindvior');e.testDragonTurn(c,target,mob,0,now,()=>0,'mag3');assert.ok(c.buffs.status_paralyze);assert.equal(c.buffs.status_freeze,undefined);const n=c.events.filter(x=>x.kind==='magic'&&x.sunriseDragon).length;assert.equal(n,1);assert.ok(c.events.filter(x=>x.kind==='hurt').every(x=>!x.motion));}
+ {const {c,target,mob}=fixture('fafurion');c.buffs.test.d.mr=1000;e.testDragonTurn(c,target,mob,0,now,()=>0,'mag2');assert.equal(c.buffs.status_freeze,undefined);}
+ // Source AoE strikes both the character and every active companion, instead of redirecting once.
+ {const {c,target,mob}=fixture('fafurion');const pet=load('pet-system');c.petRosterVersion=undefined;c.petActives=['杜賓狗'];const p=pet.ensurePet(c,'杜賓狗',now);p.hp=p.maxHp=100000;p.uid='test-pet';e.testDragonTurn(c,target,mob,0,now,()=>.5,'mag');assert.ok(c.events.some(x=>x.kind==='hurt'&&x.sunriseDragon));assert.ok(c.events.some(x=>x.petUid===p.uid&&x.source==='monster'));assert.ok(p.hp<100000);}
+ // Old saved default actors are upgraded once, without healing or resurrecting them.
+ {const {c,target}=fixture();delete target.sunriseDragonVersion;target.hp=125000;target.maxHp=250000;target.definition={...cfg.defaultMonster('antaras'),hp:250000};r.migrateFourDragon(c,target,now);assert.equal(target.hp,75000);assert.equal(target.maxHp,150000);assert.equal(target.definition,undefined);target.hp=1;r.migrateFourDragon(c,target,now+1);assert.equal(target.hp,1);}
+ {const {c,target}=fixture();delete target.sunriseDragonVersion;target.hp=0;r.migrateFourDragon(c,target,now);assert.equal(target.hp,0);}
+ // Explicit GM configuration still controls HP, attacks and spell removal.
+ {const {c}=fixture();const def=cfg.defaultMonster('antaras');def.hp=12345;def.spells=[];c.monsterDefinitions={antaras:def};const t=r.createEncounter(c,'antaras',now);r.migrateFourDragon(c,t,now);assert.equal(t.hp,12345);const m=r.monsterData(c,'antaras',t);assert.equal(m.sunriseDragon,undefined);assert.equal(m.noAttack,false);assert.deepEqual(r.magicKeys(m),[]);}
+ // Regen is calculated at each boundary; hard skin wears and regrows independently.
+ {const {target}=fixture();target.hp=100000;target.lastPhysicalAt=now+1000;target.hardSkin=100;r.recoverMonster(target,now+5000);assert.equal(target.hp,100750);r.recoverMonster(target,now+10000);assert.equal(target.hp,104500);assert.equal(target.hardSkin,106);}
+ // Full skill/FX sequence stays finite and the mouth-opening offset uses the same frame clock.
+ for(const id of d.FOUR_DRAGON_IDS){assert.ok(visual.sourceDragonClip(id,'idle'));assert.ok(visual.sourceDragonClip(id,'skill'));const fx=visual.sourceDragonFx(id);assert.ok(fx.sheet.count>0);assert.equal(visual.sourceDragonFxFrame(id,(fx.delay+fx.sheet.count+fx.hold)*125),-1);assert.equal(visual.sourceDragonFrame(1000,8),-1);assert.equal(visual.sourceDragonFrame(1000,8,true),0);assert.ok(fs.existsSync(path.join(root,'public',fx.sheet.src)));}
+ assert.equal(visual.sourceDragonFxFrame('antaras',999),-1);assert.equal(visual.sourceDragonFxFrame('antaras',1000),0);
+ console.log('PASS: source-normalized four-dragon stats, 12 skills, independent clocks, repeated-poll idempotence, MR/status gates, ice follow-up, poison/burn cadence and cure, distinct paralysis, party AoE, old-save migration, GM overrides, source regen/hard skin, finite synchronized original FX.');
+}finally{fs.rmSync(dir,{recursive:true,force:true});}

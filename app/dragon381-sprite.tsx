@@ -1,4 +1,6 @@
 'use client';
+import FourDragonSprite from './four-dragon-sprite';
+import {fourDragon} from '@/lib/game/four-dragons';
 import {sourceMonsterGroundOffset} from '@/lib/game/monster-ground';
 import renderActions from '@/lib/game/dragon381-render-actions.json';
 import layouts from '@/lib/game/dragon381-layouts.json';
@@ -45,7 +47,7 @@ function drawNode(ctx:CanvasRenderingContext2D,defs:SpriteDefinitions,id:number,
 }
 function prewarm(defs:SpriteDefinitions,gfx:number,heading:number,action:number){const node=spriteNode(defs,gfx);if(!node)return;for(const phase of [0,.2,.5,.8]){const pose=sampleDragonPose(node,action,heading,phase);if(!pose)continue;const key=`${node.base}-${pose.group}`,g=group(key);const warm=()=>{const data=groups.get(key);for(const f of data?.frames.filter(f=>!f.empty).slice(0,1)||[])image(key,f.page||0,performance.now());};if(g)warm();else pendingGroups.get(key)?.then(warm);}}
 function prepareCanvas(canvas:HTMLCanvasElement,w:number,h:number){const dpr=Math.min(2,window.devicePixelRatio||1);if(canvas.width!==Math.round(w*dpr)||canvas.height!==Math.round(h*dpr)){canvas.width=Math.round(w*dpr);canvas.height=Math.round(h*dpr);}const ctx=canvas.getContext('2d');ctx?.setTransform(dpr,0,0,dpr,0,0);return ctx;}
-export default function DragonSprite({gfx,npcId,name,uid,hp,actions,fallback,summon=false}:{gfx:number;npcId?:number;name:string;uid:string;hp:number;actions:CombatEvent[];fallback?:string;summon?:boolean}){
+function LegacyDragonSprite({gfx,npcId,name,uid,hp,actions,fallback,summon=false}:{gfx:number;npcId?:number;name:string;uid:string;hp:number;actions:CombatEvent[];fallback?:string;summon?:boolean}){
  const renderLayout=(layouts.nodes as Record<string,{headings:Record<string,{scale:number;anchorX:number;anchorY:number}>}>)[String(resolveGraphic(gfx))]?.headings[String(DRAGON381_HEADING)];
  const direction=DRAGON381_HEADING,canvas=useRef<HTMLCanvasElement>(null),placeholder=useRef<HTMLImageElement>(null),latest=useRef({hp,actions});latest.current={hp,actions};
  useEffect(()=>{let alive=true,stop:(()=>void)|undefined,last=0,dead=false,state={action:3,start:performance.now(),duration:1600,loop:true};
@@ -83,3 +85,6 @@ export function DragonEffects({events,arena,actors}:{events:(CombatEvent&{shownA
   return()=>{alive=false;observer.disconnect();stop?.();};
  },[arena]);return <canvas className="dragon381-effects" ref={canvas} aria-hidden="true"/>;
 }
+
+
+export default function DragonSprite(props:Parameters<typeof LegacyDragonSprite>[0]){const id=({'安塔瑞斯':'antaras','法利昂':'fafurion','巴拉卡斯':'valakas','林德拜爾':'lindvior'} as Record<string,string>)[props.name];return id&&[45681,45682,45683,45684].includes(props.npcId||0)&&fourDragon(id)?<FourDragonSprite id={id} uid={props.uid} hp={props.hp} actions={props.actions} fallback={props.fallback}/>:<LegacyDragonSprite {...props}/>;}

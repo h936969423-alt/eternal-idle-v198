@@ -1,0 +1,234 @@
+{
+  "repository": "pp771007/idle-lineage-class",
+  "commit": "5f00f4a86389aaa7309c24d7a7c1ab060c47b500",
+  "version": "v3.8.34",
+  "mobs": {
+    "antaras": {
+      "hard": true,
+      "n": "安塔瑞斯",
+      "lv": 93,
+      "s": "L",
+      "beh": "主動",
+      "race": "龍",
+      "boss": true,
+      "e": "earth",
+      "hp": 150000,
+      "ac": -80,
+      "mr": 200,
+      "exp": 9200,
+      "goldMin": 19236,
+      "goldMax": 26524,
+      "atkSpd": 1.5,
+      "dmg": [
+        4,
+        78
+      ],
+      "db": 158,
+      "hit": 128,
+      "mag": {
+        "skn": "毒氣風暴",
+        "cd": 130,
+        "type": "poison",
+        "pbase": 250,
+        "d": 158,
+        "tick": 3,
+        "dur": 12
+      },
+      "mag2": {
+        "skn": "地裂術",
+        "cd": 70,
+        "dmg": [
+          6,
+          87
+        ],
+        "db": 264,
+        "ele": "earth"
+      },
+      "mag3": {
+        "skn": "大地怒吼",
+        "cd": 90,
+        "chance": 0.3,
+        "dmg": [
+          1,
+          547
+        ],
+        "db": 274,
+        "ele": "earth"
+      }
+    },
+    "fafurion": {
+      "hard": true,
+      "n": "法利昂",
+      "lv": 93,
+      "s": "L",
+      "beh": "主動",
+      "race": "龍",
+      "boss": true,
+      "e": "water",
+      "hp": 130000,
+      "ac": -80,
+      "mr": 250,
+      "exp": 9400,
+      "goldMin": 18236,
+      "goldMax": 28524,
+      "atkSpd": 2,
+      "dmg": [
+        5,
+        83
+      ],
+      "db": 210,
+      "hit": 128,
+      "mag": {
+        "skn": "巨水炮",
+        "cd": 50,
+        "dmg": [
+          3,
+          174
+        ],
+        "db": 264,
+        "ele": "water"
+      },
+      "mag2": {
+        "skn": "寒冰噴吐",
+        "cd": 70,
+        "chance": 0.3,
+        "dmg": [
+          4,
+          131
+        ],
+        "db": 264,
+        "ele": "water",
+        "sec": {
+          "type": "freeze",
+          "pbase": 200
+        }
+      },
+      "mag3": {
+        "skn": "冰裂術",
+        "cd": 70,
+        "dmg": [
+          1,
+          525
+        ],
+        "db": 264,
+        "ele": "water",
+        "ext_freeze": 198
+      }
+    },
+    "valakas": {
+      "hard": true,
+      "n": "巴拉卡斯",
+      "lv": 95,
+      "s": "L",
+      "beh": "主動",
+      "race": "龍",
+      "boss": true,
+      "e": "fire",
+      "hp": 200000,
+      "ac": -99,
+      "mr": 200,
+      "exp": 10000,
+      "goldMin": 20236,
+      "goldMax": 36524,
+      "atkSpd": 4,
+      "dmg": [
+        5,
+        167
+      ],
+      "db": 420,
+      "hit": 128,
+      "mag": {
+        "skn": "火牢",
+        "cd": 50,
+        "chance": 0.1,
+        "type": "burn",
+        "d": 90,
+        "tick": 3,
+        "dur": 21
+      },
+      "mag2": {
+        "skn": "流星雨",
+        "cd": 100,
+        "dmg": [
+          5,
+          115
+        ],
+        "db": 289,
+        "ele": "fire",
+        "sec": {
+          "type": "scald",
+          "tick": 3,
+          "d": 126,
+          "dur": 15,
+          "pbase": 200
+        }
+      },
+      "mag3": {
+        "skn": "火焰噴吐",
+        "cd": 170,
+        "dmg": [
+          2,
+          375
+        ],
+        "db": 377,
+        "ele": "fire"
+      }
+    },
+    "lindvior": {
+      "hard": true,
+      "n": "林德拜爾",
+      "lv": 90,
+      "s": "L",
+      "beh": "主動",
+      "race": "龍",
+      "boss": true,
+      "noAutoTeleport": true,
+      "e": "wind",
+      "hp": 120000,
+      "ac": -90,
+      "mr": 200,
+      "exp": 7922,
+      "goldMin": 13236,
+      "goldMax": 21524,
+      "atkSpd": 1,
+      "dmg": [
+        3,
+        69
+      ],
+      "db": 105,
+      "hit": 128,
+      "mag": {
+        "skn": "封印禁地",
+        "cd": 50,
+        "chance": 0.1,
+        "type": "silence",
+        "pbase": 250
+      },
+      "mag2": {
+        "skn": "閃電風暴",
+        "cd": 70,
+        "dmg": [
+          7,
+          74
+        ],
+        "db": 264,
+        "ele": "wind"
+      },
+      "mag3": {
+        "skn": "電擊",
+        "cd": 90,
+        "chance": 0.5,
+        "dmg": [
+          1,
+          547
+        ],
+        "db": 274,
+        "ele": "wind",
+        "sec": {
+          "type": "paralyze",
+          "pbase": 200
+        }
+      }
+    }
+  }
+}

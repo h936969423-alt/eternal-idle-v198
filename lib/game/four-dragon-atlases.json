@@ -1,0 +1,122 @@
+{
+  "antaras": {
+    "skill_effect": {
+      "src": "/assets/four-dragons/antaras-skill_effect.webp",
+      "count": 9,
+      "w": 276,
+      "h": 221,
+      "cols": 3,
+      "rows": 3
+    }
+  },
+  "fafurion": {
+    "skill_effect": {
+      "src": "/assets/four-dragons/fafurion-skill_effect.webp",
+      "count": 11,
+      "w": 185,
+      "h": 177,
+      "cols": 4,
+      "rows": 3
+    }
+  },
+  "valakas": {
+    "skill_effect": {
+      "src": "/assets/four-dragons/valakas-skill_effect.webp",
+      "count": 8,
+      "w": 162,
+      "h": 150,
+      "cols": 3,
+      "rows": 3
+    }
+  },
+  "lindvior": {
+    "attack": {
+      "src": "/assets/four-dragons/lindvior-attack.webp",
+      "count": 10,
+      "w": 441,
+      "h": 497,
+      "cols": 4,
+      "rows": 3
+    },
+    "attack_s": {
+      "src": "/assets/four-dragons/lindvior-attack_s.webp",
+      "count": 10,
+      "w": 441,
+      "h": 497,
+      "cols": 4,
+      "rows": 3
+    },
+    "death": {
+      "src": "/assets/four-dragons/lindvior-death.webp",
+      "count": 35,
+      "w": 441,
+      "h": 497,
+      "cols": 6,
+      "rows": 6
+    },
+    "death_s": {
+      "src": "/assets/four-dragons/lindvior-death_s.webp",
+      "count": 35,
+      "w": 441,
+      "h": 497,
+      "cols": 6,
+      "rows": 6
+    },
+    "idle": {
+      "src": "/assets/four-dragons/lindvior-idle.webp",
+      "count": 16,
+      "w": 441,
+      "h": 497,
+      "cols": 4,
+      "rows": 4
+    },
+    "idle_s": {
+      "src": "/assets/four-dragons/lindvior-idle_s.webp",
+      "count": 16,
+      "w": 441,
+      "h": 497,
+      "cols": 4,
+      "rows": 4
+    },
+    "skill": {
+      "src": "/assets/four-dragons/lindvior-skill.webp",
+      "count": 18,
+      "w": 441,
+      "h": 497,
+      "cols": 5,
+      "rows": 4
+    },
+    "skill_effect": {
+      "src": "/assets/four-dragons/lindvior-skill_effect.webp",
+      "count": 3,
+      "w": 44,
+      "h": 66,
+      "cols": 2,
+      "rows": 2
+    },
+    "skill_s": {
+      "src": "/assets/four-dragons/lindvior-skill_s.webp",
+      "count": 18,
+      "w": 441,
+      "h": 497,
+      "cols": 5,
+      "rows": 4
+    },
+    "spawn": {
+      "src": "/assets/four-dragons/lindvior-spawn.webp",
+      "count": 20,
+      "w": 441,
+      "h": 497,
+      "cols": 5,
+      "rows": 4
+    },
+    "spawn_s": {
+      "src": "/assets/four-dragons/lindvior-spawn_s.webp",
+      "count": 20,
+      "w": 441,
+      "h": 497,
+      "cols": 5,
+      "rows": 4
+    }
+  }
+}
