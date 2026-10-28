@@ -925,3 +925,21 @@ body:has(.game-root.map-first-layout) .map-function-dialog[data-slot=dialog-cont
 .skill-book-grid .sb-row { min-width: 0; }
 .skill-book-grid .sb-tier { flex-basis: 56px; }
 .skill-book-grid .sb-grid { width: 0; }
+
+/* Let wrapped defenses and carry status contribute to the map HUD height. */
+.game-root.screenshot-layout.map-first-layout .reference-hud{
+ flex:0 0 auto!important;height:auto!important;min-height:96px!important;
+ grid-template-rows:auto!important;overflow:visible;padding:6px 10px!important;
+}
+.game-root.screenshot-layout.map-first-layout .reference-hud .hud-identity{align-self:center;min-width:0}
+.game-root.screenshot-layout.map-first-layout .reference-hud .hud-exp{
+ display:block!important;width:100%;height:16px;margin-top:4px;
+}
+.game-root.screenshot-layout.map-first-layout .reference-hud .hud-exp strong{font-size:11px;line-height:14px}
+.game-root.screenshot-layout.map-first-layout .reference-hud .hud-inline-defenses span{white-space:normal;overflow-wrap:anywhere}
+/* Long nested monster definitions must wrap instead of widening the value column. */
+.detail-dialog .detail-table [data-slot=table-container]{width:100%;min-width:0;max-width:100%}
+.detail-dialog .detail-table table{width:100%;max-width:100%;table-layout:fixed}
+.detail-dialog .detail-table th:first-child,.detail-dialog .detail-table td:first-child{width:42%}
+.detail-dialog .detail-table th:last-child,.detail-dialog .detail-table td:last-child{width:58%;max-width:none;text-align:left}
+.detail-dialog .detail-table th,.detail-dialog .detail-table td{white-space:normal;overflow-wrap:anywhere;word-break:break-word;vertical-align:top}
