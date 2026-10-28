@@ -24,6 +24,7 @@ on:
       - 'app/skill-cooldown-button.css'
       - 'scripts/test-skill-cooldown.cjs'
       - 'scripts/test-stun-once.cjs'
+      - 'scripts/test-skill-computation.cjs'
       - '.github/workflows/deploy-v198-test.yml'
 permissions:
   contents: read
@@ -100,6 +101,8 @@ jobs:
         run: node scripts/test-skill-cooldown.cjs
       - name: Verify one shock-stun motion and one confirmed impact
         run: node scripts/test-stun-once.cjs
+      - name: Verify skill calculation equivalence and bounded Worker settlement
+        run: node scripts/test-skill-computation.cjs
       - name: Build complete Cloudflare Worker
         run: pnpm run build
       - name: Publish verified W skill icons to isolated R2

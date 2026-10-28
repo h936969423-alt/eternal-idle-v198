@@ -92,7 +92,7 @@ export function log(c:Character,text:string,kind='info',now=Date.now(),details:{
 export function usable(c:Character,i:any){const name=({royal:c.gender==='f'?'公主':'王子',knight:'騎士',mage:'法師',elf:'妖精',dark:'黑暗妖精',illusion:'幻術士',dragon:'龍騎士',warrior:'戰士'} as Record<string,string>)[c.cls];const avatar=c.cls==='royal'?name:(c.gender==='f'?'女':'男')+name;return (!i.req||i.req==='all'||String(i.req).split(',').includes(c.cls))&&(!i.reqAvatar||i.reqAvatar===avatar)&&(!i.minLv||c.lv>=i.minLv)&&(!i.maxLv||c.lv<=i.maxLv);}
 export function skillLevel(c:Character,s:any){return requiredSkillLevel(c,s);}
 export function stats(c:Character,now=Date.now()){
- normalizeWSkillBuffs(c);
+ const skillContext=normalizeWSkillBuffs(c);
  const b:Record<string,number>={...c.attrs,pveMeleeHit:0,pveRangedHit:0,pveMagicHit:0,pvpMeleeHit:0,targetExtraDamage:0,meleeDamageAmpPct:0,moveSpeedPct:0,hurtDelayReductionPct:0,ac:10,mr:getWisMR(c.attrs.wis),meleeCrit:0,rangedCrit:0,meleeCritDmg:c.cls==='dark'?100:50,rangedCritDmg:c.cls==='dark'?100:50,meleeHit:0,rangedDmg:0,mdmg:0,sp:0,resEarth:0,resFire:0,resWater:0,resWind:0,er:0,hpR:2,mpR:1,extraHit:0,extraDmg:0,meleeDmg:0,rangedHit:0,magicHit:0,dr:0,mhp:0,mmp:0,expPct:0,goldPct:0,dropPct:0,critPct:0,magicDrNonEle:0,immPoison:0,immStone:0,weightCap:0,damageReductionPct:0,damagePct:0,doubleChance:0,maxWeapon:0,atkSpdPct:0,maxHpPct:0,maxMpPct:0,invisible:0,potionBonus:0,extraMp:0,freezeResist:0,stunResist:0,abnormalResist:0,immParalyze:0,immSlow:0,stoneResist:0,sleepResist:0,sustainResist:0,blindResist:0,potionFlat:0,pvpDmg:0,pvpDr:0,magicCrit:0,magicCritDmg:100,mpReduce:0};
  for(const k of [...LW_CONDITIONAL_FIELDS,...LW_MYTHIC_FIELDS])b[k]=0;
  for(const eq of Object.values(c.equipment)){const i=DATA.items[eq.id];if(!i)continue;if(i.immPoison)b.immPoison=1;if(i.immStone)b.immStone=1;for(const [k,v] of Object.entries(i))if(typeof v==='number'&&(k in b))b[k]+=k==='ac'?-v:v;if(!i.lwCatalogId&&i.type!=='wpn'&&(i.source!=='apang381'||i.type==='arm'))b.ac-=eq.en;for(const [k,v]of Object.entries({...equipment381Growth(i,eq.en),...lineageWGrowth(i,eq.en),...lineageWEquipmentGrowth(i,eq.en)}))b[k]=(b[k]||0)+v;for(const [k,v]of Object.entries(affixBonus(c.affixes?.[eq.id],i.type,c.darkAffixes?.[eq.id])))b[k]=(b[k]||0)+v;for(const [level,bonus] of Object.entries(i.enBonus||{}))if(eq.en>=Number(level))for(const [k,v] of Object.entries(bonus as Record<string,number>))b[k]=(b[k]||0)+(k==='ac'?-v:v);b.meleeHit+=(i.meleeHitPerEn||0)*eq.en;b.mr+=(i.mrPerEn||0)*eq.en;b.mmp+=(i.extraMpPerEn||0)*eq.en;b.sp+=(i.spPerEn||0)*eq.en;b.extraDmg+=(i.extraDmgPerEn||0)*eq.en;}
@@ -108,13 +108,13 @@ export function stats(c:Character,now=Date.now()){
  for(const [key,value]of Object.entries(collectionBonus(c)))b[key]=(b[key]||0)+value;
  for(const [key,value]of Object.entries(masteryBonuses(c,now)))b[key]=(b[key]||0)+value;
  b.intMagicApplied=1;const magic=magicIntBonuses(b.int);for(const [key,value]of Object.entries(magic))b[key]=(b[key]||0)+value;
- const passive=wPassiveBonuses(c,b);
+ const passive=wPassiveBonuses(c,b,skillContext);
  for(const [key,value] of Object.entries(passive))b[key]=(b[key]||0)+(key==='ac'?-value:value);
  // Passive primary attributes must feed the same INT table as equipment and buffs.
  const finalMagic=magicIntBonuses(b.int);
  for(const key of Object.keys(magic))b[key]=(b[key]||0)+finalMagic[key as keyof typeof finalMagic]-magic[key as keyof typeof magic];
  // Magic-to-melee conversion sees final magic stats, without applying passives twice.
- const finalPassive=wPassiveBonuses(c,b);
+ const finalPassive=wPassiveBonuses(c,b,skillContext);
  for(const key of ['meleeHit','meleeDmg'])b[key]+=(finalPassive[key]||0)-(passive[key]||0);
  b.mr+=getWisMR(b.wis)-getWisMR(c.attrs.wis);const classRates:Record<string,number[]>={knight:[6,0,12,4,10,3,4],elf:[7,25,3,7,4,5,6],dark:[6,10,2,5,8,3,4],mage:[8,15,8,0,0,0,10]};const rates=classRates[c.cls]||classRates.mage;b.ac-=Math.floor(c.lv/rates[0]);b.ac+=getDexAC(b.dex);b.mr+=rates[1]+Math.floor(c.lv/rates[2]);if(rates[3])b.meleeDmg+=Math.floor(c.lv/rates[3]);if(rates[4])b.rangedDmg+=Math.floor(c.lv/rates[4]);if(rates[5])b.extraHit+=Math.floor(c.lv/rates[5]);b.er+=Math.floor(c.lv/rates[6])+getDexER(b.dex);b.meleeCrit+=getStrMeleeCrit(b.str)+b.critPct+(c.cls==='dark'?3:0);b.rangedCrit+=getDexRangedCrit(b.dex)+b.critPct+(c.cls==='dark'?3:0);
  const classHp={knight:12,elf:8,mage:6,dark:9}[c.cls]||8;
@@ -667,7 +667,7 @@ export function settleOfflineGains(save:Save,now:number,rng:()=>number=Math.rand
  return report;
 }
 /** Online polling retains exact combat; offline intervals use arithmetic above. */
-export function advance(save:Save,now=Date.now(),rng:()=>number=Math.random,config:WorldRules|WorldConfig=DEFAULT_WORLD_RULES,budgetMs=Infinity){
+export function advance(save:Save,now=Date.now(),rng:()=>number=Math.random,config:WorldRules|WorldConfig=DEFAULT_WORLD_RULES,budgetMs=Infinity,maxSlices=Infinity){
  if(!Number.isFinite(now)||!Number.isFinite(save.at))throw Error('無效的存檔時間');
  bindPetRoster(save,save.at);
  for(const c of save.characters)repairCombatClocks(c);
@@ -681,13 +681,15 @@ export function advance(save:Save,now=Date.now(),rng:()=>number=Math.random,conf
  const beneficiary=save.characters.find(c=>c.id===prior?.characterId)||save.characters.find(c=>c.running)||save.characters.find(c=>c.id===save.active);
  if(beneficiary)incomeLedgers.set(beneficiary,ledger);
  const before=save.characters.reduce((a,c)=>a+c.kills,0),gold=save.characters.reduce((a,c)=>a+c.gold,0),began=performance.now();
- let end=start;
+ let end=start,slices=0;
  try{
   for(let t=start;t<target;){
    const next=Math.min(target,t+1000),rules=worldRulesAt(config,next);
    for(const c of save.characters)second(c,next,rng,rules,next-t);
    for(const c of save.characters)settleBossRewards(c,next,rng);
-   t=next;end=next;
+   t=next;end=next;slices++;
+   // Cloudflare CPU-bound timers can stay frozen until the next I/O.
+   if(t<target&&slices>=Math.max(1,maxSlices))break;
    if(t<target&&Number.isFinite(budgetMs)&&performance.now()-began>=Math.max(0,budgetMs))break;
   }
   for(const c of save.characters){const dollMsg=renewDoll(c,end);if(dollMsg)log(c,dollMsg,'info',end);const msg=tickPolymorph(c,end,rng);if(msg)log(c,msg,'magic',end);}
