@@ -25,7 +25,7 @@
 
 ## 動畫
 
-`four-dragon-atlases.json` 與 `public/assets/four-dragons/*.webp` 為來源 PNG 的無損影格打包，沒有繪製替代特效。安塔瑞斯／法利昂／巴拉卡斯本體沿用永夜已收錄的相同來源 combat-animation 圖集；補上風龍全套影格及四龍 skill_effect 圖集。
+`four-dragon-atlases.json` 與 `public/assets/four-dragons/*.webp` 為來源 PNG 的無損影格打包，沒有繪製替代特效。四龍的本體、影子、附加光效與 skill_effect 全部打包於同一個本機素材目錄，不再讓其中三隻龍的本體依賴既有 R2 combat-animation 路由。每份圖集保存位元組數與 SHA256。
 
 所有動畫為來源 8 fps；本體和 skill_effect 使用同一顯示時鐘。安塔瑞斯保留來源張嘴第 8 幀起噴及尾端 2 幀停留。單次施法只有一個動畫事件；傷害回報與每次跳傷不重播本體／魔法特效。背景分頁停止計時器，返回後按經過時間取樣，不補播過期動畫。
 
@@ -45,3 +45,10 @@
 - 圖集可解碼、影格大小一致、原始吐息與本體錨點的像素合成檢視。
 
 額外既有檢查：`test-magic-formulas.cjs` 的黑妖致命攻擊「施法者剩 1 HP」斷言，在本次修改前的目標 engine 同樣失敗（200862 != 1）；未藉此變更其他職業規則。`test-cast-click-feedback.cjs` 在未更動的回應處理上出現物件參照相等斷言失敗。完整專案建置與線上登入／實戰尚未執行，不能據此宣稱已部署或全站測試通過。
+
+## 自包含素材發布檢查
+
+- `python3 scripts/build-four-dragon-assets.py`：從固定來源 commit 重建四龍全部原始影格，無損 WebP 圖集採原子寫入。
+- `node scripts/verify-four-dragon-assets.mjs`：檢查 public 圖集、每隻龍五種動作與施法特效、影格數、WebP 檔頭、大小及 SHA256。
+- `node scripts/verify-four-dragon-assets.mjs --built`：檢查最終 dist/client 中的相同檔案。
+- `DRAGON_ASSET_ORIGIN=https://eternal-idle-v198-test.h936969423.workers.dev node scripts/verify-four-dragon-assets.mjs --live`：部署後由 GitHub runner 實際下載每份圖集，確認 HTTP 200、image/webp 與雜湊；不得以首頁或登入測試替代素材檢查。

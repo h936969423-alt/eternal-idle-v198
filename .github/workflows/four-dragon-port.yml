@@ -2,9 +2,9 @@ name: Four dragon port regression
 on:
   push:
     branches: [main]
-    paths: ['lib/game/**', 'app/*dragon*.tsx', 'app/magic-effect.tsx', 'public/assets/four-dragons/**', 'scripts/test-four-dragon-port.cjs', '.github/workflows/four-dragon-port.yml']
+    paths: ['lib/game/**', 'app/*dragon*.tsx', 'app/magic-effect.tsx', 'public/assets/four-dragons/**', 'scripts/test-four-dragon-port.cjs', 'scripts/verify-four-dragon-assets.mjs', '.github/workflows/four-dragon-port.yml']
   pull_request:
-    paths: ['lib/game/**', 'app/*dragon*.tsx', 'app/magic-effect.tsx', 'public/assets/four-dragons/**', 'scripts/test-four-dragon-port.cjs', '.github/workflows/four-dragon-port.yml']
+    paths: ['lib/game/**', 'app/*dragon*.tsx', 'app/magic-effect.tsx', 'public/assets/four-dragons/**', 'scripts/test-four-dragon-port.cjs', 'scripts/verify-four-dragon-assets.mjs', '.github/workflows/four-dragon-port.yml']
 permissions:
   contents: read
 jobs:
@@ -22,6 +22,7 @@ jobs:
         env:
           NODE_PATH: ${{ runner.temp }}/four-dragon-tools/node_modules
         run: |
+          node scripts/verify-four-dragon-assets.mjs
           node scripts/test-four-dragon-port.cjs
           node scripts/test-four-dragon-loot.cjs
           node scripts/test-spell-visual-ownership.cjs

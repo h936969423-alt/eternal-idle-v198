@@ -2,7 +2,7 @@
 import {useEffect,useRef} from 'react';
 import type {CombatEvent} from '@/lib/game/engine';
 import {sourceDragonClip,sourceDragonFx,sourceDragonFrame,sourceDragonFxFrame,sourceDragonClipMs,type DragonSheet} from '@/lib/game/four-dragon-visual';
-const images=new Map<string,HTMLImageElement>();
+const images=new Map<string,HTMLImageElement>(),owners=new Map<string,number>();
 function load(src:string){let image=images.get(src);if(!image){image=new Image();image.decoding='async';image.src=src;images.set(src,image);}return image;}
 function draw(ctx:CanvasRenderingContext2D,sheet:DragonSheet|undefined,frame:number,x:number,y:number,scale:number,blend:GlobalCompositeOperation='source-over'){
  if(!sheet||frame<0)return false;const image=load(sheet.src);if(!image.complete||!image.naturalWidth)return false;
@@ -12,7 +12,7 @@ function draw(ctx:CanvasRenderingContext2D,sheet:DragonSheet|undefined,frame:num
 export default function FourDragonSprite({id,uid,hp,actions,fallback}:{id:string;uid:string;hp:number;actions:(CombatEvent&{shownAt?:number})[];fallback?:string}){
  const placeholder=useRef<HTMLImageElement>(null),canvas=useRef<HTMLCanvasElement>(null),latest=useRef({hp,actions});latest.current={hp,actions};
  useEffect(()=>{
-  for(const action of ['idle','attack','skill','death','spawn']){const clip=sourceDragonClip(id,action);for(const s of [clip?.body,clip?.shadow,clip?.weapon])if(s)load(s.src);}const fx=sourceDragonFx(id);if(fx)load(fx.sheet.src);
+  const owned=new Set<string>();for(const action of ['idle','attack','skill','death','spawn']){const clip=sourceDragonClip(id,action);for(const s of [clip?.body,clip?.shadow,clip?.weapon,clip?.weapon2])if(s)owned.add(s.src);}const fx=sourceDragonFx(id);if(fx)owned.add(fx.sheet.src);for(const src of owned){owners.set(src,(owners.get(src)||0)+1);load(src);}
   let timer:ReturnType<typeof setTimeout>|undefined,lastSeq=0,dead=false,state={action:sourceDragonClip(id,'spawn')?'spawn':'idle',start:performance.now()};
   const tick=()=>{
    if(document.hidden)return;const now=performance.now(),current=latest.current;
@@ -27,12 +27,12 @@ export default function FourDragonSprite({id,uid,hp,actions,fallback}:{id:string
    const clip=sourceDragonClip(id,state.action)||sourceDragonClip(id,'idle'),host=canvas.current;
    if(clip&&host){const ctx=host.getContext('2d');if(ctx){const frame=sourceDragonFrame(elapsed,clip.body.count,state.action==='idle');const still=frame<0?clip.body.count-1:frame;
     const scale=Math.min(280/clip.body.w,250/clip.body.h),x=256-clip.body.w*scale/2,y=360-clip.body.h*scale;
-    if(load(clip.body.src).complete&&load(clip.body.src).naturalWidth){if(placeholder.current)placeholder.current.style.opacity='0';ctx.clearRect(0,0,512,492);draw(ctx,clip.shadow,still,x,y,scale);draw(ctx,clip.body,still,x,y,scale);draw(ctx,clip.weapon,still,x,y,scale,'screen');if(state.action==='skill'&&fx)draw(ctx,fx.sheet,sourceDragonFxFrame(id,elapsed),x+fx.ox*scale,y+fx.oy*scale,scale,'screen');}
+    if(load(clip.body.src).complete&&load(clip.body.src).naturalWidth){if(placeholder.current)placeholder.current.style.opacity='0';ctx.clearRect(0,0,512,492);draw(ctx,clip.shadow,still,x,y,scale);draw(ctx,clip.body,still,x,y,scale);draw(ctx,clip.weapon,still,x,y,scale,'screen');draw(ctx,clip.weapon2,still,x,y,scale,'screen');if(state.action==='skill'&&fx)draw(ctx,fx.sheet,sourceDragonFxFrame(id,elapsed),x+fx.ox*scale,y+fx.oy*scale,scale,'screen');}
    }}
    timer=setTimeout(tick,1000/8);
   };
   const visibility=()=>{if(timer)clearTimeout(timer);if(!document.hidden)tick();};document.addEventListener('visibilitychange',visibility);tick();
-  return()=>{if(timer)clearTimeout(timer);document.removeEventListener('visibilitychange',visibility);};
+  return()=>{if(timer)clearTimeout(timer);document.removeEventListener('visibilitychange',visibility);for(const src of owned){const count=(owners.get(src)||1)-1;if(count>0)owners.set(src,count);else{owners.delete(src);const image=images.get(src);if(image)image.src='';images.delete(src);}}};
  },[id,uid]);
  return <span className="dragon381-sprite" role="img" aria-label="四龍來源動畫與施法特效" data-source-dragon={id}><canvas ref={canvas} width={512} height={492} style={{position:'absolute',left:'-30%',top:'-32%',width:'160%',height:'164%',pointerEvents:'none'}}/>{fallback&&<img ref={placeholder} className="dragon381-placeholder" src={fallback} alt=""/>}</span>;
 }

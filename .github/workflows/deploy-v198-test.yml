@@ -5,6 +5,9 @@ on:
     branches: [main]
     paths:
       - 'lib/game/**'
+      - 'public/assets/four-dragons/**'
+      - 'scripts/verify-four-dragon-assets.mjs'
+      - 'app/four-dragon-sprite.tsx'
       - 'lib/asset-storage.ts'
       - 'app/combat-sprite.tsx'
       - 'app/combat-audio.ts'
@@ -114,8 +117,12 @@ jobs:
           node scripts/test-boss-drop-preview.cjs
           node scripts/test-four-dragon-loot.cjs
           node scripts/test-lineagew-mythic-enhancement.cjs
+      - name: Verify self-contained four-dragon source material
+        run: node scripts/verify-four-dragon-assets.mjs
       - name: Build complete Cloudflare Worker
         run: pnpm run build
+      - name: Verify four-dragon atlases in final deployment output
+        run: node scripts/verify-four-dragon-assets.mjs --built
       - name: Publish verified W skill icons to isolated R2
         env:
           AWS_ACCESS_KEY_ID: ${{ secrets.R2_ACCESS_KEY_ID }}
@@ -149,6 +156,11 @@ jobs:
         run: pnpm exec wrangler deploy --config dist/server/wrangler.json --name eternal-idle-v198-test --keep-vars
       - name: Verify real test-account login and continuous live polls
         run: python3 scripts/test-live-http.py
+      - name: Verify every deployed four-dragon atlas against source hash
+        env:
+          DRAGON_ASSET_ORIGIN: https://eternal-idle-v198-test.h936969423.workers.dev
+        run: node scripts/verify-four-dragon-assets.mjs --live
       - name: Print deployment location
         run: echo 'Check Cloudflare Workers dashboard for eternal-idle-v198-test workers.dev URL'
+
 

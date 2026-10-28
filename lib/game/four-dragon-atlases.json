@@ -1,32 +1,438 @@
 {
   "antaras": {
+    "attack": {
+      "src": "/assets/four-dragons/antaras-attack.webp",
+      "count": 11,
+      "w": 425,
+      "h": 307,
+      "cols": 4,
+      "rows": 3,
+      "bytes": 86812,
+      "sha256": "a041738ac0d94e80beb20899942ea0033c511a9c40d5ed17c49779abd95211a3"
+    },
+    "attack_s": {
+      "src": "/assets/four-dragons/antaras-attack_s.webp",
+      "count": 11,
+      "w": 425,
+      "h": 307,
+      "cols": 4,
+      "rows": 3,
+      "bytes": 13188,
+      "sha256": "2cc5fc060c018df0f3d7228768079ccac784c44b5ac16f9fdfe3824c11b00efd"
+    },
+    "death": {
+      "src": "/assets/four-dragons/antaras-death.webp",
+      "count": 17,
+      "w": 425,
+      "h": 307,
+      "cols": 5,
+      "rows": 4,
+      "bytes": 122364,
+      "sha256": "eaba6a508f284fbb60457c8619e038e0b10f0ded694d10fda31e2c4a29c8af80"
+    },
+    "death_s": {
+      "src": "/assets/four-dragons/antaras-death_s.webp",
+      "count": 17,
+      "w": 425,
+      "h": 307,
+      "cols": 5,
+      "rows": 4,
+      "bytes": 17454,
+      "sha256": "85a0e5f8b1d6a56c4ab6799afa513ef34ad30a6fe61ef7e1b472595a7dfcdd19"
+    },
+    "idle": {
+      "src": "/assets/four-dragons/antaras-idle.webp",
+      "count": 16,
+      "w": 425,
+      "h": 307,
+      "cols": 4,
+      "rows": 4,
+      "bytes": 132098,
+      "sha256": "503595220998edc8dc86ca539018c1810a3e555467421694ccf960bc48270fa1"
+    },
+    "idle_s": {
+      "src": "/assets/four-dragons/antaras-idle_s.webp",
+      "count": 16,
+      "w": 425,
+      "h": 307,
+      "cols": 4,
+      "rows": 4,
+      "bytes": 15866,
+      "sha256": "58d1d0081fbf299c6af49f7cd59c2a8350b563f1f6a5e523329ff1c508acabab"
+    },
+    "skill": {
+      "src": "/assets/four-dragons/antaras-skill.webp",
+      "count": 17,
+      "w": 425,
+      "h": 307,
+      "cols": 5,
+      "rows": 4,
+      "bytes": 136376,
+      "sha256": "e801076f424b9c7b3607f78904a5f693a617e8ed922d29f3ebde4d424fc6a0ab"
+    },
     "skill_effect": {
       "src": "/assets/four-dragons/antaras-skill_effect.webp",
       "count": 9,
       "w": 276,
       "h": 221,
       "cols": 3,
-      "rows": 3
+      "rows": 3,
+      "bytes": 29338,
+      "sha256": "4b66a8245cba61da99e0fe32142b2b6e0f7909e47852fa775bd768cc4cf6d2bb"
+    },
+    "skill_s": {
+      "src": "/assets/four-dragons/antaras-skill_s.webp",
+      "count": 17,
+      "w": 425,
+      "h": 307,
+      "cols": 5,
+      "rows": 4,
+      "bytes": 18812,
+      "sha256": "82eb4e2f8b6af29433731fe42c4dd275e6e87009285c7f8034a96fb0bcfea4fd"
+    },
+    "spawn": {
+      "src": "/assets/four-dragons/antaras-spawn.webp",
+      "count": 20,
+      "w": 425,
+      "h": 307,
+      "cols": 5,
+      "rows": 4,
+      "bytes": 173152,
+      "sha256": "9b7cfdff9f1884d9647a9817dd9990b187f98fae6a391a409811c3857124733f"
+    },
+    "spawn_s": {
+      "src": "/assets/four-dragons/antaras-spawn_s.webp",
+      "count": 20,
+      "w": 425,
+      "h": 307,
+      "cols": 5,
+      "rows": 4,
+      "bytes": 23924,
+      "sha256": "96a38de98c326a9f3ff066ecf2969a2f8dc66ddee600a1d27b81e8b8c9ef122f"
     }
   },
   "fafurion": {
+    "attack": {
+      "src": "/assets/four-dragons/fafurion-attack.webp",
+      "count": 12,
+      "w": 375,
+      "h": 249,
+      "cols": 4,
+      "rows": 3,
+      "bytes": 90938,
+      "sha256": "1bfc49f17283040361f6ab6f5ea25624f6630e31371a19c6ee6cc36087faff60"
+    },
+    "attack_s": {
+      "src": "/assets/four-dragons/fafurion-attack_s.webp",
+      "count": 12,
+      "w": 375,
+      "h": 249,
+      "cols": 4,
+      "rows": 3,
+      "bytes": 11822,
+      "sha256": "1700bd52384d85953ccc41d2011dbd32453fe24d28240c445f1a1e897cbec54a"
+    },
+    "attack_w": {
+      "src": "/assets/four-dragons/fafurion-attack_w.webp",
+      "count": 12,
+      "w": 375,
+      "h": 249,
+      "cols": 4,
+      "rows": 3,
+      "bytes": 38294,
+      "sha256": "97ef48dc16343aecf10bcb5ae267c15f60afccbdb139389ceef575de20bbc0d6"
+    },
+    "death": {
+      "src": "/assets/four-dragons/fafurion-death.webp",
+      "count": 27,
+      "w": 375,
+      "h": 249,
+      "cols": 6,
+      "rows": 5,
+      "bytes": 163404,
+      "sha256": "1e2c4c1eef23c023a301f4c110e278255cfed54bddeddc5def9509f4c649e31e"
+    },
+    "death_s": {
+      "src": "/assets/four-dragons/fafurion-death_s.webp",
+      "count": 27,
+      "w": 375,
+      "h": 249,
+      "cols": 6,
+      "rows": 5,
+      "bytes": 27684,
+      "sha256": "a9a843f212531cfff4be25288e58aee0c5d025128dce5bec6ec477a86a7a25bc"
+    },
+    "death_w": {
+      "src": "/assets/four-dragons/fafurion-death_w.webp",
+      "count": 27,
+      "w": 375,
+      "h": 249,
+      "cols": 6,
+      "rows": 5,
+      "bytes": 66846,
+      "sha256": "a14111250fce84eceea170a94ff5626cdfc3556a1380fc76a83c8390783af14c"
+    },
+    "idle": {
+      "src": "/assets/four-dragons/fafurion-idle.webp",
+      "count": 16,
+      "w": 375,
+      "h": 249,
+      "cols": 4,
+      "rows": 4,
+      "bytes": 99038,
+      "sha256": "be32bb528ffccead01fd3b8866bdb14d82c92e0bfabd3331de7ca8edd7d784ff"
+    },
+    "idle_s": {
+      "src": "/assets/four-dragons/fafurion-idle_s.webp",
+      "count": 16,
+      "w": 375,
+      "h": 249,
+      "cols": 4,
+      "rows": 4,
+      "bytes": 14778,
+      "sha256": "dea9d28033326c675b53b2f23851ee418dc2a78d471382bf6b36faa132d5762e"
+    },
+    "idle_w": {
+      "src": "/assets/four-dragons/fafurion-idle_w.webp",
+      "count": 16,
+      "w": 375,
+      "h": 249,
+      "cols": 4,
+      "rows": 4,
+      "bytes": 58400,
+      "sha256": "45b0ada13b9392cbea443a14276f153ed170ddecbaf5f268dcd453e74002a12b"
+    },
+    "skill": {
+      "src": "/assets/four-dragons/fafurion-skill.webp",
+      "count": 18,
+      "w": 375,
+      "h": 249,
+      "cols": 5,
+      "rows": 4,
+      "bytes": 132242,
+      "sha256": "171be76f3d265a5f252bbd0aa829e5118c789270a882f575b6dbd4bcd024524f"
+    },
     "skill_effect": {
       "src": "/assets/four-dragons/fafurion-skill_effect.webp",
       "count": 11,
       "w": 185,
       "h": 177,
       "cols": 4,
-      "rows": 3
+      "rows": 3,
+      "bytes": 29580,
+      "sha256": "eccc42702562afeff050330c66273b70334ac0535c9d5b0d55a6f8cefe279ea1"
+    },
+    "skill_s": {
+      "src": "/assets/four-dragons/fafurion-skill_s.webp",
+      "count": 18,
+      "w": 375,
+      "h": 249,
+      "cols": 5,
+      "rows": 4,
+      "bytes": 18038,
+      "sha256": "e4d6572660c83de9e1e8875bfb4014bf05dfff6846e5b7b6f6bd7a9b2ea1a9f4"
+    },
+    "skill_w": {
+      "src": "/assets/four-dragons/fafurion-skill_w.webp",
+      "count": 18,
+      "w": 375,
+      "h": 249,
+      "cols": 5,
+      "rows": 4,
+      "bytes": 54782,
+      "sha256": "ddb539dd02751392a9a82499bfa6ad59d3381e884498d56656c3cb9b63903e3a"
+    },
+    "spawn": {
+      "src": "/assets/four-dragons/fafurion-spawn.webp",
+      "count": 18,
+      "w": 375,
+      "h": 249,
+      "cols": 5,
+      "rows": 4,
+      "bytes": 124800,
+      "sha256": "f5a195ed6cd1d302b82c1c6901117c8cbec44811b92c8f7ccb5834fbc7c4f8da"
+    },
+    "spawn_s": {
+      "src": "/assets/four-dragons/fafurion-spawn_s.webp",
+      "count": 18,
+      "w": 375,
+      "h": 249,
+      "cols": 5,
+      "rows": 4,
+      "bytes": 16018,
+      "sha256": "3109ee2f18cef8d413de2acbe419271361471d69729c274fb1663274fc1431ac"
+    },
+    "spawn_w": {
+      "src": "/assets/four-dragons/fafurion-spawn_w.webp",
+      "count": 18,
+      "w": 375,
+      "h": 249,
+      "cols": 5,
+      "rows": 4,
+      "bytes": 51062,
+      "sha256": "92d375431e608fa907d37ead5cbc61e597b15c251bae00584f54a745cc0ae672"
     }
   },
   "valakas": {
+    "attack": {
+      "src": "/assets/four-dragons/valakas-attack.webp",
+      "count": 11,
+      "w": 578,
+      "h": 407,
+      "cols": 4,
+      "rows": 3,
+      "bytes": 129078,
+      "sha256": "4c01ba236b4eb08e6d8589b5b8146766c09592789918cc9cd5e3e7f70a88dc93"
+    },
+    "attack_s": {
+      "src": "/assets/four-dragons/valakas-attack_s.webp",
+      "count": 11,
+      "w": 578,
+      "h": 407,
+      "cols": 4,
+      "rows": 3,
+      "bytes": 26020,
+      "sha256": "d9cbc97d8b6e613f4c387f81056285ec8b3d2d400c08c73f4ab705ad8aed6de5"
+    },
+    "attack_w": {
+      "src": "/assets/four-dragons/valakas-attack_w.webp",
+      "count": 11,
+      "w": 578,
+      "h": 407,
+      "cols": 4,
+      "rows": 3,
+      "bytes": 6888,
+      "sha256": "8b2ae295b22046e36b52b4e0898700194e96f255b5c56752cc23f9541219ca0a"
+    },
+    "death": {
+      "src": "/assets/four-dragons/valakas-death.webp",
+      "count": 18,
+      "w": 578,
+      "h": 407,
+      "cols": 5,
+      "rows": 4,
+      "bytes": 242816,
+      "sha256": "a69b3ea0f47e582e9499ea320078447844138577d2a6d0651aa01286eaf575d9"
+    },
+    "death_s": {
+      "src": "/assets/four-dragons/valakas-death_s.webp",
+      "count": 18,
+      "w": 578,
+      "h": 407,
+      "cols": 5,
+      "rows": 4,
+      "bytes": 49064,
+      "sha256": "254e68aff2163dfe534de139f98b92858793c0d4cf2c1369b53518dc1aae7ee4"
+    },
+    "death_w": {
+      "src": "/assets/four-dragons/valakas-death_w.webp",
+      "count": 18,
+      "w": 578,
+      "h": 407,
+      "cols": 5,
+      "rows": 4,
+      "bytes": 3660,
+      "sha256": "87c338ff3add5b995aca24361770c11187694adef03145cc18fe44a9a17cf7c4"
+    },
+    "idle": {
+      "src": "/assets/four-dragons/valakas-idle.webp",
+      "count": 20,
+      "w": 578,
+      "h": 407,
+      "cols": 5,
+      "rows": 4,
+      "bytes": 204896,
+      "sha256": "34b56245bb2660f214d2ea68d4474da7f2841dd9e67033eef665a3b65892cf6c"
+    },
+    "idle_s": {
+      "src": "/assets/four-dragons/valakas-idle_s.webp",
+      "count": 20,
+      "w": 578,
+      "h": 407,
+      "cols": 5,
+      "rows": 4,
+      "bytes": 41702,
+      "sha256": "450773180999ccf74662ca544e67d210d3e43443bd23578ac67fbb090bbea41c"
+    },
+    "idle_w": {
+      "src": "/assets/four-dragons/valakas-idle_w.webp",
+      "count": 20,
+      "w": 578,
+      "h": 407,
+      "cols": 5,
+      "rows": 4,
+      "bytes": 11428,
+      "sha256": "101d79c0f8c2b6bf399082552e6ebb9a418ace762197042269d01fae1cea0fb8"
+    },
+    "skill": {
+      "src": "/assets/four-dragons/valakas-skill.webp",
+      "count": 14,
+      "w": 578,
+      "h": 407,
+      "cols": 4,
+      "rows": 4,
+      "bytes": 275358,
+      "sha256": "444a9df8c3409adb33287e67df277726005cd6687cc9b34130e9175e194b2e4f"
+    },
     "skill_effect": {
       "src": "/assets/four-dragons/valakas-skill_effect.webp",
       "count": 8,
       "w": 162,
       "h": 150,
       "cols": 3,
-      "rows": 3
+      "rows": 3,
+      "bytes": 38676,
+      "sha256": "8ed1b6ea02d876c6ed8efba71c0fd6a5721fa86e8f7661b0d569d7fe3910038b"
+    },
+    "skill_s": {
+      "src": "/assets/four-dragons/valakas-skill_s.webp",
+      "count": 14,
+      "w": 578,
+      "h": 407,
+      "cols": 4,
+      "rows": 4,
+      "bytes": 38586,
+      "sha256": "738ccca912b9574209c291ccafe39ad82bbf8e2ef52b803d5f6da80ff6b8a6fa"
+    },
+    "skill_w": {
+      "src": "/assets/four-dragons/valakas-skill_w.webp",
+      "count": 14,
+      "w": 578,
+      "h": 407,
+      "cols": 4,
+      "rows": 4,
+      "bytes": 6732,
+      "sha256": "ff751198b729cf2bddcdb0be49a23ed0e760dccf7f9ec7d0bf610a4f96ec1b63"
+    },
+    "spawn": {
+      "src": "/assets/four-dragons/valakas-spawn.webp",
+      "count": 16,
+      "w": 578,
+      "h": 407,
+      "cols": 4,
+      "rows": 4,
+      "bytes": 170396,
+      "sha256": "3abbf4789539248776570be69baa937fbcf3a0f214e21ec870a7a16cff952a7b"
+    },
+    "spawn_s": {
+      "src": "/assets/four-dragons/valakas-spawn_s.webp",
+      "count": 16,
+      "w": 578,
+      "h": 407,
+      "cols": 4,
+      "rows": 4,
+      "bytes": 40498,
+      "sha256": "3eba99c8f2d5e37253c3c5380c29cc7ea6a402410509cb93ffa8fc85d31ac025"
+    },
+    "spawn_w": {
+      "src": "/assets/four-dragons/valakas-spawn_w.webp",
+      "count": 16,
+      "w": 578,
+      "h": 407,
+      "cols": 4,
+      "rows": 4,
+      "bytes": 5896,
+      "sha256": "0c3ececf1d68a276971263bb7aaf5610d338cca14e0dac159e2db6685416d232"
     }
   },
   "lindvior": {
@@ -36,7 +442,9 @@
       "w": 441,
       "h": 497,
       "cols": 4,
-      "rows": 3
+      "rows": 3,
+      "bytes": 109896,
+      "sha256": "72815b925b917ed8cfecf657dc228ced9f17cdf1ed6a01efcd5a3c407603ed29"
     },
     "attack_s": {
       "src": "/assets/four-dragons/lindvior-attack_s.webp",
@@ -44,7 +452,9 @@
       "w": 441,
       "h": 497,
       "cols": 4,
-      "rows": 3
+      "rows": 3,
+      "bytes": 15172,
+      "sha256": "08ca939923ddcee1212efd4ed802d32b8b4841e0b271d3cd823a82bf32af5b9b"
     },
     "death": {
       "src": "/assets/four-dragons/lindvior-death.webp",
@@ -52,7 +462,9 @@
       "w": 441,
       "h": 497,
       "cols": 6,
-      "rows": 6
+      "rows": 6,
+      "bytes": 376878,
+      "sha256": "acaaf4543b4bf99cd8ce6aed49dd7fea56f01c622b974b8fe7adc8d71ee6db74"
     },
     "death_s": {
       "src": "/assets/four-dragons/lindvior-death_s.webp",
@@ -60,7 +472,9 @@
       "w": 441,
       "h": 497,
       "cols": 6,
-      "rows": 6
+      "rows": 6,
+      "bytes": 45054,
+      "sha256": "7c2027169b37b07db18c5bf7b4b56431dcfad3d351e3202fc9c403d8fc1f85c9"
     },
     "idle": {
       "src": "/assets/four-dragons/lindvior-idle.webp",
@@ -68,7 +482,9 @@
       "w": 441,
       "h": 497,
       "cols": 4,
-      "rows": 4
+      "rows": 4,
+      "bytes": 155660,
+      "sha256": "ea72aaf6540c59471e2b92770b8e3d1ac10b067a507ce2d3df32d3db3e8b2fe4"
     },
     "idle_s": {
       "src": "/assets/four-dragons/lindvior-idle_s.webp",
@@ -76,7 +492,9 @@
       "w": 441,
       "h": 497,
       "cols": 4,
-      "rows": 4
+      "rows": 4,
+      "bytes": 21198,
+      "sha256": "44855f6140233b159836b95772a44b2c0a153ad37809f16164095bb8070e4ea1"
     },
     "skill": {
       "src": "/assets/four-dragons/lindvior-skill.webp",
@@ -84,7 +502,9 @@
       "w": 441,
       "h": 497,
       "cols": 5,
-      "rows": 4
+      "rows": 4,
+      "bytes": 188314,
+      "sha256": "0060899e20920dac2507fb3caf9531c938a568760de99224248b9f36b2e15edf"
     },
     "skill_effect": {
       "src": "/assets/four-dragons/lindvior-skill_effect.webp",
@@ -92,7 +512,9 @@
       "w": 44,
       "h": 66,
       "cols": 2,
-      "rows": 2
+      "rows": 2,
+      "bytes": 5438,
+      "sha256": "2d47ffbad5461c951d406fd5dbc72f6a474fb387e143c2bfdeb128a57cfea9ca"
     },
     "skill_s": {
       "src": "/assets/four-dragons/lindvior-skill_s.webp",
@@ -100,7 +522,9 @@
       "w": 441,
       "h": 497,
       "cols": 5,
-      "rows": 4
+      "rows": 4,
+      "bytes": 27760,
+      "sha256": "d045857c3a89227f50845bbd5eba52be356d9bc7776eef1e4676d4af9db820ca"
     },
     "spawn": {
       "src": "/assets/four-dragons/lindvior-spawn.webp",
@@ -108,7 +532,9 @@
       "w": 441,
       "h": 497,
       "cols": 5,
-      "rows": 4
+      "rows": 4,
+      "bytes": 248174,
+      "sha256": "7997be71ba1bc60df8a023c616b5dab930c494643ec74b568b31af67aafb9b4d"
     },
     "spawn_s": {
       "src": "/assets/four-dragons/lindvior-spawn_s.webp",
@@ -116,7 +542,9 @@
       "w": 441,
       "h": 497,
       "cols": 5,
-      "rows": 4
+      "rows": 4,
+      "bytes": 29844,
+      "sha256": "dc7f31347c100872547aba24b59e1f23761829573c1fe2473554f73d28d6c8ca"
     }
   }
 }
