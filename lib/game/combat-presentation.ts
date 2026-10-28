@@ -173,10 +173,11 @@ export function enqueueSunriseReplay<T extends PresentationEvent>(queued:(T&{due
  return {queue:[...queued,...early.map(e=>({...e,visualOnly:true,due:now})),...unique.map(e=>({
   ...e,
   ...(earlySeq.has(e.seq)?{visualEffectPreviewed:true}:{}),
-  // Manual spells start their animation on click. Hold confirmed damage until
-  // the impact frame, without delaying the server's damage calculation.
-  due:e.manual&&e.kind==='attack'&&!!e.skill&&typeof e.visualCastAt==='number'
-   ?Math.max(now,e.visualCastAt+500)
+  // Manual and automatic attack spells use the same 500ms contact frame.
+  // Manual previews anchor to the click; automatic spells anchor to their
+  // confirmed replay start. Projectiles keep their existing flight clock.
+  due:e.kind==='attack'&&!!e.skill&&!e.weaponProc&&!isFlyingMagic(e)
+   ?Math.max(now,(e.manual&&typeof e.visualCastAt==='number'?e.visualCastAt:e.at+offset)+500)
    :e.at+offset
  }))].sort((a,b)=>a.due-b.due||a.seq-b.seq),offset};
 }
