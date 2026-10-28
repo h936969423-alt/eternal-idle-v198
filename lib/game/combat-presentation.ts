@@ -176,7 +176,7 @@ export function enqueueSunriseReplay<T extends PresentationEvent>(queued:(T&{due
   // Manual and automatic spells share each skill's animation-frame clock.
   // Manual previews anchor to click time; automatic casts to replay time.
   // Projectile spells retain their separate flight/impact clock.
-  due:e.kind==='attack'&&!!e.skill&&!e.weaponProc&&(!isFlyingMagic(e)||!!e.visualEffectPreviewed)
+  due:e.kind==='attack'&&!!e.skill&&e.skill!=='sk_elf_triple'&&!e.weaponProc&&(!isFlyingMagic(e)||!!e.visualEffectPreviewed)
    ?Math.max(now,(e.manual&&typeof e.visualCastAt==='number'?e.visualCastAt:e.at+offset)+spellImpactMs(e))
    :e.at+offset
  }))].sort((a,b)=>a.due-b.due||a.seq-b.seq),offset};
