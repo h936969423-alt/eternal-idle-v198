@@ -1,3 +1,4 @@
+import {weaponEnhancementBonus} from './weapon-enhancement';
 import {withSkillCooldown} from './skill-cooldown';
 import {bindPetRoster,enforcePetCarry,controlledPet,deployPet,PET_ITEMS,usePetItem,capturePet,evolvePet} from './pet-roster';
 import {shareSkillBuff,partyMembers,partySkillStats,partySkillDamage,syncPartyHealth} from './skill-party';
@@ -120,17 +121,17 @@ export function stats(c:Character,now=Date.now()){
  const classHp={knight:12,elf:8,mage:6,dark:9}[c.cls]||8;
  b.maxHp=Math.max(1,Math.floor((30+b.con*2+(c.lv-1)*classHp+b.mhp)*(1+b.maxHpPct/100)));
  b.maxMp=Math.max(0,Math.floor((b.wis*2+(c.lv-1)*(c.cls==='mage'?8:c.cls==='elf'?5:3)+b.mmp)*(1+b.maxMpPct/100)));
- const w=c.equipment.weapon?DATA.items[c.equipment.weapon.id]:null,lw=lineageWProfile(w,c.equipment.weapon?.en||0),weaponEn=lw?0:c.equipment.weapon?.en||0,weaponDamage=lw?.damage??w?.dmgBonus??0,weaponHit=lw?.hit??w?.hit??0;
- b.weaponDamageBonus=weaponDamage+weaponEn;
- b.damageBonus=(w?.isBow?getDexRangedDmg(b.dex):getStrMeleeDmg(b.str))+b.extraDmg+(w?.isBow?b.rangedDmg:b.meleeDmg)+weaponDamage+weaponEn;
- b.hit=65+c.lv+Math.floor(b.dex/2)+weaponHit+weaponEn+b.extraHit+(w?.isBow?b.rangedHit:b.meleeHit);
+ const w=c.equipment.weapon?DATA.items[c.equipment.weapon.id]:null,lw=lineageWProfile(w,c.equipment.weapon?.en||0),weaponBonus=weaponEnhancementBonus(baseItem(c.equipment.weapon?.id||''),w,c.equipment.weapon?.en||0,!!lw),weaponDamage=(lw?.damage??w?.dmgBonus??0)+weaponBonus.damage,weaponHit=(lw?.hit??w?.hit??0)+weaponBonus.hit;
+ b.weaponDamageBonus=weaponDamage;
+ b.damageBonus=(w?.isBow?getDexRangedDmg(b.dex):getStrMeleeDmg(b.str))+b.extraDmg+(w?.isBow?b.rangedDmg:b.meleeDmg)+weaponDamage;
+ b.hit=65+c.lv+Math.floor(b.dex/2)+weaponHit+b.extraHit+(w?.isBow?b.rangedHit:b.meleeHit);
  b.wpnRanged=w?.isBow||w?.magicProjectile?1:0;b.elementFixedDmg=elementalWeaponDamage(c,'none');
  // Expose the same separate melee/ranged and extra rows used by the public interface.
  // The selected damage/hit totals remain exactly the existing combat formula.
- b.meleeDmg=getStrMeleeDmg(b.str)+b.meleeDmg+(!w?.isBow?weaponDamage+weaponEn:0);
- b.rangedDmg=getDexRangedDmg(b.dex)+b.rangedDmg+(w?.isBow?weaponDamage+weaponEn:0);
- b.meleeHit=getStrMeleeHit(b.str)+b.meleeHit+(!w?.isBow?weaponHit+weaponEn:0);
- b.rangedHit=getDexRangedHit(b.dex)+b.rangedHit+(w?.isBow?weaponHit+weaponEn:0);
+ b.meleeDmg=getStrMeleeDmg(b.str)+b.meleeDmg+(!w?.isBow?weaponDamage:0);
+ b.rangedDmg=getDexRangedDmg(b.dex)+b.rangedDmg+(w?.isBow?weaponDamage:0);
+ b.meleeHit=getStrMeleeHit(b.str)+b.meleeHit+(!w?.isBow?weaponHit:0);
+ b.rangedHit=getDexRangedHit(b.dex)+b.rangedHit+(w?.isBow?weaponHit:0);
  if(b.attackSpeedMult)b.atkSpdPct=((1+b.atkSpdPct/100)*b.attackSpeedMult-1)*100;
  if(speedStages.size)b.atkSpdPct=((1+b.atkSpdPct/100)*Math.pow(1.33,speedStages.size)-1)*100;
  const form=activeForm(c,now),polyStages=new Set([...speedStages,...Object.entries(c.buffs).filter(([,buff])=>buff.until>now).map(([id])=>legacySpeedStage(id)).filter(Boolean)]),polyHaste=Math.pow(.67,polyStages.size)*(sourceHaste&&!polyStages.has(1)?.67:1)*(c.buffs.sk_dark_walkhaste?.until>now?.85:1);b.castIntervalMs=Math.round(spellIntervalMs(c.cls,form?.name)*(form?polyHaste:1));b.healIntervalMs=Math.round(2000*(speedStages.has(1)||sourceHaste||Object.entries(c.buffs).some(([id,buff])=>buff.until>now&&legacySpeedStage(id)===1)?.67:1)*(c.buffs.sk_dark_walkhaste?.until>now?.85:1));if(form)b.healIntervalMs=b.castIntervalMs;b.supportCastIntervalMs=b.healIntervalMs;

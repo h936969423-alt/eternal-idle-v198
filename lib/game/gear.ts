@@ -1,3 +1,4 @@
+import {hasUnlimitedWeaponGrowth} from './weapon-enhancement';
 import {wornCount} from './worn-items';
 import {equipment381EnchantRates,equipment381BlessedGain} from './equipment381-rules';
 import {enhancementRates,blessingGainRange} from './enhancement-rules';
@@ -10,7 +11,7 @@ import {hasModifiers,affixEligible,scrollCandidates,requireBian,applyBlessingRol
 export function enhancementInfo(c:Character,key:string,mode='normal'){
  const i=items[baseItem(key)];if(!i||!['wpn','arm','acc'].includes(i.type)||i.isArrow||i.noEnh||!c.bag[key])throw new Error('此裝備不能強化');if(c.locked?.includes(key))throw new Error('請先解除道具鎖定');if(isCursed(c,key))throw Error('請先解除詛咒再強化');
  if(!['normal','blessed','refined','safe'].includes(mode))throw new Error('強化方式無效');if(mode==='blessed'&&(i.noBless||i.noEquip))throw new Error('此裝備不能祝福強化');
- const en=c.enh[key]||0,safe=i.source==='apang381'||i.lwGrade==='mythic'?i.safe:i.type==='acc'?0:i.safe||0,cap=i.source==='apang381'?(i.type==='acc'?8:Infinity):Math.min(i.enhCap||12,12),prefix=i.type==='wpn'?'scroll_weapon':i.type==='arm'?'scroll_armor':'scroll_acc';
+ const en=c.enh[key]||0,safe=i.source==='apang381'||i.lwGrade==='mythic'?i.safe:i.type==='acc'?0:i.safe||0,cap=hasUnlimitedWeaponGrowth(baseItem(key),i)?Infinity:i.source==='apang381'?(i.type==='acc'?8:Infinity):Math.min(i.enhCap||12,12),prefix=i.type==='wpn'?'scroll_weapon':i.type==='arm'?'scroll_armor':'scroll_acc';
  if(i.source==='apang381'){
   if(mode==='refined')throw Error('3.81 裝備不適用永夜精煉必成規則');
   if(safe<0||i.bless>=128||i.type==='acc'&&i.greater===3)throw Error('原始 3.81 設定不可強化');
@@ -20,7 +21,7 @@ export function enhancementInfo(c:Character,key:string,mode='normal'){
   const r=equipment381EnchantRates(i.type,en,safe),zero=mode==='blessed'&&en<=2?.01:0;
   return {i,en,safe,cap,scroll,need,chance:mode==='safe'?1:r.success*(1-zero),hold:mode==='safe'?0:r.hold*(1-zero)+zero,destroy:mode==='safe'?0:r.destroy*(1-zero),gainMin:mode==='safe'?need:zero?0:1,gainMax:mode==='safe'?need:mode==='blessed'?(en<=2?3:en<=5?2:1):1,refined:false};
  }
- if(i.type!=='acc'&&safe===0&&!i.lwMythicId&&i.lwGrade!=='mythic')throw new Error('安定值 0 的武器與防具不能強化');
+ if(i.type!=='acc'&&safe===0&&!hasUnlimitedWeaponGrowth(baseItem(key),i)&&!i.lwMythicId&&i.lwGrade!=='mythic')throw new Error('安定值 0 的武器與防具不能強化');
  const risky=en>=safe,refined=risky&&(mode==='refined'||mode==='normal'&&(c.bag[prefix+'_s']||0)>0&&!c.locked?.includes(prefix+'_s'));
  const scroll=prefix+(mode==='blessed'?'_b':refined?'_s':'');if(!items[scroll])throw new Error('目前未取得對應的祝福強化卷軸');
  const need=mode==='safe'?Math.max(0,Math.min(safe,cap)-en):1;

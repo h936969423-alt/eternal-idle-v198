@@ -108,6 +108,10 @@ jobs:
         run: node scripts/test-skill-computation.cjs
       - name: Verify continuous live polls do not reopen offline settlement
         run: node scripts/test-live-settlement.cjs
+      - name: Verify blue-to-gold weapon growth and uncapped enhancement
+        run: |
+          node scripts/test-weapon-growth.cjs
+          node scripts/test-lineagew-mythic-enhancement.cjs
       - name: Build complete Cloudflare Worker
         run: pnpm run build
       - name: Publish verified W skill icons to isolated R2

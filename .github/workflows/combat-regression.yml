@@ -43,3 +43,5 @@ jobs:
           node scripts/test-sunrise-player-motion.cjs
           node scripts/test-network-combat-cadence.cjs
           pnpm exec tsc --noEmit
+          node scripts/test-weapon-growth.cjs
+          node scripts/test-lineagew-mythic-enhancement.cjs

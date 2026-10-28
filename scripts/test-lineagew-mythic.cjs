@@ -14,11 +14,11 @@ try{
   assert.ok(!JSON.stringify(baseline.maps).includes(id));assert.ok(!JSON.stringify(baseline.worldBosses).includes(id));
   const c=make(i.req),save={...e.emptySave(1000),characters:[c],active:c.id};
   gm.applyGrant(save,gm.validateGrant({characterId:c.id,type:'weapon',itemId:id,quantity:1,enhancement:0}),1000);assert.equal(c.bag[id],1);
-  e.action(save,{type:'equip',item:id},1000);assert.equal(c.equipment.weapon.id,id);assert.equal(g.enhancementInfo(c,id).cap,7);
+  e.action(save,{type:'equip',item:id},1000);assert.equal(c.equipment.weapon.id,id);assert.equal(g.enhancementInfo(c,id).cap,Infinity);
   const zero=e.stats(c,1000);
   c.enh[id]=7;c.equipment.weapon.en=7;const seven=e.stats(c,1000),profile=p.lineageWProfile(i,7),base=p.lineageWProfile(i,0);
-  if(id===sword){assert.equal(seven.str-zero.str,6);assert.equal(seven.meleeHit-zero.meleeHit,28+tables.getStrMeleeHit(seven.str)-tables.getStrMeleeHit(zero.str));assert.equal(seven.meleeDmg-zero.meleeDmg,40+tables.getStrMeleeDmg(seven.str)-tables.getStrMeleeDmg(zero.str));}
-  else{assert.equal(seven.dex-zero.dex,6);assert.equal(seven.rangedHit-zero.rangedHit,35+tables.getDexRangedHit(seven.dex)-tables.getDexRangedHit(zero.dex));assert.equal(seven.rangedDmg-zero.rangedDmg,30+tables.getDexRangedDmg(seven.dex)-tables.getDexRangedDmg(zero.dex));}
+  if(id===sword){assert.equal(seven.str-zero.str,6);assert.equal(seven.meleeHit-zero.meleeHit,36+tables.getStrMeleeHit(seven.str)-tables.getStrMeleeHit(zero.str));assert.equal(seven.meleeDmg-zero.meleeDmg,48+tables.getStrMeleeDmg(seven.str)-tables.getStrMeleeDmg(zero.str));}
+  else{assert.equal(seven.dex-zero.dex,6);assert.equal(seven.rangedHit-zero.rangedHit,43+tables.getDexRangedHit(seven.dex)-tables.getDexRangedHit(zero.dex));assert.equal(seven.rangedDmg-zero.rangedDmg,38+tables.getDexRangedDmg(seven.dex)-tables.getDexRangedDmg(zero.dex));}
   for(let en=0;en<=7;en++){c.equipment.weapon.en=en;const values=e.stats(c,1000);for(const n of Object.values(values))assert.ok(Number.isFinite(n));const q=p.lineageWProfile(i,en);assert.ok(q.maxS>=q.minS);assert.ok(q.maxL>=q.minL);}
   // GM can still set any safe integer; known table stops at +7 rather than inventing values.
   const grant=gm.validateGrant({characterId:c.id,type:'weapon',itemId:id,quantity:1,enhancement:99});gm.applyGrant(save,grant,1000);const copy=Object.keys(c.bag).find(k=>k.startsWith(id+'@'));assert.ok(copy);assert.equal(c.enh[copy],99);
