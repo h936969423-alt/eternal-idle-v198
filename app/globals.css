@@ -814,7 +814,7 @@ body:has(.game-root.map-first-layout) .map-function-dialog[data-slot=dialog-cont
 
 /* Status icons begin immediately beside HP/MP, with no tiles or duration footer. */
 .game-root.screenshot-layout.map-first-layout .map-top-status{
- top:10px;left:calc(20px + clamp(100px,23vw,180px));right:12px;
+ top:48px;left:calc(20px + clamp(100px,23vw,180px));right:12px;
 }
 .game-root.screenshot-layout.map-first-layout .map-top-status .active-status-icons{
  justify-content:flex-start;gap:6px;
