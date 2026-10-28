@@ -132,7 +132,7 @@ function Game({signedIn,signIn,gmAllowed=false}:{signedIn:boolean;signIn:string;
  const previousLocation=useRef<{character:string;zone:string}|null>(null);
  useEffect(()=>{const previous=previousLocation.current;if(c){if(previous?.character===c.id&&playableBoss(previous.zone)&&D.towns[c.zone]){setHuntView('lobby');setTab('hunt');}previousLocation.current={character:c.id,zone:c.zone};}else previousLocation.current=null;},[c?.id,c?.zone]);
  const closeOffline=()=>{const id=offline?.id;setOffline(null);if(id){closedOfflineId.current=id;offlineNotices.current??=createOfflineIncomeNotices();offlineNotices.current.remember(id);void request({type:'offlineIncomeDismiss',id});}};
- useEffect(()=>{if(!signedIn)return;return startGamePolling({request:()=>request(),getState:()=>syncState.current,hasPending:()=>!!requestQueue.current.pending,abortRead:()=>pollAbort.current?.abort()});},[signedIn,request]);
+ useEffect(()=>{if(!signedIn)return;return startGamePolling({request:()=>request(),getState:()=>syncState.current,hasPending:()=>!!requestQueue.current.pending,abortRead:()=>pollAbort.current?.abort()});},[signedIn,request,c?.running]);
 
  // Leave a completed room only after the final combat events have been shown.
  useEffect(()=>{if(c&&playableBoss(c.zone)&&(c.bossRooms?.[c.zone]?.respawnAt||0)>Date.now()&&!battle.arena.some(m=>m.hp>0))setHuntView('lobby');},[c?.zone,c?.bossRooms?.[c?.zone||'']?.respawnAt,battle.arena]);
