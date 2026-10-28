@@ -31,6 +31,9 @@ export async function assetStorageFetch(request: Request, bucket?: Bucket): Prom
   // Never make the Site public/shared without adding explicit upload authorization.
   // Standalone Cloudflare testing does not inherit Sites owner-only upload authorization.
   if (pathname.startsWith(UPLOAD)) return new Response('Asset upload disabled', { status: 403 });
+  // These pinned source atlases ship with the Worker. They must reach static
+  // assets even when the unrelated R2 bucket or legacy index is unavailable.
+  if (pathname.startsWith('/assets/four-dragons/') && ['GET', 'HEAD'].includes(request.method)) return null;
   if(pathname.startsWith('/assets/lw-skills/')&&['GET','HEAD'].includes(request.method)){
     const entry=skillFiles.get(pathname);if(!entry)return new Response('Skill image not found',{status:404});
     if(!bucket)return new Response('Asset storage unavailable',{status:503});
@@ -85,3 +88,4 @@ export async function assetStorageFetch(request: Request, bucket?: Bucket): Prom
     return new Response(object.body, { status, headers });
   } catch { return new Response('Asset temporarily unavailable', { status: 503, headers: { 'Retry-After': '5' } }); }
 }
+

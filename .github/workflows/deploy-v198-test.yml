@@ -118,7 +118,9 @@ jobs:
           node scripts/test-four-dragon-loot.cjs
           node scripts/test-lineagew-mythic-enhancement.cjs
       - name: Verify self-contained four-dragon source material
-        run: node scripts/verify-four-dragon-assets.mjs
+        run: |
+          node scripts/test-four-dragon-storage.cjs
+          node scripts/verify-four-dragon-assets.mjs
       - name: Build complete Cloudflare Worker
         run: pnpm run build
       - name: Verify four-dragon atlases in final deployment output

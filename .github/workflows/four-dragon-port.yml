@@ -22,6 +22,7 @@ jobs:
         env:
           NODE_PATH: ${{ runner.temp }}/four-dragon-tools/node_modules
         run: |
+          node scripts/test-four-dragon-storage.cjs
           node scripts/verify-four-dragon-assets.mjs
           node scripts/test-four-dragon-port.cjs
           node scripts/test-four-dragon-loot.cjs
