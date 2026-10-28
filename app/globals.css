@@ -946,24 +946,18 @@ body:has(.game-root.map-first-layout) .map-function-dialog[data-slot=dialog-cont
 
 /* Compact monster information controls with explicit horizontal navigation. */
 .monster-inspect-shell{
- position:relative;z-index:3;display:flex;align-items:stretch;gap:3px;
+ position:relative;z-index:3;display:flex;align-items:stretch;
  width:100%;min-width:0;box-sizing:border-box;padding:4px 5px;
  border-top:1px solid #6e5824;background:#141d20;flex-shrink:0;
 }
 .monster-inspect-toolbar{
  display:flex;flex:1 1 auto;flex-wrap:nowrap;gap:3px;min-width:0;
- box-sizing:border-box;overflow-x:auto;scrollbar-width:none;
- overscroll-behavior-x:contain;scroll-behavior:smooth;
+ box-sizing:border-box;overflow-x:auto;overflow-y:hidden;scrollbar-width:none;
+ -webkit-overflow-scrolling:touch;overscroll-behavior-x:contain;scroll-behavior:smooth;
+ touch-action:pan-x pan-y;
 }
 .monster-inspect-toolbar::-webkit-scrollbar{display:none}
 .monster-inspect-toolbar:empty{display:none}
-.monster-inspect-scroll{
- display:flex;align-items:center;justify-content:center;flex:0 0 27px;
- width:27px;min-width:27px;min-height:26px;padding:0;
- border:1px solid #8e7748;border-radius:5px;background:#211e16;color:#ffe09a;
- touch-action:manipulation;cursor:pointer;
-}
-.monster-inspect-scroll svg{pointer-events:none}
 .monster-inspect-button{
  display:inline-flex;align-items:center;justify-content:center;gap:3px;flex:0 0 auto;
  min-width:0;min-height:26px;height:26px;max-width:100%;padding:2px 5px;box-sizing:border-box;
