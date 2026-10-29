@@ -1052,3 +1052,7 @@ body:has(.game-root) :is(.game-dialog,.bian-dialog) :is([data-slot=dialog-title]
 body:has(.game-root) :is(.game-dialog,.bian-dialog) :is([data-slot=dialog-description],[data-slot=alert-dialog-description]){
  color:#aaa398;
 }
+
+
+/* Consolidated Silver Knight village services. */
+.npc-hub-tools{display:grid;gap:10px;margin:12px 0}.npc-hub-tools .progress-tabs{display:flex;gap:6px;flex-wrap:wrap}.npc-hub-tools .progress-tabs button{min-height:40px}.npc-stock label{display:block;margin:8px 0}.npc-stock label>input{max-width:100%;margin-left:6px}.npc-shop-dialog .npc-stock{min-width:0;overflow-wrap:anywhere}.npc-shop-dialog .auto-card{min-width:0}.npc-shop-dialog .shop-row>button{min-width:0}.npc-shop-dialog .shop-row>button>span{min-width:0;overflow-wrap:anywhere}
