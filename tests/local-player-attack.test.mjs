@@ -37,11 +37,13 @@ test('automatic casts use the effect start clock and late history cannot restart
  assert.equal(h.calls.filter(c=>c.kind==='skill').length,before);h.unmount();
 });
 test('casting over an uncontacted swing retains one attack, but a completed contact is never replayed',()=>{
- for(const at of [810,1150]){
+ // At 0.8s / 4 frames the midpoint is 1200ms, sampled at 1250ms.
+ // 1150ms is still uncontacted under Afei's full-interval frame clock.
+ for(const at of [810,1150,1300]){
   const h=harness(),ownerKey=`cast-interrupt:${at}`;
   h.render({identity:ownerKey,timing:{...timing,attackSeconds:.8},local:{running:true,hasTarget:true,blocked:false,ownerKey,targetUid:'A',liveTargetUids:['A']}});
   h.advance(at);h.render({intent:{id:1,at,characterId:'one',skill:'spell'}});
-  assert.equal(h.slots[0].current.pendAtk,at===810,'only an interrupted, uncontacted swing needs a handoff');
+  assert.equal(h.slots[0].current.pendAtk,at<1250,'only an interrupted, uncontacted swing needs a handoff');
   if(at===810){h.advance(1250);assert.equal(h.pose().kind,'attack');assert.equal(h.slots[0].current.pendAtk,false);}
   h.unmount();
  }
