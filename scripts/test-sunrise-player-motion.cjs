@@ -2,11 +2,28 @@ const assert=require('node:assert/strict'),fs=require('node:fs'),vm=require('nod
 require.extensions['.ts']=(m,f)=>m._compile(ts.transpileModule(fs.readFileSync(f,'utf8'),{compilerOptions:{module:ts.ModuleKind.CommonJS,target:ts.ScriptTarget.ES2022,esModuleInterop:true}}).outputText,f);
 const motion=require('../lib/game/sunrise-player-motion.ts'),{sunrisePlayerCues}=require('../lib/game/sunrise-player-cues.ts'),{enqueueSunriseReplay,drainCombatPresentation}=require('../lib/game/combat-presentation.ts');
 const source=fs.readFileSync(path.join(__dirname,'../tests/fixtures/sunrise-player-motion-source.js'),'utf8');
-function oracle(timing){
+function oracle(timing,afeiCadence=true){
  const frames=Object.fromEntries(Object.entries(timing.counts).filter(([,n])=>n>0).map(([k,n])=>[k,Array.from({length:n},(_,i)=>({src:`${k}:${i}`,naturalWidth:100}))]));frames.shadow={};frames.weapon={};
  const bv={classList:{contains:k=>k==='area-fit'},appendChild:()=>{}},img=()=>({src:'',style:{}}),el={style:{},parentElement:bv};
  const context={now:0,Date:{now:()=>context.now},MOB_ANIM_FPS:8,PLAYER_BATTLE_WALK:false,_teleportFxUntil:0,CLASS_ANIM_8DIR:new Set(),MORPH_ANIM_3DIR:new Set(),_PM_PRIO:{death:5,hurt:4,skill:3,attack:2,idle:1},_morphBattleCache:{test:frames},_pmState:{act:null,t:0,pendAtk:false,name:'test',el,imgs:{bd:img(),sh:img(),wp:img(),cr:img()}},player:{hp:100,dead:false,avatar:'knight',d:{aspd:timing.attackSeconds,castLock:timing.castSeconds*10}},document:{getElementById:()=>bv},_playerBattleForm:()=>({key:'test',domKey:'test'}),_partySpritePos:()=>({P:{x:'45%',b:2}}),_playerMorphYOffset:()=>0,_playerBattleCrownApply:()=>{},_playerMorphName:()=>null};
- vm.createContext(context);vm.runInContext(source,context);return context;
+ vm.createContext(context);vm.runInContext(source,context);
+ // Keep the pinned Sunrise fixture intact. Afei uses a different frame clock:
+ // max(20ms, interval / frame count), without Sunrise's 125ms upper clamp.
+ // Adapt only this timing boundary; priority and pose transitions still run
+ // through the independently pinned original functions.
+ if(afeiCadence)vm.runInContext('_atkFrameMs = function(seconds, count) { return Number.isFinite(seconds) && seconds > 0 && count > 0 ? Math.max(20, seconds * 1000 / count) : 125; };',context);
+ return context;
+}
+// Explicit source differences: fast frames and long complete animations.
+{
+ const t={counts:{idle:2,attack:10,skill:7},attackSeconds:.19,castSeconds:2.8};
+ const old=oracle(t,false),afei=oracle(t);
+ assert.equal(old._atkFrameMs(.19,10),45);
+ assert.equal(afei._atkFrameMs(.19,10),20);
+ assert.equal(old._atkFrameMs(2.8,7),125);
+ assert.equal(afei._skillFrameMs(7),400);
+ assert.equal(motion.sunriseFrameMs(.19,10),20);
+ assert.equal(motion.sunriseMotionDuration('skill',t),2800);
 }
 let comparisons=0;
 for(const cls of ['royal','knight','elf','mage','dark'])for(const speed of [.19,.4489,.8,1.3,2.5]){
@@ -38,5 +55,5 @@ assert.equal(sunrisePlayerCues([{...b,seq:9,kind:'magic',skill:'sk_shock_stun'}]
 let live=enqueueSunriseReplay([], [{...b,seq:1,kind:'attack'}],5000,null);assert.equal(live.queue[0].due,5650,'network-fed actions share one stable display clock');
 const triple=[0,70,140].map((dt,i)=>({...b,seq:10+i,at:1000+dt,kind:'attack',skill:'sk_elf_triple',damage:1}));live=enqueueSunriseReplay([],triple,5000,null);assert.deepEqual(live.queue.map(x=>x.due),[5650,5720,5790]);const impacts=[];assert.equal(drainCombatPresentation(live.queue,impacts,5650,true)[0].visualPhase,'launch');assert.equal(impacts[0].due,5850);
 const replay=fs.readFileSync(path.join(__dirname,'../app/use-combat-replay.ts'),'utf8'),sprite=fs.readFileSync(path.join(__dirname,'../app/combat-sprite.tsx'),'utf8');assert.ok(replay.includes('enqueueSunriseReplay(queue.current'));assert.ok(sprite.includes('useSunrisePlayerMotion('));assert.ok(!sprite.includes('useCastFeedback('));assert.ok(!sprite.includes('useActorMotion('));
-console.log(`PASS Sunrise source differential: ${comparisons} non-hurt action/frame comparisons across five classes and five speeds; reproduced original hurt starvation and verified intentional hurt arbitration; one cast per AoE, MISS, proc exclusion, stable network replay and 70ms/200ms triple timing.`);
+console.log(`PASS Afei cadence with pinned Sunrise state-machine differential: ${comparisons} non-hurt action/frame comparisons across five classes and five speeds; reproduced original hurt starvation and verified intentional hurt arbitration; one cast per AoE, MISS, proc exclusion, stable network replay and 70ms/200ms triple timing.`);
 
