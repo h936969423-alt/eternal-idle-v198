@@ -20,7 +20,7 @@ function harness(withActor=true){
   return ()=>null;
  }};
  vm.runInNewContext(source,ctx);let cleanup=[];
- const render=props=>{cursor=0;const tree=mod.exports.default(props);for(const effect of effects.splice(0))cleanup.push(effect());return tree;};
+ const render=props=>{cursor=0;let tree=mod.exports.default(props);if(typeof tree?.type==='function')tree=tree.type(tree.props);for(const effect of effects.splice(0))cleanup.push(effect());return tree;};
  const advance=ms=>{clock=ms;epoch=1000000+ms;const jobs=[...raf.values()];raf.clear();for(const fn of jobs)fn(clock);for(const [id,t] of [...timers])if(t.due<=clock){timers.delete(id);t.f();}};
  const images=node=>!node?[]:Array.isArray(node)?node.flatMap(images):node.type==='img'?[node]:images(node.props?.children);
  const atlases=node=>!node?[]:Array.isArray(node)?node.flatMap(atlases):node.props?.className?.includes('magic-target-atlas')?[node]:atlases(node.props?.children);
@@ -40,5 +40,6 @@ loop.document.hidden=true;loop.listeners.get('visibilitychange')();assert.equal(
 loop.document.hidden=false;loop.listeners.get('visibilitychange')();loop.advance(1500);assert.ok(loop.images(loop.render(lp)).length,'live status resumes after visibility restore');
 loop.advance(3001);assert.equal(loop.render(lp),null);assert.equal(loop.raf.size,0);loop.unmount();assert.equal(loop.timers.size,0);
 console.log('PASS: actual React spell renderer plays both composed atlases on source-frame-rate clock, removes completed images, cancels hidden animations, restores active status and cleans up on unmount.');
+
 
 

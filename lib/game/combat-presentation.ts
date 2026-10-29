@@ -3,7 +3,7 @@ import {mythicProcDefinition} from './lineagew-mythic-procs';
 import type {CombatEvent,Encounter,PetSnapshot} from './engine';
 import type {SummonEntity} from './summon-system';
 import raw from './gamedata.json';
-import {isFlyingMagic,magicFlightMs,magicEffectLifetime,spellImpactMs} from './magic-visuals';
+import {isFlyingMagic,magicFlightMs,magicEffectLifetime,spellImpactMs,magicVisual} from './magic-visuals';
 import {TRIPLE_FLIGHT_MS,ARROW_FLIGHT_MS} from './player-sprite-layout';
 import {manualReplayOffset,replayOffset,tripleReplayOffset,REPLAY_MAX_AHEAD_MS} from './replay-timing';
 export type PresentationEvent=CombatEvent&{visualHpDelta?:number;visualOnly?:boolean};
@@ -170,17 +170,31 @@ export function enqueueSunriseReplay<T extends PresentationEvent>(queued:(T&{due
   e.kind==='state'&&e.skill==='sk_shock_stun'&&e.effect==='衝暈失敗'||
   e.kind==='attack'&&e.skill==='lw_skill_400'&&!e.miss&&!e.weaponProc));
  const earlySeq=new Set(early.map(e=>e.seq));
- return {queue:[...queued,...early.map(e=>({...e,visualOnly:true,due:now})),...unique.map(e=>({
+ // A target spell has two presentation moments: its effect starts with the
+ // cast pose, then the confirmed HP/number lands on that effect's hit frame.
+ // Starting both at impact used to make automatic spells look delayed.
+ const targetSpells=unique.filter(e=>{
+  if(e.kind!=='attack'||!e.skill||e.miss||e.weaponProc||e.visualEffectPreviewed||e.source!=='magic'||e.slot===undefined)return false;
+  if((raw.skills as Record<string,any>)[e.skill]?.type!=='atk')return false;
+  const config=magicVisual(e).config;return !!config&&!config.proj&&!config.self;
+ });
+ const castKey=(e:CombatEvent)=>`${e.at}:${e.skill}`;
+ const starts=new Map(targetSpells.map(e=>[castKey(e),e.manual?e.visualCastAt??now:Math.max(now,e.at+offset)]));
+ const targetSeq=new Set(targetSpells.map(e=>e.seq));
+ return {queue:[...queued,...early.map(e=>({...e,visualOnly:true,due:now})),
+ ...targetSpells.map(e=>({...e,damage:0,mobHp:undefined,visualOnly:true,visualAt:starts.get(castKey(e))!,due:starts.get(castKey(e))!})),...unique.map(e=>({
   ...e,
-  ...(earlySeq.has(e.seq)?{visualEffectPreviewed:true}:{}),
+  ...(earlySeq.has(e.seq)||targetSeq.has(e.seq)?{visualEffectPreviewed:true}:{}),
+  ...(starts.has(castKey(e))?{visualAt:starts.get(castKey(e))}:{}),
   // Manual and automatic spells share each skill's animation-frame clock.
   // Manual previews anchor to click time; automatic casts to replay time.
   // Projectile spells retain their separate flight/impact clock.
   due:e.kind==='attack'&&!!e.skill&&e.skill!=='sk_elf_triple'&&!e.weaponProc&&(!isFlyingMagic(e)||!!e.visualEffectPreviewed)
-   ?Math.max(now,(e.manual&&typeof e.visualCastAt==='number'?e.visualCastAt:e.at+offset)+spellImpactMs(e))
-   :e.at+offset
+   ?Math.max(now,(e.manual&&typeof e.visualCastAt==='number'?e.visualCastAt:starts.get(castKey(e))??e.at+offset)+spellImpactMs(e))
+   :starts.get(castKey(e))??e.at+offset
  }))].sort((a,b)=>a.due-b.due||a.seq-b.seq),offset};
 }
+
 
 
 

@@ -20,8 +20,32 @@ function harness(){
  vm.createContext(context);vm.runInContext(source+'\nthis.hook=useSunrisePlayerMotion;',context);
  const render=(patch={})=>{props={...props,...patch};index=0;const p=props;context.hook(p.identity,p.cues,p.timing,p.hp,p.intent,p.local);const effects=pending;pending=[];effects.forEach(fn=>fn());};
  const advance=target=>{while(true){let next=Infinity;for(const t of timers.values())next=Math.min(next,t.next);if(next>target)break;now=next;for(const [id,t]of [...timers])if(t.next===now&&timers.has(id)){t.next+=t.ms;t.fn();}}now=target;};
- render();return {render,advance,calls,timers,slots,hide:hidden=>{document.hidden=hidden;listeners.get('visibilitychange')?.();},unmount:()=>{for(const s of slots)s?.cleanup?.();},pose:()=>slots[7].value};
+ render();return {render,advance,calls,timers,slots,hide:hidden=>{document.hidden=hidden;listeners.get('visibilitychange')?.();},unmount:()=>{for(const s of slots)s?.cleanup?.();},pose:()=>slots[9].value};
 }
+test('local attack and manual/automatic cast publish their first pose without waiting for the 125ms sampler',()=>{
+ const h=harness();h.advance(400);assert.equal(h.pose().kind,'attack');assert.equal(h.pose().frame,0);
+ h.advance(410);h.render({intent:{id:1,at:410,characterId:'one',skill:'spell'}});
+ assert.equal(h.pose().kind,'skill');assert.equal(h.pose().frame,0);
+ h.advance(900);h.render({cues:[{seq:1,kind:'skill',key:'auto',displayAt:900}]});
+ assert.equal(h.pose().kind,'skill');assert.equal(h.pose().frame,0);h.unmount();
+});
+test('automatic casts use the effect start clock and late history cannot restart an expired pose',()=>{
+ const h=harness();h.advance(1000);h.render({cues:[{seq:1,kind:'skill',key:'auto',displayAt:850}]});
+ assert.equal(h.pose().kind,'skill');assert.equal(h.pose().frame,1);
+ h.advance(1700);const before=h.calls.filter(c=>c.kind==='skill').length;
+ h.render({cues:[{seq:2,kind:'skill',key:'stale',displayAt:1000}]});
+ assert.equal(h.calls.filter(c=>c.kind==='skill').length,before);h.unmount();
+});
+test('casting over an uncontacted swing retains one attack, but a completed contact is never replayed',()=>{
+ for(const at of [810,1150]){
+  const h=harness(),ownerKey=`cast-interrupt:${at}`;
+  h.render({identity:ownerKey,timing:{...timing,attackSeconds:.8},local:{running:true,hasTarget:true,blocked:false,ownerKey,targetUid:'A',liveTargetUids:['A']}});
+  h.advance(at);h.render({intent:{id:1,at,characterId:'one',skill:'spell'}});
+  assert.equal(h.slots[0].current.pendAtk,at===810,'only an interrupted, uncontacted swing needs a handoff');
+  if(at===810){h.advance(1250);assert.equal(h.pose().kind,'attack');assert.equal(h.slots[0].current.pendAtk,false);}
+  h.unmount();
+ }
+});
 test('100ms progress preserves fractional periods and speed-change progress',()=>{
  for(const period of [.1,.19,.4489,.8,1.3,2.5]){
   let clock={elapsed:0,period},attacks=0;
@@ -160,6 +184,7 @@ test('real rAF requeue + delayed spawn cannot pin later swings to a completed no
  assert.equal(new Set(shown).size,20);assert.equal(view.arena[0].hp,80);assert.equal(queue.length,0);
  h.unmount();
 });
+
 
 
 

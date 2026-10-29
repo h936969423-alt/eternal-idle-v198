@@ -10,6 +10,7 @@ on:
       - 'app/four-dragon-sprite.tsx'
       - 'lib/asset-storage.ts'
       - 'app/combat-sprite.tsx'
+      - 'app/use-sunrise-player-motion.ts'
       - 'app/combat-audio.ts'
       - 'app/monster-motion.tsx'
       - 'app/battle-arena.tsx'
@@ -89,9 +90,11 @@ jobs:
       - name: Verify player motion against original Sunrise functions
         run: node scripts/test-sunrise-player-motion.cjs
       - name: Verify local 100ms attacks and 125ms player animation
-        run: node --experimental-strip-types --test tests/local-player-attack.test.mjs tests/local-hit-sync.test.mjs tests/player-target-lock.test.mjs tests/normal-attack-target.test.mjs
+        run: node --experimental-strip-types --test tests/local-player-attack.test.mjs tests/local-hit-sync.test.mjs tests/player-target-lock.test.mjs tests/normal-attack-target.test.mjs tests/spell-presentation-sync.test.mjs
       - name: Verify audio activation and interruption recovery
         run: node --experimental-strip-types --test tests/combat-audio.test.mjs
+      - name: Verify target spell renderer timing and cleanup
+        run: node scripts/test-magic-renderer.cjs
       - name: Verify batched network attack cadence
         run: node scripts/test-network-combat-cadence.cjs
       - name: Typecheck five-class skill integration
@@ -164,5 +167,6 @@ jobs:
         run: node scripts/verify-four-dragon-assets.mjs --live
       - name: Print deployment location
         run: echo 'Check Cloudflare Workers dashboard for eternal-idle-v198-test workers.dev URL'
+
 
 

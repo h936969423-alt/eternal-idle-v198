@@ -1,6 +1,6 @@
 'use client';
 import {useEffect,useRef,useState} from 'react';
-import {emptySunriseClock,triggerSunriseMotion,advanceSunriseMotion,sunriseMotionPose,tickLocalPlayerAttack,SUNRISE_ATTACK_TICK_MS,SUNRISE_PLAYER_FRAME_MS,type LocalAttackInput,type LocalAttackClock,type SunriseTiming,type SunriseAction} from '@/lib/game/sunrise-player-motion';
+import {emptySunriseClock,triggerSunriseMotion,advanceSunriseMotion,sunriseMotionPose,sunriseMotionDuration,tickLocalPlayerAttack,SUNRISE_ATTACK_TICK_MS,SUNRISE_PLAYER_FRAME_MS,type LocalAttackInput,type LocalAttackClock,type SunriseTiming,type SunriseAction} from '@/lib/game/sunrise-player-motion';
 import type {SunriseCue} from '@/lib/game/sunrise-player-cues';
 import type {CastIntent} from '@/lib/game/cast-feedback';
 import {setLocalHitActive,clearLocalHits,recordLocalContact,localContactFrame,beginLocalSwing,type SwingTarget} from '@/lib/game/local-hit-sync';
@@ -10,12 +10,21 @@ export function useSunrisePlayerMotion(identity:string,cues:SunriseCue[],timing:
  const state=useRef(emptySunriseClock()),attackClock=useRef<LocalAttackClock>({elapsed:0,period:timing.attackSeconds}),seen=useRef(new Set<number>()),click=useRef<number|null>(null),previewTimes=useRef(new Set<number>()),previousHp=useRef<number|null>(null),latest=useRef({timing,hp,local});
  const contact=useRef(-Infinity),swing=useRef<SwingTarget|undefined>(undefined);
  const [pose,setPose]=useState<{kind:SunriseAction;frame:number;targetUid?:string}>({kind:'idle',frame:0});latest.current={timing,hp,local};
+ // Publish action starts in the same React turn as their effects. The fixed
+ // 125ms sampler advances frames; it must not delay the first visible pose.
+ const publishPose=(now:number)=>{const next={...sunriseMotionPose(state.current,now,latest.current.timing),targetUid:swing.current?.uid};setPose(p=>p.kind===next.kind&&p.frame===next.frame&&p.targetUid===next.targetUid?p:next);};
+ const castPose=(started:number,now:number)=>{
+  const before=state.current,next=triggerSunriseMotion(before,'skill',started,latest.current.timing);
+  const interrupted=before.act==='attack'&&now-before.t<sunriseMotionDuration('attack',latest.current.timing)&&contact.current!==before.t;
+  state.current=next!==before&&next.act==='skill'&&(interrupted||before.pendAtk)?{...next,pendAtk:true}:next;
+  publishPose(now);
+ };
  useEffect(()=>{state.current=emptySunriseClock();swing.current=undefined;contact.current=-Infinity;if(latest.current.local.ownerKey)clearLocalHits(latest.current.local.ownerKey);attackClock.current={elapsed:0,period:latest.current.timing.attackSeconds};seen.current.clear();click.current=null;previewTimes.current.clear();previousHp.current=null;setPose({kind:'idle',frame:0});},[identity]);
  useEffect(()=>{
   if(!intent||click.current===intent.id||hp<=0||document.hidden)return;
   click.current=intent.id;previewTimes.current.add(intent.at);
   if(previewTimes.current.size>32)previewTimes.current.delete(previewTimes.current.values().next().value!);
-  state.current=triggerSunriseMotion(state.current,'skill',performance.now(),latest.current.timing);
+  const now=performance.now();castPose(intent.at,now);
  },[identity,intent?.id]);
  useEffect(()=>{
   const now=performance.now();
@@ -23,7 +32,9 @@ export function useSunrisePlayerMotion(identity:string,cues:SunriseCue[],timing:
    // Server acknowledgements must never restart a locally triggered swing.
    if(cue.kind==='attack'||document.hidden||hp<=0)continue;
    if(cue.previewAt!==undefined&&previewTimes.current.has(cue.previewAt))continue;
-   state.current=triggerSunriseMotion(state.current,cue.kind,now,latest.current.timing);
+   const started=cue.displayAt??now;
+   if(now-started>=sunriseMotionDuration(cue.kind,latest.current.timing))continue;
+   castPose(started,now);
   }
   if(seen.current.size>640)seen.current=new Set(cues.map(c=>c.seq));
  },[cues,identity]);
@@ -44,7 +55,7 @@ export function useSunrisePlayerMotion(identity:string,cues:SunriseCue[],timing:
  useEffect(()=>{
   const ownerKey=latest.current.local.ownerKey;
   const bindSwing=()=>{const local=latest.current.local;if(local.targetUid)swing.current=local.ownerKey?beginLocalSwing(local.ownerKey,{uid:local.targetUid,slot:local.targetSlot},local.liveTargetUids):{uid:local.targetUid,slot:local.targetSlot};};
-  const playerAttack=(now:number)=>{const before=state.current;state.current=triggerSunriseMotion(before,'attack',now,latest.current.timing);if(state.current.act==='attack'&&(before.act!=='attack'||before.t!==state.current.t))bindSwing();};
+  const playerAttack=(now:number)=>{const before=state.current;state.current=triggerSunriseMotion(before,'attack',now,latest.current.timing);if(state.current.act==='attack'&&(before.act!=='attack'||before.t!==state.current.t)){bindSwing();publishPose(now);}};
   const attackTimer=setInterval(()=>{
    if(document.hidden)return;
    const current=latest.current,enabled=current.hp>0&&current.local.running&&current.local.hasTarget&&!current.local.blocked;
@@ -75,6 +86,7 @@ export function useSunrisePlayerMotion(identity:string,cues:SunriseCue[],timing:
  },[identity]);
  return pose;
 }
+
 
 
 
