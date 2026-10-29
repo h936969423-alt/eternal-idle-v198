@@ -20,7 +20,7 @@ function harness(){
  vm.createContext(context);vm.runInContext(source+'\nthis.hook=useSunrisePlayerMotion;',context);
  const render=(patch={})=>{props={...props,...patch};index=0;const p=props;context.hook(p.identity,p.cues,p.timing,p.hp,p.intent,p.local);const effects=pending;pending=[];effects.forEach(fn=>fn());};
  const advance=target=>{while(true){let next=Infinity;for(const t of timers.values())next=Math.min(next,t.next);if(next>target)break;now=next;for(const [id,t]of [...timers])if(t.next===now&&timers.has(id)){t.next+=t.ms;t.fn();}}now=target;};
- render();return {render,advance,calls,timers,slots,hide:hidden=>{document.hidden=hidden;listeners.get('visibilitychange')?.();},unmount:()=>{for(const s of slots)s?.cleanup?.();},pose:()=>slots[9].value};
+ render();return {render,advance,calls,timers,slots,hide:hidden=>{document.hidden=hidden;listeners.get('visibilitychange')?.();},unmount:()=>{for(const s of slots)s?.cleanup?.();},pose:()=>slots.find(s=>s?.value&&typeof s.value==='object'&&'kind' in s.value)?.value};
 }
 test('local attack and manual/automatic cast publish their first pose without waiting for the 125ms sampler',()=>{
  const h=harness();h.advance(400);assert.equal(h.pose().kind,'attack');assert.equal(h.pose().frame,0);
@@ -190,3 +190,19 @@ test('real rAF requeue + delayed spawn cannot pin later swings to a completed no
 
 
 
+
+test('manual and automatic spells face their own target while a swing keeps its contact target',()=>{
+ const h=harness(),ownerKey='cast-facing:zone';
+ const local={running:true,hasTarget:true,blocked:false,ownerKey,targetUid:'left',targetSlot:0,liveTargetUids:['left','right','upper']};
+ h.render({identity:ownerKey,local});h.advance(410);
+ assert.equal(h.pose().targetUid,'left');
+ h.render({local:{...local,targetUid:'right',targetSlot:1}});
+ assert.equal(h.pose().targetUid,'left','selection cannot turn a swing already in progress');
+ h.render({intent:{id:1,at:410,characterId:'one',skill:'spell',targetUid:'right'}});
+ assert.equal(h.pose().kind,'skill');assert.equal(h.pose().targetUid,'right','a manual cast uses its click target');
+ h.advance(900);h.render({cues:[{seq:1,kind:'skill',key:'auto',displayAt:900,targetUid:'upper'}]});
+ assert.equal(h.pose().kind,'skill');assert.equal(h.pose().targetUid,'upper','an automatic cast uses its event target');
+ h.advance(910);h.render({intent:{id:2,at:910,characterId:'one',skill:'self'}});
+ assert.equal(h.pose().targetUid,'upper','a self spell retains the current facing');
+ h.unmount();
+});
