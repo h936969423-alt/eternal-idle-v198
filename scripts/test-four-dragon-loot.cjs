@@ -7,27 +7,39 @@ function component(file){const mod={exports:{}};new Function('require','module',
 try{
  const e=load('engine'),loot=load('four-dragon-loot'),safety=load('enhancement-safety'),gear=load('gear'),hybrid=load('hybrid-loot'),appearance=load('loot-appearance'),preview=load('boss-drop-preview').bossDropPreview,active=load('dragon-availability').ACTIVE_DRAGON381;
  const zone=active[0].zone,now=Date.now(),pools=loot.fourDragonPools(undefined,now);
- assert.deepEqual(pools.map(g=>[g.rank,g.chance,g.min,g.max]),[['advanced',80,1,8],['rare',40,1,5],['hero',10,1,2]]);
- for(const g of pools){assert.equal(g.books,true,'all three tiers include books');assert(g.items.some(id=>e.DATA.items[id].type==='wpn'));assert(g.items.some(id=>e.DATA.items[id].type==='arm'));assert(g.items.some(id=>e.DATA.items[id].slot==='belt'));assert(g.items.some(id=>e.DATA.items[id].slot==='ring'));assert.equal(g.items.some(id=>e.DATA.items[id].type==='skillbk'),g.books);}
+ assert.deepEqual(pools.map(g=>[g.rank,g.chance,g.min,g.max]),[['advanced',80,1,8],['rare',40,1,5]]);
+ for(const g of pools){assert.equal(g.books,true,'both remaining tiers include books');assert(g.items.some(id=>e.DATA.items[id].type==='wpn'));assert(g.items.some(id=>e.DATA.items[id].type==='arm'));assert(g.items.some(id=>e.DATA.items[id].slot==='belt'));assert(g.items.some(id=>e.DATA.items[id].slot==='ring'));assert.equal(g.items.some(id=>e.DATA.items[id].type==='skillbk'),g.books);}
  for(const family of new Set(load('dragon381-registry.json').map(d=>d.family)))assert(load('dragon381-registry.json').some(d=>d.family===family&&loot.isFourDragonZone(d.zone)));
- const boundaries=[.8,.4,.1];assert.deepEqual(loot.rollFourDragonLoot(zone,undefined,()=>boundaries.shift(),now),[]);
+ const boundaries=[.8,.4];assert.deepEqual(loot.rollFourDragonLoot(zone,undefined,()=>boundaries.shift(),now),[]);
  assert.deepEqual(loot.rollFourDragonLoot('training',undefined,()=>0,now),[]);
  const counts=drops=>pools.map(g=>drops.filter(d=>g.items.includes(d.item)).reduce((n,d)=>n+d.quantity,0));
- assert.deepEqual(counts(loot.rollFourDragonLoot(zone,undefined,()=>0,now)),[1,1,1]);
+ assert.deepEqual(counts(loot.rollFourDragonLoot(zone,undefined,()=>0,now)),[1,1]);
  const draws=pools.flatMap(g=>[0,.999999,...Array(g.max).fill(0)]);
- assert.deepEqual(counts(loot.rollFourDragonLoot(zone,undefined,()=>draws.shift(),now)),[8,5,2]);
+ assert.deepEqual(counts(loot.rollFourDragonLoot(zone,undefined,()=>draws.shift(),now)),[8,5]);
  const changed=pools[0].items.find(id=>e.DATA.items[id].type==='wpn'),config={items:{[changed]:{rarity:'hero'}}};
- assert(!loot.fourDragonPools(config,now)[0].items.includes(changed));assert(loot.fourDragonPools(config,now)[2].items.includes(changed));
+ assert(!loot.fourDragonPools(config,now)[0].items.includes(changed));assert(!loot.fourDragonPools(config,now).some(g=>g.items.includes(changed)));
  const make=()=>{const b=e.BASES.knight,a={};let left=b.pts;for(const k of ['str','dex','con','int','wis','cha']){a[k]=Math.min(left,20-b[k]);left-=a[k];}return e.createCharacter('四龍測試','knight','m',a,now);};
  const c=make();c.zone=zone;e.ensureArena(c,()=>.5,now);const room=c.bossRooms[zone];room.dropDefinition={id:zone,timing:'complete',drops:[],hybrid:hybrid.defaultHybridRule(99,'world')};
  c.arena.forEach(m=>m.hp=0);c.arenaTarget=0;e.__award(c,c.arena[0].id,()=>0,now);
  const drops=Object.entries(c.lastBossVictory.drops).map(([item,quantity])=>({item,quantity}));
- assert.deepEqual(counts(drops),[1,1,1]);assert.equal(c.lastBossVictory.drops.mat_boss_crystal,1);
+ assert.deepEqual(counts(drops),[1,1]);assert.equal(c.lastBossVictory.drops.mat_boss_crystal,1);
  const before=JSON.stringify(c.bag);e.__award(c,c.arena[0].id,()=>0,now);assert.equal(JSON.stringify(c.bag),before,'death settles exactly once');
  assert.deepEqual(preview(zone,c,undefined,now).dragonGroups.map(g=>g.items),pools.map(g=>g.items));assert.equal(preview(zone,c,undefined,now).equipment.length,0);
- const html=renderToStaticMarkup(React.createElement(component('map-monsters').MonsterDrops,{id:zone,worldBoss:true,c}));assert(html.includes('80%'));assert(html.includes('40%'));assert(html.includes('10%'));assert(html.includes('法書'));
+ const html=renderToStaticMarkup(React.createElement(component('map-monsters').MonsterDrops,{id:zone,worldBoss:true,c}));assert(html.includes('80%'));assert(html.includes('40%'));assert(!html.includes('英雄'));assert(html.includes('法書'));
+ // Every direct/custom world-boss reward is checked before entering the ledger.
+ const blocked=Object.keys(e.DATA.items).filter(id=>['hero','legend'].includes(appearance.itemRarity(id))&&hybrid.isProgressionEquipment(e.DATA.items[id]));
+ for(const rank of ['hero','legend']){
+  const item=blocked.find(id=>appearance.itemRarity(id)===rank);assert(item,rank);
+  const ch=make();ch.zone='wb_sema';e.ensureArena(ch,()=>.5,now);
+  ch.bossRooms[ch.zone].dropDefinition={id:ch.zone,timing:'complete',drops:[{item,chance:100,min:1,max:1,enabled:true},{item:'scroll_weapon',chance:100,min:1,max:1,enabled:true}]};
+  ch.arena.forEach(m=>m.hp=0);ch.arenaTarget=0;e.__award(ch,ch.arena[0].id,()=>0,now);
+  assert(!ch.lastBossVictory.drops[item],rank+' excluded from receipt');
+  assert(!ch.bag[item],rank+' excluded from inventory');
+  assert.equal(ch.bag.scroll_weapon,1,'allowed supplies preserved');
+  assert(!preview(ch.zone,ch,undefined,now).drops.some(d=>d.item===item),'custom preview agrees');
+ }
  let checked=0;for(const [id,item] of Object.entries(e.DATA.items)){const info=safety.enhancementSafety(id,item);if(!info)continue;const ch=make();ch.bag={[id]:1,scroll_weapon:10,scroll_armor:10,scroll_acc:10};ch.enh={};try{const actual=gear.enhancementInfo(ch,id);assert(info.canEnhance,id);assert.equal(info.safe,Number.isFinite(actual.safe)?Math.max(0,actual.safe):0,id);assert.equal(info.cap,actual.cap,id);}catch(error){if(error.code==='ERR_ASSERTION')throw error;assert(!info.canEnhance,id+': '+error.message);}checked++;}
  const Safe=component('enhancement-safety').default;
  for(const safe of [0,4,6]){const item={type:'wpn',source:'lineagew',lwCatalogId:'test',lwGrade:'rare',safe};const h=renderToStaticMarkup(React.createElement(Safe,{id:'test',item,en:safe}));assert(h.includes('安定值：+'));assert(h.includes(String(safe)));assert(h.includes(String(safe+1)));assert(h.includes('無上限'));}
- console.log('PASS: three independent dragon rolls and 1–8/1–5/1–2 quantities; all families; weapons/armor/rings/belts/books; actual award once; preview SSR; '+checked+' equipment safety rules match server');
+ console.log('PASS: two independent dragon rolls and 1–8/1–5 quantities; hero drops disabled; all families; weapons/armor/rings/belts/books; actual award once; preview SSR; '+checked+' equipment safety rules match server');
 }finally{fs.rmSync(dir,{recursive:true,force:true});}

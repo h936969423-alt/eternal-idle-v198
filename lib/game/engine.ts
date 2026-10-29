@@ -1,3 +1,4 @@
+import {bossDropAllowed} from './boss-drop-policy';
 import {FOUR_DRAGON_AOE,dragonDice,dragonMagicDamage,dragonStatusChance,dragonEffectiveResist,type DragonDot} from './four-dragons';
 import {isFourDragonZone,isDragonRewardItem,rollFourDragonLoot} from './four-dragon-loot';
 import {weaponEnhancementBonus} from './weapon-enhancement';
@@ -220,7 +221,7 @@ function showLoot(c:Character,id:string,quantity:number,now:number,arena=c.arena
 export function settleBossRewards(c:Character,now:number,rng:()=>number){
  for(const [roomZone,room] of Object.entries(c.bossRooms||{})){const b=room.ledger,p=b?.participants?.[c.id],pending=p?.pending;if(!b?.finishedAt||!p||!pending)continue;delete p.pending;
  c.gold+=pending.gold;c.xp+=pending.xp;const income=incomeLedgers.get(c);if(income)income.xp+=pending.xp;
- for(const [id,n] of Object.entries(pending.drops)){const i=DATA.items[id];if(i?.eff==='dollCard')acquireDollCard(c,i.cardMob,i.cardTier,n);else grantDroppedItem(c,id,n,rng);if(income)income.drops[id]=(income.drops[id]||0)+n;if(i?.doll)c.dollCollection=[...new Set([...(c.dollCollection||[]),id])];showLoot(c,id,n,now,room.arena,roomZone===c.zone);}
+ for(const [id,n] of Object.entries(pending.drops)){if(!bossDropAllowed(id,c.lootAppearance))continue;const i=DATA.items[id];if(i?.eff==='dollCard')acquireDollCard(c,i.cardMob,i.cardTier,n);else grantDroppedItem(c,id,n,rng);if(income)income.drops[id]=(income.drops[id]||0)+n;if(i?.doll)c.dollCollection=[...new Set([...(c.dollCollection||[]),id])];showLoot(c,id,n,now,room.arena,roomZone===c.zone);}
  log(c,`世界王結算：金幣 +${pending.gold}，EXP +${pending.xp}`,'loot',now);
  while(c.xp>=xpNeed(c.lv)&&c.lv<99){c.xp-=xpNeed(c.lv);c.points+=levelPointGain(c.lv,c.lv+1);c.lv++;const b=stats(c,now);c.hp=b.maxHp;c.mp=b.maxMp;log(c,`升級！現在為 Lv.${c.lv}`,'level',now);}
  }

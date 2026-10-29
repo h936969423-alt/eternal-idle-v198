@@ -1,3 +1,4 @@
+import {bossDropAllowed} from './boss-drop-policy';
 import {isFourDragonZone,isDragonRewardItem,fourDragonPools} from './four-dragon-loot';
 import raw from './gamedata.json';
 import {bossMembers,playableBoss} from './boss-respawn';
@@ -21,7 +22,7 @@ export function bossDropPreview(zone:string,c?:Character,definition?:BossDropDef
  const dragon=isFourDragonZone(zone),dragonGroups=dragon?fourDragonPools(c?.lootAppearance,now):[];
  const drops:BossPreviewDrop[]=[];
  const add=(entries:DropEntry[],source:string,mixed:boolean)=>{for(const d of entries){
-  const i=items[d.item];if(!d.enabled||d.chance<=0||!i||i.availFrom>now||(mixed||dragon)&&isProgressionEquipment(i)||dragon&&isDragonRewardItem(i))continue;
+  const i=items[d.item];if(!bossDropAllowed(d.item,c?.lootAppearance)||!d.enabled||d.chance<=0||!i||i.availFrom>now||(mixed||dragon)&&isProgressionEquipment(i)||dragon&&isDragonRewardItem(i))continue;
   drops.push({...d,source});
  }};
  if(configured)add(configured.drops,configured.timing==='complete'?'整場完成':'每隻王擊殺',!!hybrid);
@@ -33,8 +34,8 @@ export function bossDropPreview(zone:string,c?:Character,definition?:BossDropDef
  const total=hybrid?Object.values(hybrid.weights).reduce((sum,n)=>sum+n,0):0;
  const equipment=!dragon&&pool&&hybrid?Object.entries(pool).flatMap(([rank,ids])=>{
   const chance=total?hybrid.equipmentChance*hybrid.weights[rank as DropRank]/total:0;
-  return chance>0&&ids.length?[{rank:rank as DropRank,chance,items:ids.map(item=>({item,chance:chance/ids.length}))}]:[];
+  return rank!=='hero'&&rank!=='legend'&&chance>0&&ids.length?[{rank:rank as DropRank,chance,items:ids.map(item=>({item,chance:chance/ids.length}))}]:[];
  }):[];
- const shards=hybrid?[{item:'mat_legend_shard',chance:hybrid.legendShardChance},{item:'mat_mythic_shard',chance:hybrid.mythicShardChance}].filter(d=>d.chance>0):[];
+ const shards=hybrid?[{item:'mat_legend_shard',chance:hybrid.legendShardChance},{item:'mat_mythic_shard',chance:hybrid.mythicShardChance}].filter(d=>d.chance>0&&bossDropAllowed(d.item,c?.lootAppearance)):[];
  return {drops,equipment,shards,dragonGroups,conditionalHybrid:!dragon&&!!hybrid&&!configured&&targets.some(m=>m.definition?.dropsMode==='custom')};
 }

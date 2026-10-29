@@ -7,7 +7,6 @@ import {isProgressionEquipment} from './equipment-ranks';
 export const FOUR_DRAGON_REWARDS=[
  {rank:'advanced',chance:80,min:1,max:8,books:true},
  {rank:'rare',chance:40,min:1,max:5,books:true},
- {rank:'hero',chance:10,min:1,max:2,books:true},
 ] as const;
 const zones=new Set(registry.map(r=>r.zone));
 const items=raw.items as Record<string,any>;
