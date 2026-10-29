@@ -968,3 +968,87 @@ body:has(.game-root.map-first-layout) .map-function-dialog[data-slot=dialog-cont
 .monster-inspect-button > svg{width:12px;height:12px;flex-shrink:0;pointer-events:none}
 .monster-inspect-button > span{white-space:nowrap;pointer-events:none}
 .monster-inspect-button:focus-visible,.monster-inspect-scroll:focus-visible{outline:2px solid #ffe09a;outline-offset:2px}
+
+/* W-inspired charcoal/copper interface trial. Colors are approximations.
+   Keep geometry, combat art, resource bars and item rarity colors unchanged. */
+:root{
+ --background:#111214;--foreground:#ded8cc;--text:#ded8cc;
+ --card:#202124;--popover:#202124;--muted:#292a2d;
+ --muted-foreground:#aaa398;--subtle:#aaa398;--accent:#36322c;
+ --primary:#b59a6a;--primary-foreground:#171614;
+ --border:#665747;--input:#665747;--gold:#b59a6a;--gold-dim:#665747;
+ --w-panel:#202124;--w-inset:#292a2d;--w-edge:#665747;
+ --w-title:#b59a6a;--w-copy:#ded8cc;--w-muted:#aaa398;
+}
+body{background:#111214}
+.game-root,.game-root.screenshot-layout{
+ --gold:#b59a6a;--interface-panel:#202124;
+ background:#111214;color:var(--w-copy);
+}
+.game-root .topbar,
+.game-root.screenshot-layout .topbar,
+.game-root.screenshot-layout .reference-hud{
+ background:linear-gradient(180deg,#292a2d,#202124);
+ border-color:var(--w-edge);
+}
+.game-root .brand strong{color:var(--w-title)}
+.game-root .brand div span,.game-root .cloud-status{color:var(--w-muted)}
+.game-root .character-panel{background:linear-gradient(180deg,#202124,#17181a);border-color:var(--w-edge)}
+.game-root.screenshot-layout .main-panel{background:#111214!important}
+.game-root.screenshot-layout.map-panel-scope{background:transparent}
+.game-root :is(.zone-panel,.log-panel,.equipment-strip,.attribute-panel,.stat-panel,.buff-panel,.bank-panel,.town-directory,.quick-potions,.shop-list){
+ background:var(--w-panel);border-color:var(--w-edge);
+}
+.game-root .section-head{border-color:#66574780}
+.game-root .section-head h2{color:var(--w-title)}
+.game-root .section-head>span,.game-root .empty-note{color:var(--w-muted)}
+.game-root.screenshot-layout .reference-map-row{background:var(--w-inset);border-color:var(--w-edge)}
+.game-root.screenshot-layout .reference-map-row.selected{background:#36322c;border-color:var(--w-title)}
+.game-root .zone-row{border-bottom-color:#66574766}
+.game-root .zone-row:hover{background:#303033}
+.game-root :is(.search-box,.shop-row,.skill-card){background:var(--w-inset);border-color:var(--w-edge)}
+.game-root .sub-tabs{background:#17181a!important}
+.game-root .sub-tabs [data-state=active]{background:#36322c!important;color:#e3c999!important}
+.game-root.screenshot-layout .main-nav,
+.game-root.screenshot-layout.map-first-layout .main-nav{
+ background:linear-gradient(180deg,#292a2df5,#17181af5)!important;border-color:var(--w-edge);
+}
+.game-root.screenshot-layout .main-nav [data-slot=tabs-trigger]{color:#aaa398}
+.game-root.screenshot-layout .main-nav [data-state=active]{
+ background:linear-gradient(180deg,#474036,#2f2b26)!important;color:#e3c999!important;
+ box-shadow:inset 0 2px #b59a6a!important;
+}
+.game-root.screenshot-layout.map-first-layout .map-skill-dock{background:#202124;border-color:var(--w-edge)}
+.game-root.screenshot-layout.map-first-layout .map-skill-dock .quick-magic>button{
+ background:linear-gradient(180deg,#303134,#202124);border-color:var(--w-edge);color:var(--w-copy);
+}
+.game-root.screenshot-layout.map-first-layout .map-log-dock{background:#17181a;border-color:var(--w-edge)}
+.game-root.screenshot-layout.map-first-layout .map-log-dock>.log-panel{background:transparent}
+.game-root.screenshot-layout.map-first-layout .map-log-dock .section-head{border-color:#66574780}
+.game-root .log-line time{color:#aaa398}
+.game-root .log-line:not(:is(.loot,.level,.hurt,.death,.heal,.magic)) span{color:var(--w-copy)}
+.game-root .battle-bottom-controls :is(.world-boss-attack,.world-boss-return){
+ background:linear-gradient(180deg,#37332de8,#17181ae8);border-color:var(--w-title);color:#e3c999;
+}
+.game-root .battle-bottom-controls button:hover:not(:disabled){background:#474036}
+.monster-inspect-shell{background:#202124;border-color:#665747}
+.monster-inspect-button{background:#292a2d;border-color:#8e795a;color:#e3c999}
+.game-root .gold-button,.game-root .primary-link{
+ background:linear-gradient(180deg,#c5ac80,#a58a5e)!important;border-color:#d6bf98!important;color:#171614!important;
+}
+.game-root .gold-button:hover,.game-root .primary-link:hover{background:#d6bf98!important}
+.game-root.screenshot-layout.map-panel-scope .landscape-map-drawer>summary{background:#292a2d;color:#e3c999}
+body:has(.game-root) :is(.game-dialog,.bian-dialog)[data-slot],
+body:has(.game-root.map-first-layout) .map-function-dialog[data-slot=dialog-content]{
+ background:linear-gradient(180deg,#26272a,#1b1c1f)!important;
+ border-color:#665747!important;color:#ded8cc!important;
+}
+body:has(.game-root) :is(.detail-dialog-header,.detail-dialog-footer,.map-function-dialog .map-function-header){
+ background:#292a2d;border-color:#665747;
+}
+body:has(.game-root) :is(.game-dialog,.bian-dialog) :is([data-slot=dialog-title],[data-slot=alert-dialog-title]){
+ color:#b59a6a;
+}
+body:has(.game-root) :is(.game-dialog,.bian-dialog) :is([data-slot=dialog-description],[data-slot=alert-dialog-description]){
+ color:#aaa398;
+}
