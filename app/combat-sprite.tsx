@@ -34,7 +34,7 @@ export default function CombatSprite({c,view,interval,pendingCast,castInterval:s
   };measure();const root=document.querySelector('.static-arena'),observer=new ResizeObserver(measure);if(root)observer.observe(root);return()=>observer.disconnect();
  },[pose.targetUid,contactTarget?.uid,c.zone,poly?.id,base]);
  const frame=Math.min(seq.length-1,pose.frame);
- const activeClip=pose.kind==='skill'?castClip:pose.kind==='attack'?attackClip:undefined;
+ const activeClip=pose.kind==='skill'?(castClip||attackClip):pose.kind==='attack'?attackClip:undefined;
  return seq.length?<PlayerSpriteFrame className="character-sprite" data-action={pose.kind} data-direction={direction} data-target-uid={pose.targetUid||contactTarget?.uid} data-mirrored={!poly&&base!=='knight_2hsword'&&direction===0} data-polymorph={poly?.id} formId={poly?.id} src={seq[frame]} clip={activeClip} frame={frame} alt={c.name}/>:null;
 }
 
