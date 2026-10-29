@@ -1,3 +1,4 @@
+import {sunriseFrameMs} from './sunrise-player-motion';
 /** Presentation-only rendezvous: confirmed HP results wait for a displayed
  * local swing's contact frame. No damage or reward is calculated here. */
 export type SwingTarget={uid:string;slot?:number;seq?:number};
@@ -9,7 +10,7 @@ export const localHitOwner=(id:string,zone:string)=>`${id}:${zone}`;
 /** At high attack speeds select a frame that the 125ms sampler can display
  * before the next 100ms attack tick replaces this swing. */
 export function localContactFrame(count:number,seconds:number){
- const frames=Math.max(1,count),step=Math.max(45,Math.min(125,seconds*1000/frames));
+ const frames=Math.max(1,count),step=sunriseFrameMs(seconds,frames);
  const shortestPeriod=Math.max(100,Math.floor(seconds*10)*100);
  return Math.max(0,Math.min(Math.floor(frames/2),Math.floor((shortestPeriod-125)/step)));
 }
