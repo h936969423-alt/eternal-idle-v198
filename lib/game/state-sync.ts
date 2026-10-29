@@ -1,3 +1,4 @@
+import {cleanGameText} from './game-display-text';
 import type {Save,Character} from './engine';
 export type GameSyncCursor={character:string;after:number;settingsKey:string};
 export type GameSync={settingsKey:string;definitionsIncluded:boolean;deltaCharacter:string|null};
@@ -13,6 +14,7 @@ export function responseSave(s:Save,settingsKey:string,cursor?:GameSyncCursor){
  const delta=reuse&&Number.isSafeInteger(cursor!.after)&&cursor!.after>=0&&cursor!.after<=(active!.eventSeq||0)&&(active!.eventSeq||0)-cursor!.after<=160;
  const save={...s,characters:s.characters.map(c=>{
   const out=reuse?withoutDefinitions(c):{...c};
+  out.logs=c.logs.map(log=>({...log,text:cleanGameText(log.text)}));
   if(delta&&c.id===active!.id)out.events=(c.events||[]).filter(e=>e.seq>cursor!.after);
   return out;
  })};

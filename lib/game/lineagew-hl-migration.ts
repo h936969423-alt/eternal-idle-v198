@@ -31,7 +31,7 @@ export function prepareLineageWHLMigration(input:Save,now:number){
   for(const room of Object.values(c.bossRooms||{}))migrateRoom(room);
   // All running combat pauses while equipment is replaced; no unarmed offline simulation.
   c.running=false;c.atkClock=0;c.events=[];
-  if(converted||protectedCount){c.logs.unshift({time:now,text:`天堂 W 英雄／傳說移植：轉換 ${converted} 組；保留待處理 ${protectedCount} 組，可在背包「舊裝保留」查看。原存檔已完整備份。`,kind:'info'});c.logs=c.logs.slice(0,90);}
+  if(converted||protectedCount){c.logs.unshift({time:now,text:`永夜 英雄／傳說移植：轉換 ${converted} 組；保留待處理 ${protectedCount} 組，可在背包「舊裝保留」查看。原存檔已完整備份。`,kind:'info'});c.logs=c.logs.slice(0,90);}
  }
  for(const room of Object.values(save.bossRooms||{}))migrateRoom(room);
  save.lineageWHLCatalogVersion=LINEAGEW_HL_CATALOG_VERSION;return {changed:true,save};

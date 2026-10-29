@@ -1,3 +1,4 @@
+import {cleanDisplayValue} from './game-display-text';
 import {getLootAppearanceConfig} from './item-appearance-store';
 import {initialNpcConfig,type NpcConfig} from './npc-config';
 import {initialMapAccess,mapAccessState} from './map-access';
@@ -16,7 +17,7 @@ export async function getGameSettings(){
  let rows=(await read()).results;
  const missing=Object.keys(defaults).filter(id=>!rows.some(r=>r.id===id));
  if(missing.length){await db.batch(missing.map(id=>db.prepare('INSERT INTO world_settings (id,payload,revision,updated_at) VALUES (?,?,0,?) ON CONFLICT(id) DO NOTHING').bind(id,JSON.stringify(defaults[id as keyof typeof defaults]),now)));rows=(await read()).results;}
- const get=(id:string)=>{const row=rows.find(r=>r.id===id);if(!row)throw Error('game settings storage unavailable');return {...JSON.parse(row.payload),revision:row.revision};};
+ const get=(id:string)=>{const row=rows.find(r=>r.id===id);if(!row)throw Error('game settings storage unavailable');return {...JSON.parse(row.payload,cleanDisplayValue),revision:row.revision};};
  const appearance=get('item_appearance');
  if((appearance.normalEquipmentVersion||0)<1||(appearance.advancedEquipmentVersion||0)<1||(appearance.rareEquipmentVersion||0)<1)Object.assign(appearance,await getLootAppearanceConfig());
  const dolls=get('dolls');

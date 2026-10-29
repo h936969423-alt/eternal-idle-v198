@@ -9,9 +9,9 @@ import {baseItem} from './gear';
 const items=raw.items as Record<string,any>;
 export type Recipe={id:string;npc:string;output:string;materials:Record<string,number>;gold:number;outputCount?:number;dailyCap?:number;minLv?:number;classes?:string[];materialEnhancements?:Record<string,number>;availableFrom?:number;availableUntil?:number;disabledReason?:string;source:string};
 const imported=NPC_HUB.recipes as unknown as Recipe[];
-const oldPanacea:Recipe[]=['str','dex','con','int','wis'].map(stat=>({id:'tas_'+stat,npc:'npc_moli',output:'panacea_'+stat,materials:{panacea_white:3},gold:0,source:'阿肥公開配方：純白萬能藥 ×3'}));
+const oldPanacea:Recipe[]=['str','dex','con','int','wis'].map(stat=>({id:'tas_'+stat,npc:'npc_moli',output:'panacea_'+stat,materials:{panacea_white:3},gold:0,source:'公開配方：純白萬能藥 ×3'}));
 const seen=new Set<string>();
-export const NPC_RECIPES:Recipe[]=[...oldPanacea,...imported,...Object.entries(items).filter(([,i])=>i.moonEx).map(([id,i]):Recipe=>({id:'moon_'+id,npc:'npc_events',output:id,materials:{[String(i.moonEx.from)]:i.moonEx.need},gold:i.moonEx.gold||0,dailyCap:i.moonEx.dailyCap,disabledReason:'此活動目前沒有已確認的開放期間，暫停兌換。',source:'阿肥公開道具兌換欄位'}))].filter(r=>{const key=JSON.stringify([r.npc,r.output,r.materials,r.gold,r.outputCount||1,r.classes||[],r.materialEnhancements||{},r.availableUntil||0,r.availableFrom||0,r.minLv||0,r.disabledReason||'',r.dailyCap||0]);if(seen.has(key))return false;seen.add(key);return true;});
+export const NPC_RECIPES:Recipe[]=[...oldPanacea,...imported,...Object.entries(items).filter(([,i])=>i.moonEx).map(([id,i]):Recipe=>({id:'moon_'+id,npc:'npc_events',output:id,materials:{[String(i.moonEx.from)]:i.moonEx.need},gold:i.moonEx.gold||0,dailyCap:i.moonEx.dailyCap,disabledReason:'此活動目前沒有已確認的開放期間，暫停兌換。',source:'公開道具兌換欄位'}))].filter(r=>{const key=JSON.stringify([r.npc,r.output,r.materials,r.gold,r.outputCount||1,r.classes||[],r.materialEnhancements||{},r.availableUntil||0,r.availableFrom||0,r.minLv||0,r.disabledReason||'',r.dailyCap||0]);if(seen.has(key))return false;seen.add(key);return true;});
 export function recipesFor(npc:string,c?:Character){
  const base=NPC_RECIPES.filter(r=>r.npc===npc&&items[r.output]&&Object.keys(r.materials).every(id=>!!items[id]));
  if(npc!=='npc_hector')return base;

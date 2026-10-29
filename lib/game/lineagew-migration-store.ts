@@ -3,7 +3,7 @@ import reference from './lineagew-equipment-reference.json';
 import {prepareLineageWMigration,lineageWNeedsMigration,LINEAGEW_CATALOG_VERSION} from './lineagew-migration';
 /** Exact original payload and successful CAS update commit in the same atomic batch. */
 export async function ensureLineageWMigration(db:D1Database,owner:string,initial:{payload:string;revision:number},now=Date.now()){
- if(!activation.enabled||activation.version!==LINEAGEW_CATALOG_VERSION||activation.items!==Object.keys(reference.items).length||activation.icons!==activation.items)throw Error('天堂 W 裝備清單與圖示尚未完整核對，暫停移植');
+ if(!activation.enabled||activation.version!==LINEAGEW_CATALOG_VERSION||activation.items!==Object.keys(reference.items).length||activation.icons!==activation.items)throw Error('永夜 裝備清單與圖示尚未完整核對，暫停移植');
  let row=initial;
  for(let attempt=0;attempt<4;attempt++){
   const original=JSON.parse(row.payload);if(!lineageWNeedsMigration(original))return row;

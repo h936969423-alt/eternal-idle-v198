@@ -46,7 +46,7 @@
         10
       ],
       "dmgBase": 8,
-      "lwRuleText": "永夜適配：沿用永夜戰鬥／治癒公式；依本招目標與狀態規則結算。未公開公式與學習等級為永夜設定，非天堂W伺服器原值。"
+      "lwRuleText": "永夜適配：沿用永夜戰鬥／治癒公式；依本招目標與狀態規則結算。公式與學習等級依永夜設定。"
     },
     "lw_skill_30": {
       "n": "保護盾",
@@ -89,7 +89,7 @@
       "reqE": 8,
       "reqD": 1,
       "lwIcon": "/assets/lw-skills/a3d805f02da2dcb85b928ebdee49d5b55b828f5ce0ea09c7d9f713139aabf49e.webp",
-      "lwRuleText": "永夜適配：ac 2。未公開公式與學習等級為永夜設定，非天堂W伺服器原值。"
+      "lwRuleText": "永夜適配：ac 2。公式與學習等級依永夜設定。"
     },
     "lw_skill_40": {
       "n": "傳送術",
@@ -130,7 +130,7 @@
       "reqE": 8,
       "reqD": 1,
       "lwIcon": "/assets/lw-skills/dfe9d1ee9c5ba614d38826e683daaa82b8b2f656dc49b7b0f6592f1f18f1737c.webp",
-      "lwRuleText": "永夜適配：沿用永夜戰鬥／治癒公式；依本招目標與狀態規則結算。未公開公式與學習等級為永夜設定，非天堂W伺服器原值。"
+      "lwRuleText": "永夜適配：沿用永夜戰鬥／治癒公式；依本招目標與狀態規則結算。公式與學習等級依永夜設定。"
     },
     "lw_skill_50": {
       "n": "解毒術",
@@ -177,7 +177,7 @@
       ],
       "healBase": 0,
       "lwHealMaxPct": 0,
-      "lwRuleText": "永夜適配：沿用永夜戰鬥／治癒公式；依本招目標與狀態規則結算。未公開公式與學習等級為永夜設定，非天堂W伺服器原值。"
+      "lwRuleText": "永夜適配：沿用永夜戰鬥／治癒公式；依本招目標與狀態規則結算。公式與學習等級依永夜設定。"
     },
     "lw_skill_60": {
       "n": "負重強化",
@@ -219,7 +219,7 @@
       "reqD": 16,
       "lwIcon": null,
       "lwIconMissing": true,
-      "lwRuleText": "永夜適配：weightCap 50。未公開公式與學習等級為永夜設定，非天堂W伺服器原值。"
+      "lwRuleText": "永夜適配：weightCap 50。公式與學習等級依永夜設定。"
     },
     "lw_skill_70": {
       "n": "無所遁形術",
@@ -260,7 +260,7 @@
       "reqE": 16,
       "reqD": 1,
       "lwIcon": "/assets/lw-skills/59fc70bf19060cfc1e86e646ed8cc44cada669de53606933cbea83904071a91b.webp",
-      "lwRuleText": "永夜適配：reveal 1。未公開公式與學習等級為永夜設定，非天堂W伺服器原值。"
+      "lwRuleText": "永夜適配：reveal 1。公式與學習等級依永夜設定。"
     },
     "lw_skill_90": {
       "n": "鎧甲護持",
@@ -301,7 +301,7 @@
       "reqE": 24,
       "reqD": 1,
       "lwIcon": "/assets/lw-skills/7d37fb0415d01408ae6c9503cb07cec438434b8c55aded82d3c17dd786a7d77e.webp",
-      "lwRuleText": "永夜適配：ac 3。未公開公式與學習等級為永夜設定，非天堂W伺服器原值。"
+      "lwRuleText": "永夜適配：ac 3。公式與學習等級依永夜設定。"
     },
     "lw_skill_630": {
       "n": "精準目標",
@@ -341,7 +341,7 @@
         "chance": 1,
         "value": 5
       },
-      "lwRuleText": "永夜適配：沿用永夜戰鬥／治癒公式；依本招目標與狀態規則結算。未公開公式與學習等級為永夜設定，非天堂W伺服器原值。"
+      "lwRuleText": "永夜適配：沿用永夜戰鬥／治癒公式；依本招目標與狀態規則結算。公式與學習等級依永夜設定。"
     },
     "lw_skill_640": {
       "n": "灼熱靈氣",
@@ -378,7 +378,7 @@
       "reqRoy": 40,
       "lwIcon": "/assets/lw-skills/6f1033434e5021b7baa6142e1aea49d744f3d4a8e0e5525d5a52b5eef431274d.webp",
       "lwToggle": true,
-      "lwRuleText": "永夜適配：meleeDmg 2；meleeHit 2。未公開公式與學習等級為永夜設定，非天堂W伺服器原值。"
+      "lwRuleText": "永夜適配：meleeDmg 2；meleeHit 2。公式與學習等級依永夜設定。"
     },
     "lw_skill_650": {
       "n": "閃灼靈氣",
@@ -415,7 +415,7 @@
       "reqRoy": 50,
       "lwIcon": "/assets/lw-skills/fbf6b1e92d960171488034abaf72a52d080209ac5fa6f9f8a5f2e2c7936707fc.webp",
       "lwToggle": true,
-      "lwRuleText": "永夜適配：ac 3；mr 5。未公開公式與學習等級為永夜設定，非天堂W伺服器原值。"
+      "lwRuleText": "永夜適配：ac 3；mr 5。公式與學習等級依永夜設定。"
     },
     "lw_skill_660": {
       "n": "勇猛意志",
@@ -451,7 +451,7 @@
       "lwCleanse": [],
       "reqRoy": 50,
       "lwIcon": "/assets/lw-skills/94f1ac2a0f8bf322c8ffdd55077ae2bd46f05bda81443ed1c99c4136bf0e09d8.webp",
-      "lwRuleText": "永夜適配：lwAmpChance 10；lwAmpMult 2.1。未公開公式與學習等級為永夜設定，非天堂W伺服器原值。"
+      "lwRuleText": "永夜適配：lwAmpChance 10；lwAmpMult 2.1。公式與學習等級依永夜設定。"
     },
     "lw_skill_690": {
       "n": "霸體",
@@ -487,7 +487,7 @@
       "lwCleanse": [],
       "reqRoy": 50,
       "lwIcon": "/assets/lw-skills/1635d4b9913413146e452f9fb5e54421ecec602feec7abbeaf5150e88f0246f9.webp",
-      "lwRuleText": "永夜適配：dr 3；ac 3。未公開公式與學習等級為永夜設定，非天堂W伺服器原值。"
+      "lwRuleText": "永夜適配：dr 3；ac 3。公式與學習等級依永夜設定。"
     },
     "lw_skill_710": {
       "n": "王者之劍",
@@ -530,7 +530,7 @@
         "chance": 0.2,
         "value": 1
       },
-      "lwRuleText": "永夜適配：沿用永夜戰鬥／治癒公式；依本招目標與狀態規則結算。未公開公式與學習等級為永夜設定，非天堂W伺服器原值。"
+      "lwRuleText": "永夜適配：沿用永夜戰鬥／治癒公式；依本招目標與狀態規則結算。公式與學習等級依永夜設定。"
     },
     "lw_skill_8620": {
       "n": "血之聯合",
@@ -571,7 +571,7 @@
       "lwHealMaxPct": 0,
       "lwShareHp": true,
       "groupHeal": true,
-      "lwRuleText": "永夜適配：沿用永夜戰鬥／治癒公式；依本招目標與狀態規則結算。未公開公式與學習等級為永夜設定，非天堂W伺服器原值。"
+      "lwRuleText": "永夜適配：沿用永夜戰鬥／治癒公式；依本招目標與狀態規則結算。公式與學習等級依永夜設定。"
     },
     "lw_skill_8623": {
       "n": "究極恢復",
@@ -606,7 +606,7 @@
       "lwCleanse": [],
       "reqRoy": 50,
       "lwIcon": "/assets/lw-skills/26f1869dd08902e2b47f9e6d8edc2a8be1a4e532fda70d79fde36bd5db050740.webp",
-      "lwRuleText": "永夜適配：lwLifeStealPct 2。未公開公式與學習等級為永夜設定，非天堂W伺服器原值。"
+      "lwRuleText": "永夜適配：lwLifeStealPct 2。公式與學習等級依永夜設定。"
     },
     "lw_skill_10288": {
       "n": "襲擊",
@@ -643,7 +643,7 @@
       "dmgType": "physical",
       "hits": 1,
       "skillAddDmg": 4,
-      "lwRuleText": "永夜適配：沿用永夜戰鬥／治癒公式；依本招目標與狀態規則結算。未公開公式與學習等級為永夜設定，非天堂W伺服器原值。"
+      "lwRuleText": "永夜適配：沿用永夜戰鬥／治癒公式；依本招目標與狀態規則結算。公式與學習等級依永夜設定。"
     },
     "lw_skill_10825": {
       "n": "勇猛意志 (大師) : 被動",
@@ -678,7 +678,7 @@
       "lwIcon": "/assets/lw-skills/39543eb7769ff8a8cb89f1d6b77233a980c44de78fa5f23357762c738b76fea7.webp",
       "lwUpgradeOf": "lw_skill_660",
       "lwUpgradePct": 15,
-      "lwRuleText": "永夜適配：強化「勇猛意志」數值 15%。未公開公式與學習等級為永夜設定，非天堂W伺服器原值。"
+      "lwRuleText": "永夜適配：強化「勇猛意志」數值 15%。公式與學習等級依永夜設定。"
     },
     "lw_skill_10988": {
       "n": "閃灼靈氣 (大師) : 被動",
@@ -713,7 +713,7 @@
       "lwIcon": "/assets/lw-skills/62f775bfadc2fe1c62496816565f053f920a1a81e1ab545a56f964583bcef32f.webp",
       "lwUpgradeOf": "lw_skill_650",
       "lwUpgradePct": 15,
-      "lwRuleText": "永夜適配：強化「閃灼靈氣」數值 15%。未公開公式與學習等級為永夜設定，非天堂W伺服器原值。"
+      "lwRuleText": "永夜適配：強化「閃灼靈氣」數值 15%。公式與學習等級依永夜設定。"
     },
     "lw_skill_11387": {
       "n": "灼熱靈氣 (大師) : 被動",
@@ -748,7 +748,7 @@
       "lwIcon": "/assets/lw-skills/0b678cac56a23b4187170bc12bd962e92c4e06d8b118638f11f4582346e93f72.webp",
       "lwUpgradeOf": "lw_skill_640",
       "lwUpgradePct": 15,
-      "lwRuleText": "永夜適配：強化「灼熱靈氣」數值 15%。未公開公式與學習等級為永夜設定，非天堂W伺服器原值。"
+      "lwRuleText": "永夜適配：強化「灼熱靈氣」數值 15%。公式與學習等級依永夜設定。"
     },
     "lw_skill_11999": {
       "n": "專注靈氣",
@@ -785,7 +785,7 @@
       "reqRoy": 50,
       "lwIcon": "/assets/lw-skills/5e986efb026d0363e8983bd27fee952723cef8bdd79fb1128228f83b81a97e42.webp",
       "lwToggle": true,
-      "lwRuleText": "永夜適配：stunHit 3；allIgnoreDr 5。未公開公式與學習等級為永夜設定，非天堂W伺服器原值。"
+      "lwRuleText": "永夜適配：stunHit 3；allIgnoreDr 5。公式與學習等級依永夜設定。"
     },
     "lw_skill_12539": {
       "n": "精通閃避",
@@ -820,7 +820,7 @@
       "lwCleanse": [],
       "reqRoy": 50,
       "lwIcon": "/assets/lw-skills/2b8913a8673e53a59e5f4b3e03a153980d15ccc17310d58472e54c7e547afdfb.webp",
-      "lwRuleText": "永夜適配：er 1。未公開公式與學習等級為永夜設定，非天堂W伺服器原值。"
+      "lwRuleText": "永夜適配：er 1。公式與學習等級依永夜設定。"
     },
     "lw_skill_12657": {
       "n": "魔法抵抗",
@@ -863,7 +863,7 @@
       "reqE": 1,
       "reqD": 1,
       "lwIcon": "/assets/lw-skills/5d4ddc9d1e3f96da14cf1af4cd445fbc0ca5545746592f7d02ab4b8e601b5931.webp",
-      "lwRuleText": "永夜適配：mr 3。未公開公式與學習等級為永夜設定，非天堂W伺服器原值。"
+      "lwRuleText": "永夜適配：mr 3。公式與學習等級依永夜設定。"
     },
     "lw_skill_12658": {
       "n": "提升強健",
@@ -906,7 +906,7 @@
       "reqE": 1,
       "reqD": 1,
       "lwIcon": "/assets/lw-skills/9cfcadf11c6cc6190d644cf7d905612fa087073a74cb5896b11d182458c65ca6.webp",
-      "lwRuleText": "永夜適配：mhp 30。未公開公式與學習等級為永夜設定，非天堂W伺服器原值。"
+      "lwRuleText": "永夜適配：mhp 30。公式與學習等級依永夜設定。"
     },
     "lw_skill_12659": {
       "n": "強健復原",
@@ -949,7 +949,7 @@
       "reqE": 1,
       "reqD": 1,
       "lwIcon": "/assets/lw-skills/911831293de8bddc08129ecd63ce712b959307addb4ef5163cebd32f0f5cbfb7.webp",
-      "lwRuleText": "永夜適配：hpR 1。未公開公式與學習等級為永夜設定，非天堂W伺服器原值。"
+      "lwRuleText": "永夜適配：hpR 1。公式與學習等級依永夜設定。"
     },
     "lw_skill_12660": {
       "n": "提升負重",
@@ -992,7 +992,7 @@
       "reqE": 1,
       "reqD": 1,
       "lwIcon": "/assets/lw-skills/6071bccbb58292e316a0bb12ac1389390af4e3e0390a301ca5e63a382e6b76e0.webp",
-      "lwRuleText": "永夜適配：weightCap 20。未公開公式與學習等級為永夜設定，非天堂W伺服器原值。"
+      "lwRuleText": "永夜適配：weightCap 20。公式與學習等級依永夜設定。"
     },
     "lw_skill_12661": {
       "n": "增加裝甲",
@@ -1035,7 +1035,7 @@
       "reqE": 10,
       "reqD": 10,
       "lwIcon": "/assets/lw-skills/65fae06b0adce94aeecb3d40967fbb5860771bc6ad4d9642034bdb7a9cdcdd6a.webp",
-      "lwRuleText": "永夜適配：ac 1。未公開公式與學習等級為永夜設定，非天堂W伺服器原值。"
+      "lwRuleText": "永夜適配：ac 1。公式與學習等級依永夜設定。"
     },
     "lw_skill_12662": {
       "n": "增加傷害",
@@ -1078,7 +1078,7 @@
       "reqE": 10,
       "reqD": 10,
       "lwIcon": "/assets/lw-skills/2286b292bf982549822767e81382241e7e1cbcc269620f4c07c5d390c328394b.webp",
-      "lwRuleText": "永夜適配：extraDmg 1。未公開公式與學習等級為永夜設定，非天堂W伺服器原值。"
+      "lwRuleText": "永夜適配：extraDmg 1。公式與學習等級依永夜設定。"
     },
     "lw_skill_12663": {
       "n": "強健恢復",
@@ -1121,7 +1121,7 @@
       "reqE": 10,
       "reqD": 10,
       "lwIcon": "/assets/lw-skills/74ac4841feb7ed60f5f48bd8743dc49994c784e14d6dbeb2c4fccae2536909b0.webp",
-      "lwRuleText": "永夜適配：hpR 2。未公開公式與學習等級為永夜設定，非天堂W伺服器原值。"
+      "lwRuleText": "永夜適配：hpR 2。公式與學習等級依永夜設定。"
     },
     "lw_skill_12664": {
       "n": "增加武器",
@@ -1164,7 +1164,7 @@
       "reqE": 10,
       "reqD": 10,
       "lwIcon": "/assets/lw-skills/cbef51fe7a88ee9ee4a6d0e9113682ff93c0fb5edd9624cd624f39119a7d8f53.webp",
-      "lwRuleText": "永夜適配：extraHit 1。未公開公式與學習等級為永夜設定，非天堂W伺服器原值。"
+      "lwRuleText": "永夜適配：extraHit 1。公式與學習等級依永夜設定。"
     },
     "lw_skill_12665": {
       "n": "裝甲加持",
@@ -1207,7 +1207,7 @@
       "reqE": 30,
       "reqD": 30,
       "lwIcon": "/assets/lw-skills/ca36a431f9942395ecd370b470f244961441d3b7e96b9353c1c3515713152f39.webp",
-      "lwRuleText": "永夜適配：ac 2。未公開公式與學習等級為永夜設定，非天堂W伺服器原值。"
+      "lwRuleText": "永夜適配：ac 2。公式與學習等級依永夜設定。"
     },
     "lw_skill_12666": {
       "n": "迴避加持",
@@ -1250,7 +1250,7 @@
       "reqE": 30,
       "reqD": 30,
       "lwIcon": "/assets/lw-skills/d0bd931d33b416a89aac1cd5c6c3026416ba67bbc11417502665b9feeae003e9.webp",
-      "lwRuleText": "永夜適配：er 2。未公開公式與學習等級為永夜設定，非天堂W伺服器原值。"
+      "lwRuleText": "永夜適配：er 2。公式與學習等級依永夜設定。"
     },
     "lw_skill_12667": {
       "n": "減免加持",
@@ -1293,7 +1293,7 @@
       "reqE": 30,
       "reqD": 30,
       "lwIcon": "/assets/lw-skills/77eb4dba22fd3c563906ff6869070bf870a69f2e46ada5a834b67e5a0b01f2a4.webp",
-      "lwRuleText": "永夜適配：dr 1。未公開公式與學習等級為永夜設定，非天堂W伺服器原值。"
+      "lwRuleText": "永夜適配：dr 1。公式與學習等級依永夜設定。"
     },
     "lw_skill_12668": {
       "n": "傷害加持",
@@ -1336,7 +1336,7 @@
       "reqE": 30,
       "reqD": 30,
       "lwIcon": "/assets/lw-skills/dc2fd4a132c944c4aff9b2d7894583f9c59d48ac26af827009d6e60440284efd.webp",
-      "lwRuleText": "永夜適配：extraDmg 2。未公開公式與學習等級為永夜設定，非天堂W伺服器原值。"
+      "lwRuleText": "永夜適配：extraDmg 2。公式與學習等級依永夜設定。"
     },
     "lw_skill_12669": {
       "n": "減免擴展",
@@ -1379,7 +1379,7 @@
       "reqE": 50,
       "reqD": 50,
       "lwIcon": "/assets/lw-skills/cda60eb7d3666d84db49e68061f7c3aa2b3e9fb4c567b8418ee928e252896348.webp",
-      "lwRuleText": "永夜適配：dr 2。未公開公式與學習等級為永夜設定，非天堂W伺服器原值。"
+      "lwRuleText": "永夜適配：dr 2。公式與學習等級依永夜設定。"
     },
     "lw_skill_12670": {
       "n": "致命迴避",
@@ -1423,7 +1423,7 @@
       "reqE": 50,
       "reqD": 50,
       "lwIcon": "/assets/lw-skills/6a6ea662cc0ef5b7e605c2d3eb741d89f190ad0803a28c8583f04c01eed58b50.webp",
-      "lwRuleText": "永夜適配：ignoreMeleeCrit 3；ignoreRangedCrit 3。未公開公式與學習等級為永夜設定，非天堂W伺服器原值。"
+      "lwRuleText": "永夜適配：ignoreMeleeCrit 3；ignoreRangedCrit 3。公式與學習等級依永夜設定。"
     },
     "lw_skill_12671": {
       "n": "能力擴展",
@@ -1466,7 +1466,7 @@
       "reqE": 50,
       "reqD": 50,
       "lwIcon": "/assets/lw-skills/7e1bfadee5a596dc0962a2841e98be08a7ae3923ed15d203587bde57c64abe59.webp",
-      "lwRuleText": "永夜適配：lwMainAttr 1。未公開公式與學習等級為永夜設定，非天堂W伺服器原值。"
+      "lwRuleText": "永夜適配：lwMainAttr 1。公式與學習等級依永夜設定。"
     },
     "lw_skill_12672": {
       "n": "免疫昏迷擴展",
@@ -1509,7 +1509,7 @@
       "reqE": 50,
       "reqD": 50,
       "lwIcon": "/assets/lw-skills/e92a4e250728c86652e537d6b7861331529b58393abf091f8b75c34c94a524bd.webp",
-      "lwRuleText": "永夜適配：stunResist 3。未公開公式與學習等級為永夜設定，非天堂W伺服器原值。"
+      "lwRuleText": "永夜適配：stunResist 3。公式與學習等級依永夜設定。"
     },
     "lw_skill_12673": {
       "n": "迴避遽升",
@@ -1552,7 +1552,7 @@
       "reqE": 60,
       "reqD": 60,
       "lwIcon": "/assets/lw-skills/f4b3bc0e7c857490760cfdb6098d3ee04295aba25a1407a3fc190275338975e3.webp",
-      "lwRuleText": "永夜適配：er 3。未公開公式與學習等級為永夜設定，非天堂W伺服器原值。"
+      "lwRuleText": "永夜適配：er 3。公式與學習等級依永夜設定。"
     },
     "lw_skill_12674": {
       "n": "能力遽升",
@@ -1595,7 +1595,7 @@
       "reqE": 60,
       "reqD": 60,
       "lwIcon": "/assets/lw-skills/c7e69559667f138b0cc381f2067a04ce04f040334c474e26c3c3a2d901bd9289.webp",
-      "lwRuleText": "永夜適配：lwMainAttr 2。未公開公式與學習等級為永夜設定，非天堂W伺服器原值。"
+      "lwRuleText": "永夜適配：lwMainAttr 2。公式與學習等級依永夜設定。"
     },
     "lw_skill_12675": {
       "n": "貫穿防禦",
@@ -1638,7 +1638,7 @@
       "reqE": 60,
       "reqD": 60,
       "lwIcon": "/assets/lw-skills/f9aa93ada0b6510d1261dcc4824ab5f3537ec562246fd598385fde905a9b25aa.webp",
-      "lwRuleText": "永夜適配：allIgnoreDr 3。未公開公式與學習等級為永夜設定，非天堂W伺服器原值。"
+      "lwRuleText": "永夜適配：allIgnoreDr 3。公式與學習等級依永夜設定。"
     },
     "lw_skill_12676": {
       "n": "免疫昏迷遽升",
@@ -1682,7 +1682,7 @@
       "reqE": 60,
       "reqD": 60,
       "lwIcon": "/assets/lw-skills/4de550800bc8710ba1e65c6302aa3dafe22d2029b44107f05ac8105a5212882f.webp",
-      "lwRuleText": "永夜適配：stunResist 5；stunDamageReductionPct 5。未公開公式與學習等級為永夜設定，非天堂W伺服器原值。"
+      "lwRuleText": "永夜適配：stunResist 5；stunDamageReductionPct 5。公式與學習等級依永夜設定。"
     },
     "lw_skill_13055": {
       "n": "特殊攻擊 : 王族",
@@ -1718,7 +1718,7 @@
       "reqRoy": 70,
       "lwIcon": "/assets/lw-skills/092bacd50ebc2b5be86b9f6ce710cd2b9820b17d8f4644fd743b05a04ae4ba7d.webp",
       "lwToggle": true,
-      "lwRuleText": "永夜適配：lwCleave 50。未公開公式與學習等級為永夜設定，非天堂W伺服器原值。"
+      "lwRuleText": "永夜適配：lwCleave 50。公式與學習等級依永夜設定。"
     },
     "lw_skill_13237": {
       "n": "生存的吶喊",
@@ -1765,7 +1765,7 @@
       ],
       "healBase": 30,
       "lwHealMaxPct": 0.1,
-      "lwRuleText": "永夜適配：沿用永夜戰鬥／治癒公式；依本招目標與狀態規則結算。未公開公式與學習等級為永夜設定，非天堂W伺服器原值。"
+      "lwRuleText": "永夜適配：沿用永夜戰鬥／治癒公式；依本招目標與狀態規則結算。公式與學習等級依永夜設定。"
     },
     "lw_skill_13240": {
       "n": "生存的吶喊 (強化無限) : 被動",
@@ -1808,7 +1808,7 @@
       "lwIcon": "/assets/lw-skills/51390772b3b49fd31321a9bffa459905c061d9b0b24ee1a0fd3b568021f6a0ed.webp",
       "lwUpgradeOf": "lw_skill_13237",
       "lwUpgradePct": 25,
-      "lwRuleText": "永夜適配：強化「生存的吶喊」數值 25%。未公開公式與學習等級為永夜設定，非天堂W伺服器原值。"
+      "lwRuleText": "永夜適配：強化「生存的吶喊」數值 25%。公式與學習等級依永夜設定。"
     },
     "lw_skill_13241": {
       "n": "生存的吶喊 (無限) : 被動",
@@ -1851,7 +1851,7 @@
       "lwIcon": "/assets/lw-skills/195a7874e9a42ef97a7b7eba8036808146c0f6d0e0f38b9421e26e84c9f32802.webp",
       "lwUpgradeOf": "lw_skill_13237",
       "lwUpgradePct": 15,
-      "lwRuleText": "永夜適配：強化「生存的吶喊」數值 15%。未公開公式與學習等級為永夜設定，非天堂W伺服器原值。"
+      "lwRuleText": "永夜適配：強化「生存的吶喊」數值 15%。公式與學習等級依永夜設定。"
     },
     "lw_skill_13489": {
       "n": "鷹眼 - 偵察",
@@ -1892,7 +1892,7 @@
       "reqE": 50,
       "reqD": 50,
       "lwIcon": "/assets/lw-skills/d427d1828d70af677a14df5018e02dd54d374dc5a9a17c53dc2b117e120eccfe.webp",
-      "lwRuleText": "永夜適配：沿用永夜戰鬥／治癒公式；依本招目標與狀態規則結算。未公開公式與學習等級為永夜設定，非天堂W伺服器原值。"
+      "lwRuleText": "永夜適配：沿用永夜戰鬥／治癒公式；依本招目標與狀態規則結算。公式與學習等級依永夜設定。"
     },
     "lw_skill_15808": {
       "n": "勇猛攻擊",
@@ -1928,7 +1928,7 @@
       "lwCleanse": [],
       "reqRoy": 50,
       "lwIcon": "/assets/lw-skills/12f8792d57cb81ee6ff540418ee89867f143efdfe22328073d7e79d486d6e242.webp",
-      "lwRuleText": "永夜適配：meleeDmg 2；meleeHit 2。未公開公式與學習等級為永夜設定，非天堂W伺服器原值。"
+      "lwRuleText": "永夜適配：meleeDmg 2；meleeHit 2。公式與學習等級依永夜設定。"
     },
     "lw_skill_15809": {
       "n": "勇猛盔甲",
@@ -1963,7 +1963,7 @@
       "lwCleanse": [],
       "reqRoy": 30,
       "lwIcon": "/assets/lw-skills/d8d94692ebb6759f8670e2a369de147b6fa4844ca65e1edcdb238ace6427983b.webp",
-      "lwRuleText": "永夜適配：er 2。未公開公式與學習等級為永夜設定，非天堂W伺服器原值。"
+      "lwRuleText": "永夜適配：er 2。公式與學習等級依永夜設定。"
     },
     "lw_skill_15811": {
       "n": "王者之劍 (大師) : 被動",
@@ -1998,7 +1998,7 @@
       "lwIcon": "/assets/lw-skills/4ccbf4b3905e24ee3ac5a09d6d94f1dec65bd9256372117066bf19cd8fa20d4f.webp",
       "lwUpgradeOf": "lw_skill_710",
       "lwUpgradePct": 25,
-      "lwRuleText": "永夜適配：強化「王者之劍」數值 25%。未公開公式與學習等級為永夜設定，非天堂W伺服器原值。"
+      "lwRuleText": "永夜適配：強化「王者之劍」數值 25%。公式與學習等級依永夜設定。"
     },
     "lw_skill_15812": {
       "n": "灼熱之劍",
@@ -2033,7 +2033,7 @@
       "lwCleanse": [],
       "reqRoy": 60,
       "lwIcon": "/assets/lw-skills/a6b8502c3d2453d7a7342fd85fa181b2e23c97a388982c19a66ff672ab538b4d.webp",
-      "lwRuleText": "永夜適配：ignoreErBonus 15。未公開公式與學習等級為永夜設定，非天堂W伺服器原值。"
+      "lwRuleText": "永夜適配：ignoreErBonus 15。公式與學習等級依永夜設定。"
     },
     "lw_skill_15813": {
       "n": "灼熱防護",
@@ -2074,7 +2074,7 @@
       ],
       "healBase": 40,
       "lwHealMaxPct": 0.1,
-      "lwRuleText": "永夜適配：lwShield 100。未公開公式與學習等級為永夜設定，非天堂W伺服器原值。"
+      "lwRuleText": "永夜適配：lwShield 100。公式與學習等級依永夜設定。"
     },
     "lw_skill_15814": {
       "n": "帝國反擊",
@@ -2110,7 +2110,7 @@
       "lwCleanse": [],
       "reqRoy": 60,
       "lwIcon": "/assets/lw-skills/d87c0317da9c15e89d4b3f6cbc255d98207cd50be83cfe36201cf6d9cb6641f2.webp",
-      "lwRuleText": "永夜適配：lwCounterChance 20；lwCounterMult 2。未公開公式與學習等級為永夜設定，非天堂W伺服器原值。"
+      "lwRuleText": "永夜適配：lwCounterChance 20；lwCounterMult 2。公式與學習等級依永夜設定。"
     },
     "lw_skill_15915": {
       "n": "君主",
@@ -2145,7 +2145,7 @@
       "lwCleanse": [],
       "reqRoy": 30,
       "lwIcon": "/assets/lw-skills/2f1d87cbe417fe1cf8291a31883bfddbad0935306a8f89eece1489067b021fa2.webp",
-      "lwRuleText": "永夜適配：lwCleave 30。未公開公式與學習等級為永夜設定，非天堂W伺服器原值。"
+      "lwRuleText": "永夜適配：lwCleave 30。公式與學習等級依永夜設定。"
     },
     "lw_skill_15973": {
       "n": "帝國之路",
@@ -2183,7 +2183,7 @@
       ],
       "reqRoy": 70,
       "lwIcon": "/assets/lw-skills/9476cb7d41325ef234e3fbdccff21e2394e023007f4ec26c1bc5ea1ec5b85c3b.webp",
-      "lwRuleText": "永夜適配：stunResist 30；lwStunProc 15。未公開公式與學習等級為永夜設定，非天堂W伺服器原值。"
+      "lwRuleText": "永夜適配：stunResist 30；lwStunProc 15。公式與學習等級依永夜設定。"
     },
     "lw_skill_16044": {
       "n": "魔力恢復",
@@ -2226,7 +2226,7 @@
       "reqE": 1,
       "reqD": 1,
       "lwIcon": "/assets/lw-skills/cb0c671813f9af50e813cfd7c89a88665f4ba427ebc89f154a74c290b33e548c.webp",
-      "lwRuleText": "永夜適配：mpR 1。未公開公式與學習等級為永夜設定，非天堂W伺服器原值。"
+      "lwRuleText": "永夜適配：mpR 1。公式與學習等級依永夜設定。"
     },
     "lw_skill_16045": {
       "n": "藥水強化",
@@ -2269,7 +2269,7 @@
       "reqE": 10,
       "reqD": 10,
       "lwIcon": "/assets/lw-skills/6bfc00809022322c39ca43e47e1bbc2a7a7d6320a3ee4a23c81a4ef16b0049f5.webp",
-      "lwRuleText": "永夜適配：potionBonus 2。未公開公式與學習等級為永夜設定，非天堂W伺服器原值。"
+      "lwRuleText": "永夜適配：potionBonus 2。公式與學習等級依永夜設定。"
     },
     "lw_skill_16046": {
       "n": "武器加持",
@@ -2312,7 +2312,7 @@
       "reqE": 30,
       "reqD": 30,
       "lwIcon": "/assets/lw-skills/c475724ae435a5e59a1d3d11a4d18361b7b43db62ea560c84a1afc2af951947c.webp",
-      "lwRuleText": "永夜適配：extraHit 2。未公開公式與學習等級為永夜設定，非天堂W伺服器原值。"
+      "lwRuleText": "永夜適配：extraHit 2。公式與學習等級依永夜設定。"
     },
     "lw_skill_16047": {
       "n": "無視裝甲",
@@ -2355,7 +2355,7 @@
       "reqE": 50,
       "reqD": 50,
       "lwIcon": "/assets/lw-skills/c18d6bd49c6cd342f14e2fca3a4deef1224e294c7bb3b3b9d578512181f9b1a1.webp",
-      "lwRuleText": "永夜適配：ignoreAcBonus 3。未公開公式與學習等級為永夜設定，非天堂W伺服器原值。"
+      "lwRuleText": "永夜適配：ignoreAcBonus 3。公式與學習等級依永夜設定。"
     },
     "lw_skill_16048": {
       "n": "貫穿免疫昏迷",
@@ -2399,7 +2399,7 @@
       "reqE": 60,
       "reqD": 60,
       "lwIcon": "/assets/lw-skills/22379ee2b93c5b42c7b609d23acef7c775351c8120b24614ad0e4758aabf96a6.webp",
-      "lwRuleText": "永夜適配：stunHit 5；ignoreDamageReductionPct 3。未公開公式與學習等級為永夜設定，非天堂W伺服器原值。"
+      "lwRuleText": "永夜適配：stunHit 5；ignoreDamageReductionPct 3。公式與學習等級依永夜設定。"
     },
     "lw_skill_16468": {
       "n": "提升傷害",
@@ -2442,7 +2442,7 @@
       "reqE": 1,
       "reqD": 1,
       "lwIcon": "/assets/lw-skills/f95ca3034a43015709a503fc150cbdfc3fab3382dddddd3f1ca71267bd8d5541.webp",
-      "lwRuleText": "永夜適配：extraDmg 1。未公開公式與學習等級為永夜設定，非天堂W伺服器原值。"
+      "lwRuleText": "永夜適配：extraDmg 1。公式與學習等級依永夜設定。"
     },
     "lw_skill_16469": {
       "n": "提升武器",
@@ -2485,7 +2485,7 @@
       "reqE": 1,
       "reqD": 1,
       "lwIcon": "/assets/lw-skills/ec3549a99e27b5508814f88c3cdbcf5fa755a7ceac6b0a158f6c7f29539da35c.webp",
-      "lwRuleText": "永夜適配：extraHit 1。未公開公式與學習等級為永夜設定，非天堂W伺服器原值。"
+      "lwRuleText": "永夜適配：extraHit 1。公式與學習等級依永夜設定。"
     },
     "lw_skill_16470": {
       "n": "增加致命",
@@ -2529,7 +2529,7 @@
       "reqE": 10,
       "reqD": 10,
       "lwIcon": "/assets/lw-skills/3865f5d5694947e35d036ebb9d4594357f0199262b5a99cbd7ee97fbb1046413.webp",
-      "lwRuleText": "永夜適配：meleeCritDmg 3；rangedCritDmg 3。未公開公式與學習等級為永夜設定，非天堂W伺服器原值。"
+      "lwRuleText": "永夜適配：meleeCritDmg 3；rangedCritDmg 3。公式與學習等級依永夜設定。"
     },
     "lw_skill_16471": {
       "n": "增加貫穿",
@@ -2572,7 +2572,7 @@
       "reqE": 10,
       "reqD": 10,
       "lwIcon": "/assets/lw-skills/b7365c63cb06aa04372a66c65bb6d6dea3d68727e76063a9f34ccfa4827acb0e.webp",
-      "lwRuleText": "永夜適配：ignoreErBonus 2。未公開公式與學習等級為永夜設定，非天堂W伺服器原值。"
+      "lwRuleText": "永夜適配：ignoreErBonus 2。公式與學習等級依永夜設定。"
     },
     "lw_skill_16472": {
       "n": "強健加持",
@@ -2615,7 +2615,7 @@
       "reqE": 30,
       "reqD": 30,
       "lwIcon": "/assets/lw-skills/7f4aae1a6226b89a2fa22ac37d0a3ef7c818e6382065d6d2c4ee0f3aab2d9950.webp",
-      "lwRuleText": "永夜適配：lwMainAttr 1。未公開公式與學習等級為永夜設定，非天堂W伺服器原值。"
+      "lwRuleText": "永夜適配：lwMainAttr 1。公式與學習等級依永夜設定。"
     },
     "lw_skill_16473": {
       "n": "防禦加持",
@@ -2659,7 +2659,7 @@
       "reqE": 30,
       "reqD": 30,
       "lwIcon": "/assets/lw-skills/d91357512bd0c61d09be404344ef789fe7b90d2ea4e9e20a135f94355325f399.webp",
-      "lwRuleText": "永夜適配：ac 2；mr 3。未公開公式與學習等級為永夜設定，非天堂W伺服器原值。"
+      "lwRuleText": "永夜適配：ac 2；mr 3。公式與學習等級依永夜設定。"
     },
     "lw_skill_16474": {
       "n": "昏迷防護",
@@ -2703,7 +2703,7 @@
       "reqE": 50,
       "reqD": 50,
       "lwIcon": "/assets/lw-skills/3f9da7a2779a8193ef3911e60b9e2e6446b303d5f139c246e6c6808095a17077.webp",
-      "lwRuleText": "永夜適配：stunResist 3；dr 1。未公開公式與學習等級為永夜設定，非天堂W伺服器原值。"
+      "lwRuleText": "永夜適配：stunResist 3；dr 1。公式與學習等級依永夜設定。"
     },
     "lw_skill_16475": {
       "n": "無視昏迷裝甲",
@@ -2747,7 +2747,7 @@
       "reqE": 50,
       "reqD": 50,
       "lwIcon": "/assets/lw-skills/ad20b7d5388644195522c67c8d8d9cd70a4419b1ca178f8100108f4d75be6f5f.webp",
-      "lwRuleText": "永夜適配：stunHit 3；ignoreAcBonus 2。未公開公式與學習等級為永夜設定，非天堂W伺服器原值。"
+      "lwRuleText": "永夜適配：stunHit 3；ignoreAcBonus 2。公式與學習等級依永夜設定。"
     },
     "lw_skill_16694": {
       "n": "生存的吶喊 (終極無限) : 被動",
@@ -2790,7 +2790,7 @@
       "lwIcon": "/assets/lw-skills/1f0fb6052443e04a5d526b4966cbc634d841d110e7209a7dca8c8dc795c20e7a.webp",
       "lwUpgradeOf": "lw_skill_13237",
       "lwUpgradePct": 40,
-      "lwRuleText": "永夜適配：強化「生存的吶喊」數值 40%。未公開公式與學習等級為永夜設定，非天堂W伺服器原值。"
+      "lwRuleText": "永夜適配：強化「生存的吶喊」數值 40%。公式與學習等級依永夜設定。"
     },
     "lw_skill_17388": {
       "n": "傳喚沉默",
@@ -2830,7 +2830,7 @@
         "chance": 1,
         "value": 1
       },
-      "lwRuleText": "永夜適配：沿用永夜戰鬥／治癒公式；依本招目標與狀態規則結算。未公開公式與學習等級為永夜設定，非天堂W伺服器原值。"
+      "lwRuleText": "永夜適配：沿用永夜戰鬥／治癒公式；依本招目標與狀態規則結算。公式與學習等級依永夜設定。"
     },
     "lw_skill_17390": {
       "n": "隕石撞擊",
@@ -2875,7 +2875,7 @@
         "chance": 1,
         "value": 1
       },
-      "lwRuleText": "永夜適配：沿用永夜戰鬥／治癒公式；依本招目標與狀態規則結算。未公開公式與學習等級為永夜設定，非天堂W伺服器原值。"
+      "lwRuleText": "永夜適配：沿用永夜戰鬥／治癒公式；依本招目標與狀態規則結算。公式與學習等級依永夜設定。"
     },
     "lw_skill_17676": {
       "n": "護甲遽升",
@@ -2918,7 +2918,7 @@
       "reqE": 60,
       "reqD": 60,
       "lwIcon": "/assets/lw-skills/01ac3d3f42c6c212e0b3af05e8da5c486fe9803d10e51f3ececfb936d6ed1531.webp",
-      "lwRuleText": "永夜適配：damageReductionPct 3。未公開公式與學習等級為永夜設定，非天堂W伺服器原值。"
+      "lwRuleText": "永夜適配：damageReductionPct 3。公式與學習等級依永夜設定。"
     },
     "lw_skill_17677": {
       "n": "經驗遽升",
@@ -2962,7 +2962,7 @@
       "reqE": 60,
       "reqD": 60,
       "lwIcon": "/assets/lw-skills/a5c9185fbcf96c4578b3effb93c492222e68599fda9c9d73c56a9d419322db3f.webp",
-      "lwRuleText": "永夜適配：expPct 5；goldPct 5。未公開公式與學習等級為永夜設定，非天堂W伺服器原值。"
+      "lwRuleText": "永夜適配：expPct 5；goldPct 5。公式與學習等級依永夜設定。"
     },
     "lw_skill_18601": {
       "n": "支配",
@@ -2998,7 +2998,7 @@
       "lwCleanse": [],
       "reqRoy": 1,
       "lwIcon": "/assets/lw-skills/66ff78fb20bbb260e55a1f13c3996000a8cb74d7de18cb0a07bfa6e81df91187.webp",
-      "lwRuleText": "永夜適配：ac 1；mr 1。未公開公式與學習等級為永夜設定，非天堂W伺服器原值。"
+      "lwRuleText": "永夜適配：ac 1；mr 1。公式與學習等級依永夜設定。"
     },
     "lw_skill_18602": {
       "n": "精準目標 (大師) : 被動",
@@ -3033,7 +3033,7 @@
       "lwIcon": "/assets/lw-skills/6265675a4afce8afc33822119d8f544640a4662cd06f2ca6869b12b440922594.webp",
       "lwUpgradeOf": "lw_skill_630",
       "lwUpgradePct": 15,
-      "lwRuleText": "永夜適配：強化「精準目標」數值 15%。未公開公式與學習等級為永夜設定，非天堂W伺服器原值。"
+      "lwRuleText": "永夜適配：強化「精準目標」數值 15%。公式與學習等級依永夜設定。"
     },
     "lw_skill_18605": {
       "n": "精準目標(強化大師) : 被動",
@@ -3068,7 +3068,7 @@
       "lwIcon": "/assets/lw-skills/db3f948a22f08d656fc55384d2e9d23d450a7be6e7c2a547806eafb5341b1f5c.webp",
       "lwUpgradeOf": "lw_skill_630",
       "lwUpgradePct": 15,
-      "lwRuleText": "永夜適配：強化「精準目標」數值 15%。未公開公式與學習等級為永夜設定，非天堂W伺服器原值。"
+      "lwRuleText": "永夜適配：強化「精準目標」數值 15%。公式與學習等級依永夜設定。"
     },
     "lw_skill_18608": {
       "n": "勝利指揮",
@@ -3108,7 +3108,7 @@
         "chance": 1,
         "value": 5
       },
-      "lwRuleText": "永夜適配：沿用永夜戰鬥／治癒公式；依本招目標與狀態規則結算。未公開公式與學習等級為永夜設定，非天堂W伺服器原值。"
+      "lwRuleText": "永夜適配：沿用永夜戰鬥／治癒公式；依本招目標與狀態規則結算。公式與學習等級依永夜設定。"
     },
     "lw_skill_18609": {
       "n": "灼熱守護者",
@@ -3149,7 +3149,7 @@
       ],
       "healBase": 50,
       "lwHealMaxPct": 0.1,
-      "lwRuleText": "永夜適配：lwShield 100。未公開公式與學習等級為永夜設定，非天堂W伺服器原值。"
+      "lwRuleText": "永夜適配：lwShield 100。公式與學習等級依永夜設定。"
     },
     "lw_skill_18859": {
       "n": "進階抵抗",
@@ -3192,7 +3192,7 @@
       "reqE": 10,
       "reqD": 10,
       "lwIcon": "/assets/lw-skills/6021d39b6c770398fe9b86674e592c191f992e372b9a8169defc152fb9071487.webp",
-      "lwRuleText": "永夜適配：abnormalResist 2。未公開公式與學習等級為永夜設定，非天堂W伺服器原值。"
+      "lwRuleText": "永夜適配：abnormalResist 2。公式與學習等級依永夜設定。"
     },
     "lw_skill_18860": {
       "n": "高等抵抗",
@@ -3235,7 +3235,7 @@
       "reqE": 30,
       "reqD": 30,
       "lwIcon": "/assets/lw-skills/c3c6c3760c5bdaccb0fb7ab215c62d7625bee0fc1d17051481f296216d19e946.webp",
-      "lwRuleText": "永夜適配：abnormalResist 3。未公開公式與學習等級為永夜設定，非天堂W伺服器原值。"
+      "lwRuleText": "永夜適配：abnormalResist 3。公式與學習等級依永夜設定。"
     },
     "lw_skill_18861": {
       "n": "卓越抵抗",
@@ -3278,7 +3278,7 @@
       "reqE": 50,
       "reqD": 50,
       "lwIcon": "/assets/lw-skills/f64a4b9dccc62ae8854d1849ffaf104159ba2c9dff55bf6c0df1b10263c86f11.webp",
-      "lwRuleText": "永夜適配：abnormalResist 4。未公開公式與學習等級為永夜設定，非天堂W伺服器原值。"
+      "lwRuleText": "永夜適配：abnormalResist 4。公式與學習等級依永夜設定。"
     },
     "lw_skill_18862": {
       "n": "最終抵抗",
@@ -3321,7 +3321,7 @@
       "reqE": 60,
       "reqD": 60,
       "lwIcon": "/assets/lw-skills/32922e4a58d7128a66b2460cd6b4f7d8c7346f4896bda89ec8e93abc1adc929f.webp",
-      "lwRuleText": "永夜適配：abnormalResist 5。未公開公式與學習等級為永夜設定，非天堂W伺服器原值。"
+      "lwRuleText": "永夜適配：abnormalResist 5。公式與學習等級依永夜設定。"
     },
     "lw_skill_19920": {
       "n": "精通閃避 (大師) : 被動",
@@ -3356,7 +3356,7 @@
       "lwIcon": "/assets/lw-skills/370405c783bb1288afb8448a3953c3c31fd552a6023bf3fd240d696ee3c6715f.webp",
       "lwUpgradeOf": "lw_skill_12539",
       "lwUpgradePct": 25,
-      "lwRuleText": "永夜適配：強化「精通閃避」數值 25%。未公開公式與學習等級為永夜設定，非天堂W伺服器原值。"
+      "lwRuleText": "永夜適配：強化「精通閃避」數值 25%。公式與學習等級依永夜設定。"
     },
     "lw_skill_100": {
       "n": "起死回生術",
@@ -3398,7 +3398,7 @@
       ],
       "dmgBase": 4,
       "lwUndeadOnly": true,
-      "lwRuleText": "永夜適配：沿用永夜戰鬥／治癒公式；依本招目標與狀態規則結算。未公開公式與學習等級為永夜設定，非天堂W伺服器原值。"
+      "lwRuleText": "永夜適配：沿用永夜戰鬥／治癒公式；依本招目標與狀態規則結算。公式與學習等級依永夜設定。"
     },
     "lw_skill_110": {
       "n": "冥想術",
@@ -3435,7 +3435,7 @@
       "reqM": 16,
       "reqE": 32,
       "lwIcon": "/assets/lw-skills/1c03e2a98a23b594a802107e28efaccb4185dbe79ba9e6ea9899debbb3515f89.webp",
-      "lwRuleText": "永夜適配：mpR 5。未公開公式與學習等級為永夜設定，非天堂W伺服器原值。"
+      "lwRuleText": "永夜適配：mpR 5。公式與學習等級依永夜設定。"
     },
     "lw_skill_120": {
       "n": "寒冰氣息",
@@ -3476,7 +3476,7 @@
         5
       ],
       "dmgBase": 5,
-      "lwRuleText": "永夜適配：沿用永夜戰鬥／治癒公式；依本招目標與狀態規則結算。未公開公式與學習等級為永夜設定，非天堂W伺服器原值。"
+      "lwRuleText": "永夜適配：沿用永夜戰鬥／治癒公式；依本招目標與狀態規則結算。公式與學習等級依永夜設定。"
     },
     "lw_skill_130": {
       "n": "燃燒的火球",
@@ -3517,7 +3517,7 @@
         9
       ],
       "dmgBase": 0,
-      "lwRuleText": "永夜適配：沿用永夜戰鬥／治癒公式；依本招目標與狀態規則結算。未公開公式與學習等級為永夜設定，非天堂W伺服器原值。"
+      "lwRuleText": "永夜適配：沿用永夜戰鬥／治癒公式；依本招目標與狀態規則結算。公式與學習等級依永夜設定。"
     },
     "lw_skill_140": {
       "n": "魔力奪取",
@@ -3554,7 +3554,7 @@
       "lwIcon": "/assets/lw-skills/a56658f7d209d8cef3c8f00875fda82e91a484f4d5855d31721d0ef1deedc811.webp",
       "drain": true,
       "mpGain": 20,
-      "lwRuleText": "永夜適配：沿用永夜戰鬥／治癒公式；依本招目標與狀態規則結算。未公開公式與學習等級為永夜設定，非天堂W伺服器原值。"
+      "lwRuleText": "永夜適配：沿用永夜戰鬥／治癒公式；依本招目標與狀態規則結算。公式與學習等級依永夜設定。"
     },
     "lw_skill_150": {
       "n": "吸血鬼之吻",
@@ -3596,7 +3596,7 @@
       ],
       "dmgBase": 15,
       "lifesteal": true,
-      "lwRuleText": "永夜適配：沿用永夜戰鬥／治癒公式；依本招目標與狀態規則結算。未公開公式與學習等級為永夜設定，非天堂W伺服器原值。"
+      "lwRuleText": "永夜適配：沿用永夜戰鬥／治癒公式；依本招目標與狀態規則結算。公式與學習等級依永夜設定。"
     },
     "lw_skill_160": {
       "n": "魔法屏障",
@@ -3633,7 +3633,7 @@
       "reqM": 16,
       "reqE": 32,
       "lwIcon": "/assets/lw-skills/e03ed10c7ca18dbbe9c5b17e9ff18668763505c6dd4d0db86b68f5d2dce0da65.webp",
-      "lwRuleText": "永夜適配：magicBarrier 1。未公開公式與學習等級為永夜設定，非天堂W伺服器原值。"
+      "lwRuleText": "永夜適配：magicBarrier 1。公式與學習等級依永夜設定。"
     },
     "lw_skill_180": {
       "n": "治癒術",
@@ -3675,7 +3675,7 @@
       ],
       "healBase": 20,
       "lwHealMaxPct": 0,
-      "lwRuleText": "永夜適配：沿用永夜戰鬥／治癒公式；依本招目標與狀態規則結算。未公開公式與學習等級為永夜設定，非天堂W伺服器原值。"
+      "lwRuleText": "永夜適配：沿用永夜戰鬥／治癒公式；依本招目標與狀態規則結算。公式與學習等級依永夜設定。"
     },
     "lw_skill_190": {
       "n": "聖潔之光",
@@ -3720,7 +3720,7 @@
       ],
       "healBase": 0,
       "lwHealMaxPct": 0,
-      "lwRuleText": "永夜適配：沿用永夜戰鬥／治癒公式；依本招目標與狀態規則結算。未公開公式與學習等級為永夜設定，非天堂W伺服器原值。"
+      "lwRuleText": "永夜適配：沿用永夜戰鬥／治癒公式；依本招目標與狀態規則結算。公式與學習等級依永夜設定。"
     },
     "lw_skill_210": {
       "n": "加速術",
@@ -3758,7 +3758,7 @@
       "reqM": 24,
       "reqE": 48,
       "lwIcon": "/assets/lw-skills/6e501239f7db4fff4c39b7f9446094475385bd552eb17ba21bbe3af53945a009.webp",
-      "lwRuleText": "永夜適配：atkSpdPct 33；moveSpeedPct 15。未公開公式與學習等級為永夜設定，非天堂W伺服器原值。"
+      "lwRuleText": "永夜適配：atkSpdPct 33；moveSpeedPct 15。公式與學習等級依永夜設定。"
     },
     "lw_skill_220": {
       "n": "極道落雷",
@@ -3799,7 +3799,7 @@
         8
       ],
       "dmgBase": 40,
-      "lwRuleText": "永夜適配：沿用永夜戰鬥／治癒公式；依本招目標與狀態規則結算。未公開公式與學習等級為永夜設定，非天堂W伺服器原值。"
+      "lwRuleText": "永夜適配：沿用永夜戰鬥／治癒公式；依本招目標與狀態規則結算。公式與學習等級依永夜設定。"
     },
     "lw_skill_230": {
       "n": "烈炎術",
@@ -3840,7 +3840,7 @@
         5
       ],
       "dmgBase": 40,
-      "lwRuleText": "永夜適配：沿用永夜戰鬥／治癒公式；依本招目標與狀態規則結算。未公開公式與學習等級為永夜設定，非天堂W伺服器原值。"
+      "lwRuleText": "永夜適配：沿用永夜戰鬥／治癒公式；依本招目標與狀態規則結算。公式與學習等級依永夜設定。"
     },
     "lw_skill_240": {
       "n": "附魔強化",
@@ -3879,7 +3879,7 @@
       "reqM": 10,
       "reqE": 10,
       "lwIcon": "/assets/lw-skills/b80d4138bc3c8ab9cedc5b809b4ccc2ff76e498d06f276163bf374c82ccd342c.webp",
-      "lwRuleText": "永夜適配：str 1；dex 1；int 1。未公開公式與學習等級為永夜設定，非天堂W伺服器原值。"
+      "lwRuleText": "永夜適配：str 1；dex 1；int 1。公式與學習等級依永夜設定。"
     },
     "lw_skill_250": {
       "n": "地裂術",
@@ -3920,7 +3920,7 @@
         3
       ],
       "dmgBase": 50,
-      "lwRuleText": "永夜適配：沿用永夜戰鬥／治癒公式；依本招目標與狀態規則結算。未公開公式與學習等級為永夜設定，非天堂W伺服器原值。"
+      "lwRuleText": "永夜適配：沿用永夜戰鬥／治癒公式；依本招目標與狀態規則結算。公式與學習等級依永夜設定。"
     },
     "lw_skill_251": {
       "n": "精準強化",
@@ -3959,7 +3959,7 @@
       "reqM": 10,
       "reqE": 10,
       "lwIcon": "/assets/lw-skills/ca9152c77eb83d912e3ae9e555efe3e0fd16dd3ef75c1dcb8524014328a73d00.webp",
-      "lwRuleText": "永夜適配：meleeHit 3；rangedHit 3；magicHit 3。未公開公式與學習等級為永夜設定，非天堂W伺服器原值。"
+      "lwRuleText": "永夜適配：meleeHit 3；rangedHit 3；magicHit 3。公式與學習等級依永夜設定。"
     },
     "lw_skill_260": {
       "n": "體力回復術",
@@ -4000,7 +4000,7 @@
       "healBase": 30,
       "lwHealMaxPct": 0,
       "groupHeal": true,
-      "lwRuleText": "永夜適配：沿用永夜戰鬥／治癒公式；依本招目標與狀態規則結算。未公開公式與學習等級為永夜設定，非天堂W伺服器原值。"
+      "lwRuleText": "永夜適配：沿用永夜戰鬥／治癒公式；依本招目標與狀態規則結算。公式與學習等級依永夜設定。"
     },
     "lw_skill_270": {
       "n": "神聖疾走",
@@ -4036,7 +4036,7 @@
       "lwCleanse": [],
       "reqM": 28,
       "lwIcon": "/assets/lw-skills/9210d7fef5116ce0220cf0fa65d4c2a99de654ab585bf436f97cb2d3ab29bb94.webp",
-      "lwRuleText": "永夜適配：moveSpeedPct 15；dr 3。未公開公式與學習等級為永夜設定，非天堂W伺服器原值。"
+      "lwRuleText": "永夜適配：moveSpeedPct 15；dr 3。公式與學習等級依永夜設定。"
     },
     "lw_skill_290": {
       "n": "寒冰尖刺",
@@ -4075,7 +4075,7 @@
         20
       ],
       "dmgBase": 20,
-      "lwRuleText": "永夜適配：沿用永夜戰鬥／治癒公式；依本招目標與狀態規則結算。未公開公式與學習等級為永夜設定，非天堂W伺服器原值。"
+      "lwRuleText": "永夜適配：沿用永夜戰鬥／治癒公式；依本招目標與狀態規則結算。公式與學習等級依永夜設定。"
     },
     "lw_skill_310": {
       "n": "靈魂昇華",
@@ -4111,7 +4111,7 @@
       "lwCleanse": [],
       "reqM": 40,
       "lwIcon": "/assets/lw-skills/8402a47215218bbaf083068421a0f06fa56f38c1f9a255382691659b6b30febf.webp",
-      "lwRuleText": "永夜適配：maxHpPct 20；maxMpPct 20。未公開公式與學習等級為永夜設定，非天堂W伺服器原值。"
+      "lwRuleText": "永夜適配：maxHpPct 20；maxMpPct 20。公式與學習等級依永夜設定。"
     },
     "lw_skill_330": {
       "n": "魔法相消術",
@@ -4151,7 +4151,7 @@
         "chance": 1,
         "value": 1
       },
-      "lwRuleText": "永夜適配：沿用永夜戰鬥／治癒公式；依本招目標與狀態規則結算。未公開公式與學習等級為永夜設定，非天堂W伺服器原值。"
+      "lwRuleText": "永夜適配：沿用永夜戰鬥／治癒公式；依本招目標與狀態規則結算。公式與學習等級依永夜設定。"
     },
     "lw_skill_340": {
       "n": "龍捲風",
@@ -4190,7 +4190,7 @@
         6
       ],
       "dmgBase": 12,
-      "lwRuleText": "永夜適配：沿用永夜戰鬥／治癒公式；依本招目標與狀態規則結算。未公開公式與學習等級為永夜設定，非天堂W伺服器原值。"
+      "lwRuleText": "永夜適配：沿用永夜戰鬥／治癒公式；依本招目標與狀態規則結算。公式與學習等級依永夜設定。"
     },
     "lw_skill_350": {
       "n": "聖結界",
@@ -4225,7 +4225,7 @@
       "lwCleanse": [],
       "reqM": 36,
       "lwIcon": "/assets/lw-skills/2ef40a31249763959f7a7b958fdf0443c770e244f3c332cc642e3ec9d558d142.webp",
-      "lwRuleText": "永夜適配：damageReductionPct 30。未公開公式與學習等級為永夜設定，非天堂W伺服器原值。"
+      "lwRuleText": "永夜適配：damageReductionPct 30。公式與學習等級依永夜設定。"
     },
     "lw_skill_351": {
       "n": "恢復屏障",
@@ -4260,7 +4260,7 @@
       "lwCleanse": [],
       "reqM": 60,
       "lwIcon": "/assets/lw-skills/0f7699f877d782287a59b5d88f02e72a8942b6d37660424fa4ac85c6e122fcec.webp",
-      "lwRuleText": "永夜適配：lwRestoreBarrier 1。未公開公式與學習等級為永夜設定，非天堂W伺服器原值。"
+      "lwRuleText": "永夜適配：lwRestoreBarrier 1。公式與學習等級依永夜設定。"
     },
     "lw_skill_352": {
       "n": "時間靜止",
@@ -4300,7 +4300,7 @@
         "chance": 1,
         "value": 1
       },
-      "lwRuleText": "永夜適配：沿用永夜戰鬥／治癒公式；依本招目標與狀態規則結算。未公開公式與學習等級為永夜設定，非天堂W伺服器原值。"
+      "lwRuleText": "永夜適配：沿用永夜戰鬥／治癒公式；依本招目標與狀態規則結算。公式與學習等級依永夜設定。"
     },
     "lw_skill_360": {
       "n": "沉睡之霧",
@@ -4340,7 +4340,7 @@
         "chance": 1,
         "value": 1
       },
-      "lwRuleText": "永夜適配：沿用永夜戰鬥／治癒公式；依本招目標與狀態規則結算。未公開公式與學習等級為永夜設定，非天堂W伺服器原值。"
+      "lwRuleText": "永夜適配：沿用永夜戰鬥／治癒公式；依本招目標與狀態規則結算。公式與學習等級依永夜設定。"
     },
     "lw_skill_370": {
       "n": "流星雨",
@@ -4379,7 +4379,7 @@
         6
       ],
       "dmgBase": 20,
-      "lwRuleText": "永夜適配：沿用永夜戰鬥／治癒公式；依本招目標與狀態規則結算。未公開公式與學習等級為永夜設定，非天堂W伺服器原值。"
+      "lwRuleText": "永夜適配：沿用永夜戰鬥／治癒公式；依本招目標與狀態規則結算。公式與學習等級依永夜設定。"
     },
     "lw_skill_380": {
       "n": "究極光裂術",
@@ -4419,7 +4419,7 @@
         20
       ],
       "dmgBase": 100,
-      "lwRuleText": "永夜適配：沿用永夜戰鬥／治癒公式；依本招目標與狀態規則結算。未公開公式與學習等級為永夜設定，非天堂W伺服器原值。"
+      "lwRuleText": "永夜適配：沿用永夜戰鬥／治癒公式；依本招目標與狀態規則結算。公式與學習等級依永夜設定。"
     },
     "lw_skill_390": {
       "n": "絕對屏障",
@@ -4455,7 +4455,7 @@
       "lwCleanse": [],
       "reqM": 40,
       "lwIcon": "/assets/lw-skills/13671701628f28c7887ffc53ae63d6805a77c4b25a76441e9f96a72ea6672eba.webp",
-      "lwRuleText": "永夜適配：invulnerable 1；lwActionLock 1。未公開公式與學習等級為永夜設定，非天堂W伺服器原值。"
+      "lwRuleText": "永夜適配：invulnerable 1；lwActionLock 1。公式與學習等級依永夜設定。"
     },
     "lw_skill_670": {
       "n": "幽靈",
@@ -4491,7 +4491,7 @@
       "lwCleanse": [],
       "reqM": 60,
       "lwIcon": "/assets/lw-skills/7475509e51aaa3d80a634555886b8db6cff97a0a7e436f9faba612fb7a609cc0.webp",
-      "lwRuleText": "永夜適配：invulnerable 1；lwActionLock 1。未公開公式與學習等級為永夜設定，非天堂W伺服器原值。"
+      "lwRuleText": "永夜適配：invulnerable 1；lwActionLock 1。公式與學習等級依永夜設定。"
     },
     "lw_skill_10828": {
       "n": "精準強化 (古代) : 被動",
@@ -4526,7 +4526,7 @@
       "lwIcon": "/assets/lw-skills/b0bd28d55546473049a36c55dc622d30a155759c4612e031a9be74f2c3a0c7b1.webp",
       "lwUpgradeOf": "lw_skill_251",
       "lwUpgradePct": 15,
-      "lwRuleText": "永夜適配：強化「精準強化」數值 15%。未公開公式與學習等級為永夜設定，非天堂W伺服器原值。"
+      "lwRuleText": "永夜適配：強化「精準強化」數值 15%。公式與學習等級依永夜設定。"
     },
     "lw_skill_10991": {
       "n": "靈魂昇華 (古代) : 被動",
@@ -4561,7 +4561,7 @@
       "lwIcon": "/assets/lw-skills/a18b5f893c68681e9c8e9cc08f27cc16a575358568d26a2a77614c9e3498f8d2.webp",
       "lwUpgradeOf": "lw_skill_310",
       "lwUpgradePct": 15,
-      "lwRuleText": "永夜適配：強化「靈魂昇華」數值 15%。未公開公式與學習等級為永夜設定，非天堂W伺服器原值。"
+      "lwRuleText": "永夜適配：強化「靈魂昇華」數值 15%。公式與學習等級依永夜設定。"
     },
     "lw_skill_11173": {
       "n": "轉換",
@@ -4596,7 +4596,7 @@
       "lwCleanse": [],
       "reqM": 1,
       "lwIcon": "/assets/lw-skills/2d965d08454bfa66faf37261fe057a61b5ed1d2888ed1db0d70d2fd8dc12ed98.webp",
-      "lwRuleText": "永夜適配：lwConversion 1。未公開公式與學習等級為永夜設定，非天堂W伺服器原值。"
+      "lwRuleText": "永夜適配：lwConversion 1。公式與學習等級依永夜設定。"
     },
     "lw_skill_11197": {
       "n": "治癒逆行",
@@ -4636,7 +4636,7 @@
         "chance": 1,
         "value": 1
       },
-      "lwRuleText": "永夜適配：沿用永夜戰鬥／治癒公式；依本招目標與狀態規則結算。未公開公式與學習等級為永夜設定，非天堂W伺服器原值。"
+      "lwRuleText": "永夜適配：沿用永夜戰鬥／治癒公式；依本招目標與狀態規則結算。公式與學習等級依永夜設定。"
     },
     "lw_skill_11349": {
       "n": "聖結界 (古代) : 被動",
@@ -4671,7 +4671,7 @@
       "lwIcon": "/assets/lw-skills/8a0ce5874acbf89e852b909696e246a491cfcbe3eb7c246ba85493062c1248fd.webp",
       "lwUpgradeOf": "lw_skill_350",
       "lwUpgradePct": 25,
-      "lwRuleText": "永夜適配：強化「聖結界」數值 25%。未公開公式與學習等級為永夜設定，非天堂W伺服器原值。"
+      "lwRuleText": "永夜適配：強化「聖結界」數值 25%。公式與學習等級依永夜設定。"
     },
     "lw_skill_11603": {
       "n": "魔法破壞",
@@ -4716,7 +4716,7 @@
         "chance": 1,
         "value": 20
       },
-      "lwRuleText": "永夜適配：沿用永夜戰鬥／治癒公式；依本招目標與狀態規則結算。未公開公式與學習等級為永夜設定，非天堂W伺服器原值。"
+      "lwRuleText": "永夜適配：沿用永夜戰鬥／治癒公式；依本招目標與狀態規則結算。公式與學習等級依永夜設定。"
     },
     "lw_skill_11604": {
       "n": "魔法相消術 (古代) : 被動",
@@ -4751,7 +4751,7 @@
       "lwIcon": "/assets/lw-skills/05abb1bbc78d745acb4e83962c0045ccc3d648d2cefaef411edc9ace299ad188.webp",
       "lwUpgradeOf": "lw_skill_330",
       "lwUpgradePct": 25,
-      "lwRuleText": "永夜適配：強化「魔法相消術」數值 25%。未公開公式與學習等級為永夜設定，非天堂W伺服器原值。"
+      "lwRuleText": "永夜適配：強化「魔法相消術」數值 25%。公式與學習等級依永夜設定。"
     },
     "lw_skill_12543": {
       "n": "精通治癒",
@@ -4786,7 +4786,7 @@
       "lwCleanse": [],
       "reqM": 50,
       "lwIcon": "/assets/lw-skills/5bb9ddb4bdad84f986573e50a2144f2965daa54779a7d1bcf72c2d70e671797e.webp",
-      "lwRuleText": "永夜適配：lwHealPct 5。未公開公式與學習等級為永夜設定，非天堂W伺服器原值。"
+      "lwRuleText": "永夜適配：lwHealPct 5。公式與學習等級依永夜設定。"
     },
     "lw_skill_13046": {
       "n": "治癒逆行 (古代) : 被動",
@@ -4821,7 +4821,7 @@
       "lwIcon": "/assets/lw-skills/db8ef5d4c656252b2d10b0a6fbaab27c5e00787c273fde7605e1184441de35bd.webp",
       "lwUpgradeOf": "lw_skill_11197",
       "lwUpgradePct": 25,
-      "lwRuleText": "永夜適配：強化「治癒逆行」數值 25%。未公開公式與學習等級為永夜設定，非天堂W伺服器原值。"
+      "lwRuleText": "永夜適配：強化「治癒逆行」數值 25%。公式與學習等級依永夜設定。"
     },
     "lw_skill_13054": {
       "n": "特殊攻擊 : 魔法師",
@@ -4857,7 +4857,7 @@
       "reqM": 70,
       "lwIcon": "/assets/lw-skills/21b7488e09ee494a3bf15cc01e1ac52ae1e27dfb04ffc5cf98ba9d66a6e01f0d.webp",
       "lwToggle": true,
-      "lwRuleText": "永夜適配：lwCleave 50。未公開公式與學習等級為永夜設定，非天堂W伺服器原值。"
+      "lwRuleText": "永夜適配：lwCleave 50。公式與學習等級依永夜設定。"
     },
     "lw_skill_13729": {
       "n": "釋放",
@@ -4903,7 +4903,7 @@
       ],
       "healBase": 50,
       "lwHealMaxPct": 0.1,
-      "lwRuleText": "永夜適配：沿用永夜戰鬥／治癒公式；依本招目標與狀態規則結算。未公開公式與學習等級為永夜設定，非天堂W伺服器原值。"
+      "lwRuleText": "永夜適配：沿用永夜戰鬥／治癒公式；依本招目標與狀態規則結算。公式與學習等級依永夜設定。"
     },
     "lw_skill_15977": {
       "n": "死亡厄運",
@@ -4939,7 +4939,7 @@
       "lwCleanse": [],
       "reqM": 70,
       "lwIcon": "/assets/lw-skills/c9aa3bd135ce399abe3387947a018ff2de6910012cdf439e03360daee4065d99.webp",
-      "lwRuleText": "永夜適配：lwDeathOmen 1；mdmg 10。未公開公式與學習等級為永夜設定，非天堂W伺服器原值。"
+      "lwRuleText": "永夜適配：lwDeathOmen 1；mdmg 10。公式與學習等級依永夜設定。"
     },
     "lw_skill_18049": {
       "n": "終極治癒",
@@ -4978,7 +4978,7 @@
       ],
       "healBase": 40,
       "lwHealMaxPct": 0.1,
-      "lwRuleText": "永夜適配：沿用永夜戰鬥／治癒公式；依本招目標與狀態規則結算。未公開公式與學習等級為永夜設定，非天堂W伺服器原值。"
+      "lwRuleText": "永夜適配：沿用永夜戰鬥／治癒公式；依本招目標與狀態規則結算。公式與學習等級依永夜設定。"
     },
     "lw_skill_18050": {
       "n": "消除",
@@ -5021,7 +5021,7 @@
       ],
       "healBase": 0,
       "lwHealMaxPct": 0,
-      "lwRuleText": "永夜適配：沿用永夜戰鬥／治癒公式；依本招目標與狀態規則結算。未公開公式與學習等級為永夜設定，非天堂W伺服器原值。"
+      "lwRuleText": "永夜適配：沿用永夜戰鬥／治癒公式；依本招目標與狀態規則結算。公式與學習等級依永夜設定。"
     },
     "lw_skill_19924": {
       "n": "精通治癒 (古代) : 被動",
@@ -5056,7 +5056,7 @@
       "lwIcon": "/assets/lw-skills/bfaf0a9c611dbe1c9480beaf3564f52d5e6ecd5cbcd1dc6fd5fcb6f42606e931.webp",
       "lwUpgradeOf": "lw_skill_12543",
       "lwUpgradePct": 25,
-      "lwRuleText": "永夜適配：強化「精通治癒」數值 25%。未公開公式與學習等級為永夜設定，非天堂W伺服器原值。"
+      "lwRuleText": "永夜適配：強化「精通治癒」數值 25%。公式與學習等級依永夜設定。"
     },
     "lw_skill_400": {
       "n": "衝擊之暈",
@@ -5100,7 +5100,7 @@
         "value": 1
       },
       "reqWpn": "w2h",
-      "lwRuleText": "永夜適配：沿用永夜戰鬥／治癒公式；依本招目標與狀態規則結算。未公開公式與學習等級為永夜設定，非天堂W伺服器原值。"
+      "lwRuleText": "永夜適配：沿用永夜戰鬥／治癒公式；依本招目標與狀態規則結算。公式與學習等級依永夜設定。"
     },
     "lw_skill_410": {
       "n": "增幅防禦",
@@ -5135,7 +5135,7 @@
       "lwCleanse": [],
       "reqK": 30,
       "lwIcon": "/assets/lw-skills/ce2b952c80de85918282ef93d0499406bf99e116733c16c6935f2e5f5601a231.webp",
-      "lwRuleText": "永夜適配：dr 3。未公開公式與學習等級為永夜設定，非天堂W伺服器原值。"
+      "lwRuleText": "永夜適配：dr 3。公式與學習等級依永夜設定。"
     },
     "lw_skill_420": {
       "n": "尖刺盔甲",
@@ -5171,7 +5171,7 @@
       "lwCleanse": [],
       "reqK": 30,
       "lwIcon": "/assets/lw-skills/6619dbb76aef45433c1678ddb570aabce4497682b455c0ba1785fcc8bf77c075.webp",
-      "lwRuleText": "永夜適配：meleeDmg 3；meleeHit 2。未公開公式與學習等級為永夜設定，非天堂W伺服器原值。"
+      "lwRuleText": "永夜適配：meleeDmg 3；meleeHit 2。公式與學習等級依永夜設定。"
     },
     "lw_skill_430": {
       "n": "堅固防護",
@@ -5207,7 +5207,7 @@
       "lwCleanse": [],
       "reqK": 40,
       "lwIcon": "/assets/lw-skills/e6b69bc50fef594b464bbdea69e11a52e2add3234b22bba694b4cb1f9ef38eab.webp",
-      "lwRuleText": "永夜適配：ac 5；er 5。未公開公式與學習等級為永夜設定，非天堂W伺服器原值。"
+      "lwRuleText": "永夜適配：ac 5；er 5。公式與學習等級依永夜設定。"
     },
     "lw_skill_440": {
       "n": "反擊屏障",
@@ -5243,7 +5243,7 @@
       "lwCleanse": [],
       "reqK": 30,
       "lwIcon": "/assets/lw-skills/3502ab19346312f695235227c05e36ec1eee6d32bb5d4df1da706878b4660807.webp",
-      "lwRuleText": "永夜適配：lwCounterChance 20；lwCounterMult 2。未公開公式與學習等級為永夜設定，非天堂W伺服器原值。"
+      "lwRuleText": "永夜適配：lwCounterChance 20；lwCounterMult 2。公式與學習等級依永夜設定。"
     },
     "lw_skill_441": {
       "n": "龍嘯",
@@ -5286,7 +5286,7 @@
         "chance": 0.2,
         "value": 1
       },
-      "lwRuleText": "永夜適配：沿用永夜戰鬥／治癒公式；依本招目標與狀態規則結算。未公開公式與學習等級為永夜設定，非天堂W伺服器原值。"
+      "lwRuleText": "永夜適配：沿用永夜戰鬥／治癒公式；依本招目標與狀態規則結算。公式與學習等級依永夜設定。"
     },
     "lw_skill_445": {
       "n": "喚醒術",
@@ -5335,7 +5335,7 @@
       ],
       "healBase": 50,
       "lwHealMaxPct": 0.1,
-      "lwRuleText": "永夜適配：stunResist 20；sustainResist 10；lwCounterChance 20。未公開公式與學習等級為永夜設定，非天堂W伺服器原值。"
+      "lwRuleText": "永夜適配：stunResist 20；sustainResist 10；lwCounterChance 20。公式與學習等級依永夜設定。"
     },
     "lw_skill_680": {
       "n": "狂襲",
@@ -5371,7 +5371,7 @@
       "lwCleanse": [],
       "reqK": 50,
       "lwIcon": "/assets/lw-skills/ea7def5539e77de711d80694729522ad2c8d4229b29acaadea9810b368557a27.webp",
-      "lwRuleText": "永夜適配：lwAmpChance 10；lwAmpMult 3.2。未公開公式與學習等級為永夜設定，非天堂W伺服器原值。"
+      "lwRuleText": "永夜適配：lwAmpChance 10；lwAmpMult 3.2。公式與學習等級依永夜設定。"
     },
     "lw_skill_10289": {
       "n": "重擊",
@@ -5408,7 +5408,7 @@
       "dmgType": "physical",
       "hits": 1,
       "skillAddDmg": 4,
-      "lwRuleText": "永夜適配：沿用永夜戰鬥／治癒公式；依本招目標與狀態規則結算。未公開公式與學習等級為永夜設定，非天堂W伺服器原值。"
+      "lwRuleText": "永夜適配：沿用永夜戰鬥／治癒公式；依本招目標與狀態規則結算。公式與學習等級依永夜設定。"
     },
     "lw_skill_10823": {
       "n": "增幅防禦 (專家) : 被動",
@@ -5443,7 +5443,7 @@
       "lwIcon": "/assets/lw-skills/c58fa36a21b508ec94d0176f237385d515e66a1fc8cfa840ca0be04bedc1f219.webp",
       "lwUpgradeOf": "lw_skill_410",
       "lwUpgradePct": 15,
-      "lwRuleText": "永夜適配：強化「增幅防禦」數值 15%。未公開公式與學習等級為永夜設定，非天堂W伺服器原值。"
+      "lwRuleText": "永夜適配：強化「增幅防禦」數值 15%。公式與學習等級依永夜設定。"
     },
     "lw_skill_10857": {
       "n": "忍耐",
@@ -5479,7 +5479,7 @@
       "lwCleanse": [],
       "reqK": 50,
       "lwIcon": "/assets/lw-skills/b0e722a3b119d8e185795beab79376b0accc606b13dc86c8ab62c12ce3052b57.webp",
-      "lwRuleText": "永夜適配：dr 5；hpR 5。未公開公式與學習等級為永夜設定，非天堂W伺服器原值。"
+      "lwRuleText": "永夜適配：dr 5；hpR 5。公式與學習等級依永夜設定。"
     },
     "lw_skill_11000": {
       "n": "堅固防護 (專家) : 被動",
@@ -5514,7 +5514,7 @@
       "lwIcon": "/assets/lw-skills/7248a92c672b29faf2db22051baab0b4ef9cdaca1cacb0c4eaf6f787d566679e.webp",
       "lwUpgradeOf": "lw_skill_430",
       "lwUpgradePct": 15,
-      "lwRuleText": "永夜適配：強化「堅固防護」數值 15%。未公開公式與學習等級為永夜設定，非天堂W伺服器原值。"
+      "lwRuleText": "永夜適配：強化「堅固防護」數值 15%。公式與學習等級依永夜設定。"
     },
     "lw_skill_11127": {
       "n": "反擊屏障 (專家) : 被動",
@@ -5549,7 +5549,7 @@
       "lwIcon": "/assets/lw-skills/6794dfaebccf354e5c891a0c1966cca6bcfaa7c13c0cfe873a2d538d782107f6.webp",
       "lwUpgradeOf": "lw_skill_440",
       "lwUpgradePct": 25,
-      "lwRuleText": "永夜適配：強化「反擊屏障」數值 25%。未公開公式與學習等級為永夜設定，非天堂W伺服器原值。"
+      "lwRuleText": "永夜適配：強化「反擊屏障」數值 25%。公式與學習等級依永夜設定。"
     },
     "lw_skill_11389": {
       "n": "衝擊之暈 (專家) : 被動",
@@ -5584,7 +5584,7 @@
       "lwIcon": "/assets/lw-skills/f029bd7c9bd04cae303a35e466d7038f594d81ce3dda1332803fcacaf0fb86bd.webp",
       "lwUpgradeOf": "lw_skill_400",
       "lwUpgradePct": 15,
-      "lwRuleText": "永夜適配：強化「衝擊之暈」數值 15%。未公開公式與學習等級為永夜設定，非天堂W伺服器原值。"
+      "lwRuleText": "永夜適配：強化「衝擊之暈」數值 15%。公式與學習等級依永夜設定。"
     },
     "lw_skill_11900": {
       "n": "尖刺盔甲 (專家) : 被動",
@@ -5619,7 +5619,7 @@
       "lwIcon": "/assets/lw-skills/476d332a676e9603013d4fde148a08e3c778b5100c49dc6448f09e467a7d1245.webp",
       "lwUpgradeOf": "lw_skill_420",
       "lwUpgradePct": 15,
-      "lwRuleText": "永夜適配：強化「尖刺盔甲」數值 15%。未公開公式與學習等級為永夜設定，非天堂W伺服器原值。"
+      "lwRuleText": "永夜適配：強化「尖刺盔甲」數值 15%。公式與學習等級依永夜設定。"
     },
     "lw_skill_12540": {
       "n": "精通武器",
@@ -5655,7 +5655,7 @@
       "lwCleanse": [],
       "reqK": 50,
       "lwIcon": "/assets/lw-skills/01966ed30defff5668ffc9e90c869da2b3d8dc143d819d5342ddcfc93fe2e193.webp",
-      "lwRuleText": "永夜適配：meleeDmg 1；meleeHit 1。未公開公式與學習等級為永夜設定，非天堂W伺服器原值。"
+      "lwRuleText": "永夜適配：meleeDmg 1；meleeHit 1。公式與學習等級依永夜設定。"
     },
     "lw_skill_13052": {
       "n": "特殊攻擊 : 騎士",
@@ -5691,7 +5691,7 @@
       "reqK": 70,
       "lwIcon": "/assets/lw-skills/8174d93204c3f2aa57af6310a1752563176f2389d2a5678134d878b7c90a2fe5.webp",
       "lwToggle": true,
-      "lwRuleText": "永夜適配：lwCleave 50。未公開公式與學習等級為永夜設定，非天堂W伺服器原值。"
+      "lwRuleText": "永夜適配：lwCleave 50。公式與學習等級依永夜設定。"
     },
     "lw_skill_13365": {
       "n": "雙手武器大師",
@@ -5726,7 +5726,7 @@
       "lwCleanse": [],
       "reqK": 30,
       "lwIcon": "/assets/lw-skills/a59b7185ce804df9c8f45277bcff2e4f78d8d9011b37b071440ca36698b033d8.webp",
-      "lwRuleText": "永夜適配：lwTwohandMaster 1。未公開公式與學習等級為永夜設定，非天堂W伺服器原值。"
+      "lwRuleText": "永夜適配：lwTwohandMaster 1。公式與學習等級依永夜設定。"
     },
     "lw_skill_13366": {
       "n": "藥水加持",
@@ -5762,7 +5762,7 @@
       "lwCleanse": [],
       "reqK": 30,
       "lwIcon": "/assets/lw-skills/8d686a3d82398a277267f888e07aec01017b8cbf73bbb228d8cf5ff9cf440b70.webp",
-      "lwRuleText": "永夜適配：potionBonus 4；mhp 100。未公開公式與學習等級為永夜設定，非天堂W伺服器原值。"
+      "lwRuleText": "永夜適配：potionBonus 4；mhp 100。公式與學習等級依永夜設定。"
     },
     "lw_skill_13368": {
       "n": "忍耐 (專家) : 被動",
@@ -5797,7 +5797,7 @@
       "lwIcon": "/assets/lw-skills/b7edf10661d8e1910663b728f47c3ceefe49f3682960f34a796a2f5fe0a124c6.webp",
       "lwUpgradeOf": "lw_skill_10857",
       "lwUpgradePct": 25,
-      "lwRuleText": "永夜適配：強化「忍耐」數值 25%。未公開公式與學習等級為永夜設定，非天堂W伺服器原值。"
+      "lwRuleText": "永夜適配：強化「忍耐」數值 25%。公式與學習等級依永夜設定。"
     },
     "lw_skill_13369": {
       "n": "龍嘯 (專家) : 被動",
@@ -5832,7 +5832,7 @@
       "lwIcon": "/assets/lw-skills/3cceb61c4a303819971a928fe3aa19ac2de71bb8cb4fb5863bbd8d154a13ea8c.webp",
       "lwUpgradeOf": "lw_skill_441",
       "lwUpgradePct": 25,
-      "lwRuleText": "永夜適配：強化「龍嘯」數值 25%。未公開公式與學習等級為永夜設定，非天堂W伺服器原值。"
+      "lwRuleText": "永夜適配：強化「龍嘯」數值 25%。公式與學習等級依永夜設定。"
     },
     "lw_skill_13372": {
       "n": "牽引",
@@ -5875,7 +5875,7 @@
         "chance": 1,
         "value": 1
       },
-      "lwRuleText": "永夜適配：沿用永夜戰鬥／治癒公式；依本招目標與狀態規則結算。未公開公式與學習等級為永夜設定，非天堂W伺服器原值。"
+      "lwRuleText": "永夜適配：沿用永夜戰鬥／治癒公式；依本招目標與狀態規則結算。公式與學習等級依永夜設定。"
     },
     "lw_skill_13376": {
       "n": "血之騎士",
@@ -5910,7 +5910,7 @@
       "lwCleanse": [],
       "reqK": 30,
       "lwIcon": "/assets/lw-skills/1eb77065bd97ca56dae0366c6da074d7a534368e94286a790008767ec1221596.webp",
-      "lwRuleText": "永夜適配：lwLifeStealPct 2。未公開公式與學習等級為永夜設定，非天堂W伺服器原值。"
+      "lwRuleText": "永夜適配：lwLifeStealPct 2。公式與學習等級依永夜設定。"
     },
     "lw_skill_13377": {
       "n": "進攻護盾",
@@ -5946,7 +5946,7 @@
       "lwCleanse": [],
       "reqK": 50,
       "lwIcon": "/assets/lw-skills/39b3adadfd1cd60a2026132b0dbfe040febeceb73ae7ccfbae886142cc1fde1f.webp",
-      "lwRuleText": "永夜適配：ac 2；meleeHit 2。未公開公式與學習等級為永夜設定，非天堂W伺服器原值。"
+      "lwRuleText": "永夜適配：ac 2；meleeHit 2。公式與學習等級依永夜設定。"
     },
     "lw_skill_13580": {
       "n": "衝擊之暈 (強化專家) : 被動",
@@ -5981,7 +5981,7 @@
       "lwIcon": "/assets/lw-skills/0aba98bf5399ec8be2afe4166edf6347c1ae03b2aa2b79fd088278e5d8530a2f.webp",
       "lwUpgradeOf": "lw_skill_400",
       "lwUpgradePct": 40,
-      "lwRuleText": "永夜適配：強化「衝擊之暈」數值 40%。未公開公式與學習等級為永夜設定，非天堂W伺服器原值。"
+      "lwRuleText": "永夜適配：強化「衝擊之暈」數值 40%。公式與學習等級依永夜設定。"
     },
     "lw_skill_19620": {
       "n": "氣場護甲",
@@ -6019,7 +6019,7 @@
       "lwCleanse": [],
       "reqK": 60,
       "lwIcon": "/assets/lw-skills/6b7c39687fb2bb3cfa177fdc62d3e1ad983ab2a12c7747241a8b2f68c08c285a.webp",
-      "lwRuleText": "永夜適配：damageReductionPct 10；stunResist 15；sustainResist 15；stunDamageReductionPct 20。未公開公式與學習等級為永夜設定，非天堂W伺服器原值。"
+      "lwRuleText": "永夜適配：damageReductionPct 10；stunResist 15；sustainResist 15；stunDamageReductionPct 20。公式與學習等級依永夜設定。"
     },
     "lw_skill_19623": {
       "n": "氣場之刃",
@@ -6055,7 +6055,7 @@
       "lwCleanse": [],
       "reqK": 60,
       "lwIcon": "/assets/lw-skills/c43e7eba0365e3ad6ded8ab40d73bf57cad8b7ec91813039f94cc2ac665fd2fb.webp",
-      "lwRuleText": "永夜適配：meleeDmg 8；allIgnoreDr 5。未公開公式與學習等級為永夜設定，非天堂W伺服器原值。"
+      "lwRuleText": "永夜適配：meleeDmg 8；allIgnoreDr 5。公式與學習等級依永夜設定。"
     },
     "lw_skill_19921": {
       "n": "精通武器 (專家) : 被動",
@@ -6090,7 +6090,7 @@
       "lwIcon": "/assets/lw-skills/1650daef5bf4c8aa30817eb769c4eba8f77871f9d20f5eccc033800717fe45ca.webp",
       "lwUpgradeOf": "lw_skill_12540",
       "lwUpgradePct": 25,
-      "lwRuleText": "永夜適配：強化「精通武器」數值 25%。未公開公式與學習等級為永夜設定，非天堂W伺服器原值。"
+      "lwRuleText": "永夜適配：強化「精通武器」數值 25%。公式與學習等級依永夜設定。"
     },
     "lw_skill_450": {
       "n": "三重矢",
@@ -6128,7 +6128,7 @@
       "hits": 3,
       "skillAddDmg": 4,
       "reqWpn": "bow",
-      "lwRuleText": "永夜適配：沿用永夜戰鬥／治癒公式；依本招目標與狀態規則結算。未公開公式與學習等級為永夜設定，非天堂W伺服器原值。"
+      "lwRuleText": "永夜適配：沿用永夜戰鬥／治癒公式；依本招目標與狀態規則結算。公式與學習等級依永夜設定。"
     },
     "lw_skill_460": {
       "n": "魂體轉換",
@@ -6162,7 +6162,7 @@
       "reqE": 20,
       "lwIcon": "/assets/lw-skills/3f9136e235faad134959130cdf8edb22567665cc8ee9d6d91908386c0ca1e333.webp",
       "mpGain": 20,
-      "lwRuleText": "永夜適配：沿用永夜戰鬥／治癒公式；依本招目標與狀態規則結算。未公開公式與學習等級為永夜設定，非天堂W伺服器原值。"
+      "lwRuleText": "永夜適配：沿用永夜戰鬥／治癒公式；依本招目標與狀態規則結算。公式與學習等級依永夜設定。"
     },
     "lw_skill_470": {
       "n": "魔法消除",
@@ -6207,7 +6207,7 @@
         "chance": 1,
         "value": 20
       },
-      "lwRuleText": "永夜適配：沿用永夜戰鬥／治癒公式；依本招目標與狀態規則結算。未公開公式與學習等級為永夜設定，非天堂W伺服器原值。"
+      "lwRuleText": "永夜適配：沿用永夜戰鬥／治癒公式；依本招目標與狀態規則結算。公式與學習等級依永夜設定。"
     },
     "lw_skill_480": {
       "n": "封印禁地",
@@ -6247,7 +6247,7 @@
         "chance": 1,
         "value": 1
       },
-      "lwRuleText": "永夜適配：沿用永夜戰鬥／治癒公式；依本招目標與狀態規則結算。未公開公式與學習等級為永夜設定，非天堂W伺服器原值。"
+      "lwRuleText": "永夜適配：沿用永夜戰鬥／治癒公式；依本招目標與狀態規則結算。公式與學習等級依永夜設定。"
     },
     "lw_skill_490": {
       "n": "烈炎武器",
@@ -6285,7 +6285,7 @@
       "reqE": 50,
       "lwIcon": "/assets/lw-skills/1298ff58dab76479719b255759552c0b8390160c8ae8462e75015c923b970612.webp",
       "reqEle": "fire",
-      "lwRuleText": "永夜適配：meleeDmg 3；rangedDmg 3；extraHit 2。未公開公式與學習等級為永夜設定，非天堂W伺服器原值。"
+      "lwRuleText": "永夜適配：meleeDmg 3；rangedDmg 3；extraHit 2。公式與學習等級依永夜設定。"
     },
     "lw_skill_500": {
       "n": "舞躍之火",
@@ -6324,7 +6324,7 @@
       "reqE": 40,
       "lwIcon": "/assets/lw-skills/00f523d435d96c5200f3894a7228bb91b626ed80c11ef2adf9112f5a5fc5c6bb.webp",
       "reqEle": "fire",
-      "lwRuleText": "永夜適配：atkSpdPct 20；lwCastSpeedPct 15；meleeDmg 2；rangedDmg 2。未公開公式與學習等級為永夜設定，非天堂W伺服器原值。"
+      "lwRuleText": "永夜適配：atkSpdPct 20；lwCastSpeedPct 15；meleeDmg 2；rangedDmg 2。公式與學習等級依永夜設定。"
     },
     "lw_skill_510": {
       "n": "能量激發",
@@ -6361,7 +6361,7 @@
       "reqE": 50,
       "lwIcon": "/assets/lw-skills/f3833f3e823f3ed17bf2baf2a0f152874d0709655c5358bdf00a36ef187d568e.webp",
       "reqEle": "fire",
-      "lwRuleText": "永夜適配：meleeDmg 3；rangedDmg 3。未公開公式與學習等級為永夜設定，非天堂W伺服器原值。"
+      "lwRuleText": "永夜適配：meleeDmg 3；rangedDmg 3。公式與學習等級依永夜設定。"
     },
     "lw_skill_520": {
       "n": "烈焰之魂",
@@ -6398,7 +6398,7 @@
       "reqE": 50,
       "lwIcon": "/assets/lw-skills/339184e8b3a0d32419ec7f2432fe541eb84742fcc1b520b918fa2907e35ad5ae.webp",
       "reqEle": "fire",
-      "lwRuleText": "永夜適配：maxWeapon 1；lwLifeStealPct 5。未公開公式與學習等級為永夜設定，非天堂W伺服器原值。"
+      "lwRuleText": "永夜適配：maxWeapon 1；lwLifeStealPct 5。公式與學習等級依永夜設定。"
     },
     "lw_skill_530": {
       "n": "水之元氣",
@@ -6434,7 +6434,7 @@
       "reqE": 30,
       "lwIcon": "/assets/lw-skills/c65373b0d8460bfd4f37d62f8083c45631ac2b17b46ead35de199562e67caba9.webp",
       "reqEle": "water",
-      "lwRuleText": "永夜適配：lwDoubleHeal 1。未公開公式與學習等級為永夜設定，非天堂W伺服器原值。"
+      "lwRuleText": "永夜適配：lwDoubleHeal 1。公式與學習等級依永夜設定。"
     },
     "lw_skill_540": {
       "n": "生命之泉",
@@ -6472,7 +6472,7 @@
       "reqE": 40,
       "lwIcon": "/assets/lw-skills/58e634c2ff192135cda28ea1f4d1abad1239c0737b84546010ae6b383450a363.webp",
       "reqEle": "water",
-      "lwRuleText": "永夜適配：maxHpPct 10；hpR 3；mpR 2。未公開公式與學習等級為永夜設定，非天堂W伺服器原值。"
+      "lwRuleText": "永夜適配：maxHpPct 10；hpR 3；mpR 2。公式與學習等級依永夜設定。"
     },
     "lw_skill_550": {
       "n": "生命的祝福",
@@ -6510,7 +6510,7 @@
       "justiceHeal": true,
       "lwIcon": "/assets/lw-skills/b18fb026d5a8ec11881c37845265086001985c4a223f7cc50fd1eed2af69d31f.webp",
       "reqEle": "water",
-      "lwRuleText": "永夜適配：ac 2；hpR 2。未公開公式與學習等級為永夜設定，非天堂W伺服器原值。"
+      "lwRuleText": "永夜適配：ac 2；hpR 2。公式與學習等級依永夜設定。"
     },
     "lw_skill_560": {
       "n": "污濁之水",
@@ -6556,7 +6556,7 @@
         "value": 1
       },
       "reqEle": "water",
-      "lwRuleText": "永夜適配：沿用永夜戰鬥／治癒公式；依本招目標與狀態規則結算。未公開公式與學習等級為永夜設定，非天堂W伺服器原值。"
+      "lwRuleText": "永夜適配：沿用永夜戰鬥／治癒公式；依本招目標與狀態規則結算。公式與學習等級依永夜設定。"
     },
     "lw_skill_570": {
       "n": "風之疾走",
@@ -6593,7 +6593,7 @@
       "reqE": 30,
       "lwIcon": "/assets/lw-skills/09fc1410bb98eac94514da879440c8c22f286a4afdd9761305c3f03d1435a161.webp",
       "reqEle": "wind",
-      "lwRuleText": "永夜適配：moveSpeedPct 15；er 5。未公開公式與學習等級為永夜設定，非天堂W伺服器原值。"
+      "lwRuleText": "永夜適配：moveSpeedPct 15；er 5。公式與學習等級依永夜設定。"
     },
     "lw_skill_580": {
       "n": "暴風神射",
@@ -6630,7 +6630,7 @@
       "reqE": 50,
       "lwIcon": "/assets/lw-skills/b8c81a5bc02124ff9dc005dcedbf8bfe42ce5bd038f1a7432f7c9cf4fc3415a2.webp",
       "reqEle": "wind",
-      "lwRuleText": "永夜適配：rangedDmg 4；rangedHit 3。未公開公式與學習等級為永夜設定，非天堂W伺服器原值。"
+      "lwRuleText": "永夜適配：rangedDmg 4；rangedHit 3。公式與學習等級依永夜設定。"
     },
     "lw_skill_590": {
       "n": "精準射擊",
@@ -6676,7 +6676,7 @@
         "value": 20
       },
       "reqEle": "wind",
-      "lwRuleText": "永夜適配：沿用永夜戰鬥／治癒公式；依本招目標與狀態規則結算。未公開公式與學習等級為永夜設定，非天堂W伺服器原值。"
+      "lwRuleText": "永夜適配：沿用永夜戰鬥／治癒公式；依本招目標與狀態規則結算。公式與學習等級依永夜設定。"
     },
     "lw_skill_600": {
       "n": "鋼鐵防護",
@@ -6713,7 +6713,7 @@
       "reqE": 50,
       "lwIcon": "/assets/lw-skills/6ecb4318365c5031cc229073c4f357c9b4b2517ff83d7e1bc61da4bbcd9f9cc4.webp",
       "reqEle": "earth",
-      "lwRuleText": "永夜適配：ac 5；con 1。未公開公式與學習等級為永夜設定，非天堂W伺服器原值。"
+      "lwRuleText": "永夜適配：ac 5；con 1。公式與學習等級依永夜設定。"
     },
     "lw_skill_610": {
       "n": "大地守護者",
@@ -6750,7 +6750,7 @@
       "reqE": 10,
       "lwIcon": "/assets/lw-skills/f036814b8943f501226f733c03d44098b74fbe0201d328032ad1836edb57bcb0.webp",
       "reqEle": "earth",
-      "lwRuleText": "永夜適配：ac 3；dr 2。未公開公式與學習等級為永夜設定，非天堂W伺服器原值。"
+      "lwRuleText": "永夜適配：ac 3；dr 2。公式與學習等級依永夜設定。"
     },
     "lw_skill_620": {
       "n": "大地屏障",
@@ -6786,7 +6786,7 @@
       "reqE": 40,
       "lwIcon": "/assets/lw-skills/f444bf789de181098f4646f6459cfc5daf997ff96e4dad328bae66b63fc4d811.webp",
       "reqEle": "earth",
-      "lwRuleText": "永夜適配：lwShield 100。未公開公式與學習等級為永夜設定，非天堂W伺服器原值。"
+      "lwRuleText": "永夜適配：lwShield 100。公式與學習等級依永夜設定。"
     },
     "lw_skill_720": {
       "n": "大地斗篷",
@@ -6823,7 +6823,7 @@
       "reqE": 30,
       "lwIcon": "/assets/lw-skills/1aed7b8dba4a0834ce5b929f5656bf9c6b89b3d0719398801f74c6b6a89ac381.webp",
       "reqEle": "earth",
-      "lwRuleText": "永夜適配：mr 10；wis 1。未公開公式與學習等級為永夜設定，非天堂W伺服器原值。"
+      "lwRuleText": "永夜適配：mr 10；wis 1。公式與學習等級依永夜設定。"
     },
     "lw_skill_730": {
       "n": "風之防護",
@@ -6859,7 +6859,7 @@
       "reqE": 10,
       "lwIcon": "/assets/lw-skills/d015956c05d3b12f25472628ad3f511b73e39b98a9b42eb42f77c70eb0e33252.webp",
       "reqEle": "wind",
-      "lwRuleText": "永夜適配：er 5。未公開公式與學習等級為永夜設定，非天堂W伺服器原值。"
+      "lwRuleText": "永夜適配：er 5。公式與學習等級依永夜設定。"
     },
     "lw_skill_10750": {
       "n": "精靈大師 (精神) : 被動",
@@ -6894,7 +6894,7 @@
       "lwIcon": "/assets/lw-skills/0da705f273f93c80bc2e600524866fadb97087352c2a42defab1cfebfe0f2e41.webp",
       "lwUpgradeOf": "lw_skill_16970",
       "lwUpgradePct": 25,
-      "lwRuleText": "永夜適配：強化「精靈大師」數值 25%。未公開公式與學習等級為永夜設定，非天堂W伺服器原值。"
+      "lwRuleText": "永夜適配：強化「精靈大師」數值 25%。公式與學習等級依永夜設定。"
     },
     "lw_skill_10830": {
       "n": "水之元氣 (精神) : 被動",
@@ -6930,7 +6930,7 @@
       "lwUpgradeOf": "lw_skill_530",
       "lwUpgradePct": 15,
       "reqEle": "water",
-      "lwRuleText": "永夜適配：強化「水之元氣」數值 15%。未公開公式與學習等級為永夜設定，非天堂W伺服器原值。"
+      "lwRuleText": "永夜適配：強化「水之元氣」數值 15%。公式與學習等級依永夜設定。"
     },
     "lw_skill_10834": {
       "n": "暴風神射 (精神) : 被動",
@@ -6966,7 +6966,7 @@
       "lwUpgradeOf": "lw_skill_580",
       "lwUpgradePct": 15,
       "reqEle": "wind",
-      "lwRuleText": "永夜適配：強化「暴風神射」數值 15%。未公開公式與學習等級為永夜設定，非天堂W伺服器原值。"
+      "lwRuleText": "永夜適配：強化「暴風神射」數值 15%。公式與學習等級依永夜設定。"
     },
     "lw_skill_10994": {
       "n": "大地守護者 (精神) : 被動",
@@ -7002,7 +7002,7 @@
       "lwUpgradeOf": "lw_skill_610",
       "lwUpgradePct": 15,
       "reqEle": "earth",
-      "lwRuleText": "永夜適配：強化「大地守護者」數值 15%。未公開公式與學習等級為永夜設定，非天堂W伺服器原值。"
+      "lwRuleText": "永夜適配：強化「大地守護者」數值 15%。公式與學習等級依永夜設定。"
     },
     "lw_skill_10996": {
       "n": "烈炎武器 (精神) : 被動",
@@ -7038,7 +7038,7 @@
       "lwUpgradeOf": "lw_skill_490",
       "lwUpgradePct": 15,
       "reqEle": "fire",
-      "lwRuleText": "永夜適配：強化「烈炎武器」數值 15%。未公開公式與學習等級為永夜設定，非天堂W伺服器原值。"
+      "lwRuleText": "永夜適配：強化「烈炎武器」數值 15%。公式與學習等級依永夜設定。"
     },
     "lw_skill_11292": {
       "n": "地面障礙",
@@ -7074,7 +7074,7 @@
       "reqE": 30,
       "lwIcon": "/assets/lw-skills/c249493ee327188e535245d80bb66f16bf033ed209f965ab3b474b1b4582bb7c.webp",
       "reqEle": "wind",
-      "lwRuleText": "永夜適配：lwRootProc 5。未公開公式與學習等級為永夜設定，非天堂W伺服器原值。"
+      "lwRuleText": "永夜適配：lwRootProc 5。公式與學習等級依永夜設定。"
     },
     "lw_skill_11293": {
       "n": "靈魂迴避",
@@ -7110,7 +7110,7 @@
       "lwCleanse": [],
       "reqE": 30,
       "lwIcon": "/assets/lw-skills/9b9c1b800fc1712124a7579debf60b41b94530f0c8f8d5536ac7986b336494fe.webp",
-      "lwRuleText": "永夜適配：er 2；ac 1。未公開公式與學習等級為永夜設定，非天堂W伺服器原值。"
+      "lwRuleText": "永夜適配：er 2；ac 1。公式與學習等級依永夜設定。"
     },
     "lw_skill_11385": {
       "n": "污濁之水 (精神) : 被動",
@@ -7146,7 +7146,7 @@
       "lwUpgradeOf": "lw_skill_560",
       "lwUpgradePct": 25,
       "reqEle": "water",
-      "lwRuleText": "永夜適配：強化「污濁之水」數值 25%。未公開公式與學習等級為永夜設定，非天堂W伺服器原值。"
+      "lwRuleText": "永夜適配：強化「污濁之水」數值 25%。公式與學習等級依永夜設定。"
     },
     "lw_skill_11443": {
       "n": "精準射擊 (精神) : 被動",
@@ -7182,7 +7182,7 @@
       "lwUpgradeOf": "lw_skill_590",
       "lwUpgradePct": 25,
       "reqEle": "wind",
-      "lwRuleText": "永夜適配：強化「精準射擊」數值 25%。未公開公式與學習等級為永夜設定，非天堂W伺服器原值。"
+      "lwRuleText": "永夜適配：強化「精準射擊」數值 25%。公式與學習等級依永夜設定。"
     },
     "lw_skill_11609": {
       "n": "精靈反擊",
@@ -7219,7 +7219,7 @@
       "reqE": 50,
       "lwIcon": "/assets/lw-skills/3d19502f0f9620c2b6ad8a30052ad649a2ae3e6274feca38df346ee5603fa733.webp",
       "reqEle": "earth",
-      "lwRuleText": "永夜適配：lwCounterChance 20；lwCounterMult 1.5。未公開公式與學習等級為永夜設定，非天堂W伺服器原值。"
+      "lwRuleText": "永夜適配：lwCounterChance 20；lwCounterMult 1.5。公式與學習等級依永夜設定。"
     },
     "lw_skill_11614": {
       "n": "烈焰之魂 (精神) : 被動",
@@ -7255,7 +7255,7 @@
       "lwUpgradeOf": "lw_skill_520",
       "lwUpgradePct": 25,
       "reqEle": "fire",
-      "lwRuleText": "永夜適配：強化「烈焰之魂」數值 25%。未公開公式與學習等級為永夜設定，非天堂W伺服器原值。"
+      "lwRuleText": "永夜適配：強化「烈焰之魂」數值 25%。公式與學習等級依永夜設定。"
     },
     "lw_skill_11615": {
       "n": "火焰狂襲",
@@ -7293,7 +7293,7 @@
       "hits": 3,
       "skillAddDmg": 4,
       "reqEle": "fire",
-      "lwRuleText": "永夜適配：沿用永夜戰鬥／治癒公式；依本招目標與狀態規則結算。未公開公式與學習等級為永夜設定，非天堂W伺服器原值。"
+      "lwRuleText": "永夜適配：沿用永夜戰鬥／治癒公式；依本招目標與狀態規則結算。公式與學習等級依永夜設定。"
     },
     "lw_skill_12541": {
       "n": "精通貫穿",
@@ -7331,7 +7331,7 @@
       "lwCleanse": [],
       "reqE": 50,
       "lwIcon": "/assets/lw-skills/1f0b196dc5905a20e13185fb9cf9c0cbd884ed3d0aceb4ff25a845836e248adf.webp",
-      "lwRuleText": "永夜適配：extraHit 2；magicHit 2；ignoreErBonus 2；ignoreMr 2。未公開公式與學習等級為永夜設定，非天堂W伺服器原值。"
+      "lwRuleText": "永夜適配：extraHit 2；magicHit 2；ignoreErBonus 2；ignoreMr 2。公式與學習等級依永夜設定。"
     },
     "lw_skill_12934": {
       "n": "精靈屏障",
@@ -7367,7 +7367,7 @@
       "lwCleanse": [],
       "reqE": 60,
       "lwIcon": "/assets/lw-skills/8bd26da632ff579f4ceccb6ede2079b487fe8cc3b0b926c6f529ebaa6893fad0.webp",
-      "lwRuleText": "永夜適配：damageReductionPct 20；dr 10。未公開公式與學習等級為永夜設定，非天堂W伺服器原值。"
+      "lwRuleText": "永夜適配：damageReductionPct 20；dr 10。公式與學習等級依永夜設定。"
     },
     "lw_skill_12970": {
       "n": "重水之疾",
@@ -7413,7 +7413,7 @@
         "value": 20
       },
       "reqEle": "water",
-      "lwRuleText": "永夜適配：沿用永夜戰鬥／治癒公式；依本招目標與狀態規則結算。未公開公式與學習等級為永夜設定，非天堂W伺服器原值。"
+      "lwRuleText": "永夜適配：沿用永夜戰鬥／治癒公式；依本招目標與狀態規則結算。公式與學習等級依永夜設定。"
     },
     "lw_skill_12975": {
       "n": "重水之疾 (精神) : 被動",
@@ -7449,7 +7449,7 @@
       "lwUpgradeOf": "lw_skill_12970",
       "lwUpgradePct": 25,
       "reqEle": "water",
-      "lwRuleText": "永夜適配：強化「重水之疾」數值 25%。未公開公式與學習等級為永夜設定，非天堂W伺服器原值。"
+      "lwRuleText": "永夜適配：強化「重水之疾」數值 25%。公式與學習等級依永夜設定。"
     },
     "lw_skill_12976": {
       "n": "精靈治癒",
@@ -7485,7 +7485,7 @@
       "lwCleanse": [],
       "reqE": 50,
       "lwIcon": "/assets/lw-skills/824b3d4d5a210ec82d32abb43112ef53d05f32c46825276506181b504da6e60f.webp",
-      "lwRuleText": "永夜適配：potionBonus 10；damageReductionPct 10。未公開公式與學習等級為永夜設定，非天堂W伺服器原值。"
+      "lwRuleText": "永夜適配：potionBonus 10；damageReductionPct 10。公式與學習等級依永夜設定。"
     },
     "lw_skill_13058": {
       "n": "特殊攻擊 : 妖精",
@@ -7521,7 +7521,7 @@
       "reqE": 70,
       "lwIcon": "/assets/lw-skills/d5defce0cbe9d2edfe5303e2c7a4b99ea83f99188e12a2935d9da423211994a7.webp",
       "lwToggle": true,
-      "lwRuleText": "永夜適配：lwCleave 50。未公開公式與學習等級為永夜設定，非天堂W伺服器原值。"
+      "lwRuleText": "永夜適配：lwCleave 50。公式與學習等級依永夜設定。"
     },
     "lw_skill_16064": {
       "n": "變形術",
@@ -7561,7 +7561,7 @@
         "chance": 1,
         "value": 1
       },
-      "lwRuleText": "永夜適配：沿用永夜戰鬥／治癒公式；依本招目標與狀態規則結算。未公開公式與學習等級為永夜設定，非天堂W伺服器原值。"
+      "lwRuleText": "永夜適配：沿用永夜戰鬥／治癒公式；依本招目標與狀態規則結算。公式與學習等級依永夜設定。"
     },
     "lw_skill_16970": {
       "n": "精靈大師",
@@ -7597,7 +7597,7 @@
       "lwCleanse": [],
       "reqE": 50,
       "lwIcon": "/assets/lw-skills/503c61a4fde355a51923003cc5f4dae22af2e0e4b0b36d4edb2e28ba7a5f1a98.webp",
-      "lwRuleText": "永夜適配：ac 3；lwDualElement 1。未公開公式與學習等級為永夜設定，非天堂W伺服器原值。"
+      "lwRuleText": "永夜適配：ac 3；lwDualElement 1。公式與學習等級依永夜設定。"
     },
     "lw_skill_16976": {
       "n": "精靈迴避",
@@ -7632,7 +7632,7 @@
       "lwCleanse": [],
       "reqE": 1,
       "lwIcon": "/assets/lw-skills/4159c2b75fe6da3c3d14884f6662218a91a27741e7941b2f146b37c3865ae37c.webp",
-      "lwRuleText": "永夜適配：lwStunDurationReduce 1。未公開公式與學習等級為永夜設定，非天堂W伺服器原值。"
+      "lwRuleText": "永夜適配：lwStunDurationReduce 1。公式與學習等級依永夜設定。"
     },
     "lw_skill_16980": {
       "n": "魔法消除 (精神) : 被動",
@@ -7667,7 +7667,7 @@
       "lwIcon": "/assets/lw-skills/f6b18b5c75116ea6fe68fc672f02973839adcd4f3b00ce00f553ec85bd4a3928.webp",
       "lwUpgradeOf": "lw_skill_470",
       "lwUpgradePct": 15,
-      "lwRuleText": "永夜適配：強化「魔法消除」數值 15%。未公開公式與學習等級為永夜設定，非天堂W伺服器原值。"
+      "lwRuleText": "永夜適配：強化「魔法消除」數值 15%。公式與學習等級依永夜設定。"
     },
     "lw_skill_16981": {
       "n": "大地聯合",
@@ -7709,7 +7709,7 @@
       "lwShareHp": true,
       "groupHeal": true,
       "reqEle": "earth",
-      "lwRuleText": "永夜適配：沿用永夜戰鬥／治癒公式；依本招目標與狀態規則結算。未公開公式與學習等級為永夜設定，非天堂W伺服器原值。"
+      "lwRuleText": "永夜適配：沿用永夜戰鬥／治癒公式；依本招目標與狀態規則結算。公式與學習等級依永夜設定。"
     },
     "lw_skill_19074": {
       "n": "元素轉換 (汙染)",
@@ -7746,7 +7746,7 @@
       "reqE": 1,
       "lwIcon": "/assets/lw-skills/83cd1c749a33288dbc74870761b8a3b981b981463d70c377f95c9669c31cccb7.webp",
       "lwExclusiveGroup": "element-conversion",
-      "lwRuleText": "永夜適配：mdmg 3；lwCastSpeedPct 10。未公開公式與學習等級為永夜設定，非天堂W伺服器原值。"
+      "lwRuleText": "永夜適配：mdmg 3；lwCastSpeedPct 10。公式與學習等級依永夜設定。"
     },
     "lw_skill_19075": {
       "n": "元素轉換 (淨化)",
@@ -7783,7 +7783,7 @@
       "reqE": 1,
       "lwIcon": "/assets/lw-skills/eab3a972887c483e700de168609722987fa2fd6635d6dbf7023f0ac71170448b.webp",
       "lwExclusiveGroup": "element-conversion",
-      "lwRuleText": "永夜適配：hpR 3；lwCastSpeedPct 10。未公開公式與學習等級為永夜設定，非天堂W伺服器原值。"
+      "lwRuleText": "永夜適配：hpR 3；lwCastSpeedPct 10。公式與學習等級依永夜設定。"
     },
     "lw_skill_19922": {
       "n": "精通貫穿 (精神) : 被動",
@@ -7818,7 +7818,7 @@
       "lwIcon": "/assets/lw-skills/d2b39b5826821170ecab0cb95e90d90710002a1e97686210efbbecbb24c52568.webp",
       "lwUpgradeOf": "lw_skill_12541",
       "lwUpgradePct": 25,
-      "lwRuleText": "永夜適配：強化「精通貫穿」數值 25%。未公開公式與學習等級為永夜設定，非天堂W伺服器原值。"
+      "lwRuleText": "永夜適配：強化「精通貫穿」數值 25%。公式與學習等級依永夜設定。"
     },
     "lw_skill_9500": {
       "n": "行走加速",
@@ -7853,7 +7853,7 @@
       "lwCleanse": [],
       "reqD": 30,
       "lwIcon": "/assets/lw-skills/1e3e44b4008237dfdb4dbe7e79c79ecbe217bf7e68157fb226d43fd563a38bfb.webp",
-      "lwRuleText": "永夜適配：moveSpeedPct 15。未公開公式與學習等級為永夜設定，非天堂W伺服器原值。"
+      "lwRuleText": "永夜適配：moveSpeedPct 15。公式與學習等級依永夜設定。"
     },
     "lw_skill_9510": {
       "n": "毒性抵抗",
@@ -7888,7 +7888,7 @@
       "lwCleanse": [],
       "reqD": 30,
       "lwIcon": "/assets/lw-skills/aa129a5553a442a457207d1d4c703347434653311977cb7143742ac84dc7d52e.webp",
-      "lwRuleText": "永夜適配：poisonReductionPct 50。未公開公式與學習等級為永夜設定，非天堂W伺服器原值。"
+      "lwRuleText": "永夜適配：poisonReductionPct 50。公式與學習等級依永夜設定。"
     },
     "lw_skill_9520": {
       "n": "暗隱術",
@@ -7923,7 +7923,7 @@
       "lwCleanse": [],
       "reqD": 15,
       "lwIcon": "/assets/lw-skills/c89c08c8cfe7078f437a606e9d965cd088fea9e0e7860ac0219d2dc25c8f9c8b.webp",
-      "lwRuleText": "永夜適配：invisible 1。未公開公式與學習等級為永夜設定，非天堂W伺服器原值。"
+      "lwRuleText": "永夜適配：invisible 1。公式與學習等級依永夜設定。"
     },
     "lw_skill_9550": {
       "n": "燃燒鬥志",
@@ -7959,7 +7959,7 @@
       "lwCleanse": [],
       "reqD": 30,
       "lwIcon": "/assets/lw-skills/a2e31c59e6bc707bd46aa2e28484fa7c3e26799bf562a3e2f4a33d9ecf160c0a.webp",
-      "lwRuleText": "永夜適配：lwAmpChance 30；lwAmpMult 1.5。未公開公式與學習等級為永夜設定，非天堂W伺服器原值。"
+      "lwRuleText": "永夜適配：lwAmpChance 30；lwAmpMult 1.5。公式與學習等級依永夜設定。"
     },
     "lw_skill_9570": {
       "n": "影之防護",
@@ -7995,7 +7995,7 @@
       "lwCleanse": [],
       "reqD": 15,
       "lwIcon": "/assets/lw-skills/276a8fb846e97f765426560fecb1edd0bc1c860bd432ebcdf88f2046222d4636.webp",
-      "lwRuleText": "永夜適配：mr 4；ac 5。未公開公式與學習等級為永夜設定，非天堂W伺服器原值。"
+      "lwRuleText": "永夜適配：mr 4；ac 5。公式與學習等級依永夜設定。"
     },
     "lw_skill_9580": {
       "n": "暗影閃避",
@@ -8030,7 +8030,7 @@
       "lwCleanse": [],
       "reqD": 45,
       "lwIcon": "/assets/lw-skills/ffe68fec4b8da82751bb3ff3b3ce2d363f166f4befd1d143abb3b4951b23945c.webp",
-      "lwRuleText": "永夜適配：er 10。未公開公式與學習等級為永夜設定，非天堂W伺服器原值。"
+      "lwRuleText": "永夜適配：er 10。公式與學習等級依永夜設定。"
     },
     "lw_skill_9590": {
       "n": "雙重破壞",
@@ -8065,7 +8065,7 @@
       "lwCleanse": [],
       "reqD": 45,
       "lwIcon": "/assets/lw-skills/cca790d31744c5c226ec7384b72a94f40767d824ec26c207c936e24eaf9b4373.webp",
-      "lwRuleText": "永夜適配：doubleChance 30。未公開公式與學習等級為永夜設定，非天堂W伺服器原值。"
+      "lwRuleText": "永夜適配：doubleChance 30。公式與學習等級依永夜設定。"
     },
     "lw_skill_9600": {
       "n": "迴避提升",
@@ -8100,7 +8100,7 @@
       "lwCleanse": [],
       "reqD": 45,
       "lwIcon": "/assets/lw-skills/846724f92863adf18e450ecceb17d5780d161fdde5f72fcb7a22690ddbe8a1c1.webp",
-      "lwRuleText": "永夜適配：er 18。未公開公式與學習等級為永夜設定，非天堂W伺服器原值。"
+      "lwRuleText": "永夜適配：er 18。公式與學習等級依永夜設定。"
     },
     "lw_skill_9610": {
       "n": "暗影之牙",
@@ -8136,7 +8136,7 @@
       "lwCleanse": [],
       "reqD": 45,
       "lwIcon": "/assets/lw-skills/3feb0beecab9325fd6b4dd3add7c1e2949824c922486367cedd20829862ca1ec.webp",
-      "lwRuleText": "永夜適配：meleeDmg 10；meleeHit 10。未公開公式與學習等級為永夜設定，非天堂W伺服器原值。"
+      "lwRuleText": "永夜適配：meleeDmg 10；meleeHit 10。公式與學習等級依永夜設定。"
     },
     "lw_skill_9620": {
       "n": "會心一撃",
@@ -8173,7 +8173,7 @@
       "dmgType": "physical",
       "hits": 1,
       "skillAddDmg": 20,
-      "lwRuleText": "永夜適配：沿用永夜戰鬥／治癒公式；依本招目標與狀態規則結算。未公開公式與學習等級為永夜設定，非天堂W伺服器原值。"
+      "lwRuleText": "永夜適配：沿用永夜戰鬥／治癒公式；依本招目標與狀態規則結算。公式與學習等級依永夜設定。"
     },
     "lw_skill_9660": {
       "n": "破壞盔甲",
@@ -8213,7 +8213,7 @@
         "chance": 1,
         "value": 30
       },
-      "lwRuleText": "永夜適配：沿用永夜戰鬥／治癒公式；依本招目標與狀態規則結算。未公開公式與學習等級為永夜設定，非天堂W伺服器原值。"
+      "lwRuleText": "永夜適配：沿用永夜戰鬥／治癒公式；依本招目標與狀態規則結算。公式與學習等級依永夜設定。"
     },
     "lw_skill_10818": {
       "n": "暗影之擊",
@@ -8250,7 +8250,7 @@
       "dmgType": "physical",
       "hits": 1,
       "skillAddDmg": 4,
-      "lwRuleText": "永夜適配：沿用永夜戰鬥／治癒公式；依本招目標與狀態規則結算。未公開公式與學習等級為永夜設定，非天堂W伺服器原值。"
+      "lwRuleText": "永夜適配：沿用永夜戰鬥／治癒公式；依本招目標與狀態規則結算。公式與學習等級依永夜設定。"
     },
     "lw_skill_10908": {
       "n": "影之弱化",
@@ -8285,7 +8285,7 @@
       "lwCleanse": [],
       "reqD": 30,
       "lwIcon": "/assets/lw-skills/e1f05d82bd6d89357515d11d5e7016437e5f8b10b1e88672971e60f2882f2c2f.webp",
-      "lwRuleText": "永夜適配：lwWeakProc 5。未公開公式與學習等級為永夜設定，非天堂W伺服器原值。"
+      "lwRuleText": "永夜適配：lwWeakProc 5。公式與學習等級依永夜設定。"
     },
     "lw_skill_10910": {
       "n": "影之束縛",
@@ -8325,7 +8325,7 @@
         "chance": 1,
         "value": 1
       },
-      "lwRuleText": "永夜適配：沿用永夜戰鬥／治癒公式；依本招目標與狀態規則結算。未公開公式與學習等級為永夜設定，非天堂W伺服器原值。"
+      "lwRuleText": "永夜適配：沿用永夜戰鬥／治癒公式；依本招目標與狀態規則結算。公式與學習等級依永夜設定。"
     },
     "lw_skill_10936": {
       "n": "暗隱術 (命運) : 被動",
@@ -8360,7 +8360,7 @@
       "lwIcon": "/assets/lw-skills/81ffdfded2196732f779db3bc0af5dd6cd32ddae08e6725909824bcd0612c996.webp",
       "lwUpgradeOf": "lw_skill_9520",
       "lwUpgradePct": 15,
-      "lwRuleText": "永夜適配：強化「暗隱術」數值 15%。未公開公式與學習等級為永夜設定，非天堂W伺服器原值。"
+      "lwRuleText": "永夜適配：強化「暗隱術」數值 15%。公式與學習等級依永夜設定。"
     },
     "lw_skill_10992": {
       "n": "毒性抵抗 (命運) : 被動",
@@ -8395,7 +8395,7 @@
       "lwIcon": "/assets/lw-skills/cf7b00e1e9c1d786b05862d76a8f42cf1f5477515018f811319d50ab2806bb68.webp",
       "lwUpgradeOf": "lw_skill_9510",
       "lwUpgradePct": 15,
-      "lwRuleText": "永夜適配：強化「毒性抵抗」數值 15%。未公開公式與學習等級為永夜設定，非天堂W伺服器原值。"
+      "lwRuleText": "永夜適配：強化「毒性抵抗」數值 15%。公式與學習等級依永夜設定。"
     },
     "lw_skill_11034": {
       "n": "影之弱化 (命運) : 被動",
@@ -8430,7 +8430,7 @@
       "lwIcon": "/assets/lw-skills/1baca635ae4c00a118ddcb95c57143db7bf53f3d0dffb5f7ad90f84533dcbf4a.webp",
       "lwUpgradeOf": "lw_skill_10908",
       "lwUpgradePct": 15,
-      "lwRuleText": "永夜適配：強化「影之弱化」數值 15%。未公開公式與學習等級為永夜設定，非天堂W伺服器原值。"
+      "lwRuleText": "永夜適配：強化「影之弱化」數值 15%。公式與學習等級依永夜設定。"
     },
     "lw_skill_11845": {
       "n": "燃燒鬥志 (命運) : 被動",
@@ -8465,7 +8465,7 @@
       "lwIcon": "/assets/lw-skills/a8bb4a895248301bd68e6c9874d696f433becb24e5a42106d58f1496edc8f6a3.webp",
       "lwUpgradeOf": "lw_skill_9550",
       "lwUpgradePct": 15,
-      "lwRuleText": "永夜適配：強化「燃燒鬥志」數值 15%。未公開公式與學習等級為永夜設定，非天堂W伺服器原值。"
+      "lwRuleText": "永夜適配：強化「燃燒鬥志」數值 15%。公式與學習等級依永夜設定。"
     },
     "lw_skill_12312": {
       "n": "暗影閃避 (命運) : 被動",
@@ -8500,7 +8500,7 @@
       "lwIcon": "/assets/lw-skills/be30a8ec11690ea4e8b52d0446584c49cd863a4ccfcfb948779a1196ebb45581.webp",
       "lwUpgradeOf": "lw_skill_9580",
       "lwUpgradePct": 25,
-      "lwRuleText": "永夜適配：強化「暗影閃避」數值 25%。未公開公式與學習等級為永夜設定，非天堂W伺服器原值。"
+      "lwRuleText": "永夜適配：強化「暗影閃避」數值 25%。公式與學習等級依永夜設定。"
     },
     "lw_skill_12544": {
       "n": "精通致命",
@@ -8537,7 +8537,7 @@
       "lwCleanse": [],
       "reqD": 50,
       "lwIcon": "/assets/lw-skills/a76f6107165e8b1d0915bb88e23653d7fc31303886e1a1cbcfa03bf5934b4a5c.webp",
-      "lwRuleText": "永夜適配：meleeCrit 5；meleeCritDmg 5；ignoreErBonus 5。未公開公式與學習等級為永夜設定，非天堂W伺服器原值。"
+      "lwRuleText": "永夜適配：meleeCrit 5；meleeCritDmg 5；ignoreErBonus 5。公式與學習等級依永夜設定。"
     },
     "lw_skill_12841": {
       "n": "暗影衝刺 (命運) : 被動",
@@ -8572,7 +8572,7 @@
       "lwIcon": "/assets/lw-skills/cfe91d582430ea3a7450e88474fb3fbbcb0a2cfdd4d45c8482dafbe65b8392cd.webp",
       "lwUpgradeOf": "lw_skill_18129",
       "lwUpgradePct": 25,
-      "lwRuleText": "永夜適配：強化「暗影衝刺」數值 25%。未公開公式與學習等級為永夜設定，非天堂W伺服器原值。"
+      "lwRuleText": "永夜適配：強化「暗影衝刺」數值 25%。公式與學習等級依永夜設定。"
     },
     "lw_skill_12862": {
       "n": "血影",
@@ -8607,7 +8607,7 @@
       "lwCleanse": [],
       "reqD": 50,
       "lwIcon": "/assets/lw-skills/1eb77065bd97ca56dae0366c6da074d7a534368e94286a790008767ec1221596.webp",
-      "lwRuleText": "永夜適配：lwLifeStealPct 3。未公開公式與學習等級為永夜設定，非天堂W伺服器原值。"
+      "lwRuleText": "永夜適配：lwLifeStealPct 3。公式與學習等級依永夜設定。"
     },
     "lw_skill_13056": {
       "n": "特殊攻擊 : 黑暗妖精",
@@ -8643,7 +8643,7 @@
       "reqD": 70,
       "lwIcon": "/assets/lw-skills/73af4375fc3bcddf5d3252ea001ac1a0810cffc9f3efa1e4056cb8c838743af5.webp",
       "lwToggle": true,
-      "lwRuleText": "永夜適配：lwCleave 50。未公開公式與學習等級為永夜設定，非天堂W伺服器原值。"
+      "lwRuleText": "永夜適配：lwCleave 50。公式與學習等級依永夜設定。"
     },
     "lw_skill_15981": {
       "n": "幻影之步",
@@ -8678,7 +8678,7 @@
       "lwCleanse": [],
       "reqD": 70,
       "lwIcon": "/assets/lw-skills/1e41c207d0ed99736941aaf3d8ee0810f3772a8fe9bb9e4dea0c106130793b1d.webp",
-      "lwRuleText": "永夜適配：lwExtraStrikeChance 20。未公開公式與學習等級為永夜設定，非天堂W伺服器原值。"
+      "lwRuleText": "永夜適配：lwExtraStrikeChance 20。公式與學習等級依永夜設定。"
     },
     "lw_skill_18122": {
       "n": "雙重破壞 (命運) : 被動",
@@ -8713,7 +8713,7 @@
       "lwIcon": "/assets/lw-skills/c54127caf56dab31bf86dd75fd2bdad7058936fc525d75e5de01aa7d09dfc375.webp",
       "lwUpgradeOf": "lw_skill_9590",
       "lwUpgradePct": 25,
-      "lwRuleText": "永夜適配：強化「雙重破壞」數值 25%。未公開公式與學習等級為永夜設定，非天堂W伺服器原值。"
+      "lwRuleText": "永夜適配：強化「雙重破壞」數值 25%。公式與學習等級依永夜設定。"
     },
     "lw_skill_18129": {
       "n": "暗影衝刺",
@@ -8756,7 +8756,7 @@
         "chance": 0.2,
         "value": 1
       },
-      "lwRuleText": "永夜適配：沿用永夜戰鬥／治癒公式；依本招目標與狀態規則結算。未公開公式與學習等級為永夜設定，非天堂W伺服器原值。"
+      "lwRuleText": "永夜適配：沿用永夜戰鬥／治癒公式；依本招目標與狀態規則結算。公式與學習等級依永夜設定。"
     },
     "lw_skill_18170": {
       "n": "影之迴避",
@@ -8799,7 +8799,7 @@
       ],
       "healBase": 30,
       "lwHealMaxPct": 0.1,
-      "lwRuleText": "永夜適配：沿用永夜戰鬥／治癒公式；依本招目標與狀態規則結算。未公開公式與學習等級為永夜設定，非天堂W伺服器原值。"
+      "lwRuleText": "永夜適配：沿用永夜戰鬥／治癒公式；依本招目標與狀態規則結算。公式與學習等級依永夜設定。"
     },
     "lw_skill_18173": {
       "n": "影之迴避 (命運) : 被動",
@@ -8834,7 +8834,7 @@
       "lwIcon": "/assets/lw-skills/05e709fddd2c4163d766062b7a047650ce5914f7ec191f6c37845b8fc8ee946f.webp",
       "lwUpgradeOf": "lw_skill_18170",
       "lwUpgradePct": 25,
-      "lwRuleText": "永夜適配：強化「影之迴避」數值 25%。未公開公式與學習等級為永夜設定，非天堂W伺服器原值。"
+      "lwRuleText": "永夜適配：強化「影之迴避」數值 25%。公式與學習等級依永夜設定。"
     },
     "lw_skill_18176": {
       "n": "黑暗之幕",
@@ -8874,7 +8874,7 @@
         "chance": 1,
         "value": 1
       },
-      "lwRuleText": "永夜適配：沿用永夜戰鬥／治癒公式；依本招目標與狀態規則結算。未公開公式與學習等級為永夜設定，非天堂W伺服器原值。"
+      "lwRuleText": "永夜適配：沿用永夜戰鬥／治癒公式；依本招目標與狀態規則結算。公式與學習等級依永夜設定。"
     },
     "lw_skill_18202": {
       "n": "黑暗標記",
@@ -8914,7 +8914,7 @@
         "chance": 1,
         "value": 1
       },
-      "lwRuleText": "永夜適配：沿用永夜戰鬥／治癒公式；依本招目標與狀態規則結算。未公開公式與學習等級為永夜設定，非天堂W伺服器原值。"
+      "lwRuleText": "永夜適配：沿用永夜戰鬥／治癒公式；依本招目標與狀態規則結算。公式與學習等級依永夜設定。"
     },
     "lw_skill_19925": {
       "n": "精通致命 (命運) : 被動",
@@ -8949,7 +8949,7 @@
       "lwIcon": "/assets/lw-skills/8429459a277b6241431320d34973fbbb4101bbb09759ceabebf56aa592b7c2b8.webp",
       "lwUpgradeOf": "lw_skill_12544",
       "lwUpgradePct": 25,
-      "lwRuleText": "永夜適配：強化「精通致命」數值 25%。未公開公式與學習等級為永夜設定，非天堂W伺服器原值。"
+      "lwRuleText": "永夜適配：強化「精通致命」數值 25%。公式與學習等級依永夜設定。"
     }
   },
   "legacy": {
@@ -9036,7 +9036,7 @@
       "lwSourceUrl": "https://6sword.com/zh-TW/lw/items/5004",
       "gachaWeight": 0,
       "lwIcon": "/assets/lw-skills/c4cff7c9cb4e32cc1d1f9205ccad04f987d47e12c1cfe414f6c73bda8ff685fc.webp",
-      "d": "學習 光箭。技能品質依天堂W；商店售價與未公開學習條件採永夜設定。",
+      "d": "學習 光箭。技能品質、商店售價與學習條件依永夜設定。",
       "lwItemIconSource": "https://6sword.com/icons/lw/Item/spellbook_1.webp"
     },
     "lw_book_5002": {
@@ -9051,7 +9051,7 @@
       "lwSourceUrl": "https://6sword.com/zh-TW/lw/items/5002",
       "gachaWeight": 0,
       "lwIcon": "/assets/lw-skills/c4cff7c9cb4e32cc1d1f9205ccad04f987d47e12c1cfe414f6c73bda8ff685fc.webp",
-      "d": "學習 保護盾。技能品質依天堂W；商店售價與未公開學習條件採永夜設定。",
+      "d": "學習 保護盾。技能品質、商店售價與學習條件依永夜設定。",
       "lwItemIconSource": "https://6sword.com/icons/lw/Item/spellbook_1.webp"
     },
     "lw_book_5006": {
@@ -9066,7 +9066,7 @@
       "lwSourceUrl": "https://6sword.com/zh-TW/lw/items/5006",
       "gachaWeight": 0,
       "lwIcon": "/assets/lw-skills/c4cff7c9cb4e32cc1d1f9205ccad04f987d47e12c1cfe414f6c73bda8ff685fc.webp",
-      "d": "學習 傳送術。技能品質依天堂W；商店售價與未公開學習條件採永夜設定。",
+      "d": "學習 傳送術。技能品質、商店售價與學習條件依永夜設定。",
       "lwItemIconSource": "https://6sword.com/icons/lw/Item/spellbook_1.webp"
     },
     "lw_book_5012": {
@@ -9081,7 +9081,7 @@
       "lwSourceUrl": "https://6sword.com/zh-TW/lw/items/5012",
       "gachaWeight": 0,
       "lwIcon": "/assets/lw-skills/c4cff7c9cb4e32cc1d1f9205ccad04f987d47e12c1cfe414f6c73bda8ff685fc.webp",
-      "d": "學習 解毒術。技能品質依天堂W；商店售價與未公開學習條件採永夜設定。",
+      "d": "學習 解毒術。技能品質、商店售價與學習條件依永夜設定。",
       "lwItemIconSource": "https://6sword.com/icons/lw/Item/spellbook_1.webp"
     },
     "lw_book_5008": {
@@ -9096,7 +9096,7 @@
       "lwSourceUrl": "https://6sword.com/zh-TW/lw/items/5008",
       "gachaWeight": 0,
       "lwIcon": "/assets/lw-skills/c4cff7c9cb4e32cc1d1f9205ccad04f987d47e12c1cfe414f6c73bda8ff685fc.webp",
-      "d": "學習 負重強化。技能品質依天堂W；商店售價與未公開學習條件採永夜設定。",
+      "d": "學習 負重強化。技能品質、商店售價與學習條件依永夜設定。",
       "lwItemIconSource": "https://6sword.com/icons/lw/Item/spellbook_1.webp"
     },
     "lw_book_5010": {
@@ -9111,7 +9111,7 @@
       "lwSourceUrl": "https://6sword.com/zh-TW/lw/items/5010",
       "gachaWeight": 0,
       "lwIcon": "/assets/lw-skills/c4cff7c9cb4e32cc1d1f9205ccad04f987d47e12c1cfe414f6c73bda8ff685fc.webp",
-      "d": "學習 無所遁形術。技能品質依天堂W；商店售價與未公開學習條件採永夜設定。",
+      "d": "學習 無所遁形術。技能品質、商店售價與學習條件依永夜設定。",
       "lwItemIconSource": "https://6sword.com/icons/lw/Item/spellbook_1.webp"
     },
     "lw_book_5018": {
@@ -9126,7 +9126,7 @@
       "lwSourceUrl": "https://6sword.com/zh-TW/lw/items/5018",
       "gachaWeight": 0,
       "lwIcon": "/assets/lw-skills/c4cff7c9cb4e32cc1d1f9205ccad04f987d47e12c1cfe414f6c73bda8ff685fc.webp",
-      "d": "學習 鎧甲護持。技能品質依天堂W；商店售價與未公開學習條件採永夜設定。",
+      "d": "學習 鎧甲護持。技能品質、商店售價與學習條件依永夜設定。",
       "lwItemIconSource": "https://6sword.com/icons/lw/Item/spellbook_1.webp"
     },
     "lw_book_5250": {
@@ -9141,7 +9141,7 @@
       "lwSourceUrl": "https://6sword.com/zh-TW/lw/items/5250",
       "gachaWeight": 0,
       "lwIcon": "/assets/lw-skills/c3d6ce5f21249f2cd50eccc364c1b5bd7c5fe60ddecef1f09254f8a2457788c2.webp",
-      "d": "學習 精準目標。技能品質依天堂W；商店售價與未公開學習條件採永夜設定。",
+      "d": "學習 精準目標。技能品質、商店售價與學習條件依永夜設定。",
       "lwItemIconSource": "https://6sword.com/icons/lw/Item/strategybook_1.webp"
     },
     "lw_book_5252": {
@@ -9156,7 +9156,7 @@
       "lwSourceUrl": "https://6sword.com/zh-TW/lw/items/5252",
       "gachaWeight": 0,
       "lwIcon": "/assets/lw-skills/148d082eaa2891dd4a77147b1f8c2382c3876c03179612e114c7a65e8db93f5a.webp",
-      "d": "學習 灼熱靈氣。技能品質依天堂W；商店售價與未公開學習條件採永夜設定。",
+      "d": "學習 灼熱靈氣。技能品質、商店售價與學習條件依永夜設定。",
       "lwItemIconSource": "https://6sword.com/icons/lw/Item/strategybook_UnCommon.webp"
     },
     "lw_book_5256": {
@@ -9171,7 +9171,7 @@
       "lwSourceUrl": "https://6sword.com/zh-TW/lw/items/5256",
       "gachaWeight": 0,
       "lwIcon": "/assets/lw-skills/417e3fefbe187b449a6f49b4b864aca233ee84dfab6ff8c9890d51ad2dd435ef.webp",
-      "d": "學習 閃灼靈氣。技能品質依天堂W；商店售價與未公開學習條件採永夜設定。",
+      "d": "學習 閃灼靈氣。技能品質、商店售價與學習條件依永夜設定。",
       "lwItemIconSource": "https://6sword.com/icons/lw/Item/strategybook_2.webp"
     },
     "lw_book_5254": {
@@ -9186,7 +9186,7 @@
       "lwSourceUrl": "https://6sword.com/zh-TW/lw/items/5254",
       "gachaWeight": 0,
       "lwIcon": "/assets/lw-skills/417e3fefbe187b449a6f49b4b864aca233ee84dfab6ff8c9890d51ad2dd435ef.webp",
-      "d": "學習 勇猛意志。技能品質依天堂W；商店售價與未公開學習條件採永夜設定。",
+      "d": "學習 勇猛意志。技能品質、商店售價與學習條件依永夜設定。",
       "lwItemIconSource": "https://6sword.com/icons/lw/Item/strategybook_2.webp"
     },
     "lw_book_908098": {
@@ -9201,7 +9201,7 @@
       "lwSourceUrl": "https://6sword.com/zh-TW/lw/items/908098",
       "gachaWeight": 0,
       "lwIcon": "/assets/lw-skills/aa88a8edb5ea1b7e371e1bd3effc509b84cecedb8f43b3b56c93da1111c6a90c.webp",
-      "d": "學習 霸體。技能品質依天堂W；商店售價與未公開學習條件採永夜設定。",
+      "d": "學習 霸體。技能品質、商店售價與學習條件依永夜設定。",
       "lwItemIconSource": "https://6sword.com/icons/lw/Item/strategybook_Unique.webp"
     },
     "lw_book_5258": {
@@ -9216,7 +9216,7 @@
       "lwSourceUrl": "https://6sword.com/zh-TW/lw/items/5258",
       "gachaWeight": 0,
       "lwIcon": "/assets/lw-skills/9fd3259866ed1a733727fa7c67204650c474e1445b0f4d2127a1fd16634753ce.webp",
-      "d": "學習 王者之劍。技能品質依天堂W；商店售價與未公開學習條件採永夜設定。",
+      "d": "學習 王者之劍。技能品質、商店售價與學習條件依永夜設定。",
       "lwItemIconSource": "https://6sword.com/icons/lw/Item/strategybook_3.webp"
     },
     "lw_book_900117": {
@@ -9231,7 +9231,7 @@
       "lwSourceUrl": "https://6sword.com/zh-TW/lw/items/900117",
       "gachaWeight": 0,
       "lwIcon": "/assets/lw-skills/9fd3259866ed1a733727fa7c67204650c474e1445b0f4d2127a1fd16634753ce.webp",
-      "d": "學習 血之聯合。技能品質依天堂W；商店售價與未公開學習條件採永夜設定。",
+      "d": "學習 血之聯合。技能品質、商店售價與學習條件依永夜設定。",
       "lwItemIconSource": "https://6sword.com/icons/lw/Item/strategybook_3.webp"
     },
     "lw_book_900170": {
@@ -9246,7 +9246,7 @@
       "lwSourceUrl": "https://6sword.com/zh-TW/lw/items/900170",
       "gachaWeight": 0,
       "lwIcon": "/assets/lw-skills/c3d6ce5f21249f2cd50eccc364c1b5bd7c5fe60ddecef1f09254f8a2457788c2.webp",
-      "d": "學習 襲擊。技能品質依天堂W；商店售價與未公開學習條件採永夜設定。",
+      "d": "學習 襲擊。技能品質、商店售價與學習條件依永夜設定。",
       "lwItemIconSource": "https://6sword.com/icons/lw/Item/strategybook_1.webp"
     },
     "lw_book_902717": {
@@ -9261,7 +9261,7 @@
       "lwSourceUrl": "https://6sword.com/zh-TW/lw/items/902717",
       "gachaWeight": 0,
       "lwIcon": "/assets/lw-skills/aa88a8edb5ea1b7e371e1bd3effc509b84cecedb8f43b3b56c93da1111c6a90c.webp",
-      "d": "學習 勇猛意志 (大師) : 被動。技能品質依天堂W；商店售價與未公開學習條件採永夜設定。",
+      "d": "學習 勇猛意志 (大師) : 被動。技能品質、商店售價與學習條件依永夜設定。",
       "lwItemIconSource": "https://6sword.com/icons/lw/Item/strategybook_Unique.webp"
     },
     "lw_book_903494": {
@@ -9276,7 +9276,7 @@
       "lwSourceUrl": "https://6sword.com/zh-TW/lw/items/903494",
       "gachaWeight": 0,
       "lwIcon": "/assets/lw-skills/aa88a8edb5ea1b7e371e1bd3effc509b84cecedb8f43b3b56c93da1111c6a90c.webp",
-      "d": "學習 閃灼靈氣 (大師) : 被動。技能品質依天堂W；商店售價與未公開學習條件採永夜設定。",
+      "d": "學習 閃灼靈氣 (大師) : 被動。技能品質、商店售價與學習條件依永夜設定。",
       "lwItemIconSource": "https://6sword.com/icons/lw/Item/strategybook_Unique.webp"
     },
     "lw_book_905233": {
@@ -9291,7 +9291,7 @@
       "lwSourceUrl": "https://6sword.com/zh-TW/lw/items/905233",
       "gachaWeight": 0,
       "lwIcon": "/assets/lw-skills/aa88a8edb5ea1b7e371e1bd3effc509b84cecedb8f43b3b56c93da1111c6a90c.webp",
-      "d": "學習 灼熱靈氣 (大師) : 被動。技能品質依天堂W；商店售價與未公開學習條件採永夜設定。",
+      "d": "學習 灼熱靈氣 (大師) : 被動。技能品質、商店售價與學習條件依永夜設定。",
       "lwItemIconSource": "https://6sword.com/icons/lw/Item/strategybook_Unique.webp"
     },
     "lw_book_906659": {
@@ -9306,7 +9306,7 @@
       "lwSourceUrl": "https://6sword.com/zh-TW/lw/items/906659",
       "gachaWeight": 0,
       "lwIcon": "/assets/lw-skills/aa88a8edb5ea1b7e371e1bd3effc509b84cecedb8f43b3b56c93da1111c6a90c.webp",
-      "d": "學習 專注靈氣。技能品質依天堂W；商店售價與未公開學習條件採永夜設定。",
+      "d": "學習 專注靈氣。技能品質、商店售價與學習條件依永夜設定。",
       "lwItemIconSource": "https://6sword.com/icons/lw/Item/strategybook_Unique.webp"
     },
     "lw_book_907847": {
@@ -9321,7 +9321,7 @@
       "lwSourceUrl": "https://6sword.com/zh-TW/lw/items/907847",
       "gachaWeight": 0,
       "lwIcon": "/assets/lw-skills/aa88a8edb5ea1b7e371e1bd3effc509b84cecedb8f43b3b56c93da1111c6a90c.webp",
-      "d": "學習 精通閃避。技能品質依天堂W；商店售價與未公開學習條件採永夜設定。",
+      "d": "學習 精通閃避。技能品質、商店售價與學習條件依永夜設定。",
       "lwItemIconSource": "https://6sword.com/icons/lw/Item/strategybook_Unique.webp"
     },
     "lw_book_908420": {
@@ -9336,7 +9336,7 @@
       "lwSourceUrl": "https://6sword.com/zh-TW/lw/items/908420",
       "gachaWeight": 0,
       "lwIcon": "/assets/lw-skills/c4659608cd43b44da3e494c83ea9f1dc8dfd931ef7651ab72d8deffbbc697b17.webp",
-      "d": "學習 魔法抵抗。技能品質依天堂W；商店售價與未公開學習條件採永夜設定。",
+      "d": "學習 魔法抵抗。技能品質、商店售價與學習條件依永夜設定。",
       "lwItemIconSource": "https://6sword.com/icons/lw/Item/Contribution_Common.webp"
     },
     "lw_book_908423": {
@@ -9351,7 +9351,7 @@
       "lwSourceUrl": "https://6sword.com/zh-TW/lw/items/908423",
       "gachaWeight": 0,
       "lwIcon": "/assets/lw-skills/c4659608cd43b44da3e494c83ea9f1dc8dfd931ef7651ab72d8deffbbc697b17.webp",
-      "d": "學習 提升強健。技能品質依天堂W；商店售價與未公開學習條件採永夜設定。",
+      "d": "學習 提升強健。技能品質、商店售價與學習條件依永夜設定。",
       "lwItemIconSource": "https://6sword.com/icons/lw/Item/Contribution_Common.webp"
     },
     "lw_book_908422": {
@@ -9366,7 +9366,7 @@
       "lwSourceUrl": "https://6sword.com/zh-TW/lw/items/908422",
       "gachaWeight": 0,
       "lwIcon": "/assets/lw-skills/c4659608cd43b44da3e494c83ea9f1dc8dfd931ef7651ab72d8deffbbc697b17.webp",
-      "d": "學習 強健復原。技能品質依天堂W；商店售價與未公開學習條件採永夜設定。",
+      "d": "學習 強健復原。技能品質、商店售價與學習條件依永夜設定。",
       "lwItemIconSource": "https://6sword.com/icons/lw/Item/Contribution_Common.webp"
     },
     "lw_book_908421": {
@@ -9381,7 +9381,7 @@
       "lwSourceUrl": "https://6sword.com/zh-TW/lw/items/908421",
       "gachaWeight": 0,
       "lwIcon": "/assets/lw-skills/c4659608cd43b44da3e494c83ea9f1dc8dfd931ef7651ab72d8deffbbc697b17.webp",
-      "d": "學習 提升負重。技能品質依天堂W；商店售價與未公開學習條件採永夜設定。",
+      "d": "學習 提升負重。技能品質、商店售價與學習條件依永夜設定。",
       "lwItemIconSource": "https://6sword.com/icons/lw/Item/Contribution_Common.webp"
     },
     "lw_book_908427": {
@@ -9396,7 +9396,7 @@
       "lwSourceUrl": "https://6sword.com/zh-TW/lw/items/908427",
       "gachaWeight": 0,
       "lwIcon": "/assets/lw-skills/65fae06b0adce94aeecb3d40967fbb5860771bc6ad4d9642034bdb7a9cdcdd6a.webp",
-      "d": "學習 增加裝甲。技能品質依天堂W；商店售價與未公開學習條件採永夜設定。",
+      "d": "學習 增加裝甲。技能品質、商店售價與學習條件依永夜設定。",
       "lwItemIconMissing": true
     },
     "lw_book_908426": {
@@ -9411,7 +9411,7 @@
       "lwSourceUrl": "https://6sword.com/zh-TW/lw/items/908426",
       "gachaWeight": 0,
       "lwIcon": "/assets/lw-skills/2286b292bf982549822767e81382241e7e1cbcc269620f4c07c5d390c328394b.webp",
-      "d": "學習 增加傷害。技能品質依天堂W；商店售價與未公開學習條件採永夜設定。",
+      "d": "學習 增加傷害。技能品質、商店售價與學習條件依永夜設定。",
       "lwItemIconMissing": true
     },
     "lw_book_908425": {
@@ -9426,7 +9426,7 @@
       "lwSourceUrl": "https://6sword.com/zh-TW/lw/items/908425",
       "gachaWeight": 0,
       "lwIcon": "/assets/lw-skills/74ac4841feb7ed60f5f48bd8743dc49994c784e14d6dbeb2c4fccae2536909b0.webp",
-      "d": "學習 強健恢復。技能品質依天堂W；商店售價與未公開學習條件採永夜設定。",
+      "d": "學習 強健恢復。技能品質、商店售價與學習條件依永夜設定。",
       "lwItemIconMissing": true
     },
     "lw_book_908424": {
@@ -9441,7 +9441,7 @@
       "lwSourceUrl": "https://6sword.com/zh-TW/lw/items/908424",
       "gachaWeight": 0,
       "lwIcon": "/assets/lw-skills/cbef51fe7a88ee9ee4a6d0e9113682ff93c0fb5edd9624cd624f39119a7d8f53.webp",
-      "d": "學習 增加武器。技能品質依天堂W；商店售價與未公開學習條件採永夜設定。",
+      "d": "學習 增加武器。技能品質、商店售價與學習條件依永夜設定。",
       "lwItemIconMissing": true
     },
     "lw_book_908431": {
@@ -9456,7 +9456,7 @@
       "lwSourceUrl": "https://6sword.com/zh-TW/lw/items/908431",
       "gachaWeight": 0,
       "lwIcon": "/assets/lw-skills/9b326574fa1d9426946b511f933c62c3766d7d6a0a04a329d38e01da4fb9639f.webp",
-      "d": "學習 裝甲加持。技能品質依天堂W；商店售價與未公開學習條件採永夜設定。",
+      "d": "學習 裝甲加持。技能品質、商店售價與學習條件依永夜設定。",
       "lwItemIconSource": "https://6sword.com/icons/lw/Item/Contribution_Rare.webp"
     },
     "lw_book_908430": {
@@ -9471,7 +9471,7 @@
       "lwSourceUrl": "https://6sword.com/zh-TW/lw/items/908430",
       "gachaWeight": 0,
       "lwIcon": "/assets/lw-skills/9b326574fa1d9426946b511f933c62c3766d7d6a0a04a329d38e01da4fb9639f.webp",
-      "d": "學習 迴避加持。技能品質依天堂W；商店售價與未公開學習條件採永夜設定。",
+      "d": "學習 迴避加持。技能品質、商店售價與學習條件依永夜設定。",
       "lwItemIconSource": "https://6sword.com/icons/lw/Item/Contribution_Rare.webp"
     },
     "lw_book_908429": {
@@ -9486,7 +9486,7 @@
       "lwSourceUrl": "https://6sword.com/zh-TW/lw/items/908429",
       "gachaWeight": 0,
       "lwIcon": "/assets/lw-skills/9b326574fa1d9426946b511f933c62c3766d7d6a0a04a329d38e01da4fb9639f.webp",
-      "d": "學習 減免加持。技能品質依天堂W；商店售價與未公開學習條件採永夜設定。",
+      "d": "學習 減免加持。技能品質、商店售價與學習條件依永夜設定。",
       "lwItemIconSource": "https://6sword.com/icons/lw/Item/Contribution_Rare.webp"
     },
     "lw_book_908428": {
@@ -9501,7 +9501,7 @@
       "lwSourceUrl": "https://6sword.com/zh-TW/lw/items/908428",
       "gachaWeight": 0,
       "lwIcon": "/assets/lw-skills/9b326574fa1d9426946b511f933c62c3766d7d6a0a04a329d38e01da4fb9639f.webp",
-      "d": "學習 傷害加持。技能品質依天堂W；商店售價與未公開學習條件採永夜設定。",
+      "d": "學習 傷害加持。技能品質、商店售價與學習條件依永夜設定。",
       "lwItemIconSource": "https://6sword.com/icons/lw/Item/Contribution_Rare.webp"
     },
     "lw_book_908432": {
@@ -9516,7 +9516,7 @@
       "lwSourceUrl": "https://6sword.com/zh-TW/lw/items/908432",
       "gachaWeight": 0,
       "lwIcon": "/assets/lw-skills/a1e5362a75950171ec561b0f3be0f15cf1ca10641bf12a6c794e7805a464933a.webp",
-      "d": "學習 減免擴展。技能品質依天堂W；商店售價與未公開學習條件採永夜設定。",
+      "d": "學習 減免擴展。技能品質、商店售價與學習條件依永夜設定。",
       "lwItemIconSource": "https://6sword.com/icons/lw/Item/Contribution_Epic.webp"
     },
     "lw_book_908433": {
@@ -9531,7 +9531,7 @@
       "lwSourceUrl": "https://6sword.com/zh-TW/lw/items/908433",
       "gachaWeight": 0,
       "lwIcon": "/assets/lw-skills/a1e5362a75950171ec561b0f3be0f15cf1ca10641bf12a6c794e7805a464933a.webp",
-      "d": "學習 致命迴避。技能品質依天堂W；商店售價與未公開學習條件採永夜設定。",
+      "d": "學習 致命迴避。技能品質、商店售價與學習條件依永夜設定。",
       "lwItemIconSource": "https://6sword.com/icons/lw/Item/Contribution_Epic.webp"
     },
     "lw_book_908434": {
@@ -9546,7 +9546,7 @@
       "lwSourceUrl": "https://6sword.com/zh-TW/lw/items/908434",
       "gachaWeight": 0,
       "lwIcon": "/assets/lw-skills/a1e5362a75950171ec561b0f3be0f15cf1ca10641bf12a6c794e7805a464933a.webp",
-      "d": "學習 能力擴展。技能品質依天堂W；商店售價與未公開學習條件採永夜設定。",
+      "d": "學習 能力擴展。技能品質、商店售價與學習條件依永夜設定。",
       "lwItemIconSource": "https://6sword.com/icons/lw/Item/Contribution_Epic.webp"
     },
     "lw_book_908435": {
@@ -9561,7 +9561,7 @@
       "lwSourceUrl": "https://6sword.com/zh-TW/lw/items/908435",
       "gachaWeight": 0,
       "lwIcon": "/assets/lw-skills/a1e5362a75950171ec561b0f3be0f15cf1ca10641bf12a6c794e7805a464933a.webp",
-      "d": "學習 免疫昏迷擴展。技能品質依天堂W；商店售價與未公開學習條件採永夜設定。",
+      "d": "學習 免疫昏迷擴展。技能品質、商店售價與學習條件依永夜設定。",
       "lwItemIconSource": "https://6sword.com/icons/lw/Item/Contribution_Epic.webp"
     },
     "lw_book_908436": {
@@ -9576,7 +9576,7 @@
       "lwSourceUrl": "https://6sword.com/zh-TW/lw/items/908436",
       "gachaWeight": 0,
       "lwIcon": "/assets/lw-skills/d32390d7eccd2ea7715f49521f222909cbb60f37fc946258a78c3662ad147576.webp",
-      "d": "學習 迴避遽升。技能品質依天堂W；商店售價與未公開學習條件採永夜設定。",
+      "d": "學習 迴避遽升。技能品質、商店售價與學習條件依永夜設定。",
       "lwItemIconSource": "https://6sword.com/icons/lw/Item/Contribution_Legend.webp"
     },
     "lw_book_908439": {
@@ -9591,7 +9591,7 @@
       "lwSourceUrl": "https://6sword.com/zh-TW/lw/items/908439",
       "gachaWeight": 0,
       "lwIcon": "/assets/lw-skills/d32390d7eccd2ea7715f49521f222909cbb60f37fc946258a78c3662ad147576.webp",
-      "d": "學習 能力遽升。技能品質依天堂W；商店售價與未公開學習條件採永夜設定。",
+      "d": "學習 能力遽升。技能品質、商店售價與學習條件依永夜設定。",
       "lwItemIconSource": "https://6sword.com/icons/lw/Item/Contribution_Legend.webp"
     },
     "lw_book_908438": {
@@ -9606,7 +9606,7 @@
       "lwSourceUrl": "https://6sword.com/zh-TW/lw/items/908438",
       "gachaWeight": 0,
       "lwIcon": "/assets/lw-skills/d32390d7eccd2ea7715f49521f222909cbb60f37fc946258a78c3662ad147576.webp",
-      "d": "學習 貫穿防禦。技能品質依天堂W；商店售價與未公開學習條件採永夜設定。",
+      "d": "學習 貫穿防禦。技能品質、商店售價與學習條件依永夜設定。",
       "lwItemIconSource": "https://6sword.com/icons/lw/Item/Contribution_Legend.webp"
     },
     "lw_book_908437": {
@@ -9621,7 +9621,7 @@
       "lwSourceUrl": "https://6sword.com/zh-TW/lw/items/908437",
       "gachaWeight": 0,
       "lwIcon": "/assets/lw-skills/d32390d7eccd2ea7715f49521f222909cbb60f37fc946258a78c3662ad147576.webp",
-      "d": "學習 免疫昏迷遽升。技能品質依天堂W；商店售價與未公開學習條件採永夜設定。",
+      "d": "學習 免疫昏迷遽升。技能品質、商店售價與學習條件依永夜設定。",
       "lwItemIconSource": "https://6sword.com/icons/lw/Item/Contribution_Legend.webp"
     },
     "lw_book_909720": {
@@ -9636,7 +9636,7 @@
       "lwSourceUrl": "https://6sword.com/zh-TW/lw/items/909720",
       "gachaWeight": 0,
       "lwIcon": "/assets/lw-skills/e169606dd08bcb3c78953574a630bad4c18f6c540bcf87414ffbc5a7ae5ce5e6.webp",
-      "d": "學習 特殊攻擊 : 王族。技能品質依天堂W；商店售價與未公開學習條件採永夜設定。",
+      "d": "學習 特殊攻擊 : 王族。技能品質、商店售價與學習條件依永夜設定。",
       "lwItemIconSource": "https://6sword.com/icons/lw/Item/strategybook_Mythic.webp"
     },
     "lw_book_910680": {
@@ -9651,7 +9651,7 @@
       "lwSourceUrl": "https://6sword.com/zh-TW/lw/items/910680",
       "gachaWeight": 0,
       "lwIcon": "/assets/lw-skills/9b326574fa1d9426946b511f933c62c3766d7d6a0a04a329d38e01da4fb9639f.webp",
-      "d": "學習 生存的吶喊。技能品質依天堂W；商店售價與未公開學習條件採永夜設定。",
+      "d": "學習 生存的吶喊。技能品質、商店售價與學習條件依永夜設定。",
       "lwItemIconSource": "https://6sword.com/icons/lw/Item/Contribution_Rare.webp"
     },
     "lw_book_910679": {
@@ -9666,7 +9666,7 @@
       "lwSourceUrl": "https://6sword.com/zh-TW/lw/items/910679",
       "gachaWeight": 0,
       "lwIcon": "/assets/lw-skills/d32390d7eccd2ea7715f49521f222909cbb60f37fc946258a78c3662ad147576.webp",
-      "d": "學習 生存的吶喊 (強化無限) : 被動。技能品質依天堂W；商店售價與未公開學習條件採永夜設定。",
+      "d": "學習 生存的吶喊 (強化無限) : 被動。技能品質、商店售價與學習條件依永夜設定。",
       "lwItemIconSource": "https://6sword.com/icons/lw/Item/Contribution_Legend.webp"
     },
     "lw_book_910678": {
@@ -9681,7 +9681,7 @@
       "lwSourceUrl": "https://6sword.com/zh-TW/lw/items/910678",
       "gachaWeight": 0,
       "lwIcon": "/assets/lw-skills/a1e5362a75950171ec561b0f3be0f15cf1ca10641bf12a6c794e7805a464933a.webp",
-      "d": "學習 生存的吶喊 (無限) : 被動。技能品質依天堂W；商店售價與未公開學習條件採永夜設定。",
+      "d": "學習 生存的吶喊 (無限) : 被動。技能品質、商店售價與學習條件依永夜設定。",
       "lwItemIconSource": "https://6sword.com/icons/lw/Item/Contribution_Epic.webp"
     },
     "lw_book_912381": {
@@ -9696,7 +9696,7 @@
       "lwSourceUrl": "https://6sword.com/zh-TW/lw/items/912381",
       "gachaWeight": 0,
       "lwIcon": "/assets/lw-skills/a1e5362a75950171ec561b0f3be0f15cf1ca10641bf12a6c794e7805a464933a.webp",
-      "d": "學習 鷹眼 - 偵察。技能品質依天堂W；商店售價與未公開學習條件採永夜設定。",
+      "d": "學習 鷹眼 - 偵察。技能品質、商店售價與學習條件依永夜設定。",
       "lwItemIconSource": "https://6sword.com/icons/lw/Item/Contribution_Epic.webp"
     },
     "lw_book_914982": {
@@ -9711,7 +9711,7 @@
       "lwSourceUrl": "https://6sword.com/zh-TW/lw/items/914982",
       "gachaWeight": 0,
       "lwIcon": "/assets/lw-skills/22037e64f94aa0c40a6878aad60854e410d48b6480ebb84eb50128c4fa296df1.webp",
-      "d": "學習 勇猛攻擊。技能品質依天堂W；商店售價與未公開學習條件採永夜設定。",
+      "d": "學習 勇猛攻擊。技能品質、商店售價與學習條件依永夜設定。",
       "lwItemIconSource": "https://6sword.com/icons/lw/Item/skillbook_Unique.webp"
     },
     "lw_book_914980": {
@@ -9726,7 +9726,7 @@
       "lwSourceUrl": "https://6sword.com/zh-TW/lw/items/914980",
       "gachaWeight": 0,
       "lwIcon": "/assets/lw-skills/417e3fefbe187b449a6f49b4b864aca233ee84dfab6ff8c9890d51ad2dd435ef.webp",
-      "d": "學習 勇猛盔甲。技能品質依天堂W；商店售價與未公開學習條件採永夜設定。",
+      "d": "學習 勇猛盔甲。技能品質、商店售價與學習條件依永夜設定。",
       "lwItemIconSource": "https://6sword.com/icons/lw/Item/strategybook_2.webp"
     },
     "lw_book_914985": {
@@ -9741,7 +9741,7 @@
       "lwSourceUrl": "https://6sword.com/zh-TW/lw/items/914985",
       "gachaWeight": 0,
       "lwIcon": "/assets/lw-skills/9fd3259866ed1a733727fa7c67204650c474e1445b0f4d2127a1fd16634753ce.webp",
-      "d": "學習 王者之劍 (大師) : 被動。技能品質依天堂W；商店售價與未公開學習條件採永夜設定。",
+      "d": "學習 王者之劍 (大師) : 被動。技能品質、商店售價與學習條件依永夜設定。",
       "lwItemIconSource": "https://6sword.com/icons/lw/Item/strategybook_3.webp"
     },
     "lw_book_914991": {
@@ -9756,7 +9756,7 @@
       "lwSourceUrl": "https://6sword.com/zh-TW/lw/items/914991",
       "gachaWeight": 0,
       "lwIcon": "/assets/lw-skills/9fd3259866ed1a733727fa7c67204650c474e1445b0f4d2127a1fd16634753ce.webp",
-      "d": "學習 灼熱之劍。技能品質依天堂W；商店售價與未公開學習條件採永夜設定。",
+      "d": "學習 灼熱之劍。技能品質、商店售價與學習條件依永夜設定。",
       "lwItemIconSource": "https://6sword.com/icons/lw/Item/strategybook_3.webp"
     },
     "lw_book_914989": {
@@ -9771,7 +9771,7 @@
       "lwSourceUrl": "https://6sword.com/zh-TW/lw/items/914989",
       "gachaWeight": 0,
       "lwIcon": "/assets/lw-skills/22037e64f94aa0c40a6878aad60854e410d48b6480ebb84eb50128c4fa296df1.webp",
-      "d": "學習 灼熱防護。技能品質依天堂W；商店售價與未公開學習條件採永夜設定。",
+      "d": "學習 灼熱防護。技能品質、商店售價與學習條件依永夜設定。",
       "lwItemIconSource": "https://6sword.com/icons/lw/Item/skillbook_Unique.webp"
     },
     "lw_book_914987": {
@@ -9786,7 +9786,7 @@
       "lwSourceUrl": "https://6sword.com/zh-TW/lw/items/914987",
       "gachaWeight": 0,
       "lwIcon": "/assets/lw-skills/9fd3259866ed1a733727fa7c67204650c474e1445b0f4d2127a1fd16634753ce.webp",
-      "d": "學習 帝國反擊。技能品質依天堂W；商店售價與未公開學習條件採永夜設定。",
+      "d": "學習 帝國反擊。技能品質、商店售價與學習條件依永夜設定。",
       "lwItemIconSource": "https://6sword.com/icons/lw/Item/strategybook_3.webp"
     },
     "lw_book_914979": {
@@ -9801,7 +9801,7 @@
       "lwSourceUrl": "https://6sword.com/zh-TW/lw/items/914979",
       "gachaWeight": 0,
       "lwIcon": "/assets/lw-skills/417e3fefbe187b449a6f49b4b864aca233ee84dfab6ff8c9890d51ad2dd435ef.webp",
-      "d": "學習 君主。技能品質依天堂W；商店售價與未公開學習條件採永夜設定。",
+      "d": "學習 君主。技能品質、商店售價與學習條件依永夜設定。",
       "lwItemIconSource": "https://6sword.com/icons/lw/Item/strategybook_2.webp"
     },
     "lw_book_915873": {
@@ -9816,7 +9816,7 @@
       "lwSourceUrl": "https://6sword.com/zh-TW/lw/items/915873",
       "gachaWeight": 0,
       "lwIcon": "/assets/lw-skills/e169606dd08bcb3c78953574a630bad4c18f6c540bcf87414ffbc5a7ae5ce5e6.webp",
-      "d": "學習 帝國之路。技能品質依天堂W；商店售價與未公開學習條件採永夜設定。",
+      "d": "學習 帝國之路。技能品質、商店售價與學習條件依永夜設定。",
       "lwItemIconSource": "https://6sword.com/icons/lw/Item/strategybook_Mythic.webp"
     },
     "lw_book_915424": {
@@ -9831,7 +9831,7 @@
       "lwSourceUrl": "https://6sword.com/zh-TW/lw/items/915424",
       "gachaWeight": 0,
       "lwIcon": "/assets/lw-skills/c4659608cd43b44da3e494c83ea9f1dc8dfd931ef7651ab72d8deffbbc697b17.webp",
-      "d": "學習 魔力恢復。技能品質依天堂W；商店售價與未公開學習條件採永夜設定。",
+      "d": "學習 魔力恢復。技能品質、商店售價與學習條件依永夜設定。",
       "lwItemIconSource": "https://6sword.com/icons/lw/Item/Contribution_Common.webp"
     },
     "lw_book_915423": {
@@ -9846,7 +9846,7 @@
       "lwSourceUrl": "https://6sword.com/zh-TW/lw/items/915423",
       "gachaWeight": 0,
       "lwIcon": "/assets/lw-skills/01ccb50fa466921cccd36c01cda73bff2779d3ab89ba4089ada13f193c88c3c6.webp",
-      "d": "學習 藥水強化。技能品質依天堂W；商店售價與未公開學習條件採永夜設定。",
+      "d": "學習 藥水強化。技能品質、商店售價與學習條件依永夜設定。",
       "lwItemIconSource": "https://6sword.com/icons/lw/Item/Contribution_UnCommon.webp"
     },
     "lw_book_915425": {
@@ -9861,7 +9861,7 @@
       "lwSourceUrl": "https://6sword.com/zh-TW/lw/items/915425",
       "gachaWeight": 0,
       "lwIcon": "/assets/lw-skills/9b326574fa1d9426946b511f933c62c3766d7d6a0a04a329d38e01da4fb9639f.webp",
-      "d": "學習 武器加持。技能品質依天堂W；商店售價與未公開學習條件採永夜設定。",
+      "d": "學習 武器加持。技能品質、商店售價與學習條件依永夜設定。",
       "lwItemIconSource": "https://6sword.com/icons/lw/Item/Contribution_Rare.webp"
     },
     "lw_book_915426": {
@@ -9876,7 +9876,7 @@
       "lwSourceUrl": "https://6sword.com/zh-TW/lw/items/915426",
       "gachaWeight": 0,
       "lwIcon": "/assets/lw-skills/a1e5362a75950171ec561b0f3be0f15cf1ca10641bf12a6c794e7805a464933a.webp",
-      "d": "學習 無視裝甲。技能品質依天堂W；商店售價與未公開學習條件採永夜設定。",
+      "d": "學習 無視裝甲。技能品質、商店售價與學習條件依永夜設定。",
       "lwItemIconSource": "https://6sword.com/icons/lw/Item/Contribution_Epic.webp"
     },
     "lw_book_915427": {
@@ -9891,7 +9891,7 @@
       "lwSourceUrl": "https://6sword.com/zh-TW/lw/items/915427",
       "gachaWeight": 0,
       "lwIcon": "/assets/lw-skills/d32390d7eccd2ea7715f49521f222909cbb60f37fc946258a78c3662ad147576.webp",
-      "d": "學習 貫穿免疫昏迷。技能品質依天堂W；商店售價與未公開學習條件採永夜設定。",
+      "d": "學習 貫穿免疫昏迷。技能品質、商店售價與學習條件依永夜設定。",
       "lwItemIconSource": "https://6sword.com/icons/lw/Item/Contribution_Legend.webp"
     },
     "lw_book_916732": {
@@ -9906,7 +9906,7 @@
       "lwSourceUrl": "https://6sword.com/zh-TW/lw/items/916732",
       "gachaWeight": 0,
       "lwIcon": "/assets/lw-skills/c4659608cd43b44da3e494c83ea9f1dc8dfd931ef7651ab72d8deffbbc697b17.webp",
-      "d": "學習 提升傷害。技能品質依天堂W；商店售價與未公開學習條件採永夜設定。",
+      "d": "學習 提升傷害。技能品質、商店售價與學習條件依永夜設定。",
       "lwItemIconSource": "https://6sword.com/icons/lw/Item/Contribution_Common.webp"
     },
     "lw_book_916731": {
@@ -9921,7 +9921,7 @@
       "lwSourceUrl": "https://6sword.com/zh-TW/lw/items/916731",
       "gachaWeight": 0,
       "lwIcon": "/assets/lw-skills/c4659608cd43b44da3e494c83ea9f1dc8dfd931ef7651ab72d8deffbbc697b17.webp",
-      "d": "學習 提升武器。技能品質依天堂W；商店售價與未公開學習條件採永夜設定。",
+      "d": "學習 提升武器。技能品質、商店售價與學習條件依永夜設定。",
       "lwItemIconSource": "https://6sword.com/icons/lw/Item/Contribution_Common.webp"
     },
     "lw_book_916733": {
@@ -9936,7 +9936,7 @@
       "lwSourceUrl": "https://6sword.com/zh-TW/lw/items/916733",
       "gachaWeight": 0,
       "lwIcon": "/assets/lw-skills/01ccb50fa466921cccd36c01cda73bff2779d3ab89ba4089ada13f193c88c3c6.webp",
-      "d": "學習 增加致命。技能品質依天堂W；商店售價與未公開學習條件採永夜設定。",
+      "d": "學習 增加致命。技能品質、商店售價與學習條件依永夜設定。",
       "lwItemIconSource": "https://6sword.com/icons/lw/Item/Contribution_UnCommon.webp"
     },
     "lw_book_916734": {
@@ -9951,7 +9951,7 @@
       "lwSourceUrl": "https://6sword.com/zh-TW/lw/items/916734",
       "gachaWeight": 0,
       "lwIcon": "/assets/lw-skills/01ccb50fa466921cccd36c01cda73bff2779d3ab89ba4089ada13f193c88c3c6.webp",
-      "d": "學習 增加貫穿。技能品質依天堂W；商店售價與未公開學習條件採永夜設定。",
+      "d": "學習 增加貫穿。技能品質、商店售價與學習條件依永夜設定。",
       "lwItemIconSource": "https://6sword.com/icons/lw/Item/Contribution_UnCommon.webp"
     },
     "lw_book_916737": {
@@ -9966,7 +9966,7 @@
       "lwSourceUrl": "https://6sword.com/zh-TW/lw/items/916737",
       "gachaWeight": 0,
       "lwIcon": "/assets/lw-skills/9b326574fa1d9426946b511f933c62c3766d7d6a0a04a329d38e01da4fb9639f.webp",
-      "d": "學習 強健加持。技能品質依天堂W；商店售價與未公開學習條件採永夜設定。",
+      "d": "學習 強健加持。技能品質、商店售價與學習條件依永夜設定。",
       "lwItemIconSource": "https://6sword.com/icons/lw/Item/Contribution_Rare.webp"
     },
     "lw_book_916738": {
@@ -9981,7 +9981,7 @@
       "lwSourceUrl": "https://6sword.com/zh-TW/lw/items/916738",
       "gachaWeight": 0,
       "lwIcon": "/assets/lw-skills/9b326574fa1d9426946b511f933c62c3766d7d6a0a04a329d38e01da4fb9639f.webp",
-      "d": "學習 防禦加持。技能品質依天堂W；商店售價與未公開學習條件採永夜設定。",
+      "d": "學習 防禦加持。技能品質、商店售價與學習條件依永夜設定。",
       "lwItemIconSource": "https://6sword.com/icons/lw/Item/Contribution_Rare.webp"
     },
     "lw_book_916739": {
@@ -9996,7 +9996,7 @@
       "lwSourceUrl": "https://6sword.com/zh-TW/lw/items/916739",
       "gachaWeight": 0,
       "lwIcon": "/assets/lw-skills/a1e5362a75950171ec561b0f3be0f15cf1ca10641bf12a6c794e7805a464933a.webp",
-      "d": "學習 昏迷防護。技能品質依天堂W；商店售價與未公開學習條件採永夜設定。",
+      "d": "學習 昏迷防護。技能品質、商店售價與學習條件依永夜設定。",
       "lwItemIconSource": "https://6sword.com/icons/lw/Item/Contribution_Epic.webp"
     },
     "lw_book_916740": {
@@ -10011,7 +10011,7 @@
       "lwSourceUrl": "https://6sword.com/zh-TW/lw/items/916740",
       "gachaWeight": 0,
       "lwIcon": "/assets/lw-skills/a1e5362a75950171ec561b0f3be0f15cf1ca10641bf12a6c794e7805a464933a.webp",
-      "d": "學習 無視昏迷裝甲。技能品質依天堂W；商店售價與未公開學習條件採永夜設定。",
+      "d": "學習 無視昏迷裝甲。技能品質、商店售價與學習條件依永夜設定。",
       "lwItemIconSource": "https://6sword.com/icons/lw/Item/Contribution_Epic.webp"
     },
     "lw_book_928285": {
@@ -10026,7 +10026,7 @@
       "lwSourceUrl": "https://6sword.com/zh-TW/lw/items/928285",
       "gachaWeight": 0,
       "lwIcon": "/assets/lw-skills/cbd74aeebcbc409054f83490d1b1f0cf3aea23449e16a582b1bee8cbb7766da8.webp",
-      "d": "學習 生存的吶喊 (終極無限) : 被動。技能品質依天堂W；商店售價與未公開學習條件採永夜設定。",
+      "d": "學習 生存的吶喊 (終極無限) : 被動。技能品質、商店售價與學習條件依永夜設定。",
       "lwItemIconSource": "https://6sword.com/icons/lw/Item/Contribution_Mythic.webp"
     },
     "lw_book_919649": {
@@ -10041,7 +10041,7 @@
       "lwSourceUrl": "https://6sword.com/zh-TW/lw/items/919649",
       "gachaWeight": 0,
       "lwIcon": "/assets/lw-skills/d32390d7eccd2ea7715f49521f222909cbb60f37fc946258a78c3662ad147576.webp",
-      "d": "學習 護甲遽升。技能品質依天堂W；商店售價與未公開學習條件採永夜設定。",
+      "d": "學習 護甲遽升。技能品質、商店售價與學習條件依永夜設定。",
       "lwItemIconSource": "https://6sword.com/icons/lw/Item/Contribution_Legend.webp"
     },
     "lw_book_919650": {
@@ -10056,7 +10056,7 @@
       "lwSourceUrl": "https://6sword.com/zh-TW/lw/items/919650",
       "gachaWeight": 0,
       "lwIcon": "/assets/lw-skills/d32390d7eccd2ea7715f49521f222909cbb60f37fc946258a78c3662ad147576.webp",
-      "d": "學習 經驗遽升。技能品質依天堂W；商店售價與未公開學習條件採永夜設定。",
+      "d": "學習 經驗遽升。技能品質、商店售價與學習條件依永夜設定。",
       "lwItemIconSource": "https://6sword.com/icons/lw/Item/Contribution_Legend.webp"
     },
     "lw_book_923271": {
@@ -10071,7 +10071,7 @@
       "lwSourceUrl": "https://6sword.com/zh-TW/lw/items/923271",
       "gachaWeight": 0,
       "lwIcon": "/assets/lw-skills/c3d6ce5f21249f2cd50eccc364c1b5bd7c5fe60ddecef1f09254f8a2457788c2.webp",
-      "d": "學習 支配。技能品質依天堂W；商店售價與未公開學習條件採永夜設定。",
+      "d": "學習 支配。技能品質、商店售價與學習條件依永夜設定。",
       "lwItemIconSource": "https://6sword.com/icons/lw/Item/strategybook_1.webp"
     },
     "lw_book_923273": {
@@ -10086,7 +10086,7 @@
       "lwSourceUrl": "https://6sword.com/zh-TW/lw/items/923273",
       "gachaWeight": 0,
       "lwIcon": "/assets/lw-skills/417e3fefbe187b449a6f49b4b864aca233ee84dfab6ff8c9890d51ad2dd435ef.webp",
-      "d": "學習 精準目標 (大師) : 被動。技能品質依天堂W；商店售價與未公開學習條件採永夜設定。",
+      "d": "學習 精準目標 (大師) : 被動。技能品質、商店售價與學習條件依永夜設定。",
       "lwItemIconSource": "https://6sword.com/icons/lw/Item/strategybook_2.webp"
     },
     "lw_book_923275": {
@@ -10101,7 +10101,7 @@
       "lwSourceUrl": "https://6sword.com/zh-TW/lw/items/923275",
       "gachaWeight": 0,
       "lwIcon": "/assets/lw-skills/22037e64f94aa0c40a6878aad60854e410d48b6480ebb84eb50128c4fa296df1.webp",
-      "d": "學習 精準目標(強化大師) : 被動。技能品質依天堂W；商店售價與未公開學習條件採永夜設定。",
+      "d": "學習 精準目標(強化大師) : 被動。技能品質、商店售價與學習條件依永夜設定。",
       "lwItemIconSource": "https://6sword.com/icons/lw/Item/skillbook_Unique.webp"
     },
     "lw_book_923277": {
@@ -10116,7 +10116,7 @@
       "lwSourceUrl": "https://6sword.com/zh-TW/lw/items/923277",
       "gachaWeight": 0,
       "lwIcon": "/assets/lw-skills/9fd3259866ed1a733727fa7c67204650c474e1445b0f4d2127a1fd16634753ce.webp",
-      "d": "學習 勝利指揮。技能品質依天堂W；商店售價與未公開學習條件採永夜設定。",
+      "d": "學習 勝利指揮。技能品質、商店售價與學習條件依永夜設定。",
       "lwItemIconSource": "https://6sword.com/icons/lw/Item/strategybook_3.webp"
     },
     "lw_book_923279": {
@@ -10131,7 +10131,7 @@
       "lwSourceUrl": "https://6sword.com/zh-TW/lw/items/923279",
       "gachaWeight": 0,
       "lwIcon": "/assets/lw-skills/9fd3259866ed1a733727fa7c67204650c474e1445b0f4d2127a1fd16634753ce.webp",
-      "d": "學習 灼熱守護者。技能品質依天堂W；商店售價與未公開學習條件採永夜設定。",
+      "d": "學習 灼熱守護者。技能品質、商店售價與學習條件依永夜設定。",
       "lwItemIconSource": "https://6sword.com/icons/lw/Item/strategybook_3.webp"
     },
     "lw_book_924648": {
@@ -10146,7 +10146,7 @@
       "lwSourceUrl": "https://6sword.com/zh-TW/lw/items/924648",
       "gachaWeight": 0,
       "lwIcon": "/assets/lw-skills/01ccb50fa466921cccd36c01cda73bff2779d3ab89ba4089ada13f193c88c3c6.webp",
-      "d": "學習 進階抵抗。技能品質依天堂W；商店售價與未公開學習條件採永夜設定。",
+      "d": "學習 進階抵抗。技能品質、商店售價與學習條件依永夜設定。",
       "lwItemIconSource": "https://6sword.com/icons/lw/Item/Contribution_UnCommon.webp"
     },
     "lw_book_924649": {
@@ -10161,7 +10161,7 @@
       "lwSourceUrl": "https://6sword.com/zh-TW/lw/items/924649",
       "gachaWeight": 0,
       "lwIcon": "/assets/lw-skills/9b326574fa1d9426946b511f933c62c3766d7d6a0a04a329d38e01da4fb9639f.webp",
-      "d": "學習 高等抵抗。技能品質依天堂W；商店售價與未公開學習條件採永夜設定。",
+      "d": "學習 高等抵抗。技能品質、商店售價與學習條件依永夜設定。",
       "lwItemIconSource": "https://6sword.com/icons/lw/Item/Contribution_Rare.webp"
     },
     "lw_book_924650": {
@@ -10176,7 +10176,7 @@
       "lwSourceUrl": "https://6sword.com/zh-TW/lw/items/924650",
       "gachaWeight": 0,
       "lwIcon": "/assets/lw-skills/a1e5362a75950171ec561b0f3be0f15cf1ca10641bf12a6c794e7805a464933a.webp",
-      "d": "學習 卓越抵抗。技能品質依天堂W；商店售價與未公開學習條件採永夜設定。",
+      "d": "學習 卓越抵抗。技能品質、商店售價與學習條件依永夜設定。",
       "lwItemIconSource": "https://6sword.com/icons/lw/Item/Contribution_Epic.webp"
     },
     "lw_book_924651": {
@@ -10191,7 +10191,7 @@
       "lwSourceUrl": "https://6sword.com/zh-TW/lw/items/924651",
       "gachaWeight": 0,
       "lwIcon": "/assets/lw-skills/d32390d7eccd2ea7715f49521f222909cbb60f37fc946258a78c3662ad147576.webp",
-      "d": "學習 最終抵抗。技能品質依天堂W；商店售價與未公開學習條件採永夜設定。",
+      "d": "學習 最終抵抗。技能品質、商店售價與學習條件依永夜設定。",
       "lwItemIconSource": "https://6sword.com/icons/lw/Item/Contribution_Legend.webp"
     },
     "lw_book_927468": {
@@ -10206,7 +10206,7 @@
       "lwSourceUrl": "https://6sword.com/zh-TW/lw/items/927468",
       "gachaWeight": 0,
       "lwIcon": "/assets/lw-skills/9fd3259866ed1a733727fa7c67204650c474e1445b0f4d2127a1fd16634753ce.webp",
-      "d": "學習 精通閃避 (大師) : 被動。技能品質依天堂W；商店售價與未公開學習條件採永夜設定。",
+      "d": "學習 精通閃避 (大師) : 被動。技能品質、商店售價與學習條件依永夜設定。",
       "lwItemIconSource": "https://6sword.com/icons/lw/Item/strategybook_3.webp"
     },
     "lw_book_5020": {
@@ -10221,7 +10221,7 @@
       "lwSourceUrl": "https://6sword.com/zh-TW/lw/items/5020",
       "gachaWeight": 0,
       "lwIcon": "/assets/lw-skills/c4cff7c9cb4e32cc1d1f9205ccad04f987d47e12c1cfe414f6c73bda8ff685fc.webp",
-      "d": "學習 起死回生術。技能品質依天堂W；商店售價與未公開學習條件採永夜設定。",
+      "d": "學習 起死回生術。技能品質、商店售價與學習條件依永夜設定。",
       "lwItemIconSource": "https://6sword.com/icons/lw/Item/spellbook_1.webp"
     },
     "lw_book_5016": {
@@ -10236,7 +10236,7 @@
       "lwSourceUrl": "https://6sword.com/zh-TW/lw/items/5016",
       "gachaWeight": 0,
       "lwIcon": "/assets/lw-skills/c4cff7c9cb4e32cc1d1f9205ccad04f987d47e12c1cfe414f6c73bda8ff685fc.webp",
-      "d": "學習 冥想術。技能品質依天堂W；商店售價與未公開學習條件採永夜設定。",
+      "d": "學習 冥想術。技能品質、商店售價與學習條件依永夜設定。",
       "lwItemIconSource": "https://6sword.com/icons/lw/Item/spellbook_1.webp"
     },
     "lw_book_5022": {
@@ -10251,7 +10251,7 @@
       "lwSourceUrl": "https://6sword.com/zh-TW/lw/items/5022",
       "gachaWeight": 0,
       "lwIcon": "/assets/lw-skills/c4cff7c9cb4e32cc1d1f9205ccad04f987d47e12c1cfe414f6c73bda8ff685fc.webp",
-      "d": "學習 寒冰氣息。技能品質依天堂W；商店售價與未公開學習條件採永夜設定。",
+      "d": "學習 寒冰氣息。技能品質、商店售價與學習條件依永夜設定。",
       "lwItemIconSource": "https://6sword.com/icons/lw/Item/spellbook_1.webp"
     },
     "lw_book_5030": {
@@ -10266,7 +10266,7 @@
       "lwSourceUrl": "https://6sword.com/zh-TW/lw/items/5030",
       "gachaWeight": 0,
       "lwIcon": "/assets/lw-skills/c4cff7c9cb4e32cc1d1f9205ccad04f987d47e12c1cfe414f6c73bda8ff685fc.webp",
-      "d": "學習 燃燒的火球。技能品質依天堂W；商店售價與未公開學習條件採永夜設定。",
+      "d": "學習 燃燒的火球。技能品質、商店售價與學習條件依永夜設定。",
       "lwItemIconSource": "https://6sword.com/icons/lw/Item/spellbook_1.webp"
     },
     "lw_book_5024": {
@@ -10281,7 +10281,7 @@
       "lwSourceUrl": "https://6sword.com/zh-TW/lw/items/5024",
       "gachaWeight": 0,
       "lwIcon": "/assets/lw-skills/c4cff7c9cb4e32cc1d1f9205ccad04f987d47e12c1cfe414f6c73bda8ff685fc.webp",
-      "d": "學習 魔力奪取。技能品質依天堂W；商店售價與未公開學習條件採永夜設定。",
+      "d": "學習 魔力奪取。技能品質、商店售價與學習條件依永夜設定。",
       "lwItemIconSource": "https://6sword.com/icons/lw/Item/spellbook_1.webp"
     },
     "lw_book_5026": {
@@ -10296,7 +10296,7 @@
       "lwSourceUrl": "https://6sword.com/zh-TW/lw/items/5026",
       "gachaWeight": 0,
       "lwIcon": "/assets/lw-skills/c4cff7c9cb4e32cc1d1f9205ccad04f987d47e12c1cfe414f6c73bda8ff685fc.webp",
-      "d": "學習 吸血鬼之吻。技能品質依天堂W；商店售價與未公開學習條件採永夜設定。",
+      "d": "學習 吸血鬼之吻。技能品質、商店售價與學習條件依永夜設定。",
       "lwItemIconSource": "https://6sword.com/icons/lw/Item/spellbook_1.webp"
     },
     "lw_book_5028": {
@@ -10311,7 +10311,7 @@
       "lwSourceUrl": "https://6sword.com/zh-TW/lw/items/5028",
       "gachaWeight": 0,
       "lwIcon": "/assets/lw-skills/c4cff7c9cb4e32cc1d1f9205ccad04f987d47e12c1cfe414f6c73bda8ff685fc.webp",
-      "d": "學習 魔法屏障。技能品質依天堂W；商店售價與未公開學習條件採永夜設定。",
+      "d": "學習 魔法屏障。技能品質、商店售價與學習條件依永夜設定。",
       "lwItemIconSource": "https://6sword.com/icons/lw/Item/spellbook_1.webp"
     },
     "lw_book_5032": {
@@ -10326,7 +10326,7 @@
       "lwSourceUrl": "https://6sword.com/zh-TW/lw/items/5032",
       "gachaWeight": 0,
       "lwIcon": "/assets/lw-skills/c4cff7c9cb4e32cc1d1f9205ccad04f987d47e12c1cfe414f6c73bda8ff685fc.webp",
-      "d": "學習 治癒術。技能品質依天堂W；商店售價與未公開學習條件採永夜設定。",
+      "d": "學習 治癒術。技能品質、商店售價與學習條件依永夜設定。",
       "lwItemIconSource": "https://6sword.com/icons/lw/Item/spellbook_1.webp"
     },
     "lw_book_5034": {
@@ -10341,7 +10341,7 @@
       "lwSourceUrl": "https://6sword.com/zh-TW/lw/items/5034",
       "gachaWeight": 0,
       "lwIcon": "/assets/lw-skills/3c9541955340f7b9c8673523810615407a72c73103246617bb0c9767501ca570.webp",
-      "d": "學習 聖潔之光。技能品質依天堂W；商店售價與未公開學習條件採永夜設定。",
+      "d": "學習 聖潔之光。技能品質、商店售價與學習條件依永夜設定。",
       "lwItemIconSource": "https://6sword.com/icons/lw/Item/spellbook_2.webp"
     },
     "lw_book_5046": {
@@ -10356,7 +10356,7 @@
       "lwSourceUrl": "https://6sword.com/zh-TW/lw/items/5046",
       "gachaWeight": 0,
       "lwIcon": "/assets/lw-skills/3c9541955340f7b9c8673523810615407a72c73103246617bb0c9767501ca570.webp",
-      "d": "學習 加速術。技能品質依天堂W；商店售價與未公開學習條件採永夜設定。",
+      "d": "學習 加速術。技能品質、商店售價與學習條件依永夜設定。",
       "lwItemIconSource": "https://6sword.com/icons/lw/Item/spellbook_2.webp"
     },
     "lw_book_5044": {
@@ -10371,7 +10371,7 @@
       "lwSourceUrl": "https://6sword.com/zh-TW/lw/items/5044",
       "gachaWeight": 0,
       "lwIcon": "/assets/lw-skills/3c9541955340f7b9c8673523810615407a72c73103246617bb0c9767501ca570.webp",
-      "d": "學習 極道落雷。技能品質依天堂W；商店售價與未公開學習條件採永夜設定。",
+      "d": "學習 極道落雷。技能品質、商店售價與學習條件依永夜設定。",
       "lwItemIconSource": "https://6sword.com/icons/lw/Item/spellbook_2.webp"
     },
     "lw_book_5040": {
@@ -10386,7 +10386,7 @@
       "lwSourceUrl": "https://6sword.com/zh-TW/lw/items/5040",
       "gachaWeight": 0,
       "lwIcon": "/assets/lw-skills/3c9541955340f7b9c8673523810615407a72c73103246617bb0c9767501ca570.webp",
-      "d": "學習 烈炎術。技能品質依天堂W；商店售價與未公開學習條件採永夜設定。",
+      "d": "學習 烈炎術。技能品質、商店售價與學習條件依永夜設定。",
       "lwItemIconSource": "https://6sword.com/icons/lw/Item/spellbook_2.webp"
     },
     "lw_book_5042": {
@@ -10401,7 +10401,7 @@
       "lwSourceUrl": "https://6sword.com/zh-TW/lw/items/5042",
       "gachaWeight": 0,
       "lwIcon": "/assets/lw-skills/3c9541955340f7b9c8673523810615407a72c73103246617bb0c9767501ca570.webp",
-      "d": "學習 附魔強化。技能品質依天堂W；商店售價與未公開學習條件採永夜設定。",
+      "d": "學習 附魔強化。技能品質、商店售價與學習條件依永夜設定。",
       "lwItemIconSource": "https://6sword.com/icons/lw/Item/spellbook_2.webp"
     },
     "lw_book_5050": {
@@ -10416,7 +10416,7 @@
       "lwSourceUrl": "https://6sword.com/zh-TW/lw/items/5050",
       "gachaWeight": 0,
       "lwIcon": "/assets/lw-skills/3c9541955340f7b9c8673523810615407a72c73103246617bb0c9767501ca570.webp",
-      "d": "學習 地裂術。技能品質依天堂W；商店售價與未公開學習條件採永夜設定。",
+      "d": "學習 地裂術。技能品質、商店售價與學習條件依永夜設定。",
       "lwItemIconSource": "https://6sword.com/icons/lw/Item/spellbook_2.webp"
     },
     "lw_book_900127": {
@@ -10431,7 +10431,7 @@
       "lwSourceUrl": "https://6sword.com/zh-TW/lw/items/900127",
       "gachaWeight": 0,
       "lwIcon": "/assets/lw-skills/3c9541955340f7b9c8673523810615407a72c73103246617bb0c9767501ca570.webp",
-      "d": "學習 精準強化。技能品質依天堂W；商店售價與未公開學習條件採永夜設定。",
+      "d": "學習 精準強化。技能品質、商店售價與學習條件依永夜設定。",
       "lwItemIconSource": "https://6sword.com/icons/lw/Item/spellbook_2.webp"
     },
     "lw_book_5054": {
@@ -10446,7 +10446,7 @@
       "lwSourceUrl": "https://6sword.com/zh-TW/lw/items/5054",
       "gachaWeight": 0,
       "lwIcon": "/assets/lw-skills/a13f05608b44a4f409e82d90d66f76ac6595ce8116e9239bebcca80ddd130508.webp",
-      "d": "學習 體力回復術。技能品質依天堂W；商店售價與未公開學習條件採永夜設定。",
+      "d": "學習 體力回復術。技能品質、商店售價與學習條件依永夜設定。",
       "lwItemIconSource": "https://6sword.com/icons/lw/Item/spellbook_rare.webp"
     },
     "lw_book_5052": {
@@ -10461,7 +10461,7 @@
       "lwSourceUrl": "https://6sword.com/zh-TW/lw/items/5052",
       "gachaWeight": 0,
       "lwIcon": "/assets/lw-skills/23cbb4070b964fb52015723e92a08e8d531ec1bc75f17acfb5e1b705189bf4de.webp",
-      "d": "學習 神聖疾走。技能品質依天堂W；商店售價與未公開學習條件採永夜設定。",
+      "d": "學習 神聖疾走。技能品質、商店售價與學習條件依永夜設定。",
       "lwItemIconSource": "https://6sword.com/icons/lw/Item/spellbook_Unique.webp"
     },
     "lw_book_5058": {
@@ -10476,7 +10476,7 @@
       "lwSourceUrl": "https://6sword.com/zh-TW/lw/items/5058",
       "gachaWeight": 0,
       "lwIcon": "/assets/lw-skills/a13f05608b44a4f409e82d90d66f76ac6595ce8116e9239bebcca80ddd130508.webp",
-      "d": "學習 寒冰尖刺。技能品質依天堂W；商店售價與未公開學習條件採永夜設定。",
+      "d": "學習 寒冰尖刺。技能品質、商店售價與學習條件依永夜設定。",
       "lwItemIconSource": "https://6sword.com/icons/lw/Item/spellbook_rare.webp"
     },
     "lw_book_5060": {
@@ -10491,7 +10491,7 @@
       "lwSourceUrl": "https://6sword.com/zh-TW/lw/items/5060",
       "gachaWeight": 0,
       "lwIcon": "/assets/lw-skills/a13f05608b44a4f409e82d90d66f76ac6595ce8116e9239bebcca80ddd130508.webp",
-      "d": "學習 靈魂昇華。技能品質依天堂W；商店售價與未公開學習條件採永夜設定。",
+      "d": "學習 靈魂昇華。技能品質、商店售價與學習條件依永夜設定。",
       "lwItemIconSource": "https://6sword.com/icons/lw/Item/spellbook_rare.webp"
     },
     "lw_book_908065": {
@@ -10506,7 +10506,7 @@
       "lwSourceUrl": "https://6sword.com/zh-TW/lw/items/908065",
       "gachaWeight": 0,
       "lwIcon": "/assets/lw-skills/23cbb4070b964fb52015723e92a08e8d531ec1bc75f17acfb5e1b705189bf4de.webp",
-      "d": "學習 魔法相消術。技能品質依天堂W；商店售價與未公開學習條件採永夜設定。",
+      "d": "學習 魔法相消術。技能品質、商店售價與學習條件依永夜設定。",
       "lwItemIconSource": "https://6sword.com/icons/lw/Item/spellbook_Unique.webp"
     },
     "lw_book_5080": {
@@ -10521,7 +10521,7 @@
       "lwSourceUrl": "https://6sword.com/zh-TW/lw/items/5080",
       "gachaWeight": 0,
       "lwIcon": "/assets/lw-skills/a13f05608b44a4f409e82d90d66f76ac6595ce8116e9239bebcca80ddd130508.webp",
-      "d": "學習 龍捲風。技能品質依天堂W；商店售價與未公開學習條件採永夜設定。",
+      "d": "學習 龍捲風。技能品質、商店售價與學習條件依永夜設定。",
       "lwItemIconSource": "https://6sword.com/icons/lw/Item/spellbook_rare.webp"
     },
     "lw_book_5064": {
@@ -10536,7 +10536,7 @@
       "lwSourceUrl": "https://6sword.com/zh-TW/lw/items/5064",
       "gachaWeight": 0,
       "lwIcon": "/assets/lw-skills/23cbb4070b964fb52015723e92a08e8d531ec1bc75f17acfb5e1b705189bf4de.webp",
-      "d": "學習 聖結界。技能品質依天堂W；商店售價與未公開學習條件採永夜設定。",
+      "d": "學習 聖結界。技能品質、商店售價與學習條件依永夜設定。",
       "lwItemIconSource": "https://6sword.com/icons/lw/Item/spellbook_Unique.webp"
     },
     "lw_book_900129": {
@@ -10551,7 +10551,7 @@
       "lwSourceUrl": "https://6sword.com/zh-TW/lw/items/900129",
       "gachaWeight": 0,
       "lwIcon": "/assets/lw-skills/40954d5ca7840a1157040c3d528d53c43b53f4ef2863b38bb8fd624455ca250a.webp",
-      "d": "學習 恢復屏障。技能品質依天堂W；商店售價與未公開學習條件採永夜設定。",
+      "d": "學習 恢復屏障。技能品質、商店售價與學習條件依永夜設定。",
       "lwItemIconSource": "https://6sword.com/icons/lw/Item/spellbook_3.webp"
     },
     "lw_book_900135": {
@@ -10566,7 +10566,7 @@
       "lwSourceUrl": "https://6sword.com/zh-TW/lw/items/900135",
       "gachaWeight": 0,
       "lwIcon": "/assets/lw-skills/40954d5ca7840a1157040c3d528d53c43b53f4ef2863b38bb8fd624455ca250a.webp",
-      "d": "學習 時間靜止。技能品質依天堂W；商店售價與未公開學習條件採永夜設定。",
+      "d": "學習 時間靜止。技能品質、商店售價與學習條件依永夜設定。",
       "lwItemIconSource": "https://6sword.com/icons/lw/Item/spellbook_3.webp"
     },
     "lw_book_5070": {
@@ -10581,7 +10581,7 @@
       "lwSourceUrl": "https://6sword.com/zh-TW/lw/items/5070",
       "gachaWeight": 0,
       "lwIcon": "/assets/lw-skills/23cbb4070b964fb52015723e92a08e8d531ec1bc75f17acfb5e1b705189bf4de.webp",
-      "d": "學習 沉睡之霧。技能品質依天堂W；商店售價與未公開學習條件採永夜設定。",
+      "d": "學習 沉睡之霧。技能品質、商店售價與學習條件依永夜設定。",
       "lwItemIconSource": "https://6sword.com/icons/lw/Item/spellbook_Unique.webp"
     },
     "lw_book_5074": {
@@ -10596,7 +10596,7 @@
       "lwSourceUrl": "https://6sword.com/zh-TW/lw/items/5074",
       "gachaWeight": 0,
       "lwIcon": "/assets/lw-skills/40954d5ca7840a1157040c3d528d53c43b53f4ef2863b38bb8fd624455ca250a.webp",
-      "d": "學習 流星雨。技能品質依天堂W；商店售價與未公開學習條件採永夜設定。",
+      "d": "學習 流星雨。技能品質、商店售價與學習條件依永夜設定。",
       "lwItemIconSource": "https://6sword.com/icons/lw/Item/spellbook_3.webp"
     },
     "lw_book_5072": {
@@ -10611,7 +10611,7 @@
       "lwSourceUrl": "https://6sword.com/zh-TW/lw/items/5072",
       "gachaWeight": 0,
       "lwIcon": "/assets/lw-skills/40954d5ca7840a1157040c3d528d53c43b53f4ef2863b38bb8fd624455ca250a.webp",
-      "d": "學習 究極光裂術。技能品質依天堂W；商店售價與未公開學習條件採永夜設定。",
+      "d": "學習 究極光裂術。技能品質、商店售價與學習條件依永夜設定。",
       "lwItemIconSource": "https://6sword.com/icons/lw/Item/spellbook_3.webp"
     },
     "lw_book_5076": {
@@ -10626,7 +10626,7 @@
       "lwSourceUrl": "https://6sword.com/zh-TW/lw/items/5076",
       "gachaWeight": 0,
       "lwIcon": "/assets/lw-skills/40954d5ca7840a1157040c3d528d53c43b53f4ef2863b38bb8fd624455ca250a.webp",
-      "d": "學習 絕對屏障。技能品質依天堂W；商店售價與未公開學習條件採永夜設定。",
+      "d": "學習 絕對屏障。技能品質、商店售價與學習條件依永夜設定。",
       "lwItemIconSource": "https://6sword.com/icons/lw/Item/spellbook_3.webp"
     },
     "lw_book_5078": {
@@ -10641,7 +10641,7 @@
       "lwSourceUrl": "https://6sword.com/zh-TW/lw/items/5078",
       "gachaWeight": 0,
       "lwIcon": "/assets/lw-skills/40954d5ca7840a1157040c3d528d53c43b53f4ef2863b38bb8fd624455ca250a.webp",
-      "d": "學習 幽靈。技能品質依天堂W；商店售價與未公開學習條件採永夜設定。",
+      "d": "學習 幽靈。技能品質、商店售價與學習條件依永夜設定。",
       "lwItemIconSource": "https://6sword.com/icons/lw/Item/spellbook_3.webp"
     },
     "lw_book_902718": {
@@ -10656,7 +10656,7 @@
       "lwSourceUrl": "https://6sword.com/zh-TW/lw/items/902718",
       "gachaWeight": 0,
       "lwIcon": "/assets/lw-skills/23cbb4070b964fb52015723e92a08e8d531ec1bc75f17acfb5e1b705189bf4de.webp",
-      "d": "學習 精準強化 (古代) : 被動。技能品質依天堂W；商店售價與未公開學習條件採永夜設定。",
+      "d": "學習 精準強化 (古代) : 被動。技能品質、商店售價與學習條件依永夜設定。",
       "lwItemIconSource": "https://6sword.com/icons/lw/Item/spellbook_Unique.webp"
     },
     "lw_book_903526": {
@@ -10671,7 +10671,7 @@
       "lwSourceUrl": "https://6sword.com/zh-TW/lw/items/903526",
       "gachaWeight": 0,
       "lwIcon": "/assets/lw-skills/23cbb4070b964fb52015723e92a08e8d531ec1bc75f17acfb5e1b705189bf4de.webp",
-      "d": "學習 靈魂昇華 (古代) : 被動。技能品質依天堂W；商店售價與未公開學習條件採永夜設定。",
+      "d": "學習 靈魂昇華 (古代) : 被動。技能品質、商店售價與學習條件依永夜設定。",
       "lwItemIconSource": "https://6sword.com/icons/lw/Item/spellbook_Unique.webp"
     },
     "lw_book_904296": {
@@ -10686,7 +10686,7 @@
       "lwSourceUrl": "https://6sword.com/zh-TW/lw/items/904296",
       "gachaWeight": 0,
       "lwIcon": "/assets/lw-skills/23cbb4070b964fb52015723e92a08e8d531ec1bc75f17acfb5e1b705189bf4de.webp",
-      "d": "學習 治癒逆行。技能品質依天堂W；商店售價與未公開學習條件採永夜設定。",
+      "d": "學習 治癒逆行。技能品質、商店售價與學習條件依永夜設定。",
       "lwItemIconSource": "https://6sword.com/icons/lw/Item/spellbook_Unique.webp"
     },
     "lw_book_905071": {
@@ -10701,7 +10701,7 @@
       "lwSourceUrl": "https://6sword.com/zh-TW/lw/items/905071",
       "gachaWeight": 0,
       "lwIcon": "/assets/lw-skills/40954d5ca7840a1157040c3d528d53c43b53f4ef2863b38bb8fd624455ca250a.webp",
-      "d": "學習 聖結界 (古代) : 被動。技能品質依天堂W；商店售價與未公開學習條件採永夜設定。",
+      "d": "學習 聖結界 (古代) : 被動。技能品質、商店售價與學習條件依永夜設定。",
       "lwItemIconSource": "https://6sword.com/icons/lw/Item/spellbook_3.webp"
     },
     "lw_book_905877": {
@@ -10716,7 +10716,7 @@
       "lwSourceUrl": "https://6sword.com/zh-TW/lw/items/905877",
       "gachaWeight": 0,
       "lwIcon": "/assets/lw-skills/23cbb4070b964fb52015723e92a08e8d531ec1bc75f17acfb5e1b705189bf4de.webp",
-      "d": "學習 魔法破壞。技能品質依天堂W；商店售價與未公開學習條件採永夜設定。",
+      "d": "學習 魔法破壞。技能品質、商店售價與學習條件依永夜設定。",
       "lwItemIconSource": "https://6sword.com/icons/lw/Item/spellbook_Unique.webp"
     },
     "lw_book_905879": {
@@ -10731,7 +10731,7 @@
       "lwSourceUrl": "https://6sword.com/zh-TW/lw/items/905879",
       "gachaWeight": 0,
       "lwIcon": "/assets/lw-skills/40954d5ca7840a1157040c3d528d53c43b53f4ef2863b38bb8fd624455ca250a.webp",
-      "d": "學習 魔法相消術 (古代) : 被動。技能品質依天堂W；商店售價與未公開學習條件採永夜設定。",
+      "d": "學習 魔法相消術 (古代) : 被動。技能品質、商店售價與學習條件依永夜設定。",
       "lwItemIconSource": "https://6sword.com/icons/lw/Item/spellbook_3.webp"
     },
     "lw_book_907856": {
@@ -10746,7 +10746,7 @@
       "lwSourceUrl": "https://6sword.com/zh-TW/lw/items/907856",
       "gachaWeight": 0,
       "lwIcon": "/assets/lw-skills/23cbb4070b964fb52015723e92a08e8d531ec1bc75f17acfb5e1b705189bf4de.webp",
-      "d": "學習 精通治癒。技能品質依天堂W；商店售價與未公開學習條件採永夜設定。",
+      "d": "學習 精通治癒。技能品質、商店售價與學習條件依永夜設定。",
       "lwItemIconSource": "https://6sword.com/icons/lw/Item/spellbook_Unique.webp"
     },
     "lw_book_909673": {
@@ -10761,7 +10761,7 @@
       "lwSourceUrl": "https://6sword.com/zh-TW/lw/items/909673",
       "gachaWeight": 0,
       "lwIcon": "/assets/lw-skills/40954d5ca7840a1157040c3d528d53c43b53f4ef2863b38bb8fd624455ca250a.webp",
-      "d": "學習 治癒逆行 (古代) : 被動。技能品質依天堂W；商店售價與未公開學習條件採永夜設定。",
+      "d": "學習 治癒逆行 (古代) : 被動。技能品質、商店售價與學習條件依永夜設定。",
       "lwItemIconSource": "https://6sword.com/icons/lw/Item/spellbook_3.webp"
     },
     "lw_book_909726": {
@@ -10776,7 +10776,7 @@
       "lwSourceUrl": "https://6sword.com/zh-TW/lw/items/909726",
       "gachaWeight": 0,
       "lwIcon": "/assets/lw-skills/31d012e44cf17cba092af3aff26f5420f583c211c454701b6b65a40272ec11f7.webp",
-      "d": "學習 特殊攻擊 : 魔法師。技能品質依天堂W；商店售價與未公開學習條件採永夜設定。",
+      "d": "學習 特殊攻擊 : 魔法師。技能品質、商店售價與學習條件依永夜設定。",
       "lwItemIconSource": "https://6sword.com/icons/lw/Item/spellbook_Mythic.webp"
     },
     "lw_book_914540": {
@@ -10791,7 +10791,7 @@
       "lwSourceUrl": "https://6sword.com/zh-TW/lw/items/914540",
       "gachaWeight": 0,
       "lwIcon": "/assets/lw-skills/40954d5ca7840a1157040c3d528d53c43b53f4ef2863b38bb8fd624455ca250a.webp",
-      "d": "學習 釋放。技能品質依天堂W；商店售價與未公開學習條件採永夜設定。",
+      "d": "學習 釋放。技能品質、商店售價與學習條件依永夜設定。",
       "lwItemIconSource": "https://6sword.com/icons/lw/Item/spellbook_3.webp"
     },
     "lw_book_915881": {
@@ -10806,7 +10806,7 @@
       "lwSourceUrl": "https://6sword.com/zh-TW/lw/items/915881",
       "gachaWeight": 0,
       "lwIcon": "/assets/lw-skills/31d012e44cf17cba092af3aff26f5420f583c211c454701b6b65a40272ec11f7.webp",
-      "d": "學習 死亡厄運。技能品質依天堂W；商店售價與未公開學習條件採永夜設定。",
+      "d": "學習 死亡厄運。技能品質、商店售價與學習條件依永夜設定。",
       "lwItemIconSource": "https://6sword.com/icons/lw/Item/spellbook_Mythic.webp"
     },
     "lw_book_920889": {
@@ -10821,7 +10821,7 @@
       "lwSourceUrl": "https://6sword.com/zh-TW/lw/items/920889",
       "gachaWeight": 0,
       "lwIcon": "/assets/lw-skills/23cbb4070b964fb52015723e92a08e8d531ec1bc75f17acfb5e1b705189bf4de.webp",
-      "d": "學習 終極治癒。技能品質依天堂W；商店售價與未公開學習條件採永夜設定。",
+      "d": "學習 終極治癒。技能品質、商店售價與學習條件依永夜設定。",
       "lwItemIconSource": "https://6sword.com/icons/lw/Item/spellbook_Unique.webp"
     },
     "lw_book_920891": {
@@ -10836,7 +10836,7 @@
       "lwSourceUrl": "https://6sword.com/zh-TW/lw/items/920891",
       "gachaWeight": 0,
       "lwIcon": "/assets/lw-skills/23cbb4070b964fb52015723e92a08e8d531ec1bc75f17acfb5e1b705189bf4de.webp",
-      "d": "學習 消除。技能品質依天堂W；商店售價與未公開學習條件採永夜設定。",
+      "d": "學習 消除。技能品質、商店售價與學習條件依永夜設定。",
       "lwItemIconSource": "https://6sword.com/icons/lw/Item/spellbook_Unique.webp"
     },
     "lw_book_927464": {
@@ -10851,7 +10851,7 @@
       "lwSourceUrl": "https://6sword.com/zh-TW/lw/items/927464",
       "gachaWeight": 0,
       "lwIcon": "/assets/lw-skills/40954d5ca7840a1157040c3d528d53c43b53f4ef2863b38bb8fd624455ca250a.webp",
-      "d": "學習 精通治癒 (古代) : 被動。技能品質依天堂W；商店售價與未公開學習條件採永夜設定。",
+      "d": "學習 精通治癒 (古代) : 被動。技能品質、商店售價與學習條件依永夜設定。",
       "lwItemIconSource": "https://6sword.com/icons/lw/Item/spellbook_3.webp"
     },
     "lw_book_5102": {
@@ -10866,7 +10866,7 @@
       "lwSourceUrl": "https://6sword.com/zh-TW/lw/items/5102",
       "gachaWeight": 0,
       "lwIcon": "/assets/lw-skills/e746593f1621b886447726307c2a30b646f3d75c605dbef5047bf290c9be468f.webp",
-      "d": "學習 衝擊之暈。技能品質依天堂W；商店售價與未公開學習條件採永夜設定。",
+      "d": "學習 衝擊之暈。技能品質、商店售價與學習條件依永夜設定。",
       "lwItemIconSource": "https://6sword.com/icons/lw/Item/skillbook_1.webp"
     },
     "lw_book_5100": {
@@ -10881,7 +10881,7 @@
       "lwSourceUrl": "https://6sword.com/zh-TW/lw/items/5100",
       "gachaWeight": 0,
       "lwIcon": "/assets/lw-skills/cff85d662b971e528701839a1eab5d00d54ab148f07c94637df0b53d18fb543f.webp",
-      "d": "學習 增幅防禦。技能品質依天堂W；商店售價與未公開學習條件採永夜設定。",
+      "d": "學習 增幅防禦。技能品質、商店售價與學習條件依永夜設定。",
       "lwItemIconSource": "https://6sword.com/icons/lw/Item/Skillbook_UnCommon.webp"
     },
     "lw_book_5104": {
@@ -10896,7 +10896,7 @@
       "lwSourceUrl": "https://6sword.com/zh-TW/lw/items/5104",
       "gachaWeight": 0,
       "lwIcon": "/assets/lw-skills/eae1402c138aae0f923ba43deb88014b13cf8caf0b629d54d2aa568c9b15ed8f.webp",
-      "d": "學習 尖刺盔甲。技能品質依天堂W；商店售價與未公開學習條件採永夜設定。",
+      "d": "學習 尖刺盔甲。技能品質、商店售價與學習條件依永夜設定。",
       "lwItemIconSource": "https://6sword.com/icons/lw/Item/skillbook_2.webp"
     },
     "lw_book_5106": {
@@ -10911,7 +10911,7 @@
       "lwSourceUrl": "https://6sword.com/zh-TW/lw/items/5106",
       "gachaWeight": 0,
       "lwIcon": "/assets/lw-skills/eae1402c138aae0f923ba43deb88014b13cf8caf0b629d54d2aa568c9b15ed8f.webp",
-      "d": "學習 堅固防護。技能品質依天堂W；商店售價與未公開學習條件採永夜設定。",
+      "d": "學習 堅固防護。技能品質、商店售價與學習條件依永夜設定。",
       "lwItemIconSource": "https://6sword.com/icons/lw/Item/skillbook_2.webp"
     },
     "lw_book_908099": {
@@ -10926,7 +10926,7 @@
       "lwSourceUrl": "https://6sword.com/zh-TW/lw/items/908099",
       "gachaWeight": 0,
       "lwIcon": "/assets/lw-skills/22037e64f94aa0c40a6878aad60854e410d48b6480ebb84eb50128c4fa296df1.webp",
-      "d": "學習 反擊屏障。技能品質依天堂W；商店售價與未公開學習條件採永夜設定。",
+      "d": "學習 反擊屏障。技能品質、商店售價與學習條件依永夜設定。",
       "lwItemIconSource": "https://6sword.com/icons/lw/Item/skillbook_Unique.webp"
     },
     "lw_book_900065": {
@@ -10941,7 +10941,7 @@
       "lwSourceUrl": "https://6sword.com/zh-TW/lw/items/900065",
       "gachaWeight": 0,
       "lwIcon": "/assets/lw-skills/2e8eb894d4c2e1fd721a786d669168727f861fa63c6b38a685d0249ad4e57e6c.webp",
-      "d": "學習 龍嘯。技能品質依天堂W；商店售價與未公開學習條件採永夜設定。",
+      "d": "學習 龍嘯。技能品質、商店售價與學習條件依永夜設定。",
       "lwItemIconSource": "https://6sword.com/icons/lw/Item/skillbook_3.webp"
     },
     "lw_book_902539": {
@@ -10956,7 +10956,7 @@
       "lwSourceUrl": "https://6sword.com/zh-TW/lw/items/902539",
       "gachaWeight": 0,
       "lwIcon": "/assets/lw-skills/2e8eb894d4c2e1fd721a786d669168727f861fa63c6b38a685d0249ad4e57e6c.webp",
-      "d": "學習 喚醒術。技能品質依天堂W；商店售價與未公開學習條件採永夜設定。",
+      "d": "學習 喚醒術。技能品質、商店售價與學習條件依永夜設定。",
       "lwItemIconSource": "https://6sword.com/icons/lw/Item/skillbook_3.webp"
     },
     "lw_book_908063": {
@@ -10971,7 +10971,7 @@
       "lwSourceUrl": "https://6sword.com/zh-TW/lw/items/908063",
       "gachaWeight": 0,
       "lwIcon": "/assets/lw-skills/22037e64f94aa0c40a6878aad60854e410d48b6480ebb84eb50128c4fa296df1.webp",
-      "d": "學習 狂襲。技能品質依天堂W；商店售價與未公開學習條件採永夜設定。",
+      "d": "學習 狂襲。技能品質、商店售價與學習條件依永夜設定。",
       "lwItemIconSource": "https://6sword.com/icons/lw/Item/skillbook_Unique.webp"
     },
     "lw_book_900168": {
@@ -10986,7 +10986,7 @@
       "lwSourceUrl": "https://6sword.com/zh-TW/lw/items/900168",
       "gachaWeight": 0,
       "lwIcon": "/assets/lw-skills/e746593f1621b886447726307c2a30b646f3d75c605dbef5047bf290c9be468f.webp",
-      "d": "學習 重擊。技能品質依天堂W；商店售價與未公開學習條件採永夜設定。",
+      "d": "學習 重擊。技能品質、商店售價與學習條件依永夜設定。",
       "lwItemIconSource": "https://6sword.com/icons/lw/Item/skillbook_1.webp"
     },
     "lw_book_902716": {
@@ -11001,7 +11001,7 @@
       "lwSourceUrl": "https://6sword.com/zh-TW/lw/items/902716",
       "gachaWeight": 0,
       "lwIcon": "/assets/lw-skills/22037e64f94aa0c40a6878aad60854e410d48b6480ebb84eb50128c4fa296df1.webp",
-      "d": "學習 增幅防禦 (專家) : 被動。技能品質依天堂W；商店售價與未公開學習條件採永夜設定。",
+      "d": "學習 增幅防禦 (專家) : 被動。技能品質、商店售價與學習條件依永夜設定。",
       "lwItemIconSource": "https://6sword.com/icons/lw/Item/skillbook_Unique.webp"
     },
     "lw_book_902883": {
@@ -11016,7 +11016,7 @@
       "lwSourceUrl": "https://6sword.com/zh-TW/lw/items/902883",
       "gachaWeight": 0,
       "lwIcon": "/assets/lw-skills/22037e64f94aa0c40a6878aad60854e410d48b6480ebb84eb50128c4fa296df1.webp",
-      "d": "學習 忍耐。技能品質依天堂W；商店售價與未公開學習條件採永夜設定。",
+      "d": "學習 忍耐。技能品質、商店售價與學習條件依永夜設定。",
       "lwItemIconSource": "https://6sword.com/icons/lw/Item/skillbook_Unique.webp"
     },
     "lw_book_903559": {
@@ -11031,7 +11031,7 @@
       "lwSourceUrl": "https://6sword.com/zh-TW/lw/items/903559",
       "gachaWeight": 0,
       "lwIcon": "/assets/lw-skills/22037e64f94aa0c40a6878aad60854e410d48b6480ebb84eb50128c4fa296df1.webp",
-      "d": "學習 堅固防護 (專家) : 被動。技能品質依天堂W；商店售價與未公開學習條件採永夜設定。",
+      "d": "學習 堅固防護 (專家) : 被動。技能品質、商店售價與學習條件依永夜設定。",
       "lwItemIconSource": "https://6sword.com/icons/lw/Item/skillbook_Unique.webp"
     },
     "lw_book_904141": {
@@ -11046,7 +11046,7 @@
       "lwSourceUrl": "https://6sword.com/zh-TW/lw/items/904141",
       "gachaWeight": 0,
       "lwIcon": "/assets/lw-skills/2e8eb894d4c2e1fd721a786d669168727f861fa63c6b38a685d0249ad4e57e6c.webp",
-      "d": "學習 反擊屏障 (專家) : 被動。技能品質依天堂W；商店售價與未公開學習條件採永夜設定。",
+      "d": "學習 反擊屏障 (專家) : 被動。技能品質、商店售價與學習條件依永夜設定。",
       "lwItemIconSource": "https://6sword.com/icons/lw/Item/skillbook_3.webp"
     },
     "lw_book_905237": {
@@ -11061,7 +11061,7 @@
       "lwSourceUrl": "https://6sword.com/zh-TW/lw/items/905237",
       "gachaWeight": 0,
       "lwIcon": "/assets/lw-skills/22037e64f94aa0c40a6878aad60854e410d48b6480ebb84eb50128c4fa296df1.webp",
-      "d": "學習 衝擊之暈 (專家) : 被動。技能品質依天堂W；商店售價與未公開學習條件採永夜設定。",
+      "d": "學習 衝擊之暈 (專家) : 被動。技能品質、商店售價與學習條件依永夜設定。",
       "lwItemIconSource": "https://6sword.com/icons/lw/Item/skillbook_Unique.webp"
     },
     "lw_book_906442": {
@@ -11076,7 +11076,7 @@
       "lwSourceUrl": "https://6sword.com/zh-TW/lw/items/906442",
       "gachaWeight": 0,
       "lwIcon": "/assets/lw-skills/22037e64f94aa0c40a6878aad60854e410d48b6480ebb84eb50128c4fa296df1.webp",
-      "d": "學習 尖刺盔甲 (專家) : 被動。技能品質依天堂W；商店售價與未公開學習條件採永夜設定。",
+      "d": "學習 尖刺盔甲 (專家) : 被動。技能品質、商店售價與學習條件依永夜設定。",
       "lwItemIconSource": "https://6sword.com/icons/lw/Item/skillbook_Unique.webp"
     },
     "lw_book_907846": {
@@ -11091,7 +11091,7 @@
       "lwSourceUrl": "https://6sword.com/zh-TW/lw/items/907846",
       "gachaWeight": 0,
       "lwIcon": "/assets/lw-skills/22037e64f94aa0c40a6878aad60854e410d48b6480ebb84eb50128c4fa296df1.webp",
-      "d": "學習 精通武器。技能品質依天堂W；商店售價與未公開學習條件採永夜設定。",
+      "d": "學習 精通武器。技能品質、商店售價與學習條件依永夜設定。",
       "lwItemIconSource": "https://6sword.com/icons/lw/Item/skillbook_Unique.webp"
     },
     "lw_book_909724": {
@@ -11106,7 +11106,7 @@
       "lwSourceUrl": "https://6sword.com/zh-TW/lw/items/909724",
       "gachaWeight": 0,
       "lwIcon": "/assets/lw-skills/8744c9da509c28c4f97912ec926871614ff0a7c4c9ec545dd34f953831a72120.webp",
-      "d": "學習 特殊攻擊 : 騎士。技能品質依天堂W；商店售價與未公開學習條件採永夜設定。",
+      "d": "學習 特殊攻擊 : 騎士。技能品質、商店售價與學習條件依永夜設定。",
       "lwItemIconSource": "https://6sword.com/icons/lw/Item/skillbook_Mythic.webp"
     },
     "lw_book_910979": {
@@ -11121,7 +11121,7 @@
       "lwSourceUrl": "https://6sword.com/zh-TW/lw/items/910979",
       "gachaWeight": 0,
       "lwIcon": "/assets/lw-skills/eae1402c138aae0f923ba43deb88014b13cf8caf0b629d54d2aa568c9b15ed8f.webp",
-      "d": "學習 雙手武器大師。技能品質依天堂W；商店售價與未公開學習條件採永夜設定。",
+      "d": "學習 雙手武器大師。技能品質、商店售價與學習條件依永夜設定。",
       "lwItemIconSource": "https://6sword.com/icons/lw/Item/skillbook_2.webp"
     },
     "lw_book_910978": {
@@ -11136,7 +11136,7 @@
       "lwSourceUrl": "https://6sword.com/zh-TW/lw/items/910978",
       "gachaWeight": 0,
       "lwIcon": "/assets/lw-skills/eae1402c138aae0f923ba43deb88014b13cf8caf0b629d54d2aa568c9b15ed8f.webp",
-      "d": "學習 藥水加持。技能品質依天堂W；商店售價與未公開學習條件採永夜設定。",
+      "d": "學習 藥水加持。技能品質、商店售價與學習條件依永夜設定。",
       "lwItemIconSource": "https://6sword.com/icons/lw/Item/skillbook_2.webp"
     },
     "lw_book_910985": {
@@ -11151,7 +11151,7 @@
       "lwSourceUrl": "https://6sword.com/zh-TW/lw/items/910985",
       "gachaWeight": 0,
       "lwIcon": "/assets/lw-skills/2e8eb894d4c2e1fd721a786d669168727f861fa63c6b38a685d0249ad4e57e6c.webp",
-      "d": "學習 忍耐 (專家) : 被動。技能品質依天堂W；商店售價與未公開學習條件採永夜設定。",
+      "d": "學習 忍耐 (專家) : 被動。技能品質、商店售價與學習條件依永夜設定。",
       "lwItemIconSource": "https://6sword.com/icons/lw/Item/skillbook_3.webp"
     },
     "lw_book_910987": {
@@ -11166,7 +11166,7 @@
       "lwSourceUrl": "https://6sword.com/zh-TW/lw/items/910987",
       "gachaWeight": 0,
       "lwIcon": "/assets/lw-skills/2e8eb894d4c2e1fd721a786d669168727f861fa63c6b38a685d0249ad4e57e6c.webp",
-      "d": "學習 龍嘯 (專家) : 被動。技能品質依天堂W；商店售價與未公開學習條件採永夜設定。",
+      "d": "學習 龍嘯 (專家) : 被動。技能品質、商店售價與學習條件依永夜設定。",
       "lwItemIconSource": "https://6sword.com/icons/lw/Item/skillbook_3.webp"
     },
     "lw_book_910986": {
@@ -11181,7 +11181,7 @@
       "lwSourceUrl": "https://6sword.com/zh-TW/lw/items/910986",
       "gachaWeight": 0,
       "lwIcon": "/assets/lw-skills/2e8eb894d4c2e1fd721a786d669168727f861fa63c6b38a685d0249ad4e57e6c.webp",
-      "d": "學習 牽引。技能品質依天堂W；商店售價與未公開學習條件採永夜設定。",
+      "d": "學習 牽引。技能品質、商店售價與學習條件依永夜設定。",
       "lwItemIconSource": "https://6sword.com/icons/lw/Item/skillbook_3.webp"
     },
     "lw_book_910982": {
@@ -11196,7 +11196,7 @@
       "lwSourceUrl": "https://6sword.com/zh-TW/lw/items/910982",
       "gachaWeight": 0,
       "lwIcon": "/assets/lw-skills/eae1402c138aae0f923ba43deb88014b13cf8caf0b629d54d2aa568c9b15ed8f.webp",
-      "d": "學習 血之騎士。技能品質依天堂W；商店售價與未公開學習條件採永夜設定。",
+      "d": "學習 血之騎士。技能品質、商店售價與學習條件依永夜設定。",
       "lwItemIconSource": "https://6sword.com/icons/lw/Item/skillbook_2.webp"
     },
     "lw_book_910981": {
@@ -11211,7 +11211,7 @@
       "lwSourceUrl": "https://6sword.com/zh-TW/lw/items/910981",
       "gachaWeight": 0,
       "lwIcon": "/assets/lw-skills/22037e64f94aa0c40a6878aad60854e410d48b6480ebb84eb50128c4fa296df1.webp",
-      "d": "學習 進攻護盾。技能品質依天堂W；商店售價與未公開學習條件採永夜設定。",
+      "d": "學習 進攻護盾。技能品質、商店售價與學習條件依永夜設定。",
       "lwItemIconSource": "https://6sword.com/icons/lw/Item/skillbook_Unique.webp"
     },
     "lw_book_915875": {
@@ -11226,7 +11226,7 @@
       "lwSourceUrl": "https://6sword.com/zh-TW/lw/items/915875",
       "gachaWeight": 0,
       "lwIcon": "/assets/lw-skills/8744c9da509c28c4f97912ec926871614ff0a7c4c9ec545dd34f953831a72120.webp",
-      "d": "學習 衝擊之暈 (強化專家) : 被動。技能品質依天堂W；商店售價與未公開學習條件採永夜設定。",
+      "d": "學習 衝擊之暈 (強化專家) : 被動。技能品質、商店售價與學習條件依永夜設定。",
       "lwItemIconSource": "https://6sword.com/icons/lw/Item/skillbook_Mythic.webp"
     },
     "lw_book_927061": {
@@ -11241,7 +11241,7 @@
       "lwSourceUrl": "https://6sword.com/zh-TW/lw/items/927061",
       "gachaWeight": 0,
       "lwIcon": "/assets/lw-skills/2e8eb894d4c2e1fd721a786d669168727f861fa63c6b38a685d0249ad4e57e6c.webp",
-      "d": "學習 氣場護甲。技能品質依天堂W；商店售價與未公開學習條件採永夜設定。",
+      "d": "學習 氣場護甲。技能品質、商店售價與學習條件依永夜設定。",
       "lwItemIconSource": "https://6sword.com/icons/lw/Item/skillbook_3.webp"
     },
     "lw_book_927063": {
@@ -11256,7 +11256,7 @@
       "lwSourceUrl": "https://6sword.com/zh-TW/lw/items/927063",
       "gachaWeight": 0,
       "lwIcon": "/assets/lw-skills/2e8eb894d4c2e1fd721a786d669168727f861fa63c6b38a685d0249ad4e57e6c.webp",
-      "d": "學習 氣場之刃。技能品質依天堂W；商店售價與未公開學習條件採永夜設定。",
+      "d": "學習 氣場之刃。技能品質、商店售價與學習條件依永夜設定。",
       "lwItemIconSource": "https://6sword.com/icons/lw/Item/skillbook_3.webp"
     },
     "lw_book_927466": {
@@ -11271,7 +11271,7 @@
       "lwSourceUrl": "https://6sword.com/zh-TW/lw/items/927466",
       "gachaWeight": 0,
       "lwIcon": "/assets/lw-skills/2e8eb894d4c2e1fd721a786d669168727f861fa63c6b38a685d0249ad4e57e6c.webp",
-      "d": "學習 精通武器 (專家) : 被動。技能品質依天堂W；商店售價與未公開學習條件採永夜設定。",
+      "d": "學習 精通武器 (專家) : 被動。技能品質、商店售價與學習條件依永夜設定。",
       "lwItemIconSource": "https://6sword.com/icons/lw/Item/skillbook_3.webp"
     },
     "lw_book_5208": {
@@ -11286,7 +11286,7 @@
       "lwSourceUrl": "https://6sword.com/zh-TW/lw/items/5208",
       "gachaWeight": 0,
       "lwIcon": "/assets/lw-skills/b7891becc72a37457c26fb479b7150e38132a5a68a544dfb174324c4440de0f6.webp",
-      "d": "學習 三重矢。技能品質依天堂W；商店售價與未公開學習條件採永夜設定。",
+      "d": "學習 三重矢。技能品質、商店售價與學習條件依永夜設定。",
       "lwItemIconSource": "https://6sword.com/icons/lw/Item/spellcrystal_normal_1.webp"
     },
     "lw_book_5212": {
@@ -11301,7 +11301,7 @@
       "lwSourceUrl": "https://6sword.com/zh-TW/lw/items/5212",
       "gachaWeight": 0,
       "lwIcon": "/assets/lw-skills/f4343de1b1b140a9ca6a712847a244c05fad557eed0979090f6c251b049d9a13.webp",
-      "d": "學習 魂體轉換。技能品質依天堂W；商店售價與未公開學習條件採永夜設定。",
+      "d": "學習 魂體轉換。技能品質、商店售價與學習條件依永夜設定。",
       "lwItemIconSource": "https://6sword.com/icons/lw/Item/spellcrystal_normal_2.webp"
     },
     "lw_book_5224": {
@@ -11316,7 +11316,7 @@
       "lwSourceUrl": "https://6sword.com/zh-TW/lw/items/5224",
       "gachaWeight": 0,
       "lwIcon": "/assets/lw-skills/3a36a000a024442043550ea9e11c9ff78c98bab619cee230dc65f33804ae8d39.webp",
-      "d": "學習 魔法消除。技能品質依天堂W；商店售價與未公開學習條件採永夜設定。",
+      "d": "學習 魔法消除。技能品質、商店售價與學習條件依永夜設定。",
       "lwItemIconSource": "https://6sword.com/icons/lw/Item/spellcrystal_normal_3.webp"
     },
     "lw_book_908064": {
@@ -11331,7 +11331,7 @@
       "lwSourceUrl": "https://6sword.com/zh-TW/lw/items/908064",
       "gachaWeight": 0,
       "lwIcon": "/assets/lw-skills/24d70f3b6d902d938ee35f46b5cfa2378ddf3e6475969fcfa616937debba677d.webp",
-      "d": "學習 封印禁地。技能品質依天堂W；商店售價與未公開學習條件採永夜設定。",
+      "d": "學習 封印禁地。技能品質、商店售價與學習條件依永夜設定。",
       "lwItemIconSource": "https://6sword.com/icons/lw/Item/spellcrystal_normal_4.webp"
     },
     "lw_book_5200": {
@@ -11346,7 +11346,7 @@
       "lwSourceUrl": "https://6sword.com/zh-TW/lw/items/5200",
       "gachaWeight": 0,
       "lwIcon": "/assets/lw-skills/fdd2c058da377ceeee005e2b6ca63be0087570826b09ef525435243fdcfc7f93.webp",
-      "d": "學習 烈炎武器。技能品質依天堂W；商店售價與未公開學習條件採永夜設定。",
+      "d": "學習 烈炎武器。技能品質、商店售價與學習條件依永夜設定。",
       "lwItemIconSource": "https://6sword.com/icons/lw/Item/spellcrystal_fire_3.webp"
     },
     "lw_book_5210": {
@@ -11361,7 +11361,7 @@
       "lwSourceUrl": "https://6sword.com/zh-TW/lw/items/5210",
       "gachaWeight": 0,
       "lwIcon": "/assets/lw-skills/90eaf6f115700fea16ba29bc420896c5e61a3862f1517991b6af7154d4408b34.webp",
-      "d": "學習 舞躍之火。技能品質依天堂W；商店售價與未公開學習條件採永夜設定。",
+      "d": "學習 舞躍之火。技能品質、商店售價與學習條件依永夜設定。",
       "lwItemIconSource": "https://6sword.com/icons/lw/Item/spellcrystal_fire_4.webp"
     },
     "lw_book_5220": {
@@ -11376,7 +11376,7 @@
       "lwSourceUrl": "https://6sword.com/zh-TW/lw/items/5220",
       "gachaWeight": 0,
       "lwIcon": "/assets/lw-skills/8b883e0519a9324543fad9cab994d3824a8141eecf9d20629f47a69a305910b9.webp",
-      "d": "學習 能量激發。技能品質依天堂W；商店售價與未公開學習條件採永夜設定。",
+      "d": "學習 能量激發。技能品質、商店售價與學習條件依永夜設定。",
       "lwItemIconSource": "https://6sword.com/icons/lw/Item/spellcrystal_fire_2.webp"
     },
     "lw_book_5226": {
@@ -11391,7 +11391,7 @@
       "lwSourceUrl": "https://6sword.com/zh-TW/lw/items/5226",
       "gachaWeight": 0,
       "lwIcon": "/assets/lw-skills/90eaf6f115700fea16ba29bc420896c5e61a3862f1517991b6af7154d4408b34.webp",
-      "d": "學習 烈焰之魂。技能品質依天堂W；商店售價與未公開學習條件採永夜設定。",
+      "d": "學習 烈焰之魂。技能品質、商店售價與學習條件依永夜設定。",
       "lwItemIconSource": "https://6sword.com/icons/lw/Item/spellcrystal_fire_4.webp"
     },
     "lw_book_5204": {
@@ -11406,7 +11406,7 @@
       "lwSourceUrl": "https://6sword.com/zh-TW/lw/items/5204",
       "gachaWeight": 0,
       "lwIcon": "/assets/lw-skills/dae6968e2d10b03d88abdad69b82c8928f3148a8033bc3f20dfcce25d15aeb5b.webp",
-      "d": "學習 水之元氣。技能品質依天堂W；商店售價與未公開學習條件採永夜設定。",
+      "d": "學習 水之元氣。技能品質、商店售價與學習條件依永夜設定。",
       "lwItemIconSource": "https://6sword.com/icons/lw/Item/spellcrystal_water_3.webp"
     },
     "lw_book_5214": {
@@ -11421,7 +11421,7 @@
       "lwSourceUrl": "https://6sword.com/zh-TW/lw/items/5214",
       "gachaWeight": 0,
       "lwIcon": "/assets/lw-skills/dae6968e2d10b03d88abdad69b82c8928f3148a8033bc3f20dfcce25d15aeb5b.webp",
-      "d": "學習 生命之泉。技能品質依天堂W；商店售價與未公開學習條件採永夜設定。",
+      "d": "學習 生命之泉。技能品質、商店售價與學習條件依永夜設定。",
       "lwItemIconSource": "https://6sword.com/icons/lw/Item/spellcrystal_water_3.webp"
     },
     "lw_book_5216": {
@@ -11436,7 +11436,7 @@
       "lwSourceUrl": "https://6sword.com/zh-TW/lw/items/5216",
       "gachaWeight": 0,
       "lwIcon": "/assets/lw-skills/dca50a0feece546651f4afd0b3e0c271bffccfd8931adaca9b43f5ce3fe24ed8.webp",
-      "d": "學習 生命的祝福。技能品質依天堂W；商店售價與未公開學習條件採永夜設定。",
+      "d": "學習 生命的祝福。技能品質、商店售價與學習條件依永夜設定。",
       "lwItemIconSource": "https://6sword.com/icons/lw/Item/spellcrystal_water_2.webp"
     },
     "lw_book_5234": {
@@ -11451,7 +11451,7 @@
       "lwSourceUrl": "https://6sword.com/zh-TW/lw/items/5234",
       "gachaWeight": 0,
       "lwIcon": "/assets/lw-skills/fce7653e63c0eff0a47cf816d2328c756951aba7f8e6954902d1a6c481785857.webp",
-      "d": "學習 污濁之水。技能品質依天堂W；商店售價與未公開學習條件採永夜設定。",
+      "d": "學習 污濁之水。技能品質、商店售價與學習條件依永夜設定。",
       "lwItemIconSource": "https://6sword.com/icons/lw/Item/spellcrystal_water_4.webp"
     },
     "lw_book_5206": {
@@ -11466,7 +11466,7 @@
       "lwSourceUrl": "https://6sword.com/zh-TW/lw/items/5206",
       "gachaWeight": 0,
       "lwIcon": "/assets/lw-skills/7d23480bc67d1f0c5e2e3840de5727237c8fd3caf6da0aaa276d438984c5d152.webp",
-      "d": "學習 風之疾走。技能品質依天堂W；商店售價與未公開學習條件採永夜設定。",
+      "d": "學習 風之疾走。技能品質、商店售價與學習條件依永夜設定。",
       "lwItemIconSource": "https://6sword.com/icons/lw/Item/spellcrystal_air_4.webp"
     },
     "lw_book_5218": {
@@ -11481,7 +11481,7 @@
       "lwSourceUrl": "https://6sword.com/zh-TW/lw/items/5218",
       "gachaWeight": 0,
       "lwIcon": "/assets/lw-skills/34ea881025de28932b6d0bf5806de1359ef4e0094e83730008a0739d61bcb066.webp",
-      "d": "學習 暴風神射。技能品質依天堂W；商店售價與未公開學習條件採永夜設定。",
+      "d": "學習 暴風神射。技能品質、商店售價與學習條件依永夜設定。",
       "lwItemIconSource": "https://6sword.com/icons/lw/Item/spellcrystal_air_3.webp"
     },
     "lw_book_908100": {
@@ -11496,7 +11496,7 @@
       "lwSourceUrl": "https://6sword.com/zh-TW/lw/items/908100",
       "gachaWeight": 0,
       "lwIcon": "/assets/lw-skills/7d23480bc67d1f0c5e2e3840de5727237c8fd3caf6da0aaa276d438984c5d152.webp",
-      "d": "學習 精準射擊。技能品質依天堂W；商店售價與未公開學習條件採永夜設定。",
+      "d": "學習 精準射擊。技能品質、商店售價與學習條件依永夜設定。",
       "lwItemIconSource": "https://6sword.com/icons/lw/Item/spellcrystal_air_4.webp"
     },
     "lw_book_5202": {
@@ -11511,7 +11511,7 @@
       "lwSourceUrl": "https://6sword.com/zh-TW/lw/items/5202",
       "gachaWeight": 0,
       "lwIcon": "/assets/lw-skills/8c945f45358781af8ceb8970e5a6dcd188b2a4d7e3553ad2e09cb9d0e3461f91.webp",
-      "d": "學習 鋼鐵防護。技能品質依天堂W；商店售價與未公開學習條件採永夜設定。",
+      "d": "學習 鋼鐵防護。技能品質、商店售價與學習條件依永夜設定。",
       "lwItemIconSource": "https://6sword.com/icons/lw/Item/spellcrystal_earth_3.webp"
     },
     "lw_book_5222": {
@@ -11526,7 +11526,7 @@
       "lwSourceUrl": "https://6sword.com/zh-TW/lw/items/5222",
       "gachaWeight": 0,
       "lwIcon": "/assets/lw-skills/d486022f6a5f3e3eb0be2cf94a670dc74ea8caeded57d932ad285af0b428da3f.webp",
-      "d": "學習 大地守護者。技能品質依天堂W；商店售價與未公開學習條件採永夜設定。",
+      "d": "學習 大地守護者。技能品質、商店售價與學習條件依永夜設定。",
       "lwItemIconSource": "https://6sword.com/icons/lw/Item/spellcrystal_earth_2.webp"
     },
     "lw_book_5230": {
@@ -11541,7 +11541,7 @@
       "lwSourceUrl": "https://6sword.com/zh-TW/lw/items/5230",
       "gachaWeight": 0,
       "lwIcon": "/assets/lw-skills/73278d8d748dcd042bc642f2c1d28f38c12d946650a34bf0189de2e7a0d91d99.webp",
-      "d": "學習 大地屏障。技能品質依天堂W；商店售價與未公開學習條件採永夜設定。",
+      "d": "學習 大地屏障。技能品質、商店售價與學習條件依永夜設定。",
       "lwItemIconSource": "https://6sword.com/icons/lw/Item/spellcrystal_earth_4.webp"
     },
     "lw_book_5238": {
@@ -11556,7 +11556,7 @@
       "lwSourceUrl": "https://6sword.com/zh-TW/lw/items/5238",
       "gachaWeight": 0,
       "lwIcon": "/assets/lw-skills/8c945f45358781af8ceb8970e5a6dcd188b2a4d7e3553ad2e09cb9d0e3461f91.webp",
-      "d": "學習 大地斗篷。技能品質依天堂W；商店售價與未公開學習條件採永夜設定。",
+      "d": "學習 大地斗篷。技能品質、商店售價與學習條件依永夜設定。",
       "lwItemIconSource": "https://6sword.com/icons/lw/Item/spellcrystal_earth_3.webp"
     },
     "lw_book_5236": {
@@ -11571,7 +11571,7 @@
       "lwSourceUrl": "https://6sword.com/zh-TW/lw/items/5236",
       "gachaWeight": 0,
       "lwIcon": "/assets/lw-skills/8b7591b924583fe819bcd6709ce29f49dd6ec69e4c25ead1c4ab1c3a3eede12a.webp",
-      "d": "學習 風之防護。技能品質依天堂W；商店售價與未公開學習條件採永夜設定。",
+      "d": "學習 風之防護。技能品質、商店售價與學習條件依永夜設定。",
       "lwItemIconSource": "https://6sword.com/icons/lw/Item/spellcrystal_air_2.webp"
     },
     "lw_book_902570": {
@@ -11586,7 +11586,7 @@
       "lwSourceUrl": "https://6sword.com/zh-TW/lw/items/902570",
       "gachaWeight": 0,
       "lwIcon": "/assets/lw-skills/8ba68915ab00aba24a01db046d137e48639dd228b93d17b590436978178c570b.webp",
-      "d": "學習 精靈大師 (精神) : 被動。技能品質依天堂W；商店售價與未公開學習條件採永夜設定。",
+      "d": "學習 精靈大師 (精神) : 被動。技能品質、商店售價與學習條件依永夜設定。",
       "lwItemIconSource": "https://6sword.com/icons/lw/Item/spellcrystal_normal_5.webp"
     },
     "lw_book_902719": {
@@ -11601,7 +11601,7 @@
       "lwSourceUrl": "https://6sword.com/zh-TW/lw/items/902719",
       "gachaWeight": 0,
       "lwIcon": "/assets/lw-skills/fce7653e63c0eff0a47cf816d2328c756951aba7f8e6954902d1a6c481785857.webp",
-      "d": "學習 水之元氣 (精神) : 被動。技能品質依天堂W；商店售價與未公開學習條件採永夜設定。",
+      "d": "學習 水之元氣 (精神) : 被動。技能品質、商店售價與學習條件依永夜設定。",
       "lwItemIconSource": "https://6sword.com/icons/lw/Item/spellcrystal_water_4.webp"
     },
     "lw_book_902725": {
@@ -11616,7 +11616,7 @@
       "lwSourceUrl": "https://6sword.com/zh-TW/lw/items/902725",
       "gachaWeight": 0,
       "lwIcon": "/assets/lw-skills/7d23480bc67d1f0c5e2e3840de5727237c8fd3caf6da0aaa276d438984c5d152.webp",
-      "d": "學習 暴風神射 (精神) : 被動。技能品質依天堂W；商店售價與未公開學習條件採永夜設定。",
+      "d": "學習 暴風神射 (精神) : 被動。技能品質、商店售價與學習條件依永夜設定。",
       "lwItemIconSource": "https://6sword.com/icons/lw/Item/spellcrystal_air_4.webp"
     },
     "lw_book_903533": {
@@ -11631,7 +11631,7 @@
       "lwSourceUrl": "https://6sword.com/zh-TW/lw/items/903533",
       "gachaWeight": 0,
       "lwIcon": "/assets/lw-skills/73278d8d748dcd042bc642f2c1d28f38c12d946650a34bf0189de2e7a0d91d99.webp",
-      "d": "學習 大地守護者 (精神) : 被動。技能品質依天堂W；商店售價與未公開學習條件採永夜設定。",
+      "d": "學習 大地守護者 (精神) : 被動。技能品質、商店售價與學習條件依永夜設定。",
       "lwItemIconSource": "https://6sword.com/icons/lw/Item/spellcrystal_earth_4.webp"
     },
     "lw_book_903535": {
@@ -11646,7 +11646,7 @@
       "lwSourceUrl": "https://6sword.com/zh-TW/lw/items/903535",
       "gachaWeight": 0,
       "lwIcon": "/assets/lw-skills/90eaf6f115700fea16ba29bc420896c5e61a3862f1517991b6af7154d4408b34.webp",
-      "d": "學習 烈炎武器 (精神) : 被動。技能品質依天堂W；商店售價與未公開學習條件採永夜設定。",
+      "d": "學習 烈炎武器 (精神) : 被動。技能品質、商店售價與學習條件依永夜設定。",
       "lwItemIconSource": "https://6sword.com/icons/lw/Item/spellcrystal_fire_4.webp"
     },
     "lw_book_905990": {
@@ -11661,7 +11661,7 @@
       "lwSourceUrl": "https://6sword.com/zh-TW/lw/items/905990",
       "gachaWeight": 0,
       "lwIcon": "/assets/lw-skills/8b596cd895afe11e32043fe601be49fea11d7031c7fac1370a51d40ac3c6c2b9.webp",
-      "d": "學習 地面障礙。技能品質依天堂W；商店售價與未公開學習條件採永夜設定。",
+      "d": "學習 地面障礙。技能品質、商店售價與學習條件依永夜設定。",
       "lwItemIconSource": "https://6sword.com/icons/lw/Item/spellcrystal_air_5.webp"
     },
     "lw_book_904643": {
@@ -11676,7 +11676,7 @@
       "lwSourceUrl": "https://6sword.com/zh-TW/lw/items/904643",
       "gachaWeight": 0,
       "lwIcon": "/assets/lw-skills/3a36a000a024442043550ea9e11c9ff78c98bab619cee230dc65f33804ae8d39.webp",
-      "d": "學習 靈魂迴避。技能品質依天堂W；商店售價與未公開學習條件採永夜設定。",
+      "d": "學習 靈魂迴避。技能品質、商店售價與學習條件依永夜設定。",
       "lwItemIconSource": "https://6sword.com/icons/lw/Item/spellcrystal_normal_3.webp"
     },
     "lw_book_905235": {
@@ -11691,7 +11691,7 @@
       "lwSourceUrl": "https://6sword.com/zh-TW/lw/items/905235",
       "gachaWeight": 0,
       "lwIcon": "/assets/lw-skills/a8693a45ea029499c8641d9b15381094b7041dcedb643737e188506b60b0a83c.webp",
-      "d": "學習 污濁之水 (精神) : 被動。技能品質依天堂W；商店售價與未公開學習條件採永夜設定。",
+      "d": "學習 污濁之水 (精神) : 被動。技能品質、商店售價與學習條件依永夜設定。",
       "lwItemIconSource": "https://6sword.com/icons/lw/Item/spellcrystal_water_5.webp"
     },
     "lw_book_905241": {
@@ -11706,7 +11706,7 @@
       "lwSourceUrl": "https://6sword.com/zh-TW/lw/items/905241",
       "gachaWeight": 0,
       "lwIcon": "/assets/lw-skills/8b596cd895afe11e32043fe601be49fea11d7031c7fac1370a51d40ac3c6c2b9.webp",
-      "d": "學習 精準射擊 (精神) : 被動。技能品質依天堂W；商店售價與未公開學習條件採永夜設定。",
+      "d": "學習 精準射擊 (精神) : 被動。技能品質、商店售價與學習條件依永夜設定。",
       "lwItemIconSource": "https://6sword.com/icons/lw/Item/spellcrystal_air_5.webp"
     },
     "lw_book_906023": {
@@ -11721,7 +11721,7 @@
       "lwSourceUrl": "https://6sword.com/zh-TW/lw/items/906023",
       "gachaWeight": 0,
       "lwIcon": "/assets/lw-skills/73278d8d748dcd042bc642f2c1d28f38c12d946650a34bf0189de2e7a0d91d99.webp",
-      "d": "學習 精靈反擊。技能品質依天堂W；商店售價與未公開學習條件採永夜設定。",
+      "d": "學習 精靈反擊。技能品質、商店售價與學習條件依永夜設定。",
       "lwItemIconSource": "https://6sword.com/icons/lw/Item/spellcrystal_earth_4.webp"
     },
     "lw_book_905988": {
@@ -11736,7 +11736,7 @@
       "lwSourceUrl": "https://6sword.com/zh-TW/lw/items/905988",
       "gachaWeight": 0,
       "lwIcon": "/assets/lw-skills/479f0cb47b5ae5ef27d5c99d6b839d2c466d6ed85a948683aefcd890c14dda21.webp",
-      "d": "學習 烈焰之魂 (精神) : 被動。技能品質依天堂W；商店售價與未公開學習條件採永夜設定。",
+      "d": "學習 烈焰之魂 (精神) : 被動。技能品質、商店售價與學習條件依永夜設定。",
       "lwItemIconSource": "https://6sword.com/icons/lw/Item/spellcrystal_fire_5.webp"
     },
     "lw_book_905986": {
@@ -11751,7 +11751,7 @@
       "lwSourceUrl": "https://6sword.com/zh-TW/lw/items/905986",
       "gachaWeight": 0,
       "lwIcon": "/assets/lw-skills/6eac449ce95215933ded067867c309af35760d822bb5c2d75e2b3daa7f01763e.webp",
-      "d": "學習 火焰狂襲。技能品質依天堂W；商店售價與未公開學習條件採永夜設定。",
+      "d": "學習 火焰狂襲。技能品質、商店售價與學習條件依永夜設定。",
       "lwItemIconSource": "https://6sword.com/icons/lw/Item/spellcrystal_fire_1.webp"
     },
     "lw_book_907848": {
@@ -11766,7 +11766,7 @@
       "lwSourceUrl": "https://6sword.com/zh-TW/lw/items/907848",
       "gachaWeight": 0,
       "lwIcon": "/assets/lw-skills/24d70f3b6d902d938ee35f46b5cfa2378ddf3e6475969fcfa616937debba677d.webp",
-      "d": "學習 精通貫穿。技能品質依天堂W；商店售價與未公開學習條件採永夜設定。",
+      "d": "學習 精通貫穿。技能品質、商店售價與學習條件依永夜設定。",
       "lwItemIconSource": "https://6sword.com/icons/lw/Item/spellcrystal_normal_4.webp"
     },
     "lw_book_909495": {
@@ -11781,7 +11781,7 @@
       "lwSourceUrl": "https://6sword.com/zh-TW/lw/items/909495",
       "gachaWeight": 0,
       "lwIcon": "/assets/lw-skills/8ba68915ab00aba24a01db046d137e48639dd228b93d17b590436978178c570b.webp",
-      "d": "學習 精靈屏障。技能品質依天堂W；商店售價與未公開學習條件採永夜設定。",
+      "d": "學習 精靈屏障。技能品質、商店售價與學習條件依永夜設定。",
       "lwItemIconSource": "https://6sword.com/icons/lw/Item/spellcrystal_normal_5.webp"
     },
     "lw_book_909501": {
@@ -11796,7 +11796,7 @@
       "lwSourceUrl": "https://6sword.com/zh-TW/lw/items/909501",
       "gachaWeight": 0,
       "lwIcon": "/assets/lw-skills/fce7653e63c0eff0a47cf816d2328c756951aba7f8e6954902d1a6c481785857.webp",
-      "d": "學習 重水之疾。技能品質依天堂W；商店售價與未公開學習條件採永夜設定。",
+      "d": "學習 重水之疾。技能品質、商店售價與學習條件依永夜設定。",
       "lwItemIconSource": "https://6sword.com/icons/lw/Item/spellcrystal_water_4.webp"
     },
     "lw_book_909497": {
@@ -11811,7 +11811,7 @@
       "lwSourceUrl": "https://6sword.com/zh-TW/lw/items/909497",
       "gachaWeight": 0,
       "lwIcon": "/assets/lw-skills/a8693a45ea029499c8641d9b15381094b7041dcedb643737e188506b60b0a83c.webp",
-      "d": "學習 重水之疾 (精神) : 被動。技能品質依天堂W；商店售價與未公開學習條件採永夜設定。",
+      "d": "學習 重水之疾 (精神) : 被動。技能品質、商店售價與學習條件依永夜設定。",
       "lwItemIconSource": "https://6sword.com/icons/lw/Item/spellcrystal_water_5.webp"
     },
     "lw_book_909499": {
@@ -11826,7 +11826,7 @@
       "lwSourceUrl": "https://6sword.com/zh-TW/lw/items/909499",
       "gachaWeight": 0,
       "lwIcon": "/assets/lw-skills/24d70f3b6d902d938ee35f46b5cfa2378ddf3e6475969fcfa616937debba677d.webp",
-      "d": "學習 精靈治癒。技能品質依天堂W；商店售價與未公開學習條件採永夜設定。",
+      "d": "學習 精靈治癒。技能品質、商店售價與學習條件依永夜設定。",
       "lwItemIconSource": "https://6sword.com/icons/lw/Item/spellcrystal_normal_4.webp"
     },
     "lw_book_909722": {
@@ -11841,7 +11841,7 @@
       "lwSourceUrl": "https://6sword.com/zh-TW/lw/items/909722",
       "gachaWeight": 0,
       "lwIcon": "/assets/lw-skills/1b77131e50d765423479e82a61de67ef9cc7ecdee630570c125ca39e28a3a0e9.webp",
-      "d": "學習 特殊攻擊 : 妖精。技能品質依天堂W；商店售價與未公開學習條件採永夜設定。",
+      "d": "學習 特殊攻擊 : 妖精。技能品質、商店售價與學習條件依永夜設定。",
       "lwItemIconSource": "https://6sword.com/icons/lw/Item/spellcrystal_normal_Mythic.webp"
     },
     "lw_book_915883": {
@@ -11856,7 +11856,7 @@
       "lwSourceUrl": "https://6sword.com/zh-TW/lw/items/915883",
       "gachaWeight": 0,
       "lwIcon": "/assets/lw-skills/1b77131e50d765423479e82a61de67ef9cc7ecdee630570c125ca39e28a3a0e9.webp",
-      "d": "學習 變形術。技能品質依天堂W；商店售價與未公開學習條件採永夜設定。",
+      "d": "學習 變形術。技能品質、商店售價與學習條件依永夜設定。",
       "lwItemIconSource": "https://6sword.com/icons/lw/Item/spellcrystal_normal_Mythic.webp"
     },
     "lw_book_918384": {
@@ -11871,7 +11871,7 @@
       "lwSourceUrl": "https://6sword.com/zh-TW/lw/items/918384",
       "gachaWeight": 0,
       "lwIcon": "/assets/lw-skills/24d70f3b6d902d938ee35f46b5cfa2378ddf3e6475969fcfa616937debba677d.webp",
-      "d": "學習 精靈大師。技能品質依天堂W；商店售價與未公開學習條件採永夜設定。",
+      "d": "學習 精靈大師。技能品質、商店售價與學習條件依永夜設定。",
       "lwItemIconSource": "https://6sword.com/icons/lw/Item/spellcrystal_normal_4.webp"
     },
     "lw_book_918380": {
@@ -11886,7 +11886,7 @@
       "lwSourceUrl": "https://6sword.com/zh-TW/lw/items/918380",
       "gachaWeight": 0,
       "lwIcon": "/assets/lw-skills/b7891becc72a37457c26fb479b7150e38132a5a68a544dfb174324c4440de0f6.webp",
-      "d": "學習 精靈迴避。技能品質依天堂W；商店售價與未公開學習條件採永夜設定。",
+      "d": "學習 精靈迴避。技能品質、商店售價與學習條件依永夜設定。",
       "lwItemIconSource": "https://6sword.com/icons/lw/Item/spellcrystal_normal_1.webp"
     },
     "lw_book_918382": {
@@ -11901,7 +11901,7 @@
       "lwSourceUrl": "https://6sword.com/zh-TW/lw/items/918382",
       "gachaWeight": 0,
       "lwIcon": "/assets/lw-skills/24d70f3b6d902d938ee35f46b5cfa2378ddf3e6475969fcfa616937debba677d.webp",
-      "d": "學習 魔法消除 (精神) : 被動。技能品質依天堂W；商店售價與未公開學習條件採永夜設定。",
+      "d": "學習 魔法消除 (精神) : 被動。技能品質、商店售價與學習條件依永夜設定。",
       "lwItemIconSource": "https://6sword.com/icons/lw/Item/spellcrystal_normal_4.webp"
     },
     "lw_book_918386": {
@@ -11916,7 +11916,7 @@
       "lwSourceUrl": "https://6sword.com/zh-TW/lw/items/918386",
       "gachaWeight": 0,
       "lwIcon": "/assets/lw-skills/70905511c7b4698ee7894983e6b150b8c62057bf8be10305a3568629f3f36a3d.webp",
-      "d": "學習 大地聯合。技能品質依天堂W；商店售價與未公開學習條件採永夜設定。",
+      "d": "學習 大地聯合。技能品質、商店售價與學習條件依永夜設定。",
       "lwItemIconSource": "https://6sword.com/icons/lw/Item/spellcrystal_earth_5.webp"
     },
     "lw_book_927465": {
@@ -11931,7 +11931,7 @@
       "lwSourceUrl": "https://6sword.com/zh-TW/lw/items/927465",
       "gachaWeight": 0,
       "lwIcon": "/assets/lw-skills/8ba68915ab00aba24a01db046d137e48639dd228b93d17b590436978178c570b.webp",
-      "d": "學習 精通貫穿 (精神) : 被動。技能品質依天堂W；商店售價與未公開學習條件採永夜設定。",
+      "d": "學習 精通貫穿 (精神) : 被動。技能品質、商店售價與學習條件依永夜設定。",
       "lwItemIconSource": "https://6sword.com/icons/lw/Item/spellcrystal_normal_5.webp"
     },
     "lw_book_902941": {
@@ -11946,7 +11946,7 @@
       "lwSourceUrl": "https://6sword.com/zh-TW/lw/items/902941",
       "gachaWeight": 0,
       "lwIcon": "/assets/lw-skills/ff0a12a662c0cbbedd94ed21a3b8e7f408a8d70f648f7a5d79080fc967f287e2.webp",
-      "d": "學習 行走加速。技能品質依天堂W；商店售價與未公開學習條件採永夜設定。",
+      "d": "學習 行走加速。技能品質、商店售價與學習條件依永夜設定。",
       "lwItemIconSource": "https://6sword.com/icons/lw/Item/SpellCrystal_DA_4_Epic.webp"
     },
     "lw_book_902927": {
@@ -11961,7 +11961,7 @@
       "lwSourceUrl": "https://6sword.com/zh-TW/lw/items/902927",
       "gachaWeight": 0,
       "lwIcon": "/assets/lw-skills/afa203bbb8efd8b0e6c4d2c2bde28afecdbc0a4ee40c02daebe71b82fa202605.webp",
-      "d": "學習 毒性抵抗。技能品質依天堂W；商店售價與未公開學習條件採永夜設定。",
+      "d": "學習 毒性抵抗。技能品質、商店售價與學習條件依永夜設定。",
       "lwItemIconSource": "https://6sword.com/icons/lw/Item/SpellCrystal_DA_1_Common.webp"
     },
     "lw_book_902937": {
@@ -11976,7 +11976,7 @@
       "lwSourceUrl": "https://6sword.com/zh-TW/lw/items/902937",
       "gachaWeight": 0,
       "lwIcon": "/assets/lw-skills/37a4506cc5f15c5e3fae61826de24285920e6378ec5edd6324bc0388c5b45db6.webp",
-      "d": "學習 暗隱術。技能品質依天堂W；商店售價與未公開學習條件採永夜設定。",
+      "d": "學習 暗隱術。技能品質、商店售價與學習條件依永夜設定。",
       "lwItemIconSource": "https://6sword.com/icons/lw/Item/SpellCrystal_DA_3_Rare.webp"
     },
     "lw_book_902929": {
@@ -11991,7 +11991,7 @@
       "lwSourceUrl": "https://6sword.com/zh-TW/lw/items/902929",
       "gachaWeight": 0,
       "lwIcon": "/assets/lw-skills/a753b066cfe82add9189156f4d173bf11fa82d37bed7c2b83b804f45455cb5b5.webp",
-      "d": "學習 燃燒鬥志。技能品質依天堂W；商店售價與未公開學習條件採永夜設定。",
+      "d": "學習 燃燒鬥志。技能品質、商店售價與學習條件依永夜設定。",
       "lwItemIconSource": "https://6sword.com/icons/lw/Item/SpellCrystal_DA_2_UnCommon.webp"
     },
     "lw_book_902925": {
@@ -12006,7 +12006,7 @@
       "lwSourceUrl": "https://6sword.com/zh-TW/lw/items/902925",
       "gachaWeight": 0,
       "lwIcon": "/assets/lw-skills/afa203bbb8efd8b0e6c4d2c2bde28afecdbc0a4ee40c02daebe71b82fa202605.webp",
-      "d": "學習 影之防護。技能品質依天堂W；商店售價與未公開學習條件採永夜設定。",
+      "d": "學習 影之防護。技能品質、商店售價與學習條件依永夜設定。",
       "lwItemIconSource": "https://6sword.com/icons/lw/Item/SpellCrystal_DA_1_Common.webp"
     },
     "lw_book_902931": {
@@ -12021,7 +12021,7 @@
       "lwSourceUrl": "https://6sword.com/zh-TW/lw/items/902931",
       "gachaWeight": 0,
       "lwIcon": "/assets/lw-skills/a753b066cfe82add9189156f4d173bf11fa82d37bed7c2b83b804f45455cb5b5.webp",
-      "d": "學習 暗影閃避。技能品質依天堂W；商店售價與未公開學習條件採永夜設定。",
+      "d": "學習 暗影閃避。技能品質、商店售價與學習條件依永夜設定。",
       "lwItemIconSource": "https://6sword.com/icons/lw/Item/SpellCrystal_DA_2_UnCommon.webp"
     },
     "lw_book_902933": {
@@ -12036,7 +12036,7 @@
       "lwSourceUrl": "https://6sword.com/zh-TW/lw/items/902933",
       "gachaWeight": 0,
       "lwIcon": "/assets/lw-skills/37a4506cc5f15c5e3fae61826de24285920e6378ec5edd6324bc0388c5b45db6.webp",
-      "d": "學習 雙重破壞。技能品質依天堂W；商店售價與未公開學習條件採永夜設定。",
+      "d": "學習 雙重破壞。技能品質、商店售價與學習條件依永夜設定。",
       "lwItemIconSource": "https://6sword.com/icons/lw/Item/SpellCrystal_DA_3_Rare.webp"
     },
     "lw_book_902935": {
@@ -12051,7 +12051,7 @@
       "lwSourceUrl": "https://6sword.com/zh-TW/lw/items/902935",
       "gachaWeight": 0,
       "lwIcon": "/assets/lw-skills/37a4506cc5f15c5e3fae61826de24285920e6378ec5edd6324bc0388c5b45db6.webp",
-      "d": "學習 迴避提升。技能品質依天堂W；商店售價與未公開學習條件採永夜設定。",
+      "d": "學習 迴避提升。技能品質、商店售價與學習條件依永夜設定。",
       "lwItemIconSource": "https://6sword.com/icons/lw/Item/SpellCrystal_DA_3_Rare.webp"
     },
     "lw_book_908066": {
@@ -12066,7 +12066,7 @@
       "lwSourceUrl": "https://6sword.com/zh-TW/lw/items/908066",
       "gachaWeight": 0,
       "lwIcon": "/assets/lw-skills/ff0a12a662c0cbbedd94ed21a3b8e7f408a8d70f648f7a5d79080fc967f287e2.webp",
-      "d": "學習 暗影之牙。技能品質依天堂W；商店售價與未公開學習條件採永夜設定。",
+      "d": "學習 暗影之牙。技能品質、商店售價與學習條件依永夜設定。",
       "lwItemIconSource": "https://6sword.com/icons/lw/Item/SpellCrystal_DA_4_Epic.webp"
     },
     "lw_book_902945": {
@@ -12081,7 +12081,7 @@
       "lwSourceUrl": "https://6sword.com/zh-TW/lw/items/902945",
       "gachaWeight": 0,
       "lwIcon": "/assets/lw-skills/f955c525361b85a0e81aab96f779db137d436b76ea370cf66e46f50196f9f23f.webp",
-      "d": "學習 會心一撃。技能品質依天堂W；商店售價與未公開學習條件採永夜設定。",
+      "d": "學習 會心一撃。技能品質、商店售價與學習條件依永夜設定。",
       "lwItemIconSource": "https://6sword.com/icons/lw/Item/SpellCrystal_DA_5_Legend.webp"
     },
     "lw_book_902943": {
@@ -12096,7 +12096,7 @@
       "lwSourceUrl": "https://6sword.com/zh-TW/lw/items/902943",
       "gachaWeight": 0,
       "lwIcon": "/assets/lw-skills/f955c525361b85a0e81aab96f779db137d436b76ea370cf66e46f50196f9f23f.webp",
-      "d": "學習 破壞盔甲。技能品質依天堂W；商店售價與未公開學習條件採永夜設定。",
+      "d": "學習 破壞盔甲。技能品質、商店售價與學習條件依永夜設定。",
       "lwItemIconSource": "https://6sword.com/icons/lw/Item/SpellCrystal_DA_5_Legend.webp"
     },
     "lw_book_902912": {
@@ -12111,7 +12111,7 @@
       "lwSourceUrl": "https://6sword.com/zh-TW/lw/items/902912",
       "gachaWeight": 0,
       "lwIcon": "/assets/lw-skills/afa203bbb8efd8b0e6c4d2c2bde28afecdbc0a4ee40c02daebe71b82fa202605.webp",
-      "d": "學習 暗影之擊。技能品質依天堂W；商店售價與未公開學習條件採永夜設定。",
+      "d": "學習 暗影之擊。技能品質、商店售價與學習條件依永夜設定。",
       "lwItemIconSource": "https://6sword.com/icons/lw/Item/SpellCrystal_DA_1_Common.webp"
     },
     "lw_book_902987": {
@@ -12126,7 +12126,7 @@
       "lwSourceUrl": "https://6sword.com/zh-TW/lw/items/902987",
       "gachaWeight": 0,
       "lwIcon": "/assets/lw-skills/37a4506cc5f15c5e3fae61826de24285920e6378ec5edd6324bc0388c5b45db6.webp",
-      "d": "學習 影之弱化。技能品質依天堂W；商店售價與未公開學習條件採永夜設定。",
+      "d": "學習 影之弱化。技能品質、商店售價與學習條件依永夜設定。",
       "lwItemIconSource": "https://6sword.com/icons/lw/Item/SpellCrystal_DA_3_Rare.webp"
     },
     "lw_book_908102": {
@@ -12141,7 +12141,7 @@
       "lwSourceUrl": "https://6sword.com/zh-TW/lw/items/908102",
       "gachaWeight": 0,
       "lwIcon": "/assets/lw-skills/ff0a12a662c0cbbedd94ed21a3b8e7f408a8d70f648f7a5d79080fc967f287e2.webp",
-      "d": "學習 影之束縛。技能品質依天堂W；商店售價與未公開學習條件採永夜設定。",
+      "d": "學習 影之束縛。技能品質、商店售價與學習條件依永夜設定。",
       "lwItemIconSource": "https://6sword.com/icons/lw/Item/SpellCrystal_DA_4_Epic.webp"
     },
     "lw_book_903124": {
@@ -12156,7 +12156,7 @@
       "lwSourceUrl": "https://6sword.com/zh-TW/lw/items/903124",
       "gachaWeight": 0,
       "lwIcon": "/assets/lw-skills/ff0a12a662c0cbbedd94ed21a3b8e7f408a8d70f648f7a5d79080fc967f287e2.webp",
-      "d": "學習 暗隱術 (命運) : 被動。技能品質依天堂W；商店售價與未公開學習條件採永夜設定。",
+      "d": "學習 暗隱術 (命運) : 被動。技能品質、商店售價與學習條件依永夜設定。",
       "lwItemIconSource": "https://6sword.com/icons/lw/Item/SpellCrystal_DA_4_Epic.webp"
     },
     "lw_book_903541": {
@@ -12171,7 +12171,7 @@
       "lwSourceUrl": "https://6sword.com/zh-TW/lw/items/903541",
       "gachaWeight": 0,
       "lwIcon": "/assets/lw-skills/ff0a12a662c0cbbedd94ed21a3b8e7f408a8d70f648f7a5d79080fc967f287e2.webp",
-      "d": "學習 毒性抵抗 (命運) : 被動。技能品質依天堂W；商店售價與未公開學習條件採永夜設定。",
+      "d": "學習 毒性抵抗 (命運) : 被動。技能品質、商店售價與學習條件依永夜設定。",
       "lwItemIconSource": "https://6sword.com/icons/lw/Item/SpellCrystal_DA_4_Epic.webp"
     },
     "lw_book_903564": {
@@ -12186,7 +12186,7 @@
       "lwSourceUrl": "https://6sword.com/zh-TW/lw/items/903564",
       "gachaWeight": 0,
       "lwIcon": "/assets/lw-skills/ff0a12a662c0cbbedd94ed21a3b8e7f408a8d70f648f7a5d79080fc967f287e2.webp",
-      "d": "學習 影之弱化 (命運) : 被動。技能品質依天堂W；商店售價與未公開學習條件採永夜設定。",
+      "d": "學習 影之弱化 (命運) : 被動。技能品質、商店售價與學習條件依永夜設定。",
       "lwItemIconSource": "https://6sword.com/icons/lw/Item/SpellCrystal_DA_4_Epic.webp"
     },
     "lw_book_906437": {
@@ -12201,7 +12201,7 @@
       "lwSourceUrl": "https://6sword.com/zh-TW/lw/items/906437",
       "gachaWeight": 0,
       "lwIcon": "/assets/lw-skills/ff0a12a662c0cbbedd94ed21a3b8e7f408a8d70f648f7a5d79080fc967f287e2.webp",
-      "d": "學習 燃燒鬥志 (命運) : 被動。技能品質依天堂W；商店售價與未公開學習條件採永夜設定。",
+      "d": "學習 燃燒鬥志 (命運) : 被動。技能品質、商店售價與學習條件依永夜設定。",
       "lwItemIconSource": "https://6sword.com/icons/lw/Item/SpellCrystal_DA_4_Epic.webp"
     },
     "lw_book_906877": {
@@ -12216,7 +12216,7 @@
       "lwSourceUrl": "https://6sword.com/zh-TW/lw/items/906877",
       "gachaWeight": 0,
       "lwIcon": "/assets/lw-skills/f955c525361b85a0e81aab96f779db137d436b76ea370cf66e46f50196f9f23f.webp",
-      "d": "學習 暗影閃避 (命運) : 被動。技能品質依天堂W；商店售價與未公開學習條件採永夜設定。",
+      "d": "學習 暗影閃避 (命運) : 被動。技能品質、商店售價與學習條件依永夜設定。",
       "lwItemIconSource": "https://6sword.com/icons/lw/Item/SpellCrystal_DA_5_Legend.webp"
     },
     "lw_book_907855": {
@@ -12231,7 +12231,7 @@
       "lwSourceUrl": "https://6sword.com/zh-TW/lw/items/907855",
       "gachaWeight": 0,
       "lwIcon": "/assets/lw-skills/ff0a12a662c0cbbedd94ed21a3b8e7f408a8d70f648f7a5d79080fc967f287e2.webp",
-      "d": "學習 精通致命。技能品質依天堂W；商店售價與未公開學習條件採永夜設定。",
+      "d": "學習 精通致命。技能品質、商店售價與學習條件依永夜設定。",
       "lwItemIconSource": "https://6sword.com/icons/lw/Item/SpellCrystal_DA_4_Epic.webp"
     },
     "lw_book_909132": {
@@ -12246,7 +12246,7 @@
       "lwSourceUrl": "https://6sword.com/zh-TW/lw/items/909132",
       "gachaWeight": 0,
       "lwIcon": "/assets/lw-skills/f955c525361b85a0e81aab96f779db137d436b76ea370cf66e46f50196f9f23f.webp",
-      "d": "學習 暗影衝刺 (命運) : 被動。技能品質依天堂W；商店售價與未公開學習條件採永夜設定。",
+      "d": "學習 暗影衝刺 (命運) : 被動。技能品質、商店售價與學習條件依永夜設定。",
       "lwItemIconSource": "https://6sword.com/icons/lw/Item/SpellCrystal_DA_5_Legend.webp"
     },
     "lw_book_909130": {
@@ -12261,7 +12261,7 @@
       "lwSourceUrl": "https://6sword.com/zh-TW/lw/items/909130",
       "gachaWeight": 0,
       "lwIcon": "/assets/lw-skills/ff0a12a662c0cbbedd94ed21a3b8e7f408a8d70f648f7a5d79080fc967f287e2.webp",
-      "d": "學習 血影。技能品質依天堂W；商店售價與未公開學習條件採永夜設定。",
+      "d": "學習 血影。技能品質、商店售價與學習條件依永夜設定。",
       "lwItemIconSource": "https://6sword.com/icons/lw/Item/SpellCrystal_DA_4_Epic.webp"
     },
     "lw_book_909719": {
@@ -12276,7 +12276,7 @@
       "lwSourceUrl": "https://6sword.com/zh-TW/lw/items/909719",
       "gachaWeight": 0,
       "lwIcon": "/assets/lw-skills/964f99970129e1e15909bd92948c546ee02e10ecf92d30f3e182ae4937cb7613.webp",
-      "d": "學習 特殊攻擊 : 黑暗妖精。技能品質依天堂W；商店售價與未公開學習條件採永夜設定。",
+      "d": "學習 特殊攻擊 : 黑暗妖精。技能品質、商店售價與學習條件依永夜設定。",
       "lwItemIconSource": "https://6sword.com/icons/lw/Item/SpellCrystal_DA_6_Mythic.webp"
     },
     "lw_book_915879": {
@@ -12291,7 +12291,7 @@
       "lwSourceUrl": "https://6sword.com/zh-TW/lw/items/915879",
       "gachaWeight": 0,
       "lwIcon": "/assets/lw-skills/964f99970129e1e15909bd92948c546ee02e10ecf92d30f3e182ae4937cb7613.webp",
-      "d": "學習 幻影之步。技能品質依天堂W；商店售價與未公開學習條件採永夜設定。",
+      "d": "學習 幻影之步。技能品質、商店售價與學習條件依永夜設定。",
       "lwItemIconSource": "https://6sword.com/icons/lw/Item/SpellCrystal_DA_6_Mythic.webp"
     },
     "lw_book_922230": {
@@ -12306,7 +12306,7 @@
       "lwSourceUrl": "https://6sword.com/zh-TW/lw/items/922230",
       "gachaWeight": 0,
       "lwIcon": "/assets/lw-skills/f955c525361b85a0e81aab96f779db137d436b76ea370cf66e46f50196f9f23f.webp",
-      "d": "學習 雙重破壞 (命運) : 被動。技能品質依天堂W；商店售價與未公開學習條件採永夜設定。",
+      "d": "學習 雙重破壞 (命運) : 被動。技能品質、商店售價與學習條件依永夜設定。",
       "lwItemIconSource": "https://6sword.com/icons/lw/Item/SpellCrystal_DA_5_Legend.webp"
     },
     "lw_book_922220": {
@@ -12321,7 +12321,7 @@
       "lwSourceUrl": "https://6sword.com/zh-TW/lw/items/922220",
       "gachaWeight": 0,
       "lwIcon": "/assets/lw-skills/ff0a12a662c0cbbedd94ed21a3b8e7f408a8d70f648f7a5d79080fc967f287e2.webp",
-      "d": "學習 暗影衝刺。技能品質依天堂W；商店售價與未公開學習條件採永夜設定。",
+      "d": "學習 暗影衝刺。技能品質、商店售價與學習條件依永夜設定。",
       "lwItemIconSource": "https://6sword.com/icons/lw/Item/SpellCrystal_DA_4_Epic.webp"
     },
     "lw_book_922222": {
@@ -12336,7 +12336,7 @@
       "lwSourceUrl": "https://6sword.com/zh-TW/lw/items/922222",
       "gachaWeight": 0,
       "lwIcon": "/assets/lw-skills/37a4506cc5f15c5e3fae61826de24285920e6378ec5edd6324bc0388c5b45db6.webp",
-      "d": "學習 影之迴避。技能品質依天堂W；商店售價與未公開學習條件採永夜設定。",
+      "d": "學習 影之迴避。技能品質、商店售價與學習條件依永夜設定。",
       "lwItemIconSource": "https://6sword.com/icons/lw/Item/SpellCrystal_DA_3_Rare.webp"
     },
     "lw_book_922228": {
@@ -12351,7 +12351,7 @@
       "lwSourceUrl": "https://6sword.com/zh-TW/lw/items/922228",
       "gachaWeight": 0,
       "lwIcon": "/assets/lw-skills/f955c525361b85a0e81aab96f779db137d436b76ea370cf66e46f50196f9f23f.webp",
-      "d": "學習 影之迴避 (命運) : 被動。技能品質依天堂W；商店售價與未公開學習條件採永夜設定。",
+      "d": "學習 影之迴避 (命運) : 被動。技能品質、商店售價與學習條件依永夜設定。",
       "lwItemIconSource": "https://6sword.com/icons/lw/Item/SpellCrystal_DA_5_Legend.webp"
     },
     "lw_book_922224": {
@@ -12366,7 +12366,7 @@
       "lwSourceUrl": "https://6sword.com/zh-TW/lw/items/922224",
       "gachaWeight": 0,
       "lwIcon": "/assets/lw-skills/f955c525361b85a0e81aab96f779db137d436b76ea370cf66e46f50196f9f23f.webp",
-      "d": "學習 黑暗之幕。技能品質依天堂W；商店售價與未公開學習條件採永夜設定。",
+      "d": "學習 黑暗之幕。技能品質、商店售價與學習條件依永夜設定。",
       "lwItemIconSource": "https://6sword.com/icons/lw/Item/SpellCrystal_DA_5_Legend.webp"
     },
     "lw_book_922226": {
@@ -12381,7 +12381,7 @@
       "lwSourceUrl": "https://6sword.com/zh-TW/lw/items/922226",
       "gachaWeight": 0,
       "lwIcon": "/assets/lw-skills/ff0a12a662c0cbbedd94ed21a3b8e7f408a8d70f648f7a5d79080fc967f287e2.webp",
-      "d": "學習 黑暗標記。技能品質依天堂W；商店售價與未公開學習條件採永夜設定。",
+      "d": "學習 黑暗標記。技能品質、商店售價與學習條件依永夜設定。",
       "lwItemIconSource": "https://6sword.com/icons/lw/Item/SpellCrystal_DA_4_Epic.webp"
     },
     "lw_book_927463": {
@@ -12396,7 +12396,7 @@
       "lwSourceUrl": "https://6sword.com/zh-TW/lw/items/927463",
       "gachaWeight": 0,
       "lwIcon": "/assets/lw-skills/f955c525361b85a0e81aab96f779db137d436b76ea370cf66e46f50196f9f23f.webp",
-      "d": "學習 精通致命 (命運) : 被動。技能品質依天堂W；商店售價與未公開學習條件採永夜設定。",
+      "d": "學習 精通致命 (命運) : 被動。技能品質、商店售價與學習條件依永夜設定。",
       "lwItemIconSource": "https://6sword.com/icons/lw/Item/SpellCrystal_DA_5_Legend.webp"
     }
   },
