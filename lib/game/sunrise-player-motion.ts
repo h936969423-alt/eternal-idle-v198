@@ -21,7 +21,7 @@ export function tickLocalPlayerAttack(clock:LocalAttackClock,seconds:number,enab
  const attack=elapsed+1e-9>=period;
  return {clock:{elapsed:Math.max(0,attack?elapsed-period:elapsed),period},attack};
 }
-export function sunriseFrameMs(seconds:number,count:number){return seconds>0&&count>0?Math.max(45,Math.min(125,seconds*1000/count)):125;}
+export function sunriseFrameMs(seconds:number,count:number){return Number.isFinite(seconds)&&seconds>0&&count>0?Math.max(20,seconds*1000/count):125;}
 export function sunriseMotionDuration(kind:SunriseAction,timing:SunriseTiming){
  const count=timing.counts[kind]||0;
  return count*(kind==='attack'?sunriseFrameMs(timing.attackSeconds,count):kind==='skill'?sunriseFrameMs(timing.castSeconds,count):125);
