@@ -20,6 +20,7 @@ export function bossDropPreview(zone:string,c?:Character,definition?:BossDropDef
  const hasDefaultHybrid=!configured&&targets.some(m=>m.definition?.dropsMode!=='custom');
  const hybrid=configured?.hybrid||(hasDefaultHybrid?defaultHybridRule(level,hybridRoleForBoss(zone)):undefined);
  const dragon=isFourDragonZone(zone),dragonGroups=dragon?fourDragonPools(c?.lootAppearance,now):[];
+ if(!dragon)return {drops:[] as BossPreviewDrop[],equipment:[],shards:[],dragonGroups:[],conditionalHybrid:false};
  const drops:BossPreviewDrop[]=[];
  const add=(entries:DropEntry[],source:string,mixed:boolean)=>{for(const d of entries){
   const i=items[d.item];if(!bossDropAllowed(d.item,c?.lootAppearance)||!d.enabled||d.chance<=0||!i||i.availFrom>now||(mixed||dragon)&&isProgressionEquipment(i)||dragon&&isDragonRewardItem(i))continue;

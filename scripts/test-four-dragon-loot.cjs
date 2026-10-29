@@ -35,7 +35,7 @@ try{
   ch.arena.forEach(m=>m.hp=0);ch.arenaTarget=0;e.__award(ch,ch.arena[0].id,()=>0,now);
   assert(!ch.lastBossVictory.drops[item],rank+' excluded from receipt');
   assert(!ch.bag[item],rank+' excluded from inventory');
-  assert.equal(ch.bag.scroll_weapon,1,'allowed supplies preserved');
+  assert(!ch.bag.scroll_weapon,'world bosses no longer award supplies');assert.deepEqual(ch.lastBossVictory.drops,{},'world bosses award no items');
   assert(!preview(ch.zone,ch,undefined,now).drops.some(d=>d.item===item),'custom preview agrees');
  }
  let checked=0;for(const [id,item] of Object.entries(e.DATA.items)){const info=safety.enhancementSafety(id,item);if(!info)continue;const ch=make();ch.bag={[id]:1,scroll_weapon:10,scroll_armor:10,scroll_acc:10};ch.enh={};try{const actual=gear.enhancementInfo(ch,id);assert(info.canEnhance,id);assert.equal(info.safe,Number.isFinite(actual.safe)?Math.max(0,actual.safe):0,id);assert.equal(info.cap,actual.cap,id);}catch(error){if(error.code==='ERR_ASSERTION')throw error;assert(!info.canEnhance,id+': '+error.message);}checked++;}
