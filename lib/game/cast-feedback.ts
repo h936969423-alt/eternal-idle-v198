@@ -5,7 +5,7 @@ import {playerActionKind} from './animation-cues';
 import {durationFor} from './animation-clock';
 import type {Save} from './engine';
 /** Browser-only intent: a pose preview, never an engine action or damage event. */
-export type CastIntent={id:number;characterId:string;skill:string;at:number;afterSeq:number;effectPreviewed?:boolean};
+export type CastIntent={id:number;characterId:string;skill:string;at:number;afterSeq:number;effectPreviewed?:boolean;targetUid?:string};
 export function spellEffectPreviewDuration(skill:string){const c=magicVisual({skill}).config;return c?Math.ceil(Math.max(c.frames.length,...(c.layers||[]).map(x=>x.length))*1000/Math.max(1,c.fps))+100:0;}
 export function spellPreviewNeedsTarget(skill:string){return !magicVisual({skill}).config?.self;}
 export function canPreviewSpellEffect(skill:string){const config=magicVisual({skill}).config;return playerActionKind(skill)==='skill'&&(raw.skills as Record<string,any>)[skill]?.type!=='passive'&&!!config;}
