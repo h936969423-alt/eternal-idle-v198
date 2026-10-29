@@ -115,6 +115,8 @@ jobs:
         run: node scripts/test-skill-computation.cjs
       - name: Verify continuous live polls do not reopen offline settlement
         run: node scripts/test-live-settlement.cjs
+      - name: Verify merged Afei monster and world-boss drop tables
+        run: node scripts/test-afei-drops.cjs
       - name: Verify blue-to-gold weapon growth and uncapped enhancement
         run: |
           node scripts/test-weapon-growth.cjs
@@ -168,6 +170,7 @@ jobs:
         run: node scripts/verify-four-dragon-assets.mjs --live
       - name: Print deployment location
         run: echo 'Check Cloudflare Workers dashboard for eternal-idle-v198-test workers.dev URL'
+
 
 
 

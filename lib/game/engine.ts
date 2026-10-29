@@ -1,4 +1,5 @@
 import {bossDropAllowed} from './boss-drop-policy';
+import {isAfeiMonster,isAfeiBoss} from './afei-drops';
 import {FOUR_DRAGON_AOE,dragonDice,dragonMagicDamage,dragonStatusChance,dragonEffectiveResist,type DragonDot} from './four-dragons';
 import {isFourDragonZone,isDragonRewardItem,rollFourDragonLoot} from './four-dragon-loot';
 import {weaponEnhancementBonus} from './weapon-enhancement';
@@ -229,10 +230,10 @@ export function settleBossRewards(c:Character,now:number,rng:()=>number){
 function award(c:Character,mobId:string,rng:()=>number,now:number){const dead=c.arena?.[c.arenaTarget||0];if(!dead||dead.hp>0||dead.deathSettled)return;dead.deathSettled=true;const m=monsterData(c,mobId,dead);if(dead?.summonedBy){log(c,`擊退 ${m.n}`,'kill',now);syncTarget(c);event(c,'state',now);return;}if(dead?.uid)for(let slot=0;slot<(c.arena?.length||0);slot++){const child=c.arena![slot];if(child.summonedBy===dead.uid&&child.hp>0){child.hp=0;event(c,'state',now,{casterSlot:slot,uid:child.uid,mob:child.id,mobHp:0});}}const roomBoss=playableBoss(c.zone);const rewards=stats(c,now),xp=Math.floor(m.exp*(1+rewards.expPct/100));const ledger=incomeLedgers.get(c);if(ledger&&!roomBoss)ledger.xp+=xp;c.kills++;const captured=capturePet(c,m.n,now);if(captured)log(c,`誘捕成功：${captured.form} 已送入保管`,'pet',now);c.lawful=changeAlignment(c.lawful,alignmentKillDelta({...m,...dead}));masteryKill(c,now);c.mobKills||={};c.mobKills[mobId]=(c.mobKills[mobId]||0)+1;petGain(c,xp,rng,now);if(roomBoss){const preview={...c,bag:{},dollCardDex:{...(c.dollCardDex||{})}};rollDollCards(preview,mobId,rng,id=>recordBossDrop(c,id,1,true));}else rollDollCards(c,mobId,rng,id=>{recordDrop(c,id);showLoot(c,id,1,now);});if(!roomBoss)c.xp+=xp;const range=roomBoss?bossGoldRange(m):{min:m.goldMin,max:m.goldMax};const earnedGold=Math.max(roomBoss?1:0,Math.floor(int(range.min,range.max,rng)*(1+rewards.goldPct/100)));if(!roomBoss)c.gold+=earnedGold;recordBossReward(c,xp,earnedGold,now,!!roomBoss);log(c,`擊敗 ${m.n} · EXP +${xp}${roomBoss?'（待整場結算）':''}`,'kill',now);
  const roomFinished=!!roomBoss&&!c.arena?.some(m=>m.hp>0);const roomDrop=c.bossRooms?.[c.zone]?.dropDefinition;const customMonster=dead?.definition?.dropsMode==='custom';
  const ordinaryMaterial=(id:string)=>{const item=DATA.items[id];if(!item||item.type==='wpn'||item.type==='arm'||item.type==='acc'||item.type==='pot'||item.type==='scroll'||item.type==='skillbk'||item.type==='doll'||item.noSell||id==='mat_boss_crystal')return false;return /米索莉|元素石|皮革|精靈玉|礦石|金屬塊|原石|寶石|水晶|蘑菇汁|安特的樹枝|樹枝|木材|布料|羽毛|鱗片|獸皮|骨頭|粉末|材料|礦物|礦塊|碎石|結晶|石塊/.test(String(item.n||''));};
- const grantDrops=(drops:{item:string;quantity:number}[])=>{for(const d of drops){if(roomBoss){recordBossDrop(c,d.item,d.quantity,true);continue;}if(ordinaryMaterial(d.item)&&rng()>=0.5)continue;const keys=grantDroppedItem(c,d.item,d.quantity,rng);recordDrop(c,d.item,d.quantity);if(DATA.items[d.item]?.doll)c.dollCollection=[...new Set([...(c.dollCollection||[]),d.item])];showLoot(c,d.item,d.quantity,now);for(const key of keys)if(c.darkAffixes?.[key]?.length)log(c,`暗黑詞條：${affixLabel(c,key)}`,'loot',now);}};
- const mixedMonster=!roomBoss&&(dead?.definition?.dropsMode??'hybrid')==='hybrid';
+ const grantDrops=(drops:{item:string;quantity:number}[])=>{for(const d of drops){if(roomBoss){recordBossDrop(c,d.item,d.quantity,true);continue;}if(!isAfeiMonster(mobId)&&ordinaryMaterial(d.item)&&rng()>=0.5)continue;const keys=grantDroppedItem(c,d.item,d.quantity,rng);recordDrop(c,d.item,d.quantity);if(DATA.items[d.item]?.doll)c.dollCollection=[...new Set([...(c.dollCollection||[]),d.item])];showLoot(c,d.item,d.quantity,now);for(const key of keys)if(c.darkAffixes?.[key]?.length)log(c,`暗黑詞條：${affixLabel(c,key)}`,'loot',now);}};
+ const mixedMonster=!roomBoss&&(dead?.definition?.dropsMode??(isAfeiMonster(mobId)?'original':'hybrid'))==='hybrid';
  const bossLevel=roomBoss?Math.max(...(c.arena||[]).map(target=>monsterData(c,target.id,target)?.lv||1)):m.lv;
- const mixedBoss=roomBoss?(roomDrop?.hybrid||(!roomDrop&&!customMonster?defaultHybridRule(bossLevel,hybridRoleForBoss(c.zone)):undefined)):undefined;
+ const mixedBoss=roomBoss?(roomDrop?.hybrid||(!roomDrop&&!customMonster&&!isAfeiBoss(c.zone)?defaultHybridRule(bossLevel,hybridRoleForBoss(c.zone)):undefined)):undefined;
  const fourDragon=!!roomBoss&&isFourDragonZone(c.zone);
  const onlySupplies=(drops:{item:string;quantity:number}[])=>drops.filter(d=>!isProgressionEquipment(DATA.items[d.item])&&(!fourDragon||!isDragonRewardItem(DATA.items[d.item])));
  const grantMixed=(rule:ReturnType<typeof defaultHybridRule>,key:string,lv:number)=>{
@@ -858,5 +859,6 @@ export function action(save:Save,a:any,now=Date.now(),rng:()=>number=Math.random
  }
  for(const ch of save.characters)settleBossRewards(ch,now,rng);bindDollCollections(save);bindPolymorphUnlocks(save);ensureArena(c,rng,now);const b=stats(c,now);c.hp=clamp(c.hp,1,b.maxHp);event(c,'state',now);c.mp=clamp(c.mp,0,b.maxMp);
 }
+
 
 

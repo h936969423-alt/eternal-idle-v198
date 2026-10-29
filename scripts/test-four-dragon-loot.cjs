@@ -30,12 +30,12 @@ try{
  const blocked=Object.keys(e.DATA.items).filter(id=>['hero','legend'].includes(appearance.itemRarity(id))&&hybrid.isProgressionEquipment(e.DATA.items[id]));
  for(const rank of ['hero','legend']){
   const item=blocked.find(id=>appearance.itemRarity(id)===rank);assert(item,rank);
-  const ch=make();ch.zone='wb_sema';e.ensureArena(ch,()=>.5,now);
+  const ch=make();ch.zone=zone;e.ensureArena(ch,()=>.5,now);
   ch.bossRooms[ch.zone].dropDefinition={id:ch.zone,timing:'complete',drops:[{item,chance:100,min:1,max:1,enabled:true},{item:'scroll_weapon',chance:100,min:1,max:1,enabled:true}]};
   ch.arena.forEach(m=>m.hp=0);ch.arenaTarget=0;e.__award(ch,ch.arena[0].id,()=>0,now);
   assert(!ch.lastBossVictory.drops[item],rank+' excluded from receipt');
   assert(!ch.bag[item],rank+' excluded from inventory');
-  assert(!ch.bag.scroll_weapon,'world bosses no longer award supplies');assert.deepEqual(ch.lastBossVictory.drops,{},'world bosses award no items');
+  assert(ch.bag.scroll_weapon,'dragon custom supplies still drop');
   assert(!preview(ch.zone,ch,undefined,now).drops.some(d=>d.item===item),'custom preview agrees');
  }
  let checked=0;for(const [id,item] of Object.entries(e.DATA.items)){const info=safety.enhancementSafety(id,item);if(!info)continue;const ch=make();ch.bag={[id]:1,scroll_weapon:10,scroll_armor:10,scroll_acc:10};ch.enh={};try{const actual=gear.enhancementInfo(ch,id);assert(info.canEnhance,id);assert.equal(info.safe,Number.isFinite(actual.safe)?Math.max(0,actual.safe):0,id);assert.equal(info.cap,actual.cap,id);}catch(error){if(error.code==='ERR_ASSERTION')throw error;assert(!info.canEnhance,id+': '+error.message);}checked++;}
@@ -43,3 +43,4 @@ try{
  for(const safe of [0,4,6]){const item={type:'wpn',source:'lineagew',lwCatalogId:'test',lwGrade:'rare',safe};const h=renderToStaticMarkup(React.createElement(Safe,{id:'test',item,en:safe}));assert(h.includes('安定值：+'));assert(h.includes(String(safe)));assert(h.includes(String(safe+1)));assert(h.includes('無上限'));}
  console.log('PASS: two independent dragon rolls and 1–8/1–5 quantities; hero drops disabled; all families; weapons/armor/rings/belts/books; actual award once; preview SSR; '+checked+' equipment safety rules match server');
 }finally{fs.rmSync(dir,{recursive:true,force:true});}
+

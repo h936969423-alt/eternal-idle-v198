@@ -7,8 +7,8 @@ const {convertedDrops,validateDrops,rollConfiguredDrops}=require('../lib/game/mo
 const data=require('../lib/game/gamedata.json');
 const {specialSkillSupported}=require('../lib/game/combat-rules.ts');
 assert.equal(specialSkillSupported('sk_elf_worldtree','passive'),true,'regional passive must be learnable');
-assert.equal(Object.keys(PUBLIC_DROP_RATES).length,195);
-assert.equal(Object.values(PUBLIC_DROP_RATES).flat().length,1473);
+assert.equal(Object.keys(PUBLIC_DROP_RATES).length,243);
+assert.equal(Object.values(PUBLIC_DROP_RATES).flat().length,1726);
 assert.equal(Object.keys(AREA_DROP_RATES).length,4);
 for(const [id,entries] of Object.entries(PUBLIC_DROP_RATES)){
  assert.ok(data.mobs[id],id);assert.equal(new Set(entries.map(d=>d.item)).size,entries.length,id);
