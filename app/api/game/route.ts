@@ -52,7 +52,8 @@ async function handle(request:Request,mutate:boolean){
  row=await ensureControlRingRestoration(env.DB,owner,row);
  row=await ensureLineageWMythicMigration(env.DB,owner,row);
   // Return the authoritative committed save for a retried mutation, without applying it twice.
-  const requestId=mutate&&payload&&typeof payload.requestId==='string'&&payload.requestId.length<=128?payload.requestId:null;
+  const mutationId=payload&&typeof payload==='object'&&'requestId' in payload?payload.requestId:undefined;
+  const requestId=mutate&&typeof mutationId==='string'&&mutationId.length<=128?mutationId:null;
   const prior=JSON.parse(row.payload) as Save & {processedActions?:string[]};
   if(requestId&&prior.processedActions?.includes(requestId)){
    const {maps,monsters,dolls,world}=settings;
