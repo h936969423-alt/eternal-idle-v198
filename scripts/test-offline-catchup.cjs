@@ -28,6 +28,13 @@ try{
  let partial=e.advance(online,finish,()=>.5,undefined,0);assert.equal(partial.pendingSeconds,3);assert.equal(online.catchup.mode,'online');
  while(partial.pendingSeconds){const serialized=JSON.parse(JSON.stringify(sync.persistedSave(online)));Object.assign(online,serialized);partial=e.advance(online,finish,()=>.5,undefined,0);}
  assert.equal(online.at,finish);assert.equal(partial.offline,false);assert.equal(partial.gold,full.gold);assert.equal(partial.xp,full.xp);assert.deepEqual(JSON.parse(JSON.stringify(online.characters)),JSON.parse(JSON.stringify(reference.characters)));assert.equal(online.offlineIncome,undefined);
+ // Hard work bound still applies when Worker performance timers do not advance.
+ const bounded=fixture(),complete=structuredClone(bounded),goal=bounded.at+29000;
+ const expected=e.advance(complete,goal,()=>.5);
+ let batch=e.advance(bounded,goal,()=>.5,undefined,Infinity,12);
+ assert.equal(batch.pendingSeconds,17);assert.equal(bounded.catchup.mode,'online');
+ while(batch.pendingSeconds){const oldAt=bounded.at;batch=e.advance(bounded,goal,()=>.5,undefined,Infinity,12);assert.ok(bounded.at-oldAt<=12000);}
+ assert.equal(bounded.at,goal);assert.equal(batch.gold,expected.gold);assert.equal(batch.xp,expected.xp);assert.equal(batch.kills,expected.kills);
  // Exact arithmetic and VIP-free eligibility at/above the old paywall.
  for(const level of [1,39,40,60,99]){
   const s=fixture(level),c=s.characters[0],r=e.advance(s,s.at+3_600_000,()=>.99);
@@ -65,4 +72,5 @@ try{
  assert.ok(!fs.readFileSync(path.join(root,'workers/offline-settler.ts'),'utf8').includes('DB.prepare'));
  console.log(`PASS: instant offline settlement, VIP-free levels, 12h cap, death distribution, exclusions, legacy receipts, CAS retry, online resume; three long intervals/retries ${elapsed.toFixed(1)} ms.`);
 }finally{fs.rmSync(dir,{recursive:true,force:true});}
+
 

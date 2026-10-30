@@ -1,3 +1,4 @@
+import {parsedSave} from './parsed-save';
 import activation from './lineagew-equipment-activation.json';
 import reference from './lineagew-equipment-reference.json';
 import {prepareLineageWMigration,lineageWNeedsMigration,LINEAGEW_CATALOG_VERSION} from './lineagew-migration';
@@ -6,7 +7,7 @@ export async function ensureLineageWMigration(db:D1Database,owner:string,initial
  if(!activation.enabled||activation.version!==LINEAGEW_CATALOG_VERSION||activation.items!==Object.keys(reference.items).length||activation.icons!==activation.items)throw Error('永夜 裝備清單與圖示尚未完整核對，暫停移植');
  let row=initial;
  for(let attempt=0;attempt<4;attempt++){
-  const original=JSON.parse(row.payload);if(!lineageWNeedsMigration(original))return row;
+  const original=parsedSave(row);if(!lineageWNeedsMigration(original))return row;
   const result=prepareLineageWMigration(original,now),payload=JSON.stringify(result.save);
   const changes=await db.batch([
    db.prepare('UPDATE game_saves SET payload=?,revision=revision+1,updated_at=? WHERE owner=? AND revision=?').bind(payload,now,owner,row.revision),
@@ -17,3 +18,4 @@ export async function ensureLineageWMigration(db:D1Database,owner:string,initial
  }
  throw Error('裝備移植正在同步，請稍後重試');
 }
+

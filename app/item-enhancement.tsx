@@ -33,6 +33,8 @@ export default function ItemEnhancement({c,item,busy,act,onDone,onBusyChange}:{c
  const active=phase==='charging'||phase==='ready'||phase==='revealing',resultVisible=phase==='result',outcome=(phase==='revealing'||resultVisible)?result?.outcome:undefined;
  useEffect(()=>{onBusyChange?.(active);return()=>onBusyChange?.(false);},[active,onBusyChange]);
  useEffect(()=>()=>clearTimeout(timer.current),[]);
+ // A stalled recovery request must not keep the charging screen locked forever.
+ useEffect(()=>{if(phase!=='charging')return;const timeout=setTimeout(()=>{if(pending.current)setPhase('retry');},15000);return()=>clearTimeout(timeout);},[phase]);
  const receive=useCallback((receipt:EnhancementReceipt,character:Character)=>{
   if(received.current===receipt.id)return;received.current=receipt.id;pending.current=null;setResult(receipt);setChanges(enhancementChanges({...latest.current,...character},receipt));
   clearTimeout(timer.current);timer.current=setTimeout(()=>setPhase('ready'),Math.max(0,started.current+1000-performance.now()));
@@ -75,3 +77,4 @@ export default function ItemEnhancement({c,item,busy,act,onDone,onBusyChange}:{c
   <AlertDialog open={confirm} onOpenChange={setConfirm}><AlertDialogContent className="game-dialog enhancement-confirmation"><AlertDialogTitle>確認強化</AlertDialogTitle><AlertDialogDescription>{current?label+' +'+current.en+'，消耗 '+current.need+' 張'+items[current.scroll]?.n+'。成功 '+pct(current.chance)+'、維持 '+pct(current.hold)+'、消失 '+pct(current.destroy)+'；成功提升至 '+target(current)+'。破壞只會消失選中的這一件裝備。':'裝備狀態已改變，請重新選擇。'}</AlertDialogDescription><AlertDialogFooter><AlertDialogCancel>取消</AlertDialogCancel><Button className="gold-button" disabled={!canStart} onClick={()=>void execute()}>確認衝裝</Button></AlertDialogFooter></AlertDialogContent></AlertDialog>
  </section>;
 }
+

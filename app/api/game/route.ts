@@ -1,3 +1,4 @@
+import {parsedSave} from '../../../lib/game/parsed-save';
 import {apiContext,apiHeaders,apiErrorResponse,ApiInputError,readGameAction} from '../../../lib/game/api-errors';
 import {ensureSkillIdMigration} from '@/lib/game/skill-id-migration-store';
 import {isSkillCooldownFailure} from '@/lib/game/skill-cooldown';
@@ -31,7 +32,7 @@ async function handle(request:Request,mutate:boolean){
   if(!mutate&&requestUrl.searchParams.get('mode')==='recovery'){
    const row=await env.DB.prepare('SELECT payload,revision FROM game_saves WHERE owner=?').bind(owner).first<{payload:string;revision:number}>();
    if(!row)return Response.json({available:false,pending:false,characters:[]},{headers:apiHeaders(context)});
-   const stored=JSON.parse(row.payload) as Save;
+   const stored=parsedSave(row) as Save;
    return Response.json({available:true,pending:!!stored.catchup||Date.now()-stored.at>30000,characters:stored.characters.map(c=>({id:c.id,name:c.name,level:c.lv,running:c.running})),active:stored.active,settledAt:stored.at,remainingSeconds:stored.catchup?.targetAt?Math.max(0,Math.ceil((stored.catchup.targetAt-stored.at)/1000)):null},{headers:apiHeaders(context)});
   }
   context.phase='request';const payload=mutate?await readGameAction(request):null;context.operation=payload?.type||'poll';
@@ -59,7 +60,7 @@ async function handle(request:Request,mutate:boolean){
   // Return the authoritative committed save for a retried mutation, without applying it twice.
   const mutationId=payload&&typeof payload==='object'&&'requestId' in payload?payload.requestId:undefined;
   const requestId=mutate&&typeof mutationId==='string'&&mutationId.length<=128?mutationId:null;
-  const prior=JSON.parse(row.payload) as Save & {processedActions?:string[]};
+  const prior=parsedSave(row) as Save & {processedActions?:string[]};
   if(requestId&&prior.processedActions?.includes(requestId)){
    const {maps,monsters,dolls,world}=settings;
    for(const c of prior.characters){c.npcConfig={...settings.npcs,history:[]};c.mapAccess=settings.mapAccess;c.lootAppearance={...settings.appearance,history:[]};c.dollDefinitions=dolls.definitions;c.mapPools=maps.maps;c.bossGeneration=maps.bosses;c.monsterDefinitions=monsters.definitions;c.bossDropDefinitions=monsters.bossDrops;}
@@ -67,7 +68,7 @@ async function handle(request:Request,mutate:boolean){
   }
   let actionError:string|undefined;
   context.phase='simulation';const simulationAt=performance.now();
-  const save=JSON.parse(row.payload) as Save,{maps:mapConfig,monsters,dolls,world}=settings;const requestedAt=Date.now();for(const c of save.characters){c.npcConfig={...settings.npcs,history:[]};c.mapAccess=settings.mapAccess;c.lootAppearance={...settings.appearance,history:[]};c.dollDefinitions=dolls.definitions;c.mapPools=mapConfig.maps;c.bossGeneration=mapConfig.bosses;c.monsterDefinitions=monsters.definitions;c.bossDropDefinitions=monsters.bossDrops;}const report=advance(save,requestedAt,Math.random,world,200,30);const now=save.at;
+  const save=parsedSave(row) as Save,{maps:mapConfig,monsters,dolls,world}=settings;const requestedAt=Date.now();for(const c of save.characters){c.npcConfig={...settings.npcs,history:[]};c.mapAccess=settings.mapAccess;c.lootAppearance={...settings.appearance,history:[]};c.dollDefinitions=dolls.definitions;c.mapPools=mapConfig.maps;c.bossGeneration=mapConfig.bosses;c.monsterDefinitions=monsters.definitions;c.bossDropDefinitions=monsters.bossDrops;}const report=advance(save,requestedAt,Math.random,world,200,12);const now=save.at;
   if(!report.pendingSeconds)for(const c of save.characters){syncPopulation(c,worldRulesAt(world,now));ensureArena(c,Math.random,now);}
   for(const c of save.characters){c.npcConfig={...settings.npcs,history:[]};c.mapAccess=settings.mapAccess;c.lootAppearance={...settings.appearance,history:[]};c.dollDefinitions=dolls.definitions;c.mapPools=mapConfig.maps;c.bossGeneration=mapConfig.bosses;c.monsterDefinitions=monsters.definitions;c.bossDropDefinitions=monsters.bossDrops;if(!report.pendingSeconds){const b=stats(c,now);c.hp=Math.min(c.hp,b.maxHp);c.mp=Math.min(c.mp,b.maxMp);}}if(payload&&!report.pendingSeconds){context.phase='action';try{action(save,payload,now);}catch(error){if((payload as {type?:unknown}).type!=='cast'||!isSkillCooldownFailure(error))throw error;actionError=error.message;}}for(const c of save.characters){c.npcConfig={...settings.npcs,history:[]};c.mapAccess=settings.mapAccess;c.lootAppearance={...settings.appearance,history:[]};c.dollDefinitions=dolls.definitions;c.mapPools=mapConfig.maps;c.bossGeneration=mapConfig.bosses;c.monsterDefinitions=monsters.definitions;c.bossDropDefinitions=monsters.bossDrops;}
   if(!report.pendingSeconds)for(const c of save.characters){syncPopulation(c,worldRulesAt(world,now));ensureArena(c,Math.random,now);}
@@ -97,6 +98,7 @@ async function handle(request:Request,mutate:boolean){
 }
 export const GET=(r:Request)=>handle(r,false);
 export const POST=(r:Request)=>handle(r,true);
+
 
 
 

@@ -1,9 +1,10 @@
+import {parsedSave} from './parsed-save';
 import {prepareControlRingRestoration,needsControlRingRestoration,CONTROL_RING_VERSION} from './control-ring-restoration';
 /** Exact original payload and successful CAS update commit in the same atomic batch. */
 export async function ensureControlRingRestoration(db:D1Database,owner:string,initial:{payload:string;revision:number},now=Date.now()){
  let row=initial;
  for(let attempt=0;attempt<4;attempt++){
-  const original=JSON.parse(row.payload);if(!needsControlRingRestoration(original))return row;
+  const original=parsedSave(row);if(!needsControlRingRestoration(original))return row;
   const result=prepareControlRingRestoration(original,now),payload=JSON.stringify(result.save);
   const changes=await db.batch([
    db.prepare('UPDATE game_saves SET payload=?,revision=revision+1,updated_at=? WHERE owner=? AND revision=?').bind(payload,now,owner,row.revision),
@@ -14,3 +15,4 @@ export async function ensureControlRingRestoration(db:D1Database,owner:string,in
  }
  throw Error('裝備移植正在同步，請稍後重試');
 }
+

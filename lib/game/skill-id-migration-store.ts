@@ -1,9 +1,10 @@
+import {parsedSave} from './parsed-save';
 import {prepareSkillIdMigration,skillIdsNeedMigration,SKILL_ID_VERSION} from './skill-id-migration';
 /** Backup and CAS update share one atomic D1 batch; a stale writer cannot migrate. */
 export async function ensureSkillIdMigration(db:D1Database,owner:string,initial:{payload:string;revision:number},now=Date.now()){
  let row=initial;
  for(let attempt=0;attempt<4;attempt++){
-  const original=JSON.parse(row.payload);if(!skillIdsNeedMigration(original))return row;
+  const original=parsedSave(row);if(!skillIdsNeedMigration(original))return row;
   const {save}=prepareSkillIdMigration(original),payload=JSON.stringify(save);
   const changes=await db.batch([
    db.prepare('UPDATE game_saves SET payload=?,revision=revision+1,updated_at=? WHERE owner=? AND revision=?').bind(payload,now,owner,row.revision),
@@ -14,3 +15,4 @@ export async function ensureSkillIdMigration(db:D1Database,owner:string,initial:
  }
  throw Error('技能資料正在同步，請稍後重試');
 }
+

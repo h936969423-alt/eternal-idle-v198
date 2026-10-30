@@ -83,7 +83,7 @@ function loadUI(hooks=React){
   assert(h.includes(kind==='destroyed'?'裝備消失':kind==='hold'?'裝備保留':'命中'));assert(h.includes('×1'));
  }
 }
-function harness(source,mode,rng,lost=false){
+function harness(source,mode,rng,lost=false,stalled=false){
  const {s,c,id}=fixture(source);c.bag[id]=1;
  if(mode==='destroyed'){c.enh[id]=e.DATA.items[id].safe;c.equipment.weapon.en=c.enh[id];c.bag.scroll_weapon_s=0;}
  let clock=0,index=0,timerId=0,slots=[],effects=[],tree;
@@ -97,7 +97,7 @@ function harness(source,mode,rng,lost=false){
   schedule:(fn,ms)=>{const id=++timerId;timers.set(id,{at:clock+ms,fn});return id;},cancel:id=>timers.delete(id)
  };
  const UI=loadUI(hooks).default;
- const render=()=>{index=0;tree=UI({c,item:id,busy:false,act:async a=>{calls.push(a);e.action(s,a,now,rng);if(lost&&calls.length===1)return null;return {save:s};},onDone:key=>done.push(key)});const pending=effects;effects=[];pending.forEach(fn=>fn());return tree;};
+ const render=()=>{index=0;tree=UI({c,item:id,busy:false,act:async a=>{calls.push(a);if(stalled)return new Promise(()=>{});e.action(s,a,now,rng);if(lost&&calls.length===1)return null;return {save:s};},onDone:key=>done.push(key)});const pending=effects;effects=[];pending.forEach(fn=>fn());return tree;};
  function text(node){if(typeof node==='string'||typeof node==='number')return String(node);if(Array.isArray(node))return node.map(text).join('');return node?.props?text(node.props.children):'';}
  function find(node,label){if(!node||typeof node!=='object')return null;if(Array.isArray(node)){for(const child of node){const result=find(child,label);if(result)return result;}return null;}if(node.props?.open===false)return null;if(typeof node.props?.onClick==='function'&&text(node.props.children)===label)return node;return find(node.props?.children,label);}
  const click=label=>{const button=find(tree,label);assert(button,'missing '+label);assert(!button.props.disabled,'disabled '+label);button.props.onClick();};
@@ -117,6 +117,7 @@ async function exercise(){
   if(kind==='destroyed'){assert(h.find('繼續強化').props.disabled);h.click('關閉強化');assert.equal(h.done[0],null);}
   else{const key=h.c.enhancement.history[0].key;h.click('繼續強化');h.render();assert.equal(h.tree.props['data-phase'],'select');h.click('開始強化');h.render();h.click('確認衝裝');await flush();assert.equal(h.calls[1].item,key,'continue selects the actual split equipment instance');}
  }
+ const stalled=harness('apang381','success',()=>0,false,true);stalled.click('開始強化');stalled.render();stalled.click('確認衝裝');stalled.render();stalled.advance(15000);stalled.render();assert.equal(stalled.tree.props['data-phase'],'retry','stalled network recovery must unlock charging');assert(stalled.find('關閉強化'));assert.equal(stalled.calls.length,1);
  const h=harness('apang381','hold',()=>.31,true);h.click('開始強化');h.render();h.click('確認衝裝');await flush();h.render();assert.equal(h.tree.props['data-phase'],'retry');
  const before=money(h.c);h.click('確認上次強化結果');await flush();h.render();assert.equal(h.calls[1].requestId,h.calls[0].requestId);assert.equal(money(h.c),before,'lost response confirmation cannot consume another scroll');
  console.log('PASS: real enhancement UI lifecycle, click-to-reveal, three outcomes, result retention, continuation with the actual item key, double-click lock and lost-response confirmation.');
@@ -124,3 +125,4 @@ async function exercise(){
 exercise().finally(()=>fs.rmSync(dir,{recursive:true,force:true})).catch(error=>{console.error(error);process.exitCode=1;});
 
 }catch(error){fs.rmSync(dir,{recursive:true,force:true});throw error;}
+

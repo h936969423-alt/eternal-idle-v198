@@ -121,6 +121,7 @@ jobs:
         run: PET_REPORT=docs/sunrise-pet-verification.json node scripts/test-sunrise-pets.cjs
       - name: Verify JSON error boundaries, unknown write outcomes and no mutation replay
         run: |
+          node scripts/test-game-cpu.cjs
           node scripts/test-game-api-errors.cjs
           node scripts/test-stable-connection.cjs
       - name: Verify failed-cast cooldown persistence and manual-auto lock
@@ -227,6 +228,7 @@ jobs:
         run: node scripts/verify-four-dragon-assets.mjs --live
       - name: Print deployment location
         run: echo 'Check Cloudflare Workers dashboard for eternal-idle-v198-test workers.dev URL'
+
 
 
 

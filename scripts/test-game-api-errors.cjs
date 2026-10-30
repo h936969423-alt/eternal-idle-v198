@@ -2,6 +2,7 @@ const assert=require('node:assert/strict'),fs=require('node:fs'),path=require('n
 const root=path.resolve(__dirname,'..'),dir=fs.mkdtempSync(path.join(os.tmpdir(),'game-api-errors-'));
 const compile=s=>ts.transpileModule(s,{compilerOptions:{module:ts.ModuleKind.CommonJS,target:ts.ScriptTarget.ES2022,esModuleInterop:true}}).outputText;
 fs.writeFileSync(path.join(dir,'api-errors.cjs'),compile(fs.readFileSync(path.join(root,'lib/game/api-errors.ts'),'utf8')));
+fs.writeFileSync(path.join(dir,'parsed-save.cjs'),compile(fs.readFileSync(path.join(root,'lib/game/parsed-save.ts'),'utf8')));
 const errors=require(path.join(dir,'api-errors.cjs')),routeSource=compile(fs.readFileSync(path.join(root,'app/api/game/route.ts'),'utf8'));
 function fixture(fault=''){
  let payload=JSON.stringify({v:1,characters:[],active:null,at:Date.now(),count:0}),revision=0,writes=0,actions=0;
@@ -9,6 +10,7 @@ function fixture(fault=''){
  const settings={maps:{revision:1,maps:{},bosses:{}},monsters:{revision:1,definitions:{},bossDrops:{}},dolls:{revision:1,definitions:{}},world:{revision:1},appearance:{revision:1},mapAccess:{revision:1},npcs:{revision:1}};
  const engine={emptySave:()=>({}),advance:()=>{if(fault==='simulation')throw new TypeError('private simulation details');return {seconds:0,kills:0,gold:0,pendingSeconds:0};},action:(save)=>{actions++;if(fault==='business')throw Error('金幣不足');if(fault==='action')throw new TypeError('private broken action details');save.count++;},stats:()=>({}),xpNeed:()=>0,populationSummary:()=>({}),syncPopulation:()=>{},ensureArena:()=>{}};
  const requireMock=name=>{
+  if(name.endsWith('parsed-save'))return require(path.join(dir,'parsed-save.cjs'));
   if(name.endsWith('api-errors'))return errors;
   if(name==='cloudflare:workers')return {env:{DB}};
   if(name.endsWith('chatgpt-auth'))return {getChatGPTUser:async()=>{if(fault==='auth')throw Error('D1 session lookup failed');return fault==='anonymous'?null:{userId:'private-owner'};}};
@@ -46,3 +48,4 @@ async function main(){
  console.log('PASS: auth/read/migration/simulation/action/write/view failures return traceable JSON; malformed and oversized bodies, origin/auth gates, unknown/confirmed writes, deduplicated mutations and framework non-JSON failures verified.');
 }
 main().catch(e=>{console.error(e);process.exitCode=1;}).finally(()=>fs.rmSync(dir,{recursive:true,force:true}));
+
