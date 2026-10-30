@@ -724,6 +724,62 @@ function stopHuntOnCharacterSwitch(save:Save,nextId:string,now:number){
   if(character.running){character.running=false;log(character,'切換角色，狩獵與離線收益已暫停。','info',now);}
  }
 }
+/** One loot opportunity per full effective offline minute; never replays combat
+ * or awards a second copy of the arithmetic XP/gold. Maximum 1,440 rolls/day. */
+export function settleOfflineLoot(c:Character,minutes:number,rng:()=>number,now:number){
+ const drops:Record<string,number>={},awardedCards:Record<string,number>={};
+ const rolls=Math.min(MAX_OFFLINE_SECONDS/60,Math.max(0,Math.floor(minutes)));
+ if(!rolls||!c.running||c.hp<=0||DATA.towns[c.zone]||playableBoss(c.zone)||!mapIsOpen(c.zone,c.mapAccess,now)||!mapPool(c.zone,c.mapPools).length)return {drops,gold:0};
+ const bonus=stats(c,now).dropPct||0,members=mapPool(c.zone,c.mapPools).map(entry=>entry.id);
+ const unlocks=[...new Set(Object.values(DATA.items).map(i=>i.availFrom as number).filter(t=>Number.isFinite(t)&&t>now-rolls*60000&&t<=now))].sort((a,b)=>a-b);
+ const pools=new Map<string,ReturnType<typeof hybridCandidates>>();let phase=0;
+ const keep=(entries:{item:string;quantity:number}[])=>{for(const d of entries){
+  const i=DATA.items[d.item];if(!i||!Number.isSafeInteger(d.quantity)||d.quantity<=0)continue;
+  drops[d.item]=(drops[d.item]||0)+d.quantity;
+ }};
+ const supplies=(entries:{item:string;quantity:number}[])=>entries.filter(d=>!isProgressionEquipment(DATA.items[d.item]));
+ for(let minute=0;minute<rolls;minute++){
+  const mobId=chooseMapMonster(c.zone,c.mapPools,rng);if(!mobId)continue;
+  const at=now-(rolls-minute-1)*60000;while(phase<unlocks.length&&unlocks[phase]<=at)phase++;
+  const definition=c.monsterDefinitions?.[mobId];
+  const m=monsterData(c,mobId,{id:mobId,uid:'offline',hp:1,clock:0,definition});if(!m)continue;
+  const grant=(entries:{item:string;quantity:number}[])=>keep(entries.filter(d=>{
+   const i=DATA.items[d.item];if(!i)return false;
+   const material=!['wpn','arm','acc','pot','scroll','skillbk','doll'].includes(i.type)&&!i.noSell&&d.item!=='mat_boss_crystal'&&/米索莉|元素石|皮革|精靈玉|礦石|金屬塊|原石|寶石|水晶|蘑菇汁|安特的樹枝|樹枝|木材|布料|羽毛|鱗片|獸皮|骨頭|粉末|材料|礦物|礦塊|碎石|結晶|石塊/.test(String(i.n||''));
+   return isAfeiMonster(mobId)||!material||rng()<.5;
+  }));
+  rollDollCards(c,mobId,rng,id=>{awardedCards[id]=(awardedCards[id]||0)+1;keep([{item:id,quantity:1}]);});
+  const mode=definition?.dropsMode??(isAfeiMonster(mobId)?'original':'hybrid');
+  if(mode==='custom')grant(rollConfiguredDrops(definition?.drops||[],bonus,rng,at));
+  else if(mode==='hybrid'){
+   const original=publicMonsterDrop(mobId,rng,at,bonus);grant(supplies(original.items));
+   if(!original.known&&m.lv>=POLYMORPH.crystalDropLevel&&rng()<POLYMORPH.crystalDropChance)grant([{item:'mat_boss_crystal',quantity:1}]);
+   grant(supplies(rollConfiguredDrops(definition?.drops||[],bonus,rng,at)));
+   const rule=definition?.hybrid||defaultHybridRule(m.lv),key='monster:'+c.zone+':'+mobId;
+   c.hybridPity||={};if(!c.hybridPity[key]&&Object.keys(c.hybridPity).length>=512)delete c.hybridPity[Object.keys(c.hybridPity)[0]];
+   const cacheKey=mobId+':'+phase;let pool=pools.get(cacheKey);if(!pool){pool=hybridCandidates(rule,mobId,c.zone,m.lv,c.lootAppearance,at,members);pools.set(cacheKey,pool);}
+   const result=rollHybridLoot(rule,pool,rng,bonus,c.hybridPity[key]);c.hybridPity[key]=result.pity;grant(result.drops);
+  }else{
+   const original=publicMonsterDrop(mobId,rng,at,bonus);
+   if(original.known)grant(original.items);
+   else{
+    if(m.lv>=POLYMORPH.crystalDropLevel&&rng()<POLYMORPH.crystalDropChance)keep([{item:'mat_boss_crystal',quantity:1}]);
+    if(rng()<Math.min(1,.12*(1+bonus/100))){const pool=equipmentPool.filter(id=>DATA.items[id].p<=Math.max(500,m.lv*m.lv*150));if(pool.length)grant([{item:pool[int(0,pool.length-1,rng)],quantity:1}]);}
+   }
+  }
+  const area=areaMonsterDrops(c.zone,c.skills,rng,at,bonus);grant(mode==='hybrid'?supplies(area):area);
+ }
+ for(const [id,n] of Object.entries(drops)){
+  const item=DATA.items[id];
+  // Card rolls already entered collection/bag through acquireDollCard().
+  if(item.eff==='dollCard'){const remaining=n-(awardedCards[id]||0);if(remaining>0)acquireDollCard(c,item.cardMob,item.cardTier,remaining);}
+  else if(id==='blt_titan')grantDroppedItem(c,id,n,rng);else c.bag[id]=(c.bag[id]||0)+n;
+  if(item.doll)c.dollCollection=[...new Set([...(c.dollCollection||[]),id])];
+  showLoot(c,id,n,now,c.arena,false);
+ }
+ const before=c.gold,sold=autoSellGear(c);if(sold)log(c,sold,'loot',now);
+ return {drops,gold:c.gold-before};
+}
 /** Login-only arithmetic settlement. save.at is the server-owned last-save timestamp.
  * Existing CAS persistence commits both rewards and this timestamp atomically.
  * Legacy catchup rewards are already in the character: carry their receipt only.
@@ -736,6 +792,7 @@ export function settleOfflineGains(save:Save,now:number,rng:()=>number=Math.rand
  singleHunt(save);bindBossRooms(save);bindDollCollections(save);bindPolymorphUnlocks(save);
  const hunter=save.characters.find(c=>c.id===prior?.characterId)||save.characters.find(c=>c.running);
  let xp=0,gold=0,effectiveMinutes=0,isDead=false;
+ const drops:Record<string,number>={...(prior?.drops||{})};
  if(hunter?.running&&hunter.hp>0&&!DATA.towns[hunter.zone]&&!playableBoss(hunter.zone)&&mapPool(hunter.zone,hunter.mapPools).length&&mapIsOpen(hunter.zone,hunter.mapAccess,now)){
   const rate=MAP_EFFICIENCY[hunter.zone]||DEFAULT_OFFLINE_EFFICIENCY;
   const gains=calculateOfflineGains(seconds,rate,rng);
@@ -743,6 +800,8 @@ export function settleOfflineGains(save:Save,now:number,rng:()=>number=Math.rand
   upgradeAbilityPoints(hunter);hunter.xp+=xp;hunter.gold+=gold;
   // Bounded by the 99-level cap, never by offline duration.
   while(hunter.xp>=xpNeed(hunter.lv)&&hunter.lv<99){hunter.xp-=xpNeed(hunter.lv);hunter.points+=levelPointGain(hunter.lv,hunter.lv+1);hunter.lv++;const b=stats(hunter,now);hunter.hp=b.maxHp;hunter.mp=b.maxMp;}
+  const loot=settleOfflineLoot(hunter,effectiveMinutes,rng,isDead?save.at+effectiveMinutes*60000:now);
+  gold+=loot.gold;for(const [id,n] of Object.entries(loot.drops))drops[id]=(drops[id]||0)+n;
   if(isDead)defeat(hunter,now,rng);
  }
  for(const c of save.characters){
@@ -751,7 +810,7 @@ export function settleOfflineGains(save:Save,now:number,rng:()=>number=Math.rand
   event(c,'state',now);
  }
  save.at=Math.max(save.at,now);delete save.catchup;
- const report={seconds:priorSeconds+seconds,kills:prior?.kills||0,gold:(prior?.gold||0)+gold,xp:(prior?.xp||0)+xp,drops:{...(prior?.drops||{})},characterName:prior?.characterName||hunter?.name||'冒險者',characterId:prior?.characterId||hunter?.id,pendingSeconds:0,offline:!!hunter||!!prior,effectiveMinutes:prior?undefined:effectiveMinutes,isDead};
+ const report={seconds:priorSeconds+seconds,kills:prior?.kills||0,gold:(prior?.gold||0)+gold,xp:(prior?.xp||0)+xp,drops,characterName:prior?.characterName||hunter?.name||'冒險者',characterId:prior?.characterId||hunter?.id,pendingSeconds:0,offline:!!hunter||!!prior,effectiveMinutes:prior?undefined:effectiveMinutes,isDead};
  rememberOfflineIncome(save,report,save.at);
  return report;
 }

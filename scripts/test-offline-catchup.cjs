@@ -47,7 +47,7 @@ try{
  // Five percent per hour means 1 - .95^24 over one day, not 120%.
  const rate=g.MAP_EFFICIENCY.dragon_valley,p=1-Math.pow(.95,24);
  assert.equal(g.calculateOfflineGains(86400,rate,()=>p-.00001).isDead,true);assert.equal(g.calculateOfflineGains(86400,rate,()=>p+.00001).isDead,false);
- for(const zone of ['town_talking','not_a_map','antaras_lair']){const s=fixture(60,zone);const r=e.advance(s,s.at+3_600_000);assert.equal(r.gold,0);assert.equal(r.xp,0);assert.equal(r.pendingSeconds,0);}
+ for(const zone of ['town_talking','not_a_map','wb_sema']){const s=fixture(60,zone);const r=e.advance(s,s.at+3_600_000);assert.equal(r.gold,0);assert.equal(r.xp,0);assert.equal(r.pendingSeconds,0);}
  const closed=fixture();closed.characters[0].mapAccess={revision:1,closed:{talking_island:1},changes:{}};assert.equal(e.advance(closed,closed.at+3_600_000).gold,0);
  const stopped=fixture();stopped.characters[0].running=false;assert.equal(e.advance(stopped,stopped.at+3_600_000).gold,0);assert.equal(stopped.offlineIncome,undefined);
  const short=fixture(),small=e.advance(short,short.at+59000);assert.equal(small.gold,0);assert.equal(short.offlineIncome,undefined);

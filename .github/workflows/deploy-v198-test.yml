@@ -114,7 +114,12 @@ jobs:
       - name: Verify skill calculation equivalence and bounded Worker settlement
         run: node scripts/test-skill-computation.cjs
       - name: Verify continuous live polls do not reopen offline settlement
-        run: node scripts/test-live-settlement.cjs
+        run: |
+          node scripts/test-live-settlement.cjs
+          node scripts/test-offline-catchup.cjs
+          node scripts/test-offline-income.cjs
+          node scripts/test-offline-income-notices.cjs
+          node scripts/test-offline-loot.cjs
       - name: Verify merged Afei monster and world-boss drop tables
         run: node scripts/test-afei-drops.cjs
       - name: Verify Silver Knight NPC hub and real service transactions
