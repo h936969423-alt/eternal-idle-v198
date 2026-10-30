@@ -25,6 +25,9 @@ on:
       - 'app/reference-item-dialog.tsx'
       - 'app/active-status-bar.tsx'
       - 'app/game.tsx'
+      - 'app/item-enhancement.tsx'
+      - 'app/item-enhancement.css'
+      - 'app/reference-item-dialog.tsx'
       - 'app/town-shops.tsx'
       - 'app/black-market.tsx'
       - 'app/black-market.css'
@@ -135,6 +138,7 @@ jobs:
       - name: Verify blue-to-gold weapon growth and uncapped enhancement
         run: |
           node scripts/test-weapon-growth.cjs
+          node scripts/test-enhancement-results.cjs
           node scripts/test-boss-drop-preview.cjs
           node scripts/test-four-dragon-loot.cjs
           node scripts/test-lineagew-mythic-enhancement.cjs
