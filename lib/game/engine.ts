@@ -72,7 +72,7 @@ import {playableBoss,bossMembers,ORDINARY_RESPAWN_MS} from './boss-respawn';
 import {isPausedDragonZone} from './dragon-availability';
 import {publicMonsterDrop,rollDropList,WORLD_BOSS_LOOT,areaMonsterDrops,PUBLIC_DROP_RATES,PUBLIC_LOOT,AREA_DROP_RATES} from './monster-loot';
 import {levelPointGain,upgradeAbilityPoints} from './ability-points';
-import {autoConfig,validateAutoConfig,type AutoConfig} from './auto-config';
+import {autoConfig,validateAutoConfig,enabledAutoSkills,type AutoConfig} from './auto-config';
 import {sellUnused} from './sell-unused';
 import {effectText} from './magic';
 import {purchaseCost} from './vendors';
@@ -693,7 +693,7 @@ function second(c:Character,now:number,rng:()=>number,rules:WorldRules,duration=
  for(const [id,setting] of Object.entries(cfg.aux)){if(!setting.enabled||['scroll_poly','new_item_237'].includes(id)||c.buffs[id]?.until>begin)continue;try{useAutomaticItem(c,id,setting.directGold,begin,rng);}catch{}}
  if(Math.floor(now/5000)>Math.floor(begin/5000)){const hp=c.hp;if(!(c.buffs.sk_heal_energy_storm?.until>begin))c.hp=Math.min(b.maxHp,c.hp+b.hpR-(doll.hpR||0));c.mp=Math.min(b.maxMp,c.mp+b.mpR-(doll.mpR||0));if(c.hp>hp)event(c,'heal',begin,{damage:c.hp-hp});}
 
- if(Math.floor(now/1000)>Math.floor(begin/1000))for(const k of [...new Set([...cfg.buffs,...(c.autoConfig?[]:c.autoSkills)].map(id=>canonicalWSkill(id,c.cls)))]){const sk=DATA.skills[k];if(sk?.type==='buff'&&c.buffs[k]?.until<=begin||sk?.type==='buff'&&!c.buffs[k]){try{cast(c,k,begin,rng,true);}catch{}}}
+ if(Math.floor(now/1000)>Math.floor(begin/1000))for(const k of cfg.buffs){const sk=DATA.skills[k];if(sk?.type==='buff'&&c.buffs[k]?.until<=begin||sk?.type==='buff'&&!c.buffs[k]){try{cast(c,k,begin,rng,true);}catch{}}}
 
  tickSpecialCombat(c,begin-duration,begin,rng);if(!c.running)return;
  const timeline:{time:number;dragonDotKind?:string;poisonTick?:boolean;healTick?:boolean;autoSpell?:boolean;slot?:number;uid?:string;respawn?:boolean;monsterMagic?:string;petName?:string;petMagic?:boolean;summonUid?:string}[]=[];const interval=b.attackInterval;c.atkClock=rescaleAttackClock(c.atkClock,c.previousAttackInterval,interval);c.previousAttackInterval=interval;for(let t=interval-c.atkClock;t<=dt+1e-9;t+=interval)timeline.push({time:Math.max(0,t)});c.atkClock=(c.atkClock+dt)%interval;
@@ -886,7 +886,7 @@ export function action(save:Save,a:any,now=Date.now(),rng:()=>number=Math.random
  case 'polyUnlock':log(c,unlockPolymorph(c,String(a.id)),'magic',now);break;
  case 'polyCancel':delete c.poly;c.autoPoly=false;if(c.autoConfig?.aux.scroll_poly)c.autoConfig.aux.scroll_poly.enabled=false;log(c,'已解除變身並停止自動續用','info',now);break;
  case 'polySettings':for(const key of ['autoPoly','autoBuyPoly','polyLook'] as const){if(a[key]!==undefined){if(typeof a[key]!=='boolean')throw new Error('變身設定無效');c[key]=a[key];}}if(c.autoConfig)c.autoConfig.aux.scroll_poly={enabled:!!c.autoPoly,directGold:!!c.autoBuyPoly};break;
- case 'autoConfig':c.autoConfig=validateAutoConfig(c,a.config);if(c.autoConfig.aux.scroll_poly){c.autoPoly=c.autoConfig.aux.scroll_poly.enabled;c.autoBuyPoly=c.autoConfig.aux.scroll_poly.directGold;}break;
+ case 'autoConfig':c.autoConfig=validateAutoConfig(c,a.config);c.autoSkills=enabledAutoSkills(c.autoConfig);if(c.autoConfig.aux.scroll_poly){c.autoPoly=c.autoConfig.aux.scroll_poly.enabled;c.autoBuyPoly=c.autoConfig.aux.scroll_poly.directGold;}break;
  case 'sellAll':{if(!i||i.noSell||!(i.p>0)||c.locked?.includes(a.item)||c.doll===a.item||Object.values(c.equipment).some(e=>e.id===a.item))throw new Error('無法出售穿戴或鎖定物品');const n=c.bag[a.item];if(!Number.isInteger(n)||n<1)throw new Error('沒有此物品');consume(c,a.item,n);c.gold+=n*Math.floor(i.sellP??i.p*.25);if(!c.bank[a.item]){delete c.enh[a.item];if(c.affixes)delete c.affixes[a.item];if(c.darkAffixes)delete c.darkAffixes[a.item];}log(c,`全部售出 ${i.n} ×${n}`,'loot',now);break;}
  case 'settings':c.autoPotion=!!a.autoPotion;c.threshold=clamp(Number(a.threshold)||70,10,95);if(['potion_heal','potion_strong','potion_ult'].includes(a.potion))c.potion=a.potion;break;
  case 'point':if(!['str','dex','con','int','wis','cha'].includes(a.attr)||c.points<=0)throw new Error('沒有可用配點');if(c.attrs[a.attr]>=60)throw new Error('單一能力升級配點上限為 60');c.attrs[a.attr]++;c.points--;break;
@@ -895,7 +895,12 @@ export function action(save:Save,a:any,now=Date.now(),rng:()=>number=Math.random
  case 'elfElement':{if(c.cls!=='elf'||!['fire','water','wind','earth'].includes(a.element))throw Error('妖精屬性無效');if(c.running)throw Error('請先停止狩獵再更換屬性');if(a.npc!==undefined){if(a.npc!=='npc_elion')throw Error('請向艾利溫選擇屬性');requireHubService(c,'npc_elion');}if(c.lv<30)throw Error('妖精選擇屬性需達 Lv.30');if(c.elfEle===a.element)break;const fee=c.elfEle?500000:0;if(c.gold<fee)throw Error('轉換屬性需要 500,000 金幣');c.gold-=fee;c.elfEle=a.element;for(const k of Object.keys(c.buffs))if(DATA.skills[k]?.reqEle||DATA.skills[k]?.reqEleAny)delete c.buffs[k];log(c,'妖精屬性已變更','magic',now);break;}
  case 'learn':{const canonical=canonicalWSkill(String(a.skill),c.cls);a={...a,skill:canonical};const sk=DATA.skills[a.skill];if(sk?.lwUpgradeOf&&!hasSkill(c,sk.lwUpgradeOf))throw Error('請先學會前置技能：'+DATA.skills[sk.lwUpgradeOf].n);if(!sk||!specialSkillSupported(a.skill,sk.type)||hasSkill(c,a.skill)||c.lv<skillLevel(c,sk))throw Error('未符合職業或等級需求，或已學會此魔法');const reason=elementError(c,sk);if(reason)throw Error(reason);if(a.npc!==undefined){if(!isGilenTeacher(c.zone,findNpc(c.zone,String(a.npc),c.npcConfig)))throw Error('請至目前村莊的吉倫學習');const book=Object.keys(gilenBookStock()).find(id=>DATA.items[id].sk===a.skill);if(!book)throw Error('吉倫僅傳授 1～3 級一般魔法');const cost=purchaseCost(c.zone,String(a.npc),book,1,c.npcConfig);if(c.gold<cost)throw Error('金幣不足');c.gold-=cost;}else if(!sk.lwIntrinsic){const book=a.book!==undefined?String(a.book):availableSkillBook(c,a.skill);if(book&&(!c.bag[book]||c.locked?.includes(book)||DATA.items[baseItem(book)]?.type!=='skillbk'||canonicalWSkill(DATA.items[baseItem(book)]?.sk,c.cls)!==a.skill))throw Error('需要背包中未鎖定的對應技能書');if(!book)throw Error('需要背包中未鎖定的對應技能書');consume(c,book);}c.skills.push(a.skill);log(c,`學會 ${sk.n}`,'magic',now);break;}
  case 'cast':{const before=c.eventSeq||0;cast(c,a.skill,now,rng);for(const event of c.events||[])if(event.seq>before)event.manual=true;break;}
- case 'autoSkill':if(!c.skills.includes(a.skill))throw new Error('尚未學習');c.autoSkills=c.autoSkills.includes(a.skill)?c.autoSkills.filter(k=>k!==a.skill):[...c.autoSkills,a.skill].slice(-4);if(c.autoConfig){const kind=DATA.skills[a.skill]?.type;if(kind==='buff'){const buffs=c.autoConfig.buffs;c.autoConfig=validateAutoConfig(c,{buffs:buffs.includes(a.skill)?buffs.filter(id=>id!==a.skill):[...buffs,a.skill]});}else if(['atk','heal','convert'].includes(kind)){const key=kind==='atk'?'attack':kind;c.autoConfig=validateAutoConfig(c,{[key]:c.autoConfig[key as 'attack'|'heal'|'convert']===a.skill?'':a.skill});}}break;
+ case 'autoSkill':{const id=canonicalWSkill(String(a.skill),c.cls);if(!hasSkill(c,id))throw new Error('尚未學習');const cfg=autoConfig(c),kind=DATA.skills[id]?.type;
+  if(kind==='buff')c.autoConfig=validateAutoConfig(c,{buffs:cfg.buffs.includes(id)?cfg.buffs.filter(key=>key!==id):[...cfg.buffs,id]});
+  else if(kind==='atk'&&cfg.opener===id)c.autoConfig=validateAutoConfig(c,{opener:''});
+  else if(['atk','heal','convert'].includes(kind)){const key=kind==='atk'?'attack':kind as 'heal'|'convert';c.autoConfig=validateAutoConfig(c,{[key]:cfg[key]===id?'':id});}
+  else throw new Error('此技能不能自動施放');
+  c.autoSkills=enabledAutoSkills(c.autoConfig);break;}
  case 'target':if(!Number.isInteger(a.slot)||!c.arena?.[a.slot]?.hp)throw new Error('目標不存在');c.arenaTarget=a.slot;syncTarget(c);event(c,'state',now,{effect:'target-selected',slot:a.slot,uid:c.arena![a.slot].uid});break;
  case 'enhance':{const result=executeEnhancement(c,{item:a.item,mode:a.mode||'normal',expectedEn:a.expectedEn,requestId:a.requestId,sequence:a.sequence},rng,now);if(!result.replayed)log(c,result.message,'loot',now);break;}
  case 'affix':log(c,affixGear(c,String(a.item),rng,String(a.npc||''),a.material===undefined?undefined:String(a.material)),'loot',now);break;

@@ -114,7 +114,9 @@ jobs:
       - name: Verify shared Sunrise pet storage and lifecycle
         run: PET_REPORT=docs/sunrise-pet-verification.json node scripts/test-sunrise-pets.cjs
       - name: Verify failed-cast cooldown persistence and manual-auto lock
-        run: node scripts/test-skill-cooldown.cjs
+        run: |
+          node scripts/test-skill-cooldown.cjs
+          node scripts/test-auto-buff-selection.cjs
       - name: Verify one shock-stun motion and one confirmed impact
         run: node scripts/test-stun-once.cjs
       - name: Verify skill calculation equivalence and bounded Worker settlement
@@ -203,6 +205,7 @@ jobs:
         run: node scripts/verify-four-dragon-assets.mjs --live
       - name: Print deployment location
         run: echo 'Check Cloudflare Workers dashboard for eternal-idle-v198-test workers.dev URL'
+
 
 
 
