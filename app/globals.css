@@ -812,12 +812,12 @@ body:has(.game-root.map-first-layout) .map-function-dialog[data-slot=dialog-cont
  .game-root.screenshot-layout.map-first-layout .battle-scene:not(.world-boss-scene) .static-arena .four-monster:not([data-dragon=true]):not([data-dragon-summon=true]) .four-target img{width:90px!important;height:90px!important}
 }
 
-/* Square status frames beside HP/MP; keep one swipeable row. */
+/* Square status frames beside HP/MP; overflow wraps from the left. */
 .game-root.screenshot-layout.map-first-layout .map-top-status{
  top:48px;left:calc(20px + clamp(100px,23vw,180px));right:12px;
 }
 .game-root.screenshot-layout.map-first-layout .map-top-status .active-status-icons{
- justify-content:flex-start;flex-wrap:nowrap;gap:4px;overflow-x:auto;overflow-y:hidden;scrollbar-width:thin;overscroll-behavior-x:contain;padding:2px;
+ justify-content:flex-start;flex-wrap:wrap;gap:4px;overflow:visible;padding:2px;
 }
 .game-root.screenshot-layout.map-first-layout .map-top-status .active-status-icon{
  flex:0 0 32px;width:32px;height:32px;min-width:32px;min-height:32px;
