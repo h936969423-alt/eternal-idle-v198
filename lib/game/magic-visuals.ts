@@ -34,13 +34,15 @@ export function magicEffectLifetime(event:CombatEvent){
  return config?Math.max(2000,Math.ceil(Math.max(config.frames.length,...(config.layers||[]).map(layer=>layer.length))*1000/config.fps)+100):2000;
 }
 
-/** Impact timing in the visual's own frame clock. A configured hitFrame is
- * authoritative; otherwise use the last visible frame, not a global 500ms. */
+/** Explicit contact frames win. Unannotated effects hit during their visible
+ * action, leaving the remaining frames to fade instead of delaying all damage. */
 export function spellImpactMs(event:Pick<CombatEvent,'skill'|'effectName'|'item'>){
  const config=magicVisual(event).config;
- if(!config)return 500;
+ if(!config)return 200;
  const frames=Math.max(1,config.frames.length,...(config.layers||[]).map(layer=>layer.length),...(config.directions||[]).map(dir=>dir.length));
- const frame=Math.max(0,Math.min(frames-1,config.hitFrame??frames-1));
+ const fallback=Math.min(Math.floor((frames-1)*.4),Math.floor(Math.max(1,config.fps)*.35));
+ const frame=Math.max(0,Math.min(frames-1,config.hitFrame??fallback));
  return Math.round(frame*1000/Math.max(1,config.fps));
 }
+
 

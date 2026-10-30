@@ -29,8 +29,9 @@ export default function CombatSprite({c,view,interval,pendingCast,castInterval:s
  // sheets consistently instead of inferring direction from padded sprite boxes.
  const frame=Math.min(seq.length-1,pose.frame);
  const activeClip=pose.kind==='skill'?(castClip||attackClip):pose.kind==='attack'?attackClip:undefined;
- return seq.length?<PlayerSpriteFrame className="character-sprite" data-action={pose.kind} data-direction={direction} data-target-uid={pose.targetUid||contactTarget?.uid} data-mirrored={false} data-polymorph={poly?.id} formId={poly?.id} src={seq[frame]} clip={activeClip} frame={frame} alt={c.name}/>:null;
+ return seq.length?<PlayerSpriteFrame className="character-sprite" data-action={pose.kind} data-direction={direction} data-target-uid={pose.targetUid||contactTarget?.uid} data-mirrored={false} data-polymorph={poly?.id} formId={poly?.id} canvas={castClip?.layout.viewBox||attackClip?.layout.viewBox} src={seq[frame]} clip={activeClip} frame={frame} alt={c.name}/>:null;
 }
+
 
 
 
