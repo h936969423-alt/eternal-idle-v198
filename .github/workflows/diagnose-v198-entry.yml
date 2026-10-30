@@ -37,7 +37,7 @@ jobs:
           python3 - <<'PYH'
           import os,json,time,urllib.request,urllib.error
           end=int(time.time()*1000)
-          payload={'queryId':'v198-entry-history','timeframe':{'from':end-3600000,'to':end},'limit':200,'dry':True,'view':'events','parameters':{'needle':{'value':'/api/game'},'filters':[{'key':'$metadata.service','operation':'eq','type':'string','value':'eternal-idle-v198-test'}]}}
+          payload={'queryId':'v198-entry-history','timeframe':{'from':end-86400000,'to':end},'limit':100,'dry':True,'view':'events','parameters':{'filters':[{'key':'$metadata.service','operation':'eq','type':'string','value':'eternal-idle-v198-test'},{'key':'$metadata.level','operation':'eq','type':'string','value':'error'}]}}
           url='https://api.cloudflare.com/client/v4/accounts/'+os.environ['CLOUDFLARE_ACCOUNT_ID']+'/workers/observability/telemetry/query'
           request=urllib.request.Request(url,data=json.dumps(payload).encode(),headers={'Authorization':'Bearer '+os.environ['CLOUDFLARE_API_TOKEN'],'Content-Type':'application/json'})
           try:
@@ -54,8 +54,8 @@ jobs:
               global count
               if isinstance(obj,dict):
                   if '$metadata' in obj:
-                      meta=obj.get('$metadata') or {};worker=obj.get('$workers') or {};event=worker.get('event') or {};response=event.get('response') or {}
-                      print(json.dumps({'timestamp':obj.get('timestamp'),'level':meta.get('level'),'type':meta.get('type'),'error':str(meta.get('error',''))[:500],'message':str(meta.get('message',''))[:500],'outcome':worker.get('outcome'),'status':response.get('status'),'cpuTimeMs':worker.get('cpuTimeMs'),'wallTimeMs':worker.get('wallTimeMs')},ensure_ascii=False))
+                      meta=obj.get('$metadata') or {};worker=obj.get('$cloudflare') or obj.get('$workers') or {};event=worker.get('event') or {};response=event.get('response') or {}
+                      print(json.dumps({'timestamp':obj.get('timestamp'),'level':meta.get('level'),'type':meta.get('type'),'error':str(meta.get('error',''))[:500],'message':str(meta.get('message',''))[:500],'outcome':worker.get('outcome'),'status':response.get('status'),'cpuTimeMs':worker.get('cpuTimeMs'),'wallTimeMs':worker.get('wallTimeMs'),'requestId':meta.get('requestId'),'stack':str(obj.get('stack',''))[:1500]},ensure_ascii=False))
                       count+=1
                   else:
                       for value in obj.values():inspect(value)
