@@ -2,12 +2,13 @@ const assert=require('node:assert/strict'),fs=require('node:fs'),path=require('n
 const root=path.resolve(__dirname,'..'),dir=fs.mkdtempSync(path.join(require('node:os').tmpdir(),'offline-income-'));
 fs.writeFileSync(path.join(dir,'package.json'),'{"type":"commonjs"}');
 for(const name of fs.readdirSync(path.join(root,'lib/game'))){const from=path.join(root,'lib/game',name);if(name.endsWith('.json'))fs.copyFileSync(from,path.join(dir,name));else if(name.endsWith('.ts'))fs.writeFileSync(path.join(dir,name.replace(/\.ts$/,'.js')),ts.transpileModule(fs.readFileSync(from,'utf8'),{compilerOptions:{module:ts.ModuleKind.CommonJS,target:ts.ScriptTarget.ES2022,esModuleInterop:true}}).outputText);}
-const e=require(path.join(dir,'engine.js')),income=require(path.join(dir,'offline-income.js')),sync=require(path.join(dir,'state-sync.js'));
+const e=require(path.join(dir,'engine.js')),income=require(path.join(dir,'offline-income.js')),sync=require(path.join(dir,'state-sync.js')),h=require(path.join(dir,'offline-hunt.js')),sample=require(path.join(dir,'offline-hunt-sample.js'));
 function roundTrip(save){return JSON.parse(JSON.stringify(sync.persistedSave(save)));}
 try{
  const now=1000000,s=e.emptySave(now),base=e.BASES.knight,allocation={};let left=base.pts;for(const k of ['str','dex','con','int','wis','cha']){allocation[k]=Math.min(left,20-base[k]);left-=allocation[k];}e.action(s,{type:'create',name:'收益測試',cls:'knight',gender:'m',allocation},now);const c=s.characters[0];c.lv=60;c.attrs.con=40;c.attrs.str=40;c.gold=100000000;c.bag.potion_heal=100000;c.hp=e.stats(c,now).maxHp;e.action(s,{type:'run',value:true},now);
  e.advance(s,now+1000,()=>.5);assert.equal(s.offlineIncome,undefined,'normal polling must not create a receipt');
- const report=e.advance(s,now+121000,()=>.5);assert.equal(report.offline,true);assert.equal(report.kills,0);assert.equal(report.xp,200);assert.equal(report.gold,100);assert.equal(s.offlineIncome.seconds,120);assert.equal(s.offlineIncome.xp,report.xp);assert.equal(s.offlineIncome.kills,report.kills);assert.equal(s.offlineIncome.gold,report.gold);assert.deepEqual(s.offlineIncome.drops,report.drops);assert.equal(s.offlineIncome.characterName,'收益測試');
+ const profile=h.newHuntProfile(c.zone,sample.huntSetupKey(c),s.at);Object.assign(profile,{sampleMs:60000,kills:3,xp:100,gold:50,lastKillAt:s.at,mobs:{[e.DATA.maps[c.zone][0]]:3}});c.offlineHunt=[profile];
+ const report=e.advance(s,now+121000,()=>.5);assert.equal(report.offline,true);assert.equal(report.kills,4);assert.equal(report.xp,140);assert.equal(report.gold,70);assert.equal(s.offlineIncome.seconds,120);assert.equal(s.offlineIncome.xp,report.xp);assert.equal(s.offlineIncome.kills,report.kills);assert.equal(s.offlineIncome.gold,report.gold);assert.deepEqual(s.offlineIncome.drops,report.drops);assert.equal(s.offlineIncome.characterName,'收益測試');
  // The first response was lost: another GET sees the persisted receipt even
  // though its own simulation report no longer says offline.
  const retry=roundTrip(s),receipt=structuredClone(retry.offlineIncome),sameTime=e.advance(retry,s.at,()=>.5);assert.equal(sameTime.offline,false);assert.deepEqual(retry.offlineIncome,receipt);assert.deepEqual(retry.characters[0].bag,c.bag);assert.equal(retry.characters[0].gold,c.gold);assert.equal(income.unreadOfflineIncome(retry).id,receipt.id);
@@ -18,4 +19,5 @@ try{
  const noIncome=e.emptySave(now);income.rememberOfflineIncome(noIncome,{offline:true,pendingSeconds:1,seconds:120,kills:0,gold:0},now);assert.equal(noIncome.offlineIncome,undefined);income.rememberOfflineIncome(noIncome,{offline:true,pendingSeconds:0,seconds:59,kills:0,gold:0},now);assert.equal(noIncome.offlineIncome,undefined);
  console.log('PASS: offline receipt survives lost responses, polling, CAS recovery and reload; dismissal and manual re-open never award income again; stale acknowledgement cannot hide a new report.');
 }finally{fs.rmSync(dir,{recursive:true,force:true});}
+
 

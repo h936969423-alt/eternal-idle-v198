@@ -3,6 +3,7 @@ import {itemRarity,ITEM_RARITY_OPTIONS,type LootAppearanceConfig} from './loot-a
 import {isProgressionEquipment} from './equipment-ranks';
 import {PUBLIC_LOOT,PUBLIC_DROP_RATES} from './monster-loot';
 import {bossRoomDrops} from './boss-loot';
+import {offlineBinomial,splitOfflineCount} from './offline-hunt';
 export {isProgressionEquipment} from './equipment-ranks';
 export type DropRank=typeof ITEM_RARITY_OPTIONS[number];
 export type HybridRole='normal'|'elite'|'boss'|'world';
@@ -66,3 +67,22 @@ export function rollHybridLoot(rule:HybridRule,pool:Record<DropRank,string[]>,rn
  shard('mat_legend_shard',rule.legendShardChance);shard('mat_mythic_shard',rule.mythicShardChance);
  return {drops,pity:{signature,misses:equipment||!any||rule.equipmentChance<=0||!rule.pityKills?0:Math.min(misses+1,rule.pityKills)},guaranteed:due&&!!equipment};
 }
+
+/** Skip runs of misses and batch successful rank/item choices. Retains the
+ * online pity counter without replaying combat or one full loot roll per kill. */
+export function rollHybridLootBatch(rule:HybridRule,pool:Record<DropRank,string[]>,count:number,rng:()=>number,dropPct=0,prior?:PityRecord){
+ const signature=hybridSignature(rule,pool),available=ranks.filter(r=>pool[r].length&&rule.weights[r]>0),total=ranks.reduce((n,r)=>n+rule.weights[r],0),weight=available.reduce((n,r)=>n+rule.weights[r],0);
+ const chance=Math.min(1,rule.equipmentChance*(1+Math.max(0,dropPct)/100)/100)*(total?weight/total:0);
+ let remaining=Math.max(0,Math.floor(count)),misses=prior?.signature===signature?prior.misses:0,hits=0;
+ if(chance===1||chance>0&&rule.pityKills===1){hits=remaining;remaining=0;misses=0;}
+ else if(chance>0){
+  while(remaining>0){const wait=1+Math.floor(Math.log(Math.max(Number.MIN_VALUE,1-rng()))/Math.log1p(-chance)),due=rule.pityKills?Math.max(1,rule.pityKills-misses):Infinity,next=Math.min(wait,due);
+   if(next>remaining){misses+=remaining;remaining=0;break;}remaining-=next;hits++;misses=0;
+  }
+ }else misses=0;
+ const drops:Record<string,number>={};
+ for(const [rank,n] of Object.entries(splitOfflineCount(hits,Object.fromEntries(available.map(r=>[r,rule.weights[r]])),rng))){const entries=pool[rank as DropRank];for(const [id,q] of Object.entries(splitOfflineCount(n,Object.fromEntries(entries.map(id=>[id,1])),rng)))drops[id]=(drops[id]||0)+q;}
+ for(const [id,rate] of [['mat_legend_shard',rule.legendShardChance],['mat_mythic_shard',rule.mythicShardChance]] as const){const n=offlineBinomial(count,Math.min(1,rate*(1+Math.max(0,dropPct)/100)/100),rng);if(n)drops[id]=(drops[id]||0)+n;}
+ return {drops:Object.entries(drops).map(([item,quantity])=>({item,quantity})),pity:{signature,misses:!rule.pityKills||!chance?0:Math.min(misses,rule.pityKills-1)}};
+}
+

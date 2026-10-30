@@ -33,10 +33,13 @@ try:
  owner='standalone:'+username
  row=db.execute('SELECT payload FROM game_saves WHERE owner=?',(owner,)).fetchone();stored=json.loads(row[0]);c=stored['characters'][0];c.update(lv=60,gold=123,xp=0,zone='talking_island',arenaZone='talking_island',arena=[],running=True,hp=100)
  stored['at']=int(time.time()*1000)-25*3600000;stored.pop('catchup',None)
+ key=json.dumps([c['zone'],c['equipment'],c['attrs'],c['skills'],c.get('autoConfig'),c['autoSkills'],c['autoPotion'],c['potion'],c['threshold'],c.get('doll'),(c.get('poly') or {}).get('id'),c.get('petActives'),c.get('petActive'),c.get('summonChoice'),None],ensure_ascii=False,separators=(',',':'))
+ mob=json.load(open('lib/game/gamedata.json'))['maps']['talking_island'][0]
+ c['offlineHunt']=[dict(zone=c['zone'],key=key,sampleMs=60000,kills=3,xp=100,gold=50,damage=0,healing=0,potionHealing=0,potions={},mobs={mob:3},minHpPct=1,deaths=0,lastKillAt=stored['at'],updatedAt=stored['at'])]
  db.execute('UPDATE game_saves SET payload=?,revision=revision+1 WHERE owner=?',(json.dumps(stored),owner));db.commit()
  t=time.monotonic();result=req('/api/game');ms=(time.monotonic()-t)*1000
- assert result['report']['pendingSeconds']==0,result['report'];assert result['report']['gold']==72000,result['report'];assert result['report']['xp']==144000
- s=result['save'];assert s['characters'][0]['gold']==72123;receipt=s['offlineIncome'];assert receipt['seconds']==86400
+ assert result['report']['pendingSeconds']==0,result['report'];assert result['report']['gold']==25200,result['report'];assert result['report']['xp']==50400
+ s=result['save'];assert s['characters'][0]['gold']==25323;receipt=s['offlineIncome'];assert receipt['seconds']==43200
  again=req('/api/game');assert again['save']['offlineIncome']['id']==receipt['id'];assert again['report']['offline']==False
  req('/api/game',{'type':'offlineIncomeDismiss','id':receipt['id']});assert req('/api/game')['save']['offlineIncome']['seen']==True
  req('/api/account',{'logout':True});cookie='';req('/api/account',{'username':username,'password':password});reloaded=req('/api/game');assert reloaded['save']['active']==cid;assert reloaded['save']['offlineIncome']['id']==receipt['id'];assert reloaded['save']['offlineIncome']['seen']==True
@@ -49,15 +52,16 @@ try:
  damaged['at']=int(time.time()*1000)-1000
  db.execute('UPDATE game_saves SET payload=?,revision=revision+1 WHERE owner=?',(json.dumps(damaged),owner));db.commit()
  repaired=req('/api/game',{'type':'select','id':cid});assert repaired['save']['active']==cid
- fixed=repaired['save']['characters'][0];assert fixed['gold']>=72123;assert fixed['atkClock']<86400;assert all(m['clock']<86400 for m in fixed['arena'])
+ fixed=repaired['save']['characters'][0];assert fixed['gold']>=25323;assert fixed['atkClock']<86400;assert all(m['clock']<86400 for m in fixed['arena'])
  for _ in range(5):
   current=req('/api/game');character=current['save']['characters'][0]
   query=urllib.parse.urlencode({'character':cid,'after':character.get('eventSeq',0),'settings':current['sync']['settingsKey']})
   entered=req('/api/game?'+query,{'type':'select','id':cid});assert entered['save']['active']==cid;assert entered['report']['pendingSeconds']==0;assert cid in entered['derived'];assert entered['sync']['definitionsIncluded']==False;assert 'dollDefinitions' not in entered['save']['characters'][0]
 
- print(json.dumps({'status':'PASS','checks':['register','login','create','logout/login save','level60 no VIP','25h capped at24h','instant receipt','retry no duplicate','dismiss persisted','relogin persisted'],'settlementRequestMs':round(ms,1)},ensure_ascii=False))
+ print(json.dumps({'status':'PASS','checks':['register','login','create','logout/login save','level60 no VIP','25h capped at12h','instant receipt','retry no duplicate','dismiss persisted','relogin persisted'],'settlementRequestMs':round(ms,1)},ensure_ascii=False))
 finally:
  server.terminate()
  try:server.wait(timeout=10)
  except subprocess.TimeoutExpired:server.kill()
  log.close()
+

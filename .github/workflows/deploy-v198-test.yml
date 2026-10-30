@@ -122,6 +122,7 @@ jobs:
       - name: Verify continuous live polls do not reopen offline settlement
         run: |
           node scripts/test-live-settlement.cjs
+          node scripts/test-offline-hunt.cjs
           node scripts/test-offline-catchup.cjs
           node scripts/test-offline-income.cjs
           node scripts/test-offline-income-notices.cjs
@@ -202,6 +203,7 @@ jobs:
         run: node scripts/verify-four-dragon-assets.mjs --live
       - name: Print deployment location
         run: echo 'Check Cloudflare Workers dashboard for eternal-idle-v198-test workers.dev URL'
+
 
 
 
