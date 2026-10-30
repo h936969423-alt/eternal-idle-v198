@@ -103,7 +103,7 @@ jobs:
       - name: Verify player motion against original Sunrise functions
         run: node scripts/test-sunrise-player-motion.cjs
       - name: Verify local 100ms attacks and 125ms player animation
-        run: node --experimental-strip-types --test tests/player-facing.test.mjs tests/local-player-attack.test.mjs tests/local-hit-sync.test.mjs tests/player-target-lock.test.mjs tests/normal-attack-target.test.mjs tests/spell-presentation-sync.test.mjs
+        run: node --experimental-strip-types --test tests/player-facing.test.mjs tests/local-player-attack.test.mjs tests/local-hit-sync.test.mjs tests/player-target-lock.test.mjs tests/normal-attack-target.test.mjs tests/spell-presentation-sync.test.mjs tests/spell-impact-timing.test.mjs
       - name: Verify audio activation and interruption recovery
         run: node --experimental-strip-types --test tests/combat-audio.test.mjs
       - name: Verify target spell renderer timing and cleanup
