@@ -45,7 +45,7 @@ test('visible secondary-source captions distinguish real extra damage without ch
 });
 test('server normal attacks issue stable distinct IDs; proc and skill damage remain independent',()=>{
  const eventSource=section('event','function replacement');
- const ctx={offlineEventRecordingAfter:new WeakMap(),petNamesOut:()=>[],ensurePet:()=>{},petSnapshot:()=>[],POLYMORPH:{forms:[]}};
+ const ctx={observeHuntHealth:()=>{},offlineEventRecordingAfter:new WeakMap(),petNamesOut:()=>[],ensurePet:()=>{},petSnapshot:()=>[],POLYMORPH:{forms:[]}};
  vm.createContext(ctx);vm.runInContext(stripTypeScriptTypes(eventSource),ctx);
  const c={id:'player1',eventSeq:0,hp:100,mp:100};
  ctx.event(c,'attack',0,{uid:'A',source:'physical'});
@@ -56,3 +56,4 @@ test('server normal attacks issue stable distinct IDs; proc and skill damage rem
  assert.equal(c.events[2].attackId,undefined);assert.equal(c.events[3].attackId,undefined);
  assert.equal(structuredClone(c.events[0]).attackId,c.events[0].attackId);
 });
+
