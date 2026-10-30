@@ -25,6 +25,9 @@ on:
       - 'app/reference-item-dialog.tsx'
       - 'app/active-status-bar.tsx'
       - 'app/game.tsx'
+      - 'app/town-shops.tsx'
+      - 'app/black-market.tsx'
+      - 'app/black-market.css'
       - 'app/api/game/route.ts'
       - 'app/skill-cooldown-button.tsx'
       - 'app/skill-cooldown-button.css'
@@ -127,6 +130,7 @@ jobs:
           node scripts/test-npc-hub.cjs
           node scripts/test-npc-hub-ui.cjs
           node scripts/test-npc-management.cjs
+          node scripts/test-black-market.cjs
           node scripts/test-gilen-shop-ui.cjs
       - name: Verify blue-to-gold weapon growth and uncapped enhancement
         run: |
