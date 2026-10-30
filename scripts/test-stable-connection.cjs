@@ -23,6 +23,12 @@ async function run(){
  t=timers();c=load('lib/game/game-connection.ts',t);calls=0;let complete;
  outcome=c.fetchGameState({type:'select',id:'hero'},(url,init)=>{calls++;assert.match(url,/character=hero/);assert.match(url,/settings=known/);assert.equal(init.method,'POST');return new Promise(resolve=>{complete=()=>resolve(Response.json({save:{active:'hero',characters:[]}}));});},undefined,{character:'hero',after:10,settingsKey:'known'});
  await flush();assert.equal([...t.jobs.values()][0].delay,30000);complete();await flush();assert.equal((await outcome).data.save.active,'hero');assert.equal(calls,1);assert.equal(t.jobs.size,0);
+ // Platform-generated HTML cannot be caught in JavaScript. Preserve its Ray ID,
+ // and never repeat a mutation even when the result cannot be decoded.
+ t=timers();c=load('lib/game/game-connection.ts',t);calls=0;
+ outcome=c.fetchGameState({type:'buy'},async()=>{calls++;return new Response('<html>resource limit</html>',{status:503,headers:{'CF-Ray':'test-ray-1'}});}).then(()=>null,e=>e);await flush();assert.match((await outcome).message,/追查編號 test-ray-1/);assert.equal(calls,1);assert.equal(t.jobs.size,0);
+ t=timers();c=load('lib/game/game-connection.ts',t);calls=0;
+ outcome=c.fetchGameState({type:'buy'},async()=>{calls++;return Response.json({error:'服務暫停',requestId:'server-ref-1',outcome:'unconfirmed'},{status:503});});await flush();const uncertain=await outcome;assert.match(uncertain.data.error,/結果尚待確認/);assert.match(uncertain.data.error,/server-ref-1/);assert.equal(calls,1);
  const doc=surface(),win=surface();t=timers();let pendingResolve,count=0,aborts=0,concurrent=0,maxConcurrent=0;
  const poll=load('lib/game/client-poll.ts',t,{'./sync-policy':{nextSyncDelay:()=>3000}});
  const stop=poll.startGamePolling({doc,win,getState:()=>({running:true,failures:0,pending:false}),hasPending:()=>false,abortRead:()=>{aborts++;pendingResolve?.();},request:async()=>{count++;concurrent++;maxConcurrent=Math.max(maxConcurrent,concurrent);if(count===1)await new Promise(resolve=>{pendingResolve=resolve;});concurrent--;},schedule:t.set.bind(t),cancel:t.clear.bind(t)});
@@ -32,4 +38,5 @@ async function run(){
  console.log('PASS: wake coalescing, stale-read cancellation, offline/online recovery, background pause, cleanup, bounded recovery body, abortable retry, no mutation replay, 401 handling.');
 }
 run().catch(e=>{console.error(e);process.exitCode=1;});
+
 

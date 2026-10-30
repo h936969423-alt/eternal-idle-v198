@@ -16,9 +16,10 @@ async function requestJson(url:string,init:RequestInit,fetcher:typeof fetch,time
  signal?.addEventListener('abort',cancel,{once:true});
  try{
   const operation=fetcher(url,{...init,signal:controller.signal}).then(async res=>{
-   const body=await res.text();let data:any;
-   try{data=JSON.parse(body);}catch{throw Error(`伺服器回應異常（HTTP ${res.status}；非 JSON）`);}
+   const body=await res.text();let data:any;const trace=(res.headers?.get('X-Request-ID')||res.headers?.get('CF-Ray')||'').replace(/[^A-Za-z0-9_-]/g,'').slice(0,100),reference=trace?`；追查編號 ${trace}`:'';
+   try{data=JSON.parse(body);}catch{throw Error(`伺服器回應異常（HTTP ${res.status}；非 JSON${reference}）`);}
    if(!data||typeof data!=='object'||Array.isArray(data))throw Error('伺服器回應格式錯誤');
+   if(res.status>=500&&typeof data.error==='string'){const id=typeof data.requestId==='string'?data.requestId.replace(/[^A-Za-z0-9_-]/g,'').slice(0,100):trace;if(id)data.error+=`（追查編號 ${id}）`;if(init.method==='POST'&&data.outcome!=='not_committed'&&!data.error.includes('操作結果尚待確認'))data.error='操作結果尚待確認：'+data.error+'；請先讀取存檔，勿重複操作。';}
    return {res,data};
   });
   return await Promise.race([operation,new Promise<never>((_,reject)=>{rejectAbort=reject;if(signal?.aborted)cancel();}),new Promise<never>((_,reject)=>{timer=setTimeout(()=>{controller.abort();reject(Error('連線逾時'));},timeoutMs);})]);
@@ -45,3 +46,4 @@ export async function fetchGameState(action?:unknown,fetcher:typeof fetch=fetch,
  }
  throw Error('連線暫時中斷，正在重新連線…');
 }
+

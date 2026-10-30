@@ -32,6 +32,10 @@ on:
       - 'app/black-market.tsx'
       - 'app/black-market.css'
       - 'app/api/game/route.ts'
+      - 'build/sites-worker.ts'
+      - 'vite.config.ts'
+      - 'scripts/test-game-api-errors.cjs'
+      - 'scripts/test-stable-connection.cjs'
       - 'app/skill-cooldown-button.tsx'
       - 'app/skill-cooldown-button.css'
       - 'scripts/test-skill-cooldown.cjs'
@@ -115,6 +119,10 @@ jobs:
           W_SKILL_REPORT=docs/lineagew-skill-verification.json node scripts/test-lineagew-complete.cjs
       - name: Verify shared Sunrise pet storage and lifecycle
         run: PET_REPORT=docs/sunrise-pet-verification.json node scripts/test-sunrise-pets.cjs
+      - name: Verify JSON error boundaries, unknown write outcomes and no mutation replay
+        run: |
+          node scripts/test-game-api-errors.cjs
+          node scripts/test-stable-connection.cjs
       - name: Verify failed-cast cooldown persistence and manual-auto lock
         run: |
           node scripts/test-skill-cooldown.cjs
@@ -154,6 +162,17 @@ jobs:
           node scripts/verify-four-dragon-assets.mjs
       - name: Build complete Cloudflare Worker
         run: pnpm run build
+      - name: Verify server source maps for original error stack locations
+        run: |
+          python3 - <<'PY'
+          import json,pathlib
+          root=pathlib.Path('dist/server')
+          config=json.loads((root/'wrangler.json').read_text())
+          assert config.get('upload_source_maps') is True, 'Server source-map upload must remain enabled'
+          maps=list(root.rglob('*.map'))
+          assert maps, 'Server build did not generate source maps'
+          print('Verified server source maps:',len(maps))
+          PY
       - name: Verify four-dragon atlases in final deployment output
         run: node scripts/verify-four-dragon-assets.mjs --built
       - name: Publish verified W skill icons to isolated R2

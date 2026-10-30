@@ -19,6 +19,16 @@ def request(path,data=None):
     except Exception:raise AssertionError('HTTP '+str(response.status)+' returned non-JSON')
     assert response.status==200,'HTTP '+str(response.status)+' '+str(result.get('error','request failed'))[:150]
     return result,round((time.monotonic()-started)*1000)
+def verify_json_error(body):
+    req=urllib.request.Request(BASE+'/api/game',data=body,headers={'Content-Type':'application/json','Origin':BASE,'User-Agent':'Mozilla/5.0'})
+    try:response=opener.open(req,timeout=30)
+    except urllib.error.HTTPError as error:response=error
+    assert response.status==400, 'Malformed action must return JSON HTTP 400'
+    assert 'application/json' in response.headers.get('Content-Type','')
+    result=json.load(response)
+    assert result.get('requestId') and result['requestId']==response.headers.get('X-Request-ID')
+    assert result.get('outcome')=='not_committed'
+    assert response.headers.get('Cache-Control')=='no-store'
 def game(action=None):
     global cursor,checks
     query='?'+urllib.parse.urlencode(cursor) if cursor else ''
@@ -35,6 +45,9 @@ def game(action=None):
 try:
     request('/api/account',{'username':username,'password':password,'register':True})
     registered=True
+    for malformed in [b'{',b'null',b'[]']:
+        verify_json_error(malformed)
+    print('PASS: live malformed-action responses are JSON, traceable and non-committing',flush=True)
     base=json.load(open('lib/game/classes.json'))['knight'];allocation={};left=base['pts']
     for key in ['str','dex','con','int','wis','cha']:
         allocation[key]=min(left,20-base[key]);left-=allocation[key]
@@ -58,3 +71,4 @@ finally:
             if cid:request('/api/game',{'type':'run','value':False})
             request('/api/account',{'logout':True})
         except Exception:print('QA cleanup could not be confirmed',flush=True)
+

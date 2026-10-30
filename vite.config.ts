@@ -17,6 +17,8 @@ const managedLinux = readExecutionProfile() === "managed-linux";
 const localBindingConfig = {
   main: "./build/sites-worker.ts",
   compatibility_flags: ["nodejs_compat"],
+  upload_source_maps: true,
+  observability: { enabled: true, head_sampling_rate: 1 },
   d1_databases: d1
     ? [
         {
@@ -55,6 +57,8 @@ export default defineConfig(async ({ command }) => {
     // Parse metadata as JSON rather than megabytes of JavaScript object literals.
     json: { stringify: true, namedExports: false },
     environments: {
+      rsc: { build: { sourcemap: true } },
+      ssr: { build: { sourcemap: true } },
       client: {
         build: {
           rolldownOptions: {
@@ -119,3 +123,4 @@ export default defineConfig(async ({ command }) => {
     ],
   };
 });
+

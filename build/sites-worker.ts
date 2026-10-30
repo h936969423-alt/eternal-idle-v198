@@ -1,3 +1,4 @@
+import { protectGameApi } from '../lib/game/api-errors';
 import { assetStorageFetch } from "../lib/asset-storage";
 import handler from "vinext/server/fetch-handler";
 import { runWithConnectorBinding } from "../lib/connector-context";
@@ -5,6 +6,7 @@ import type { ConnectorBinding } from "../lib/connector-contract.mjs";
 
 export default {
   async fetch(request: Request, env: Cloudflare.Env, ctx: ExecutionContext<{ CONNECTORS?: ConnectorBinding }>) {
+    return protectGameApi(request,async()=>{
     const assetResponse = await assetStorageFetch(request, env.BUCKET);
     if (assetResponse) return assetResponse;
     let binding = ctx.props?.CONNECTORS;
@@ -33,5 +35,7 @@ export default {
       return new Response(response.body,{status:response.status,statusText:response.statusText,headers});
     }
     return response;
+    });
   },
 };
+
