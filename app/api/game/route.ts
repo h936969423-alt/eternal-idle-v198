@@ -51,6 +51,14 @@ async function handle(request:Request,mutate:boolean){
  row=await ensureLineageWHLMigration(env.DB,owner,row);
  row=await ensureControlRingRestoration(env.DB,owner,row);
  row=await ensureLineageWMythicMigration(env.DB,owner,row);
+  // Return the authoritative committed save for a retried mutation, without applying it twice.
+  const requestId=mutate&&payload&&typeof payload.requestId==='string'&&payload.requestId.length<=128?payload.requestId:null;
+  const prior=JSON.parse(row.payload) as Save & {processedActions?:string[]};
+  if(requestId&&prior.processedActions?.includes(requestId)){
+   const {maps,monsters,dolls,world}=settings;
+   for(const c of prior.characters){c.npcConfig={...settings.npcs,history:[]};c.mapAccess=settings.mapAccess;c.lootAppearance={...settings.appearance,history:[]};c.dollDefinitions=dolls.definitions;c.mapPools=maps.maps;c.bossGeneration=maps.bosses;c.monsterDefinitions=monsters.definitions;c.bossDropDefinitions=monsters.bossDrops;}
+   return reply(view(prior,{seconds:0,kills:0,gold:0,xp:0,drops:{},pendingSeconds:0,offline:false},world,isGameMaster(user),settingsKey,cursor));
+  }
   let actionError:string|undefined;
   const simulationAt=performance.now();
   const save=JSON.parse(row.payload) as Save,{maps:mapConfig,monsters,dolls,world}=settings;const requestedAt=Date.now();for(const c of save.characters){c.npcConfig={...settings.npcs,history:[]};c.mapAccess=settings.mapAccess;c.lootAppearance={...settings.appearance,history:[]};c.dollDefinitions=dolls.definitions;c.mapPools=mapConfig.maps;c.bossGeneration=mapConfig.bosses;c.monsterDefinitions=monsters.definitions;c.bossDropDefinitions=monsters.bossDrops;}const report=advance(save,requestedAt,Math.random,world,200,30);const now=save.at;
@@ -58,6 +66,7 @@ async function handle(request:Request,mutate:boolean){
   for(const c of save.characters){c.npcConfig={...settings.npcs,history:[]};c.mapAccess=settings.mapAccess;c.lootAppearance={...settings.appearance,history:[]};c.dollDefinitions=dolls.definitions;c.mapPools=mapConfig.maps;c.bossGeneration=mapConfig.bosses;c.monsterDefinitions=monsters.definitions;c.bossDropDefinitions=monsters.bossDrops;if(!report.pendingSeconds){const b=stats(c,now);c.hp=Math.min(c.hp,b.maxHp);c.mp=Math.min(c.mp,b.maxMp);}}if(payload&&!report.pendingSeconds){try{action(save,payload,now);}catch(error){if((payload as {type?:unknown}).type!=='cast'||!isSkillCooldownFailure(error))throw error;actionError=error.message;}}for(const c of save.characters){c.npcConfig={...settings.npcs,history:[]};c.mapAccess=settings.mapAccess;c.lootAppearance={...settings.appearance,history:[]};c.dollDefinitions=dolls.definitions;c.mapPools=mapConfig.maps;c.bossGeneration=mapConfig.bosses;c.monsterDefinitions=monsters.definitions;c.bossDropDefinitions=monsters.bossDrops;}
   if(!report.pendingSeconds)for(const c of save.characters){syncPopulation(c,worldRulesAt(world,now));ensureArena(c,Math.random,now);}
   timings.simulation=(timings.simulation||0)+performance.now()-simulationAt;
+  if(requestId&&!report.pendingSeconds){const tracked=save as Save & {processedActions?:string[]};tracked.processedActions=[...(tracked.processedActions||[]).filter(id=>id!==requestId),requestId].slice(-128);}
   const encodeAt=performance.now(),stored=JSON.stringify(persistedSave(save));timings.persistEncode=(timings.persistEncode||0)+performance.now()-encodeAt;const writeAt=performance.now();
   const result=await env.DB.prepare('UPDATE game_saves SET payload=?,revision=revision+1,updated_at=? WHERE owner=? AND revision=?').bind(stored,now,owner,row.revision).run();
   timings.write=(timings.write||0)+performance.now()-writeAt;
