@@ -1,0 +1,30 @@
+const assert=require('node:assert/strict'),fs=require('node:fs'),path=require('node:path'),ts=require('typescript');
+const root=path.resolve(__dirname,'..'),dir=fs.mkdtempSync(path.join(require('node:os').tmpdir(),'skill-id-migration-'));
+(async()=>{try{
+ fs.writeFileSync(path.join(dir,'package.json'),'{"type":"commonjs"}');
+ for(const name of fs.readdirSync(path.join(root,'lib/game'))){const p=path.join(root,'lib/game',name);if(name.endsWith('.json'))fs.copyFileSync(p,path.join(dir,name));else if(name.endsWith('.ts'))fs.writeFileSync(path.join(dir,name.replace(/\.ts$/,'.js')),ts.transpileModule(fs.readFileSync(p,'utf8'),{compilerOptions:{module:ts.ModuleKind.CommonJS,target:ts.ScriptTarget.ES2022,esModuleInterop:true}}).outputText);}
+ const disk=JSON.parse(fs.readFileSync(path.join(root,'lib/game/gamedata.json'),'utf8')),e=require(path.join(dir,'engine.js')),m=require(path.join(dir,'skill-id-migration.js')),store=require(path.join(dir,'skill-id-migration-store.js')),w=require(path.join(dir,'lineagew-skill-data.js')),auto=require(path.join(dir,'auto-config.js')),statuses=require(path.join(dir,'active-status.js')),hunt=require(path.join(dir,'offline-hunt-sample.js'));
+ assert.equal(Object.keys(w.W_LEGACY).length,69);for(const id of Object.keys(w.W_LEGACY))assert(!disk.skills[id],id+' retired definition');
+ for(const item of Object.values(disk.items)){assert(!w.W_LEGACY[item.sk]);assert(!(item.grantSkills||[]).some(id=>w.W_LEGACY[id]));}
+ const time=1000000;
+ function fixture(cls='knight'){
+  const allocation={};let left=e.BASES[cls].pts;for(const key of ['str','dex','con','int','wis','cha']){allocation[key]=Math.min(left,20-e.BASES[cls][key]);left-=allocation[key];}
+  const c=e.createCharacter('轉換測試',cls,'m',allocation,time),s=e.emptySave(time);s.characters=[c];s.active=c.id;c.lv=90;c.gold=4321;c.bag.bk_counter_barrier=2;c.bank.bk_spike_armor=3;return {s,c};
+ }
+ for(const [old,id]of Object.entries(w.W_LEGACY)){
+  const {s,c}=fixture(w.W_SKILLS[id].lwClasses[0]);c.skills=[old,id];c.autoSkills=[old,id];c.skillCooldowns={[old]:time+9000,[id]:time+1000};c.buffs[old]={until:time+20000,d:{}};
+  const before=JSON.stringify(s),result=m.prepareSkillIdMigration(s),ch=result.save.characters[0];
+  assert.equal(JSON.stringify(s),before,'pure conversion');assert.deepEqual(ch.skills,[id]);assert.equal(ch.skillCooldowns[id],time+9000);assert(!ch.skillCooldowns[old]);assert(!ch.buffs[old]);assert.equal(result.save.at,time);assert.deepEqual(ch.bag,c.bag);assert.deepEqual(ch.bank,c.bank);assert.equal(ch.gold,c.gold);assert.equal(m.prepareSkillIdMigration(result.save).save,result.save,'idempotent');
+ }
+ const {s,c}=fixture();c.skills=['sk_counter_barrier','sk_spike_armor','lw_skill_410'];c.autoSkills=['sk_counter_barrier','sk_spike_armor'];c.autoConfig={...auto.autoConfig(c),buffs:[]};c.buffs.sk_counter_barrier={until:time+20000,d:{}};c.buffs.lw_skill_440={until:time+1000,d:{lwShield:100,lwShieldRemaining:7}};c.skillCooldowns={sk_counter_barrier:time+5000,lw_skill_440:time+15000};c.offlineHunt=[{key:hunt.huntSetupKey(c),zone:c.zone,sampleMs:600000,kills:100,gold:5000}];
+ const migrated=m.prepareSkillIdMigration(s).save,ch=migrated.characters[0];assert.deepEqual(ch.autoConfig.buffs,[]);assert.deepEqual(ch.autoSkills,[]);assert.equal(ch.skillCooldowns.lw_skill_440,time+15000);assert.equal(ch.buffs.lw_skill_440.until,time+20000);assert.equal(ch.buffs.lw_skill_440.d.lwShieldRemaining,7);assert.equal(ch.offlineHunt[0].key,hunt.huntSetupKey(ch));assert.equal(ch.offlineHunt[0].sampleMs,600000);assert.equal(ch.offlineHunt[0].gold,5000);
+ {const {s,c}=fixture('mage');c.skills=['sk_abs_barrier'];c.buffs.sk_abs_barrier={until:time+7000,d:{}};const ch=m.prepareSkillIdMigration(s).save.characters[0];assert.equal(ch.buffs.status_action_lock.until,time+7000);assert(ch.buffs.lw_skill_390.d.lwActionLock);assert.equal(statuses.activeStatuses(ch,time).filter(x=>['status_action_lock','sk_abs_barrier'].includes(x.id)).length,0);ch.skills.push('lw_skill_10');ch.mp=10000;assert.throws(()=>e.cast(ch,'lw_skill_10',time,()=>.5),/無法施法/);}
+ {const {s,c}=fixture('mage');c.skills=['sk_teleport','sk_antidote'];c.spellCooldowns={'manual:sk_teleport':time+12000,purify:time+6000};const ch=m.prepareSkillIdMigration(s).save.characters[0];assert.equal(ch.skillCooldowns.lw_skill_40,time+12000);assert.equal(ch.skillCooldowns.lw_skill_50,time+6000);assert(!ch.spellCooldowns['manual:sk_teleport']);}
+ // Atomic backup with retry: a competing writer's latest gold must survive, and
+ // the backup must be that exact payload rather than a stale migration attempt.
+ const original=JSON.stringify(s),latest=JSON.parse(original);latest.characters[0].gold=9999;let row={payload:JSON.stringify(latest),revision:8},backup,batches=0;
+ const db={prepare(sql){return {bind(...args){return {sql,args,async first(){return row;}};}};},async batch(statements){batches++;const [update,insert]=statements;if(update.args[3]!==row.revision)return [{meta:{changes:0}},{meta:{changes:0}}];backup=insert.args;row={payload:update.args[0],revision:row.revision+1};return [{meta:{changes:1}},{meta:{changes:1}}];}};
+ const result=await store.ensureSkillIdMigration(db,'owner',{payload:original,revision:7},time+100);assert.equal(batches,2);assert.equal(backup[2],JSON.stringify(latest));assert.equal(backup[3],8);assert.equal(JSON.parse(result.payload).characters[0].gold,9999);assert.equal(JSON.parse(result.payload).at,time);await store.ensureSkillIdMigration(db,'owner',result);assert.equal(batches,2);
+ const route=fs.readFileSync(path.join(root,'app/api/game/route.ts'),'utf8');assert(route.indexOf('row=await ensureSkillIdMigration')<route.indexOf('const prior=JSON.parse'));
+ console.log('PASS: 69 legacy skills migrate; definitions retired; books/gear canonical; cooldown collision, disabled automation, shield, action lock, offline sample preservation, exact backup and CAS retry.');
+}finally{fs.rmSync(dir,{recursive:true,force:true});}})().catch(error=>{console.error(error);process.exitCode=1;});

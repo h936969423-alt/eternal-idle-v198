@@ -6,20 +6,20 @@ export const W_LEGACY=catalog.legacy as Record<string,string>;
 export const W_BOOKS=catalog.books as Record<string,any>;
 const skills=raw.skills as Record<string,any>,items=raw.items as Record<string,any>;
 const icons=assets.icons as Record<string,Record<string,string>>;
-// Overlay is additive. Persisted skill/item IDs and the original JSON remain intact.
+// Canonical player catalog. W_LEGACY is retained only to read old saves/requests.
 for(const [id,s] of Object.entries(W_SKILLS)){
  skills[id]=s;
- const fallback=s.lwLegacyId?icons.skills[skills[s.lwLegacyId]?.n]:undefined;
+ const fallback=s.lwLegacyId?icons.skills[skills[s.lwLegacyId]?.n||s.n]:undefined;
  if(s.lwIcon||fallback)icons.skills[s.n]=s.lwIcon||fallback;
 }
 for(const [id,item] of Object.entries(W_BOOKS)){
  items[id]=item;
  if(item.lwIcon)icons.items[item.n]=item.lwIcon;
 }
-for(const item of Object.values(items))if(item.type==='skillbk'&&W_LEGACY[item.sk]){
- const s=W_SKILLS[W_LEGACY[item.sk]];
- item.lwSkillBook=true;item.lwGrade=s.lwGrade;item.lwCanonicalSkill=W_LEGACY[item.sk];
- const book=Object.values(W_BOOKS).find(b=>b.sk===W_LEGACY[item.sk]&&b.lwItemIconSource);
+for(const item of Object.values(items))if(item.type==='skillbk'&&W_SKILLS[W_LEGACY[item.sk]||item.sk]){
+ const id=W_LEGACY[item.sk]||item.sk,s=W_SKILLS[id];
+ item.lwSkillBook=true;item.lwGrade=s.lwGrade;item.lwCanonicalSkill=id;
+ const book=Object.values(W_BOOKS).find(b=>b.sk===id&&b.lwItemIconSource);
  if(book?.lwIcon||s.lwIcon)icons.items[item.n]=book?.lwIcon||s.lwIcon;
 }
 export function canonicalWSkill(id:string,cls?:string){const candidate=W_LEGACY[id];return candidate&&(!cls||W_SKILLS[candidate]?.lwClasses.includes(cls))?candidate:id;}
@@ -74,3 +74,4 @@ export function wBuffModifiers(c:{cls:string;lv:number;skills:string[]},id:strin
  if(id==='lw_skill_530')d.lwDoubleHeal=2*scale;
  return d as Record<string,number>;
 }
+

@@ -55,7 +55,7 @@ function performWSkill(c:Character,input:string,b:Record<string,number>,h:WSkill
   c.buffs[id]={until:s.lwToggle?Number.MAX_SAFE_INTEGER:now+s.dur*scale*1000,d};
   if(d.reveal)for(const t of c.arena||[]){if(t.hp<=0)continue;t.effects||={};delete t.effects.invisible;delete t.effects.disguised;t.effects.revealed={until:c.buffs[id].until,value:0};h.event('state',{slot:c.arena!.indexOf(t),uid:t.uid,mob:t.id,skill:id,targetEffects:structuredClone(t.effects)});}
   if(/隊員|血盟成員/.test(s.lwSourceTarget||''))h.shareBuff?.(id,c.buffs[id]);
-  if(d.lwActionLock)c.buffs.sk_abs_barrier={until:c.buffs[id].until,d:{}};
+  if(d.lwActionLock)c.buffs.status_action_lock={until:c.buffs[id].until,d:{}};
   result=s.lwToggle?'效果開啟':`效果持續 ${s.dur} 秒`;
  }else if(s.type==='heal'){
   const roll=()=>{let n=s.healBase||0;for(let j=0;j<(s.healDice?.[0]||0);j++)n+=1+Math.floor(rng()*s.healDice[1]);return Math.floor((n+(b.mdmg||0)+b.maxHp*(s.lwHealMaxPct||0))*scale*(1+(b.lwHealPct||0)/100)*(s.justiceHeal?justiceHealMultiplier(c.lawful):1));};
@@ -118,4 +118,5 @@ export function wIncoming(c:Character,b:Record<string,number>,amount:number,magi
  }
  return {damage,healed,counterSkill};
 }
+
 
