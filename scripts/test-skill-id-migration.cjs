@@ -3,6 +3,7 @@ const root=path.resolve(__dirname,'..'),dir=fs.mkdtempSync(path.join(require('no
 (async()=>{try{
  fs.writeFileSync(path.join(dir,'package.json'),'{"type":"commonjs"}');
  for(const name of fs.readdirSync(path.join(root,'lib/game'))){const p=path.join(root,'lib/game',name);if(name.endsWith('.json'))fs.copyFileSync(p,path.join(dir,name));else if(name.endsWith('.ts'))fs.writeFileSync(path.join(dir,name.replace(/\.ts$/,'.js')),ts.transpileModule(fs.readFileSync(p,'utf8'),{compilerOptions:{module:ts.ModuleKind.CommonJS,target:ts.ScriptTarget.ES2022,esModuleInterop:true}}).outputText);}
+ const visuals=require(path.join(dir,'magic-visuals.js'));for(const old of ['sk_meteor','sk_disintegrate']){const visual=visuals.magicVisual({skill:old});assert(visual.config?.atlas,old+' keeps its composited target atlas');}
  const disk=JSON.parse(fs.readFileSync(path.join(root,'lib/game/gamedata.json'),'utf8')),e=require(path.join(dir,'engine.js')),m=require(path.join(dir,'skill-id-migration.js')),store=require(path.join(dir,'skill-id-migration-store.js')),w=require(path.join(dir,'lineagew-skill-data.js')),auto=require(path.join(dir,'auto-config.js')),statuses=require(path.join(dir,'active-status.js')),hunt=require(path.join(dir,'offline-hunt-sample.js'));
  assert.equal(Object.keys(w.W_LEGACY).length,69);for(const id of Object.keys(w.W_LEGACY))assert(!disk.skills[id],id+' retired definition');
  for(const item of Object.values(disk.items)){assert(!w.W_LEGACY[item.sk]);assert(!(item.grantSkills||[]).some(id=>w.W_LEGACY[id]));}

@@ -1,5 +1,6 @@
 import {skillVisual} from './skill-visuals';
-import './lineagew-skill-data';
+import {canonicalWSkill} from './lineagew-skill-data';
+import legacyEffectNames from './legacy-skill-effect-names.json';
 import type {TargetSpellAtlas} from './spell-effect-layout';
 import effects from './magic-fx.json';
 import raw from './gamedata.json';
@@ -7,8 +8,9 @@ import type {CombatEvent} from './engine';
 
 export type MagicVisual={atlas?:TargetSpellAtlas;frames:string[];fps:number;self:boolean;proj?:number|boolean;layers?:string[][];shadowFrames?:string[];directions?:string[][];shadowDirections?:string[][];dirs?:number;nw?:number;nh?:number;oh?:number|boolean;h?:number;w?:number;width?:number;blend?:string;ax?:number;ay?:number;targetVc?:number;projScale?:number;imported?:boolean;hitFrame?:number};
 export function magicVisual(event:Pick<CombatEvent,'skill'|'effectName'|'item'>){
- const skill=event.skill?(raw.skills as Record<string,any>)[event.skill]:undefined;const original=skill?.lwLegacyId?(raw.skills as Record<string,any>)[skill.lwLegacyId]?.n:undefined;
- const name=event.effectName||(event.skill?(raw.skills as Record<string,{n:string}>)[event.skill]?.n:event.item?((raw.items as Record<string,any>)[event.item]?.eff==='magicbarrier'?'魔法屏障':(raw.items as Record<string,any>)[event.item]?.n):'');
+ const names=legacyEffectNames as Record<string,string>,id=event.skill?canonicalWSkill(event.skill):undefined,skill=id?(raw.skills as Record<string,any>)[id]:undefined;
+ const original=names[skill?.lwLegacyId||event.skill||''];
+ const name=event.effectName||(event.skill?names[event.skill]||skill?.n:event.item?((raw.items as Record<string,any>)[event.item]?.eff==='magicbarrier'?'魔法屏障':(raw.items as Record<string,any>)[event.item]?.n):'');
  const fallback=skill?.lwSourceId?(skill.type==='heal'?'初級治癒術':skill.type==='buff'?'保護罩':skill.dmgType==='physical'?'衝擊之暈':'光箭'):undefined;
  return {name,config:(effects as Record<string,MagicVisual>)[name]||(original?(effects as Record<string,MagicVisual>)[original]:undefined)||(skill?.lwSourceId&&skill.type!=='passive'?skillVisual(event.skill!,skill):fallback?(effects as Record<string,MagicVisual>)[fallback]:undefined)};
 }
@@ -41,3 +43,4 @@ export function spellImpactMs(event:Pick<CombatEvent,'skill'|'effectName'|'item'
  const frame=Math.max(0,Math.min(frames-1,config.hitFrame??frames-1));
  return Math.round(frame*1000/Math.max(1,config.fps));
 }
+

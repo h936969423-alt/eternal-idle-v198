@@ -14,8 +14,8 @@ function migrateCharacter(c:Character){
  // Explicit config is authoritative, including an empty/disabled selection.
  c.autoConfig=autoConfig(c);c.autoSkills=enabledAutoSkills(c.autoConfig);
  c.skillCooldowns=clocks(c.skillCooldowns);c.stormClocks=clocks(c.stormClocks);
- for(const [key,until]of Object.entries(c.spellCooldowns||{}))if(key.startsWith('manual:')&&W_LEGACY[key.slice(7)]){c.skillCooldowns||={};const id=canonical(key.slice(7));c.skillCooldowns[id]=Math.max(c.skillCooldowns[id]||0,until);delete c.spellCooldowns![key];}
- if(c.spellCooldowns?.purify)for(const [id,skill]of Object.entries(W_SKILLS))if(skill.type==='heal'&&c.skills.includes(id)){c.skillCooldowns||={};c.skillCooldowns[id]=Math.max(c.skillCooldowns[id]||0,c.spellCooldowns.purify);}
+ for(const [key,until]of Object.entries(c.spellCooldowns||{}))if(key.startsWith('manual:')&&W_LEGACY[key.slice(7)]){c.skillCooldowns||={};const id=canonical(key.slice(7));c.skillCooldowns[id]=Math.max(c.skillCooldowns[id]||0,until||0);delete c.spellCooldowns![key];}
+ if(c.spellCooldowns?.purify)for(const [id,skill]of Object.entries(W_SKILLS))if(skill.type==='heal'&&c.skills.includes(id)){c.skillCooldowns||={};c.skillCooldowns[id]=Math.max(c.skillCooldowns[id]||0,c.spellCooldowns.purify||0);}
  for(const member of [...Object.values(c.pets||{}),...(c.summonContract?.entities||[])])migrateSharedBuffs(member);
  const buffs=c.buffs||{};
  for(const old of Object.keys(buffs)){
