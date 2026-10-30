@@ -39,6 +39,8 @@ on:
       - 'app/skill-cooldown-button.tsx'
       - 'app/skill-cooldown-button.css'
       - 'scripts/test-skill-cooldown.cjs'
+      - 'scripts/test-skill-id-migration.cjs'
+      - 'scripts/test-game-cpu.cjs'
       - 'scripts/test-stun-once.cjs'
       - 'scripts/test-skill-computation.cjs'
       - 'scripts/test-live-settlement.cjs'
