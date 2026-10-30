@@ -101,7 +101,9 @@ jobs:
       - name: Verify audio activation and interruption recovery
         run: node --experimental-strip-types --test tests/combat-audio.test.mjs
       - name: Verify target spell renderer timing and cleanup
-        run: node scripts/test-magic-renderer.cjs
+        run: |
+          node scripts/test-magic-renderer.cjs
+          node scripts/test-monster-drop-query.cjs
       - name: Verify batched network attack cadence
         run: node scripts/test-network-combat-cadence.cjs
       - name: Typecheck five-class skill integration

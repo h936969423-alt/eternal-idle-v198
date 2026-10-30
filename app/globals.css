@@ -1056,3 +1056,26 @@ body:has(.game-root) :is(.game-dialog,.bian-dialog) :is([data-slot=dialog-descri
 
 /* Consolidated Silver Knight village services. */
 .npc-hub-tools{display:grid;gap:10px;margin:12px 0}.npc-hub-tools .progress-tabs{display:flex;gap:6px;flex-wrap:wrap}.npc-hub-tools .progress-tabs button{min-height:40px}.npc-stock label{display:block;margin:8px 0}.npc-stock label>input{max-width:100%;margin-left:6px}.npc-shop-dialog .npc-stock{min-width:0;overflow-wrap:anywhere}.npc-shop-dialog .auto-card{min-width:0}.npc-shop-dialog .shop-row>button{min-width:0}.npc-shop-dialog .shop-row>button>span{min-width:0;overflow-wrap:anywhere}
+
+/* Drop lookup belongs to the encounter whose name is directly above it. */
+.static-arena .four-monster>.monster-drop-query{
+ display:flex;align-items:center;justify-content:center;gap:3px;
+ width:68px;min-height:24px;margin:2px auto 0;padding:2px 5px;
+ border:1px solid #8e795a99;border-radius:3px;background:#202124df;
+ color:#e3c999;font-size:10px;line-height:16px;white-space:nowrap;
+ position:relative;z-index:14;cursor:pointer;touch-action:manipulation;
+}
+.static-arena .four-monster>.monster-drop-query:hover{background:#3a3328}
+.static-arena .four-monster>.monster-drop-query:focus-visible{outline:2px solid #e3c999;outline-offset:2px}
+.static-arena.world-boss-arena .four-target .monster-ground-name{display:block}
+/* Compact the bottom skill row without changing casting or cooldowns. */
+.game-root.screenshot-layout.map-first-layout{--map-skill-height:56px}
+.game-root.screenshot-layout.map-first-layout .map-skill-dock{padding:3px 6px}
+.game-root.screenshot-layout.map-first-layout .map-skill-dock .quick-magic{gap:4px;padding:1px;flex-wrap:nowrap}
+.game-root.screenshot-layout.map-first-layout .map-skill-dock .quick-magic>button{
+ min-width:68px;min-height:44px;height:44px;padding:3px 5px;gap:4px;border-radius:4px;
+}
+.game-root.screenshot-layout.map-first-layout .map-skill-dock .quick-magic img,
+.game-root.screenshot-layout.map-first-layout .map-skill-dock .quick-magic .asset-icon{width:22px;height:22px;flex-basis:22px}
+.game-root.screenshot-layout.map-first-layout .map-skill-dock .quick-magic span{font-size:10px;line-height:12px;max-width:60px;overflow:hidden;text-overflow:ellipsis}
+.game-root.screenshot-layout.map-first-layout .map-skill-dock .quick-magic small{font-size:9px;line-height:11px}
