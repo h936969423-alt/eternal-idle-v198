@@ -1,6 +1,12 @@
-name: Deploy v198 offline settlement scheduler (test only)
+name: Retire v198 offline settlement scheduler (test only)
 on:
   workflow_dispatch:
+  push:
+    branches: [main]
+    paths:
+      - 'workers/offline-settler.ts'
+      - 'wrangler.offline-test.json'
+      - '.github/workflows/deploy-v198-offline-test.yml'
 permissions:
   contents: read
 concurrency:
@@ -36,18 +42,18 @@ jobs:
           node-version: '22'
           cache: pnpm
       - run: pnpm install --frozen-lockfile
-      - name: Assert isolated test database and one-minute cron
+      - name: Assert isolated test database and disabled cron
         run: |
           python3 - <<'PY'
           import json
           c=json.load(open('wrangler.offline-test.json'))
           assert c['name']=='eternal-idle-v198-offline-test'
-          assert c['triggers']['crons']==['* * * * *']
+          assert c['triggers']['crons']==[], 'Offline cron must remain disabled; login owns settlement'
           d=c['d1_databases']
           assert len(d)==1 and d[0]['binding']=='DB'
           assert d[0]['database_name']=='eternal-idle-v198-test-db'
           assert d[0]['database_id']=='827dd8d1-53b2-460c-9594-2435db824432'
           print('Isolated D1 binding verified; no production database')
           PY
-      - name: Deploy separate test-only cron Worker
+      - name: Deploy retired Worker and remove old cron triggers
         run: pnpm exec wrangler deploy --config wrangler.offline-test.json

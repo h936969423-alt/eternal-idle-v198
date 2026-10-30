@@ -179,6 +179,19 @@ jobs:
           assert r2[0].get('bucket_name')=='eternal-idle-v198-test-assets'
           print('Isolated test D1 and R2 bindings checked; production not modified')
           PY
+      - name: Retire legacy offline cron before activating login settlement
+        run: |
+          python3 - <<'PY'
+          import json
+          c=json.load(open('wrangler.offline-test.json'))
+          assert c['name']=='eternal-idle-v198-offline-test'
+          assert c['triggers']['crons']==[], 'Offline cron must remain disabled'
+          d=c['d1_databases']
+          assert len(d)==1 and d[0]['binding']=='DB'
+          assert d[0]['database_id']=='827dd8d1-53b2-460c-9594-2435db824432'
+          assert d[0]['database_name']=='eternal-idle-v198-test-db'
+          PY
+          pnpm exec wrangler deploy --config wrangler.offline-test.json
       - name: Deploy named test-only Worker
         run: pnpm exec wrangler deploy --config dist/server/wrangler.json --name eternal-idle-v198-test --keep-vars
       - name: Verify real test-account login and continuous live polls
