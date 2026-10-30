@@ -12,6 +12,9 @@ export type MorphCastClip = {
 type CastDirections = Record<string, MorphCastClip>;
 type CastEntry = {directions: CastDirections};
 export function morphAttackFor(form: {id: string}, direction: number): MorphCastClip | undefined {
+  // Death Knight uses its original attack sequence, like Red Death Knight.
+  // The imported layered clip has a different facing from these native sprites.
+  if (form.id === 'deathknight') return undefined;
   const directions = (directionalAttacks as Record<string, CastDirections>)[form.id];
   return directions?.[String(direction)] || directions?.['2'];
 }
