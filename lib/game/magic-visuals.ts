@@ -34,6 +34,19 @@ export function magicEffectLifetime(event:CombatEvent){
  return config?Math.max(2000,Math.ceil(Math.max(config.frames.length,...(config.layers||[]).map(layer=>layer.length))*1000/config.fps)+100):2000;
 }
 
+/** Longest a click-time spell preview waits on its contact frame for the server. */
+export const SPELL_HOLD_MAX_MS=1500;
+/** Effective animation time for a manual preview that holds on its contact frame
+ * until the server confirms the cast, so confirmed damage lands while the effect
+ * is still visible instead of after it has finished. `releasedAfter` is the time
+ * (ms since the effect started) at which confirmation arrived, or null while waiting.
+ * The wait is capped so a lost reply can never freeze the effect. */
+export function heldSpellElapsed(raw:number,hitMs:number,releasedAfter:number|null,maxHold=SPELL_HOLD_MAX_MS){
+ if(raw<=hitMs)return raw;
+ const pause=Math.min(maxHold,Math.max(0,(releasedAfter??raw)-hitMs));
+ return raw-pause;
+}
+
 /** Explicit contact frames win. Unannotated effects hit during their visible
  * action, leaving the remaining frames to fade instead of delaying all damage. */
 export function spellImpactMs(event:Pick<CombatEvent,'skill'|'effectName'|'item'>){

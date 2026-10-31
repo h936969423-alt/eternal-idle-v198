@@ -4,13 +4,15 @@ import {lineageWEffectDefinition} from '@/lib/game/lineagew-equipment-effects';
 import MythicWeaponEffect from './mythic-weapon-effect';
 import {mythicProcDefinition} from '@/lib/game/lineagew-mythic-procs';
 import {useEffect,useRef,useState,type CSSProperties} from 'react';
-import {magicVisual,magicDirection,magicFrame} from '@/lib/game/magic-visuals';
+import {magicVisual,magicDirection,magicFrame,spellImpactMs,heldSpellElapsed} from '@/lib/game/magic-visuals';
 import {targetSpellLayout} from '@/lib/game/spell-effect-layout';
 import {sceneBlend} from '@/lib/game/scene-presentation';
 import type {CombatEvent} from '@/lib/game/engine';
 
-function StandardMagicEffect({event,loopUntil}:{event:CombatEvent;loopUntil?:number}){
- const host=useRef<HTMLSpanElement>(null),[frame,setFrame]=useState(0);
+function StandardMagicEffect({event,loopUntil,holdUntilConfirmed,confirmed}:{event:CombatEvent;loopUntil?:number;holdUntilConfirmed?:boolean;confirmed?:boolean}){
+ const host=useRef<HTMLSpanElement>(null),[frame,setFrame]=useState(0),releasedAt=useRef<number|null>(null);
+ // Manual click previews wait on the contact frame until the server confirms the cast.
+ if(confirmed&&releasedAt.current===null)releasedAt.current=performance.now();
  const {name,config}=magicVisual(event);
  const [placement,setPlacement]=useState<{left?:number;top?:number;width?:number;height?:number;frames?:string[];shadow?:string[];flip?:boolean}>({});
  const count=config?Math.max(0,config.frames.length,...(config.layers||[]).map(layer=>layer.length)):0;
@@ -36,7 +38,8 @@ function StandardMagicEffect({event,loopUntil}:{event:CombatEvent;loopUntil?:num
   const tick=()=>{
    const now=performance.now();
    const expired=!!loopUntil&&Date.now()>=loopUntil;
-   const index=expired?-1:magicFrame(now-started,config.fps,count,!!loopUntil);
+   const raw=now-started,elapsed=holdUntilConfirmed&&!loopUntil?heldSpellElapsed(raw,spellImpactMs(event),releasedAt.current===null?null:releasedAt.current-started):raw;
+   const index=expired?-1:magicFrame(elapsed,config.fps,count,!!loopUntil);
    if(index!==lastIndex){lastIndex=index;setFrame(index);}
    if(index>=0)timer=setTimeout(tick,Math.max(16,1000/Math.max(1,config.fps)));
   };
@@ -69,4 +72,4 @@ function StandardMagicEffect({event,loopUntil}:{event:CombatEvent;loopUntil?:num
 
 
 // Primary four-dragon casts are drawn once by FourDragonSprite, with their source body timeline.
-export default function MagicEffect(props:{event:CombatEvent;loopUntil?:number}){return props.event.sunriseDragon?null:<StandardMagicEffect {...props}/>;}
+export default function MagicEffect(props:{event:CombatEvent;loopUntil?:number;holdUntilConfirmed?:boolean;confirmed?:boolean}){return props.event.sunriseDragon?null:<StandardMagicEffect {...props}/>;}
