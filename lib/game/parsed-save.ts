@@ -7,6 +7,8 @@ export function parsedSave(row:SaveRow):Save{
  const cached=parsed.get(row);
  if(cached?.payload===row.payload)return cached.save;
  const save=JSON.parse(row.payload) as Save;
+ // Characters share save.bossRooms; it is stored once (see persistedSave).
+ if(save.bossRooms)for(const c of save.characters||[])c.bossRooms=save.bossRooms;
  parsed.set(row,{payload:row.payload,save});
  return save;
 }
