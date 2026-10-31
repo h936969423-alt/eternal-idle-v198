@@ -6,7 +6,9 @@ const effect=()=>null,projectile=()=>null,mod={exports:{}};
 vm.runInNewContext(ts.transpileModule(fs.readFileSync('app/battle-arena.tsx','utf8'),{compilerOptions:{module:ts.ModuleKind.CommonJS,target:ts.ScriptTarget.ES2022,esModuleInterop:true,jsx:ts.JsxEmit.ReactJSX}}).outputText,{exports:mod.exports,require:id=>{
  if(id==='react/jsx-runtime')return jsx;if(id.includes('magic-visuals'))return visual;if(id.endsWith('gamedata.json'))return raw;if(id.endsWith('asset-map.json'))return require('../lib/game/asset-map.json');if(id==='./magic-effect')return {__esModule:true,default:effect};if(id==='./combat-projectile')return {__esModule:true,default:projectile};return {};
 }});
-for(const [skill,type]of [['sk_lightarrow',projectile],['sk_icearrow',projectile],['sk_meteor',effect],['sk_blaze',effect]]){
+// Area spells (e.g. meteor) are drawn on confirmation together with their damage, so they are not previewed on click.
+assert.equal(feedback.canPreviewSpellEffect('sk_meteor'),false,'area spells are not click-previewed');
+for(const [skill,type]of [['sk_lightarrow',projectile],['sk_icearrow',projectile],['sk_blaze',effect]]){
  const intent={id:1,characterId:'mage',skill,at:100,afterSeq:10,effectPreviewed:feedback.canPreviewSpellEffect(skill)};
  const e={seq:-1,skill,at:99999,visualAt:intent.at,source:'magic',kind:'attack',slot:0,uid:'target',hp:100,mp:100};
  assert.equal(feedback.castFeedbackPose(intent,'mage',100,8,1).frame,0);
