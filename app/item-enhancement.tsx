@@ -14,7 +14,7 @@ import ItemIcon from './item-icon';
 import EnhancementSafety from './enhancement-safety';
 import './item-enhancement.css';
 const items=raw.items as Record<string,any>,icons=assets.icons.items as Record<string,string>;
-const ALL_MODES=[['normal','一般強化'],['blessed','祝福強化'],['safe','一鍵安定'],['refined','精煉強化']];
+const modes=[['normal','一般強化'],['blessed','祝福強化'],['safe','一鍵安定'],['refined','精煉強化']];
 const pct=(n:number)=>(n*100).toFixed(2).replace(/\.00$/,'')+'%';
 const number=(n:number)=>Number(n.toFixed(3)).toLocaleString();
 type Info=ReturnType<typeof enhancementInfo>;
@@ -24,12 +24,8 @@ function EquipmentIcon({id,c,size=88}:{id:string;c:Character;size?:number}){cons
 export function EnhancementResultPanel({result,changes=[]}:{result:EnhancementReceipt;changes?:EnhancementChange[]}){
  return <section className={'enhancement-result '+result.outcome} role="status"><h3>{result.outcome==='success'?'強化成功':result.outcome==='hold'?'強化維持':'強化失敗'}</h3><p className="enhancement-level-result">+{result.from} <span>→</span> {result.to===null?'裝備消失':'+'+result.to}</p><p>{result.outcome==='destroyed'?'選中的這件裝備已消失。':result.outcome==='hold'?'裝備保留，強化值維持不變。':'裝備強化與能力已更新。'}</p>{!!changes.length&&<dl className="enhancement-change-list">{changes.map(row=><div key={row.label}><dt>{row.label}</dt><dd>{number(row.before)} <span>→</span> <b>{number(row.after)}</b></dd></div>)}</dl>}<small>已消耗 {items[result.scroll]?.n||result.scroll} ×{result.consumed}</small></section>;
 }
-/** 'plus-one' offers only the +1 methods (一般、精煉); 'safe' offers only 一鍵安定. Omitted: every method. */
-export type EnhancementModeSet='plus-one'|'safe';
-const MODE_SETS:Record<EnhancementModeSet,string[]>={'plus-one':['normal','refined'],safe:['safe']};
-export default function ItemEnhancement({c,item,busy,act,onDone,onBusyChange,modeSet}:{c:Character;item:string;busy:boolean;act:(a:any)=>Promise<any>;onDone:(key:string|null)=>void;onBusyChange?:(busy:boolean)=>void;modeSet?:EnhancementModeSet}){
- const modes=modeSet?ALL_MODES.filter(([id])=>MODE_SETS[modeSet].includes(id)):ALL_MODES,firstMode=modes[0][0];
- const [selected,setSelected]=useState(item),[mode,setMode]=useState(firstMode),[phase,setPhase]=useState<Phase>('select'),[confirm,setConfirm]=useState(false),[result,setResult]=useState<EnhancementReceipt|null>(null),[changes,setChanges]=useState<EnhancementChange[]>([]);
+export default function ItemEnhancement({c,item,busy,act,onDone,onBusyChange}:{c:Character;item:string;busy:boolean;act:(a:any)=>Promise<any>;onDone:(key:string|null)=>void;onBusyChange?:(busy:boolean)=>void}){
+ const [selected,setSelected]=useState(item),[mode,setMode]=useState('normal'),[phase,setPhase]=useState<Phase>('select'),[confirm,setConfirm]=useState(false),[result,setResult]=useState<EnhancementReceipt|null>(null),[changes,setChanges]=useState<EnhancementChange[]>([]);
  const latest=useRef(c);latest.current=c;
  const inFlight=useRef(false),pending=useRef<{requestId:string;sequence:number;item:string;mode:string;expectedEn:number;info:Info}|null>(null),frozen=useRef<Info|null>(null),started=useRef(0),received=useRef(''),timer=useRef<ReturnType<typeof setTimeout>|undefined>(undefined);
  const options=modes.map(([id,name])=>{try{return {id,name,info:enhancementInfo(c,selected,id),error:''};}catch(error){return {id,name,info:null,error:error instanceof Error?error.message:'不可強化'};}});
@@ -75,7 +71,7 @@ export default function ItemEnhancement({c,item,busy,act,onDone,onBusyChange,mod
    {phase==='select'&&<><Button className="gold-button" disabled={!canStart} onClick={()=>setConfirm(true)}>開始強化</Button><Button variant="outline" disabled={busy} onClick={()=>onDone(null)}>更換裝備</Button></>}
    {phase==='ready'&&<Button className="gold-button" onClick={reveal}>點擊揭曉</Button>}
    {phase==='retry'&&<Button className="gold-button" disabled={busy} onClick={()=>void execute()}>確認上次強化結果</Button>}
-   {resultVisible&&<><Button className="gold-button" disabled={busy||!canContinue} onClick={()=>{if(!result||!canContinue)return;setSelected(result.key);setMode(firstMode);setResult(null);setChanges([]);frozen.current=null;setPhase('select');}}>繼續強化</Button><Button variant="outline" disabled={busy} onClick={()=>onDone(null)}>更換裝備</Button></>}
+   {resultVisible&&<><Button className="gold-button" disabled={busy||!canContinue} onClick={()=>{if(!result||!canContinue)return;setSelected(result.key);setMode('normal');setResult(null);setChanges([]);frozen.current=null;setPhase('select');}}>繼續強化</Button><Button variant="outline" disabled={busy} onClick={()=>onDone(null)}>更換裝備</Button></>}
    {!active&&<Button variant="outline" disabled={busy} onClick={close}>關閉強化</Button>}
   </footer>
   <AlertDialog open={confirm} onOpenChange={setConfirm}><AlertDialogContent className="game-dialog enhancement-confirmation"><AlertDialogTitle>確認強化</AlertDialogTitle><AlertDialogDescription>{current?label+' +'+current.en+'，消耗 '+current.need+' 張'+items[current.scroll]?.n+'。成功 '+pct(current.chance)+'、維持 '+pct(current.hold)+'、消失 '+pct(current.destroy)+'；成功提升至 '+target(current)+'。破壞只會消失選中的這一件裝備。':'裝備狀態已改變，請重新選擇。'}</AlertDialogDescription><AlertDialogFooter><AlertDialogCancel>取消</AlertDialogCancel><Button className="gold-button" disabled={!canStart} onClick={()=>void execute()}>確認衝裝</Button></AlertDialogFooter></AlertDialogContent></AlertDialog>
