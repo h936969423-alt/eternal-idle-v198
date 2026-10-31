@@ -64,7 +64,9 @@ export function enqueueCombatReplay<T extends CombatEvent>(queued:(T&{due:number
 export type BattleView={normalHitReceipts?:string[];healthCredits?:Record<string,number>;actions?:(CombatEvent&{shownAt:number})[];petHurt?:CombatEvent;petEntities?:PetSnapshot[];summonEntities?:SummonEntity[];hp:number;mp:number;arena:Encounter[];target?:number;attack?:CombatEvent;magic?:CombatEvent;hurt?:CombatEvent;casts?:(CombatEvent&{shownAt:number})[];floats:CombatFloat[]};
 export type TimedCombatEvent=PresentationEvent&{due:number};
 /** Flight deadlines use the display clock and never move with a later network packet. */
-export function drainCombatPresentation(queue:TimedCombatEvent[],pending:TimedCombatEvent[],now:number,bow=false,spellFlight?:(event:CombatEvent)=>number,allowPhysical?:(event:CombatEvent)=>boolean){
+/** Longest a spell on another monster waits for earlier normal hits to be shown. */
+export const SPELL_ORDER_HOLD_MS=350;
+export function drainCombatPresentation(queue:TimedCombatEvent[],pending:TimedCombatEvent[],now:number,bow=false,spellFlight?:(event:CombatEvent)=>number,allowPhysical?:(event:CombatEvent)=>boolean,onForcedHit?:(event:CombatEvent)=>void){
  const visible:PresentationEvent[]=[];
  const flightFor=(event:CombatEvent)=>isFlyingMagic(event)?Math.max(140,Math.min(380,spellFlight?.(event)??magicFlightMs(320))):event.skill==='sk_elf_triple'?TRIPLE_FLIGHT_MS:ARROW_FLIGHT_MS;
  while((queue[0]?.due??Infinity)<=now||(pending[0]?.due??Infinity)<=now){
@@ -81,8 +83,15 @@ export function drainCombatPresentation(queue:TimedCombatEvent[],pending:TimedCo
   // their displayed swing: the server only moved to that monster after those hits
   // (usually after killing the first one). Same-target spells are not held.
   if(!impactFirst&&allowPhysical&&next.skill&&!next.weaponProc&&next.slot!==undefined&&next.source!=='monster'&&next.source!=='pet'&&next.source!=='summon'&&next.source!=='doll'){
-   const earlier=queue.find(e=>e.seq<next.seq&&e.kind==='attack'&&!e.skill&&!e.weaponProc&&(!e.source||e.source==='physical')&&e.uid!==next.uid);
-   if(earlier){queue.push({...next,due:Math.max(now+16,earlier.due)});queue.sort((a,b)=>a.due-b.due||a.seq-b.seq);continue;}
+   const stale=(e:TimedCombatEvent)=>e.seq<next.seq&&e.kind==='attack'&&!e.skill&&!e.weaponProc&&(!e.source||e.source==='physical')&&e.uid!==next.uid;
+   if(queue.some(stale)){
+    // Wait briefly for those swings; never longer than SPELL_ORDER_HOLD_MS, or a
+    // mage casting continuously would see spells pile up and land in a burst.
+    const since=(next as TimedCombatEvent&{orderHeldSince?:number}).orderHeldSince??now;
+    if(now-since<SPELL_ORDER_HOLD_MS){queue.push({...next,orderHeldSince:since,due:now+16} as TimedCombatEvent);queue.sort((a,b)=>a.due-b.due||a.seq-b.seq);continue;}
+    // Settle the earlier target's remaining hits now (HP only), then show the spell.
+    for(let i=queue.length-1;i>=0;i--)if(stale(queue[i])){const hit=queue.splice(i,1)[0];onForcedHit?.(hit);visible.push({...hit,visualAt:now});}
+   }
   }
   // A weapon proc cannot overtake the normal hit waiting for its visible contact.
   if(!impactFirst&&next.weaponProc&&allowPhysical){

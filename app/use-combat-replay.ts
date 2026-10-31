@@ -7,7 +7,7 @@ import {baseItem} from '@/lib/game/gear';
 import {petSnapshot} from '@/lib/game/engine';
 import {replayHasGap,replayFrameExpired} from '@/lib/game/replay-timing';
 import { combatSound } from './combat-audio';
-import {localHitOwner,allowLocalHit,clearLocalHits,queueLocalHitTargets,currentLocalSwing} from '@/lib/game/local-hit-sync';
+import {localHitOwner,allowLocalHit,clearLocalHits,queueLocalHitTargets,currentLocalSwing,settleLocalHit} from '@/lib/game/local-hit-sync';
 import {applyCombatViewEvent,drainCombatPresentation,enqueueSunriseReplay,prepareCombatHealth,type BattleView,type TimedCombatEvent} from '@/lib/game/combat-presentation';
 export type {BattleView} from '@/lib/game/combat-presentation';
 export function useCombatReplay(c:Character|null,sound:boolean){
@@ -40,7 +40,7 @@ export function useCombatReplay(c:Character|null,sound:boolean){
     if(!player||!monster)return magicFlightMs(320);
     const p=player.getBoundingClientRect(),m=monster.getBoundingClientRect();
     return magicFlightMs(Math.hypot(m.left+m.width/2-p.left-p.width*.6,m.top+m.height*.55-p.top-p.height*.55));
-   },event=>{const current=latest.current;return !current||allowLocalHit(localHitOwner(current.id,current.zone),event.uid,event.seq,now);});
+   },event=>{const current=latest.current;return !current||allowLocalHit(localHitOwner(current.id,current.zone),event.uid,event.seq,now);},event=>{const current=latest.current;if(current)settleLocalHit(localHitOwner(current.id,current.zone),event.seq);});
    for(const next of ready)if(soundOn.current&&latest.current&&now-(next.visualAt??(next as TimedCombatEvent).due??now)<=250)combatSound(latest.current,next);
    // One React update per animation frame, rather than one per attack plus a
    // cleanup update on every 60 FPS frame. Animation still uses rAF.
