@@ -12,9 +12,25 @@ function withoutDefinitions(c:Character):Character{
  * client resets its replay for anything older than 6s anyway. This keeps the row
  * written on every poll small. Same-request lookups use the live save, not this copy. */
 export const SAVED_EVENT_WINDOW_MS=15000;
-export function persistedSave(s:Save,cursor?:GameSyncCursor,now?:number):Save{return {...s,characters:s.characters.map(c=>{const out=withoutDefinitions(c);if(s.petRosterVersion===1)delete out.pets;
+/** Other maps' monster slots are only kept while a respawn cooldown could still apply. */
+export const SAVED_POPULATION_WINDOW_MS=10*60*1000;
+export const SAVED_ENHANCEMENT_RECEIPTS=8,SAVED_PROCESSED_ACTIONS=48;
+export function persistedSave(s:Save,cursor?:GameSyncCursor,now?:number):Save{
+ const tracked=s as Save&{processedActions?:string[]};
+ const out:Save&{processedActions?:string[]}={...s,characters:s.characters.map(c=>{const out=withoutDefinitions(c);if(s.petRosterVersion===1)delete out.pets;
  if(now!==undefined&&out.events?.length){const acked=cursor?.character===c.id&&Number.isSafeInteger(cursor.after)&&cursor.after<=(c.eventSeq||0)?cursor.after:-1;out.events=out.events.filter(e=>e.seq>acked&&e.at>=now-SAVED_EVENT_WINDOW_MS);}
- return out;})};}
+ // Boss rooms are one shared object (save.bossRooms); parsedSave rebinds it on load.
+ if(s.bossRooms)delete out.bossRooms;
+ // A pity record with no misses is the same as no record.
+ if(out.hybridPity)out.hybridPity=Object.fromEntries(Object.entries(out.hybridPity).filter(([,p])=>p&&p.misses>0));
+ // Retried enhancement requests only need the latest receipts.
+ const enh=out.enhancement;if(enh&&enh.history.length>SAVED_ENHANCEMENT_RECEIPTS)out.enhancement={...enh,history:enh.history.slice(0,SAVED_ENHANCEMENT_RECEIPTS)};
+ // Another map's slots are rebuilt identically once every cooldown has expired.
+ if(now!==undefined&&out.mapPopulations)out.mapPopulations=Object.fromEntries(Object.entries(out.mapPopulations).filter(([zone,p])=>zone===out.zone||zone===out.population?.zone||p?.slots?.some(slot=>slot.killedAt&&slot.killedAt>=now-SAVED_POPULATION_WINDOW_MS)));
+ return out;})};
+ if(tracked.processedActions&&tracked.processedActions.length>SAVED_PROCESSED_ACTIONS)out.processedActions=tracked.processedActions.slice(-SAVED_PROCESSED_ACTIONS);
+ return out;
+}
 export function responseSave(s:Save,settingsKey:string,cursor?:GameSyncCursor){
  const active=s.characters.find(c=>c.id===s.active);
  const reuse=!!active&&cursor?.character===active.id&&cursor.settingsKey===settingsKey;
