@@ -30,6 +30,16 @@ const aliases: Record<string, string> = {
   '高等黑暗精靈': '黑暗精靈',
 };
 
+/** Legacy casting clips imported from the monster sheets (assets/anim/…), not
+ * from the polymorph's own morphanim sheets. Their art differs from the form's
+ * idle/attack art, so casting visibly swapped the character to another look.
+ * These forms cast with their own attack frames instead; the clip's canvas is
+ * still used for layout so their on-screen size does not change. */
+export const MISMATCHED_CAST_FORMS = new Set(['morph_24', 'morph_36', 'morph_37', 'morph_38']);
+export function morphCastAnimationFor(form: {id: string; name: string}, direction: number): MorphCastClip | undefined {
+  return MISMATCHED_CAST_FORMS.has(form.id) ? undefined : morphCastFor(form, direction);
+}
+
 export function morphCastFor(form: {id: string; name: string}, direction: number): MorphCastClip | undefined {
   // Keep the audited size/foot anchor of existing game forms. New exact-name
   // forms and source-confirmed aliases can use the complete casting catalogue.
@@ -41,7 +51,7 @@ export function morphCastFor(form: {id: string; name: string}, direction: number
 export function morphCastFrames(form: {id: string; name: string}) {
   const paths = new Set<string>();
   for (const direction of [0, 1, 2]) {
-    for (const clip of [morphCastFor(form, direction), morphAttackFor(form, direction)]) {
+    for (const clip of [morphCastAnimationFor(form, direction), morphAttackFor(form, direction)]) {
       if (clip) for (const path of [...clip.body, ...clip.shadow, ...clip.weapon]) if (path) paths.add(path);
     }
   }
