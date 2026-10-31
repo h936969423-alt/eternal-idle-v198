@@ -30,3 +30,12 @@ test('confirmation before the contact frame never pauses the effect',()=>{
 test('a lost reply cannot freeze the effect forever',()=>{
  assert.equal(held(300+1500+200,300,null),500);
 });
+
+test('area spells show damage the moment their effect appears',()=>{
+ const ctx={effects:{},raw:{skills:{sk_fire_storm:{type:'atk',target:'all'},sk_single:{type:'atk'}},items:{}},legacyEffectNames:{},canonicalWSkill:id=>id,skillVisual:()=>undefined};
+ vm.createContext(ctx);
+ vm.runInContext(source,ctx);
+ assert.equal(ctx.isAreaSpell({skill:'sk_fire_storm'}),true);
+ assert.equal(ctx.isAreaSpell({skill:'sk_single'}),false);
+ assert.equal(ctx.spellImpactMs({skill:'sk_fire_storm'}),0);
+});

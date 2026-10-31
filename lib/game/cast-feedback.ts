@@ -1,5 +1,5 @@
 import {canonicalWSkill} from './lineagew-skill-data';
-import {magicVisual} from './magic-visuals';
+import {magicVisual,isAreaSpell} from './magic-visuals';
 import raw from './gamedata.json';
 import {playerActionKind} from './animation-cues';
 import {durationFor} from './animation-clock';
@@ -8,7 +8,8 @@ import type {Character,Save} from './engine';
 export type CastIntent={id:number;characterId:string;skill:string;at:number;afterSeq:number;effectPreviewed?:boolean;targetUid?:string};
 export function spellEffectPreviewDuration(skill:string){const c=magicVisual({skill}).config;return c?Math.ceil(Math.max(c.frames.length,...(c.layers||[]).map(x=>x.length))*1000/Math.max(1,c.fps))+100:0;}
 export function spellPreviewNeedsTarget(skill:string){return !magicVisual({skill}).config?.self;}
-export function canPreviewSpellEffect(skill:string){const config=magicVisual({skill}).config;return playerActionKind(skill)==='skill'&&(raw.skills as Record<string,any>)[skill]?.type!=='passive'&&!!config;}
+// Area spells draw on confirmation, together with their damage, so there is no click-time effect.
+export function canPreviewSpellEffect(skill:string){const config=magicVisual({skill}).config;return playerActionKind(skill)==='skill'&&!isAreaSpell({skill})&&(raw.skills as Record<string,any>)[skill]?.type!=='passive'&&!!config;}
 export function castFeedbackPose(intent:CastIntent|undefined,characterId:string,now:number,count:number,castInterval:number,dead=false){
  if(!intent||dead||intent.characterId!==characterId||(playerActionKind(intent.skill)!=='skill'&&intent.skill!=='sk_shock_stun')||count<1)return undefined;
  const kind=intent.skill==='sk_shock_stun'?'attack' as const:'skill' as const;
@@ -24,6 +25,8 @@ export function castIntentConfirmed(c:Pick<Character,'id'|'cls'|'events'>,intent
 /** Annotate only this response's latest confirmed manual spell. The pose can
  * continue from its click time without replaying the windup a second time.
  * This does not move the spell's release, HP/MP, hit, loot or projectile clock.
+ * The click-time effect is drawn on the clicked target only, so only that target's
+ * event counts as previewed; the other targets of an area spell still draw their own.
  */
 export function attachCastFeedback(save:Save,intent:CastIntent):Save{
  return {...save,characters:save.characters.map(c=>{
@@ -32,7 +35,7 @@ export function attachCastFeedback(save:Save,intent:CastIntent):Save{
   const matches=(c.events||[]).filter(e=>e.seq>intent.afterSeq&&e.manual&&e.skill&&canonicalWSkill(e.skill,c.cls)===skill&&!e.weaponProc);
   if(!matches.length)return c;
   const at=Math.max(...matches.map(e=>e.at)),seqs=new Set(matches.filter(e=>e.at===at).map(e=>e.seq));
-  return {...c,events:(c.events||[]).map(e=>seqs.has(e.seq)?{...e,visualCastAt:intent.at,...(intent.effectPreviewed?{visualEffectPreviewed:true}:{})}:e)};
+  return {...c,events:(c.events||[]).map(e=>seqs.has(e.seq)?{...e,visualCastAt:intent.at,...(intent.effectPreviewed&&(!intent.targetUid||e.uid===intent.targetUid)?{visualEffectPreviewed:true}:{})}:e)};
  })};
 }
 
@@ -52,3 +55,4 @@ export function resolvePlayerPose<T>(feedback:T|undefined,confirmed:T,intent:Cas
 export function playerCastInterval(serverSeconds:number|undefined,fallback:number):number{
  return typeof serverSeconds==='number'&&Number.isFinite(serverSeconds)&&serverSeconds>0?serverSeconds:fallback;
 }
+
