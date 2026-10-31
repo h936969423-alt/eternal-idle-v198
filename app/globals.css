@@ -1081,3 +1081,7 @@ body:has(.game-root) :is(.game-dialog,.bian-dialog) :is([data-slot=dialog-descri
 .game-root.screenshot-layout.map-first-layout .map-skill-dock .quick-magic .asset-icon{width:22px;height:22px;flex-basis:22px}
 .game-root.screenshot-layout.map-first-layout .map-skill-dock .quick-magic span{font-size:10px;line-height:12px;max-width:60px;overflow:hidden;text-overflow:ellipsis}
 .game-root.screenshot-layout.map-first-layout .map-skill-dock .quick-magic small{font-size:9px;line-height:11px}
+
+/* GM item pickers */
+.gm-source-toggle{display:flex;align-items:center;gap:6px;font-size:13px;color:#c9b88f}
+.gm-legacy-warning{display:block;color:#f2c14e;font-size:12px}
