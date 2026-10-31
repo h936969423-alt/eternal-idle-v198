@@ -42,6 +42,8 @@ export function recordLocalContact(key:string,uid:string,at:number,seq?:number,s
  // An 80ms expiry discarded it before ordinary buffered/network results arrived.
  owner.contacts=[{uid,seq,at,consumed:false}];
 }
+/** A hit settled without a swing (its target was superseded by a spell). */
+export function settleLocalHit(key:string,seq:number){const owner=owners.get(key);if(!owner)return;owner.completed.add(seq);if(owner.completed.size>512)owner.completed.delete(owner.completed.values().next().value!);owner.pending=owner.pending.filter(e=>e.seq!==seq);}
 export function allowLocalHit(key:string,uid:string|undefined,seq:number,now:number){
  const owner=owners.get(key);
  const complete=()=>{if(!owner)return;owner.completed.add(seq);if(owner.completed.size>512)owner.completed.delete(owner.completed.values().next().value!);owner.pending=owner.pending.filter(e=>e.seq!==seq);};
