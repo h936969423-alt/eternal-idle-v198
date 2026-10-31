@@ -18,7 +18,7 @@ const modes=[['normal','一般強化'],['blessed','祝福強化'],['safe','一�
 const pct=(n:number)=>(n*100).toFixed(2).replace(/\.00$/,'')+'%';
 const number=(n:number)=>Number(n.toFixed(3)).toLocaleString();
 type Info=ReturnType<typeof enhancementInfo>;
-type Phase='select'|'charging'|'ready'|'revealing'|'result'|'retry';
+type Phase='select'|'gathering'|'confirm'|'charging'|'ready'|'revealing'|'result'|'retry';
 const target=(info:Info)=>info.gainMin===info.gainMax?'+'+Math.min(info.cap,info.en+info.gainMin):'+'+Math.min(info.cap,info.en+info.gainMin)+'～+'+Math.min(info.cap,info.en+info.gainMax);
 function EquipmentIcon({id,c,size=88}:{id:string;c:Character;size?:number}){const item=items[baseItem(id)],src=item?.sourceIcon||icons[item?.n];return src?<ItemIcon itemId={id} appearance={c.lootAppearance} src={src} alt={itemDisplayName(id,c.lootAppearance)} size={size}/>:<span className="enhancement-placeholder" aria-hidden="true">✦</span>;}
 export function EnhancementResultPanel({result,changes=[]}:{result:EnhancementReceipt;changes?:EnhancementChange[]}){
@@ -45,7 +45,7 @@ export default function ItemEnhancement({c,item,busy,act,onDone,onBusyChange,aut
  async function execute(){
   if(inFlight.current||busy||active)return;
   const request=pending.current||(current?{requestId:crypto.randomUUID(),sequence:(c.enhancement?.sequence||0)+1,item:selected,mode,expectedEn:current.en,info:current}:null);
-  if(!request)return;pending.current=request;frozen.current=request.info;inFlight.current=true;started.current=performance.now();setPhase('charging');setConfirm(false);setResult(null);setChanges([]);
+  if(!request)return;pending.current=request;frozen.current=request.info;inFlight.current=true;started.current=performance.now()-(auto?600:0);setPhase('charging');setConfirm(false);setResult(null);setChanges([]);
   try{
    const response=await act({type:'enhance',item:request.item,mode:request.mode,expectedEn:request.expectedEn,requestId:request.requestId,sequence:request.sequence});
    const character=response?.save?.characters.find((ch:Character)=>ch.id===c.id) as Character|undefined,receipt=character?.enhancement?.history.find(r=>r.requestId===request.requestId);
@@ -56,11 +56,12 @@ export default function ItemEnhancement({c,item,busy,act,onDone,onBusyChange,aut
  const canStart=!!current&&!busy&&(c.bag[current.scroll]||0)>=current.need&&!c.locked?.includes(current.scroll);
  const canContinue=!!result&&result.outcome!=='destroyed'&&!!c.bag[result.key]&&(auto?(()=>{try{const next=enhancementInfo(c,result.key,auto);return (c.bag[next.scroll]||0)>=next.need;}catch{return false;}})():modes.some(([id])=>{try{enhancementInfo(c,result.key,id);return true;}catch{return false;}}));
  // Automatic mode: start as soon as the item is ready, then reveal without a tap.
- useEffect(()=>{if(auto&&autoRun.current&&phase==='select'&&canStart){autoRun.current=false;void execute();}});
- useEffect(()=>{if(auto&&phase==='ready')reveal();});
+ // Automatic mode: gather the scroll's power first (nothing is spent yet), then ask
+ // for confirmation; the result is revealed with a tap, as in the full workbench.
+ useEffect(()=>{if(auto&&autoRun.current&&phase==='select'&&canStart){autoRun.current=false;setPhase('gathering');clearTimeout(timer.current);timer.current=setTimeout(()=>setPhase('confirm'),1200);}});
  const close=()=>onDone(result?.outcome==='destroyed'?null:result&&c.bag[result.key]?result.key:c.bag[selected]?selected:null);
  const showId=result?.item||selected,label=itemDisplayName(showId,c.lootAppearance),before=display?.en??result?.from??c.enh[selected]??0;
- return <section className="enhancement-workbench" data-phase={phase} data-outcome={outcome||'hidden'}>
+ return <section className="enhancement-workbench" data-phase={phase==='gathering'?'charging':phase==='confirm'?'ready':phase} data-outcome={outcome||'hidden'}>
   <header className="enhancement-header"><div><span>ENCHANTMENT</span><h2>裝備強化</h2></div><strong>{label}</strong></header>
   <div className="enhancement-body">
    {phase==='select'&&!auto&&<div className="enhancement-modes" role="group" aria-label="強化方式">{options.map(row=><Button key={row.id} variant={row.id===mode?'default':'outline'} disabled={busy||!row.info} title={row.error||row.name} aria-pressed={row.id===mode} onClick={()=>setMode(row.id)}>{row.name}</Button>)}</div>}
@@ -68,16 +69,17 @@ export default function ItemEnhancement({c,item,busy,act,onDone,onBusyChange,aut
     <svg className="enhancement-rune" viewBox="0 0 200 200" aria-hidden="true"><defs><path id={'enhance-ring-'+c.id} d="M100,100 m-78,0 a78,78 0 1,1 156,0 a78,78 0 1,1 -156,0"/></defs><text><textPath href={'#enhance-ring-'+c.id}>✦ Ⅰ · Ⅱ · Ⅲ · Ⅳ · Ⅴ · Ⅵ · Ⅶ · Ⅷ · ✦ Ⅰ · Ⅱ · Ⅲ · Ⅳ ·</textPath></text></svg><span className="enhancement-ring" aria-hidden="true"/><span className="enhancement-flare" aria-hidden="true"/>
     {phase==='select'?<span className="enhancement-ingredients"><span>{current?<><EquipmentIcon id={current.scroll} c={c} size={64}/><span style={{display:'grid',gap:2,marginTop:6,fontSize:12,lineHeight:1.4,textAlign:'center',whiteSpace:'nowrap'}}><span>持有 {(c.bag[current.scroll]||0).toLocaleString()} 張</span><span style={{color:(c.bag[current.scroll]||0)<current.need?'#f9a782':'#b6a382'}}>每次消耗 {current.need.toLocaleString()} 張</span></span></>:<span>卷軸</span>}</span><b>＋</b><span><EquipmentIcon id={selected} c={c}/><small>+{before}</small></span></span>:<><span className="enhancement-main-icon"><EquipmentIcon id={showId} c={c}/></span>{outcome==='destroyed'&&<span className="enhancement-fragments" aria-hidden="true">{[[-54,-48,-30],[56,-42,35],[-46,56,-40],[51,52,45]].map(([x,y,r],i)=><span key={i} className={'enhancement-fragment fragment-'+i} style={{'--fragment-x':x+'px','--fragment-y':y+'px','--fragment-rotate':r+'deg'} as CSSProperties}><EquipmentIcon id={showId} c={c}/></span>)}</span>}<span className="enhancement-ashes" aria-hidden="true">{Array.from({length:8},(_,i)=><i key={i} style={{'--ash-i':i} as CSSProperties}/>)}</span></>}
    </button>
-   {!resultVisible&&<p className="enhancement-stage-status" role="status">{phase==='charging'?'卷軸力量凝聚中…':phase==='ready'?'結果已準備完成，點擊揭曉':phase==='revealing'?'強化結果揭曉中…':phase==='retry'?'結果尚未確認。重試確認會使用同一筆請求。':current?'+'+current.en+' → '+target(current):options.find(row=>row.id===mode)?.error||'請選擇強化方式'}</p>}
+   {!resultVisible&&<p className="enhancement-stage-status" role="status">{phase==='charging'||phase==='gathering'?'卷軸力量凝聚中…':phase==='confirm'?'力量凝聚完成，請確認是否強化':phase==='ready'?'結果已準備完成，點擊揭曉':phase==='revealing'?'強化結果揭曉中…':phase==='retry'?'結果尚未確認。重試確認會使用同一筆請求。':current?'+'+current.en+' → '+target(current):options.find(row=>row.id===mode)?.error||'請選擇強化方式'}</p>}
    {phase==='select'&&current&&<>{hasUnlimitedWeaponGrowth(selected,current.i)?<p className="enhancement-rule">武器強化無上限 · 共通強化加成：傷害 +{weaponGrowth(current.en).damage}、命中 +{weaponGrowth(current.en).hit}。</p>:current.i.lwMythicId&&Number.isFinite(current.cap)&&<p className="enhancement-rule">玩家強化上限 +{current.cap}。</p>}<p className="enhancement-rule">{current.refined?'使用必成卷軸':current.i.enhSucc!==undefined?'活動道具固定機率':current.i.source==='apang381'?'裝備原生強化規則':'永夜強化規則'}</p><EnhancementSafety id={selected} item={current.i} en={current.en}/><div className="enhancement-rates"><p>成功 <b>{pct(current.chance)}</b></p><p>維持 <b>{pct(current.hold)}</b></p><p>消失 <b>{pct(current.destroy)}</b></p></div><div className="enhancement-cost"><span>{items[current.scroll]?.n} ×{current.need}</span><span>持有 {c.bag[current.scroll]||0} 張</span></div>{(c.bag[current.scroll]||0)<current.need&&<p className="enhancement-warning">卷軸不足</p>}{c.locked?.includes(current.scroll)&&<p className="enhancement-warning">卷軸已鎖定，請先解除鎖定。</p>}</>}
    {resultVisible&&result&&<EnhancementResultPanel result={result} changes={changes}/>}
   </div>
   <footer className="enhancement-footer">
    {phase==='select'&&!auto&&<><Button className="gold-button" disabled={!canStart} onClick={()=>setConfirm(true)}>開始強化</Button><Button variant="outline" disabled={busy} onClick={()=>onDone(null)}>更換裝備</Button></>}
+   {phase==='confirm'&&current&&<><Button className="gold-button" disabled={!canStart} onClick={()=>void execute()}>確認強化（成功 {pct(current.chance)}／維持 {pct(current.hold)}／消失 {pct(current.destroy)}）</Button><Button variant="outline" disabled={busy} onClick={()=>onDone(c.bag[selected]?selected:null)}>取消</Button></>}
    {phase==='ready'&&<Button className="gold-button" onClick={reveal}>點擊揭曉</Button>}
    {phase==='retry'&&<Button className="gold-button" disabled={busy} onClick={()=>void execute()}>確認上次強化結果</Button>}
-   {resultVisible&&<><Button className="gold-button" disabled={busy||!canContinue} onClick={()=>{if(!result||!canContinue)return;setSelected(result.key);setMode(auto||'normal');setResult(null);setChanges([]);frozen.current=null;autoRun.current=!!auto;setPhase('select');}}>繼續強化</Button><Button variant="outline" disabled={busy} onClick={()=>onDone(null)}>更換裝備</Button></>}
-   {!active&&<Button variant="outline" disabled={busy} onClick={close}>關閉強化</Button>}
+   {resultVisible&&<><Button className="gold-button" disabled={busy||!canContinue} onClick={()=>{if(!result||!canContinue)return;setSelected(result.key);setMode(auto||'normal');setResult(null);setChanges([]);frozen.current=null;autoRun.current=!!auto;setPhase('select');}}>繼續強化</Button>{!auto&&<Button variant="outline" disabled={busy} onClick={()=>onDone(null)}>更換裝備</Button>}</>}
+   {!active&&phase!=='confirm'&&<Button variant="outline" disabled={busy} onClick={close}>{auto?'關閉':'關閉強化'}</Button>}
   </footer>
   <AlertDialog open={confirm} onOpenChange={setConfirm}><AlertDialogContent className="game-dialog enhancement-confirmation"><AlertDialogTitle>確認強化</AlertDialogTitle><AlertDialogDescription>{current?label+' +'+current.en+'，消耗 '+current.need+' 張'+items[current.scroll]?.n+'。成功 '+pct(current.chance)+'、維持 '+pct(current.hold)+'、消失 '+pct(current.destroy)+'；成功提升至 '+target(current)+'。破壞只會消失選中的這一件裝備。':'裝備狀態已改變，請重新選擇。'}</AlertDialogDescription><AlertDialogFooter><AlertDialogCancel>取消</AlertDialogCancel><Button className="gold-button" disabled={!canStart} onClick={()=>void execute()}>確認衝裝</Button></AlertDialogFooter></AlertDialogContent></AlertDialog>
  </section>;
