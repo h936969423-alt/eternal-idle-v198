@@ -77,6 +77,13 @@ export function drainCombatPresentation(queue:TimedCombatEvent[],pending:TimedCo
    if(!allowPhysical(next)){queue.push({...next,due:now+16});queue.sort((a,b)=>a.due-b.due||a.seq-b.seq);continue;}
    next.visualAt=now;
   }
+  // A spell on another monster cannot overtake earlier normal hits still waiting for
+  // their displayed swing: the server only moved to that monster after those hits
+  // (usually after killing the first one). Same-target spells are not held.
+  if(!impactFirst&&allowPhysical&&next.skill&&!next.weaponProc&&next.slot!==undefined&&next.source!=='monster'&&next.source!=='pet'&&next.source!=='summon'&&next.source!=='doll'){
+   const earlier=queue.find(e=>e.seq<next.seq&&e.kind==='attack'&&!e.skill&&!e.weaponProc&&(!e.source||e.source==='physical')&&e.uid!==next.uid);
+   if(earlier){queue.push({...next,due:Math.max(now+16,earlier.due)});queue.sort((a,b)=>a.due-b.due||a.seq-b.seq);continue;}
+  }
   // A weapon proc cannot overtake the normal hit waiting for its visible contact.
   if(!impactFirst&&next.weaponProc&&allowPhysical){
    const parent=queue.find(e=>e.kind==='attack'&&!e.skill&&!e.weaponProc&&e.uid===next.uid&&e.at===next.at);
