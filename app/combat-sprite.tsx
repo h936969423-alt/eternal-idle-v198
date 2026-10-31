@@ -10,13 +10,13 @@ import {activeForm} from '@/lib/game/polymorph';
 import type {Character} from '@/lib/game/engine';
 import {sunrisePlayerCues} from '@/lib/game/sunrise-player-cues';
 import {playerAnimationClips} from '@/lib/game/player-animation';
-import {morphCastFor,morphAttackFor,morphCastFrames,playerBattleDirection} from '@/lib/game/morph-cast';
+import {morphCastFor,morphCastAnimationFor,morphAttackFor,morphCastFrames,playerBattleDirection} from '@/lib/game/morph-cast';
 import {preloadSprites} from '@/lib/game/preload-sprites';
 import {useSunrisePlayerMotion} from './use-sunrise-player-motion';
 import {playerCastInterval,type CastIntent} from '@/lib/game/cast-feedback';
 import type {BattleView} from './use-combat-replay';
 export default function CombatSprite({c,view,interval,pendingCast,castInterval:serverCastInterval}:{c:Character;view:BattleView;interval:number;pendingCast?:CastIntent;castInterval?:number}){const direction=playerBattleDirection(view.target);const poly=c.polyLook!==false?activeForm(c):undefined,ranged=(raw.items as any)[baseItem(c.equipment.weapon?.id||'')]?.isBow,base=c.cls==='royal'?`royal_${c.gender==='f'?'f':'m'}`:c.cls==='knight'?(c.gender==='f'?'knight_f':'knight_2hsword'):c.cls==='elf'?`elf_${c.gender==='f'?'f':'m'}_${ranged?'ranged':'melee'}`:c.cls==='mage'?(c.gender==='f'?'mage_f':'mage_m'):'darkelf',frames=amap.frames as Record<string,string[]>;
- const castClip=poly?morphCastFor(poly,direction):undefined,attackClip=poly?morphAttackFor(poly,direction):undefined;
+ const layoutClip=poly?morphCastFor(poly,direction):undefined,castClip=poly?morphCastAnimationFor(poly,direction):undefined,attackClip=poly?morphAttackFor(poly,direction):undefined;
  const clips=useMemo(()=>playerAnimationClips(base,frames,direction,poly?{...poly.frames,...(attackClip?{attack:attackClip.body}:{}),...(castClip?{skill:castClip.body}:{})}:undefined),[base,poly?.id,direction,castClip,attackClip]);
  // Decode every displayed body and overlay before the first swing, including
  // base classes. Retain every polymorph direction to avoid decoding on turn.
@@ -29,7 +29,7 @@ export default function CombatSprite({c,view,interval,pendingCast,castInterval:s
  // sheets consistently instead of inferring direction from padded sprite boxes.
  const frame=Math.min(seq.length-1,pose.frame);
  const activeClip=pose.kind==='skill'?(castClip||attackClip):pose.kind==='attack'?attackClip:undefined;
- return seq.length?<PlayerSpriteFrame className="character-sprite" data-action={pose.kind} data-direction={direction} data-target-uid={pose.targetUid||contactTarget?.uid} data-mirrored={false} data-polymorph={poly?.id} formId={poly?.id} canvas={castClip?.layout.viewBox||attackClip?.layout.viewBox} src={seq[frame]} clip={activeClip} frame={frame} alt={c.name}/>:null;
+ return seq.length?<PlayerSpriteFrame className="character-sprite" data-action={pose.kind} data-direction={direction} data-target-uid={pose.targetUid||contactTarget?.uid} data-mirrored={false} data-polymorph={poly?.id} formId={poly?.id} canvas={layoutClip?.layout.viewBox||attackClip?.layout.viewBox} src={seq[frame]} clip={activeClip} frame={frame} alt={c.name}/>:null;
 }
 
 
