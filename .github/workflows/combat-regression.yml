@@ -52,4 +52,5 @@ jobs:
           node scripts/test-boss-drop-preview.cjs
           node scripts/test-four-dragon-loot.cjs
           node scripts/test-lineagew-mythic-enhancement.cjs
+          node scripts/test-map-layout.cjs
 

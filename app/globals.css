@@ -339,6 +339,8 @@
 /* World-boss visual enlargement: source ground anchors, shadow and attached layers scale together. */
 .world-boss-arena .four-monster-art,.world-boss-arena .four-target{overflow:visible}
 .world-boss-arena .four-monster:not([data-dragon=true]):not([data-dragon-summon=true]) .four-monster-art{transform:scale(var(--world-boss-scale,1.5));transform-origin:center bottom}
+/* Field and dungeon monsters: twice the sprite size, growing upward from their feet. */
+.static-arena:not(.world-boss-arena) .four-monster:not([data-dragon=true]):not([data-dragon-summon=true]) .four-monster-art{transform:scale(var(--ordinary-monster-scale,2));transform-origin:center bottom}
 .world-boss-arena .four-monster[data-dragon=true]:not([data-dragon-summon=true]) .dragon381-sprite{transform:scale(var(--world-boss-scale,1.5))}
 .world-boss-arena .four-monster[data-dragon=true]:not([data-dragon-summon=true]){left:min(70%,calc(100% - min(34.5vw,157.5px) - 8px))!important}
 .world-boss-scene .static-arena.world-boss-arena,.game-root.display-landscape .world-boss-scene .static-arena.world-boss-arena{height:clamp(380px,76vw,500px);min-height:380px}

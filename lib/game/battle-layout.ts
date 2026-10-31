@@ -1,7 +1,11 @@
 export const WORLD_BOSS_VISUAL_SCALE=1.5;
+/** Field and dungeon monsters render at twice their sprite size. */
+export const ORDINARY_MONSTER_VISUAL_SCALE=2;
 /** Each slot owns its place, so a death or replacement never moves survivors. */
 export function monsterPosition(slot:number,count:number){
- const normal=[{x:56,y:65},{x:80,y:39},{x:83,y:82}];
+ // Doubled sprites need a wide triangle. The back monster is slot 0 so the
+ // two front monsters, rendered later, draw over it where they overlap.
+ const normal=[{x:69,y:52},{x:52,y:82},{x:86,y:82}];
  if(count<=3)return normal[slot]||normal[0];
  const formation=[{x:49,y:77},{x:68,y:77},{x:87,y:77},{x:59,y:43},{x:79,y:43}];
  return formation[slot]||{x:73,y:60};
