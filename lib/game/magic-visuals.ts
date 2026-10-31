@@ -47,9 +47,17 @@ export function heldSpellElapsed(raw:number,hitMs:number,releasedAfter:number|nu
  return raw-pause;
 }
 
+/** Area attacks (every living monster is hit at once) show their damage the moment
+ * their effect appears, as in the original game, instead of a few frames later. */
+export function isAreaSpell(event:Pick<CombatEvent,'skill'>){
+ const id=event.skill?canonicalWSkill(event.skill):undefined,skill=id?(raw.skills as Record<string,any>)[id]:undefined;
+ return !!skill&&skill.type==='atk'&&skill.target==='all';
+}
+
 /** Explicit contact frames win. Unannotated effects hit during their visible
  * action, leaving the remaining frames to fade instead of delaying all damage. */
 export function spellImpactMs(event:Pick<CombatEvent,'skill'|'effectName'|'item'>){
+ if(isAreaSpell(event))return 0;
  const config=magicVisual(event).config;
  if(!config)return 200;
  const frames=Math.max(1,config.frames.length,...(config.layers||[]).map(layer=>layer.length),...(config.directions||[]).map(dir=>dir.length));
