@@ -3,7 +3,7 @@ import {magicVisual} from './magic-visuals';
 import raw from './gamedata.json';
 import {playerActionKind} from './animation-cues';
 import {durationFor} from './animation-clock';
-import type {Save} from './engine';
+import type {Character,Save} from './engine';
 /** Browser-only intent: a pose preview, never an engine action or damage event. */
 export type CastIntent={id:number;characterId:string;skill:string;at:number;afterSeq:number;effectPreviewed?:boolean;targetUid?:string};
 export function spellEffectPreviewDuration(skill:string){const c=magicVisual({skill}).config;return c?Math.ceil(Math.max(c.frames.length,...(c.layers||[]).map(x=>x.length))*1000/Math.max(1,c.fps))+100:0;}
@@ -14,6 +14,12 @@ export function castFeedbackPose(intent:CastIntent|undefined,characterId:string,
  const kind=intent.skill==='sk_shock_stun'?'attack' as const:'skill' as const;
  const age=Math.max(0,now-intent.at),duration=durationFor(kind,count,castInterval,castInterval);
  return age<duration?{kind,frame:Math.min(count-1,Math.floor(age/duration*count))}:undefined;
+}
+/** True once the server response containing this click's manual spell has been accepted. */
+export function castIntentConfirmed(c:Pick<Character,'id'|'cls'|'events'>,intent:CastIntent|undefined):boolean{
+ if(!intent||intent.characterId!==c.id)return false;
+ const skill=canonicalWSkill(intent.skill,c.cls);
+ return (c.events||[]).some(e=>e.seq>intent.afterSeq&&e.manual&&!!e.skill&&canonicalWSkill(e.skill,c.cls)===skill&&!e.weaponProc);
 }
 /** Annotate only this response's latest confirmed manual spell. The pose can
  * continue from its click time without replaying the windup a second time.
@@ -46,4 +52,3 @@ export function resolvePlayerPose<T>(feedback:T|undefined,confirmed:T,intent:Cas
 export function playerCastInterval(serverSeconds:number|undefined,fallback:number):number{
  return typeof serverSeconds==='number'&&Number.isFinite(serverSeconds)&&serverSeconds>0?serverSeconds:fallback;
 }
-
