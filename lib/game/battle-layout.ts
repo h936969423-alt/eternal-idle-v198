@@ -1,6 +1,6 @@
 export const WORLD_BOSS_VISUAL_SCALE=1.5;
-/** Field and dungeon monsters render at twice their sprite size. */
-export const ORDINARY_MONSTER_VISUAL_SCALE=2;
+/** Field and dungeon monsters render at 1.5× their sprite size. */
+export const ORDINARY_MONSTER_VISUAL_SCALE=1.5;
 /** Each slot owns its place, so a death or replacement never moves survivors. */
 export function monsterPosition(slot:number,count:number){
  // Doubled sprites need a wide triangle. The back monster is slot 0 so the
