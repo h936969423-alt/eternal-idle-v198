@@ -74,7 +74,7 @@ async function handle(request:Request,mutate:boolean){
   if(!report.pendingSeconds)for(const c of save.characters){syncPopulation(c,worldRulesAt(world,now));ensureArena(c,Math.random,now);}
   timings.simulation=(timings.simulation||0)+performance.now()-simulationAt;
   if(requestId&&!report.pendingSeconds){const tracked=save as Save & {processedActions?:string[]};tracked.processedActions=[...(tracked.processedActions||[]).filter(id=>id!==requestId),requestId].slice(-128);}
-  context.phase='serialize-save';const encodeAt=performance.now(),stored=JSON.stringify(persistedSave(save));timings.persistEncode=(timings.persistEncode||0)+performance.now()-encodeAt;const writeAt=performance.now();
+  context.phase='serialize-save';const encodeAt=performance.now(),stored=JSON.stringify(persistedSave(save,cursor,now));timings.persistEncode=(timings.persistEncode||0)+performance.now()-encodeAt;const writeAt=performance.now();
   context.phase='write';context.commit='unknown';
   const result=await env.DB.prepare('UPDATE game_saves SET payload=?,revision=revision+1,updated_at=? WHERE owner=? AND revision=?').bind(stored,now,owner,row.revision).run();
   timings.write=(timings.write||0)+performance.now()-writeAt;
