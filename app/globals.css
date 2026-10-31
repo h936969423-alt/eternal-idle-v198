@@ -1085,3 +1085,7 @@ body:has(.game-root) :is(.game-dialog,.bian-dialog) :is([data-slot=dialog-descri
 /* GM item pickers */
 .gm-source-toggle{display:flex;align-items:center;gap:6px;font-size:13px;color:#c9b88f}
 .gm-legacy-warning{display:block;color:#f2c14e;font-size:12px}
+
+/* The monster currently being attacked: red outline around its sprite, as in the original client. */
+.four-monster.targeted:not([data-dead="true"]) .four-monster-art{filter:drop-shadow(0 0 1.5px #ff2020) drop-shadow(0 0 1.5px #ff2020) drop-shadow(0 0 6px rgba(255,30,30,.85))}
+@media (prefers-reduced-transparency:reduce){.four-monster.targeted:not([data-dead="true"]) .four-monster-art{filter:drop-shadow(0 0 1px #ff2b2b) drop-shadow(0 0 1px #ff2b2b)}}
