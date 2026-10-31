@@ -7,7 +7,14 @@ const runtimeKeys=['npcConfig','mapAccess','lootAppearance','dollDefinitions','m
 function withoutDefinitions(c:Character):Character{
  const out={...c};for(const key of runtimeKeys)delete out[key];return out;
 }
-export function persistedSave(s:Save):Save{return {...s,characters:s.characters.map(c=>{const out=withoutDefinitions(c);if(s.petRosterVersion===1)delete out.pets;return out;})};}
+/** Saved combat events only feed the client's replay. Keep what the client has not
+ * acknowledged yet (cursor.after) and nothing older than the replay window: the
+ * client resets its replay for anything older than 6s anyway. This keeps the row
+ * written on every poll small. Same-request lookups use the live save, not this copy. */
+export const SAVED_EVENT_WINDOW_MS=15000;
+export function persistedSave(s:Save,cursor?:GameSyncCursor,now?:number):Save{return {...s,characters:s.characters.map(c=>{const out=withoutDefinitions(c);if(s.petRosterVersion===1)delete out.pets;
+ if(now!==undefined&&out.events?.length){const acked=cursor?.character===c.id&&Number.isSafeInteger(cursor.after)&&cursor.after<=(c.eventSeq||0)?cursor.after:-1;out.events=out.events.filter(e=>e.seq>acked&&e.at>=now-SAVED_EVENT_WINDOW_MS);}
+ return out;})};}
 export function responseSave(s:Save,settingsKey:string,cursor?:GameSyncCursor){
  const active=s.characters.find(c=>c.id===s.active);
  const reuse=!!active&&cursor?.character===active.id&&cursor.settingsKey===settingsKey;
