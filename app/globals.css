@@ -260,6 +260,8 @@
 
 /* Remove defeated monsters immediately; let the final damage number finish. */
 .four-monster[data-dead="true"] > :not(.combat-float){visibility:hidden;pointer-events:none}
+/* A spell that kills its target must still finish drawing on it (area spells deal damage the moment their effect starts). */
+.four-monster[data-dead="true"] :is(.magic-effect,.magic-target-atlas,[class*="lw-fx-"],[class*="mythic-fx-"]){visibility:visible}
 
 .gm-gift-affixes{min-width:0;border:1px solid #786135;border-radius:8px;padding:12px;margin:12px 0;display:grid;gap:12px}.gm-gift-affixes legend{padding:0 6px;color:var(--gold)}.gm-gift-affixes p{font-size:14px;margin:0;line-height:1.7}.gm-gift-affixes label{display:flex;flex-direction:column;gap:6px}.gm-gift-affixes select{width:100%;min-height:44px;padding:8px;background:#171e20;color:#eee6cc;border:1px solid #786135;border-radius:6px;font:inherit}
 
