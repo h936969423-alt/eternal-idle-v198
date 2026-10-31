@@ -4,6 +4,11 @@ import footOffsets from './darkelf-foot-offsets.json';
 /** Retain the death knight's existing pixel scale and foot anchor. The dark
  * elf sheet has far less transparent padding, so equal CSS boxes doubled it. */
 export function playerSpriteLayout(formId?:string){return formId==='darkelf'?{viewBox:[113,102],x:30,y:29,width:59,height:66}:undefined;}
+/** Red and Flame Death Knight sheets carry more transparent padding than the
+ * original Death Knight sheet, so fitting each into the same box made them look
+ * smaller. Scale them up to match the Death Knight's on-screen body size. */
+export const POLYMORPH_DISPLAY_SCALE:Record<string,number>={morph_red_deathknight:1.2,morph_flame_deathknight:1.15};
+export function polymorphDisplayScale(formId?:string){return (formId&&POLYMORPH_DISPLAY_SCALE[formId])||1;}
 export function arrowFlight(from:{x:number;y:number},to:{x:number;y:number},interval:number){return {angle:Math.atan2(to.y-from.y,to.x-from.x)*180/Math.PI,delay:Math.min(1500,Math.max(30,interval*1000*.5)),duration:Math.min(240,Math.max(120,Math.hypot(to.x-from.x,to.y-from.y)/1100*1000))};}
 export const PLAIN_ARROW='/assets/effects/arrows/plain/arrow.svg';
 export const GREEN_ARROW='/assets/effects/arrows/green/arrow.svg';
