@@ -74,7 +74,9 @@ async function handle(request:Request,mutate:boolean){
   if(!report.pendingSeconds)for(const c of save.characters){syncPopulation(c,worldRulesAt(world,now));ensureArena(c,Math.random,now);}
   timings.simulation=(timings.simulation||0)+performance.now()-simulationAt;
   if(requestId&&!report.pendingSeconds){const tracked=save as Save & {processedActions?:string[]};tracked.processedActions=[...(tracked.processedActions||[]).filter(id=>id!==requestId),requestId].slice(-128);}
-  context.phase='serialize-save';const encodeAt=performance.now(),stored=JSON.stringify(persistedSave(save,cursor,now));timings.persistEncode=(timings.persistEncode||0)+performance.now()-encodeAt;const writeAt=performance.now();
+  context.phase='serialize-save';const encodeAt=performance.now(),stored=JSON.stringify(persistedSave(save,cursor,now));
+  // Diagnostics: which parts of a large stored save dominate the D1 write (sizes only, no content).
+  if(stored.length>60000&&Math.random()<.1){const p=persistedSave(save,cursor,now) as any,size=(v:unknown)=>JSON.stringify(v??null).length;console.info('save-size',JSON.stringify({stored:stored.length,top:Object.keys(p).filter(k=>k!=='characters').map(k=>[k,size(p[k])]).sort((a,b)=>b[1]-a[1]).slice(0,6),characters:(p.characters||[]).map((c:any)=>({size:size(c),top:Object.keys(c).map(k=>[k,size(c[k])]).sort((a,b)=>b[1]-a[1]).slice(0,8)}))}));}timings.persistEncode=(timings.persistEncode||0)+performance.now()-encodeAt;const writeAt=performance.now();
   context.phase='write';context.commit='unknown';
   const result=await env.DB.prepare('UPDATE game_saves SET payload=?,revision=revision+1,updated_at=? WHERE owner=? AND revision=?').bind(stored,now,owner,row.revision).run();
   timings.write=(timings.write||0)+performance.now()-writeAt;
