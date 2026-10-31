@@ -179,10 +179,10 @@ export function enqueueSunriseReplay<T extends PresentationEvent>(queued:(T&{due
   const config=magicVisual(e).config;return !!config&&!config.proj&&!config.self;
  });
  const castKey=(e:CombatEvent)=>`${e.at}:${e.skill}`;
- const starts=new Map(targetSpells.map(e=>[castKey(e),e.manual?e.visualCastAt??now:Math.max(now,e.at+offset)]));
+ const starts=new Map(targetSpells.map(e=>[castKey(e),e.manual?now:Math.max(now,e.at+offset)]));
  const targetSeq=new Set(targetSpells.map(e=>e.seq));
  return {queue:[...queued,...early.map(e=>({...e,visualOnly:true,due:now})),
- ...targetSpells.map(e=>({...e,damage:0,mobHp:undefined,visualOnly:true,visualAt:starts.get(castKey(e))!,due:starts.get(castKey(e))!})),...unique.map(e=>({
+ ...targetSpells.map(e=>({...e,damage:0,mobHp:undefined,visualOnly:true,visualCastAt:undefined,visualAt:starts.get(castKey(e))!,due:starts.get(castKey(e))!})),...unique.map(e=>({
   ...e,
   ...(earlySeq.has(e.seq)||targetSeq.has(e.seq)?{visualEffectPreviewed:true}:{}),
   ...(starts.has(castKey(e))?{visualAt:starts.get(castKey(e))}:{}),
@@ -190,7 +190,7 @@ export function enqueueSunriseReplay<T extends PresentationEvent>(queued:(T&{due
   // Manual previews anchor to click time; automatic casts to replay time.
   // Projectile spells retain their separate flight/impact clock.
   due:e.kind==='attack'&&!!e.skill&&e.skill!=='sk_elf_triple'&&!e.weaponProc&&(!isFlyingMagic(e)||!!e.visualEffectPreviewed)
-   ?Math.max(now,(e.manual&&typeof e.visualCastAt==='number'?e.visualCastAt:starts.get(castKey(e))??e.at+offset)+spellImpactMs(e))
+   ?Math.max(now,(targetSeq.has(e.seq)?starts.get(castKey(e))!:e.manual&&typeof e.visualCastAt==='number'?e.visualCastAt:starts.get(castKey(e))??e.at+offset)+spellImpactMs(e))
    :starts.get(castKey(e))??e.at+offset
  }))].sort((a,b)=>a.due-b.due||a.seq-b.seq),offset};
 }
