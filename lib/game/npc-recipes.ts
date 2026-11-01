@@ -4,6 +4,7 @@ import {npcOriginalService,findNpc} from './npc-config';
 import {NPC_HUB,NPC_HUB_ZONE} from './npc-hub';
 import {hasModifiers} from './affix-rules';
 import raw from './gamedata.json';
+import {isRetiredItem} from './retired-items';
 import type {Character} from './engine';
 import {baseItem} from './gear';
 const items=raw.items as Record<string,any>;
@@ -13,7 +14,7 @@ const oldPanacea:Recipe[]=['str','dex','con','int','wis'].map(stat=>({id:'tas_'+
 const seen=new Set<string>();
 export const NPC_RECIPES:Recipe[]=[...oldPanacea,...imported,...Object.entries(items).filter(([,i])=>i.moonEx).map(([id,i]):Recipe=>({id:'moon_'+id,npc:'npc_events',output:id,materials:{[String(i.moonEx.from)]:i.moonEx.need},gold:i.moonEx.gold||0,dailyCap:i.moonEx.dailyCap,disabledReason:'此活動目前沒有已確認的開放期間，暫停兌換。',source:'公開道具兌換欄位'}))].filter(r=>{const key=JSON.stringify([r.npc,r.output,r.materials,r.gold,r.outputCount||1,r.classes||[],r.materialEnhancements||{},r.availableUntil||0,r.availableFrom||0,r.minLv||0,r.disabledReason||'',r.dailyCap||0]);if(seen.has(key))return false;seen.add(key);return true;});
 export function recipesFor(npc:string,c?:Character){
- const base=NPC_RECIPES.filter(r=>r.npc===npc&&items[r.output]&&Object.keys(r.materials).every(id=>!!items[id]));
+ const base=NPC_RECIPES.filter(r=>r.npc===npc&&items[r.output]&&!isRetiredItem(r.output)&&Object.keys(r.materials).every(id=>!!items[id]&&!isRetiredItem(id)));
  if(npc!=='npc_hector')return base;
  const gear=Object.entries(items).filter(([,i])=>isProgressionEquipment(i)&&['apang381','lineagew'].includes(i.source)&&i.p>0&&!i.noSell);
  return [...base,...gear.flatMap(([id])=>{const rank=itemRarity(id,c?.lootAppearance);if(rank!=='legend'&&rank!=='mythic')return [];const myth=rank==='mythic';return [{id:'progression_'+id,npc,output:id,materials:myth?{mat_legend_shard:100,mat_mythic_shard:300}:{mat_legend_shard:100},gold:myth?3000000:1000000,minLv:myth?75:55,source:'永夜既有混合掉落製作配方'} as Recipe];})];

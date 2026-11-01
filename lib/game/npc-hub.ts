@@ -1,3 +1,4 @@
+import {isRetiredItem} from './retired-items';
 import raw from './gamedata.json';
 import data from './npc-hub-data.json';
 import importedItems from './afei-npc-items.json';
@@ -24,7 +25,7 @@ export function hubDefaultStock(id:string,now=Date.now()):Record<string,number>|
  // Published frost shop: Taiwan 2026-10-29 12:30 through 2026-11-03 12:30.
  if(id==='npc_events'&&(now<1793248200000||now>=1793680200000))return {};
  const items=raw.items as Record<string,any>;
- return Object.fromEntries(Object.entries(stocks[id]).filter(([item])=>items[item]&&(!items[item].availFrom||items[item].availFrom<=now)));
+ return Object.fromEntries(Object.entries(stocks[id]).filter(([item])=>items[item]&&!isRetiredItem(item)&&(!items[item].availFrom||items[item].availFrom<=now)));
 }
 export function hubShopSetting(id:string,settings?:Record<string,Record<string,number>>){
  if(!settings)return undefined;
