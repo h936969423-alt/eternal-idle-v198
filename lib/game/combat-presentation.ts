@@ -66,6 +66,8 @@ export type TimedCombatEvent=PresentationEvent&{due:number};
 /** Flight deadlines use the display clock and never move with a later network packet. */
 /** Longest a spell on another monster waits for earlier normal hits to be shown. */
 export const SPELL_ORDER_HOLD_MS=350;
+/** Longest another source's killing blow waits for the player's earlier hit on that monster (a full swing plus arrow flight). */
+export const KILL_ORDER_HOLD_MS=1500;
 export function drainCombatPresentation(queue:TimedCombatEvent[],pending:TimedCombatEvent[],now:number,bow=false,spellFlight?:(event:CombatEvent)=>number,allowPhysical?:(event:CombatEvent)=>boolean,onForcedHit?:(event:CombatEvent)=>void){
  const visible:PresentationEvent[]=[];
  const flightFor=(event:CombatEvent)=>isFlyingMagic(event)?Math.max(140,Math.min(380,spellFlight?.(event)??magicFlightMs(320))):event.skill==='sk_elf_triple'?TRIPLE_FLIGHT_MS:ARROW_FLIGHT_MS;
@@ -92,6 +94,16 @@ export function drainCombatPresentation(queue:TimedCombatEvent[],pending:TimedCo
     // Settle the earlier target's remaining hits now (HP only), then show the spell.
     // HP only: no new arrow, or several arrows leave at once and one shot seems to hit two monsters.
     for(let i=queue.length-1;i>=0;i--)if(stale(queue[i])){const hit=queue.splice(i,1)[0];onForcedHit?.(hit);visible.push({...hit,visualAt:now,visualEffectPreviewed:true});}
+   }
+  }
+  // A companion's (or any other source's) finishing blow cannot overtake the player's earlier normal
+  // hit on the same monster: otherwise the monster falls before the arrow is released, the swing
+  // retargets the next monster and the earlier hit's number lands on the corpse (one arrow, two monsters).
+  if(!impactFirst&&allowPhysical&&!normal&&next.kind==='attack'&&next.uid&&next.mobHp===0){
+   const earlierHit=(e:TimedCombatEvent)=>e.seq<next.seq&&e.uid===next.uid&&e.kind==='attack'&&!e.skill&&!e.weaponProc&&(!e.source||e.source==='physical');
+   if(queue.some(earlierHit)||pending.some(earlierHit)){
+    const since=(next as TimedCombatEvent&{killHeldSince?:number}).killHeldSince??now;
+    if(now-since<KILL_ORDER_HOLD_MS){queue.push({...next,killHeldSince:since,due:now+16} as TimedCombatEvent);queue.sort((a,b)=>a.due-b.due||a.seq-b.seq);continue;}
    }
   }
   // A weapon proc cannot overtake the normal hit waiting for its visible contact.
