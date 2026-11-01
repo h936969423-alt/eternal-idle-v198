@@ -6,10 +6,11 @@ import {combatArrowFlight,arrowSprite} from '@/lib/game/player-sprite-layout';
 import {projectileCount} from '@/lib/game/animation-clock';
 import {baseItem} from '@/lib/game/gear';
 import type {Character,CombatEvent} from '@/lib/game/engine';
+import {MONSTER_ANCHOR} from './monster-anchor';
 export default function CombatProjectile({event,c,arena,interval,holdUntilConfirmed,confirmed}:{event:CombatEvent;c:Character;interval:number;arena:RefObject<HTMLDivElement|null>;holdUntilConfirmed?:boolean;confirmed?:boolean}){
  const released=useRef(false);if(confirmed)released.current=true;
  const [shots,setShots]=useState<{x:number;y:number;src:string;flip:boolean;width:number;blend:'screen'|'normal';angle:number}[]>([]);
- useEffect(()=>{const root=arena.current,player=root?.querySelector(event.source==='doll'?'.doll-companion-art':'.character-sprite'),monster=root?.querySelector(`[data-monster-slot="${event.slot}"] .four-monster-art`);if(event.visualEffectPreviewed||event.visualPhase==='impact'||!root||!player||!monster||monster.closest('[data-monster-uid]')?.getAttribute('data-monster-uid')!==event.uid||event.source==='summon'||event.source==='poison'||event.source==='pet')return;
+ useEffect(()=>{const root=arena.current,player=root?.querySelector(event.source==='doll'?'.doll-companion-art':'.character-sprite'),monster=root?.querySelector(`[data-monster-slot="${event.slot}"] ${MONSTER_ANCHOR}`);if(event.visualEffectPreviewed||event.visualPhase==='impact'||!root||!player||!monster||monster.closest('[data-monster-uid]')?.getAttribute('data-monster-uid')!==event.uid||event.source==='summon'||event.source==='poison'||event.source==='pet')return;
  const {config}=magicVisual(event),weapon=(raw.items as any)[baseItem(c.equipment.weapon?.id||'')],arrow=event.source!=='doll'&&(!event.skill||event.skill==='sk_elf_triple')&&(weapon?.isBow||event.magicProjectile)&&!event.weaponProc&&event.source!=='magic';if(!arrow&&!config?.proj)return;
  const r=root.getBoundingClientRect(),p=player.getBoundingClientRect(),m=monster.getBoundingClientRect(),from={x:p.left-r.left+p.width*.6,y:p.top-r.top+p.height*.55},to={x:m.left-r.left+m.width/2,y:m.top-r.top+m.height*.55};
  const facing=config?magicDirection(config,to.x-from.x,to.y-from.y):undefined;

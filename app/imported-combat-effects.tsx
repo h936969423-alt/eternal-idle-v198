@@ -4,6 +4,7 @@ import {importedEffects,importedFrame,type EffectClip} from '@/lib/game/imported
 import type {Character} from '@/lib/game/engine';
 import type {BattleView} from '@/lib/game/combat-presentation';
 import {useCombatEffects} from './combat-effects-context';
+import {MONSTER_ANCHOR} from './monster-anchor';
 export function EffectAtlas({clip,age,width=150}:{clip:EffectClip;age:number;width?:number}){
  const n=importedFrame(clip,age),scale=Math.min(width/clip.width,190/clip.height,1.5),w=clip.width*scale,h=clip.height*scale;
  return <span aria-hidden="true" style={{display:'block',width:w,height:h,backgroundImage:`url(/assets/dasu-v1/${clip.sheet})`,backgroundSize:`${clip.cols*w}px ${Math.ceil(clip.count/clip.cols)*h}px`,backgroundPosition:`-${n%clip.cols*w}px -${Math.floor(n/clip.cols)*h}px`,backgroundRepeat:'no-repeat'}}/>;
@@ -28,7 +29,7 @@ export default function ImportedCombatEffects({c,view,arena}:{c:Character;view:B
   const fresh=effects.filter(x=>!anchors.current.has(x.e.seq)&&now>=x.e.shownAt&&now-x.e.shownAt<x.lifetime);
   if(host&&fresh.length){const root=host.getBoundingClientRect();if(root.width&&root.height){
    const measured=new Map<string,Anchor>();
-   for(const x of fresh){const selector=x.player?'.character-sprite':`[data-monster-slot="${x.e.slot}"] .four-monster-art`;let anchor=measured.get(selector);
+   for(const x of fresh){const selector=x.player?'.character-sprite':`[data-monster-slot="${x.e.slot}"] ${MONSTER_ANCHOR}`;let anchor=measured.get(selector);
     if(!anchor){const node=host.querySelector(selector);if(!node)continue;const r=node.getBoundingClientRect();anchor={left:`${(r.left-root.left+r.width/2)/root.width*100}%`,top:`${(r.top-root.top+r.height*.55)/root.height*100}%`};measured.set(selector,anchor);}
     anchors.current.set(x.e.seq,anchor);
    }
