@@ -18,6 +18,9 @@ export function sourceMonsterGroundOffset(gfx:number,key:string,frame:number):[n
  return origin&&current?[origin[0]-current[0],origin[1]-current[1]]:[0,0];
 }
 
+/** Ground contact of an idle body frame in source pixels, or null when it was never measured. */
+export function idleFootPoint(idle:{src:string}):[number,number]|null{const p=sheets[idle.src]?.find(x=>x!==null);return p?[p[0],p[1]]:null;}
+
 const footCache=new Map<string,number>();
 /** Ground contact of a monster's idle pose as a % of its square sprite box ("meet" letterboxing). Enlarged sprites scale around this point so they stay on their health bar. */
 export function monsterFootPercent(name:string):number{
