@@ -43,5 +43,30 @@ try{
  assert.deepEqual(q.map(e=>e.due),[now,now+70,now+140],'manual triple arrows due immediately, 70ms apart');
  const auto=P.enqueueSunriseReplay([],shots.map(e=>({...e,manual:false})),now,now-at+offset).queue.filter(e=>e.kind==='attack');
  assert.ok(auto[0].due>now,'automatic casts still use the jitter buffer');
+ // 6. Pressing Triple Arrow while the view lags the server: older history (the old target's last hits, its
+ // death and the new target's spawn) settles at once with no replayed arrow/number/pose, and the three
+ // arrows launch right away on the new target instead of waiting for the old swings.
+ {
+  const now2=90000,old={seq:40,at:80000,kind:'attack',slot:0,uid:'A',damage:30,mobHp:0,hp:200,mp:92,source:'physical'};
+  const spawn={seq:41,at:80100,kind:'spawn',slot:0,uid:'C',spawn:{uid:'C',id:'x',hp:300,maxHp:300},hp:200,mp:92};
+  const triple=[0,1,2].map(i=>({seq:42+i,at:80200+i*70,kind:'attack',skill:'lw_skill_450',slot:0,uid:'C',damage:20,mobHp:300-20*(i+1),hp:200,mp:80,source:'physical',manual:true}));
+  const queued=[{seq:39,at:79900,due:now2+1500,kind:'attack',slot:0,uid:'A',damage:10,mobHp:30,hp:200,mp:92,source:'physical'}];
+  const q2=P.enqueueSunriseReplay(queued,[old,spawn,...triple],now2,1500).queue;
+  assert.ok(q2.filter(e=>e.seq<42).every(e=>e.catchUp&&e.due<=now2),'older history is settled now');
+  assert.ok(q2.filter(e=>e.seq>=42).every(e=>!e.catchUp),'the triple shots are not catch-up');
+  const forced=[];const pend=[];const shown2=P.drainCombatPresentation(q2,pend,now2,true,undefined,()=>false,e=>forced.push(e.seq));
+  assert.deepEqual(forced,[39,40],'old swings settle without waiting for the swing animation');
+  const launched=shown2.filter(e=>e.seq===42&&e.visualPhase==='launch');
+  assert.equal(launched.length,1,'first arrow launches immediately even though old swings were still queued');
+  let v2={hp:200,mp:92,target:0,arena:[{uid:'A',id:'x',hp:40,maxHp:500}],floats:[],casts:[],actions:[]};
+  for(const e of shown2)v2=P.applyCombatViewEvent(v2,e,now2);
+  assert.equal(v2.arena[0].uid,'C','the new target is on screen when the arrows leave');
+  assert.ok(!v2.floats.some(f=>f.seq<42),'no stale numbers from the old history');
+  assert.ok(!(v2.actions||[]).some(a=>a.seq<41&&a.kind==='attack'),'no replayed old arrows or swing poses');
+  let later=[];for(let t=now2;t<=now2+600;t+=16)later.push(...P.drainCombatPresentation(q2,pend,t,true,undefined,()=>false));
+  for(const e of later)v2=P.applyCombatViewEvent(v2,e,now2+600);
+  assert.equal([...shown2,...later].filter(e=>e.kind==='attack'&&e.seq>=42&&e.visualPhase==='impact').length,3,'all three arrows land');
+  assert.equal(v2.floats.filter(f=>f.seq>=42).length,3,'three numbers stacked on the target');
+ }
  console.log('PASS triple presentation: no HP/MP rollback from late older events, no forced burst, stacked float column, no per-arrow skill ring, plain numbers, no caption, manual cast starts now');
 }finally{fs.rmSync(dir,{recursive:true,force:true});}

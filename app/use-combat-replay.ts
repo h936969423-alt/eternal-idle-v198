@@ -44,7 +44,7 @@ export function useCombatReplay(c:Character|null,sound:boolean){
     const p=player.getBoundingClientRect(),m=monster.getBoundingClientRect();
     return magicFlightMs(Math.hypot(m.left+m.width/2-p.left-p.width*.6,m.top+m.height*.55-p.top-p.height*.55));
    },event=>{const current=latest.current;return !current||allowLocalHit(localHitOwner(current.id,current.zone),event.uid,event.seq,now);},event=>{const current=latest.current;if(current)settleLocalHit(localHitOwner(current.id,current.zone),event.seq);});
-   for(const next of ready)if(soundOn.current&&latest.current&&now-(next.visualAt??(next as TimedCombatEvent).due??now)<=250)combatSound(latest.current,next);
+   for(const next of ready)if(soundOn.current&&latest.current&&!next.catchUp&&now-(next.visualAt??(next as TimedCombatEvent).due??now)<=250)combatSound(latest.current,next);
    // One React update per animation frame, rather than one per attack plus a
    // cleanup update on every 60 FPS frame. Animation still uses rAF.
    const cleanup=now-lastCleanup>=100;

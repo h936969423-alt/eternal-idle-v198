@@ -36,6 +36,8 @@ function performWSkill(c:Character,input:string,b:Record<string,number>,h:WSkill
  if(s.reqWpn==='w2h'&&!(h.weapon?.twohanded||h.weapon?.w2h||h.weapon?.wcat==='tohandsword'))throw Error('需要雙手劍');
  const cost=s.mp?Math.max(1,Math.ceil(s.mp*(1-Math.min(100,b.mpReduce||0)/100))):0;
  if(c.mp<cost)throw Error('MP 不足');if(c.hp<=s.hpCost)throw Error('HP 不足以施法');
+ // Triple Arrow: the shown target may already be dead on the server; shoot the first living monster instead.
+ if(id==='lw_skill_450'&&!((c.arena?.[c.arenaTarget||0]?.hp??0)>0)){const live=(c.arena||[]).findIndex(t=>t.hp>0);if(live>=0)c.arenaTarget=live;}
  const target=c.arena?.[c.arenaTarget||0];
  if((s.type==='atk'||s.drain)&&(!target||target.hp<=0))throw Error('沒有戰鬥目標');
  if(s.lwUndeadOnly&&target&&!h.definition(target).un)throw Error('只能對不死族施放');

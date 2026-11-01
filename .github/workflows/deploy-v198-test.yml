@@ -141,6 +141,11 @@ jobs:
           node scripts/test-skill-id-migration.cjs
       - name: Verify one shock-stun motion and one confirmed impact
         run: node scripts/test-stun-once.cjs
+      - name: Verify Triple Arrow launches at once and settles lagging history
+        run: |
+          node scripts/test-triple-presentation.cjs
+          node scripts/test-triple-impact-sync.cjs
+          node scripts/test-manual-triple-latency.cjs
       - name: Verify skill calculation equivalence and bounded Worker settlement
         run: node scripts/test-skill-computation.cjs
       - name: Verify continuous live polls do not reopen offline settlement
