@@ -8,6 +8,7 @@ import {magicVisual,magicDirection,magicFrame,spellImpactMs,heldSpellElapsed} fr
 import {targetSpellLayout} from '@/lib/game/spell-effect-layout';
 import {sceneBlend} from '@/lib/game/scene-presentation';
 import type {CombatEvent} from '@/lib/game/engine';
+import {MONSTER_ANCHOR} from './monster-anchor';
 
 function StandardMagicEffect({event,loopUntil,holdUntilConfirmed,confirmed}:{event:CombatEvent;loopUntil?:number;holdUntilConfirmed?:boolean;confirmed?:boolean}){
  const host=useRef<HTMLSpanElement>(null),[frame,setFrame]=useState(0),releasedAt=useRef<number|null>(null);
@@ -19,7 +20,7 @@ function StandardMagicEffect({event,loopUntil,holdUntilConfirmed,confirmed}:{eve
  useEffect(()=>{
   setFrame(0);setPlacement({});
   if(!config||!count||config.proj&&event.source!=='monster')return;
-  const parent=host.current?.parentElement,root=parent?.closest('.static-arena'),sprite=parent?.querySelector(config.self?'.character-sprite':config.atlas&&event.slot!==undefined?`[data-monster-slot="${event.slot}"] .four-monster-art`:'.four-monster-art'),caster=root?.querySelector('.character-sprite');
+  const parent=host.current?.parentElement,root=parent?.closest('.static-arena'),sprite=parent?.querySelector(config.self?'.character-sprite':config.atlas&&event.slot!==undefined?`[data-monster-slot="${event.slot}"] ${MONSTER_ANCHOR}`:'.four-monster-art'),caster=root?.querySelector('.character-sprite');
   const position=()=>{if(config.imported&&parent&&(sprite||config.atlas)){
    const box=parent.getBoundingClientRect(),r=sprite?.getBoundingClientRect()||{left:box.left+box.width*.5,top:box.top+box.height*.6,width:0,height:0},p=caster?.getBoundingClientRect();
    const facing=magicDirection(config,r.left+r.width*.5-(p?p.left+p.width*.6:r.left),r.top+r.height*.55-(p?p.top+p.height*.55:r.top+r.height));
