@@ -59,4 +59,5 @@ jobs:
           node scripts/test-retired-items.cjs
           node scripts/test-companion-haste.cjs
           node scripts/test-companion-target.cjs
+          node scripts/test-monster-hit-rate.cjs
 
