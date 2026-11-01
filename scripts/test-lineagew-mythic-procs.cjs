@@ -25,7 +25,8 @@ try{
  {const {c,s,target}=fixture(),i=e.DATA.items[sword];i.alwaysHit=true;target.hp=1;e.advance(s,now+100,()=>0);delete i.alwaysHit;assert.equal(procs(c).length,0);assert.equal(c.kills,1);}
  // Triple arrows roll per hit, consume one arrow / one spell MP cost, and don't reserve proc cooldowns.
  {const {c,target}=fixture('elf'),i=e.DATA.items[bow];i.alwaysHit=true;c.skills=['sk_elf_triple'];const mp=c.mp,arrows=c.bag.wpn_22,cost=require(path.join(dir,'spell-rules')).skillMpCost(e.DATA.skills.sk_elf_triple,e.stats(c,now));
-  e.cast(c,'sk_elf_triple',now+50,()=>0);delete i.alwaysHit;assert.equal(procs(c).length,9);assert.equal(procs(c).filter(x=>x.kind==='attack').length,3);assert.equal(c.bag.wpn_22,arrows-1);assert.equal(c.mp,mp-cost);assert.ok(procs(c).every(x=>x.uid===target.uid));
+  e.cast(c,'sk_elf_triple',now+50,()=>0);delete i.alwaysHit;// Triple Arrow triggers no equipment effects: three plain arrows, one arrow and one MP cost.
+  assert.equal(procs(c).length,0,'triple arrow triggers no mythic weapon procs');assert.equal((c.events||[]).filter(x=>x.kind==='attack'&&x.skill==='sk_elf_triple'&&!x.weaponProc).length,3,'three arrows');assert.equal((c.events||[]).filter(x=>x.weaponProc).length,0,'no weapon proc events at all');assert.equal(c.bag.wpn_22,arrows-1);assert.equal(c.mp,mp-cost);
  }
  // Status expiry and real shared shield mitigation/recast lock.
  {const {target}=fixture();assert.equal(p.applyMonsterHolyBarrier(target,now,5,50),true);assert.equal(p.monsterBarrierDamage(target,100,now+1),50);p.applyMythicState('lw_dispel_barrier',target,now+100);assert.equal(p.monsterBarrierDamage(target,100,now+101),100);assert.equal(p.applyMonsterHolyBarrier(target,now+3099),false);assert.equal(p.applyMonsterHolyBarrier(target,now+3100),true);assert.equal(p.monsterBarrierDamage(target,100,now+40000),100);}
@@ -47,5 +48,5 @@ try{
  }
  const cache={};function app(name){if(cache[name])return cache[name];const mod={exports:{}};vm.runInNewContext(ts.transpileModule(fs.readFileSync(path.join(root,'app',name+'.tsx'),'utf8'),{compilerOptions:opts}).outputText,{module:mod,exports:mod.exports,require:key=>key.startsWith('./')?app(key.slice(2)):key.startsWith('@/lib/game/')?require(path.join(dir,key.slice('@/lib/game/'.length))):require(key),Object,Date,JSON,setTimeout,clearTimeout});return cache[name]=mod.exports;}
  for(const id of Object.keys(p.MYTHIC_PROC_SKILLS)){const html=renderToStaticMarkup(React.createElement(app('magic-effect').default,{event:{seq:1,at:now,kind:'magic',hp:100,mp:10,weaponProc:true,skill:id}}));assert.match(html,/<svg/);assert.ok(html.includes(p.MYTHIC_PROC_SKILLS[id].name));}
- console.log('PASS: exact +0–7 independent proc probabilities; landed normals/triple arrows; no recursion/MP/arrow duplication/retargeting; assault damage; actual shield AI, mitigation and dispel lock; reveal combat effect and expiry; reload/replay; all four real animation components; no player-pose interruption.');
+ console.log('PASS: exact +0–7 independent proc probabilities; landed normals; triple arrows proc-free; no recursion/MP/arrow duplication/retargeting; assault damage; actual shield AI, mitigation and dispel lock; reveal combat effect and expiry; reload/replay; all four real animation components; no player-pose interruption.');
 }finally{fs.rmSync(dir,{recursive:true,force:true});}

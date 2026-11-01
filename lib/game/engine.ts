@@ -258,9 +258,11 @@ function award(c:Character,mobId:string,rng:()=>number,now:number){const dead=c.
 }
 /** A complete weapon attack; resources and automatic-cycle state belong to the caller. */
 function normalWeaponAttack(c:Character,target:Encounter,now:number,rng:()=>number,arrow?:any,skill?:string,current=stats(c,now)){
+ // Triple Arrow: three full normal attacks (own hit and crit rolls) but no equipment effects at all.
+ const plain=skill==='sk_elf_triple'||skill==='lw_skill_450';
  const m=monsterData(c,target.id,target),weapon=DATA.items[c.equipment.weapon?.id||''],strike=weapon?.magicProjectile?lineageWProjectileStrike(c,weapon,current,m,rng):playerStrike(c,current,m,rng,arrow,now);let dealt=0;
  if(!strike.miss){
-  let damage=strike.damage+elementalWeaponDamage(c,m.e||'none')*(c.buffs.sk_elf_flamesoul?.until>now&&!current.wpnRanged?1.2:1);
+  let damage=strike.damage+(plain?0:elementalWeaponDamage(c,m.e||'none')*(c.buffs.sk_elf_flamesoul?.until>now&&!current.wpnRanged?1.2:1));
   if(current.invisible)for(const id of Object.keys(c.buffs))if(c.buffs[id].d.invisible)delete c.buffs[id];
   damageMonster(c,Math.max(1,damage*weaponElementMultiplier(c,m.e||'none')*(m.dmgTakenMult||1)),now,rng,skill);
   dealt=c.lastHit;
@@ -273,13 +275,13 @@ attack.critical=strike.critical;attack.heavy=strike.heavy;attack.graze=strike.gr
  }
  if(!strike.miss&&dealt>0&&target.effects?.counter?.until!>now){const reflected=lineageWCounterDamage(dealt,target.effects!.counter.value,(current.ignoreCounterPct||0)+(lineageWProfile(weapon,c.equipment.weapon?.en||0)?.ignoreCounter||0),rng);if(reflected>0){const hit=lineageWIncomingDamage(c,current,reflected,now,rng);emitLineageWProtection(c,hit,now);const damage=Math.min(c.hp,hit.damage);c.hp-=damage;event(c,'hurt',now,{slot:c.arenaTarget||0,uid:target.uid,mob:target.id,damage,effectName:'反擊'});if(c.hp<=0){defeat(c,now,rng);return dealt;}}}
  if(!strike.miss&&target.hp>0&&c.buffs.sk_dark_poison?.until>now&&rng()<.5)applySpellStatus(c,target,m,{kind:'poison',force:true,dur:30,dmg:[1,10],tick:3},'sk_dark_poison',current,now,rng);
- if(!strike.miss)applyLineageWAbsorption(c,target,dealt,now,rng);
- if(!strike.miss&&target.hp>0){applyLineageWEquipmentProcs(c,target,now,rng);}
- if(!strike.miss&&target.hp>0){absorbMythicMana(c,target,now,rng);applyMythicWeaponProcs(c,target,now,rng);}
+ if(!strike.miss&&!plain)applyLineageWAbsorption(c,target,dealt,now,rng);
+ if(!strike.miss&&!plain&&target.hp>0){applyLineageWEquipmentProcs(c,target,now,rng);}
+ if(!strike.miss&&!plain&&target.hp>0){absorbMythicMana(c,target,now,rng);applyMythicWeaponProcs(c,target,now,rng);}
  // Attached effects belong to this swing's original encounter. award() may
  // select the next living monster, but that monster belongs to the next swing.
- if(target.hp>0)applyWeaponMagic(c,now,rng,target,skill==='sk_elf_triple');
- applyDollAttack(c,now,rng,target);
+ if(!plain&&target.hp>0)applyWeaponMagic(c,now,rng,target,false);
+ if(!plain)applyDollAttack(c,now,rng,target);
  if(!skill&&dealt>0&&(current.lwLifeStealPct||current.lwCleave||current.lwRootProc||current.lwWeakProc||current.lwExtraStrikeChance||current.lwStunProc))wNormalEffects(c,target,dealt,current,now,rng);
  return dealt;
 }
@@ -381,6 +383,7 @@ function wHooks(c:Character,now:number,rng:()=>number,silent=false):WSkillHooks{
  const b=stats(c,now);let castArrow:any;
  const locked=<T,>(target:Encounter,fn:()=>T):T=>{const slot=c.arena?.indexOf(target)??-1;if(slot<0)throw Error('目標已離場');const previous=c.arenaTarget||0;c.arenaTarget=slot;syncTarget(c);try{return fn();}finally{c.arenaTarget=previous;syncTarget(c);}};
  return {definition:t=>monsterData(c,t.id,t),weapon:DATA.items[baseItem(c.equipment.weapon?.id||'')],shield:DATA.items[baseItem(c.equipment.shield?.id||'')],
+  normalAttack:(t,shot)=>{if(t.hp<=0||!c.arena?.includes(t))return 0;return locked(t,()=>normalWeaponAttack(c,t,now+shot*TRIPLE_SHOT_GAP_MS,rng,castArrow,'lw_skill_450'));},
   physical:(t,forceCritical)=>locked(t,()=>playerStrike(c,b,monsterData(c,t.id,t),rng,castArrow,now,{skill:true,forceCrit:forceCritical,forceHit:forceCritical,forceHeavy:forceCritical})),
   magic:(s,t)=>spellDamage(s,b,{...monsterData(c,t.id,t),mr:t.effects?.mrDown?.until!>now?Math.max(0,(monsterData(c,t.id,t).mr||0)-t.effects!.mrDown.value):monsterData(c,t.id,t).mr},rng,c.cls),
   hit:(t,amount,id,source)=>{if(t.hp<=0||!c.arena?.includes(t))return 0;return locked(t,()=>{c.lastHit=0;damageMonster(c,amount,now,rng,id,source);return c.lastHit;});},
