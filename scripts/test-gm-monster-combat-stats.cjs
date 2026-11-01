@@ -32,5 +32,15 @@ try{
  const plain=rules.monsterStrike({...m,damageAmpPct:0},1,10,0,0,fixed),amped=rules.monsterStrike(m,1,10,0,0,fixed);
  assert.ok(!plain.miss&&!amped.miss,'hits land');
  assert.equal(amped.damage,plain.damage*2,`final damage 100% doubles ${plain.damage} -> ${amped.damage}`);
- console.log(`PASS GM monster combat stats: five fields, source defaults, legacy definitions, ranges, final damage ${plain.damage}→${amped.damage}`);
+ // Size and element: default to the source monster, editable, validated, and used by combat data.
+ assert.equal(base.size,src.s==='L'?'L':'S');assert.equal(base.element,src.e||'none');
+ const legacySE={...base};delete legacySE.size;delete legacySE.element;
+ assert.equal(cfg.validateMonster(legacySE).size,base.size,'old definitions keep source size');
+ assert.equal(rt.monsterData({arena:[{uid:'w',id,hp:100,definition:legacySE}],arenaTarget:0},id).s,src.s,'old definitions fight with source size');
+ assert.throws(()=>cfg.validateMonster({...base,size:'M'}),/大小/);
+ assert.throws(()=>cfg.validateMonster({...base,element:'light'}),/屬性/);
+ const flipped=cfg.validateMonster({...base,size:base.size==='L'?'S':'L',element:'fire'});
+ const fm=rt.monsterData({arena:[{uid:'x',id,hp:100,definition:flipped}],arenaTarget:0},id);
+ assert.equal(fm.s,flipped.size);assert.equal(fm.e,'fire');
+ console.log(`PASS GM monster combat stats (+size/element): five fields, source defaults, legacy definitions, ranges, final damage ${plain.damage}→${amped.damage}`);
 }finally{fs.rmSync(dir,{recursive:true,force:true});}
