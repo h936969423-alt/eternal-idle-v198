@@ -102,3 +102,14 @@ test('legacy events deduplicate by sequence and bow launch does not consume its 
  assert.equal(view.arena[0].hp,80);assert.equal(ctx.applyCombatViewEvent(view,hit(2),550),legacy);
 });
 
+test('a target dropped from the replay queue no longer blocks later hits',async()=>{
+ const {syncLocalHitTargets,queueLocalHitTargets}=await import('../lib/game/local-hit-sync.ts');
+ begin();const hit=(seq,uid='wolf')=>({seq,kind:'attack',source:'physical',uid,slot:0});
+ queueLocalHitTargets(owner,[hit(1),hit(2)]);
+ // Replay restore dropped seq 1; only seq 2 is still queued.
+ syncLocalHitTargets(owner,[hit(2)]);
+ const s=beginLocalSwing(owner,{uid:'wolf',slot:0},['wolf']);assert.equal(s.seq,2);
+ recordLocalContact(owner,s.uid,100,s.seq,1);assert.equal(allowLocalHit(owner,'wolf',2,100),true);
+ // Completed hits are not re-added by a later sync.
+ syncLocalHitTargets(owner,[hit(2),hit(3)]);assert.equal(beginLocalSwing(owner,{uid:'wolf',slot:0},['wolf']).seq,3);
+});

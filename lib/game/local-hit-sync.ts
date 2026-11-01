@@ -25,6 +25,15 @@ export function queueLocalHitTargets(key:string,events:{seq:number;kind:string;u
  for(const e of events)if(e.kind==='attack'&&!e.skill&&!e.weaponProc&&(!e.source||e.source==='physical')&&e.uid&&!known.has(e.seq)&&!owner.completed.has(e.seq)){owner.pending.push({seq:e.seq,uid:e.uid,slot:e.slot});known.add(e.seq);}
  owner.pending.sort((a,b)=>a.seq!-b.seq!);owner.pending=owner.pending.slice(0,160);owners.set(key,owner);
 }
+/** Make the swing targets exactly the normal hits still waiting in the replay queue.
+ * A target left over after its event was dropped (replay restore, resync) used to
+ * stay at pending[0]: every swing aimed at it, and the real next hit never got a
+ * matching contact, so the player kept drawing the bow with no arrow or damage. */
+export function syncLocalHitTargets(key:string,events:{seq:number;kind:string;uid?:string;slot?:number;skill?:string;weaponProc?:boolean;source?:string}[]){
+ const owner=owners.get(key)||createOwner();
+ owner.pending=events.filter(e=>e.kind==='attack'&&!e.skill&&!e.weaponProc&&(!e.source||e.source==='physical')&&e.uid&&!owner.completed.has(e.seq)).map(e=>({seq:e.seq,uid:e.uid!,slot:e.slot})).sort((a,b)=>a.seq-b.seq).slice(0,160);
+ owners.set(key,owner);
+}
 /** Capture the earliest confirmed normal-hit target once, at swing start. */
 export function beginLocalSwing(key:string,fallback:SwingTarget,liveUids?:string[]):SwingTarget{
  const owner=owners.get(key)||createOwner();
