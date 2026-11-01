@@ -6,7 +6,7 @@ import {stripTypeScriptTypes} from 'node:module';
 import {setLocalHitActive,clearLocalHits,queueLocalHitTargets,beginLocalSwing,currentLocalSwing,recordLocalContact,allowLocalHit} from '../lib/game/local-hit-sync.ts';
 import {playerTargetDirection} from '../lib/game/player-target-facing.ts';
 const source=stripTypeScriptTypes(fs.readFileSync(new URL('../lib/game/combat-presentation.ts',import.meta.url),'utf8')).replace(/^import .*;\s*$/gm,'').replaceAll('export ','');
-const ctx={lineageWEffectDefinition:()=>({}),mythicProcDefinition:()=>({}),raw:{skills:{}},isFlyingMagic:()=>false,magicFlightMs:()=>200,magicEffectLifetime:()=>800,TRIPLE_FLIGHT_MS:200,ARROW_FLIGHT_MS:200,REPLAY_MAX_AHEAD_MS:1500};
+const ctx={lineageWEffectDefinition:()=>({}),mythicProcDefinition:()=>({}),raw:{skills:{}},isFlyingMagic:()=>false,magicFlightMs:()=>200,magicEffectLifetime:()=>800,TRIPLE_FLIGHT_MS:200,isTripleArrow:s=>s==='sk_elf_triple'||s==='lw_skill_450',ARROW_FLIGHT_MS:200,REPLAY_MAX_AHEAD_MS:1500};
 vm.createContext(ctx);vm.runInContext(source,ctx);
 const hit=(seq,uid,slot,extra={})=>({seq,uid,slot,kind:'attack',source:'physical',at:0,due:0,hp:100,mp:100,...extra});
 test('pet, AoE, poison and monster snapshots do not steal the player target',()=>{

@@ -129,7 +129,7 @@ test('hurt cannot cancel an active attack/cast or continually restart; attack an
 test('real motion + buffered replay: five incoming attackers and jitter do not stall or burst five outgoing victims',()=>{
  const replaySource=stripTypeScriptTypes(fs.readFileSync(new URL('../lib/game/combat-presentation.ts',import.meta.url),'utf8')).replace(/^import .*;\s*$/gm,'').replaceAll('export ','');
  const timingSource=stripTypeScriptTypes(fs.readFileSync(new URL('../lib/game/replay-timing.ts',import.meta.url),'utf8')).replace(/^import .*;\s*$/gm,'').replaceAll('export ','');
- const ctx={lineageWEffectDefinition:()=>undefined,mythicProcDefinition:()=>undefined,raw:{skills:{}},isFlyingMagic:()=>false,magicFlightMs:()=>200,magicEffectLifetime:()=>800,TRIPLE_FLIGHT_MS:200,ARROW_FLIGHT_MS:200};
+ const ctx={lineageWEffectDefinition:()=>undefined,mythicProcDefinition:()=>undefined,raw:{skills:{}},isFlyingMagic:()=>false,magicFlightMs:()=>200,magicEffectLifetime:()=>800,TRIPLE_FLIGHT_MS:200,isTripleArrow:s=>s==='sk_elf_triple'||s==='lw_skill_450',ARROW_FLIGHT_MS:200};
  vm.createContext(ctx);vm.runInContext(timingSource+'\n'+replaySource,ctx);
  const h=harness(),ownerKey='network-under-fire:zone';
  let view={hp:1000,mp:100,target:0,arena:Array.from({length:5},(_,slot)=>({uid:`mob${slot}`,id:'ant',hp:30,maxHp:30})),floats:[]};
@@ -159,7 +159,7 @@ test('real motion + buffered replay: five incoming attackers and jitter do not s
 test('real rAF requeue + delayed spawn cannot pin later swings to a completed normal event',()=>{
  const replaySource=stripTypeScriptTypes(fs.readFileSync(new URL('../lib/game/combat-presentation.ts',import.meta.url),'utf8')).replace(/^import .*;\s*$/gm,'').replaceAll('export ','');
  const timingSource=stripTypeScriptTypes(fs.readFileSync(new URL('../lib/game/replay-timing.ts',import.meta.url),'utf8')).replace(/^import .*;\s*$/gm,'').replaceAll('export ','');
- const ctx={lineageWEffectDefinition:()=>undefined,mythicProcDefinition:()=>undefined,raw:{skills:{}},isFlyingMagic:()=>false,magicFlightMs:()=>200,magicEffectLifetime:()=>800,TRIPLE_FLIGHT_MS:200,ARROW_FLIGHT_MS:200};
+ const ctx={lineageWEffectDefinition:()=>undefined,mythicProcDefinition:()=>undefined,raw:{skills:{}},isFlyingMagic:()=>false,magicFlightMs:()=>200,magicEffectLifetime:()=>800,TRIPLE_FLIGHT_MS:200,isTripleArrow:s=>s==='sk_elf_triple'||s==='lw_skill_450',ARROW_FLIGHT_MS:200};
  vm.createContext(ctx);vm.runInContext(timingSource+'\n'+replaySource,ctx);
  const h=harness(),ownerKey='respawn-under-replay:zone';
  let view={hp:100,mp:100,target:0,arena:['old','other'].map(uid=>({uid,id:'ant',hp:100,maxHp:100})),floats:[]};
