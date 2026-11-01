@@ -53,7 +53,11 @@ export default defineConfig(async ({ command }) => {
   // Wrangler snapshots its log path while the Cloudflare plugin is imported.
   const { cloudflare } = await import("@cloudflare/vite-plugin");
 
+  // One id per deploy, shared by client and server bundles (see app/build-id.ts).
+  const appBuild = process.env.GITHUB_SHA || (command === "build" ? `local-${Date.now()}` : "dev");
+
   return {
+    define: { __APP_BUILD__: JSON.stringify(appBuild) },
     // Parse metadata as JSON rather than megabytes of JavaScript object literals.
     json: { stringify: true, namedExports: false },
     environments: {

@@ -62,4 +62,5 @@ jobs:
           node scripts/test-monster-hit-rate.cjs
           node scripts/test-gm-monster-combat-stats.cjs
           node scripts/test-companion-kill-order.cjs
+          node scripts/test-build-version.cjs
 
