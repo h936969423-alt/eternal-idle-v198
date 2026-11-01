@@ -339,10 +339,10 @@
 /* World-boss visual enlargement: source ground anchors, shadow and attached layers scale together. */
 .world-boss-arena .four-monster-art,.world-boss-arena .four-target{overflow:visible}
 .world-boss-arena .four-monster:not([data-dragon=true]):not([data-dragon-summon=true]) .four-monster-art{transform:scale(var(--world-boss-scale,1.5));transform-origin:center bottom}
-/* Field and dungeon monsters: 1.05× sprite size, scaled around their feet so the body stays on its health bar. */
-.static-arena:not(.world-boss-arena) .four-monster:not([data-dragon=true]):not([data-dragon-summon=true]) .four-monster-art>*{transform:scale(var(--ordinary-monster-scale,1.05));transform-origin:50% var(--monster-foot-y,100%)}
+/* Field and dungeon monsters: sprite size (scale hook kept at 1), scaled around their feet so the body stays on its health bar. */
+.static-arena:not(.world-boss-arena) .four-monster:not([data-dragon=true]):not([data-dragon-summon=true]) .four-monster-art>*{transform:scale(var(--ordinary-monster-scale,1));transform-origin:50% var(--monster-foot-y,100%)}
 /* Health bar, name and drop button stay readable above any neighbouring monster's art. */
-.static-arena:not(.world-boss-arena) .four-monster :is(.four-target [data-slot=progress],.monster-ground-name,.monster-drop-query){position:relative;z-index:6}
+.static-arena:not(.world-boss-arena) .four-monster :is(.four-target [data-slot=progress],.monster-ground-name){position:relative;z-index:6}
 .world-boss-arena .four-monster[data-dragon=true]:not([data-dragon-summon=true]) .dragon381-sprite{transform:scale(var(--world-boss-scale,1.5))}
 .world-boss-arena .four-monster[data-dragon=true]:not([data-dragon-summon=true]){left:min(70%,calc(100% - min(34.5vw,157.5px) - 8px))!important}
 .world-boss-scene .static-arena.world-boss-arena,.game-root.display-landscape .world-boss-scene .static-arena.world-boss-arena{height:clamp(380px,76vw,500px);min-height:380px}
@@ -1064,15 +1064,20 @@ body:has(.game-root) :is(.game-dialog,.bian-dialog) :is([data-slot=dialog-descri
 .npc-hub-tools{display:grid;gap:10px;margin:12px 0}.npc-hub-tools .progress-tabs{display:flex;gap:6px;flex-wrap:wrap}.npc-hub-tools .progress-tabs button{min-height:40px}.npc-stock label{display:block;margin:8px 0}.npc-stock label>input{max-width:100%;margin-left:6px}.npc-shop-dialog .npc-stock{min-width:0;overflow-wrap:anywhere}.npc-shop-dialog .auto-card{min-width:0}.npc-shop-dialog .shop-row>button{min-width:0}.npc-shop-dialog .shop-row>button>span{min-width:0;overflow-wrap:anywhere}
 
 /* Drop lookup belongs to the encounter whose name is directly above it. */
-.static-arena .four-monster>.monster-drop-query{
+.static-arena .four-monster>.monster-drop-query,.static-arena .monster-drop-layer>.monster-drop-query{
  display:flex;align-items:center;justify-content:center;gap:3px;
  width:68px;min-height:24px;margin:2px auto 0;padding:2px 5px;
  border:1px solid #8e795a99;border-radius:3px;background:#202124df;
  color:#e3c999;font-size:10px;line-height:16px;white-space:nowrap;
  position:relative;z-index:14;cursor:pointer;touch-action:manipulation;
 }
-.static-arena .four-monster>.monster-drop-query:hover{background:#3a3328}
-.static-arena .four-monster>.monster-drop-query:focus-visible{outline:2px solid #e3c999;outline-offset:2px}
+/* The in-block copy only reserves space; the real button lives in the layer above all sprites. */
+.static-arena .four-monster>.monster-drop-anchor{visibility:hidden;pointer-events:none}
+.static-arena .monster-drop-layer{position:absolute;inset:0;z-index:3;pointer-events:none}
+.static-arena .monster-drop-layer>.monster-drop-query{position:absolute;margin:0;pointer-events:auto}
+.static-arena .monster-drop-layer>.monster-drop-query::before{content:"";position:absolute;inset:-6px -4px}
+.static-arena .monster-drop-layer>.monster-drop-query:hover{background:#3a3328}
+.static-arena .monster-drop-layer>.monster-drop-query:focus-visible{outline:2px solid #e3c999;outline-offset:2px}
 .static-arena.world-boss-arena .four-target .monster-ground-name{display:block}
 /* Compact the bottom skill row without changing casting or cooldowns. */
 .game-root.screenshot-layout.map-first-layout{--map-skill-height:56px}
@@ -1109,7 +1114,8 @@ body:has(.game-root) :is(.game-dialog,.bian-dialog) :is([data-slot=dialog-descri
 .loot-burst-skip{position:absolute;right:10px;bottom:8px;font-size:11px;color:#f2dfab;background:rgba(0,0,0,.55);padding:2px 8px;border-radius:999px;pointer-events:none}
 .loot-burst-chip[data-phase=out]{animation:loot-burst-out 520ms cubic-bezier(.2,.7,.3,1) both}
 .loot-burst-chip[data-phase=focus]{z-index:37;transform:translate(-50%,-50%) scale(1.45);transition:transform .3s cubic-bezier(.3,1.6,.5,1)}
-.loot-burst-chip[data-phase=rest] img,.loot-burst-chip[data-phase=focus] img{animation:loot-pickup-bob 1s ease-in-out infinite}
+.loot-burst-chip[data-phase=rest] .loot-plate,.loot-burst-chip[data-phase=focus] .loot-plate{animation:loot-plate-bob 1s ease-in-out infinite}
+@keyframes loot-plate-bob{0%,100%{transform:none}50%{transform:translateY(-2px)}}
 .loot-pillar{position:absolute;left:50%;bottom:40%;width:14px;height:78px;transform:translateX(-50%);background:linear-gradient(to top,var(--loot-glow),transparent);opacity:0;filter:blur(2px);border-radius:7px;z-index:-1;animation:loot-pillar-in .35s .3s ease-out forwards}
 .loot-burst-chip[data-rarity=normal] .loot-pillar{width:8px;height:40px}
 .loot-burst-chip[data-finale] .loot-pillar{width:20px;height:110px;animation:loot-pillar-in .35s .3s ease-out forwards,loot-pillar-pulse 1s .65s ease-in-out infinite}
@@ -1120,3 +1126,9 @@ body:has(.game-root) :is(.game-dialog,.bian-dialog) :is([data-slot=dialog-descri
 @keyframes loot-pillar-pulse{0%,100%{opacity:.85}50%{opacity:.45}}
 @keyframes loot-name-in{from{opacity:0;transform:translateX(-50%) translateY(6px) scale(.69)}}
 @keyframes loot-burst-flash{0%{background:rgba(255,255,255,.35)}100%{background:transparent}}
+
+/* Loot icons sit on a rarity-coloured plate (white, green, blue, red, purple, gold) so drops read at a glance. */
+.loot-plate{display:flex;align-items:center;justify-content:center;width:36px;height:36px;border-radius:6px;background:color-mix(in srgb,var(--loot-glow) 38%,rgba(12,14,16,.82));border:2px solid var(--loot-glow);box-shadow:0 0 6px color-mix(in srgb,var(--loot-glow) 70%,transparent),0 2px 3px rgba(0,0,0,.7)}
+.loot-burst-chip .loot-plate{width:40px;height:40px}
+.loot-plate[data-rarity=normal]{background:rgba(70,72,76,.85);border-color:#d8dade;box-shadow:0 2px 3px rgba(0,0,0,.7)}
+.loot-plate img{filter:drop-shadow(0 1px 1px rgba(0,0,0,.8))!important}

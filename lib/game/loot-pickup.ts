@@ -36,7 +36,7 @@ export function burstPositions(origin:{x:number;y:number},count:number,aspect:nu
 /** Ground spot for the n-th ordinary drop of one monster: fanned to the sides of the corpse. */
 export function groundSpot(origin:{x:number;y:number},n:number):{x:number;y:number}{
  const side=n%2?1:-1,step=Math.ceil(n/2);
- return {x:Math.min(94,Math.max(6,origin.x+side*step*6)),y:Math.min(92,Math.max(20,origin.y+2+(n%3)*2))};
+ return {x:Math.min(94,Math.max(6,origin.x+side*step*10)),y:Math.min(92,Math.max(20,origin.y+2+(n%3)*2))};
 }
 /** Timing for the boss sequence: commons fly quickly, the rarest tier one by one and slower. */
 export function burstSchedule(list:BurstItem[]){
