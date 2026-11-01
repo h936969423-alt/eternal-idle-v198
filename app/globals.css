@@ -339,8 +339,8 @@
 /* World-boss visual enlargement: source ground anchors, shadow and attached layers scale together. */
 .world-boss-arena .four-monster-art,.world-boss-arena .four-target{overflow:visible}
 .world-boss-arena .four-monster:not([data-dragon=true]):not([data-dragon-summon=true]) .four-monster-art{transform:scale(var(--world-boss-scale,1.5));transform-origin:center bottom}
-/* Field and dungeon monsters: 1.5× sprite size, scaled around their feet so the body stays on its health bar. */
-.static-arena:not(.world-boss-arena) .four-monster:not([data-dragon=true]):not([data-dragon-summon=true]) .four-monster-art>*{transform:scale(var(--ordinary-monster-scale,1.5));transform-origin:50% var(--monster-foot-y,100%)}
+/* Field and dungeon monsters: 1.2× sprite size, scaled around their feet so the body stays on its health bar. */
+.static-arena:not(.world-boss-arena) .four-monster:not([data-dragon=true]):not([data-dragon-summon=true]) .four-monster-art>*{transform:scale(var(--ordinary-monster-scale,1.2));transform-origin:50% var(--monster-foot-y,100%)}
 /* Health bar, name and drop button stay readable above any neighbouring monster's art. */
 .static-arena:not(.world-boss-arena) .four-monster :is(.four-target [data-slot=progress],.monster-ground-name,.monster-drop-query){position:relative;z-index:6}
 .world-boss-arena .four-monster[data-dragon=true]:not([data-dragon-summon=true]) .dragon381-sprite{transform:scale(var(--world-boss-scale,1.5))}
