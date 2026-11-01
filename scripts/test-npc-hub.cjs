@@ -14,7 +14,7 @@ try{
  assert(Object.keys(hub.hubDefaultStock('npc_events',1793248200000)).length===4);assert.deepEqual(hub.hubDefaultStock('npc_events',1793248199999),{});assert.deepEqual(hub.hubDefaultStock('npc_events',1793680200000),{});
  let count=0;const signatures=new Set();
  for(const r of recipes.NPC_RECIPES){
-  if(r.disabledReason)continue;const {c,s}=make(r.classes?.[0]||'mage');c.gold=r.gold*2+1;
+  if(r.disabledReason||load('retired-items.js').isRetiredItem(r.output)||Object.keys(r.materials).some(id=>load('retired-items.js').isRetiredItem(id)))continue;const {c,s}=make(r.classes?.[0]||'mage');c.gold=r.gold*2+1;
   const sig=JSON.stringify([r.npc,r.output,r.materials,r.gold,r.outputCount||1,r.classes||[],r.materialEnhancements||{},r.minLv||0,r.availableUntil||0]);assert(!signatures.has(sig),'no duplicate formula '+r.id);signatures.add(sig);
   for(const [id,n] of Object.entries(r.materials)){assert(raw.items[id]);c.bag[id]=n*2;if(r.materialEnhancements?.[id])c.enh[id]=r.materialEnhancements[id];}
   const before=c.gold;e.action(s,{type:'npcRecipe',npc:r.npc,recipe:r.id,n:2},time);

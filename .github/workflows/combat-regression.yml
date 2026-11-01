@@ -56,4 +56,5 @@ jobs:
           node scripts/test-loot-pickup.cjs
           node scripts/test-retarget-delay.cjs
           node scripts/test-pet-lure.cjs
+          node scripts/test-retired-items.cjs
 

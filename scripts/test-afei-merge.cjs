@@ -14,15 +14,17 @@ try{
  for(const [id,m] of Object.entries(ref.mobs)){
   assert.equal(cfg.defaultMonster(id).dropsMode,'original',id+' must use imported drops by default');
   const all=pub.publicMonsterDrop(id,()=>0,now).items.map(d=>d.item);
-  for(const item of m.items){assert(e.DATA.items[item],id+': '+item);assert(all.includes(item),id+' reaches '+item);}
+  // Retired items (lib/game/retired-items.ts) are deliberately no longer dropped.
+  for(const item of m.items){assert(e.DATA.items[item],id+': '+item);if(require(path.join(dir,'retired-items.js')).isRetiredItem(item)){assert(!all.includes(item),id+' no longer drops retired '+item);continue;}assert(all.includes(item),id+' reaches '+item);}
   assert.equal(new Set(pub.PUBLIC_DROP_RATES[id].map(d=>d.item)).size,pub.PUBLIC_DROP_RATES[id].length);
-  assert.deepEqual(pub.PUBLIC_DROP_RATES[id],m.rates);
+  assert.deepEqual(pub.PUBLIC_DROP_RATES[id],m.rates.filter(d=>!require(path.join(dir,'retired-items.js')).isRetiredItem(d.item)));
  }
  for(const item of ref.addedItems){const i=e.DATA.items[item];assert(i?.sourceIcon,item+' icon');assert(i.afeiOriginalId);}
  for(const [zone,b] of Object.entries(ref.worldBosses)){
-  if(!load('boss-respawn').playableBoss(zone)){for(const item of b.items)assert(pub.WORLD_BOSS_LOOT[zone].includes(item));continue;}
+  const retiredItem=item=>require(path.join(dir,'retired-items.js')).isRetiredItem(item);
+  if(!load('boss-respawn').playableBoss(zone)){for(const item of b.items.filter(i=>!retiredItem(i)))assert(pub.WORLD_BOSS_LOOT[zone].includes(item));continue;}
   const shown=preview(zone,undefined,undefined,now);assert.equal(shown.equipment.length,0,'reference bosses do not replace equipment with a hybrid roll');
-  for(const item of b.items){assert(boss.bossRoomDrops(zone).some(d=>d.item===item),zone+' table includes '+item);assert(shown.drops.some(d=>d.item===item),zone+' preview includes '+item);}
+  for(const item of b.items.filter(i=>!retiredItem(i))){assert(boss.bossRoomDrops(zone).some(d=>d.item===item),zone+' table includes '+item);assert(shown.drops.some(d=>d.item===item),zone+' preview includes '+item);}
  }
  function make(zone){const b=e.BASES.knight,a={};let left=b.pts;for(const k of ['str','dex','con','int','wis','cha']){a[k]=Math.min(left,20-b[k]);left-=a[k];}const c=e.createCharacter('掉落整合','knight','m',a,now);c.zone=zone;e.ensureArena(c,()=>.5,now);return c;}
  // Real boss award path, not just a catalog: fixed rolls, receipt and inventory agree.
@@ -31,7 +33,7 @@ try{
   const c=make(zone),members=c.arena.filter(m=>!m.summonedBy);
   for(const target of members){c.arenaTarget=c.arena.indexOf(target);target.hp=0;e.__award(c,target.id,()=>0,now);}
   assert(c.lastBossVictory,zone);assert.equal(c.lastBossVictory.drops.mat_boss_crystal,1,zone+' crystal exactly once');
-  for(const item of ref.worldBosses[zone].items)assert(c.lastBossVictory.drops[item]>=1,zone+' actually grants '+item);
+  for(const item of ref.worldBosses[zone].items){if(require(path.join(dir,'retired-items.js')).isRetiredItem(item)){assert(!c.lastBossVictory.drops[item],zone+' no longer grants retired '+item);continue;}assert(c.lastBossVictory.drops[item]>=1,zone+' actually grants '+item);}
   const saved=JSON.stringify(c.bag);e.settleBossRewards(c,now,()=>0);assert.equal(JSON.stringify(c.bag),saved,zone+' receipt cannot be claimed twice');
  }
  // Ordinary imported equipment survives award; explicit GM empty custom tables stay empty.
