@@ -1132,3 +1132,13 @@ body:has(.game-root) :is(.game-dialog,.bian-dialog) :is([data-slot=dialog-descri
 .loot-burst-chip .loot-plate{width:40px;height:40px}
 .loot-plate[data-rarity=normal]{background:rgba(70,72,76,.85);border-color:#d8dade;box-shadow:0 2px 3px rgba(0,0,0,.7)}
 .loot-plate img{filter:drop-shadow(0 1px 1px rgba(0,0,0,.8))!important}
+
+/* Drop-table chips coloured by rarity, matching the loot plates. */
+.monster-drop-chip[data-rarity]{border-color:var(--chip-color);background:color-mix(in srgb,var(--chip-color) 22%,#1b1610);color:#f3ead6}
+.monster-drop-chip[data-rarity=normal]{--chip-color:#9a9da3;background:#2a2b2e}
+.monster-drop-chip[data-rarity=advanced]{--chip-color:#2fd12f}
+.monster-drop-chip[data-rarity=rare]{--chip-color:#2f8cff}
+.monster-drop-chip[data-rarity=hero]{--chip-color:#ff4a4a}
+.monster-drop-chip[data-rarity=legend]{--chip-color:#b366ff}
+.monster-drop-chip[data-rarity=mythic]{--chip-color:#ffd700}
+.monster-drop-chip[data-rarity=relic]{--chip-color:#4cc9f0}
