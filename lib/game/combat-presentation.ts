@@ -199,6 +199,10 @@ export function enqueueSunriseReplay<T extends PresentationEvent>(queued:(T&{due
  const unique=fresh.filter(e=>{if(known.has(e.seq))return false;known.add(e.seq);return true;});
  if(!unique.length)return {queue:queued,offset:previous};
  const offset=previous??replayOffset(unique,now,null)!;
+ // A manually cast Triple Arrow starts now (keeping its 70ms shot spacing) instead of waiting behind
+ // the network jitter buffer, so the arrows leave right after the button is pressed.
+ const manualTriple=unique.filter(e=>e.manual&&e.kind==='attack'&&isTripleArrow(e.skill));
+ const tripleStart=manualTriple.length?Math.min(...manualTriple.map(e=>e.at)):null;
  const early=unique.filter(e=>e.manual&&!e.visualEffectPreviewed&&(
   e.kind==='magic'&&e.skill&&(e.skill!=='sk_shock_stun'||e.effect==='狀態命中')||
   e.kind==='state'&&e.skill==='sk_shock_stun'&&e.effect==='衝暈失敗'||
@@ -225,6 +229,7 @@ export function enqueueSunriseReplay<T extends PresentationEvent>(queued:(T&{due
   // Projectile spells retain their separate flight/impact clock.
   due:e.kind==='attack'&&!!e.skill&&!isTripleArrow(e.skill)&&!e.weaponProc&&(!isFlyingMagic(e)||!!e.visualEffectPreviewed)
    ?Math.max(now,(targetSeq.has(e.seq)?starts.get(castKey(e))!:e.manual&&typeof e.visualCastAt==='number'?e.visualCastAt:starts.get(castKey(e))??e.at+offset)+spellImpactMs(e))
+   :tripleStart!==null&&e.manual&&e.kind==='attack'&&isTripleArrow(e.skill)?now+(e.at-tripleStart)
    :starts.get(castKey(e))??e.at+offset
  }))].sort((a,b)=>a.due-b.due||a.seq-b.seq),offset};
 }
