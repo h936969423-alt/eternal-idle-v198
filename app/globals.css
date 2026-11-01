@@ -1093,3 +1093,30 @@ body:has(.game-root) :is(.game-dialog,.bian-dialog) :is([data-slot=dialog-descri
 /* The monster currently being attacked: red outline around its sprite, as in the original client. */
 .four-monster.targeted:not([data-dead="true"]) .four-monster-art{filter:drop-shadow(0 0 1.5px #ff2020) drop-shadow(0 0 1.5px #ff2020) drop-shadow(0 0 6px rgba(255,30,30,.85))}
 @media (prefers-reduced-transparency:reduce){.four-monster.targeted:not([data-dead="true"]) .four-monster-art{filter:drop-shadow(0 0 1px #ff2b2b) drop-shadow(0 0 1px #ff2b2b)}}
+/* Loot pickup: ordinary drops fall beside the corpse, rest, then fly into the player. */
+.loot-pickup,.loot-burst-chip{position:absolute;z-index:34;pointer-events:none;transform:translate(-50%,-50%);display:flex;flex-direction:column;align-items:center;transition:left var(--loot-flight,450ms) cubic-bezier(.55,0,.75,.4),top var(--loot-flight,450ms) cubic-bezier(.3,0,.2,1),opacity var(--loot-flight,450ms) ease-in,transform var(--loot-flight,450ms) ease-in}
+.loot-pickup img,.loot-burst-chip img{filter:drop-shadow(0 0 3px var(--loot-glow)) drop-shadow(0 2px 2px rgba(0,0,0,.8))}
+.loot-pickup[data-rarity=normal] img,.loot-burst-chip[data-rarity=normal] img{filter:drop-shadow(0 2px 2px rgba(0,0,0,.8))}
+.loot-pickup b,.loot-burst-chip b{font-size:10px;line-height:1;color:#fff;text-shadow:0 1px 2px #000;margin-top:-4px}
+.loot-pickup-dot{width:12px;height:12px;border-radius:50%;background:var(--loot-glow);box-shadow:0 0 8px var(--loot-glow)}
+.loot-pickup[data-phase=drop]{animation:loot-pickup-fall 380ms 200ms cubic-bezier(.3,.6,.4,1) both}
+.loot-pickup[data-phase=rest]{animation:loot-pickup-bob 1s ease-in-out infinite}
+.loot-pickup[data-phase=fly],.loot-burst-chip[data-phase=fly]{opacity:0;transform:translate(-50%,-50%) scale(.45)}
+@keyframes loot-pickup-fall{0%{opacity:0;transform:translate(calc(-50% + var(--from-x)),calc(-50% + var(--from-y))) scale(.6)}35%{opacity:1;transform:translate(calc(-50% + var(--from-x)*.5),calc(-50% + var(--from-y)*.5 - 28px)) scale(1)}75%{transform:translate(-50%,-50%) scale(1.05,.9)}88%{transform:translate(-50%,calc(-50% - 5px))}100%{opacity:1;transform:translate(-50%,-50%)}}
+@keyframes loot-pickup-bob{0%,100%{transform:translate(-50%,-50%)}50%{transform:translate(-50%,calc(-50% - 2px))}}
+/* World boss: burst into a ring, rarity light pillars, then collect commons first and the rarest last. */
+.loot-burst{position:absolute;inset:0;z-index:36;cursor:pointer;-webkit-tap-highlight-color:transparent;animation:loot-burst-flash .45s ease-out}
+.loot-burst-skip{position:absolute;right:10px;bottom:8px;font-size:11px;color:#f2dfab;background:rgba(0,0,0,.55);padding:2px 8px;border-radius:999px;pointer-events:none}
+.loot-burst-chip[data-phase=out]{animation:loot-burst-out 520ms cubic-bezier(.2,.7,.3,1) both}
+.loot-burst-chip[data-phase=focus]{z-index:37;transform:translate(-50%,-50%) scale(1.45);transition:transform .3s cubic-bezier(.3,1.6,.5,1)}
+.loot-burst-chip[data-phase=rest] img,.loot-burst-chip[data-phase=focus] img{animation:loot-pickup-bob 1s ease-in-out infinite}
+.loot-pillar{position:absolute;left:50%;bottom:40%;width:14px;height:78px;transform:translateX(-50%);background:linear-gradient(to top,var(--loot-glow),transparent);opacity:0;filter:blur(2px);border-radius:7px;z-index:-1;animation:loot-pillar-in .35s .3s ease-out forwards}
+.loot-burst-chip[data-rarity=normal] .loot-pillar{width:8px;height:40px}
+.loot-burst-chip[data-finale] .loot-pillar{width:20px;height:110px;animation:loot-pillar-in .35s .3s ease-out forwards,loot-pillar-pulse 1s .65s ease-in-out infinite}
+.loot-burst-chip[data-phase=fly] .loot-pillar{display:none}
+.loot-burst-name{position:absolute;bottom:calc(100% + 6px);left:50%;transform:translateX(-50%) scale(.69);transform-origin:bottom center;white-space:nowrap;font-size:16px;font-weight:700;color:var(--loot-glow);text-shadow:0 0 6px rgba(0,0,0,.9),0 1px 2px #000;animation:loot-name-in .3s ease-out both}
+@keyframes loot-burst-out{0%{opacity:0;transform:translate(calc(-50% + var(--from-x)),calc(-50% + var(--from-y))) scale(.4)}45%{opacity:1;transform:translate(calc(-50% + var(--from-x)*.45),calc(-50% + var(--from-y)*.45 - 44px)) scale(1.1)}80%{transform:translate(-50%,-50%) scale(1.05,.9)}100%{opacity:1;transform:translate(-50%,-50%)}}
+@keyframes loot-pillar-in{to{opacity:.85}}
+@keyframes loot-pillar-pulse{0%,100%{opacity:.85}50%{opacity:.45}}
+@keyframes loot-name-in{from{opacity:0;transform:translateX(-50%) translateY(6px) scale(.69)}}
+@keyframes loot-burst-flash{0%{background:rgba(255,255,255,.35)}100%{background:transparent}}

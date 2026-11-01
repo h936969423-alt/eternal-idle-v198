@@ -5,7 +5,7 @@ import {dragon381Position,monsterPosition,worldBossPosition} from '@/lib/game/ba
 import {enqueueLoot,type QueuedLoot} from '@/lib/game/loot-queue';
 import {LootVisual} from './loot-visual';
 export default function LootEffects({events}:{events:CombatEvent[]}){const seen=useRef(new Set<number>()),[queue,setQueue]=useState<QueuedLoot[]>([]),[active,setActive]=useState<QueuedLoot|null>(null);
- useEffect(()=>{const fresh=events.filter(e=>e.kind==='loot'&&!seen.current.has(e.seq));if(!fresh.length)return;for(const e of fresh)seen.current.add(e.seq);if(seen.current.size>640)seen.current=new Set(events.filter(e=>e.kind==='loot').map(e=>e.seq));setQueue(old=>enqueueLoot(fresh,0,old).queue);},[events]);
+ useEffect(()=>{const fresh=events.filter(e=>e.kind==='loot'&&!seen.current.has(e.seq)&&e.loot?.layout==='ordinary');if(!fresh.length)return;for(const e of fresh)seen.current.add(e.seq);if(seen.current.size>640)seen.current=new Set(events.filter(e=>e.kind==='loot').map(e=>e.seq));setQueue(old=>enqueueLoot(fresh,0,old).queue);},[events]);
  useEffect(()=>{if(active||!queue.length)return;setActive(queue[0]);setQueue(old=>old.slice(1));},[active,queue]);
  useEffect(()=>{if(!active)return;const timer=setTimeout(()=>setActive(null),active.loot.style.durationMs+80);return()=>clearTimeout(timer);},[active]);
  useEffect(()=>{const hide=()=>{if(document.hidden){setQueue([]);setActive(null);}};document.addEventListener('visibilitychange',hide);return()=>document.removeEventListener('visibilitychange',hide);},[]);
