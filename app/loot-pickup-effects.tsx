@@ -67,10 +67,10 @@ export default function LootPickupEffects({events,arena}:{events:(CombatEvent&{s
  },[]);
 
  return <>
-  {drops.map(d=>{const at=d.phase==='fly'&&d.to?d.to:d.at,src=lootIconSrc(d.item);return <div key={d.id} className="loot-pickup" data-phase={d.phase} data-rarity={d.rarity} style={{left:`${at.x}%`,top:`${at.y}%`,'--loot-glow':glow(d.rarity),'--loot-flight':`${FLIGHT}ms`,...(d.phase==='drop'?offset(arena.current,d.from,d.at):{})} as CSSProperties} aria-hidden="true">{src?<ItemIcon src={src} alt="" size={30} loading="eager"/>:<span className="loot-pickup-dot"/>}{d.quantity>1&&<b>×{d.quantity}</b>}</div>;})}
+  {drops.map(d=>{const at=d.phase==='fly'&&d.to?d.to:d.at,src=lootIconSrc(d.item);return <div key={d.id} className="loot-pickup" data-phase={d.phase} data-rarity={d.rarity} style={{left:`${at.x}%`,top:`${at.y}%`,'--loot-glow':glow(d.rarity),'--loot-flight':`${FLIGHT}ms`,...(d.phase==='drop'?offset(arena.current,d.from,d.at):{})} as CSSProperties} aria-hidden="true"><span className="loot-plate" data-rarity={d.rarity}>{src?<ItemIcon src={src} alt="" size={28} loading="eager"/>:<span className="loot-pickup-dot"/>}</span>{d.quantity>1&&<b>×{d.quantity}</b>}</div>;})}
   {burst&&<div className="loot-burst" role="button" tabIndex={0} aria-label="跳過掉落動畫" onClick={skipBurst} onKeyDown={e=>{if(e.key==='Enter'||e.key===' ')skipBurst();}}>
    {burst.chips.map(c=>{const src=lootIconSrc(c.item);return <div key={c.key} className="loot-burst-chip" data-phase={c.phase} data-finale={c.finale||undefined} data-rarity={c.rarity} style={{left:`${c.at.x}%`,top:`${c.at.y}%`,'--loot-glow':glow(c.rarity),'--loot-flight':`${c.flight}ms`,...(c.phase==='out'?offset(arena.current,burst.from,c.at):{})} as CSSProperties}>
-    <i className="loot-pillar"/>{src?<ItemIcon src={src} alt="" size={34} loading="eager"/>:<span className="loot-pickup-dot"/>}{c.extra?<b>+{c.extra}</b>:c.quantity>1&&<b>×{c.quantity}</b>}{c.phase==='focus'&&<span className="loot-burst-name">{c.name}{c.quantity>1?` ×${c.quantity}`:''}</span>}</div>;})}
+    <i className="loot-pillar"/><span className="loot-plate" data-rarity={c.rarity}>{src?<ItemIcon src={src} alt="" size={32} loading="eager"/>:<span className="loot-pickup-dot"/>}</span>{c.extra?<b>+{c.extra}</b>:c.quantity>1&&<b>×{c.quantity}</b>}{c.phase==='focus'&&<span className="loot-burst-name">{c.name}{c.quantity>1?` ×${c.quantity}`:''}</span>}</div>;})}
    <span className="loot-burst-skip">點擊跳過</span>
   </div>}
  </>;
