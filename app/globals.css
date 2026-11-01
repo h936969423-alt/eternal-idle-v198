@@ -390,9 +390,6 @@ img[data-item-icon=true]{vertical-align:middle;transform:none}
 .game-root.display-portrait .town-walk-actor{width:32%;max-width:none}
 .game-root.display-portrait .town-walk-actor>.town-player-sprite{width:100%;height:auto;aspect-ratio:1;object-fit:contain}
 
-.game-root.display-portrait .battle-scene:not(.world-boss-scene) .static-arena:not(.crowded-arena) .four-monster[data-monster-slot="0"]{left:68%!important;top:70%!important}
-.game-root.display-portrait .battle-scene:not(.world-boss-scene) .static-arena:not(.crowded-arena) .four-monster[data-monster-slot="1"]{left:82%!important;top:43%!important}
-.game-root.display-portrait .battle-scene:not(.world-boss-scene) .static-arena:not(.crowded-arena) .four-monster[data-monster-slot="2"]{left:84%!important;top:83%!important}
 
 /* Compact hunt/return controls in both portrait and landscape battle scenes. */
 .game-root .battle-scene .scene-top button,
