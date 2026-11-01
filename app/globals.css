@@ -126,7 +126,9 @@
 .sequence-art{display:inline-block;position:relative;width:90px;max-width:100%;vertical-align:middle;isolation:isolate;overflow:hidden;image-rendering:pixelated}
 .sequence-art>svg{position:absolute;inset:0;width:100%;height:100%;overflow:hidden;pointer-events:none;image-rendering:pixelated}.sequence-shadow{z-index:0;mix-blend-mode:multiply}.sequence-body{z-index:1}.sequence-weapon{z-index:2;mix-blend-mode:screen}.sequence-downed{opacity:.65;transform:rotate(75deg)}
 .four-monster-art .sequence-art{width:100px;height:100px}.game-root.display-landscape .four-monster-art .sequence-art{width:clamp(44px,7vw,90px);height:clamp(44px,7vw,90px)}
-.pet-scene-layer{position:absolute;inset:0;pointer-events:none;z-index:4}.scene-pet{position:absolute;width:65px;transform:translate(-50%,-65%);transition:left .14s linear,top .14s linear;display:flex;flex-direction:column;align-items:center}.scene-pet .sequence-art{width:65px}.scene-pet>img{width:65px;height:65px;object-fit:contain;image-rendering:pixelated}.scene-pet small{font-size:12px;color:#ddd0a7;background:#15140dc9;white-space:nowrap;border-radius:4px;padding:0 3px}.scene-pet progress{height:4px;width:44px;accent-color:#60c486}.pet-downed{opacity:.65}.pet-battle-info{position:absolute;left:8px;bottom:8px;z-index:9;color:#ddc88f;max-width:calc(100% - 16px)}.pet-battle-info summary{cursor:pointer;background:#201a10e8;border:1px solid #8e7037;border-radius:7px;padding:4px 9px;font-size:14px}.pet-battle-info[open]{background:#17140ff5;border:1px solid #8e7037;border-radius:8px;padding:8px}.pet-battle-info>div{max-height:220px;overflow:auto}.pet-battle-info article{display:flex;flex-direction:column;gap:4px;border-top:1px solid #534529;padding:6px}.pet-battle-info small{font-size:14px}
+.pet-scene-layer{position:absolute;inset:0;pointer-events:none;z-index:4}.scene-pet{position:absolute;width:65px;transform:translate(-50%,-65%);transition:left .14s linear,top .14s linear;display:flex;flex-direction:column;align-items:center}.scene-pet .sequence-art{width:65px}.scene-pet>img{width:65px;height:65px;object-fit:contain;image-rendering:pixelated}.scene-pet small{font-size:12px;color:#ddd0a7;background:#15140dc9;white-space:nowrap;border-radius:4px;padding:0 3px}.scene-pet progress{height:4px;width:44px;accent-color:#60c486}.pet-downed{opacity:.65}.pet-battle-info{position:absolute;left:8px;bottom:8px;z-index:9;color:#ddc88f;max-width:calc(100% - 16px)}
+/* Sit above the hunt/return buttons anchored to the same bottom-left corner. */
+.game-root .battle-scene .static-arena .pet-battle-info{bottom:38px;z-index:31}.pet-battle-info summary{cursor:pointer;background:#201a10e8;border:1px solid #8e7037;border-radius:7px;padding:4px 9px;font-size:14px}.pet-battle-info[open]{background:#17140ff5;border:1px solid #8e7037;border-radius:8px;padding:8px}.pet-battle-info>div{max-height:220px;overflow:auto}.pet-battle-info article{display:flex;flex-direction:column;gap:4px;border-top:1px solid #534529;padding:6px}.pet-battle-info small{font-size:14px}
 
 .four-monster{position:relative}.monster-death-ghost{position:absolute!important;left:50%;top:30px;transform:translateX(-50%);width:100px!important;height:100px!important;opacity:.6;pointer-events:none;z-index:3}
 
@@ -1142,3 +1144,13 @@ body:has(.game-root) :is(.game-dialog,.bian-dialog) :is([data-slot=dialog-descri
 .monster-drop-chip[data-rarity=legend]{--chip-color:#b366ff}
 .monster-drop-chip[data-rarity=mythic]{--chip-color:#ffd700}
 .monster-drop-chip[data-rarity=relic]{--chip-color:#4cc9f0}
+
+/* Pets and summons were drawn too small next to the player; enlarge the sprite only, feet stay put. */
+.pet-scene-layer .scene-pet :is(.sequence-art,img){transform:scale(var(--pet-visual-scale,1.6));transform-origin:50% 100%}
+.scene-summon :is(.sequence-art,img){transform:scale(var(--summon-visual-scale,1.3));transform-origin:50% 100%}
+/* Green potion for pets and summons. */
+.companion-haste{display:flex;flex-wrap:wrap;align-items:center;gap:6px;padding:6px 4px;font-size:13px}
+.companion-haste button{height:28px;padding:0 8px;font-size:12px}
+.companion-haste label{display:flex;align-items:center;gap:4px;font-size:12px}
+.companion-haste-on{color:#8fe08a}
+.companion-haste-off{color:#a59d8c}

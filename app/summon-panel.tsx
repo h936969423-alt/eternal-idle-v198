@@ -1,4 +1,5 @@
 'use client';
+import CompanionHasteControl from './companion-haste-control';
 import {useEffect,useMemo,useRef,useState} from 'react';
 import {Button} from '@/components/ui/button';
 import {Dialog,DialogContent,DialogTitle,DialogDescription} from '@/components/ui/dialog';
@@ -25,5 +26,5 @@ export function SummonScene({c,view}:{c:Character;view:BattleView}){
 export function SummonParty({c,view,busy,act}:{c:Character;view:BattleView;busy:boolean;act:(a:any)=>Promise<any>}){
  const entities=view.summonEntities||c.summonContract?.entities||[];
  if(!c.summonContract&&!entities.length)return null;
- return <details className="summon-management"><summary>召喚物 · {entities.filter(s=>s.hp>0).length} 隻存活<span>血量與管理</span></summary><div className="summon-management-content"><div className="summon-party-heading"><Button variant="outline" disabled={busy||view.mp<50} onClick={()=>act({type:'cast',skill:'sk_summon'})}>重新施放 · MP50</Button><Button variant="outline" disabled={busy} onClick={()=>act({type:'summonDismiss'})}>解散</Button></div><div className="summon-companions">{entities.map(s=><article key={s.uid} className={s.hp<=0?'summon-dead':''}>{icons[s.form]&&<img className="summon-portrait" src={icons[s.form]} alt=""/>}<b>{s.form}</b><small>Lv.{s.lv}</small><progress value={s.hp} max={s.maxHp} aria-label={`${s.form}生命`}/><small>{s.hp>0?`${s.hp} / ${s.maxHp}`:'死亡消散'}</small></article>)}</div><p>全滅或到期後自動重召；MP不足時等待恢復。</p></div></details>;
+ return <details className="summon-management"><summary>召喚物 · {entities.filter(s=>s.hp>0).length} 隻存活<span>血量與管理</span></summary><div className="summon-management-content"><CompanionHasteControl c={c} kind="summon" busy={busy} act={act}/><div className="summon-party-heading"><Button variant="outline" disabled={busy||view.mp<50} onClick={()=>act({type:'cast',skill:'sk_summon'})}>重新施放 · MP50</Button><Button variant="outline" disabled={busy} onClick={()=>act({type:'summonDismiss'})}>解散</Button></div><div className="summon-companions">{entities.map(s=><article key={s.uid} className={s.hp<=0?'summon-dead':''}>{icons[s.form]&&<img className="summon-portrait" src={icons[s.form]} alt=""/>}<b>{s.form}</b><small>Lv.{s.lv}</small><progress value={s.hp} max={s.maxHp} aria-label={`${s.form}生命`}/><small>{s.hp>0?`${s.hp} / ${s.maxHp}`:'死亡消散'}</small></article>)}</div><p>全滅或到期後自動重召；MP不足時等待恢復。</p></div></details>;
 }
