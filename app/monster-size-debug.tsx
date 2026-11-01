@@ -1,0 +1,29 @@
+'use client';
+import {useEffect,useState} from 'react';
+
+/** Temporary diagnostics: open the game with ?debug=monster to see how each monster sprite is sized
+ * on this device. Shows nothing otherwise. */
+export default function MonsterSizeDebug(){
+ const [lines,setLines]=useState<string[]|null>(null);
+ useEffect(()=>{
+  if(typeof location==='undefined'||!new URLSearchParams(location.search).has('debug'))return;
+  const r=(v:number)=>Math.round(v*10)/10;
+  const read=()=>{
+   const out=[`UA ${navigator.userAgent.replace(/.*(iPhone OS [\d_]+|Version\/[\d.]+).*/,'$1')} · dpr ${devicePixelRatio} · vw ${innerWidth}`,
+    `supports cqw ${CSS.supports('width','1cqw')} · container ${CSS.supports('container-type','inline-size')} · aspect ${CSS.supports('aspect-ratio','1')}`];
+   const root=document.querySelector('.game-root');out.push(`root ${root?.className.split(' ').filter(c=>c.startsWith('display-')).join(',')||'?'} · battle-scene ${!!document.querySelector('.battle-scene')}`);
+   document.querySelectorAll('.static-arena .four-monster').forEach((m,i)=>{
+    const art=m.querySelector('.four-monster-art') as HTMLElement|null,child=art?.firstElementChild as HTMLElement|null;
+    if(!art){out.push(`#${i} no art`);return;}
+    const a=art.getBoundingClientRect(),cs=child?getComputedStyle(child):null,cr=child?.getBoundingClientRect();
+    out.push(`#${i} ${m.querySelector('.monster-ground-name')?.textContent||''} art ${r(a.width)}×${r(a.height)} ${getComputedStyle(art).display}/${getComputedStyle(art).alignItems}`);
+    out.push(`  child <${child?.tagName.toLowerCase()} .${child?.className}> ${cr?r(cr.width)+'×'+r(cr.height):'-'} css ${cs?.width}×${cs?.height}`);
+    out.push(`  vars w=${cs?.getPropertyValue('--frame-w')||'∅'} h=${cs?.getPropertyValue('--frame-h')||'∅'} ar=${cs?.getPropertyValue('--frame-ar')||'∅'} drop=${cs?.getPropertyValue('--foot-drop')||'∅'} inline="${child?.getAttribute('style')?.slice(0,90)||''}"`);
+   });
+   setLines(out);
+  };
+  read();const t=setInterval(read,1000);return()=>clearInterval(t);
+ },[]);
+ if(!lines)return null;
+ return <pre style={{position:'fixed',left:4,right:4,bottom:4,zIndex:99999,maxHeight:'45vh',overflow:'auto',margin:0,padding:6,font:'10px/1.35 ui-monospace,monospace',whiteSpace:'pre-wrap',wordBreak:'break-all',color:'#e8f5e9',background:'rgba(0,0,0,.85)',border:'1px solid #4caf50',borderRadius:6,pointerEvents:'auto',userSelect:'text',WebkitUserSelect:'text'}}>{lines.join('\n')}</pre>;
+}
