@@ -1156,3 +1156,5 @@ body:has(.game-root) :is(.game-dialog,.bian-dialog) :is([data-slot=dialog-descri
 .companion-haste-off{color:#a59d8c}
 /* Safari does not inherit pixelated smoothing into SVG <image>; set it on the frames directly. */
 .sequence-art image{image-rendering:-webkit-optimize-contrast;image-rendering:pixelated}
+/* MISS on the player must be readable over dark dungeon floors. */
+.combat-float.player-float.miss{color:#f1f5f9;font-size:18px;font-weight:800;-webkit-text-stroke:.6px #0f172a;text-shadow:0 1px 3px #000,0 0 6px #000;opacity:1}
