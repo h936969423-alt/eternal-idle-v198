@@ -2,6 +2,7 @@ import manifest from './imported-effects.json';
 import raw from './gamedata.json';
 import {baseItem} from './gear';
 import type {Character,CombatEvent} from './engine';
+import {isTripleArrow} from './projectile-timing';
 export type EffectEntry={id:string;code:string;label:string;category:string;clip:string;source:string};
 export type EffectClip={sheet:string;width:number;height:number;count:number;cols:number;fps:number;left:number;top:number};
 export const importedEffects=manifest as unknown as {clips:Record<string,EffectClip>;entries:Record<string,EffectEntry>;spellDefaults:Record<string,string>;triple:string[];hurt:{id:string;name:string;image:string;audio:string}[];defaults:Record<string,string>};
@@ -19,7 +20,7 @@ export function validateCombatEffects(input:unknown):Omit<CombatEffectsConfig,'r
 export function importedWeaponEffect(c:Character,config:CombatEffectsConfig,event:CombatEvent){
  if(!config.enabled||event.kind!=='attack'||event.visualPhase==='launch'||event.miss||!event.damage||['monster','pet','summon','poison','doll'].includes(event.source||''))return undefined;
  // Ordinary magic is rendered by its spell effect; magic weapons keep confirmed proc timing.
- if(event.skill&&event.skill!=='sk_elf_triple'&&!event.weaponProc)return undefined;
+ if(event.skill&&!isTripleArrow(event.skill)&&!event.weaponProc)return undefined;
  const id=baseItem(c.equipment.weapon?.id||''),item=(raw.items as Record<string,any>)[id];if(!item)return undefined;
  const category=item.isBow?'bow':c.cls==='dark'?'dark':c.cls==='dragon'?'dragon':'other';
  return importedEffects.entries[config.weapons[id]??config.defaults[category]];

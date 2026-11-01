@@ -6,7 +6,7 @@ import {stripTypeScriptTypes} from 'node:module';
 import {setLocalHitActive,clearLocalHits,recordLocalContact,allowLocalHit,localContactFrame,beginLocalSwing} from '../lib/game/local-hit-sync.ts';
 // Execute the real presentation functions with unrelated catalogue lookups stubbed.
 const source=stripTypeScriptTypes(fs.readFileSync(new URL('../lib/game/combat-presentation.ts',import.meta.url),'utf8')).replace(/^import .*;\s*$/gm,'').replaceAll('export ','');
-const ctx={lineageWEffectDefinition:()=>({}),mythicProcDefinition:()=>({}),raw:{skills:{}},isFlyingMagic:()=>false,magicFlightMs:()=>200,magicEffectLifetime:()=>800,TRIPLE_FLIGHT_MS:200,ARROW_FLIGHT_MS:200,REPLAY_MAX_AHEAD_MS:1500};
+const ctx={lineageWEffectDefinition:()=>({}),mythicProcDefinition:()=>({}),raw:{skills:{}},isFlyingMagic:()=>false,magicFlightMs:()=>200,magicEffectLifetime:()=>800,TRIPLE_FLIGHT_MS:200,ARROW_FLIGHT_MS:200,isTripleArrow:s=>s==='sk_elf_triple'||s==='lw_skill_450',REPLAY_MAX_AHEAD_MS:1500};
 vm.createContext(ctx);vm.runInContext(source,ctx);
 const hit=(seq=1)=>({seq,at:0,due:0,kind:'attack',source:'physical',uid:'mob',slot:0,damage:10,mobHp:90,visualHpDelta:-10,hp:100,mp:100});
 const owner='test:zone';

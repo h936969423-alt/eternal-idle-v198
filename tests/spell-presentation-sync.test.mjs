@@ -5,7 +5,7 @@ import vm from 'node:vm';
 import {stripTypeScriptTypes} from 'node:module';
 
 function harness(){
- const context={lineageWEffectDefinition:()=>undefined,mythicProcDefinition:()=>undefined,raw:{skills:{spell:{type:'atk'},arrow:{type:'atk'}}},magicVisual:e=>({config:e.skill==='spell'?{frames:['0','1','2','3'],fps:10}:e.skill==='arrow'?{proj:true}:undefined}),isFlyingMagic:e=>e.skill==='arrow',spellImpactMs:()=>300,magicEffectLifetime:()=>2000,magicFlightMs:()=>200,TRIPLE_FLIGHT_MS:200,ARROW_FLIGHT_MS:200};
+ const context={lineageWEffectDefinition:()=>undefined,mythicProcDefinition:()=>undefined,raw:{skills:{spell:{type:'atk'},arrow:{type:'atk'}}},magicVisual:e=>({config:e.skill==='spell'?{frames:['0','1','2','3'],fps:10}:e.skill==='arrow'?{proj:true}:undefined}),isFlyingMagic:e=>e.skill==='arrow',spellImpactMs:()=>300,magicEffectLifetime:()=>2000,magicFlightMs:()=>200,TRIPLE_FLIGHT_MS:200,isTripleArrow:s=>s==='sk_elf_triple'||s==='lw_skill_450',ARROW_FLIGHT_MS:200};
  vm.createContext(context);
  for(const name of ['replay-timing','combat-presentation','sunrise-player-cues']){
   const source=stripTypeScriptTypes(fs.readFileSync(new URL(`../lib/game/${name}.ts`,import.meta.url),'utf8')).replace(/^import .*;\s*$/gm,'').replaceAll('export ','');

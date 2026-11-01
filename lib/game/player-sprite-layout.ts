@@ -1,4 +1,4 @@
-import {ARROW_FLIGHT_MS,TRIPLE_FLIGHT_MS} from './projectile-timing';
+import {ARROW_FLIGHT_MS,TRIPLE_FLIGHT_MS,isTripleArrow} from './projectile-timing';
 export {ARROW_FLIGHT_MS,TRIPLE_FLIGHT_MS} from './projectile-timing';
 import footOffsets from './darkelf-foot-offsets.json';
 /** Retain the death knight's existing pixel scale and foot anchor. The dark
@@ -17,4 +17,4 @@ export function arrowSprite(polyName?:string,showPolymorph=true){return showPoly
 export function playerSpriteFootOffset(formId:string|undefined,body:string){return formId==='darkelf'?(footOffsets as Record<string,number>)[body]||0:0;}
 
 /** One arrow per confirmed hit; 70ms launch spacing is independent of each 200ms flight. */
-export function combatArrowFlight(from:{x:number;y:number},to:{x:number;y:number},interval:number,skill?:string){const flight=arrowFlight(from,to,interval);return {...flight,delay:0,duration:skill==='sk_elf_triple'?TRIPLE_FLIGHT_MS:ARROW_FLIGHT_MS};}
+export function combatArrowFlight(from:{x:number;y:number},to:{x:number;y:number},interval:number,skill?:string){const flight=arrowFlight(from,to,interval);return {...flight,delay:0,duration:isTripleArrow(skill)?TRIPLE_FLIGHT_MS:ARROW_FLIGHT_MS};}

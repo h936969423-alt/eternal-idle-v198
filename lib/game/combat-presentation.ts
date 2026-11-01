@@ -6,6 +6,7 @@ import raw from './gamedata.json';
 import {isFlyingMagic,magicFlightMs,magicEffectLifetime,spellImpactMs,magicVisual} from './magic-visuals';
 import {TRIPLE_FLIGHT_MS,ARROW_FLIGHT_MS} from './player-sprite-layout';
 import {manualReplayOffset,replayOffset,tripleReplayOffset,REPLAY_MAX_AHEAD_MS} from './replay-timing';
+import {isTripleArrow} from './projectile-timing';
 export type PresentationEvent=CombatEvent&{visualHpDelta?:number;visualOnly?:boolean};
 /** Convert canonical snapshots in server sequence order before sorting by flight time. */
 export function prepareCombatHealth(events:CombatEvent[],health:Map<string,number>):PresentationEvent[]{
@@ -48,7 +49,7 @@ export function scheduleReplay<T extends CombatEvent&{due:number}>(events:T[],no
 export function enqueueCombatReplay<T extends CombatEvent>(queued:(T&{due:number})[],fresh:T[],now:number,previous:number|null,_live=false){
  const manual=fresh.some(e=>e.manual),triple=tripleReplayOffset(fresh,now);
  const urgentOffset=manual?manualReplayOffset(fresh,now):triple;
- const urgentSeq=urgentOffset!==null?Math.max(...fresh.filter(e=>manual?e.manual:e.skill==='sk_elf_triple').map(e=>e.seq)):-Infinity;
+ const urgentSeq=urgentOffset!==null?Math.max(...fresh.filter(e=>manual?e.manual:isTripleArrow(e.skill)).map(e=>e.seq)):-Infinity;
  const normal=fresh.filter(e=>e.seq>urgentSeq);
  const offset=normal.length?replayOffset(normal,now,previous):previous??replayOffset(fresh,now,null);
  if(offset===null)return {queue:queued,offset};
@@ -70,7 +71,7 @@ export const SPELL_ORDER_HOLD_MS=350;
 export const KILL_ORDER_HOLD_MS=1500;
 export function drainCombatPresentation(queue:TimedCombatEvent[],pending:TimedCombatEvent[],now:number,bow=false,spellFlight?:(event:CombatEvent)=>number,allowPhysical?:(event:CombatEvent)=>boolean,onForcedHit?:(event:CombatEvent)=>void){
  const visible:PresentationEvent[]=[];
- const flightFor=(event:CombatEvent)=>isFlyingMagic(event)?Math.max(140,Math.min(380,spellFlight?.(event)??magicFlightMs(320))):event.skill==='sk_elf_triple'?TRIPLE_FLIGHT_MS:ARROW_FLIGHT_MS;
+ const flightFor=(event:CombatEvent)=>isFlyingMagic(event)?Math.max(140,Math.min(380,spellFlight?.(event)??magicFlightMs(320))):isTripleArrow(event.skill)?TRIPLE_FLIGHT_MS:ARROW_FLIGHT_MS;
  while((queue[0]?.due??Infinity)<=now||(pending[0]?.due??Infinity)<=now){
   const impactFirst=!!pending.length&&(!queue.length||pending[0].due<=queue[0].due);
   const next=(impactFirst?pending:queue).shift()!;
@@ -84,7 +85,7 @@ export function drainCombatPresentation(queue:TimedCombatEvent[],pending:TimedCo
   // A spell on another monster cannot overtake earlier normal hits still waiting for
   // their displayed swing: the server only moved to that monster after those hits
   // (usually after killing the first one). Same-target spells are not held.
-  if(!impactFirst&&allowPhysical&&next.skill&&next.skill!=='sk_elf_triple'&&next.skill!=='lw_skill_450'&&!next.weaponProc&&next.slot!==undefined&&next.source!=='monster'&&next.source!=='pet'&&next.source!=='summon'&&next.source!=='doll'){
+  if(!impactFirst&&allowPhysical&&next.skill&&!isTripleArrow(next.skill)&&!next.weaponProc&&next.slot!==undefined&&next.source!=='monster'&&next.source!=='pet'&&next.source!=='summon'&&next.source!=='doll'){
    const stale=(e:TimedCombatEvent)=>e.seq<next.seq&&e.kind==='attack'&&!e.skill&&!e.weaponProc&&(!e.source||e.source==='physical')&&e.uid!==next.uid;
    if(queue.some(stale)){
     // Wait briefly for those swings; never longer than SPELL_ORDER_HOLD_MS, or a
@@ -111,7 +112,7 @@ export function drainCombatPresentation(queue:TimedCombatEvent[],pending:TimedCo
    const parent=queue.find(e=>e.kind==='attack'&&!e.skill&&!e.weaponProc&&e.uid===next.uid&&e.at===next.at);
    if(parent){queue.push({...next,due:Math.max(now+16,parent.due)});queue.sort((a,b)=>a.due-b.due||a.seq-b.seq);continue;}
   }
-  if(!impactFirst&&!next.visualEffectPreviewed&&next.kind==='attack'&&(isFlyingMagic(next)||next.skill==='sk_elf_triple'||next.magicProjectile||bow&&!next.skill&&!next.weaponProc&&(!next.source||next.source==='physical'))){
+  if(!impactFirst&&!next.visualEffectPreviewed&&next.kind==='attack'&&(isFlyingMagic(next)||isTripleArrow(next.skill)||next.magicProjectile||bow&&!next.skill&&!next.weaponProc&&(!next.source||next.source==='physical'))){
    const flight=flightFor(next);
    pending.push({...next,visualPhase:'impact',visualAt:now+flight,visualFlightMs:flight,due:now+flight});
    pending.sort((a,b)=>a.due-b.due||a.seq-b.seq);
@@ -125,7 +126,7 @@ export function drainCombatPresentation(queue:TimedCombatEvent[],pending:TimedCo
   if(next.kind==='loot'||next.kind==='spawn'){
    const waiting=[...pending,...queue].filter(e=>e.kind==='attack'&&e.seq<next.seq&&(next.kind==='spawn'?e.slot===next.slot:e.uid===next.uid));
    if(waiting.length){
-    const due=Math.max(...waiting.map(e=>e.due+(e.visualPhase==='impact'?0:isFlyingMagic(e)||e.skill==='sk_elf_triple'||bow?flightFor(e):0)),now+1);
+    const due=Math.max(...waiting.map(e=>e.due+(e.visualPhase==='impact'?0:isFlyingMagic(e)||isTripleArrow(e.skill)||bow?flightFor(e):0)),now+1);
     queue.push({...next,due});queue.sort((a,b)=>a.due-b.due||a.seq-b.seq);continue;
    }
   }
@@ -164,7 +165,7 @@ export function applyCombatViewEvent(v:BattleView,next:PresentationEvent,now:num
  // HP/MP snapshots only move forward in server order: a skill shown early (e.g. Triple Arrow) must not be
  // undone by an older normal hit that is displayed later (MP 92→80→92).
  const freshVitals=(next.seq??0)>=(v.vitalSeq??-Infinity),vitalSeq=freshVitals?Math.max(v.vitalSeq??-Infinity,next.seq??0):v.vitalSeq;
- const triple=next.skill==='sk_elf_triple'||next.skill==='lw_skill_450';
+ const triple=isTripleArrow(next.skill);
  if(next.visualPhase==='launch')return {...v,normalHitReceipts,actions,hp:triple||!freshVitals?v.hp:next.hp,mp:triple||!freshVitals?v.mp:next.mp,vitalSeq:triple?v.vitalSeq:vitalSeq,attack:next,target};
  const arena=v.arena.map(m=>({...m})),healthCredits={...v.healthCredits};
  const updateHp=(slot:number)=>{const m=arena[slot];if(!m||m.uid!==next.uid||next.mobHp===undefined)return;
@@ -179,7 +180,7 @@ export function applyCombatViewEvent(v:BattleView,next:PresentationEvent,now:num
  if(next.kind==='spawn'&&next.slot!==undefined&&next.spawn){if(arena[next.slot])delete healthCredits[arena[next.slot].uid];arena[next.slot]={...next.spawn};}
  if(next.kind==='attack'&&next.slot!==undefined&&next.slot!==next.casterSlot)updateHp(next.slot);
  if(next.slot!==undefined&&arena[next.slot]?.uid===next.uid&&next.targetEffects)arena[next.slot].effects=next.targetEffects;
- return {normalHitReceipts,healthCredits,actions,petHurt:next.petUid&&next.source==='monster'?next:v.petHurt,petEntities:next.petEntities||v.petEntities,summonEntities:next.summonEntities||v.summonEntities,hp:staged||!freshVitals?v.hp:next.hp,mp:staged||!freshVitals?v.mp:next.mp,vitalSeq:staged?v.vitalSeq:vitalSeq,arena,target,attack:next.kind==='attack'&&next.visualPhase!=='impact'?next:v.attack,magic:next.kind==='magic'?next:v.magic,hurt:next.kind==='hurt'?next:v.hurt,casts:[...(v.casts||[]).filter(f=>now-f.shownAt<magicEffectLifetime(f)),...(!staged&&!next.visualEffectPreviewed&&!next.miss&&!hasSpellVisual(v,next)&&(next.skill!=='sk_shock_stun'||next.kind==='magic'&&next.effect==='狀態命中')&&((next.weaponProc&&!!lineageWEffectDefinition(next.skill))||(next.kind==='magic'&&(next.source==='monster'||next.slot!==undefined||!next.skill||(raw.skills as any)[next.skill]?.type!=='atk'))||(next.kind==='attack'&&next.skill&&!next.miss&&next.source!=='poison'&&next.source!=='summon'))?[{...next,visualCastAt:undefined,shownAt:now}]:[])],floats:(['attack','hurt','heal'].includes(next.kind)||(next.kind==='state'&&next.skill==='sk_shock_stun'&&next.effect==='衝暈失敗'&&!next.visualEffectPreviewed))?addCombatFloat(v.floats,next,now):v.floats.filter(f=>now-f.shownAt<800)};
+ return {normalHitReceipts,healthCredits,actions,petHurt:next.petUid&&next.source==='monster'?next:v.petHurt,petEntities:next.petEntities||v.petEntities,summonEntities:next.summonEntities||v.summonEntities,hp:staged||!freshVitals?v.hp:next.hp,mp:staged||!freshVitals?v.mp:next.mp,vitalSeq:staged?v.vitalSeq:vitalSeq,arena,target,attack:next.kind==='attack'&&next.visualPhase!=='impact'?next:v.attack,magic:next.kind==='magic'?next:v.magic,hurt:next.kind==='hurt'?next:v.hurt,casts:[...(v.casts||[]).filter(f=>now-f.shownAt<magicEffectLifetime(f)),...(!staged&&!next.visualEffectPreviewed&&!next.miss&&!isTripleArrow(next.skill)&&!hasSpellVisual(v,next)&&(next.skill!=='sk_shock_stun'||next.kind==='magic'&&next.effect==='狀態命中')&&((next.weaponProc&&!!lineageWEffectDefinition(next.skill))||(next.kind==='magic'&&(next.source==='monster'||next.slot!==undefined||!next.skill||(raw.skills as any)[next.skill]?.type!=='atk'))||(next.kind==='attack'&&next.skill&&!next.miss&&next.source!=='poison'&&next.source!=='summon'))?[{...next,visualCastAt:undefined,shownAt:now}]:[])],floats:(['attack','hurt','heal'].includes(next.kind)||(next.kind==='state'&&next.skill==='sk_shock_stun'&&next.effect==='衝暈失敗'&&!next.visualEffectPreviewed))?addCombatFloat(v.floats,next,now):v.floats.filter(f=>now-f.shownAt<800)};
 }
 
 
@@ -222,7 +223,7 @@ export function enqueueSunriseReplay<T extends PresentationEvent>(queued:(T&{due
   // Manual and automatic spells share each skill's animation-frame clock.
   // Manual previews anchor to click time; automatic casts to replay time.
   // Projectile spells retain their separate flight/impact clock.
-  due:e.kind==='attack'&&!!e.skill&&e.skill!=='sk_elf_triple'&&!e.weaponProc&&(!isFlyingMagic(e)||!!e.visualEffectPreviewed)
+  due:e.kind==='attack'&&!!e.skill&&!isTripleArrow(e.skill)&&!e.weaponProc&&(!isFlyingMagic(e)||!!e.visualEffectPreviewed)
    ?Math.max(now,(targetSeq.has(e.seq)?starts.get(castKey(e))!:e.manual&&typeof e.visualCastAt==='number'?e.visualCastAt:starts.get(castKey(e))??e.at+offset)+spellImpactMs(e))
    :starts.get(castKey(e))??e.at+offset
  }))].sort((a,b)=>a.due-b.due||a.seq-b.seq),offset};
