@@ -12,7 +12,6 @@ import {retireItems,isRetiredItem} from './retired-items';
 import {autoCompanionHaste,companionHasteFactor,giveCompanionHaste} from './companion-haste';
 import {bindPetRoster,enforcePetCarry,controlledPet,deployPet,PET_ITEMS,usePetItem,capturePet,evolvePet} from './pet-roster';
 import {shareSkillBuff,partyMembers,partySkillStats,partySkillDamage,syncPartyHealth} from './skill-party';
-import {carryLoad} from './carry-load';
 import {W_SKILLS,canonicalWSkill,wPassiveBonuses,wSkill,learnedWSkills,normalizeWSkillBuffs} from './lineagew-skill-data';
 import {castWSkill,applyWSkillStatus,type WSkillHooks} from './lineagew-skill-runtime';
 import {clampAlignment,changeAlignment,alignmentKillDelta,justiceSpellError} from './alignment';
@@ -155,8 +154,7 @@ export function stats(c:Character,now=Date.now()){
  const otherSpeedPct=((1+b.atkSpdPct/100)/Math.pow(1.33,speedStages.size)-1)*100-legacySpeedBonus;
  b.attackInterval=Math.max(0.2,(w?.spd||1.2)/(1+(form?otherSpeedPct:b.atkSpdPct)/100)*(form?polyHaste:1)*(1-b.polySpeedPct/100));
  b.protectionShield=Math.min(b.maxShield||0,c.protectionShield??b.maxShield??0);
- const load=carryLoad(c,b);b.carriedWeight=load.weight;b.carryCapacity=load.capacity;b.carryRegen=load.regen;
- if(load.regen<1){const recovery=dollBonus(c.doll&&dollDefinition(c)?.enabled?dollDefinition(c):undefined);for(const key of ['hpR','mpR'])b[key]=(recovery[key]||0)+Math.max(0,b[key]-(recovery[key]||0))*load.regen;}
+ // Carry weight is not used: bag contents never slow regeneration or respawn waits.
  if(c.petRosterVersion===1)enforcePetCarry(c,b.cha);
  return b;
 }
