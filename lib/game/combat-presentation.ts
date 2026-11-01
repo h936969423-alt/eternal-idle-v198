@@ -61,7 +61,7 @@ export function enqueueCombatReplay<T extends CombatEvent>(queued:(T&{due:number
  return {queue:[...carried,...(urgentOffset===null?scheduleReplay(added,now):added)].sort((a,b)=>a.due-b.due||a.seq-b.seq),offset};
 }
 
-export type BattleView={normalHitReceipts?:string[];healthCredits?:Record<string,number>;actions?:(CombatEvent&{shownAt:number})[];petHurt?:CombatEvent;petEntities?:PetSnapshot[];summonEntities?:SummonEntity[];hp:number;mp:number;arena:Encounter[];target?:number;attack?:CombatEvent;magic?:CombatEvent;hurt?:CombatEvent;casts?:(CombatEvent&{shownAt:number})[];floats:CombatFloat[]};
+export type BattleView={vitalSeq?:number;normalHitReceipts?:string[];healthCredits?:Record<string,number>;actions?:(CombatEvent&{shownAt:number})[];petHurt?:CombatEvent;petEntities?:PetSnapshot[];summonEntities?:SummonEntity[];hp:number;mp:number;arena:Encounter[];target?:number;attack?:CombatEvent;magic?:CombatEvent;hurt?:CombatEvent;casts?:(CombatEvent&{shownAt:number})[];floats:CombatFloat[]};
 export type TimedCombatEvent=PresentationEvent&{due:number};
 /** Flight deadlines use the display clock and never move with a later network packet. */
 /** Longest a spell on another monster waits for earlier normal hits to be shown. */
@@ -84,7 +84,7 @@ export function drainCombatPresentation(queue:TimedCombatEvent[],pending:TimedCo
   // A spell on another monster cannot overtake earlier normal hits still waiting for
   // their displayed swing: the server only moved to that monster after those hits
   // (usually after killing the first one). Same-target spells are not held.
-  if(!impactFirst&&allowPhysical&&next.skill&&!next.weaponProc&&next.slot!==undefined&&next.source!=='monster'&&next.source!=='pet'&&next.source!=='summon'&&next.source!=='doll'){
+  if(!impactFirst&&allowPhysical&&next.skill&&next.skill!=='sk_elf_triple'&&next.skill!=='lw_skill_450'&&!next.weaponProc&&next.slot!==undefined&&next.source!=='monster'&&next.source!=='pet'&&next.source!=='summon'&&next.source!=='doll'){
    const stale=(e:TimedCombatEvent)=>e.seq<next.seq&&e.kind==='attack'&&!e.skill&&!e.weaponProc&&(!e.source||e.source==='physical')&&e.uid!==next.uid;
    if(queue.some(stale)){
     // Wait briefly for those swings; never longer than SPELL_ORDER_HOLD_MS, or a
@@ -161,7 +161,11 @@ export function applyCombatViewEvent(v:BattleView,next:PresentationEvent,now:num
  const target=playerEventTarget(v.target,next);
  if(staged&&(next.slot===undefined||v.arena[next.slot]?.uid!==next.uid))return v;
  const actions=[...(v.actions||[]).filter(e=>now-e.shownAt<5000&&(e.seq!==next.seq||e.visualPhase!==next.visualPhase)),{...next,shownAt:now}];
- if(next.visualPhase==='launch')return {...v,normalHitReceipts,actions,hp:next.skill==='sk_elf_triple'?v.hp:next.hp,mp:next.skill==='sk_elf_triple'?v.mp:next.mp,attack:next,target};
+ // HP/MP snapshots only move forward in server order: a skill shown early (e.g. Triple Arrow) must not be
+ // undone by an older normal hit that is displayed later (MP 92→80→92).
+ const freshVitals=(next.seq??0)>=(v.vitalSeq??-Infinity),vitalSeq=freshVitals?Math.max(v.vitalSeq??-Infinity,next.seq??0):v.vitalSeq;
+ const triple=next.skill==='sk_elf_triple'||next.skill==='lw_skill_450';
+ if(next.visualPhase==='launch')return {...v,normalHitReceipts,actions,hp:triple||!freshVitals?v.hp:next.hp,mp:triple||!freshVitals?v.mp:next.mp,vitalSeq:triple?v.vitalSeq:vitalSeq,attack:next,target};
  const arena=v.arena.map(m=>({...m})),healthCredits={...v.healthCredits};
  const updateHp=(slot:number)=>{const m=arena[slot];if(!m||m.uid!==next.uid||next.mobHp===undefined)return;
   const delta=next.visualHpDelta??(next.kind==='attack'?-(next.miss?0:next.damage||0):undefined);
@@ -175,7 +179,7 @@ export function applyCombatViewEvent(v:BattleView,next:PresentationEvent,now:num
  if(next.kind==='spawn'&&next.slot!==undefined&&next.spawn){if(arena[next.slot])delete healthCredits[arena[next.slot].uid];arena[next.slot]={...next.spawn};}
  if(next.kind==='attack'&&next.slot!==undefined&&next.slot!==next.casterSlot)updateHp(next.slot);
  if(next.slot!==undefined&&arena[next.slot]?.uid===next.uid&&next.targetEffects)arena[next.slot].effects=next.targetEffects;
- return {normalHitReceipts,healthCredits,actions,petHurt:next.petUid&&next.source==='monster'?next:v.petHurt,petEntities:next.petEntities||v.petEntities,summonEntities:next.summonEntities||v.summonEntities,hp:staged?v.hp:next.hp,mp:staged?v.mp:next.mp,arena,target,attack:next.kind==='attack'&&next.visualPhase!=='impact'?next:v.attack,magic:next.kind==='magic'?next:v.magic,hurt:next.kind==='hurt'?next:v.hurt,casts:[...(v.casts||[]).filter(f=>now-f.shownAt<magicEffectLifetime(f)),...(!staged&&!next.visualEffectPreviewed&&!next.miss&&!hasSpellVisual(v,next)&&(next.skill!=='sk_shock_stun'||next.kind==='magic'&&next.effect==='狀態命中')&&((next.weaponProc&&!!lineageWEffectDefinition(next.skill))||(next.kind==='magic'&&(next.source==='monster'||next.slot!==undefined||!next.skill||(raw.skills as any)[next.skill]?.type!=='atk'))||(next.kind==='attack'&&next.skill&&!next.miss&&next.source!=='poison'&&next.source!=='summon'))?[{...next,visualCastAt:undefined,shownAt:now}]:[])],floats:(['attack','hurt','heal'].includes(next.kind)||(next.kind==='state'&&next.skill==='sk_shock_stun'&&next.effect==='衝暈失敗'&&!next.visualEffectPreviewed))?addCombatFloat(v.floats,next,now):v.floats.filter(f=>now-f.shownAt<800)};
+ return {normalHitReceipts,healthCredits,actions,petHurt:next.petUid&&next.source==='monster'?next:v.petHurt,petEntities:next.petEntities||v.petEntities,summonEntities:next.summonEntities||v.summonEntities,hp:staged||!freshVitals?v.hp:next.hp,mp:staged||!freshVitals?v.mp:next.mp,vitalSeq:staged?v.vitalSeq:vitalSeq,arena,target,attack:next.kind==='attack'&&next.visualPhase!=='impact'?next:v.attack,magic:next.kind==='magic'?next:v.magic,hurt:next.kind==='hurt'?next:v.hurt,casts:[...(v.casts||[]).filter(f=>now-f.shownAt<magicEffectLifetime(f)),...(!staged&&!next.visualEffectPreviewed&&!next.miss&&!hasSpellVisual(v,next)&&(next.skill!=='sk_shock_stun'||next.kind==='magic'&&next.effect==='狀態命中')&&((next.weaponProc&&!!lineageWEffectDefinition(next.skill))||(next.kind==='magic'&&(next.source==='monster'||next.slot!==undefined||!next.skill||(raw.skills as any)[next.skill]?.type!=='atk'))||(next.kind==='attack'&&next.skill&&!next.miss&&next.source!=='poison'&&next.source!=='summon'))?[{...next,visualCastAt:undefined,shownAt:now}]:[])],floats:(['attack','hurt','heal'].includes(next.kind)||(next.kind==='state'&&next.skill==='sk_shock_stun'&&next.effect==='衝暈失敗'&&!next.visualEffectPreviewed))?addCombatFloat(v.floats,next,now):v.floats.filter(f=>now-f.shownAt<800)};
 }
 
 

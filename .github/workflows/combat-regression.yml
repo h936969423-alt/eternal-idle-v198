@@ -63,4 +63,6 @@ jobs:
           node scripts/test-gm-monster-combat-stats.cjs
           node scripts/test-companion-kill-order.cjs
           node scripts/test-build-version.cjs
+          node scripts/test-triple-arrow-rules.cjs
+          node scripts/test-triple-presentation.cjs
 

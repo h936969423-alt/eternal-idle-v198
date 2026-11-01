@@ -2,7 +2,7 @@ import {withSkillCooldown} from './skill-cooldown';
 import {W_SKILLS,canonicalWSkill,learnedWSkills,wElementAllowed,wBuffModifiers,wUpgradeScale} from './lineagew-skill-data';
 import type {Character,Encounter,CombatEvent} from './engine';
 import {justiceSpellError,justiceHealMultiplier} from './alignment';
-export type WSkillHooks={definition:(target:Encounter)=>any;physical:(target:Encounter,forceCritical?:boolean)=>{damage:number;miss:boolean};magic:(s:any,target:Encounter)=>number;hit:(target:Encounter,damage:number,skill:string,source:'physical'|'magic')=>number;heal:(amount:number)=>number;event:(kind:CombatEvent['kind'],data:Partial<CombatEvent>)=>void;teleport:()=>void;party:()=>{hp:number;maxHp:number;apply:(value:number)=>void}[];shareBuff?:(id:string,buff:{until:number;d:Record<string,number>})=>void;consumeArrow:()=>void;weapon:any;shield:any;log:(text:string)=>void};
+export type WSkillHooks={definition:(target:Encounter)=>any;normalAttack?:(target:Encounter,shot:number)=>number;physical:(target:Encounter,forceCritical?:boolean)=>{damage:number;miss:boolean};magic:(s:any,target:Encounter)=>number;hit:(target:Encounter,damage:number,skill:string,source:'physical'|'magic')=>number;heal:(amount:number)=>number;event:(kind:CombatEvent['kind'],data:Partial<CombatEvent>)=>void;teleport:()=>void;party:()=>{hp:number;maxHp:number;apply:(value:number)=>void}[];shareBuff?:(id:string,buff:{until:number;d:Record<string,number>})=>void;consumeArrow:()=>void;weapon:any;shield:any;log:(text:string)=>void};
 const blocked=['stun','freeze','stone','silence','paralyze','sleep'];
 const control=new Set(['stun','freeze','paralyze','sleep','silence']);
 export function applyWSkillStatus(target:Encounter,definition:any,status:any,now:number,rng:()=>number,level:number,hit=0){
@@ -82,6 +82,8 @@ function performWSkill(c:Character,input:string,b:Record<string,number>,h:WSkill
    }else{
     const hits=s.hits||1;
     for(let j=0;j<hits&&t.hp>0;j++){
+     // Triple Arrow: each shot is one complete normal attack (own hit and critical roll), no equipment effects.
+     if(id==='lw_skill_450'&&h.normalAttack){total+=h.normalAttack(t,j);continue;}
      let amount=0,miss=false;
      if(s.dmgType==='physical'){const p=h.physical(t,id==='lw_skill_9620');miss=p.miss;amount=miss?0:Math.max(1,(p.damage+(s.skillAddDmg||0))*scale);}
      else if(s.dmgDice)amount=h.magic(s,t)*scale;

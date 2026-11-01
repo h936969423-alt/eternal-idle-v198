@@ -35,8 +35,13 @@ test('explicit AoE weapon magic keeps its intended victims, while main physical 
  assert.deepEqual(after.attacks.filter(e=>e.weaponProc).map(e=>e.uid),['A','B','C']);
  assert.equal(after.attacks.filter(e=>e.source==='doll').length,0);
 });
-test('triple-arrow attached magic keeps the existing single-target restriction',()=>{
- const after=run({magic:{type:'atk',target:'all',n:'AoE'},skill:'sk_elf_triple'});assert.deepEqual(after.attacks.map(e=>e.uid),['A','A']);assert.equal(after.c.arena[1].hp,10);
+test('triple-arrow shots trigger no equipment effects: no weapon magic, no doll attack',()=>{
+ for(const skill of ['sk_elf_triple','lw_skill_450']){
+  const after=run({magic:{type:'atk',target:'all',n:'AoE'},skill});
+  assert.deepEqual(after.attacks.map(e=>e.uid),['A'],skill+': only the arrow itself');
+  assert.equal(after.attacks.filter(e=>e.weaponProc||e.source==='doll').length,0,skill);
+  assert.equal(after.c.arena[1].hp,10);assert.equal(after.c.arena[2].hp,10);
+ }
 });
 test('visible secondary-source captions distinguish real extra damage without changing damage numbers',()=>{
  assert.equal(damageSourceLabel({source:'physical',kind:'attack'}),undefined);

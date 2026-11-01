@@ -258,9 +258,11 @@ function award(c:Character,mobId:string,rng:()=>number,now:number){const dead=c.
 }
 /** A complete weapon attack; resources and automatic-cycle state belong to the caller. */
 function normalWeaponAttack(c:Character,target:Encounter,now:number,rng:()=>number,arrow?:any,skill?:string,current=stats(c,now)){
+ // Triple Arrow: three full normal attacks (own hit and crit rolls) but no equipment effects at all.
+ const plain=skill==='sk_elf_triple'||skill==='lw_skill_450';
  const m=monsterData(c,target.id,target),weapon=DATA.items[c.equipment.weapon?.id||''],strike=weapon?.magicProjectile?lineageWProjectileStrike(c,weapon,current,m,rng):playerStrike(c,current,m,rng,arrow,now);let dealt=0;
  if(!strike.miss){
-  let damage=strike.damage+elementalWeaponDamage(c,m.e||'none')*(c.buffs.sk_elf_flamesoul?.until>now&&!current.wpnRanged?1.2:1);
+  let damage=strike.damage+(plain?0:elementalWeaponDamage(c,m.e||'none')*(c.buffs.sk_elf_flamesoul?.until>now&&!current.wpnRanged?1.2:1));
   if(current.invisible)for(const id of Object.keys(c.buffs))if(c.buffs[id].d.invisible)delete c.buffs[id];
   damageMonster(c,Math.max(1,damage*weaponElementMultiplier(c,m.e||'none')*(m.dmgTakenMult||1)),now,rng,skill);
   dealt=c.lastHit;
@@ -273,13 +275,13 @@ attack.critical=strike.critical;attack.heavy=strike.heavy;attack.graze=strike.gr
  }
  if(!strike.miss&&dealt>0&&target.effects?.counter?.until!>now){const reflected=lineageWCounterDamage(dealt,target.effects!.counter.value,(current.ignoreCounterPct||0)+(lineageWProfile(weapon,c.equipment.weapon?.en||0)?.ignoreCounter||0),rng);if(reflected>0){const hit=lineageWIncomingDamage(c,current,reflected,now,rng);emitLineageWProtection(c,hit,now);const damage=Math.min(c.hp,hit.damage);c.hp-=damage;event(c,'hurt',now,{slot:c.arenaTarget||0,uid:target.uid,mob:target.id,damage,effectName:'反擊'});if(c.hp<=0){defeat(c,now,rng);return dealt;}}}
  if(!strike.miss&&target.hp>0&&c.buffs.sk_dark_poison?.until>now&&rng()<.5)applySpellStatus(c,target,m,{kind:'poison',force:true,dur:30,dmg:[1,10],tick:3},'sk_dark_poison',current,now,rng);
- if(!strike.miss)applyLineageWAbsorption(c,target,dealt,now,rng);
- if(!strike.miss&&target.hp>0){applyLineageWEquipmentProcs(c,target,now,rng);}
- if(!strike.miss&&target.hp>0){absorbMythicMana(c,target,now,rng);applyMythicWeaponProcs(c,target,now,rng);}
+ if(!strike.miss&&!plain)applyLineageWAbsorption(c,target,dealt,now,rng);
+ if(!strike.miss&&!plain&&target.hp>0){applyLineageWEquipmentProcs(c,target,now,rng);}
+ if(!strike.miss&&!plain&&target.hp>0){absorbMythicMana(c,target,now,rng);applyMythicWeaponProcs(c,target,now,rng);}
  // Attached effects belong to this swing's original encounter. award() may
  // select the next living monster, but that monster belongs to the next swing.
- if(target.hp>0)applyWeaponMagic(c,now,rng,target,skill==='sk_elf_triple');
- applyDollAttack(c,now,rng,target);
+ if(!plain&&target.hp>0)applyWeaponMagic(c,now,rng,target,false);
+ if(!plain)applyDollAttack(c,now,rng,target);
  if(!skill&&dealt>0&&(current.lwLifeStealPct||current.lwCleave||current.lwRootProc||current.lwWeakProc||current.lwExtraStrikeChance||current.lwStunProc))wNormalEffects(c,target,dealt,current,now,rng);
  return dealt;
 }
@@ -381,6 +383,7 @@ function wHooks(c:Character,now:number,rng:()=>number,silent=false):WSkillHooks{
  const b=stats(c,now);let castArrow:any;
  const locked=<T,>(target:Encounter,fn:()=>T):T=>{const slot=c.arena?.indexOf(target)??-1;if(slot<0)throw Error('目標已離場');const previous=c.arenaTarget||0;c.arenaTarget=slot;syncTarget(c);try{return fn();}finally{c.arenaTarget=previous;syncTarget(c);}};
  return {definition:t=>monsterData(c,t.id,t),weapon:DATA.items[baseItem(c.equipment.weapon?.id||'')],shield:DATA.items[baseItem(c.equipment.shield?.id||'')],
+  normalAttack:(t,shot)=>{if(t.hp<=0||!c.arena?.includes(t))return 0;return locked(t,()=>normalWeaponAttack(c,t,now+shot*TRIPLE_SHOT_GAP_MS,rng,castArrow,'lw_skill_450'));},
   physical:(t,forceCritical)=>locked(t,()=>playerStrike(c,b,monsterData(c,t.id,t),rng,castArrow,now,{skill:true,forceCrit:forceCritical,forceHit:forceCritical,forceHeavy:forceCritical})),
   magic:(s,t)=>spellDamage(s,b,{...monsterData(c,t.id,t),mr:t.effects?.mrDown?.until!>now?Math.max(0,(monsterData(c,t.id,t).mr||0)-t.effects!.mrDown.value):monsterData(c,t.id,t).mr},rng,c.cls),
   hit:(t,amount,id,source)=>{if(t.hp<=0||!c.arena?.includes(t))return 0;return locked(t,()=>{c.lastHit=0;damageMonster(c,amount,now,rng,id,source);return c.lastHit;});},
@@ -684,6 +687,9 @@ function autoCastSpells(c:Character,cfg:AutoConfig,now:number,rng:()=>number){
  if(c.openedUid!==uid){c.openedUid=uid;if(cfg.opener&&c.mp/Math.max(1,b.maxMp)*100>=cfg.openerMpAbove&&tryCast(cfg.opener))return;}
  if(cfg.attack&&c.mp/Math.max(1,b.maxMp)*100>=cfg.mpAbove)tryCast(cfg.attack);
 }
+/** Auto supplies and buffs renew a little before expiry, so the status icons never blink out
+ * between the client's clock passing the old expiry and the next server tick. */
+const AUTO_RENEW_LEAD_MS=3000;
 function second(c:Character,now:number,rng:()=>number,rules:WorldRules,duration=1000){const begin=now-duration,dt=duration/1000;ensureArena(c,rng,begin);if(c.running&&c.companionHasteAuto)for(const message of autoCompanionHaste(c,companionCounts(c,begin),begin))log(c,message,'magic',begin);const dollMessage=renewDoll(c,begin);if(dollMessage)log(c,dollMessage,'info',begin);const polyMessage=tickPolymorph(c,begin,rng);if(polyMessage)log(c,polyMessage,'magic',begin);const b=stats(c,begin);recoverLineageWShield(c,b,begin,now);c.hp=Math.min(c.hp,b.maxHp);c.mp=Math.min(c.mp,b.maxMp);const dollHp=c.hp,dollMp=c.mp;dollRecovery(c,begin,now,b.maxHp,b.maxMp);if(c.hp>dollHp||c.mp>dollMp)event(c,'magic',begin,{source:'doll',dollKind:'recovery',effectName:'娃娃恢復',effect:`HP +${c.hp-dollHp} · MP +${c.mp-dollMp}`});const doll=dollBonus(c.doll&&dollDefinition(c)?.enabled?dollDefinition(c):undefined),hpTicks=Math.floor(now/16000)-Math.floor(begin/16000),mpInterval=Math.max(1000,16000-Math.floor(b.wis/10)*1000),mpTicks=Math.floor(now/mpInterval)-Math.floor(begin/mpInterval);c.hp=Math.min(b.maxHp,c.hp+(doll.hpR||0)*hpTicks);c.mp=Math.min(b.maxMp,c.mp+(doll.mpR||0)*mpTicks);
  expireDragonSummons(c,begin);recoverArena(c,begin);petMaintenance(c,begin,b);
  if(Math.floor(now/5000)>Math.floor(begin/5000))for(const m of c.arena||[]){if(!m.definition&&m.hp>0&&!(m.effects?.noRegen?.until!>now)){const gain=playableBoss(c.zone)?0:DATA.mobs[m.id].regenHp||0;m.hp=Math.min(m.maxHp||DATA.mobs[m.id].hp,m.hp+gain*(m.effects?.muddywater?.until!>now?.5:1));}}syncTarget(c);
@@ -692,10 +698,10 @@ function second(c:Character,now:number,rng:()=>number,rules:WorldRules,duration=
  if(!c.arena?.length){c.running=false;return;}
  if(c.buffs.sk_heal_energy_storm?.until>begin&&Math.floor(now/3000)>Math.floor(begin/3000))c.hp=Math.min(b.maxHp,c.hp+b.hpR-(doll.hpR||0));
  selectHealingPotion(c,begin);const cfg=autoConfig(c);const antidote=autoAntidote(c,!!cfg.aux.new_item_237?.enabled,begin);if(antidote){log(c,antidote,'magic',begin);event(c,'magic',begin,{item:'new_item_237',effect:'解除中毒'});}const arrows=restockArrows(c,!!cfg.arrowBuy);if(arrows)log(c,arrows,'info',begin);if(c.autoPotion&&c.hp/b.maxHp*100<=c.threshold){try{useAutomaticItem(c,c.potion,cfg.potionDirectGold,begin,rng);}catch{}}
- for(const [id,setting] of Object.entries(cfg.aux)){if(!setting.enabled||['scroll_poly','new_item_237'].includes(id)||c.buffs[id]?.until>begin)continue;try{useAutomaticItem(c,id,setting.directGold,begin,rng);}catch{}}
+ for(const [id,setting] of Object.entries(cfg.aux)){if(!setting.enabled||['scroll_poly','new_item_237'].includes(id)||c.buffs[id]?.until>begin+AUTO_RENEW_LEAD_MS)continue;try{useAutomaticItem(c,id,setting.directGold,begin,rng);}catch{}}
  if(Math.floor(now/5000)>Math.floor(begin/5000)){const hp=c.hp;if(!(c.buffs.sk_heal_energy_storm?.until>begin))c.hp=Math.min(b.maxHp,c.hp+b.hpR-(doll.hpR||0));c.mp=Math.min(b.maxMp,c.mp+b.mpR-(doll.mpR||0));if(c.hp>hp)event(c,'heal',begin,{damage:c.hp-hp});}
 
- if(Math.floor(now/1000)>Math.floor(begin/1000))for(const k of cfg.buffs){const sk=DATA.skills[k];if(sk?.type==='buff'&&c.buffs[k]?.until<=begin||sk?.type==='buff'&&!c.buffs[k]){try{cast(c,k,begin,rng,true);}catch{}}}
+ if(Math.floor(now/1000)>Math.floor(begin/1000))for(const k of cfg.buffs){const sk=DATA.skills[k];if(sk?.type==='buff'&&c.buffs[k]?.until<=begin+AUTO_RENEW_LEAD_MS||sk?.type==='buff'&&!c.buffs[k]){try{cast(c,k,begin,rng,true);}catch{}}}
 
  tickSpecialCombat(c,begin-duration,begin,rng);if(!c.running)return;
  const timeline:{time:number;resume?:boolean;dragonDotKind?:string;poisonTick?:boolean;healTick?:boolean;autoSpell?:boolean;slot?:number;uid?:string;respawn?:boolean;monsterMagic?:string;petName?:string;petMagic?:boolean;summonUid?:string}[]=[];const interval=b.attackInterval;c.atkClock=rescaleAttackClock(c.atkClock,c.previousAttackInterval,interval);c.previousAttackInterval=interval;for(let t=interval-c.atkClock;t<=dt+1e-9;t+=interval)timeline.push({time:Math.max(0,t)});c.atkClock=(c.atkClock+dt)%interval;let rhythmFrom:number|undefined;
