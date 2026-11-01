@@ -7,7 +7,7 @@ import {baseItem} from '@/lib/game/gear';
 import {petSnapshot} from '@/lib/game/engine';
 import {replayHasGap,replayFrameExpired} from '@/lib/game/replay-timing';
 import { combatSound } from './combat-audio';
-import {localHitOwner,allowLocalHit,clearLocalHits,queueLocalHitTargets,currentLocalSwing,settleLocalHit} from '@/lib/game/local-hit-sync';
+import {localHitOwner,allowLocalHit,clearLocalHits,queueLocalHitTargets,syncLocalHitTargets,currentLocalSwing,settleLocalHit} from '@/lib/game/local-hit-sync';
 import {applyCombatViewEvent,drainCombatPresentation,enqueueSunriseReplay,prepareCombatHealth,type BattleView,type TimedCombatEvent} from '@/lib/game/combat-presentation';
 export type {BattleView} from '@/lib/game/combat-presentation';
 export function useCombatReplay(c:Character|null,sound:boolean){
@@ -30,11 +30,13 @@ export function useCombatReplay(c:Character|null,sound:boolean){
    if(restore||replayFrameExpired(lastFrame,now)){
     restore=false;queue.current=[];impacts.current=[];offset.current=null;
     const current=latest.current;
+    // The dropped queue's swing targets must go too, or the next swing aims at a hit that no longer exists.
+    if(current)clearLocalHits(localHitOwner(current.id,current.zone));
     if(current){seen.current=current.eventSeq||0;health.current=new Map((current.arena||[]).map(m=>[m.uid,m.hp]));setView({petEntities:petSnapshot(current,Date.now()),summonEntities:current.summonContract?.entities||[],hp:current.hp,mp:current.mp,target:current.arenaTarget||0,arena:(current.arena||[]).map(m=>({...m})),floats:[]});}
    }
    lastFrame=now;
    const character=latest.current;
-   if(character)queueLocalHitTargets(localHitOwner(character.id,character.zone),queue.current);
+   if(character)syncLocalHitTargets(localHitOwner(character.id,character.zone),queue.current);
    const ready=drainCombatPresentation(queue.current,impacts.current,now,!!(raw.items as any)[baseItem(latest.current?.equipment.weapon?.id||'')]?.isBow,event=>{
     const root=document.querySelector('.static-arena'),player=root?.querySelector(event.source==='doll'?'.doll-companion-art':'.character-sprite'),monster=root?.querySelector(`[data-monster-slot="${event.slot}"] .four-monster-art`);
     if(!player||!monster)return magicFlightMs(320);
