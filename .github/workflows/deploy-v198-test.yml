@@ -4,6 +4,11 @@ on:
   push:
     branches: [main]
     paths:
+      # Any app, component, hook or library change must reach the test site.
+      - 'app/**'
+      - 'components/**'
+      - 'hooks/**'
+      - 'lib/**'
       - 'lib/game/**'
       - 'public/assets/four-dragons/**'
       - 'scripts/verify-four-dragon-assets.mjs'
