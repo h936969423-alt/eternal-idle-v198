@@ -13,7 +13,6 @@ function harness(withActor=true){
  const ctx={exports:mod.exports,document,performance:{now:()=>clock},Date:{now:()=>epoch},requestAnimationFrame:f=>{raf.set(++next,f);return next;},cancelAnimationFrame:id=>raf.delete(id),setTimeout:(f,ms)=>{timers.set(++next,{f,due:clock+ms});return next;},clearTimeout:id=>timers.delete(id),require:id=>{
   if(id==='react')return react;if(id==='react/jsx-runtime')return jsx;
   if(id.includes('magic-visuals'))return visuals;
-  if(id.includes('monster-anchor'))return require('../app/monster-anchor.ts');
   if(id.includes('spell-effect-layout'))return require('../lib/game/spell-effect-layout.ts');
   if(id.includes('scene-presentation'))return {sceneBlend:v=>v==='screen'?'screen':'normal'};
   if(id.includes('lineagew-equipment-effects'))return {lineageWEffectDefinition:()=>null};
@@ -29,7 +28,7 @@ function harness(withActor=true){
 }
 for(const skill of ['sk_meteor','sk_disintegrate']){
  const h=harness(),props={event:{seq:1,kind:'attack',skill,slot:2,uid:'m2',hp:100,mp:50}};
- h.render(props);assert.ok(h.queries.includes('[data-monster-slot="2"] :is(.four-monster-art:not(:has(>.sequence-art)),.four-monster-art>.sequence-art)'),'root-mounted spell targets its own monster slot');let nodes=h.atlases(h.render(props));assert.equal(nodes.length,1,'composited source layers render in one atlas');assert.equal(h.images(h.render(props)).length,0,'frames do not swap image URLs');
+ h.render(props);assert.ok(h.queries.includes('[data-monster-slot="2"] .four-monster-art'),'root-mounted spell targets its own monster slot');let nodes=h.atlases(h.render(props));assert.equal(nodes.length,1,'composited source layers render in one atlas');assert.equal(h.images(h.render(props)).length,0,'frames do not swap image URLs');
  const start=nodes[0].props.style.backgroundPosition;h.advance(100);nodes=h.atlases(h.render(props));assert.notEqual(nodes[0].props.style.backgroundPosition,start,'atlas advances on the shared clock');
  assert.equal(nodes[0].props.style.transform,'none');assert.equal(nodes[0].props.style.maxWidth,'none');
  h.advance(1400);assert.equal(h.render(props),null,'completed effect is removed');assert.equal(h.raf.size,0);assert.equal(h.timers.size,0);h.unmount();assert.equal(h.listeners.size,0);
