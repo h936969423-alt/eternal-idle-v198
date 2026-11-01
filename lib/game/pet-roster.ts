@@ -13,6 +13,8 @@ for(const [key,n,price] of [['evolve','進化果實',100000],['victory','勝利�
 for(const [key,form] of [['naughty','頑皮龍'],['playful','淘氣龍'],['curse','詛咒蜥蜴'],['doom','厄運蜥蜴']] as const)PET_ITEMS['sunrise_pet_egg_'+key]={n:form+'蛋',type:'cons',p:200000,weight:1,petEgg:form,d:'孵化後送入寵物保管。'};
 Object.assign(PET_ITEMS,petGear);
 Object.assign(raw.items,PET_ITEMS);
+// Meat now grants the general lure (see engine potion); describe it at runtime so the locked item catalogue stays unchanged.
+for(const item of Object.values(raw.items as Record<string,any>))if(item?.eff==='meat')item.d='食用後獲得一般誘捕狀態300秒：擊殺狼、牧羊犬、杜賓狗、哈士奇、熊等動物可取得寵物（與一般誘捕藥劑相同，捕獲後消耗）';
 
 /** Account save is authoritative. Never merge stale character mirrors back over the roster. */
 export function bindPetRoster(save:Save,now:number){
