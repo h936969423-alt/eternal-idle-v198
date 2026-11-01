@@ -34,5 +34,14 @@ try{
  }
  const D=require(path.join(dir,'damage-display.js'));
  assert.equal(D.damageDisplay({damage:12,source:'physical',skill:'lw_skill_450',kind:'attack'}).text,'-12','plain red number');
- console.log('PASS triple presentation: no HP/MP rollback from late older events, no forced burst, stacked float column, no per-arrow skill ring, plain numbers');
+ for(const skill of ['lw_skill_450','sk_elf_triple'])assert.equal(D.damageSourceLabel({source:'physical',skill,kind:'attack'}),undefined,skill+': no 技能 caption');
+ assert.equal(D.damageSourceLabel({source:'physical',skill:'sk_fireball',kind:'attack'}),'技能','other skills keep their caption');
+ // 5. A manually cast Triple Arrow starts now (70ms apart), not after the network buffer.
+ const now=50000,at=40000,offset=1400;
+ const shots=[0,1,2].map(i=>({seq:30+i,at:at+i*70,kind:'attack',skill:'lw_skill_450',slot:0,uid:'A',damage:10,mobHp:400,hp:200,mp:80,source:'physical',manual:true}));
+ const q=P.enqueueSunriseReplay([],shots,now,now-at+offset).queue.filter(e=>e.kind==='attack');
+ assert.deepEqual(q.map(e=>e.due),[now,now+70,now+140],'manual triple arrows due immediately, 70ms apart');
+ const auto=P.enqueueSunriseReplay([],shots.map(e=>({...e,manual:false})),now,now-at+offset).queue.filter(e=>e.kind==='attack');
+ assert.ok(auto[0].due>now,'automatic casts still use the jitter buffer');
+ console.log('PASS triple presentation: no HP/MP rollback from late older events, no forced burst, stacked float column, no per-arrow skill ring, plain numbers, no caption, manual cast starts now');
 }finally{fs.rmSync(dir,{recursive:true,force:true});}

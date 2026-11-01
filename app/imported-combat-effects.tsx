@@ -16,11 +16,12 @@ export default function ImportedCombatEffects({c,view,arena}:{c:Character;view:B
  // Resolve only events that actually have an enabled visual, once per packet.
  const effects=useMemo(()=>!config.enabled?[]:(view.actions||[]).flatMap(e=>{
   if(e.visualPhase==='launch')return [];
-  const triple=e.kind==='magic'&&isTripleArrow(e.skill);
-  const tripleIds=triple?importedEffects.triple.filter(id=>importedEffects.entries[id].code==='11764-0'):e.kind==='attack'&&isTripleArrow(e.skill)&&!e.miss?importedEffects.triple.filter(id=>importedEffects.entries[id].code==='4394-0'):[];
+  // Triple Arrow shows only its arrows and plain numbers (afei style): no imported cast flash on the
+  // player (11764-0) and no burst on the target (4394-0).
+  const tripleIds:string[]=[];
   const clips=tripleIds.map(id=>({id,entry:importedEffects.entries[id],clip:importedEffects.clips[importedEffects.entries[id].clip]}));
   if(!clips.length)return [];
-  return [{e,clips,player:triple,lifetime:Math.max(...clips.map(x=>x.clip.count/x.clip.fps*1000))}];
+  return [{e,clips,player:e.kind==='magic',lifetime:Math.max(...clips.map(x=>x.clip.count/x.clip.fps*1000))}];
  }),[view.actions,c,config]);
  useLayoutEffect(()=>{
   const now=performance.now(),host=arena.current,live=new Set(effects.map(x=>x.e.seq));

@@ -1,4 +1,5 @@
 import type {CombatEvent} from './engine';
+import {isTripleArrow} from './projectile-timing';
 /** Secondary damage must identify its actual actor instead of resembling a
  * second normal player swing on another monster. */
 export function damageSourceLabel(e:CombatEvent){
@@ -8,6 +9,8 @@ export function damageSourceLabel(e:CombatEvent){
  if(e.source==='poison')return '中毒';
  if(e.weaponProc)return e.source==='magic'?'武器魔法':'武器附傷';
  if(e.skill==='sk_counter_barrier')return '反擊';
+ // Triple Arrow shots are plain normal attacks: plain red numbers, no caption (afei).
+ if(isTripleArrow(e.skill))return undefined;
  if(e.skill)return '技能';
  if(e.source==='magic')return '魔法';
  return undefined;
