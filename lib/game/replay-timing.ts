@@ -1,4 +1,5 @@
 import type {CombatEvent} from './engine';
+import {isTripleArrow} from './projectile-timing';
 // Buffer confirmed events briefly so variable response times do not become burst/pause playback.
 export const REPLAY_BUFFER_MS=650;
 export const REPLAY_MAX_AHEAD_MS=1500;
@@ -21,10 +22,10 @@ export function manualReplayOffset(events:Pick<CombatEvent,'at'|'manual'>[],now:
 
 /** Confirmed triple bursts should not wait behind the general jitter buffer. */
 export function tripleReplayOffset(events:Pick<CombatEvent,'at'|'kind'|'skill'>[],now:number):number|null{
- const hits=events.filter(e=>e.kind==='attack'&&e.skill==='sk_elf_triple');
+ const hits=events.filter(e=>e.kind==='attack'&&isTripleArrow(e.skill));
  if(!hits.length)return null;
  // A cast's closing magic event carries its start time, even after a lethal first hit.
- const casts=events.filter(e=>e.kind==='magic'&&e.skill==='sk_elf_triple');
+ const casts=events.filter(e=>e.kind==='magic'&&isTripleArrow(e.skill));
  const start=casts.length?Math.max(...casts.map(e=>e.at)):Math.min(...hits.map(e=>e.at));
  return now-start;
 }

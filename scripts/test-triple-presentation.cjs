@@ -21,9 +21,18 @@ try{
  let shown=[];for(let t=0;t<=1000;t+=50)shown.push(...P.drainCombatPresentation(queue,[],t,false,undefined,()=>false));
  assert.ok(!shown.some(e=>e.seq===5),'normal hit on A waits for its own swing (no forced burst)');
  assert.ok(shown.some(e=>e.seq===6),'triple arrow on B is shown');
- // 3. Float lanes: nine distinct positions, columns wide enough for three-digit numbers.
- const spots=new Set(Array.from({length:9},(_,n)=>JSON.stringify(L.combatFloatLayout(n))));
- assert.equal(spots.size,9,'nine distinct float positions');
- assert.ok(Math.abs(parseInt(L.combatFloatLayout(3).marginLeft)-parseInt(L.combatFloatLayout(0).marginLeft))>=30,'columns ≥30px apart');
- console.log('PASS triple presentation: no HP/MP rollback from late older events, no forced burst, 9 readable float spots');
+ // 3. Float lanes: one column, a line per number, so three arrows stack on their target.
+ const rows=[0,1,2,3].map(n=>L.combatFloatLayout(n));
+ assert.equal(new Set(rows.map(r=>r.marginTop)).size,4,'four distinct lines');
+ assert.ok(rows.every(r=>r.marginLeft==='0px'),'same column');
+ assert.ok(parseInt(rows[1].marginTop)-parseInt(rows[0].marginTop)>=18,'one text line apart');
+ // 4. Triple Arrow (either id) adds no per-shot skill visual, and its numbers are normal red damage.
+ for(const skill of ['lw_skill_450','sk_elf_triple']){
+  let t={hp:200,mp:92,target:0,arena:arena.map(m=>({...m})),floats:[],casts:[]};
+  t=P.applyCombatViewEvent(t,{seq:20,at:0,kind:'attack',skill,slot:0,uid:'A',damage:12,mobHp:470,hp:200,mp:80,source:'physical'},100);
+  assert.equal((t.casts||[]).length,0,skill+': no skill ring per arrow');
+ }
+ const D=require(path.join(dir,'damage-display.js'));
+ assert.equal(D.damageDisplay({damage:12,source:'physical',skill:'lw_skill_450',kind:'attack'}).text,'-12','plain red number');
+ console.log('PASS triple presentation: no HP/MP rollback from late older events, no forced burst, stacked float column, no per-arrow skill ring, plain numbers');
 }finally{fs.rmSync(dir,{recursive:true,force:true});}

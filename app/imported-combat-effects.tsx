@@ -5,6 +5,7 @@ import type {Character} from '@/lib/game/engine';
 import type {BattleView} from '@/lib/game/combat-presentation';
 import {useCombatEffects} from './combat-effects-context';
 import {MONSTER_ANCHOR} from './monster-anchor';
+import {isTripleArrow} from '@/lib/game/projectile-timing';
 export function EffectAtlas({clip,age,width=150}:{clip:EffectClip;age:number;width?:number}){
  const n=importedFrame(clip,age),scale=Math.min(width/clip.width,190/clip.height,1.5),w=clip.width*scale,h=clip.height*scale;
  return <span aria-hidden="true" style={{display:'block',width:w,height:h,backgroundImage:`url(/assets/dasu-v1/${clip.sheet})`,backgroundSize:`${clip.cols*w}px ${Math.ceil(clip.count/clip.cols)*h}px`,backgroundPosition:`-${n%clip.cols*w}px -${Math.floor(n/clip.cols)*h}px`,backgroundRepeat:'no-repeat'}}/>;
@@ -15,8 +16,8 @@ export default function ImportedCombatEffects({c,view,arena}:{c:Character;view:B
  // Resolve only events that actually have an enabled visual, once per packet.
  const effects=useMemo(()=>!config.enabled?[]:(view.actions||[]).flatMap(e=>{
   if(e.visualPhase==='launch')return [];
-  const triple=e.kind==='magic'&&e.skill==='sk_elf_triple';
-  const tripleIds=triple?importedEffects.triple.filter(id=>importedEffects.entries[id].code==='11764-0'):e.kind==='attack'&&e.skill==='sk_elf_triple'&&!e.miss?importedEffects.triple.filter(id=>importedEffects.entries[id].code==='4394-0'):[];
+  const triple=e.kind==='magic'&&isTripleArrow(e.skill);
+  const tripleIds=triple?importedEffects.triple.filter(id=>importedEffects.entries[id].code==='11764-0'):e.kind==='attack'&&isTripleArrow(e.skill)&&!e.miss?importedEffects.triple.filter(id=>importedEffects.entries[id].code==='4394-0'):[];
   const clips=tripleIds.map(id=>({id,entry:importedEffects.entries[id],clip:importedEffects.clips[importedEffects.entries[id].clip]}));
   if(!clips.length)return [];
   return [{e,clips,player:triple,lifetime:Math.max(...clips.map(x=>x.clip.count/x.clip.fps*1000))}];
