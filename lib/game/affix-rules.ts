@@ -1,6 +1,7 @@
 import {npcOriginalService} from './npc-config';
 import raw from './gamedata.json';
 import type {Character} from './engine';
+import {isRetiredStat} from './retired-stats';
 export type Blessing='blessed'|'cursed';
 export type Ancient='ancient'|'eternal'|'immortal'|'primordial';
 export type ElementName='fire'|'water'|'wind'|'earth';
@@ -42,7 +43,7 @@ export function affixBonus(a:Affix|undefined,type:string,dark:DarkAffix[]=[]){co
 export function elementalWeaponDamage(_c:Character,_monsterElement:string){return 0;}
 export function weaponElementMultiplier(c:Character,monsterElement:string){const e=c.affixes?.[c.equipment.weapon?.id||'']?.element?.element;if(!e)return 1;const counter:Record<string,string>={fire:'earth',water:'fire',wind:'water',earth:'wind'};return counter[e]===monsterElement?1.4:counter[monsterElement]===e?.6:1;}
 export function affixLabel(c:Character,key:string){const a=c.affixes?.[key];return [a&&a.key!=='families'?`${a.name} ${a.value>=0?'+':''}${a.value}（舊版）`:null,a?.attrMagic?'★'.repeat(getAttrMagic(a)?.star||1):null,a?.element?ELEMENT_NAMES[a.element.element][a.element.tier-1]:null,a?.ancient?ANCIENT_NAMES[a.ancient]:null,a?.blessing==='blessed'?'祝福的':a?.blessing==='cursed'?'詛咒的':null,...(c.darkAffixes?.[key]||[]).map(d=>`${d.tier==='gold'?'暗金':d.tier==='blue'?'藍':'灰'} ${d.name}+${d.value}`)].filter(Boolean).join(' · ');}
-export function blessingLines(c:Character,key:string){const i=items[base(key)],a=c.affixes?.[key];if(!i)return [];const lines:{name:string;text:string;className?:string}[]=[];const text=(b:Record<string,number>)=>Object.entries(b).map(([k,v])=>`${STAT_NAMES[k]||k} ${v>=0?'+':''}${v}`).join('、');
+export function blessingLines(c:Character,key:string){const i=items[base(key)],a=c.affixes?.[key];if(!i)return [];const lines:{name:string;text:string;className?:string}[]=[];const text=(b:Record<string,number>)=>Object.entries(b).filter(([k])=>!isRetiredStat(k)).map(([k,v])=>`${STAT_NAMES[k]||k} ${v>=0?'+':''}${v}`).join('、');
  if(a?.key&&a.key!=='families')lines.push({name:'舊版詞綴',text:text(affixBonus({key:a.key,name:a.name,value:a.value},i.type))});
  if(a?.blessing)lines.push({name:a.blessing==='blessed'?'祝福的':'詛咒的',text:text(affixBonus({key:'families',name:'',value:0,blessing:a.blessing},i.type)),className:a.blessing==='cursed'?'cursed-affix':'blessed-affix'});
  if(a?.ancient)lines.push({name:ANCIENT_NAMES[a.ancient],text:text(affixBonus({key:'families',name:'',value:0,ancient:a.ancient},i.type))});
