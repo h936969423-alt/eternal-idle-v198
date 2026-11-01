@@ -373,8 +373,10 @@ img[data-item-icon=true]{vertical-align:middle;transform:none}
 /* Ordinary monsters never draw larger than their source image (no blurry upscaling of small sprites);
    images larger than the slot still shrink to fit. The idle ground contact sits on the slot bottom,
    right above the name and health bar. */
-.game-root.display-portrait .battle-scene .static-arena .four-monster:not([data-dragon=true]):not([data-dragon-summon=true]) .four-monster-art{align-items:flex-end}
-.game-root.display-portrait .battle-scene .static-arena .four-monster:not([data-dragon=true]):not([data-dragon-summon=true]) .four-monster-art>.sequence-art{width:min(var(--frame-w,100%),100%,calc(100% * var(--frame-ar,1)));height:auto;max-width:none;flex-shrink:0;transform:translateY(var(--foot-drop,0%)) scale(var(--ordinary-monster-scale,1))}
+.game-root.display-portrait .battle-scene .static-arena .four-monster:not([data-dragon=true]):not([data-dragon-summon=true]) .four-monster-art{align-items:flex-end;container-type:inline-size}
+/* Width and height are both explicit (cqw = slot width; the slot is square) so Safari never derives the
+   height from aspect-ratio inside the flex slot. */
+.game-root.display-portrait .battle-scene .static-arena .four-monster:not([data-dragon=true]):not([data-dragon-summon=true]) .four-monster-art>.sequence-art{width:min(var(--frame-w,100cqw),100cqw,calc(100cqw * var(--frame-ar,1)));height:min(var(--frame-h,100cqw),100cqw,calc(100cqw / var(--frame-ar,1)));max-width:none;max-height:none;flex:0 0 auto;transform:translateY(var(--foot-drop,0%)) scale(var(--ordinary-monster-scale,1))}
 .game-root.display-portrait .battle-scene .static-arena .four-target{min-height:0;gap:2px}
 .game-root.display-portrait .battle-scene .static-arena .four-target .monster-ground-name{font-size:10px!important;line-height:13px}
 .game-root.display-portrait .battle-scene .static-arena .four-target [data-slot=progress]{width:65%;max-width:90px;height:3px}
