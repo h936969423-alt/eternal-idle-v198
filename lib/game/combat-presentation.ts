@@ -90,7 +90,8 @@ export function drainCombatPresentation(queue:TimedCombatEvent[],pending:TimedCo
     const since=(next as TimedCombatEvent&{orderHeldSince?:number}).orderHeldSince??now;
     if(now-since<SPELL_ORDER_HOLD_MS){queue.push({...next,orderHeldSince:since,due:now+16} as TimedCombatEvent);queue.sort((a,b)=>a.due-b.due||a.seq-b.seq);continue;}
     // Settle the earlier target's remaining hits now (HP only), then show the spell.
-    for(let i=queue.length-1;i>=0;i--)if(stale(queue[i])){const hit=queue.splice(i,1)[0];onForcedHit?.(hit);visible.push({...hit,visualAt:now});}
+    // HP only: no new arrow, or several arrows leave at once and one shot seems to hit two monsters.
+    for(let i=queue.length-1;i>=0;i--)if(stale(queue[i])){const hit=queue.splice(i,1)[0];onForcedHit?.(hit);visible.push({...hit,visualAt:now,visualEffectPreviewed:true});}
    }
   }
   // A weapon proc cannot overtake the normal hit waiting for its visible contact.
