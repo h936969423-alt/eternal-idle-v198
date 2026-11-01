@@ -1,5 +1,9 @@
 const assert=require('node:assert/strict'),fs=require('node:fs'),ts=require('typescript'),vm=require('node:vm'),path=require('node:path');
 const root=path.resolve(__dirname,'..'),code=ts.transpileModule(fs.readFileSync(path.join(root,'app/battle-arena.tsx'),'utf8'),{compilerOptions:{module:ts.ModuleKind.CommonJS,target:ts.ScriptTarget.ES2022,jsx:ts.JsxEmit.ReactJSX,esModuleInterop:true}}).outputText;
+const layerCode=ts.transpileModule(fs.readFileSync(path.join(root,'app/monster-drop-layer.tsx'),'utf8'),{compilerOptions:{module:ts.ModuleKind.CommonJS,target:ts.ScriptTarget.ES2022,jsx:ts.JsxEmit.ReactJSX,esModuleInterop:true}}).outputText;
+/** Render the layer as if both anchors were measured on screen. */
+function renderLayer(props){const mod={exports:{}},jsx=(type,p)=>({type,props:p});vm.runInNewContext(layerCode,{exports:mod.exports,require:id=>id==='react'?{useEffect:()=>{},useState:()=>[props.monsters.map((m,slot)=>({slot,uid:m.uid,left:0,top:0})),()=>{}]}:id==='react/jsx-runtime'?{jsx,jsxs:jsx}:{Info:()=>null}});
+ const tree=mod.exports.default(props),out=[];(function walk(n){if(!n||typeof n!=='object')return;if(Array.isArray(n)){n.forEach(walk);return;}if(n.type==='button')out.push(n);walk(n.props?.children);})(tree);return out;}
 function render(boss,busy){
  const inspected=[],actions=[],mod={exports:{}},jsx=(type,props)=>({type,props}),stub=()=>null;
  const generic=new Proxy({__esModule:true,default:stub},{get:(o,k)=>k in o?o[k]:stub});
@@ -18,8 +22,11 @@ function render(boss,busy){
  const arena=[{id:'orc',uid:'orc-1',hp:30,definition:{n:'自訂獸人'}},{id:'orc',uid:'orc-2',hp:80,definition:{n:'另一隻獸人'}}];
  const tree=mod.exports.default({c:{id:'c',zone:'training',lv:10,name:'玩家',running:true,buffs:{},equipment:{}},view:{arena,hp:100,mp:50,actions:[],floats:[],casts:[]},interval:1000,maxHp:100,maxMp:50,busy,act:a=>actions.push(a),inspect:(...args)=>inspected.push(args)});
  const nodes=[];function walk(n,inButton=false){if(!n)return;if(Array.isArray(n)){n.forEach(x=>walk(x,inButton));return;}if(typeof n!=='object')return;if(n.type==='button')assert(!inButton,'drop controls cannot be nested inside attack buttons');nodes.push(n);walk(n.props?.children,inButton||n.type==='button');}walk(tree);
- const query=nodes.filter(n=>n.type==='button'&&n.props.className==='monster-drop-query');assert.equal(query.length,2);assert(!nodes.some(n=>n.props?.className==='monster-inspect-shell'));
- query.forEach((button,index)=>{let stopped=false;button.props.onClick({stopPropagation(){stopped=true;}});assert(stopped);assert.equal(inspected[index][0],arena[index].id);assert.equal(inspected[index][1],arena[index],'use the clicked encounter snapshot, including GM overrides');assert(!button.props.disabled,'read-only lookup stays available during combat requests');});assert.equal(actions.length,0,'drop lookup cannot change the attack target');
+ // The real buttons live in MonsterDropLayer above every sprite; each block keeps a non-interactive anchor.
+ const anchors=nodes.filter(n=>n.type==='span'&&String(n.props.className).includes('monster-drop-anchor'));assert.equal(anchors.length,2);assert(anchors.every(n=>!n.props.onClick));assert(!nodes.some(n=>n.props?.className==='monster-inspect-shell'));
+ const layer=nodes.find(n=>n.props&&n.props.monsters===arena&&typeof n.props.inspect==='function');assert(layer,'drop layer receives the encounters');assert.deepEqual(layer.props.names,arena.map(m=>m.definition.n));
+ const query=renderLayer(layer.props);assert.equal(query.length,2);
+ query.forEach((button,index)=>{let stopped=false;button.props.onClick({stopPropagation(){stopped=true;}});assert(stopped);assert.equal(inspected[index][0],arena[index].id);assert.equal(inspected[index][1],arena[index],'use the clicked encounter snapshot, including GM overrides');assert(!button.props.disabled,'read-only lookup stays available during combat requests');assert.equal(button.props['aria-label'],`查看${arena[index].definition.n}掉落物`);});assert.equal(actions.length,0,'drop lookup cannot change the attack target');
 }
 for(const boss of [false,true])for(const busy of [false,true])render(boss,busy);
 console.log('PASS: each encounter opens its own drops and custom definition; lookup is independent of target changes, busy state and boss mode; no nested attack button or old toolbar.');
