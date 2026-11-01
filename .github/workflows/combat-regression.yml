@@ -55,4 +55,5 @@ jobs:
           node scripts/test-map-layout.cjs
           node scripts/test-loot-pickup.cjs
           node scripts/test-retarget-delay.cjs
+          node scripts/test-pet-lure.cjs
 

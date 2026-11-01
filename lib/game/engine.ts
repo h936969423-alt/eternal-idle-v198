@@ -7,6 +7,7 @@ import {FOUR_DRAGON_AOE,dragonDice,dragonMagicDamage,dragonStatusChance,dragonEf
 import {isFourDragonZone,isDragonRewardItem,rollFourDragonLoot} from './four-dragon-loot';
 import {weaponEnhancementBonus} from './weapon-enhancement';
 import {withSkillCooldown} from './skill-cooldown';
+import {lureAvailability} from './pet-lure-availability';
 import {bindPetRoster,enforcePetCarry,controlledPet,deployPet,PET_ITEMS,usePetItem,capturePet,evolvePet} from './pet-roster';
 import {shareSkillBuff,partyMembers,partySkillStats,partySkillDamage,syncPartyHealth} from './skill-party';
 import {carryLoad} from './carry-load';
@@ -173,7 +174,7 @@ export function potion(c:Character,k:string,now=Date.now(),silent=false){const i
  if(i.val){if(c.buffs.status_potionSeal?.until>now)throw Error('藥水霜化中，暫時無法使用補血藥水');if(c.hp>=b.maxHp)throw new Error('HP 已滿');consume(c,k);const gain=Math.min(Math.floor(i.val*(1+b.potionBonus/100)),b.maxHp-c.hp);dragonHealing(c,gain,now,'potion');if(!silent)log(c,`${i.n}：恢復 ${gain} HP`,'heal',now);}
  else if(i.eff==='reusableSpeed'){useReusableSpeed(c,k,now);if(!silent)log(c,`使用 ${i.n}：${i.speedStage}段加速，${i.dur/60} 分鐘（無消耗）`,'heal',now);}
  else if(['brave','elfcookie','haste','blue','cautious'].includes(i.eff)){consume(c,k);if(i.eff==='haste')for(const id of Object.keys(c.buffs))if(DATA.items[id]?.eff==='haste')delete c.buffs[id];const d:Record<string,number>=i.eff==='brave'||i.eff==='haste'?{atkSpdPct:33}:i.eff==='elfcookie'?{atkSpdPct:15}:i.eff==='cautious'?{mdmg:2,mpR:2}:{mpR:b.wis<=10?1:b.wis-8};c.buffs[k]={until:now+(i.dur||300)*1000,d};if(!silent)log(c,`使用 ${i.n}`,'heal',now);}
- else if(i.eff==='meat'){consume(c,k);c.buffs[k]={until:now+300000,d:{lure:1}};log(c,'獲得誘捕狀態 300 秒（寵物捕捉規則尚未公開）','magic',now);}
+ else if(i.eff==='meat'){consume(c,k);const lure='sunrise_pet_lure_general';c.buffs[lure]={until:Math.max(now+300000,c.buffs[lure]?.until||0),d:{}};log(c,'獲得一般誘捕狀態 300 秒：擊殺狼、牧羊犬、杜賓狗、哈士奇、熊等動物可取得寵物','magic',now);}
  else if(k==='new_item_141'){if(c.buffs.status_potionSeal?.until>now)throw Error('藥水霜化中，暫時無法使用補血藥水');if(c.hp>=b.maxHp)throw new Error('HP 已滿');consume(c,k);const gain=Math.min(b.maxHp-c.hp,Math.floor(int(44,107,Math.random)*(1+b.potionBonus/100)));dragonHealing(c,gain,now,'potion');log(c,`${i.n}：恢復 ${gain} HP`,'heal',now);}
  else if(i.eff==='exp'){upgradeAbilityPoints(c);if(c.lv>=99)throw new Error('已達等級上限');consume(c,k);c.xp+=i.xp;while(c.xp>=xpNeed(c.lv)&&c.lv<99){c.xp-=xpNeed(c.lv);c.points+=levelPointGain(c.lv,c.lv+1);c.lv++;}const ns=stats(c,now);c.hp=ns.maxHp;c.mp=ns.maxMp;log(c,`${i.n}：EXP +${i.xp}`,'level',now);}
  else throw new Error('此道具的完整效果尚未有可驗證的規則');
@@ -861,7 +862,7 @@ export function action(save:Save,a:any,now=Date.now(),rng:()=>number=Math.random
  case 'summonDismiss':{delete c.summonContract;delete c.buffs.sk_summon;c.autoSkills=c.autoSkills.filter(k=>k!=='sk_summon');if(c.autoConfig)c.autoConfig.buffs=c.autoConfig.buffs.filter(k=>k!=='sk_summon');log(c,'召喚物已解散','info',now);event(c,'state',now);break;}
  case 'petTraining':{if(a.pet)controlledPet(c,String(a.pet),now);c.petTraining='';break;}
  case 'petSummon':{const id=String(a.pet||'');if(!id){for(const key of petNamesOut(c))delete c.pets![key].owner;c.petActives=[];c.petActive='';}else deployPet(c,id,stats(c,now).cha,now);event(c,'state',now);break;}
- case 'petBuy':{if(!DATA.towns[c.zone])throw Error('請回村莊購買寵物用品');const id=String(a.item),item=PET_ITEMS[id];if(!item)throw Error('寵物用品不存在');if(c.gold<item.p)throw Error('金幣不足');c.gold-=item.p;addItem(c,id);break;}
+ case 'petBuy':{if(!DATA.towns[c.zone])throw Error('請回村莊購買寵物用品');const id=String(a.item),item=PET_ITEMS[id];if(!item)throw Error('寵物用品不存在');if(item.petLure&&!lureAvailability(item.petLure,c,now).available.length)throw Error('目前沒有可誘捕的動物出沒，暫停販售');if(c.gold<item.p)throw Error('金幣不足');c.gold-=item.p;addItem(c,id);break;}
  case 'petUse':{usePetItem(c,String(a.item),now);event(c,'state',now);break;}
  case 'petEvolve':{evolvePet(c,String(a.pet),String(a.fruit),now);event(c,'state',now);break;}
  case 'petRename':{const p=controlledPet(c,String(a.pet),now);p.name=String(a.name||'').trim().slice(0,12);break;}

@@ -5,3 +5,12 @@
 .sunrise-pet-panel button{max-width:100%;white-space:normal;height:auto;min-height:40px;margin:3px 0}
 .sunrise-pet-panel details{margin:16px 0}
 .sunrise-pet-panel summary{cursor:pointer;padding:10px;border:1px solid #76613b;border-radius:6px}
+
+/* Lure availability: what can be caught now, and what has nowhere to spawn. */
+.pet-lure-badge{display:inline-block;margin-left:6px;padding:1px 6px;border-radius:4px;background:#5a2323;color:#ffb4a8;font-size:12px;vertical-align:middle}
+.pet-lure-unavailable{opacity:.72}
+.pet-lure-targets{margin:4px 0 8px;font-size:12px;line-height:1.5}
+.pet-lure-targets p{margin:2px 0}
+.pet-lure-ok{color:#b8e6a6}
+.pet-lure-missing{color:#9a948a}
+.pet-lure-note{color:#e3c999}
