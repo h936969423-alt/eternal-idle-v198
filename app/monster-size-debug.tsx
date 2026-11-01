@@ -1,12 +1,17 @@
 'use client';
 import {useEffect,useState} from 'react';
 
-/** Temporary diagnostics: open the game with ?debug=monster to see how each monster sprite is sized
- * on this device. Shows nothing otherwise. */
+/** Temporary diagnostics: open the game once with ?debug=monster (remembered on this device; ?debug=off
+ * clears it) to see how each monster sprite is sized here. Shows nothing otherwise. */
 export default function MonsterSizeDebug(){
  const [lines,setLines]=useState<string[]|null>(null);
  useEffect(()=>{
-  if(typeof location==='undefined'||!new URLSearchParams(location.search).has('debug'))return;
+  if(typeof location==='undefined')return;
+  // Signing in reloads '/' and drops the query, so remember the switch on this device (?debug=off clears it).
+  const flag=new URLSearchParams(location.search).get('debug')??(location.hash.includes('debug')?'monster':null);
+  try{if(flag==='off')localStorage.removeItem('eternal-debug-monster');else if(flag!==null)localStorage.setItem('eternal-debug-monster','1');}catch{}
+  let on=false;try{on=localStorage.getItem('eternal-debug-monster')==='1';}catch{on=flag!==null&&flag!=='off';}
+  if(!on)return;
   const r=(v:number)=>Math.round(v*10)/10;
   const read=()=>{
    const out=[`UA ${navigator.userAgent.replace(/.*(iPhone OS [\d_]+|Version\/[\d.]+).*/,'$1')} · dpr ${devicePixelRatio} · vw ${innerWidth}`,
