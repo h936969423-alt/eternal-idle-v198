@@ -33,7 +33,7 @@ import {redeemChatCode} from './chat-codes';
 import {isGilenTeacher,gilenBookStock} from './npc-magic';
 import {MAX_CHARACTERS,settleCharacterDeletions,requestCharacterDeletion,cancelCharacterDeletion,type CharacterDeletion} from './character-menu';
 import {magicIntBonuses,fixedHealing} from './magic-formulas';
-import {TRIPLE_SHOT_GAP_MS,ARROW_FLIGHT_MS} from './projectile-timing';
+import {TRIPLE_SHOT_GAP_MS,ARROW_FLIGHT_MS,isTripleArrow} from './projectile-timing';
 import {mapIsOpen,SAFE_MAP,type MapAccessState} from './map-access';
 import {lootAppearance,type ItemRarity,type LootNotice,type LootAppearanceConfig} from './loot-appearance';
 import {requiredSkillLevel,elementError,availableSkillBook,skillMpCost,rollDice,abnormalHit,healingAmount,weaponRequirement,spellClockKey,spellDamage,buffModifiers} from './spell-rules';
@@ -259,7 +259,7 @@ function award(c:Character,mobId:string,rng:()=>number,now:number){const dead=c.
 /** A complete weapon attack; resources and automatic-cycle state belong to the caller. */
 function normalWeaponAttack(c:Character,target:Encounter,now:number,rng:()=>number,arrow?:any,skill?:string,current=stats(c,now)){
  // Triple Arrow: three full normal attacks (own hit and crit rolls) but no equipment effects at all.
- const plain=skill==='sk_elf_triple'||skill==='lw_skill_450';
+ const plain=isTripleArrow(skill);
  const m=monsterData(c,target.id,target),weapon=DATA.items[c.equipment.weapon?.id||''],strike=weapon?.magicProjectile?lineageWProjectileStrike(c,weapon,current,m,rng):playerStrike(c,current,m,rng,arrow,now);let dealt=0;
  if(!strike.miss){
   let damage=strike.damage+(plain?0:elementalWeaponDamage(c,m.e||'none')*(c.buffs.sk_elf_flamesoul?.until>now&&!current.wpnRanged?1.2:1));
@@ -674,7 +674,7 @@ function autoCastSpells(c:Character,cfg:AutoConfig,now:number,rng:()=>number){
  if(!c.running||c.hp<=0||['stun','freeze','stone','silence'].some(k=>c.buffs['status_'+k]?.until>now))return;
  const attackReady=spellReady(c.spellCooldowns,'attack',now),healReady=!!cfg.heal&&spellReady(c.spellCooldowns,'heal',now),convertReady=!!cfg.convert&&spellReady(c.spellCooldowns,'convert',now);
  if(!healReady&&!convertReady&&(!(cfg.attack||cfg.opener)||!attackReady))return;
- const b=stats(c,now),tryCast=(id:string)=>{if(id==='sk_elf_triple'&&(c.tripleNeedsNormal||(c.tripleResumeAt||0)>now))return false;try{cast(c,id,now,rng,true);return true;}catch{return false;}};
+ const b=stats(c,now),tryCast=(id:string)=>{if(isTripleArrow(id)&&(c.tripleNeedsNormal||(c.tripleResumeAt||0)>now))return false;try{cast(c,id,now,rng,true);return true;}catch{return false;}};
  // Restore HP and MP independently before checking the offensive threshold.
  if(healReady&&c.hp/b.maxHp*100<=cfg.healBelow)tryCast(cfg.heal);
  if(convertReady&&!DATA.towns[c.zone]&&c.hp/b.maxHp*100>cfg.convertHpAbove&&c.mp/Math.max(1,b.maxMp)*100<cfg.convertMpBelow){

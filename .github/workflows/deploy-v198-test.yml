@@ -146,6 +146,7 @@ jobs:
           node scripts/test-triple-presentation.cjs
           node scripts/test-triple-impact-sync.cjs
           node scripts/test-manual-triple-latency.cjs
+          node scripts/test-skill-groups.cjs
       - name: Verify skill calculation equivalence and bounded Worker settlement
         run: node scripts/test-skill-computation.cjs
       - name: Verify continuous live polls do not reopen offline settlement
