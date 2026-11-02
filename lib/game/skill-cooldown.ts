@@ -13,7 +13,7 @@ export function skillCooldownMs(c:Character,input:string,b:Record<string,number>
 export function skillReadyAt(c:Character,input:string){
  const id=canonicalWSkill(input,c.cls),s=(raw.skills as Record<string,any>)[id];if(!s)return 0;
  const channel=W_SKILLS[id]?(s.type==='atk'?'attack':s.type==='heal'?'heal':s.type==='convert'?'convert':'w-support'):spellClockKey(id,s);
- return Math.max(c.skillCooldowns?.[id]||0,channel?c.spellCooldowns?.[channel]||0:0);
+ return Math.max(c.skillCooldowns?.[id]||0,channel?c.spellCooldowns?.[channel]||0:0,id==='lw_skill_160'?c.magicBarrierCooldown||0:0);
 }
 export function cooldownSeconds(ms:number){return String(Number((Math.max(0,ms)/1000).toFixed(3)));}
 export function remainingCooldownSeconds(ms:number){return ms>=1000?String(Math.ceil(ms/1000)):cooldownSeconds(Math.ceil(Math.max(0,ms)/100)*100);}

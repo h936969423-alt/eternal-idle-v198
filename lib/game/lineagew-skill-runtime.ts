@@ -1,5 +1,6 @@
 import {withSkillCooldown} from './skill-cooldown';
 import {W_SKILLS,canonicalWSkill,learnedWSkills,wElementAllowed,wBuffModifiers,wUpgradeScale} from './lineagew-skill-data';
+const SHOCK_STUN='lw_skill_400',MAGIC_BARRIER='lw_skill_160';
 import type {Character,Encounter,CombatEvent} from './engine';
 import {justiceSpellError,justiceHealMultiplier} from './alignment';
 export type WSkillHooks={definition:(target:Encounter)=>any;normalAttack?:(target:Encounter,shot:number)=>number;physical:(target:Encounter,forceCritical?:boolean)=>{damage:number;miss:boolean};magic:(s:any,target:Encounter)=>number;hit:(target:Encounter,damage:number,skill:string,source:'physical'|'magic')=>number;heal:(amount:number)=>number;event:(kind:CombatEvent['kind'],data:Partial<CombatEvent>)=>void;teleport:()=>void;party:()=>{hp:number;maxHp:number;apply:(value:number)=>void}[];shareBuff?:(id:string,buff:{until:number;d:Record<string,number>})=>void;consumeArrow:()=>void;weapon:any;shield:any;log:(text:string)=>void};
@@ -32,6 +33,8 @@ function performWSkill(c:Character,input:string,b:Record<string,number>,h:WSkill
  if(!escape&&blocked.some(x=>c.buffs['status_'+x]?.until>now)||b.lwActionLock)throw Error('目前無法施法');
  const channel=s.type==='atk'?'attack':s.type==='heal'?'heal':s.type==='convert'?'convert':'w-support';
  if((c.skillCooldowns?.[id]||0)>now||(c.spellCooldowns?.[channel]||0)>now)throw Error('施法冷卻中');
+ // 魔法屏障: after it blocks a spell it cannot be recast for 3 seconds (magicBarrierCooldown is set where it breaks).
+ if(id===MAGIC_BARRIER&&(c.magicBarrierCooldown||0)>now)throw Error('魔法屏障冷卻中');
  if(s.reqWpn==='bow'&&!h.weapon?.isBow)throw Error('需要裝備弓');
  if(s.reqWpn==='w2h'&&!(h.weapon?.twohanded||h.weapon?.w2h||h.weapon?.wcat==='tohandsword'))throw Error('需要雙手劍');
  const cost=s.mp?Math.max(1,Math.ceil(s.mp*(1-Math.min(100,b.mpReduce||0)/100))):0;
@@ -92,12 +95,18 @@ function performWSkill(c:Character,input:string,b:Record<string,number>,h:WSkill
      if(s.lwUndeadOnly&&!m.boss&&rng()<Math.max(.05,Math.min(.4,.12+(c.lv-(m.lv||c.lv))*.01)))amount=t.hp;
      if(amount>0){const dealt=h.hit(t,amount,id,s.dmgType==='physical'?'physical':'magic');total+=dealt;if(s.lifesteal&&dealt)h.heal(dealt);}
      else if(miss)h.event('attack',{slot:c.arena.indexOf(t),uid:t.uid,mob:t.id,mobHp:t.hp,damage:0,miss:true,skill:id,source:'physical'});
-     if(!miss&&t.hp>0&&s.lwStatus&&s.lwStatus.kind!=='cancel'){
+     // 衝擊之暈 (old rule): an already-stunned target is not stunned again, and every failed attempt shows 衝暈失敗.
+     const stun=id===SHOCK_STUN,alreadyStunned=stun&&(t.effects?.stun?.until||0)>now;let controlled=false;
+     if(!miss&&t.hp>0&&!alreadyStunned&&s.lwStatus&&s.lwStatus.kind!=='cancel'){
       const status={...s.lwStatus,seconds:s.lwStatus.seconds*scale};
       if(status.kind==='lwMark'){status.value=0;status.force=true;}
-      if(applyWSkillStatus(t,m,status,now,rng,c.lv,(b.magicHit||0)+(status.kind==='stun'?b.stunHit||0:status.kind==='blind'?b.blindHit||0:0)))h.event('state',{slot:c.arena.indexOf(t),uid:t.uid,mob:t.id,skill:id,targetEffects:structuredClone(t.effects)});
+      if(applyWSkillStatus(t,m,status,now,rng,c.lv,(b.magicHit||0)+(status.kind==='stun'?b.stunHit||0:status.kind==='blind'?b.blindHit||0:0))){
+       controlled=true;
+       h.event('state',{slot:c.arena.indexOf(t),uid:t.uid,mob:t.id,skill:id,targetEffects:structuredClone(t.effects)});
+      }
       if(!amount)h.event('magic',{slot:c.arena.indexOf(t),uid:t.uid,mob:t.id,skill:id});
      }
+     if(stun&&!controlled)h.event('state',{slot:c.arena.indexOf(t),uid:t.uid,mob:t.id,skill:id,miss:true,effect:'衝暈失敗'});
     }
    }
   }
