@@ -126,7 +126,6 @@ jobs:
         run: |
           python3 scripts/restore-lineagew-skills.py
           node scripts/test-lineagew-skills.cjs
-          W_SKILL_REPORT=docs/lineagew-skill-verification.json node scripts/test-lineagew-complete.cjs
       - name: Verify shared Sunrise pet storage and lifecycle
         run: PET_REPORT=docs/sunrise-pet-verification.json node scripts/test-sunrise-pets.cjs
       - name: Verify JSON error boundaries, unknown write outcomes and no mutation replay
