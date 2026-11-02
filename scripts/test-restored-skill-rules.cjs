@@ -1,42 +1,23 @@
-// Two old rules restored on the Lineage W skills (they stopped working when the old ids were retired):
-// 1. 魔法屏障 (lw_skill_160) cannot be recast for 3 seconds after it blocks a spell.
-// 2. 衝擊之暈 (lw_skill_400) shows 衝暈失敗 on the target whenever the stun does not land.
+// Original rules (legacy-skills-v2): 魔法屏障 cannot be recast for 3 seconds after it blocks a spell,
+// and a failed 衝擊之暈 reports 衝暈失敗 (miss, failed roll, or an already-stunned target).
 const assert=require('node:assert/strict'),fs=require('node:fs'),path=require('node:path'),os=require('node:os'),ts=require('typescript');
 const root=path.resolve(__dirname,'..'),dir=fs.mkdtempSync(path.join(os.tmpdir(),'restored-rules-'));
 fs.writeFileSync(path.join(dir,'package.json'),'{"type":"commonjs"}');
 try{
  for(const name of fs.readdirSync(path.join(root,'lib/game'))){const from=path.join(root,'lib/game',name);if(name.endsWith('.json'))fs.copyFileSync(from,path.join(dir,name));else if(name.endsWith('.ts'))fs.writeFileSync(path.join(dir,name.replace(/\.ts$/,'.js')),ts.transpileModule(fs.readFileSync(from,'utf8'),{compilerOptions:{module:ts.ModuleKind.CommonJS,target:ts.ScriptTarget.ES2022,esModuleInterop:true}}).outputText);}
- const R=require(path.join(dir,'lineagew-skill-runtime.js')),CD=require(path.join(dir,'skill-cooldown.js')),P=require(path.join(dir,'combat-presentation.js'));
- const now=1000000;
- function setup(cls,skill,{miss=false,effects}={}){
-  const target={uid:'m1',id:'mob',hp:1000,maxHp:1000,...(effects?{effects}:{})};
-  const c={id:'c',cls,lv:60,skills:[skill],buffs:{},equipment:{},mp:1000,hp:500,arena:[target],arenaTarget:0,events:[]};
-  const events=[];
-  const h={definition:()=>({lv:1,mr:0}),weapon:{twohanded:true,w2h:true,wcat:'tohandsword'},shield:undefined,
-   physical:()=>({damage:miss?0:20,miss}),magic:()=>0,hit:(t,amount)=>{t.hp-=amount;events.push({kind:'attack',skill,damage:amount});return amount;},
-   heal:()=>0,event:(kind,data)=>events.push({kind,...data}),log:()=>{},party:()=>[],teleport:()=>{},consumeArrow:()=>{}};
-  return {c,h,events,target};
- }
+ const e=require(path.join(dir,'engine.js')),CD=require(path.join(dir,'skill-cooldown.js')),raw=require(path.join(dir,'gamedata.json'));
+ const at=1000000;
+ const make=(cls,skills)=>{const alloc={};let left=e.BASES[cls].pts;for(const k of ['str','dex','con','int','wis','cha']){alloc[k]=Math.min(left,20-e.BASES[cls][k]);left-=alloc[k];}const c=e.createCharacter('規則',cls,'m',alloc,at);c.lv=99;c.lawful=32767;c.skills=skills;c.zone='training';c.mp=100000;c.running=false;e.ensureArena(c,()=>.5,at);c.arena.forEach(t=>{t.hp=t.maxHp=1000000;delete t.effects;});return c;};
  // 魔法屏障
- {const {c,h}=setup('mage','lw_skill_160');c.magicBarrierCooldown=now+3000;
-  assert.throws(()=>R.castWSkill(c,'lw_skill_160',{},h,now+2999,()=>.5),/冷卻中/,'cannot recast within 3s of breaking');
-  assert.ok(CD.skillReadyAt(c,'lw_skill_160')>=now+3000,'the button shows the 3s wait');
-  R.castWSkill(c,'lw_skill_160',{},h,now+3000,()=>.5);assert.ok(c.buffs.lw_skill_160?.d.magicBarrier,'recast allowed after 3s');
-  const other=setup('mage','lw_skill_10');other.c.magicBarrierCooldown=now+3000;assert.equal(CD.skillReadyAt(other.c,'lw_skill_10'),0,'other spells are not delayed');}
- // 衝擊之暈：失敗（命中但沒暈到）
- {const {c,h,events}=setup('knight','lw_skill_400');R.castWSkill(c,'lw_skill_400',{},h,now,()=>.99);
-  assert.equal(events.filter(e=>e.effect==='衝暈失敗').length,1,'failed stun shows 衝暈失敗 once');assert.ok(!c.arena[0].effects?.stun);}
- // 衝擊之暈：成功
- {const {c,h,events}=setup('knight','lw_skill_400');R.castWSkill(c,'lw_skill_400',{},h,now,()=>.01);
-  assert.ok(c.arena[0].effects?.stun,'stun lands');assert.equal(events.filter(e=>e.effect==='衝暈失敗').length,0,'no failure text on success');}
- // 衝擊之暈：未命中、已在暈眩中，都算失敗
- {const {c,h,events}=setup('knight','lw_skill_400',{miss:true});R.castWSkill(c,'lw_skill_400',{},h,now,()=>.01);assert.equal(events.filter(e=>e.effect==='衝暈失敗').length,1,'a miss is a failed stun');}
- {const {c,h,events}=setup('knight','lw_skill_400',{effects:{stun:{until:now+5000,value:1}}});R.castWSkill(c,'lw_skill_400',{},h,now,()=>.01);
-  assert.equal(events.filter(e=>e.effect==='衝暈失敗').length,1,'an already-stunned target is not stunned again');assert.equal(c.arena[0].effects.stun.until,now+5000,'existing stun is not refreshed');}
- // 畫面：衝暈失敗 文字立即出現一次
- {const fail={seq:5,at:1000,kind:'state',manual:true,skill:'lw_skill_400',miss:true,effect:'衝暈失敗',hp:70,mp:20,slot:0,uid:'mob'};
-  const q=P.enqueueSunriseReplay([],[fail],5000,null);let v={hp:100,mp:100,arena:[{uid:'mob',id:'ant',hp:100}],floats:[]};
-  for(const time of [5000,5650])for(const e of P.drainCombatPresentation(q.queue,[],time))v=P.applyCombatViewEvent(v,e,time);
-  assert.equal(v.floats.filter(f=>f.effect==='衝暈失敗').length,1,'failure text appears once, right away');}
- console.log('PASS restored rules: 魔法屏障 3s lockout after blocking a spell; 衝擊之暈 shows 衝暈失敗 on miss, failed roll or already-stunned target, never on success');
+ {const c=make('mage',['sk_magic_shield','sk_lightarrow']);c.magicBarrierCooldown=at+3000;
+  assert.throws(()=>e.cast(c,'sk_magic_shield',at+2999,()=>.5),/冷卻/,'cannot recast within 3s of breaking');
+  assert.ok(CD.skillReadyAt(c,'sk_magic_shield')>=at+3000,'the button shows the 3s wait');
+  e.cast(c,'lw_skill_160',at+3000,()=>.5);assert.ok(c.buffs.sk_magic_shield?.d.magicBarrier,'recast allowed after 3s (also by its Lineage W id)');
+  assert.ok(CD.skillReadyAt(c,'sk_lightarrow')<at+3000,'other spells are not delayed');}
+ // 衝擊之暈
+ const stun=(rng,effects)=>{const c=make('knight',['sk_shock_stun']);const w=Object.entries(raw.items).find(([,w])=>w.type==='wpn'&&!w.isBow&&!w.isArrow&&(w.twohanded||w.w2h||w.wcat==='tohandsword'));c.equipment.weapon={id:w[0],en:0};if(effects)c.arena.forEach(t=>t.effects=structuredClone(effects));const after=c.eventSeq||0;e.cast(c,'sk_shock_stun',at,rng);return {c,fresh:c.events.filter(x=>x.seq>after)};};
+ {const {c,fresh}=stun(()=>.5);assert.equal(fresh.filter(x=>x.effect==='衝暈失敗').length,1,'failed roll shows 衝暈失敗 once');assert(!c.arena.some(t=>t.effects?.stun));}
+ {const {c,fresh}=stun(()=>.05);assert(c.arena.some(t=>t.effects?.stun),'stun lands');assert.equal(fresh.filter(x=>x.effect==='衝暈失敗').length,0,'no failure text on success');}
+ {const until=at+5000,{c,fresh}=stun(()=>.05,{stun:{until,value:1}});assert.equal(fresh.filter(x=>x.effect==='衝暈失敗').length,1,'an already-stunned target counts as a failure');assert(c.arena.every(t=>t.effects.stun.until===until),'existing stun is not refreshed');}
+ console.log('PASS original rules: 魔法屏障 3s lockout after blocking a spell; 衝擊之暈 shows 衝暈失敗 on a failed roll or an already-stunned target, never on success');
 }finally{fs.rmSync(dir,{recursive:true,force:true});}

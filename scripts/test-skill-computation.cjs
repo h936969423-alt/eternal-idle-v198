@@ -3,7 +3,9 @@ const root=path.resolve(__dirname,'..'),dir=fs.mkdtempSync(path.join(os.tmpdir()
 const compile=s=>ts.transpileModule(s,{compilerOptions:{target:ts.ScriptTarget.ES2022,module:ts.ModuleKind.CommonJS,esModuleInterop:true}}).outputText;
 try{
  fs.writeFileSync(dir+'/package.json','{"type":"commonjs"}');for(const n of fs.readdirSync(root+'/lib/game')){const s=fs.readFileSync(root+'/lib/game/'+n);if(n.endsWith('.json'))fs.writeFileSync(dir+'/'+n,s);if(n.endsWith('.ts'))fs.writeFileSync(dir+'/'+n.replace(/\.ts$/,'.js'),compile(s.toString()));}
- fs.writeFileSync(dir+'/baseline-skill-data.js',compile(fs.readFileSync(root+'/tests/fixtures/lineagew-skill-data-before-optimization.txt','utf8')));
+ // The baseline reads the same retained catalogue (潛力/攻城 since legacy-skills-v2) so both compute the same skill set.
+ {const cat=JSON.parse(fs.readFileSync(root+'/lib/game/lineagew-skills.json','utf8'));cat.skills=Object.fromEntries(Object.entries(cat.skills).filter(([,s])=>/^(潛力|攻城)/.test(s.lwCategory||'')));cat.legacy={};fs.writeFileSync(dir+'/lineagew-skills-baseline.json',JSON.stringify(cat));}
+ fs.writeFileSync(dir+'/baseline-skill-data.js',compile(fs.readFileSync(root+'/tests/fixtures/lineagew-skill-data-before-optimization.txt','utf8').replace("from './lineagew-skills.json'","from './lineagew-skills-baseline.json'")));
  const current=require(dir+'/lineagew-skill-data.js'),baseline=require(dir+'/baseline-skill-data.js'),raw=require(dir+'/gamedata.json'),engine=require(dir+'/engine.js');let comparisons=0;
  const ids=Object.keys(current.W_SKILLS),legacy=Object.keys(current.W_LEGACY),b={magicHit:37,mdmg:51};
  for(const cls of ['royal','mage','knight','elf','dark'])for(const lv of [1,30,60,80,99])for(let seed=0;seed<8;seed++){

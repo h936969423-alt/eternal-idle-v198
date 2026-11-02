@@ -40,7 +40,7 @@ async function handle(request:Request,mutate:boolean){
   const readAt=performance.now();
   const [existing,settings]=await Promise.all([env.DB.prepare('SELECT payload,revision FROM game_saves WHERE owner=?').bind(owner).first<{payload:string;revision:number}>(),getGameSettings()]);
   timings.read=performance.now()-readAt;
-  const settingsKey=['canonical-skills-v1',settings.maps.revision,settings.monsters.revision,settings.dolls.revision,settings.world.revision,settings.appearance.revision,settings.mapAccess.revision,settings.npcs.revision].map(n=>n||0).join(':');
+  const settingsKey=['legacy-skills-v2',settings.maps.revision,settings.monsters.revision,settings.dolls.revision,settings.world.revision,settings.appearance.revision,settings.mapAccess.revision,settings.npcs.revision].map(n=>n||0).join(':');
   const query=new URL(request.url).searchParams,after=Number(query.get('after'));
   const cursor:GameSyncCursor|undefined=query.has('after')&&Number.isSafeInteger(after)&&after>=0?{character:query.get('character')||'',after,settingsKey:query.get('settings')||''}:undefined;
   const reply=(data:any,status=200)=>{const encodeAt=performance.now(),body=JSON.stringify(data);timings.encode=performance.now()-encodeAt;timings.total=performance.now()-started;if(timings.total>=300)console.info('game-timing',JSON.stringify({requestId:context.requestId,operation:context.operation,method:request.method,status,...timings,chars:body.length}));return new Response(body,{status,headers:{...apiHeaders(context),'Content-Type':'application/json','Server-Timing':Object.entries(timings).map(([key,ms])=>`${key};dur=${ms.toFixed(1)}`).join(', ')}});};

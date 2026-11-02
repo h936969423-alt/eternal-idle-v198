@@ -8,7 +8,9 @@ try{
  const ref=require('../docs/afei-drops/reference-20261029.json'),now=Date.now();
  const source=JSON.parse(fs.readFileSync(path.join(root,'lib/game/gamedata.json'),'utf8')),hash=o=>require('node:crypto').createHash('sha256').update(JSON.stringify(o)).digest('hex');
  assert.equal(hash(Object.fromEntries(Object.entries(source.items).filter(([id])=>!ref.addedItems.includes(id)&&!id.startsWith('gm_all_magic_')))),ref.preservation.existingItemsSha256,'existing equipment and item abilities are preserved');
- assert.equal(hash(Object.fromEntries(Object.entries(source).filter(([key])=>key!=='items'))),ref.preservation.otherGameDataSha256,'monster stats, maps, spells and world-boss definitions are preserved');
+ // The 69 original skills restored on 2026-11-02 (played with their old rules again) are deliberate additions.
+ const restoredSkills=new Set(Object.keys(require('../lib/game/lineagew-skills.json').legacy));
+ assert.equal(hash(Object.fromEntries(Object.entries(source).filter(([key])=>key!=='items').map(([key,value])=>[key,key==='skills'?Object.fromEntries(Object.entries(value).filter(([id])=>!restoredSkills.has(id))):value]))),ref.preservation.otherGameDataSha256,'monster stats, maps, spells and world-boss definitions are preserved');
  for(const [id,entries] of Object.entries(ref.preservation.priorRates))for(const d of entries)assert.equal(pub.PUBLIC_DROP_RATES[id].find(row=>row.item===d.item)?.chance,d.chance,id+' retains existing rate for '+d.item);
  assert.equal(Object.keys(ref.mobs).length,220);assert.equal(Object.keys(ref.worldBosses).length,18);
  for(const [id,m] of Object.entries(ref.mobs)){

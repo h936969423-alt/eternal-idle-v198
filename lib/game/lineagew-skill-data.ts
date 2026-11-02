@@ -1,28 +1,45 @@
 import raw from './gamedata.json';
 import assets from './asset-map.json';
 import catalog from './lineagew-skills.json';
-export const W_SKILLS=catalog.skills as Record<string,any>;
+import {RETIRED_ITEMS} from './retired-items';
+const CATALOG=catalog.skills as Record<string,any>,CATALOG_BOOKS=catalog.books as Record<string,any>;
+/** The original Lineage W migration map (old id → W id), kept to read saves and requests from that period. */
 export const W_LEGACY=catalog.legacy as Record<string,string>;
-export const W_BOOKS=catalog.books as Record<string,any>;
+/** Ordinary and class skills that are played with their original rules, names and ids again: W id → old id.
+ * Their old definitions are in gamedata.json; the W icons are kept. */
+export const W_REVERTED:Record<string,string>=Object.fromEntries(Object.entries(W_LEGACY).map(([old,id])=>[id,old]));
+const retained=(s:any)=>/^(潛力|攻城)/.test(s.lwCategory||'');
+/** Lineage W ordinary/class skills without an old version: removed from the game (learned copies are taken out). */
+export const W_REMOVED:ReadonlySet<string>=new Set(Object.entries(CATALOG).filter(([id,s])=>!retained(s)&&!W_REVERTED[id]).map(([id])=>id));
+/** Lineage W skills still in play: the 潛力 and 攻城 lines. */
+export const W_SKILLS:Record<string,any>=Object.fromEntries(Object.entries(CATALOG).filter(([,s])=>retained(s)));
+export const W_BOOKS:Record<string,any>=Object.fromEntries(Object.entries(CATALOG_BOOKS).filter(([,b])=>!W_REMOVED.has(b.sk)));
 const skills=raw.skills as Record<string,any>,items=raw.items as Record<string,any>;
 const icons=assets.icons as Record<string,Record<string,string>>;
-// Canonical player catalog. W_LEGACY is retained only to read old saves/requests.
 for(const [id,s] of Object.entries(W_SKILLS)){
  skills[id]=s;
- const fallback=s.lwLegacyId?icons.skills[skills[s.lwLegacyId]?.n||s.n]:undefined;
- if(s.lwIcon||fallback)icons.skills[s.n]=s.lwIcon||fallback;
+ if(s.lwIcon)icons.skills[s.n]=s.lwIcon;
 }
-for(const [id,item] of Object.entries(W_BOOKS)){
+// Reverted skills keep their Lineage W icon under their old name.
+for(const [id,old] of Object.entries(W_REVERTED)){const s=CATALOG[id],icon=s?.lwIcon||icons.skills[s?.n];if(icon&&skills[old])icons.skills[skills[old].n]=icon;}
+for(const [id,item] of Object.entries(CATALOG_BOOKS)){
  items[id]=item;
  if(item.lwIcon)icons.items[item.n]=item.lwIcon;
+ // Books of removed skills leave the game: copies held are taken out and refunded.
+ if(W_REMOVED.has(item.sk)){RETIRED_ITEMS[id]=item.n;item.noShop=true;item.gachaWeight=0;}
 }
-for(const item of Object.values(items))if(item.type==='skillbk'&&W_SKILLS[W_LEGACY[item.sk]||item.sk]){
- const id=W_LEGACY[item.sk]||item.sk,s=W_SKILLS[id];
- item.lwSkillBook=true;item.lwGrade=s.lwGrade;item.lwCanonicalSkill=id;
- const book=Object.values(W_BOOKS).find(b=>b.sk===id&&b.lwItemIconSource);
- if(book?.lwIcon||s.lwIcon)icons.items[item.n]=book?.lwIcon||s.lwIcon;
+for(const item of Object.values(items)){
+ if(item.type!=='skillbk')continue;
+ const id=W_REVERTED[item.sk]?item.sk:W_SKILLS[W_LEGACY[item.sk]||item.sk]?W_LEGACY[item.sk]||item.sk:undefined;if(!id)continue;
+ // Grade (rarity, black market rank) is kept for reverted skills too; the canonical skill is the played id.
+ const s=CATALOG[id];item.lwSkillBook=true;item.lwGrade=s.lwGrade;item.lwCanonicalSkill=W_REVERTED[id]||id;
+ const book=Object.values(CATALOG_BOOKS).find(b=>b.sk===id&&b.lwItemIconSource);
+ if(book?.lwIcon||s?.lwIcon)icons.items[item.n]=book?.lwIcon||s.lwIcon;
 }
-export function canonicalWSkill(id:string,cls?:string){const candidate=W_LEGACY[id];return candidate&&(!cls||W_SKILLS[candidate]?.lwClasses.includes(cls))?candidate:id;}
+/** A Lineage W skill icon from the full catalogue (status icons keep using them). */
+export function wCatalogIcon(id:string):string|undefined{return CATALOG[id]?.lwIcon;}
+/** The id a skill is stored and played under: reverted W ids map back to their old id. */
+export function canonicalWSkill(id:string,_cls?:string){return W_REVERTED[id]||id;}
 export function wSkill(id:string,cls?:string){return W_SKILLS[canonicalWSkill(id,cls)];}
 export function learnedWSkills(c:{skills:string[];cls:string;equipment?:Record<string,{id:string}>}){const ids=[...c.skills];for(const eq of Object.values(c.equipment||{})){const i=items[eq.id.split('@')[0]];if(i?.req&&i.req!=='all'&&!i.req.split(',').includes(c.cls))continue;ids.push(...(i?.grantSkills||[]));}return [...new Set(ids.map(id=>canonicalWSkill(id,c.cls)))].filter(id=>W_SKILLS[id]?.lwClasses.includes(c.cls));}
 export type WSkillContext={ids:string[];learned:Set<string>;scales:Map<string,number>};
