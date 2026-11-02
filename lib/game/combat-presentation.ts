@@ -69,6 +69,8 @@ export type TimedCombatEvent=PresentationEvent&{due:number};
 /** Flight deadlines use the display clock and never move with a later network packet. */
 /** Longest a spell on another monster waits for earlier normal hits to be shown. */
 export const SPELL_ORDER_HOLD_MS=350;
+/** Longest Triple Arrow on another monster waits for the previous target's hits (a full swing plus arrow flight). */
+export const TRIPLE_ORDER_HOLD_MS=1500;
 /** Longest another source's killing blow waits for the player's earlier hit on that monster (a full swing plus arrow flight). */
 export const KILL_ORDER_HOLD_MS=1500;
 export function drainCombatPresentation(queue:TimedCombatEvent[],pending:TimedCombatEvent[],now:number,bow=false,spellFlight?:(event:CombatEvent)=>number,allowPhysical?:(event:CombatEvent)=>boolean,onForcedHit?:(event:CombatEvent)=>void){
@@ -90,13 +92,20 @@ export function drainCombatPresentation(queue:TimedCombatEvent[],pending:TimedCo
   // A spell on another monster cannot overtake earlier normal hits still waiting for
   // their displayed swing: the server only moved to that monster after those hits
   // (usually after killing the first one). Same-target spells are not held.
-  if(!impactFirst&&allowPhysical&&next.skill&&!isTripleArrow(next.skill)&&!next.weaponProc&&next.slot!==undefined&&next.source!=='monster'&&next.source!=='pet'&&next.source!=='summon'&&next.source!=='doll'){
+  // Triple Arrow waits until the previous target's hits have landed (its arrows in flight too),
+  // so the volley never leaves for the next monster while the old one still stands.
+  if(!impactFirst&&allowPhysical&&next.skill&&!next.weaponProc&&next.slot!==undefined&&next.source!=='monster'&&next.source!=='pet'&&next.source!=='summon'&&next.source!=='doll'){
+   const triple=isTripleArrow(next.skill);
    const stale=(e:TimedCombatEvent)=>e.seq<next.seq&&e.kind==='attack'&&!e.skill&&!e.weaponProc&&(!e.source||e.source==='physical')&&e.uid!==next.uid;
-   if(queue.some(stale)){
-    // Wait briefly for those swings; never longer than SPELL_ORDER_HOLD_MS, or a
+   if(queue.some(stale)||triple&&pending.some(stale)){
+    // Wait for those swings; never longer than SPELL_ORDER_HOLD_MS (TRIPLE_ORDER_HOLD_MS), or a
     // mage casting continuously would see spells pile up and land in a burst.
     const since=(next as TimedCombatEvent&{orderHeldSince?:number}).orderHeldSince??now;
-    if(now-since<SPELL_ORDER_HOLD_MS){queue.push({...next,orderHeldSince:since,due:now+16} as TimedCombatEvent);queue.sort((a,b)=>a.due-b.due||a.seq-b.seq);continue;}
+    if(now-since<(triple?TRIPLE_ORDER_HOLD_MS:SPELL_ORDER_HOLD_MS)){
+     const due=now+16;
+     // Later shots of the same volley move with the first one and keep their 70ms spacing.
+     if(triple){const shift=due-next.due;if(shift>0)for(const e of queue)if(e.seq>next.seq&&isTripleArrow(e.skill)&&e.uid===next.uid&&e.kind==='attack')e.due+=shift;}
+     queue.push({...next,orderHeldSince:since,due} as TimedCombatEvent);queue.sort((a,b)=>a.due-b.due||a.seq-b.seq);continue;}
     // Settle the earlier target's remaining hits now (HP only), then show the spell.
     // HP only: no new arrow, or several arrows leave at once and one shot seems to hit two monsters.
     for(let i=queue.length-1;i>=0;i--)if(stale(queue[i])){const hit=queue.splice(i,1)[0];onForcedHit?.(hit);visible.push({...hit,visualAt:now,visualEffectPreviewed:true});}
