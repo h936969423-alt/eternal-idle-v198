@@ -13,12 +13,11 @@ v=applyCombatViewEvent(v,{...hit,seq:3,slot:1,uid:'b'},2000);assert.equal(v.cast
 v=applyCombatViewEvent(v,{...hit,seq:4,at:1001},2001);assert.equal(v.casts.length,3,'a distinct cast is never suppressed');
 v=applyCombatViewEvent(v,{...hit,seq:5,source:'doll',dollId:'one'},2001);assert.equal(v.casts.length,4,'another actor retains its own graphic');
 v=applyCombatViewEvent(v,{...hit,seq:6,weaponProc:true},2001);assert.equal(v.casts.length,5,'weapon proc is independent of a player spell');
-let stun=applyCombatViewEvent(initial(),{...hit,skill:'sk_shock_stun'},2000);assert.equal(stun.casts.length,0,'physical stun strike is not a successful control graphic');
-stun=applyCombatViewEvent(stun,{...hit,seq:2,skill:'sk_shock_stun',kind:'magic',effect:'狀態命中'},2000);assert.equal(stun.casts.length,1);
+// The old-id stun's success-only ring (狀態命中/衝暈失敗) was retired with sk_shock_stun; 衝擊之暈 is lw_skill_400.
 // Triple Arrow (either id) shows only its three arrows and plain numbers (afei style): no per-shot ring.
 for(const skill of ['sk_elf_triple','lw_skill_450']){let triple=initial();for(let i=0;i<3;i++)triple=applyCombatViewEvent(triple,{...hit,seq:i+1,skill,at:1000+i*70},2000+i*70);assert.equal(triple.casts.length,0,skill+': triple-shot releases add no skill ring');}
 const cue=playerCues([{...hit,skill:undefined,source:'physical',shownAt:2000}])[0];
 const motion=pushCue({kind:'skill',at:1800,duration:1400,pending:[]},cue,2000,()=>1200,false,true);
 assert.equal(motion.kind,'attack','confirmed melee attack cannot wait behind a cosmetic cast');assert.equal(motion.at,2000);assert.equal(motion.pending.length,0);
 const arrow=pushCue({kind:'skill',at:1800,duration:1400,pending:[]},{...cue,immediate:true},2000,()=>1200,false,true);assert.equal(arrow.kind,'attack','confirmed projectile launch also takes over without waiting');
-console.log('PASS: damage/status use one visual while keeping authoritative HP/status, AoE, actors, weapon procs, triple arrows and success-only stun; confirmed melee/projectile attacks immediately replace cosmetic casting.');
+console.log('PASS: damage/status use one visual while keeping authoritative HP/status, AoE, actors, weapon procs, and triple arrows; confirmed melee/projectile attacks immediately replace cosmetic casting.');

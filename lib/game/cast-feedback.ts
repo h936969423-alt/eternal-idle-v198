@@ -11,8 +11,8 @@ export function spellPreviewNeedsTarget(skill:string){return !magicVisual({skill
 // Area spells draw on confirmation, together with their damage, so there is no click-time effect.
 export function canPreviewSpellEffect(skill:string){const config=magicVisual({skill}).config;return playerActionKind(skill)==='skill'&&!isAreaSpell({skill})&&(raw.skills as Record<string,any>)[skill]?.type!=='passive'&&!!config;}
 export function castFeedbackPose(intent:CastIntent|undefined,characterId:string,now:number,count:number,castInterval:number,dead=false){
- if(!intent||dead||intent.characterId!==characterId||(playerActionKind(intent.skill)!=='skill'&&intent.skill!=='sk_shock_stun')||count<1)return undefined;
- const kind=intent.skill==='sk_shock_stun'?'attack' as const:'skill' as const;
+ if(!intent||dead||intent.characterId!==characterId||playerActionKind(intent.skill)!=='skill'||count<1)return undefined;
+ const kind='skill' as const;
  const age=Math.max(0,now-intent.at),duration=durationFor(kind,count,castInterval,castInterval);
  return age<duration?{kind,frame:Math.min(count-1,Math.floor(age/duration*count))}:undefined;
 }

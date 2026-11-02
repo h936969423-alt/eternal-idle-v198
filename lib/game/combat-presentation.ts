@@ -186,7 +186,7 @@ export function applyCombatViewEvent(v:BattleView,next:PresentationEvent,now:num
  if(next.kind==='spawn'&&next.slot!==undefined&&next.spawn){if(arena[next.slot])delete healthCredits[arena[next.slot].uid];arena[next.slot]={...next.spawn};}
  if(next.kind==='attack'&&next.slot!==undefined&&next.slot!==next.casterSlot)updateHp(next.slot);
  if(next.slot!==undefined&&arena[next.slot]?.uid===next.uid&&next.targetEffects)arena[next.slot].effects=next.targetEffects;
- return {normalHitReceipts,healthCredits,actions,petHurt:next.petUid&&next.source==='monster'?next:v.petHurt,petEntities:next.petEntities||v.petEntities,summonEntities:next.summonEntities||v.summonEntities,hp:staged||!freshVitals?v.hp:next.hp,mp:staged||!freshVitals?v.mp:next.mp,vitalSeq:staged?v.vitalSeq:vitalSeq,arena,target,attack:next.kind==='attack'&&next.visualPhase!=='impact'?next:v.attack,magic:next.kind==='magic'?next:v.magic,hurt:next.kind==='hurt'?next:v.hurt,casts:[...(v.casts||[]).filter(f=>now-f.shownAt<magicEffectLifetime(f)),...(!quiet&&!staged&&!next.visualEffectPreviewed&&!next.miss&&!isTripleArrow(next.skill)&&!hasSpellVisual(v,next)&&(next.skill!=='sk_shock_stun'||next.kind==='magic'&&next.effect==='狀態命中')&&((next.weaponProc&&!!lineageWEffectDefinition(next.skill))||(next.kind==='magic'&&(next.source==='monster'||next.slot!==undefined||!next.skill||(raw.skills as any)[next.skill]?.type!=='atk'))||(next.kind==='attack'&&next.skill&&!next.miss&&next.source!=='poison'&&next.source!=='summon'))?[{...next,visualCastAt:undefined,shownAt:now}]:[])],floats:!quiet&&(['attack','hurt','heal'].includes(next.kind)||(next.kind==='state'&&next.skill==='sk_shock_stun'&&next.effect==='衝暈失敗'&&!next.visualEffectPreviewed))?addCombatFloat(v.floats,next,now):v.floats.filter(f=>now-f.shownAt<800)};
+ return {normalHitReceipts,healthCredits,actions,petHurt:next.petUid&&next.source==='monster'?next:v.petHurt,petEntities:next.petEntities||v.petEntities,summonEntities:next.summonEntities||v.summonEntities,hp:staged||!freshVitals?v.hp:next.hp,mp:staged||!freshVitals?v.mp:next.mp,vitalSeq:staged?v.vitalSeq:vitalSeq,arena,target,attack:next.kind==='attack'&&next.visualPhase!=='impact'?next:v.attack,magic:next.kind==='magic'?next:v.magic,hurt:next.kind==='hurt'?next:v.hurt,casts:[...(v.casts||[]).filter(f=>now-f.shownAt<magicEffectLifetime(f)),...(!quiet&&!staged&&!next.visualEffectPreviewed&&!next.miss&&!isTripleArrow(next.skill)&&!hasSpellVisual(v,next)&&((next.weaponProc&&!!lineageWEffectDefinition(next.skill))||(next.kind==='magic'&&(next.source==='monster'||next.slot!==undefined||!next.skill||(raw.skills as any)[next.skill]?.type!=='atk'))||(next.kind==='attack'&&next.skill&&!next.miss&&next.source!=='poison'&&next.source!=='summon'))?[{...next,visualCastAt:undefined,shownAt:now}]:[])],floats:!quiet&&['attack','hurt','heal'].includes(next.kind)?addCombatFloat(v.floats,next,now):v.floats.filter(f=>now-f.shownAt<800)};
 }
 
 
@@ -216,8 +216,7 @@ export function enqueueSunriseReplay<T extends PresentationEvent>(queued:(T&{due
  const behind=(e:{seq:number})=>e.seq<tripleSeq;
  if(manualTriple.length)queued=queued.map(e=>behind(e)&&!e.visualPhase?{...e,catchUp:true,due:Math.min(now,e.due)}:e);
  const early=unique.filter(e=>e.manual&&!e.visualEffectPreviewed&&(
-  e.kind==='magic'&&e.skill&&(e.skill!=='sk_shock_stun'||e.effect==='狀態命中')||
-  e.kind==='state'&&e.skill==='sk_shock_stun'&&e.effect==='衝暈失敗'||
+  e.kind==='magic'&&e.skill||
   e.kind==='attack'&&e.skill==='lw_skill_400'&&!e.miss&&!e.weaponProc));
  const earlySeq=new Set(early.map(e=>e.seq));
  // A target spell has two presentation moments: its effect starts with the

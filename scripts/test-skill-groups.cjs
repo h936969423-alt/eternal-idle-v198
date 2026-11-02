@@ -17,5 +17,6 @@ try{
  }
  const magic=Object.entries(W.W_SKILLS).filter(([,s])=>s.type==='atk'&&s.dmgType!=='physical').map(([id])=>id);
  for(const id of magic){assert.equal(C.playerActionKind(id),'skill');assert.equal(D.damageDisplay({kind:'attack',skill:id,source:'magic',damage:9}).kind,'magic-damage');}
+ for(const id of ['sk_counter_barrier','lw_skill_440']){assert.equal(D.damageSourceLabel({kind:'attack',skill:id,source:'physical'}),'反擊',id+' keeps its 反擊 caption');assert.equal(D.damageDisplay({kind:'attack',skill:id,source:'physical',damage:5}).kind,'physical-damage');}
  console.log(`PASS skill groups: ${physical.length} physical W skills (+old ids) share one list; ${magic.length} magic skills stay magic`);
 }finally{fs.rmSync(dir,{recursive:true,force:true});}
