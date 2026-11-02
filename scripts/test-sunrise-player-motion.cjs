@@ -27,7 +27,7 @@ function oracle(timing,afeiCadence=true){
 }
 let comparisons=0;
 for(const cls of ['royal','knight','elf','mage','dark'])for(const speed of [.19,.4489,.8,1.3,2.5]){
- const bases={royal:'royal_m',knight:'knight_2hsword',elf:'elf_m_melee',mage:'mage_m',dark:'darkelf'},frames=require('../lib/game/asset-map.json').frames,clips=require('../lib/game/player-animation.ts').playerAnimationClips(bases[cls],frames,2),counts=Object.fromEntries(Object.entries(clips).map(([k,v])=>[k,v.length])),timing={counts,attackSeconds:speed,castSeconds:speed},ref=oracle(timing);let state=motion.emptySunriseClock();
+ const bases={royal:'royal_m',knight:'knight_2hsword',elf:'elf_m_melee',mage:'mage_m',dark:'darkelf_player'},frames=require('../lib/game/asset-map.json').frames,clips=require('../lib/game/player-animation.ts').playerAnimationClips(bases[cls],frames,2),counts=Object.fromEntries(Object.entries(clips).map(([k,v])=>[k,v.length])),timing={counts,attackSeconds:speed,castSeconds:speed},ref=oracle(timing);let state=motion.emptySunriseClock();
  // Hurt arbitration intentionally differs from the source in a network-fed
  // multi-monster arena. Its starvation reproduction is checked separately below.
  const events=new Map([[0,'attack'],[130,'skill'],[200,'attack'],[350,'skill'],[500,'attack'],[1000,'skill'],[1200,'attack'],[1250,'attack'],[2000,'attack'],[2500,'skill'],[2600,'attack'],[4000,'death']]);

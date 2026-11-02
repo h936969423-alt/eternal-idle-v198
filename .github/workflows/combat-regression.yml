@@ -46,6 +46,7 @@ jobs:
           pnpm install --frozen-lockfile
           node scripts/test-alignment.cjs
           node scripts/test-sunrise-player-motion.cjs
+          node scripts/test-darkelf-player-sprite.cjs
           node scripts/test-network-combat-cadence.cjs
           pnpm exec tsc --noEmit
           node scripts/test-weapon-growth.cjs
