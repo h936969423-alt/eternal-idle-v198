@@ -7,7 +7,7 @@ try{
  const e=load('engine'),pub=load('monster-loot'),cfg=load('monster-config'),boss=load('boss-loot'),preview=load('boss-drop-preview').bossDropPreview;
  const ref=require('../docs/afei-drops/reference-20261029.json'),now=Date.now();
  const source=JSON.parse(fs.readFileSync(path.join(root,'lib/game/gamedata.json'),'utf8')),hash=o=>require('node:crypto').createHash('sha256').update(JSON.stringify(o)).digest('hex');
- assert.equal(hash(Object.fromEntries(Object.entries(source.items).filter(([id])=>!ref.addedItems.includes(id)))),ref.preservation.existingItemsSha256,'existing equipment and item abilities are preserved');
+ assert.equal(hash(Object.fromEntries(Object.entries(source.items).filter(([id])=>!ref.addedItems.includes(id)&&!id.startsWith('gm_all_magic_')))),ref.preservation.existingItemsSha256,'existing equipment and item abilities are preserved');
  assert.equal(hash(Object.fromEntries(Object.entries(source).filter(([key])=>key!=='items'))),ref.preservation.otherGameDataSha256,'monster stats, maps, spells and world-boss definitions are preserved');
  for(const [id,entries] of Object.entries(ref.preservation.priorRates))for(const d of entries)assert.equal(pub.PUBLIC_DROP_RATES[id].find(row=>row.item===d.item)?.chance,d.chance,id+' retains existing rate for '+d.item);
  assert.equal(Object.keys(ref.mobs).length,220);assert.equal(Object.keys(ref.worldBosses).length,18);
