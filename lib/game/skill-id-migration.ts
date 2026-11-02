@@ -3,10 +3,10 @@ import {autoConfig,enabledAutoSkills} from './auto-config';
 import {buffModifiers} from './spell-rules';
 import raw from './gamedata.json';
 import type {Save,Character} from './engine';
-/** v1 (canonical-skills-v1) moved 69 old skills onto Lineage W ids. v2 plays those 69 with their old
- * rules, names and ids again and removes the Lineage W ordinary/class skills that have no old version
- * (潛力 and 攻城 skills are unchanged). Saves from before v1 already use the old ids. */
-export const SKILL_ID_VERSION='legacy-skills-v2';
+/** v1 (canonical-skills-v1) moved 69 old skills onto Lineage W ids. v2 played those 69 with their old
+ * rules, names and ids again and removed the Lineage W ordinary/class skills without an old version.
+ * v3 also removes the 潛力 and 攻城 skills. Saves from before v1 already use the old ids. */
+export const SKILL_ID_VERSION='legacy-skills-v3';
 const skills=raw.skills as Record<string,any>;
 const canonical=(id:string)=>W_REVERTED[id]||id;
 const removed=(id:string)=>W_REMOVED.has(id);

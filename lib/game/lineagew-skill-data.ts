@@ -8,11 +8,11 @@ export const W_LEGACY=catalog.legacy as Record<string,string>;
 /** Ordinary and class skills that are played with their original rules, names and ids again: W id → old id.
  * Their old definitions are in gamedata.json; the W icons are kept. */
 export const W_REVERTED:Record<string,string>=Object.fromEntries(Object.entries(W_LEGACY).map(([old,id])=>[id,old]));
-const retained=(s:any)=>/^(潛力|攻城)/.test(s.lwCategory||'');
-/** Lineage W ordinary/class skills without an old version: removed from the game (learned copies are taken out). */
-export const W_REMOVED:ReadonlySet<string>=new Set(Object.entries(CATALOG).filter(([id,s])=>!retained(s)&&!W_REVERTED[id]).map(([id])=>id));
-/** Lineage W skills still in play: the 潛力 and 攻城 lines. */
-export const W_SKILLS:Record<string,any>=Object.fromEntries(Object.entries(CATALOG).filter(([,s])=>retained(s)));
+/** Every Lineage W skill without an old version (ordinary, class, 潛力 and 攻城) is removed from the
+ * game since legacy-skills-v3: learned copies are taken out and their books refunded. */
+export const W_REMOVED:ReadonlySet<string>=new Set(Object.keys(CATALOG).filter(id=>!W_REVERTED[id]));
+/** No Lineage W skill is played under its own id any more; kept so older call sites stay inert. */
+export const W_SKILLS:Record<string,any>={};
 export const W_BOOKS:Record<string,any>=Object.fromEntries(Object.entries(CATALOG_BOOKS).filter(([,b])=>!W_REMOVED.has(b.sk)));
 const skills=raw.skills as Record<string,any>,items=raw.items as Record<string,any>;
 const icons=assets.icons as Record<string,Record<string,string>>;
