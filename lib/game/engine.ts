@@ -375,7 +375,7 @@ function castNative(c:Character,k:string,now:number,rng:()=>number,silent:boolea
   }
   c.arenaTarget=savedTarget;syncTarget(c);result=`攻擊實扣 ${total} HP`;
  }
- if(channel){c.spellCooldowns||={};c.spellCooldowns[channel]=nextSpellAt(c.spellCooldowns[channel],now,(s.fixedHeal?b.healIntervalMs:b.castIntervalMs),silent);}
+ if(channel){c.spellCooldowns||={};c.spellCooldowns[channel]=nextSpellAt(c.spellCooldowns[channel],now,Number.isFinite(s.castDelayMs)?s.castDelayMs:(s.fixedHeal?b.healIntervalMs:b.castIntervalMs),silent);}
  if(k==='sk_elf_triple'){c.tripleNeedsNormal=true;delete c.tripleResumeAt;}
  if(k==='sk_shock_stun'||s.darkCrit){c.skillCooldowns||={};c.skillCooldowns[k]=now+(s.darkCrit?30000:6000);}
  if(s.healCooldownTicks||k==='sk_abs_barrier'){c.skillCooldowns||={};c.skillCooldowns[k]=now+(k==='sk_abs_barrier'?(s.dur+12)*1000:s.healCooldownTicks*100);}
