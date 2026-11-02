@@ -16,11 +16,40 @@ try{
  assert.equal(v.arena[0].hp,490,'the older hit still lands on its monster');
  v=P.applyCombatViewEvent(v,{seq:11,at:0,kind:'heal',hp:230,mp:81},300);
  assert.deepEqual([v.hp,v.mp],[230,81],'newer snapshots still update');
- // 2. A pending normal hit on A is not force-settled when a Triple Arrow on B is drained.
- const queue=[{seq:5,at:0,due:0,kind:'attack',slot:0,uid:'A',damage:9,mobHp:0,hp:200,mp:92,source:'physical'},{seq:6,at:0,due:0,kind:'attack',skill:'lw_skill_450',slot:1,uid:'B',damage:20,mobHp:480,hp:200,mp:80,source:'physical'}];
- let shown=[];for(let t=0;t<=1000;t+=50)shown.push(...P.drainCombatPresentation(queue,[],t,false,undefined,()=>false));
- assert.ok(!shown.some(e=>e.seq===5),'normal hit on A waits for its own swing (no forced burst)');
- assert.ok(shown.some(e=>e.seq===6),'triple arrow on B is shown');
+ // 2. Triple Arrow on B never leaves while the previous target A still stands: it waits for A's
+ // pending normal hit (no forced burst while that swing can still play), and only after
+ // TRIPLE_ORDER_HOLD_MS settles A (HP only) and then launches, the three shots still 70ms apart.
+ {
+  const volley=[0,1,2].map(i=>({seq:6+i,at:i*70,due:i*70,kind:'attack',skill:'sk_elf_triple',slot:1,uid:'B',damage:20,mobHp:480-20*i,hp:200,mp:80,source:'physical'}));
+  const queue=[{seq:5,at:0,due:0,kind:'attack',slot:0,uid:'A',damage:9,mobHp:0,hp:200,mp:92,source:'physical'},...volley.map(e=>({...e}))];
+  const shown=[],pend=[];let forced=[];
+  for(let t=0;t<=2500;t+=10)for(const e of P.drainCombatPresentation(queue,pend,t,true,undefined,()=>false,e=>forced.push(e.seq)))shown.push({...e,t});
+  const firstLaunch=shown.find(e=>e.seq===6&&e.visualPhase==='launch');
+  assert.ok(!shown.some(e=>e.seq>=6&&e.t<P.TRIPLE_ORDER_HOLD_MS),'no triple arrow on B while A is still waiting for its swing');
+  assert.deepEqual(forced,[5],'A settles (HP only) once the hold ends');
+  assert.ok(firstLaunch&&shown.findIndex(e=>e.seq===5)<shown.indexOf(firstLaunch),'A falls before the volley leaves');
+  const launches=[6,7,8].map(seq=>shown.find(e=>e.seq===seq&&e.visualPhase==='launch').t);
+  assert.deepEqual(launches.map(t=>t-launches[0]),[0,70,140],'held volley keeps its 70ms spacing: '+launches);
+ }
+ // 2b. Usual case: A's swing plays during the hold; the volley leaves only after A's arrow has landed.
+ {
+  const volley=[0,1,2].map(i=>({seq:16+i,at:i*70,due:i*70,kind:'attack',skill:'sk_elf_triple',slot:1,uid:'B',damage:20,mobHp:480-20*i,hp:200,mp:80,source:'physical'}));
+  const queue=[{seq:15,at:0,due:0,kind:'attack',slot:0,uid:'A',damage:9,mobHp:0,hp:200,mp:92,source:'physical'},...volley.map(e=>({...e}))];
+  const shown=[],pend=[],forced=[];
+  for(let t=0;t<=2500;t+=10)for(const e of P.drainCombatPresentation(queue,pend,t,true,undefined,()=>t>=400,e=>forced.push(e.seq)))shown.push({...e,t});
+  const aLand=shown.find(e=>e.seq===15&&e.visualPhase==='impact'),first=shown.find(e=>e.seq===16&&e.visualPhase==='launch');
+  assert.deepEqual(forced,[],'nothing forced when the swing plays');
+  assert.ok(aLand&&first&&first.t>=aLand.t,`volley leaves after A's arrow lands (${first?.t} ≥ ${aLand?.t})`);
+  assert.ok(first.t-aLand.t<=20,'and right after it');
+  const launches=[16,17,18].map(seq=>shown.find(e=>e.seq===seq&&e.visualPhase==='launch').t);
+  assert.deepEqual(launches.map(t=>t-launches[0]),[0,70,140],'70ms spacing kept');
+ }
+ // 2c. Same-target volley is never held.
+ {
+  const queue=[{seq:25,at:0,due:0,kind:'attack',slot:0,uid:'A',damage:9,mobHp:100,hp:200,mp:92,source:'physical'},{seq:26,at:0,due:0,kind:'attack',skill:'sk_elf_triple',slot:0,uid:'A',damage:20,mobHp:80,hp:200,mp:80,source:'physical'}];
+  const shown=P.drainCombatPresentation(queue,[],0,true,undefined,()=>false);
+  assert.ok(shown.some(e=>e.seq===26&&e.visualPhase==='launch'),'volley on the same monster leaves at once');
+ }
  // 3. Float lanes: one column, a line per number, so three arrows stack on their target.
  const rows=[0,1,2,3].map(n=>L.combatFloatLayout(n));
  assert.equal(new Set(rows.map(r=>r.marginTop)).size,4,'four distinct lines');
