@@ -1,9 +1,10 @@
-import {W_SKILLS,W_LEGACY} from './lineagew-skill-data';
-/** Player skills that strike with the equipped weapon (attack pose, red physical numbers).
- * Derived from the Lineage W catalogue (type atk + dmgType physical) so a new or edited
- * skill is classified in one place; old ids that map to them are accepted for old events. */
-const physicalIds=Object.entries(W_SKILLS).filter(([,s])=>s.type==='atk'&&s.dmgType==='physical').map(([id])=>id);
-export const PHYSICAL_PLAYER_SKILLS:ReadonlySet<string>=new Set([...physicalIds,...Object.entries(W_LEGACY).filter(([,id])=>physicalIds.includes(id)).map(([old])=>old)]);
+import {W_LEGACY} from './lineagew-skill-data';
+import raw from './gamedata.json';
+const playerSkills=raw.skills as Record<string,any>;
+const physicalIds=Object.entries(playerSkills).filter(([,s])=>s.type==='atk'&&s.dmgType==='physical'&&(s.lwClasses||['reqRoy','reqK','reqE','reqM','reqD'].some(k=>s[k]!==undefined))).map(([id])=>id);
+/** Player skills that strike with the equipped weapon (attack pose, red physical numbers), from the
+ * skill table itself; Lineage W ids of the same skills are accepted for events from that period. */
+export const PHYSICAL_PLAYER_SKILLS:ReadonlySet<string>=new Set([...physicalIds,...Object.entries(W_LEGACY).filter(([old])=>physicalIds.includes(old)).map(([,id])=>id)]);
 export function isPhysicalSkill(skill:string|undefined|null):boolean{return !!skill&&PHYSICAL_PLAYER_SKILLS.has(skill);}
-/** 衝擊之暈 (lw_skill_400, or its retired old id): a failed stun shows 衝暈失敗 on the target. */
-export function isShockStun(skill:string|undefined|null):boolean{return !!skill&&(W_LEGACY[skill]||skill)==='lw_skill_400';}
+/** 衝擊之暈 (sk_shock_stun; its Lineage W id from the W period is accepted too). */
+export function isShockStun(skill:string|undefined|null):boolean{return !!skill&&(skill==='sk_shock_stun'||W_LEGACY.sk_shock_stun===skill);}

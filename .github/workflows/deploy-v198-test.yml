@@ -147,8 +147,8 @@ jobs:
           node scripts/test-triple-impact-sync.cjs
           node scripts/test-manual-triple-latency.cjs
           node scripts/test-skill-groups.cjs
-          node scripts/test-no-legacy-skill-ids.cjs
           node scripts/test-restored-skill-rules.cjs
+          node scripts/test-skill-revert-catalog.cjs
           node scripts/test-triple-pressure-ring.cjs
           node scripts/test-gm-all-magic.cjs
           node scripts/test-auto-cast-swings.cjs

@@ -4,7 +4,12 @@ fs.writeFileSync(path.join(dir,'package.json'),'{"type":"commonjs"}');
 try{
  for(const name of fs.readdirSync(path.join(root,'lib/game'))){const from=path.join(root,'lib/game',name);if(name.endsWith('.json'))fs.copyFileSync(from,path.join(dir,name));else if(name.endsWith('.ts'))fs.writeFileSync(path.join(dir,name.replace(/\.ts$/,'.js')),ts.transpileModule(fs.readFileSync(from,'utf8'),{compilerOptions:{module:ts.ModuleKind.CommonJS,target:ts.ScriptTarget.ES2022,esModuleInterop:true}}).outputText);}
  const e=require(path.join(dir,'engine.js')),{RETIRED_ITEMS}=require(path.join(dir,'retired-items.js')),loot=require(path.join(dir,'monster-loot.js')),hub=require(path.join(dir,'npc-hub.js')),recipes=require(path.join(dir,'npc-recipes.js')),gm=require(path.join(dir,'gm-item-options.js')),t=1000000;
- const ids=Object.keys(RETIRED_ITEMS);assert.deepEqual(ids.sort(),['afei_drop_wpn_14','afei_drop_wpn_16','afei_drop_wpn_33','afei_drop_wpn_halberd'].sort());
+ const ids=['afei_drop_wpn_14','afei_drop_wpn_16','afei_drop_wpn_33','afei_drop_wpn_halberd'];
+ // Besides these weapons, only the books of Lineage W skills removed in legacy-skills-v2 are retired.
+ const wData=require(path.join(dir,'lineagew-skill-data.js')),wCatalog=require(path.join(dir,'lineagew-skills.json'));
+ const removedBooks=Object.entries(wCatalog.books).filter(([,b])=>wData.W_REMOVED.has(b.sk)).map(([id])=>id);assert.equal(removedBooks.length,112);
+ assert.deepEqual(Object.keys(RETIRED_ITEMS).sort(),[...ids,...removedBooks].sort());
+ for(const id of removedBooks)assert.ok(e.DATA.items[id].noShop&&!e.DATA.items[id].gachaWeight,id);
  // Not dropped, sold, crafted or offered to GMs any more.
  const drops=JSON.stringify([loot.PUBLIC_LOOT,loot.PUBLIC_DROP_RATES]);for(const id of ids)assert.ok(!drops.includes(id),id+' drop');
  const data=require(path.join(dir,'npc-hub-data.json'));for(const npc of Object.keys(data.stocks)){const stock=hub.hubDefaultStock(npc,t);assert.ok(stock&&typeof stock==='object');for(const id of ids)assert.ok(!(id in stock),id+' shop '+npc);}

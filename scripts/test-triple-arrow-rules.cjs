@@ -16,7 +16,7 @@ try{
  for(let i=0;i<300;i++){
   const c=fixture(),arrows=c.bag.wpn_22,at=now+i*10000;
   c.events=[];e.cast(c,'sk_elf_triple',at,rng);casts++;
-  const ev=c.events.filter(x=>x.kind==='attack'&&x.skill==='lw_skill_450'&&!x.weaponProc);
+  const ev=c.events.filter(x=>x.kind==='attack'&&x.skill==='sk_elf_triple'&&!x.weaponProc);
   assert.equal(ev.length,3,'three arrows per cast');shots+=3;
   assert.equal(c.bag.wpn_22,arrows-1,'one cast uses exactly one arrow');
   assert.equal(c.events.filter(x=>x.weaponProc).length,0,'no weapon procs or weapon magic');

@@ -26,9 +26,9 @@ try{
  {const {c,save}=make('knight');c.bag.gm_all_magic_elf=1;assert.throws(()=>e.action(save,{type:'useItem',item:'gm_all_magic_elf'},at,rng),/職業不符/);assert.equal(c.skills.length,0);}
  // Elf: every element line is learned and castable regardless of the chosen element.
  {const {c,save}=make('elf');c.elfEle='fire';c.bag.gm_all_magic_elf=1;e.action(save,{type:'useItem',item:'gm_all_magic_elf'},at,rng);
-  assert.equal(c.gmAllElements,true);const water=Object.entries(W.W_SKILLS).filter(([,s])=>s.reqEle==='water'&&s.lwClasses.includes('elf'));assert.ok(water.length);
-  for(const [id,s] of water){assert.ok(A.hasSkill(c,id));assert.equal(W.wElementAllowed(c,s),true,s.n+' castable');}
+  assert.equal(c.gmAllElements,true);const water=Object.entries(e.DATA.skills).filter(([,s])=>s.reqEle==='water'&&s.reqE!==undefined);assert.ok(water.length);
+  for(const [id,s] of water){assert.ok(A.hasSkill(c,id));assert.equal(S.elementError(c,s),'',s.n+' castable');}
   // Without the book, the element rule still applies to other elves.
-  const other=make('elf').c;other.elfEle='fire';assert.equal(W.wElementAllowed(other,water[0][1]),false);}
+  const other=make('elf').c;other.elfEle='fire';assert.notEqual(S.elementError(other,water[0][1]),'');}
  console.log('PASS gm all-magic books: wrong class refused; elf learns and may cast all four elements; others keep the element rule');
 }finally{fs.rmSync(dir,{recursive:true,force:true});}
