@@ -36,6 +36,16 @@ export function triggerSunriseMotion(state:SunriseClock,kind:Exclude<SunriseActi
  if(SUNRISE_PLAYER_PRIORITY[kind]<current)return kind==='attack'?{...state,pendAtk:true}:state;
  return {act:kind,t:now,pendAtk:false};
 }
+/** Whether a cast confirmed by the server (automatic casts, confirmations of earlier clicks) must
+ * leave the body pose alone: while a swing is playing or waiting. The server swings and casts in
+ * parallel, so every displayed swing is needed to show its normal hit; when heals / MP conversions
+ * (often more frequent than a cast pose lasts) restarted the cast pose, the swing stayed pending,
+ * nothing reached contact and no normal hit, kill or loot was shown. Replacing even part of the
+ * swings lets the display fall behind the server. The spell's own effect still plays; a manual
+ * click (triggerSunriseMotion directly) still switches to the cast pose at once. */
+export function autoCastYieldsToSwing(state:SunriseClock,now:number,timing:SunriseTiming){
+ return !!state.pendAtk||state.act==='attack'&&now-state.t<sunriseMotionDuration('attack',timing);
+}
 export function advanceSunriseMotion(state:SunriseClock,now:number,timing:SunriseTiming):SunriseClock{
  if(!state.act||state.act==='death'||now-state.t<sunriseMotionDuration(state.act,timing))return state;
  return state.pendAtk&&(timing.counts.attack||0)>0?{act:'attack',t:now,pendAtk:false}:{...state,act:null,pendAtk:false};

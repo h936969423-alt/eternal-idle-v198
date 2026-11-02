@@ -1,6 +1,6 @@
 'use client';
 import {useEffect,useRef,useState} from 'react';
-import {emptySunriseClock,triggerSunriseMotion,advanceSunriseMotion,sunriseMotionPose,sunriseMotionDuration,tickLocalPlayerAttack,SUNRISE_ATTACK_TICK_MS,SUNRISE_PLAYER_FRAME_MS,type LocalAttackInput,type LocalAttackClock,type SunriseTiming,type SunriseAction} from '@/lib/game/sunrise-player-motion';
+import {emptySunriseClock,triggerSunriseMotion,advanceSunriseMotion,sunriseMotionPose,sunriseMotionDuration,tickLocalPlayerAttack,SUNRISE_ATTACK_TICK_MS,SUNRISE_PLAYER_FRAME_MS,type LocalAttackInput,type LocalAttackClock,type SunriseTiming,type SunriseAction,autoCastYieldsToSwing} from '@/lib/game/sunrise-player-motion';
 import type {SunriseCue} from '@/lib/game/sunrise-player-cues';
 import type {CastIntent} from '@/lib/game/cast-feedback';
 import {setLocalHitActive,clearLocalHits,recordLocalContact,localContactFrame,beginLocalSwing,type SwingTarget} from '@/lib/game/local-hit-sync';
@@ -14,11 +14,13 @@ export function useSunrisePlayerMotion(identity:string,cues:SunriseCue[],timing:
  // Publish action starts in the same React turn as their effects. The fixed
  // 125ms sampler advances frames; it must not delay the first visible pose.
  const publishPose=(now:number)=>{const next={...sunriseMotionPose(state.current,now,latest.current.timing),targetUid:facingTarget.current};setPose(p=>p.kind===next.kind&&p.frame===next.frame&&p.targetUid===next.targetUid?p:next);};
- const castPose=(started:number,now:number,targetUid?:string)=>{
+ const castPose=(started:number,now:number,targetUid?:string,automatic=false)=>{
+  const t=latest.current.timing;
+  if(automatic&&autoCastYieldsToSwing(state.current,now,t))return;
+  const before=state.current,next=triggerSunriseMotion(before,'skill',started,t);
   // A spell owns its target; it must not inherit a previous melee swing.
   // Self spells retain the current facing without acquiring a new target.
   if(targetUid)facingTarget.current=targetUid;
-  const before=state.current,next=triggerSunriseMotion(before,'skill',started,latest.current.timing);
   const interrupted=before.act==='attack'&&now-before.t<sunriseMotionDuration('attack',latest.current.timing)&&contact.current!==before.t;
   state.current=next!==before&&next.act==='skill'&&(interrupted||before.pendAtk)?{...next,pendAtk:true}:next;
   publishPose(now);
@@ -38,7 +40,7 @@ export function useSunrisePlayerMotion(identity:string,cues:SunriseCue[],timing:
    if(cue.previewAt!==undefined&&previewTimes.current.has(cue.previewAt))continue;
    const started=cue.displayAt??now;
    if(now-started>=sunriseMotionDuration(cue.kind,latest.current.timing))continue;
-   castPose(started,now,cue.targetUid);
+   castPose(started,now,cue.targetUid,true);
   }
   if(seen.current.size>640)seen.current=new Set(cues.map(c=>c.seq));
  },[cues,identity]);
