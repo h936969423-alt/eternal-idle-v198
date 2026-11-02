@@ -40,7 +40,7 @@ export function spellDamage(s:any,b:Record<string,number>,m:any,rng:()=>number,c
  return Math.max(0,Math.floor(total*(m.magDmgTakenMult||1))+(!isPlayerTarget(m)?b.pveDmg||0:0)-Math.max(0,(m.magicDr||0)-(b.ignoreMagicDr||0)-(b.allIgnoreDr||0)));
 }
 export function buffModifiers(id:string,s:any,lv:number,ele?:string){const out={...(s.d||{})};if(s.haste)out.atkSpdPct=33;if(s.moveSpeedMult)out.moveSpeedMult=s.moveSpeedMult;
- const special:Record<string,Record<string,number>>={sk_magic_shield:{magicBarrier:1},sk_holy_barrier:{damageReductionPct:30},sk_reduction_armor:{dr:Math.floor(lv/10)},sk_soul_up:{maxHpPct:20,maxMpPct:20},sk_elf_earthshield:{physicalImmune:1},sk_elf_flamesoul:{maxWeapon:1},sk_invisible:{invisible:1},sk_dark_poisonres:{poisonReductionPct:50},sk_dark_walkhaste:{attackSpeedMult:1/.85},sk_sunlight:{light:1},sk_reveal:{reveal:1},sk_helm_str2:{reveal:1},sk_load_up:{weightCap:50}};
+ const special:Record<string,Record<string,number>>={sk_invisible:{invisible:1},sk_sunlight:{light:1},sk_helm_str2:{reveal:1}};
  if(id==='sk_elf_singleres'&&ele)out['res'+ele[0].toUpperCase()+ele.slice(1)]=50;
  return {...out,...special[id]};
 }

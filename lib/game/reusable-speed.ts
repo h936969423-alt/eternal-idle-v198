@@ -1,7 +1,7 @@
 import raw from './gamedata.json';
 import type {Character} from './engine';
 const items=raw.items as Record<string,any>;
-const hasteSkills=new Set(['sk_haste_spell','sk_greater_haste','sk_helm_dex2']);
+const hasteSkills=new Set(['sk_greater_haste','sk_helm_dex2']);
 export function legacySpeedStage(id:string){const eff=items[id]?.eff;return eff==='haste'||hasteSkills.has(id)?1:['brave','elfcookie'].includes(eff)?2:0;}
 export function activeSpeedStages(c:Character,now:number){return new Set(Object.values(c.buffs).filter(b=>b.until>now&&[1,2,3].includes(b.d.speedStage)).map(b=>b.d.speedStage));}
 export function useReusableSpeed(c:Character,id:string,now:number){
