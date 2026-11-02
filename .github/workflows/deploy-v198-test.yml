@@ -151,6 +151,7 @@ jobs:
           node scripts/test-restored-skill-rules.cjs
           node scripts/test-triple-pressure-ring.cjs
           node scripts/test-gm-all-magic.cjs
+          node scripts/test-auto-cast-swings.cjs
       - name: Verify skill calculation equivalence and bounded Worker settlement
         run: node scripts/test-skill-computation.cjs
       - name: Verify continuous live polls do not reopen offline settlement

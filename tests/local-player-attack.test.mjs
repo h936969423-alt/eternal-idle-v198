@@ -26,11 +26,16 @@ test('local attack and manual/automatic cast publish their first pose without wa
  const h=harness();h.advance(400);assert.equal(h.pose().kind,'attack');assert.equal(h.pose().frame,0);
  h.advance(410);h.render({intent:{id:1,at:410,characterId:'one',skill:'spell'}});
  assert.equal(h.pose().kind,'skill');assert.equal(h.pose().frame,0);
+ // An automatic cast never cuts a swing short (the resumed swing keeps playing)…
  h.advance(900);h.render({cues:[{seq:1,kind:'skill',key:'auto',displayAt:900}]});
+ assert.equal(h.pose().kind,'attack','an automatic cast waits for the swing in progress');
+ // …but with no swing to show it publishes its pose immediately.
+ h.render({local:{running:false,hasTarget:true,blocked:false}});h.advance(1400);
+ h.render({cues:[{seq:2,kind:'skill',key:'auto2',displayAt:1400}]});
  assert.equal(h.pose().kind,'skill');assert.equal(h.pose().frame,0);h.unmount();
 });
 test('automatic casts use the effect start clock and late history cannot restart an expired pose',()=>{
- const h=harness();h.advance(1000);h.render({cues:[{seq:1,kind:'skill',key:'auto',displayAt:850}]});
+ const h=harness();h.render({local:{running:false,hasTarget:true,blocked:false}});h.advance(1000);h.render({cues:[{seq:1,kind:'skill',key:'auto',displayAt:850}]});
  assert.equal(h.pose().kind,'skill');assert.equal(h.pose().frame,1);
  h.advance(1700);const before=h.calls.filter(c=>c.kind==='skill').length;
  h.render({cues:[{seq:2,kind:'skill',key:'stale',displayAt:1000}]});
@@ -200,7 +205,7 @@ test('manual and automatic spells face their own target while a swing keeps its 
  assert.equal(h.pose().targetUid,'left','selection cannot turn a swing already in progress');
  h.render({intent:{id:1,at:410,characterId:'one',skill:'spell',targetUid:'right'}});
  assert.equal(h.pose().kind,'skill');assert.equal(h.pose().targetUid,'right','a manual cast uses its click target');
- h.advance(900);h.render({cues:[{seq:1,kind:'skill',key:'auto',displayAt:900,targetUid:'upper'}]});
+ h.render({local:{...local,running:false}});h.advance(900);h.render({cues:[{seq:1,kind:'skill',key:'auto',displayAt:900,targetUid:'upper'}]});
  assert.equal(h.pose().kind,'skill');assert.equal(h.pose().targetUid,'upper','an automatic cast uses its event target');
  h.advance(910);h.render({intent:{id:2,at:910,characterId:'one',skill:'self'}});
  assert.equal(h.pose().targetUid,'upper','a self spell retains the current facing');
