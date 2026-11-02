@@ -12,7 +12,7 @@ export function requiredSkillLevel(c:Pick<Character,'cls'>,s:any){
  const key=({royal:'reqRoy',knight:'reqK',elf:'reqE',mage:'reqM',dark:'reqD'} as Record<string,string>)[c.cls];
  return key&&s[key]!==undefined?Number(s[key]):Infinity;
 }
-export function elementError(c:Pick<Character,'cls'|'elfEle'>&Partial<Pick<Character,'elfEle2'|'skills'>>,s:any){if(s.lwSourceId&&c.cls==='elf'&&s.reqEle===c.elfEle2&&c.skills?.includes('lw_skill_16970'))return '';if(c.cls!=='elf')return '';if((s.reqEleAny||s.reqEle)&&!c.elfEle)return '請先選擇妖精屬性';if(s.reqEle&&s.reqEle!==c.elfEle)return `需要${ELEMENT_NAMES[s.reqEle]}屬性`;return '';}
+export function elementError(c:Pick<Character,'cls'|'elfEle'>&Partial<Pick<Character,'elfEle2'|'skills'|'gmAllElements'>>,s:any){if(c.gmAllElements)return '';if(s.lwSourceId&&c.cls==='elf'&&s.reqEle===c.elfEle2&&c.skills?.includes('lw_skill_16970'))return '';if(c.cls!=='elf')return '';if((s.reqEleAny||s.reqEle)&&!c.elfEle)return '請先選擇妖精屬性';if(s.reqEle&&s.reqEle!==c.elfEle)return `需要${ELEMENT_NAMES[s.reqEle]}屬性`;return '';}
 export function skillBooks(id:string){return Object.entries(raw.items as Record<string,any>).filter(([,i])=>i.type==='skillbk'&&canonicalWSkill(i.sk)===canonicalWSkill(id));}
 export function availableSkillBook(c:Pick<Character,'bag'|'locked'>,id:string){return Object.keys(c.bag).find(k=>c.bag[k]>0&&!c.locked?.includes(k)&&skillBooks(id).some(([book])=>k.split('@')[0]===book));}
 export function skillMpCost(s:any,b:Record<string,number>){return s.mp?Math.max(1,Math.ceil(s.mp*(1-Math.min(100,b.mpReduce||0)/100))):0;}
