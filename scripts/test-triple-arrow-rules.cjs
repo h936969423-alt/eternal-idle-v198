@@ -27,5 +27,13 @@ try{
  }
  assert.ok(mixedHit>0,'each arrow rolls its own hit: some casts mix hits and misses');
  assert.ok(mixedCrit>0,'each arrow rolls its own critical: some casts mix critical and normal hits');
- console.log(`PASS triple arrow rules: ${casts} casts × 3 arrows, 1 arrow each, no equipment effects; ${mixedHit} casts mixed hit/miss, ${mixedCrit} mixed critical`);
+ // Triple Arrow's cast delay is a fixed 0.6s, whatever the character's cast interval.
+ {const cd=require(path.join(dir,'skill-cooldown.js')),c=fixture(),at=now+5000000;e.cast(c,'sk_elf_triple',at,rng);
+  assert.equal(c.spellCooldowns.attack-at,600,'next attack spell 0.6s after Triple Arrow');
+  assert.equal(cd.skillCooldownMs(c,'sk_elf_triple',e.stats(c,at),at),600,'skill bar shows 0.6s');
+  assert.throws(()=>e.cast(c,'sk_elf_triple',at+599,rng),/冷卻/);}
+ // 魂體轉換: HP −50 → MP +20.
+ {const c=fixture(),at=now+6000000;c.skills.push('sk_elf_soul');c.mp=0;const hp=c.hp;e.cast(c,'sk_elf_soul',at,rng);
+  assert.equal(hp-c.hp,50,'soul costs 50 HP');assert.equal(c.mp,20,'soul restores 20 MP');}
+ console.log(`PASS triple arrow rules (0.6s delay, soul −50 HP / +20 MP): ${casts} casts × 3 arrows, 1 arrow each, no equipment effects; ${mixedHit} casts mixed hit/miss, ${mixedCrit} mixed critical`);
 }finally{fs.rmSync(dir,{recursive:true,force:true});}

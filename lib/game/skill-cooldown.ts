@@ -8,6 +8,8 @@ export function skillCooldownMs(c:Character,input:string,b:Record<string,number>
  if(W_SKILLS[id]){let ms=Number(s.lwCooldownMs)||0;if(c.buffs.lw_skill_15977?.until>now&&['lw_skill_380','lw_skill_360','lw_skill_370','lw_skill_11197'].includes(id))ms*=.7;return Math.max(100,ms);}
  if(Number.isFinite(s.cooldownMs))return Math.max(100,s.cooldownMs);
  if(s.darkCrit)return 30000;if(id==='sk_shock_stun')return 6000;if(id==='sk_abs_barrier')return (s.dur+12)*1000;if(s.healCooldownTicks)return s.healCooldownTicks*100;
+ // A fixed per-skill cast delay (三重矢 0.6s) replaces the character's cast interval.
+ if(Number.isFinite(s.castDelayMs))return Math.max(100,s.castDelayMs);
  return Math.max(100,(s.fixedHeal?b.healIntervalMs:b.castIntervalMs)||1000);
 }
 export function skillReadyAt(c:Character,input:string){
