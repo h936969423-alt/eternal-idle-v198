@@ -1,6 +1,9 @@
 import type {CombatEvent} from './engine';
 // Kept local (no runtime import): tests load this file directly with node --experimental-strip-types.
+// scripts/test-skill-groups.cjs asserts these equal skill-groups.ts / projectile-timing.ts.
 const TRIPLE_ARROW=new Set(['sk_elf_triple','lw_skill_450']);
+/** Same members as PHYSICAL_PLAYER_SKILLS (Lineage W atk + physical, plus their old ids). */
+export const PHYSICAL_SKILLS_LOCAL:ReadonlySet<string>=new Set(['lw_skill_710','lw_skill_10288','lw_skill_400','lw_skill_441','lw_skill_10289','lw_skill_13372','lw_skill_450','lw_skill_11615','lw_skill_9620','lw_skill_10818','lw_skill_18129','sk_shock_stun','sk_elf_triple','sk_dark_crit']);
 /** Secondary damage must identify its actual actor instead of resembling a
  * second normal player swing on another monster. */
 export function damageSourceLabel(e:CombatEvent){
@@ -18,7 +21,7 @@ export function damageSourceLabel(e:CombatEvent){
 }
 /** Public afei presentation conventions, fed only by confirmed damage events. */
 export function damageDisplay(e:CombatEvent){
- const kind=e.miss?'miss':e.source==='pet'?'pet-damage':e.source==='summon'?'summon':e.source==='poison'?'poison':e.source==='doll'||e.source==='magic'||(e.skill&&!['sk_elf_triple','lw_skill_450','sk_dark_crit','sk_shock_stun'].includes(e.skill))?'magic-damage':'physical-damage';
+ const kind=e.miss?'miss':e.source==='pet'?'pet-damage':e.source==='summon'?'summon':e.source==='poison'?'poison':e.source==='doll'||e.source==='magic'||(e.skill&&!PHYSICAL_SKILLS_LOCAL.has(e.skill))?'magic-damage':'physical-damage';
  const prefix=e.source==='magic'||kind==='magic-damage'?'✦ ':'';
  return {kind,text:e.miss?'MISS':`${prefix}-${e.damage??0}${e.critical?'!':''}`};
 }
