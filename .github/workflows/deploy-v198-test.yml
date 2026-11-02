@@ -149,6 +149,7 @@ jobs:
           node scripts/test-skill-groups.cjs
           node scripts/test-no-legacy-skill-ids.cjs
           node scripts/test-restored-skill-rules.cjs
+          node scripts/test-triple-pressure-ring.cjs
       - name: Verify skill calculation equivalence and bounded Worker settlement
         run: node scripts/test-skill-computation.cjs
       - name: Verify continuous live polls do not reopen offline settlement
