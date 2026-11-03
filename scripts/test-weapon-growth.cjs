@@ -8,9 +8,9 @@ for(const name of fs.readdirSync(path.join(root,'lib/game'))){
 }
 try{
  const e=require(path.join(dir,'engine')),g=require(path.join(dir,'gear')),p=require(path.join(dir,'weapon-enhancement')),a=require(path.join(dir,'attack-rules')),w=require(path.join(dir,'lineagew-mythic')),r=require(path.join(dir,'enhancement-rules'));
- const expected=[[0,0],[1,1],[2,2],[3,3],[4,4],[5,5],[6,6],[8,8],[10,10],[12,12],[16,14],[21,16],[26,18],[31,20],[36,22],[42,25],[50,28],[59,31],[69,34],[80,37],[92,40],[105,43],[119,46]];
+ const expected=Array.from({length:23},(_,en)=>[en,en]);
  expected.forEach(([damage,hit],en)=>assert.deepEqual(p.weaponGrowth(en),{damage,hit}));
- assert.deepEqual(p.weaponGrowth(30),{damage:267,hit:70});
+ assert.deepEqual(p.weaponGrowth(30),{damage:30,hit:30});
  const all=Object.entries(e.DATA.items),eligible=all.filter(([id,i])=>p.hasUnlimitedWeaponGrowth(id,i)),ranks=new Set(eligible.map(([,i])=>i.lwGrade).filter(Boolean));
  for(const rank of ['rare','hero','legend','mythic'])assert(ranks.has(rank),rank);
  const fixture=(id,en=0)=>{const base=e.BASES.knight,allocation={};let left=base.pts;for(const k of ['str','dex','con','int','wis','cha']){allocation[k]=Math.min(left,20-base[k]);left-=allocation[k];}
@@ -32,6 +32,8 @@ try{
   const target={lv:1,ac:0,s:'S',hp:1000000,dr:0},withStrike=a.playerStrike(c,b,target,()=>.5,undefined,1000000,{forceHit:true,forceHeavy:true}),baseStrike=a.playerStrike(c,without,target,()=>.5,undefined,1000000,{forceHit:true,forceHeavy:true});
   assert.equal(withStrike.damage-baseStrike.damage,common.damage);
  }
+ // Rule: (1~16)+6, every weapon tier; dice range unchanged, +1 hit and +1 flat damage per level.
+ for(const [wid,wi] of all.filter(([key,x])=>x.type==='wpn'&&!x.isArrow&&!x.noEquip&&!x.noEnh)){const b0=e.stats(fixture(wid,0),1000000),b6=e.stats(fixture(wid,6),1000000),p0=w.lineageWProfile(wi,0),p6=w.lineageWProfile(wi,6);assert.equal(b6.weaponDamageBonus-b0.weaponDamageBonus,6,wid);assert.equal(b6.hit-b0.hit-(Math.floor(b6.dex/2)-Math.floor(b0.dex/2)),6,wid);if(p0)for(const k of ['minS','maxS','minL','maxL','hit','damage'])assert.equal(p6[k],p0[k],wid+' '+k);}
  const low=all.find(([,i])=>i.source==='lineagew'&&i.type==='wpn'&&i.lwGrade==='advanced'&&!i.noEnh);
  assert(!p.hasUnlimitedWeaponGrowth(low[0],low[1]));assert.equal(g.enhancementInfo(fixture(low[0],6),low[0]).cap,12);
  for(const [id,i] of all.filter(([,i])=>i.type==='arm'||i.type==='acc'))assert(!p.hasUnlimitedWeaponGrowth(id,i));
@@ -40,5 +42,5 @@ try{
  }
  const refined=fixture(id,20);refined.bag.scroll_weapon_s=1;g.enhanceGear(refined,id,'refined',()=>.999);assert.equal(refined.enh[refined.lastGear.key],21);
  const failed=fixture(id,20);g.enhanceGear(failed,id,'normal',()=>.999);assert(!failed.bag[failed.lastGear.key]);assert.equal(failed.equipment.weapon,undefined);
- console.log('PASS: '+eligible.length+' blue-to-gold weapons, exact +0..+22 and +30 table, real stats and damage, uncapped upgrades, finite high-level rates, refined/destruction, white/green and armor exclusion');
+ console.log('PASS: '+eligible.length+' blue-to-gold weapons, each +1 adds exactly +1 hit and +1 damage, real stats and damage, uncapped upgrades, finite high-level rates, refined/destruction, white/green and armor exclusion');
 }finally{fs.rmSync(dir,{recursive:true,force:true});}

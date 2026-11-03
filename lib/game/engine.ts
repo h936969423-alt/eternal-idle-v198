@@ -134,7 +134,7 @@ export function stats(c:Character,now=Date.now()){
  const classHp={knight:12,elf:8,mage:6,dark:9}[c.cls]||8;
  b.maxHp=Math.max(1,Math.floor((30+b.con*2+(c.lv-1)*classHp+b.mhp)*(1+b.maxHpPct/100)));
  b.maxMp=Math.max(0,Math.floor((b.wis*2+(c.lv-1)*(c.cls==='mage'?8:c.cls==='elf'?5:3)+b.mmp)*(1+b.maxMpPct/100)));
- const w=c.equipment.weapon?DATA.items[c.equipment.weapon.id]:null,lw=lineageWProfile(w,c.equipment.weapon?.en||0),weaponBonus=weaponEnhancementBonus(baseItem(c.equipment.weapon?.id||''),w,c.equipment.weapon?.en||0,!!lw),weaponDamage=(lw?.damage??w?.dmgBonus??0)+weaponBonus.damage,weaponHit=(lw?.hit??w?.hit??0)+weaponBonus.hit;
+ const w=c.equipment.weapon?DATA.items[c.equipment.weapon.id]:null,lw=lineageWProfile(w,c.equipment.weapon?.en||0),weaponBonus=weaponEnhancementBonus(c.equipment.weapon?.en||0),weaponDamage=(lw?.damage??w?.dmgBonus??0)+weaponBonus.damage,weaponHit=(lw?.hit??w?.hit??0)+weaponBonus.hit;
  b.weaponDamageBonus=weaponDamage;
  b.damageBonus=(w?.isBow?getDexRangedDmg(b.dex):getStrMeleeDmg(b.str))+b.extraDmg+(w?.isBow?b.rangedDmg:b.meleeDmg)+weaponDamage;
  b.hit=65+c.lv+Math.floor(b.dex/2)+weaponHit+b.extraHit+(w?.isBow?b.rangedHit:b.meleeHit);
