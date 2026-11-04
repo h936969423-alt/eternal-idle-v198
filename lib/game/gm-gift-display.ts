@@ -23,7 +23,7 @@ const wBookSkills=new Set(Object.entries(items).filter(([id,i])=>book(i)&&itemSo
 /** Shown by default: Lineage W gear and books, essential control rings, old books for skills
  * that have no Lineage W book, and every non-gear item (potions, scrolls, materials). */
 export function isPreferredItem(id:string){const base=id.split('@')[0],i=items[base];if(!i)return false;
- if(gear(i))return itemSource(base)==='lineagew'||itemSource(base)==='custom'||ESSENTIAL_LEGACY_ITEMS.has(base);
+ if(gear(i))return true;
  if(book(i))return itemSource(base)==='lineagew'||!wBookSkills.has(i.lwCanonicalSkill||i.sk);
  return true;}
 /** A reason to double-check an item already used in a drop table, or undefined. */

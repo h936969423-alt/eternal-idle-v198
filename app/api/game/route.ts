@@ -6,6 +6,7 @@ import {ensureLineageWMythicMigration} from '@/lib/game/lineagew-mythic-migratio
 import {ensureControlRingRestoration} from '@/lib/game/control-ring-restoration-store';
 import {ensureLineageWHLMigration} from '@/lib/game/lineagew-hl-migration-store';
 import {ensureLineageWMigration} from '@/lib/game/lineagew-migration-store';
+import {ensureLineageWRemoval} from '@/lib/game/lineagew-removal-migration-store';
 import {ensureEquipment381Migration} from '../../../lib/game/equipment381-migration-store';
 import {getGameSettings} from '../../../lib/game/game-settings';
 import {persistedSave,responseSave,type GameSyncCursor} from '../../../lib/game/state-sync';
@@ -56,6 +57,7 @@ async function handle(request:Request,mutate:boolean){
  row=await ensureLineageWHLMigration(env.DB,owner,row);
  row=await ensureControlRingRestoration(env.DB,owner,row);
  row=await ensureLineageWMythicMigration(env.DB,owner,row);
+ row=await ensureLineageWRemoval(env.DB,owner,row);
  row=await ensureSkillIdMigration(env.DB,owner,row);
   // Return the authoritative committed save for a retried mutation, without applying it twice.
   const mutationId=payload&&typeof payload==='object'&&'requestId' in payload?payload.requestId:undefined;

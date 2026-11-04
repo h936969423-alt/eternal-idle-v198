@@ -178,7 +178,7 @@ jobs:
           node scripts/test-enhancement-results.cjs
           node scripts/test-boss-drop-preview.cjs
           node scripts/test-four-dragon-loot.cjs
-          node scripts/test-lineagew-mythic-enhancement.cjs
+          node scripts/test-lineagew-equipment-removal.cjs
       - name: Verify self-contained four-dragon source material
         run: |
           node scripts/test-four-dragon-storage.cjs
@@ -196,6 +196,8 @@ jobs:
           assert maps, 'Server build did not generate source maps'
           print('Verified server source maps:',len(maps))
           PY
+      - name: Verify every equipment icon is in the final deployment output
+        run: node scripts/verify-equipment-icons.mjs
       - name: Verify four-dragon atlases in final deployment output
         run: node scripts/verify-four-dragon-assets.mjs --built
       - name: Publish verified W skill icons to isolated R2

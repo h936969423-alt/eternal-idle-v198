@@ -16,7 +16,7 @@ function fixture(source='apang381'){
 }
 function request(c,item,mode='normal'){return {type:'enhance',item,mode,expectedEn:c.enh[item]||0,requestId:crypto.randomUUID(),sequence:(c.enhancement?.sequence||0)+1};}
 function money(c){return JSON.stringify({gold:c.gold,bag:c.bag,enh:c.enh,equipment:c.equipment,affixes:c.affixes,history:c.enhancement});}
-for(const source of ['apang381','lineagew']){
+for(const source of ['apang381']){
  const {s,c,id}=fixture(source),a=request(c,id),before=c.bag.scroll_weapon,originalRates=gear.enhancementInfo(c,id);
  e.action(s,a,now,()=>0);const r=c.enhancement.history[0];
  assert.equal(r.outcome,'success');assert.equal(r.from,0);assert.equal(r.to,1);assert.equal(r.consumed,1);assert.equal(r.scroll,'scroll_weapon');assert.equal(r.originalKey,id);assert(r.key.includes('@'));assert.equal(c.bag[r.key],1);assert.equal(c.bag[id],1);assert.equal(c.enh[r.key],1);assert.equal(c.enh[id]||0,0);assert.equal(c.equipment.weapon.id,r.key);assert.equal(c.bag.scroll_weapon,before-1);
@@ -31,7 +31,7 @@ for(const source of ['apang381','lineagew']){
  e.action(s,a,now,()=>.31);const r=c.enhancement.history[0];assert.equal(r.outcome,'hold');assert.equal(r.from,0);assert.equal(r.to,0);assert.equal(c.bag[r.key],1);assert.equal(c.bag.scroll_weapon_b,before-1);assert.deepEqual(comparison.enhancementChanges(c,r),[]);
  const snapshot=money(c);e.action(s,a,now,()=>0);assert.equal(money(c),snapshot,'holding the same +level must never allow another deduction');
 }
-for(const source of ['apang381','lineagew']){
+for(const source of ['apang381']){
  const {s,c,id}=fixture(source),safe=e.DATA.items[id].safe;c.enh[id]=safe;c.equipment.weapon.en=safe;c.bag.scroll_weapon_s=0;
  const a=request(c,id),before=c.bag.scroll_weapon;e.action(s,a,now,()=>.9999);const r=c.enhancement.history[0];
  assert.equal(r.outcome,'destroyed');assert.equal(r.to,null);assert.equal(c.bag[r.key],undefined);assert.equal(c.bag[id],1);assert.equal(c.enh[id],safe);assert.equal(c.bag.scroll_weapon,before-1);assert.equal(c.equipment.weapon,undefined);
@@ -44,7 +44,7 @@ for(const source of ['apang381','lineagew']){
  const {s,c,id}=fixture(),a=request(c,id,'safe'),safe=e.DATA.items[id].safe,before=c.bag.scroll_weapon;e.action(s,a,now,()=>.99);const r=c.enhancement.history[0];assert.equal(r.to,safe);assert.equal(r.consumed,safe);assert.equal(c.bag.scroll_weapon,before-safe);
 }
 {
- const {s,c,id}=fixture('lineagew');c.enh[id]=e.DATA.items[id].safe;c.equipment.weapon.en=c.enh[id];const a=request(c,id,'refined'),before=c.bag.scroll_weapon_s;e.action(s,a,now,()=>.99);const r=c.enhancement.history[0];assert.equal(r.outcome,'success');assert.equal(r.scroll,'scroll_weapon_s');assert.equal(c.bag.scroll_weapon_s,before-1);
+ const {s,c,id}=fixture('apang381');c.enh[id]=e.DATA.items[id].safe;c.equipment.weapon.en=c.enh[id];const a=request(c,id,'refined'),before=c.bag.scroll_weapon_s;e.action(s,a,now,()=>.99);const r=c.enhancement.history[0];assert.equal(r.outcome,'success');assert.equal(r.scroll,'scroll_weapon_s');assert.equal(c.bag.scroll_weapon_s,before-1);
 }
 for(const kind of ['scroll','locked','stale-en','stale-sequence','bad-id']){
  const {s,c,id}=fixture(),a=request(c,id);

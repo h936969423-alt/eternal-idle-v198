@@ -1,0 +1,17 @@
+import {parsedSave} from './parsed-save';
+import {prepareLineageWRemoval,lineageWRemovalNeeded,LINEAGEW_REMOVAL_VERSION} from './lineagew-equipment-removal';
+/** Exact original payload and successful CAS update commit in the same atomic batch. */
+export async function ensureLineageWRemoval(db:D1Database,owner:string,initial:{payload:string;revision:number},now=Date.now()){
+ let row=initial;
+ for(let attempt=0;attempt<4;attempt++){
+  const original=parsedSave(row);if(!lineageWRemovalNeeded(original))return row;
+  const payload=JSON.stringify(prepareLineageWRemoval(original,now).save);
+  const changes=await db.batch([
+   db.prepare('UPDATE game_saves SET payload=?,revision=revision+1,updated_at=? WHERE owner=? AND revision=?').bind(payload,now,owner,row.revision),
+   db.prepare('INSERT INTO equipment_catalog_backups (owner,catalog_version,payload,original_revision,created_at) SELECT ?,?,?,?,? WHERE changes()=1 ON CONFLICT(owner,catalog_version) DO NOTHING').bind(owner,LINEAGEW_REMOVAL_VERSION,row.payload,row.revision,now),
+  ]);
+  if(changes[0].meta.changes)return {payload,revision:row.revision+1};
+  const next=await db.prepare('SELECT payload,revision FROM game_saves WHERE owner=?').bind(owner).first<{payload:string;revision:number}>();if(!next)throw Error('save not found');row=next;
+ }
+ throw Error('裝備下架正在同步，請稍後重試');
+}

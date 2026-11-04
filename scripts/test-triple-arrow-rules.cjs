@@ -5,7 +5,7 @@ const root=path.resolve(__dirname,'..'),dir=fs.mkdtempSync(path.join(os.tmpdir()
 fs.writeFileSync(path.join(dir,'package.json'),'{"type":"commonjs"}');
 try{
  for(const name of fs.readdirSync(path.join(root,'lib/game'))){const from=path.join(root,'lib/game',name);if(name.endsWith('.json'))fs.copyFileSync(from,path.join(dir,name));else if(name.endsWith('.ts'))fs.writeFileSync(path.join(dir,name.replace(/\.ts$/,'.js')),ts.transpileModule(fs.readFileSync(from,'utf8'),{compilerOptions:{module:ts.ModuleKind.CommonJS,target:ts.ScriptTarget.ES2022,esModuleInterop:true}}).outputText);}
- const e=require(path.join(dir,'engine.js')),mc=require(path.join(dir,'monster-config.js')),auto=require(path.join(dir,'auto-config.js')),now=1000000,bow='lw_weapon_919284';
+ const e=require(path.join(dir,'engine.js')),mc=require(path.join(dir,'monster-config.js')),auto=require(path.join(dir,'auto-config.js')),now=1000000,bow=Object.entries(e.DATA.items).filter(([,i])=>i.isBow&&String(i.req).includes('elf')).sort((a,b)=>b[1].dmgS-a[1].dmgS)[0][0];e.DATA.items[bow].rangedCrit=20;const unused=0;
  function fixture(){const base=e.BASES.elf,al={};let left=base.pts;for(const k of ['str','dex','con','int','wis','cha']){al[k]=Math.min(left,20-base[k]);left-=al[k];}
   const c=e.createCharacter('三重矢','elf','f',al,now);c.lv=99;c.attrs.con=100000;c.autoPotion=false;c.equipment={weapon:{id:bow,en:7}};c.enh={[bow]:7};c.bag={[bow]:1,wpn_22:1000};c.skills=['sk_elf_triple'];
   c.autoConfig={...auto.autoConfig(c),attack:'',heal:'',convert:'',opener:'',aux:{},buffs:[]};c.zone='training';e.ensureArena(c,()=>.5,now);

@@ -2,6 +2,7 @@ import {ensureLineageWMythicMigration} from '@/lib/game/lineagew-mythic-migratio
 import {ensureControlRingRestoration} from '@/lib/game/control-ring-restoration-store';
 import {ensureLineageWHLMigration} from '@/lib/game/lineagew-hl-migration-store';
 import {ensureLineageWMigration} from '@/lib/game/lineagew-migration-store';
+import {ensureLineageWRemoval} from '@/lib/game/lineagew-removal-migration-store';
 import {ensureEquipment381Migration} from '../../../../lib/game/equipment381-migration-store';
 import {getGameSettings} from '../../../../lib/game/game-settings';
 import { env } from 'cloudflare:workers';
@@ -37,6 +38,7 @@ export async function POST(request:Request){
  row=await ensureLineageWHLMigration(env.DB!,user.userId,row);
  row=await ensureControlRingRestoration(env.DB!,user.userId,row);
  row=await ensureLineageWMythicMigration(env.DB!,user.userId,row);
+ row=await ensureLineageWRemoval(env.DB!,user.userId,row);
  const now=Date.now(),save:Save=JSON.parse(row.payload);if(save.catchup||now-save.at>120000)return Response.json({error:'正在同步離線進度，完成後會繼續發放',code:'progress_pending'},{status:409,headers});for(const c of save.characters){c.mapAccess=mapAccess;c.lootAppearance={...appearance,history:[]};c.dollDefinitions=dolls.definitions;c.mapPools=mapConfig.maps;c.bossGeneration=mapConfig.bosses;c.monsterDefinitions=monsters.definitions;c.bossDropDefinitions=monsters.bossDrops;}advance(save,now,Math.random,world);
  const message=applyGrant(save,grant,now);for(const c of save.characters)syncPopulation(c,world);
  const results=await env.DB!.batch([
