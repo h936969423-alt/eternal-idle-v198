@@ -14,11 +14,13 @@ export function enhancementInfo(c:Character,key:string,mode='normal'){
  if(!['normal','blessed','refined','safe'].includes(mode))throw new Error('強化方式無效');if(mode==='blessed'&&(i.noBless||i.noEquip))throw new Error('此裝備不能祝福強化');
  const en=c.enh[key]||0,safe=i.source==='apang381'||i.source==='gm'||i.lwGrade==='mythic'?i.safe:i.type==='acc'?0:i.safe||0,cap=i.source==='gm'?i.enhCap||0:hasUnlimitedWeaponGrowth(baseItem(key),i)?Infinity:i.source==='apang381'?(i.type==='acc'?8:Infinity):Math.min(i.enhCap||12,12),prefix=i.type==='wpn'?'scroll_weapon':i.type==='arm'?'scroll_armor':'scroll_acc';
  if(i.source==='apang381'){
-  if(mode==='refined')throw Error('3.81 裝備不適用永夜精煉必成規則');
   if(safe<0||i.bless>=128||i.type==='acc'&&i.greater===3)throw Error('原始 3.81 設定不可強化');
   const need=mode==='safe'?Math.max(0,safe-en):1;
   if(en>=cap||!need)throw Error('已達指定強化上限');
-  const scroll=prefix+(mode==='blessed'?'_b':'');if(!items[scroll])throw Error('尚無對應卷軸');
+  // Refined scrolls guarantee +1 from the safe value upward; everything else keeps the original 3.81 odds.
+  const refined=en>=safe&&(mode==='refined'||mode==='normal'&&(c.bag[prefix+'_s']||0)>0&&!c.locked?.includes(prefix+'_s'));
+  const scroll=prefix+(mode==='blessed'?'_b':refined?'_s':'');if(!items[scroll])throw Error('尚無對應卷軸');
+  if(refined)return {i,en,safe,cap,scroll,need,chance:1,hold:0,destroy:0,gainMin:1,gainMax:1,refined:true};
   const r=equipment381EnchantRates(i.type,en,safe),zero=mode==='blessed'&&en<=2?.01:0;
   return {i,en,safe,cap,scroll,need,chance:mode==='safe'?1:r.success*(1-zero),hold:mode==='safe'?0:r.hold*(1-zero)+zero,destroy:mode==='safe'?0:r.destroy*(1-zero),gainMin:mode==='safe'?need:zero?0:1,gainMax:mode==='safe'?need:mode==='blessed'?(en<=2?3:en<=5?2:1):1,refined:false};
  }
@@ -41,7 +43,7 @@ export function enhanceGear(c:Character,key:string,mode:string,rng:()=>number){c
  };
  take(c,info.scroll,info.need);key=splitGear(c,key);
  if(info.i.source==='apang381'){
-  const gain=mode==='safe'?info.need:mode==='blessed'?equipment381BlessedGain(info.en,rng):1,rates=mode==='safe'?{success:1,hold:0}:equipment381EnchantRates(info.i.type,info.en,info.safe),roll=info.en<info.safe||mode==='safe'?0:rng();
+  const guaranteed=mode==='safe'||info.refined,gain=mode==='safe'?info.need:mode==='blessed'?equipment381BlessedGain(info.en,rng):1,rates=guaranteed?{success:1,hold:0}:equipment381EnchantRates(info.i.type,info.en,info.safe),roll=info.en<info.safe||guaranteed?0:rng();
   if(!gain||roll<rates.success+rates.hold){const delta=!gain||roll>=rates.success?0:gain,en=info.en+delta;c.enh[key]=en;for(const e of Object.values(c.equipment))if(e.id===key)e.en=en;const result=`${info.i.n} 強化${delta?'成功':'維持'} +${en}`;return complete(delta?'success':'hold',en,result);}
   take(c,key,1);delete c.enh[key];if(c.affixes)delete c.affixes[key];if(c.darkAffixes)delete c.darkAffixes[key];for(const slot of Object.keys(c.equipment))if(c.equipment[slot].id===key)delete c.equipment[slot];const result=`${info.i.n} 強化失敗，該件裝備消失`;return complete('destroyed',null,result);
  }
