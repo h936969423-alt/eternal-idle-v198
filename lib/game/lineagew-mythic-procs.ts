@@ -8,6 +8,7 @@ export const MYTHIC_PROC_SKILLS={lw_chaos_assault:{name:'渾沌狂襲',kind:'cha
 export type MythicProcId=keyof typeof MYTHIC_PROC_SKILLS;
 export function mythicProcDefinition(skill?:string){return skill&&Object.hasOwn(MYTHIC_PROC_SKILLS,skill)?MYTHIC_PROC_SKILLS[skill as MythicProcId]:undefined;}
 export function mythicProcChances(item:any,en:number){
+ if(item?.gmProcs)return item.gmProcs as {skill:MythicProcId;rate:number}[];
  const r=lineageWEquipmentReference(item);
  if(r&&item?.type==='wpn'&&item.lwGrade==='mythic'){
   const stage=Math.min(Math.max(0,...Object.keys(r.growth).map(Number)),Math.max(0,Math.floor(Number.isFinite(en)?en:0))),g=r.growth[String(stage)]||{};
@@ -18,7 +19,7 @@ export function mythicProcChances(item:any,en:number){
 /** Independent rolls, once per landed weapon strike; no MP and no proc recursion. */
 export function rollMythicProcs(item:any,en:number,rng:()=>number){return mythicProcChances(item,en).filter(p=>p.rate>0&&rng()<p.rate/100);}
 export function mythicAssaultDamage(item:any,en:number,b:Record<string,number>,m:any,rng:()=>number){
- const p=lineageWProfile(item,en);if(!p)return 0;
+ const p=lineageWProfile(item,en)||(item?.source==='gm'?{minS:1,maxS:item.dmgS||1,minL:1,maxL:item.dmgL||1,ignoreDr:0}:null);if(!p)return 0;
  const min=m.s==='L'?p.minL:p.minS,max=m.s==='L'?p.maxL:p.maxS,roll=min+Math.floor(rng()*(max-min+1));
  const attack=roll+(item.isBow?b.rangedDmg:b.meleeDmg)+(b.extraDmg||0),reduction=Math.max(0,(m.dr||0)-p.ignoreDr)+(item.ignHardSkin?0:m.hardSkin||0);
  return Math.max(1,Math.floor(attack*MYTHIC_PROC_RULES.assaultMultiplier)-reduction);

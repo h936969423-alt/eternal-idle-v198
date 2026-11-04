@@ -7,7 +7,7 @@ export function settingsPayload<T extends object=Record<string,any>>(row:{id:str
  if(!entry||entry.revision!==row.revision||entry.payload!==row.payload){
   const value=JSON.parse(row.payload,cleanDisplayValue);
   entry={payload:row.payload,revision:row.revision,value};
-  if(!cache.has(row.id)&&cache.size>=8)cache.delete(cache.keys().next().value!);
+  if(!cache.has(row.id)&&cache.size>=16)cache.delete(cache.keys().next().value!);
   cache.set(row.id,entry);
  }
  return {...structuredClone(entry.value),revision:row.revision} as T&{revision:number};

@@ -7,7 +7,7 @@ async function scenario(conflicts,mutate=false,invalid=false,pending=false){
  const mocks={'../../../lib/game/equipment381-migration-store':{ensureEquipment381Migration:async(db,owner,row)=>row},
  '../../../lib/game/state-sync':require('../lib/game/state-sync.ts'),
  'cloudflare:workers':{env:{DB}},'../../chatgpt-auth':{getChatGPTUser:async()=>({userId:'test'})},
- '../../../lib/game/game-settings':{getGameSettings:async()=>({npcs:{revision:0,hidden:{},shops:{},history:[]},mapAccess:{revision:0,closed:{},changes:{}},appearance:{revision:0,items:{},defaults:{},history:[]},maps:{maps:{},bosses:{}},monsters:{definitions:{},bossDrops:{}},dolls:{definitions:{}},world:{}})},
+ '../../../lib/game/game-settings':{getGameSettings:async()=>({customEquipment:{items:{},revision:0},npcs:{revision:0,hidden:{},shops:{},history:[]},mapAccess:{revision:0,closed:{},changes:{}},appearance:{revision:0,items:{},defaults:{},history:[]},maps:{maps:{},bosses:{}},monsters:{definitions:{},bossDrops:{}},dolls:{definitions:{}},world:{}})},
  '../../../lib/game/login-mode':{GAME_PASSWORD_LOGIN_ENABLED:false},'../../../lib/game/account':{},'../../../lib/game/inventory':{},
  '../../../lib/game/world-store':{isGameMaster:()=>false},'../../../lib/game/world-rules':{worldRulesAt:()=>({})},
  '../../../lib/game/engine':{advance:s=>{s.at=2000;return {pendingSeconds:pending?1000:0};},action:s=>{if(invalid)throw Error('invalid action');s.gold-=5;},stats:()=>({}),emptySave:()=>({characters:[]})}

@@ -12,7 +12,7 @@ import {hasModifiers,affixEligible,scrollCandidates,requireBian,applyBlessingRol
 export function enhancementInfo(c:Character,key:string,mode='normal'){
  const i=items[baseItem(key)];if(!i||!['wpn','arm','acc'].includes(i.type)||i.isArrow||i.noEnh||!c.bag[key])throw new Error('此裝備不能強化');if(c.locked?.includes(key))throw new Error('請先解除道具鎖定');if(isCursed(c,key))throw Error('請先解除詛咒再強化');
  if(!['normal','blessed','refined','safe'].includes(mode))throw new Error('強化方式無效');if(mode==='blessed'&&(i.noBless||i.noEquip))throw new Error('此裝備不能祝福強化');
- const en=c.enh[key]||0,safe=i.source==='apang381'||i.lwGrade==='mythic'?i.safe:i.type==='acc'?0:i.safe||0,cap=hasUnlimitedWeaponGrowth(baseItem(key),i)?Infinity:i.source==='apang381'?(i.type==='acc'?8:Infinity):Math.min(i.enhCap||12,12),prefix=i.type==='wpn'?'scroll_weapon':i.type==='arm'?'scroll_armor':'scroll_acc';
+ const en=c.enh[key]||0,safe=i.source==='apang381'||i.source==='gm'||i.lwGrade==='mythic'?i.safe:i.type==='acc'?0:i.safe||0,cap=i.source==='gm'?i.enhCap||0:hasUnlimitedWeaponGrowth(baseItem(key),i)?Infinity:i.source==='apang381'?(i.type==='acc'?8:Infinity):Math.min(i.enhCap||12,12),prefix=i.type==='wpn'?'scroll_weapon':i.type==='arm'?'scroll_armor':'scroll_acc';
  if(i.source==='apang381'){
   if(mode==='refined')throw Error('3.81 裝備不適用永夜精煉必成規則');
   if(safe<0||i.bless>=128||i.type==='acc'&&i.greater===3)throw Error('原始 3.81 設定不可強化');

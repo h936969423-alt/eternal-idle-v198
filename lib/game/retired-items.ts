@@ -9,8 +9,10 @@ export function retireItems(save:Save,now:number){
  for(const c of save.characters){
   let count=0,gold=0;const removed=new Set<string>();
   const refund=(key:string,n:number)=>{const i=items[key.split('@')[0]];count+=n;gold+=Math.floor(i?.sellP??(i?.p||0)*.25)*n;removed.add(key);};
+  // A worn item normally stays counted in the bag; only pay for copies the bag did not hold.
+  const bagged:Record<string,number>={};for(const key of Object.keys(c.bag||{}))if(retiredKey(key))bagged[key]=c.bag[key]||0;
   for(const store of [c.bag,c.bank])for(const key of Object.keys(store||{}))if(retiredKey(key)){refund(key,store[key]||0);delete store[key];}
-  for(const [slot,eq] of Object.entries(c.equipment||{}))if(eq&&retiredKey(eq.id)){refund(eq.id,1);delete c.equipment[slot];}
+  for(const [slot,eq] of Object.entries(c.equipment||{}))if(eq&&retiredKey(eq.id)){if((bagged[eq.id]||0)>0)bagged[eq.id]--;else refund(eq.id,1);delete c.equipment[slot];}
   if(!removed.size)continue;
   for(const key of removed){delete c.enh?.[key];delete c.affixes?.[key];delete c.darkAffixes?.[key];}
   if(c.locked)c.locked=c.locked.filter(k=>!retiredKey(k));if(c.autoSell)c.autoSell=c.autoSell.filter(k=>!retiredKey(k));

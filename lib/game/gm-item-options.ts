@@ -12,3 +12,8 @@ export const weaponOptions=giftOptions.filter(i=>i.category==='weapon');
 export const armorOptions=giftOptions.filter(i=>i.category==='equipment');
 export const equipmentOptions=giftOptions.filter(i=>['weapon','equipment'].includes(i.category));
 export const itemOptions=giftOptions.filter(i=>!['weapon','equipment'].includes(i.category));
+/** GM-created equipment joins the (live) option lists whenever its definitions are loaded. */
+export function refreshCustomGiftOptions(){
+ for(const list of [giftOptions,weaponOptions,armorOptions,equipmentOptions])for(let n=list.length-1;n>=0;n--)if(list[n].id.startsWith('gmx_'))list.splice(n,1);
+ for(const [id,i] of Object.entries(raw.items as Record<string,any>)){if(i.source!=='gm'||Object.hasOwn(RETIRED_ITEMS,id))continue;const weapon=i.type==='wpn',option:GiftOption={id,name:i.n,label:i.n,cap:null,category:weapon?'weapon':'equipment'};giftOptions.push(option);(weapon?weaponOptions:armorOptions).push(option);equipmentOptions.push(option);}
+}
