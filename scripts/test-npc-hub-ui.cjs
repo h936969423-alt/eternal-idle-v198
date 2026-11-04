@@ -24,3 +24,6 @@ const Services=component('npc-special-services');for(const id of ['npc_esti','np
 console.log('PASS: real town UI renders 22 service representatives once, categories/search, no duplicates in other towns, GM visibility, bounded recipe pages and explicit unavailable-service notices.');
 
 }finally{fs.rmSync(dir,{recursive:true,force:true});}
+
+// The city annex is entered through the same village service screen.
+require('./test-prontera.cjs');
