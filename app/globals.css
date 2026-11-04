@@ -458,19 +458,11 @@ body .gear-name[data-custom-item-color],body .gear-name[data-custom-item-color]>
 .item-text-colors{display:flex;gap:8px;flex-wrap:wrap;align-items:center;grid-column:1/-1}.item-text-colors button{display:flex;align-items:center;gap:8px;min-height:44px;padding:8px 12px;border:1px solid #8096a4;border-radius:8px;background:#f5f8fa;color:#183347}.item-text-colors button[aria-pressed=true]{outline:2px solid #437eab;outline-offset:2px;font-weight:700}.item-text-colors button span{display:inline-block;width:20px;height:20px;flex-shrink:0;border:1px solid #567;border-radius:50%}
 
 /* High-grade equipment uses the same green frame in both interface themes. */
-.game-root .source-bag-cell.item-rarity-advanced,.game-root .source-eq-slot[data-item-rarity=advanced]{border-color:#00ff00!important}
 
 /* Rare items retain their blue frame in classic and ice interfaces. */
-.game-root .source-bag-cell.item-rarity-rare,.game-root .source-eq-slot[data-item-rarity=rare]{border-color:#0080ff!important}
 
 /* Shared rarity plates: full bag tiles, compact square plates elsewhere. */
 .item-plate{--plate-rgb:229,231,235;--plate-dark:#202129;position:relative;display:inline-flex;align-items:center;justify-content:center;width:var(--plate-size);height:var(--plate-size);max-width:100%;flex-shrink:0;vertical-align:middle;isolation:isolate;border-radius:4px;overflow:hidden;background:radial-gradient(ellipse at 50% 62%,rgba(var(--plate-rgb),.46),rgba(var(--plate-rgb),.13) 52%,transparent 80%),linear-gradient(145deg,var(--plate-dark),#12121b);box-shadow:inset 0 0 9px rgba(var(--plate-rgb),.32),inset 0 0 0 3px #ffffff12}
-.item-plate.item-rarity-advanced{--plate-rgb:31,225,92;--plate-dark:#092c1c}
-.item-plate.item-rarity-rare{--plate-rgb:40,134,255;--plate-dark:#101f49}
-.item-plate.item-rarity-hero{--plate-rgb:255,64,64;--plate-dark:#45131b}
-.item-plate.item-rarity-legend{--plate-rgb:183,103,246;--plate-dark:#331343}
-.item-plate.item-rarity-mythic{--plate-rgb:255,215,0;--plate-dark:#3e310c}
-.item-plate.item-rarity-relic{--plate-rgb:76,201,240;--plate-dark:#102e3b}
 .item-plate::before{content:"◇ ⋈ ◇";position:absolute;inset:0;display:flex;align-items:center;justify-content:center;white-space:nowrap;font-family:serif;font-size:calc(var(--plate-size)*.5);font-weight:400;letter-spacing:-.12em;color:rgba(var(--plate-rgb),.2);text-shadow:0 0 4px rgba(var(--plate-rgb),.25);pointer-events:none;z-index:-1}
 .item-plate>img[data-item-icon=true]{position:relative;z-index:0}
 .game-root .source-bag-cell>.item-plate{position:absolute;inset:0;width:100%;height:100%;max-width:none;border-radius:inherit;pointer-events:none}
@@ -480,9 +472,7 @@ body .gear-name[data-custom-item-color],body .gear-name[data-custom-item-color]>
 .game-root .source-bag-cell .enhance{left:auto;top:auto;right:5px;bottom:3px;color:#ffd66c;font-weight:800}
 .game-root .source-bag-cell:has(.enhance) .count{right:5px;bottom:21px}
 .game-root .source-bag-cell:has(.enhance) .worn,.game-root .source-bag-cell:has(.enhance) .auto-sale-mark{bottom:3px}
-.game-root .source-eq-slot[data-item-rarity=normal]{border-color:#e5e7eb}
-.game-root .source-eq-slot[data-item-rarity=hero]{border-color:#ff4040!important}
-.game-root .source-eq-slot[data-item-rarity=legend]{border-color:#b366ff!important}
+.game-root .source-eq-slot[data-item-rarity]{border-color:#e5e7eb}
 
 body.ice-blue .game-root .source-bag-cell .enhance{color:#ffd66c!important;background:transparent!important;text-shadow:0 1px 3px #000,0 0 3px #000!important;padding:0}
 
@@ -1132,18 +1122,12 @@ body:has(.game-root) :is(.game-dialog,.bian-dialog) :is([data-slot=dialog-descri
 /* Loot icons sit on a rarity-coloured plate (white, green, blue, red, purple, gold) so drops read at a glance. */
 .loot-plate{display:flex;align-items:center;justify-content:center;width:36px;height:36px;border-radius:6px;background:color-mix(in srgb,var(--loot-glow) 38%,rgba(12,14,16,.82));border:2px solid var(--loot-glow);box-shadow:0 0 6px color-mix(in srgb,var(--loot-glow) 70%,transparent),0 2px 3px rgba(0,0,0,.7)}
 .loot-burst-chip .loot-plate{width:40px;height:40px}
-.loot-plate[data-rarity=normal]{background:rgba(70,72,76,.85);border-color:#d8dade;box-shadow:0 2px 3px rgba(0,0,0,.7)}
+.loot-plate[data-rarity]{background:rgba(70,72,76,.85);border-color:#d8dade;box-shadow:0 2px 3px rgba(0,0,0,.7)}
 .loot-plate img{filter:drop-shadow(0 1px 1px rgba(0,0,0,.8))!important}
 
 /* Drop-table chips coloured by rarity, matching the loot plates. */
 .monster-drop-chip[data-rarity]{border-color:var(--chip-color);background:color-mix(in srgb,var(--chip-color) 22%,#1b1610);color:#f3ead6}
-.monster-drop-chip[data-rarity=normal]{--chip-color:#9a9da3;background:#2a2b2e}
-.monster-drop-chip[data-rarity=advanced]{--chip-color:#2fd12f}
-.monster-drop-chip[data-rarity=rare]{--chip-color:#2f8cff}
-.monster-drop-chip[data-rarity=hero]{--chip-color:#ff4a4a}
-.monster-drop-chip[data-rarity=legend]{--chip-color:#b366ff}
-.monster-drop-chip[data-rarity=mythic]{--chip-color:#ffd700}
-.monster-drop-chip[data-rarity=relic]{--chip-color:#4cc9f0}
+.monster-drop-chip[data-rarity]{--chip-color:#9a9da3;background:#2a2b2e}
 
 /* Pets and summons were drawn too small next to the player; enlarge the sprite only, feet stay put. */
 .pet-scene-layer .scene-pet :is(.sequence-art,img){transform:scale(var(--pet-visual-scale,1.6));transform-origin:50% 100%}

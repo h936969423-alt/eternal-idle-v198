@@ -12,7 +12,8 @@ export type ItemAppearance=Partial<LootStyle>&{rarity?:ItemRarity;name?:string;d
 export type LootAppearanceConfig={rareEquipmentVersion?:number;advancedEquipmentVersion?:number;normalEquipmentVersion?:number;revision:number;defaults:Record<ItemRarity,LootStyle>;items:Record<string,ItemAppearance>;history:{at:number;by:string;action:string;count:number}[]};
 export type LootNotice={spawnPoint?:{x:number;y:number};item:string;name:string;quantity:number;rarity:ItemRarity;style:LootStyle;layout:'ordinary'|'boss'|'dragon';slots:number};
 export const RARITY_NAMES:Record<ItemRarity,string>={normal:'普通',advanced:'高級',rare:'稀有',hero:'英雄',legend:'傳說',mythic:'神話',relic:'遺物'};
-export const RARITY_COLORS:Record<ItemRarity,string>={normal:'#e5e7eb',advanced:'#00ff00',rare:'#0080ff',hero:'#ff4040',legend:'#b366ff',mythic:'#ffd700',relic:'#4cc9f0'};
+/** Classification is no longer shown: every item uses one colour. GM custom text colours still apply. */
+export const RARITY_COLORS:Record<ItemRarity,string>={normal:'#e5e7eb',advanced:'#e5e7eb',rare:'#e5e7eb',hero:'#e5e7eb',legend:'#e5e7eb',mythic:'#e5e7eb',relic:'#e5e7eb'};
 export const DEFAULT_LOOT_STYLE={normal:{effect:'off',position:'monster',durationMs:1600,template:'✦ {name} ×{count} ✦'},legend:{effect:'sparkles',position:'monster',durationMs:1600,template:'✦ {name} ×{count} ✦'},relic:{effect:'sparkles',position:'monster',durationMs:1600,template:'✦ {name} ×{count} ✦'}} as Record<ItemRarity,LootStyle>;
 for(const rarity of ['advanced','rare','hero','mythic'] as ItemRarity[])DEFAULT_LOOT_STYLE[rarity]={...DEFAULT_LOOT_STYLE[rarity==='advanced'||rarity==='rare'?'normal':'legend']};
 export function initialLootAppearance():LootAppearanceConfig{return {revision:0,defaults:structuredClone(DEFAULT_LOOT_STYLE),items:{},history:[]};}
