@@ -183,6 +183,12 @@ jobs:
         run: |
           node scripts/test-four-dragon-storage.cjs
           node scripts/verify-four-dragon-assets.mjs
+      - name: Verify every equipment icon is in the R2 asset index
+        env:
+          AWS_ACCESS_KEY_ID: ${{ secrets.R2_ACCESS_KEY_ID }}
+          AWS_SECRET_ACCESS_KEY: ${{ secrets.R2_SECRET_ACCESS_KEY }}
+          AWS_DEFAULT_REGION: auto
+        run: node scripts/verify-equipment-icons.mjs
       - name: Build complete Cloudflare Worker
         run: pnpm run build
       - name: Verify server source maps for original error stack locations
@@ -196,8 +202,6 @@ jobs:
           assert maps, 'Server build did not generate source maps'
           print('Verified server source maps:',len(maps))
           PY
-      - name: Verify every equipment icon is in the final deployment output
-        run: node scripts/verify-equipment-icons.mjs
       - name: Verify four-dragon atlases in final deployment output
         run: node scripts/verify-four-dragon-assets.mjs --built
       - name: Publish verified W skill icons to isolated R2
