@@ -23,12 +23,12 @@ export async function POST(request:Request){
  const user=await getChatGPTUser();if(!user)return Response.json({error:'請先登入'},{status:401});if(!isGameMaster(user))return Response.json({error:'此帳號沒有 GM 權限'},{status:403});
  const origin=request.headers.get('origin');if(origin&&origin!==new URL(request.url).origin)return Response.json({error:'來源不符'},{status:403});
  try{
- const input:any=await request.json();const grant=validateGrant(input);
+ const settings=await getGameSettings();const input:any=await request.json();const grant=validateGrant(input);
  if(typeof input.requestId!=='string'||!/^[0-9a-f]{8}-[0-9a-f]{4}-4[0-9a-f]{3}-[89ab][0-9a-f]{3}-[0-9a-f]{12}$/i.test(input.requestId))throw new Error('操作編號無效，請重新載入');
  const id=`${user.userId}:${input.requestId.toLowerCase()}`,command=JSON.stringify(grant);
  const receipt=await env.DB!.prepare('SELECT command,message FROM gm_grant_receipts WHERE id=?').bind(id).first<{command:string;message:string}>();
  if(receipt){if(receipt.command!==command)return Response.json({error:'操作編號已使用，請重新操作'},{status:409});return Response.json({...await state(user.userId),message:receipt.message,deduplicated:true},{headers});}
- const {maps:mapConfig,monsters,dolls,world,appearance,mapAccess}=await getGameSettings();
+ const {maps:mapConfig,monsters,dolls,world,appearance,mapAccess}=settings;
  // Load settings before taking a save revision; retry only rejected atomic writes.
  for(let attempt=0;attempt<4;attempt++){
  let row=await env.DB!.prepare('SELECT payload,revision FROM game_saves WHERE owner=?').bind(user.userId).first<{payload:string;revision:number}>();if(!row)throw new Error('請先在遊戲建立角色');

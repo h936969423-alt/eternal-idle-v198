@@ -58,6 +58,7 @@ jobs:
           node scripts/test-retarget-delay.cjs
           node scripts/test-pet-lure.cjs
           node scripts/test-retired-items.cjs
+          node scripts/test-gm-custom-equipment.cjs
           node scripts/test-companion-haste.cjs
           node scripts/test-companion-target.cjs
           node scripts/test-monster-hit-rate.cjs

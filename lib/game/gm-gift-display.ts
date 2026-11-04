@@ -1,10 +1,12 @@
 import raw from './gamedata.json';
+import {RETIRED_ITEMS} from './retired-items';
 import './lineagew-skill-data';
 import type {GiftOption} from './gm-item-options';
 /** One item list for every GM picker (gifts, monster drops, hybrid equipment pools).
  * Display only: the full option lists stay intact for server-side grant validation. */
 export type GiftDisplayOption=GiftOption&{note?:string};
 const items=raw.items as Record<string,any>;
+
 const STATS=['dmgS','dmgL','hit','dmgBonus','ac','mr','safe','req','spd','twohanded','str','dex','con','int','wis','cha','maxHp','maxMp','hpR','mpR','mdmg','sp','er','minLv','slot','wcat','lwGrade','bless','greater','enhCap','eff','sk','dmg','type'];
 const CLASSES:Record<string,string>={royal:'王族',knight:'騎士',elf:'妖精',mage:'法師',dark:'黑暗妖精',dragon:'龍騎士',illusion:'幻術士',warrior:'戰士'};
 const GRADES:Record<string,string>={normal:'一般',advanced:'高級',rare:'稀有',hero:'英雄',legend:'傳說',mythic:'神話'};
@@ -15,13 +17,13 @@ const norm=(s:string)=>String(s||'').replace(/\s+/g,'').replace(/（/g,'(').repl
 const same=(a:any,b:any)=>STATS.every(k=>JSON.stringify(a?.[k])===JSON.stringify(b?.[k]));
 const gear=(i:any)=>!!i&&['wpn','arm','acc'].includes(i.type)&&!i.isArrow&&!i.noEquip;
 const book=(i:any)=>!!i&&i.type==='skillbk'&&!!(i.lwCanonicalSkill||i.sk);
-export function itemSource(id:string):'lineagew'|'apang381'|'reference'|'original'{const i=items[id.split('@')[0]];return i?.source==='lineagew'||/^lw_/.test(id)?'lineagew':i?.source==='apang381'||/^ap381_/.test(id)?'apang381':/^ref_/.test(id)?'reference':'original';}
-export const SOURCE_NAMES={lineagew:'天堂W',apang381:'3.81',reference:'參考圖鑑',original:'舊版'} as const;
+export function itemSource(id:string):'lineagew'|'apang381'|'reference'|'original'|'custom'{const i=items[id.split('@')[0]];return i?.source==='gm'?'custom':i?.source==='lineagew'||/^lw_/.test(id)?'lineagew':i?.source==='apang381'||/^ap381_/.test(id)?'apang381':/^ref_/.test(id)?'reference':'original';}
+export const SOURCE_NAMES={lineagew:'天堂W',apang381:'3.81',reference:'參考圖鑑',original:'舊版',custom:'GM 自訂'} as const;
 const wBookSkills=new Set(Object.entries(items).filter(([id,i])=>book(i)&&itemSource(id)==='lineagew').map(([,i])=>i.lwCanonicalSkill||i.sk));
 /** Shown by default: Lineage W gear and books, essential control rings, old books for skills
  * that have no Lineage W book, and every non-gear item (potions, scrolls, materials). */
 export function isPreferredItem(id:string){const base=id.split('@')[0],i=items[base];if(!i)return false;
- if(gear(i))return itemSource(base)==='lineagew'||ESSENTIAL_LEGACY_ITEMS.has(base);
+ if(gear(i))return itemSource(base)==='lineagew'||itemSource(base)==='custom'||ESSENTIAL_LEGACY_ITEMS.has(base);
  if(book(i))return itemSource(base)==='lineagew'||!wBookSkills.has(i.lwCanonicalSkill||i.sk);
  return true;}
 /** A reason to double-check an item already used in a drop table, or undefined. */
@@ -61,5 +63,5 @@ export function giftDisplayOptions<T extends GiftOption>(options:T[],showAll=fal
  return pool.filter(o=>keep.has(o.id)).map(o=>{const src=showAll&&!isPreferredItem(o.id)?SOURCE_NAMES[itemSource(o.id)]:'';const note=[notes[o.id],src&&!notes[o.id]?.includes(src)?src:''].filter(Boolean).join('・');return note?{...o,note}:o;});
 }
 /** Every item as a GM picker option (monster drop tables). */
-export function allItemOptions():GiftOption[]{return Object.entries(items).map(([id,i])=>({id,name:i.n,label:i.n,cap:0,category:gear(i)?(i.type==='wpn'?'weapon':'equipment'):book(i)?'book':'misc'}));}
+export function allItemOptions():GiftOption[]{return Object.entries(items).filter(([id])=>!Object.hasOwn(RETIRED_ITEMS,id)||!id.startsWith('gmx_')).map(([id,i])=>({id,name:i.n,label:i.n,cap:0,category:gear(i)?(i.type==='wpn'?'weapon':'equipment'):book(i)?'book':'misc'}));}
 export function displayLabel(o:{id:string;note?:string},name:string){return name+(o.note?`（${o.note}）`:'');}

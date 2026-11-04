@@ -14,7 +14,7 @@ function fixture(fault=''){
   if(name.endsWith('api-errors'))return errors;
   if(name==='cloudflare:workers')return {env:{DB}};
   if(name.endsWith('chatgpt-auth'))return {getChatGPTUser:async()=>{if(fault==='auth')throw Error('D1 session lookup failed');return fault==='anonymous'?null:{userId:'private-owner'};}};
-  if(name.endsWith('game-settings'))return {getGameSettings:async()=>settings};
+  if(name.endsWith('game-settings'))return {getGameSettings:async()=>({customEquipment:{items:{},revision:0},...settings})};
   if(name.endsWith('world-store'))return {isGameMaster:()=>false};
   if(name.endsWith('world-rules'))return {worldRulesAt:()=>({})};
   if(name.endsWith('skill-cooldown'))return {isSkillCooldownFailure:()=>false};

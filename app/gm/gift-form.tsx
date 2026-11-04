@@ -7,7 +7,8 @@ import GiftAffixFields from './gift-affix-fields';
 import {giftAffixEligible,giftAffixSummary,type GiftAffixes} from '@/lib/game/gm-gift-affixes';
 import {GmPanel} from './collapsible';
 import raw from '@/lib/game/gamedata.json';
-import {useState} from 'react';
+import {useState,useSyncExternalStore} from 'react';
+import {customEquipmentVersion,subscribeCustomEquipment} from '@/lib/game/custom-equipment';
 import {Gift,Sword} from 'lucide-react';
 import {Button} from '@/components/ui/button';
 import {Input} from '@/components/ui/input';
@@ -18,7 +19,7 @@ import {giftDisplayOptions,type GiftDisplayOption as GiftOption} from '@/lib/gam
 const categories:{id:GiftCategory;name:string}[]=[{id:'potion',name:'藥水／補給'},{id:'book',name:'魔法書／技能書'},{id:'scroll',name:'魔法／強化卷軸'},{id:'misc',name:'一般物品／材料'}];
 const weaponNames:Record<string,string>={dagger:'匕首',sword:'單手劍',claw:'鋼爪',tohandsword:'雙手劍',edoryu:'雙刀',spear:'雙手矛',singlespear:'單手矛',staff:'單手魔杖',blunt:'單手鈍器',tohandstaff:'雙手魔杖',tohandblunt:'雙手鈍器',bow:'雙手弓',singlebow:'單手弓',gauntlet:'手甲',kiringku:'奇古獸',chainsword:'鎖鏈劍'};
 export default function GiftForm({kind,disabled,grant}:{kind:'weapon'|'equipment'|'accessory'|'item';disabled:boolean;grant:(payload:Record<string,unknown>)=>Promise<void>}){
- const appearance=useItemAppearance();
+ const appearance=useItemAppearance();useSyncExternalStore(subscribeCustomEquipment,customEquipmentVersion,customEquipmentVersion);
  const [gearCategory,setGearCategory]=useState('all'),[affixes,setAffixes]=useState<GiftAffixes>({}),[showAll,setShowAll]=useState(false);
  const [category,setCategory]=useState<GiftCategory>('potion'),[item,setItem]=useState<GiftOption|null>(null),[quantity,setQuantity]=useState('1'),[enhancement,setEnhancement]=useState('0');
  const general=kind==='item',title=kind==='weapon'?'武器贈送':kind==='accessory'?'飾品贈送':general?'藥水／物品／魔法書贈送':'防具贈送';

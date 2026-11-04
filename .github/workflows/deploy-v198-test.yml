@@ -151,6 +151,7 @@ jobs:
           node scripts/test-triple-pressure-ring.cjs
           node scripts/test-dark-elf-crit-slash.cjs
           node scripts/test-gm-all-magic.cjs
+          node scripts/test-gm-custom-equipment.cjs
           node scripts/test-auto-cast-swings.cjs
       - name: Verify skill calculation equivalence and bounded Worker settlement
         run: node scripts/test-skill-computation.cjs
