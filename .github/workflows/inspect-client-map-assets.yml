@@ -1,0 +1,97 @@
+name: Inspect client map assets
+# Data-only inspection. No checkout, no secrets, read-only token. The archive is
+# listed and matching data files are extracted; nothing inside it is executed.
+on:
+  workflow_dispatch:
+    inputs:
+      drive_file_id:
+        description: Google Drive file id of the client archive
+        required: true
+        type: string
+      include_patterns:
+        description: Space-separated archive patterns to extract
+        required: false
+        default: '*.s32 *.seg *.til *.idx *.pak *.md map/* maps/* tile/* tiles/* Map/* Maps/* Tile/* Tiles/*'
+        type: string
+      upload_extracted:
+        description: Upload extracted files as a 3-day artifact (off lists only)
+        required: false
+        default: false
+        type: boolean
+permissions: {}
+jobs:
+  inspect:
+    runs-on: ubuntu-latest
+    timeout-minutes: 90
+    permissions: {}
+    env:
+      DRIVE_FILE_ID: ${{ inputs.drive_file_id }}
+      INCLUDE_PATTERNS: ${{ inputs.include_patterns }}
+    steps:
+      - name: Validate input and free runner disk
+        run: |
+          [[ "$DRIVE_FILE_ID" =~ ^[A-Za-z0-9_-]{20,80}$ ]] || { echo "::error::Invalid Drive file id"; exit 1; }
+          sudo rm -rf /usr/share/dotnet /usr/local/lib/android /opt/ghc /opt/hostedtoolcache/CodeQL
+          sudo docker image prune -af >/dev/null 2>&1 || true
+          df -h "$RUNNER_TEMP"
+      - name: Install extraction tools
+        run: |
+          sudo add-apt-repository -y multiverse
+          sudo apt-get update -qq
+          sudo apt-get install -y -qq unrar
+          python3 -m pip install --quiet --break-system-packages 'gdown==5.2.0'
+      - name: Download archive
+        working-directory: ${{ runner.temp }}
+        run: |
+          python3 -m gdown --id "$DRIVE_FILE_ID" -O client.rar
+          ls -l client.rar
+          sha256sum client.rar
+      - name: List archive contents
+        working-directory: ${{ runner.temp }}
+        run: |
+          mkdir -p report
+          unrar l -c- client.rar > report/archive-list.txt
+          sha256sum client.rar > report/archive-sha256.txt
+          tail -n 3 report/archive-list.txt
+          python3 - <<'PY'
+          import collections,re
+          ext=collections.Counter();size=collections.Counter();folders=collections.Counter()
+          for line in open('report/archive-list.txt',errors='replace'):
+              m=re.match(r'\s*[.A-Za-z*]{7,}\s+(\d+)\s+\S+\s+\S+\s+(.+)$',line)
+              if not m: continue
+              name=m[2].strip().replace('\\','/');e=name.rsplit('.',1)[-1].lower() if '.' in name.rsplit('/',1)[-1] else '(none)'
+              ext[e]+=1;size[e]+=int(m[1]);folders[name.split('/')[1] if name.count('/')>1 else name.split('/')[0]]+=1
+          with open('report/summary.txt','w') as f:
+              f.write('By extension\n')
+              for e,n in size.most_common(40):f.write(f'{e}\t{ext[e]} files\t{n/1e6:.1f} MB\n')
+              f.write('\nBy top folder\n')
+              for e,n in folders.most_common(40):f.write(f'{e}\t{n} files\n')
+          print(open('report/summary.txt').read())
+          PY
+      - name: Upload report
+        uses: actions/upload-artifact@v4
+        with:
+          name: client-map-report
+          path: ${{ runner.temp }}/report
+          retention-days: 3
+      - name: Extract matching data files
+        if: ${{ inputs.upload_extracted }}
+        working-directory: ${{ runner.temp }}
+        run: |
+          mkdir -p extracted
+          read -r -a patterns <<< "$INCLUDE_PATTERNS"
+          set -f
+          args=(); for p in "${patterns[@]}"; do args+=("-n$p"); done
+          unrar x -o+ -inul "${args[@]}" client.rar extracted/ || [ $? -eq 10 ]
+          set +f
+          find extracted -type f \( -iname '*.exe' -o -iname '*.dll' -o -iname '*.bat' -o -iname '*.cmd' -o -iname '*.ps1' -o -iname '*.scr' \) -delete
+          du -sh extracted
+          find extracted -type f | wc -l
+      - name: Upload extracted files
+        if: ${{ inputs.upload_extracted }}
+        uses: actions/upload-artifact@v4
+        with:
+          name: client-map-data
+          path: ${{ runner.temp }}/extracted
+          retention-days: 3
+          compression-level: 6
