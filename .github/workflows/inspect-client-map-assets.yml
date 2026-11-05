@@ -44,6 +44,11 @@ on:
         required: false
         default: false
         type: boolean
+      sprite_probe:
+        description: Probe player walk sprites and print results to the log
+        required: false
+        default: false
+        type: boolean
 permissions: {}
 jobs:
   inspect:
@@ -90,7 +95,7 @@ jobs:
           path: ${{ runner.temp }}/source
           key: client-map-source-96877a41-v1
       - name: Download archive
-        if: ${{ !inputs.check_site && (steps.source_cache.outputs.cache-hit != 'true') }}
+        if: ${{ !inputs.check_site && (inputs.sprite_probe || steps.source_cache.outputs.cache-hit != 'true') }}
         working-directory: ${{ runner.temp }}
         run: |
           python3 -m gdown --id "$DRIVE_FILE_ID" -O client.rar
@@ -178,6 +183,17 @@ jobs:
           AWS_SECRET_ACCESS_KEY: ${{ secrets.R2_SECRET_ACCESS_KEY }}
           AWS_DEFAULT_REGION: auto
         run: aws --endpoint-url https://9bf17726da5739f20d3e5ec454ae3d91.r2.cloudflarestorage.com s3 sync . s3://eternal-idle-v198-test-assets/client-map-preview/v1/ --no-progress --only-show-errors
+      - name: Probe player sprites without credentials
+        if: ${{ !inputs.check_site && inputs.sprite_probe }}
+        working-directory: ${{ runner.temp }}
+        run: |
+          python3 -m pip install --quiet --break-system-packages 'pillow==11.3.0'
+          rm -rf spr-source
+          set -f
+          unrar x -o+ -inul '-n*/Sprite*.idx' '-n*/Sprite*.pak' client.rar spr-source/ || [ $? -eq 10 ]
+          set +f
+          client_dir="$(dirname "$(find spr-source -maxdepth 3 -name Sprite.idx | head -1)")"
+          python3 "$GITHUB_WORKSPACE/scripts/assets/probe-client-sprites.py" "$client_dir" sprite-probe
       - name: Upload report
         if: ${{ !inputs.check_site }}
         uses: actions/upload-artifact@v4
