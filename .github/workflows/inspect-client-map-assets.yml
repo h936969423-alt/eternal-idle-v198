@@ -1,12 +1,13 @@
 name: Inspect client map assets
-# Data-only inspection. No checkout, no secrets, read-only token. The archive is
+# Data-only inspection. No secrets, read-only token. The archive is
 # listed and matching data files are extracted; nothing inside it is executed.
 on:
   workflow_dispatch:
     inputs:
       drive_file_id:
         description: Google Drive file id of the client archive
-        required: true
+        required: false
+        default: ''
         type: string
       include_patterns:
         description: Space-separated archive patterns to extract
@@ -18,35 +19,85 @@ on:
         required: false
         default: false
         type: boolean
+      parse_maps:
+        description: Parse S32 and index files and print the result to the log
+        required: false
+        default: false
+        type: boolean
+      build_bundle:
+        description: Build map data bundle and previews
+        required: false
+        default: false
+        type: boolean
+      upload_r2:
+        description: Upload the verified bundle to isolated private R2
+        required: false
+        default: false
+        type: boolean
+      render_preview:
+        description: Render preview regions and upload them to isolated private R2
+        required: false
+        default: false
+        type: boolean
+      check_site:
+        description: Only check deployed preview assets on the test site
+        required: false
+        default: false
+        type: boolean
 permissions: {}
 jobs:
   inspect:
     runs-on: ubuntu-latest
     timeout-minutes: 90
-    permissions: {}
+    permissions:
+      contents: read
     env:
       DRIVE_FILE_ID: ${{ inputs.drive_file_id }}
       INCLUDE_PATTERNS: ${{ inputs.include_patterns }}
     steps:
+      - name: Check deployed preview assets
+        if: ${{ inputs.check_site }}
+        run: |
+          base=https://eternal-idle-v198-test.h936969423.workers.dev
+          for path in /assets/client-map-preview/v1/giran/manifest.json /assets/client-map-preview/v1/giran/4_2.webp /assets/client-map-preview/v1/talking/manifest.json /assets/client-map-preview/v1/gludio/manifest.json; do
+            code=$(curl -sS -o /tmp/body -w '%{http_code} %{content_type} %{size_download}' "$base$path"); echo "$path $code"; [ "${code%% *}" = 200 ] || exit 1
+          done
+          curl -sS -o /dev/null -w 'page %{http_code}\n' "$base/map-preview"
+          echo "SITE-CHECK-OK"
+      - uses: actions/checkout@v4
+        if: ${{ !inputs.check_site }}
+        with:
+          persist-credentials: false
       - name: Validate input and free runner disk
+        if: ${{ !inputs.check_site }}
         run: |
           [[ "$DRIVE_FILE_ID" =~ ^[A-Za-z0-9_-]{20,80}$ ]] || { echo "::error::Invalid Drive file id"; exit 1; }
           sudo rm -rf /usr/share/dotnet /usr/local/lib/android /opt/ghc /opt/hostedtoolcache/CodeQL
           sudo docker image prune -af >/dev/null 2>&1 || true
           df -h "$RUNNER_TEMP"
       - name: Install extraction tools
+        if: ${{ !inputs.check_site }}
         run: |
           sudo add-apt-repository -y multiverse
           sudo apt-get update -qq
           sudo apt-get install -y -qq unrar
           python3 -m pip install --quiet --break-system-packages 'gdown==5.2.0'
+      - name: Restore extracted map source
+        if: ${{ !inputs.check_site }}
+        id: source_cache
+        uses: actions/cache@v4
+        with:
+          path: ${{ runner.temp }}/source
+          key: client-map-source-96877a41-v1
       - name: Download archive
+        if: ${{ !inputs.check_site && (steps.source_cache.outputs.cache-hit != 'true') }}
         working-directory: ${{ runner.temp }}
         run: |
           python3 -m gdown --id "$DRIVE_FILE_ID" -O client.rar
           ls -l client.rar
           sha256sum client.rar
       - name: List archive contents
+        if: ${{ !inputs.check_site && (steps.source_cache.outputs.cache-hit != 'true') }}
         working-directory: ${{ runner.temp }}
         run: |
           mkdir -p report
@@ -68,14 +119,74 @@ jobs:
               for e,n in folders.most_common(40):f.write(f'{e}\t{n} files\n')
           print(open('report/summary.txt').read())
           PY
+      - name: Print index and data file names
+        if: ${{ !inputs.check_site && (steps.source_cache.outputs.cache-hit != 'true') }}
+        working-directory: ${{ runner.temp }}
+        run: |
+          unrar lb -c- client.rar > names.txt
+          grep -iE '\.(pak|idx)$' names.txt || true
+          grep -iE '(^|[\\/])map[\\/]' names.txt | grep -iE '\.map$' | head -5 || true
+      - name: Parse map data without executing client files
+        if: ${{ !inputs.check_site && (inputs.parse_maps) }}
+        working-directory: ${{ runner.temp }}
+        run: |
+          mkdir -p parsed
+          set -f
+          unrar x -o+ -inul '-n*.idx' '-n*.s32' '-n*.seg' '-n*.map' client.rar parsed/ || [ $? -eq 10 ]
+          set +f
+          python3 "$GITHUB_WORKSPACE/scripts/assets/parse-client-maps.py" parsed
+      - name: Build map bundle and previews without credentials
+        if: ${{ !inputs.check_site && (inputs.build_bundle) }}
+        working-directory: ${{ runner.temp }}
+        run: |
+          python3 -m pip install --quiet --break-system-packages 'pillow==11.3.0'
+          if [ ! -d source ]; then
+            set -f
+            unrar x -o+ -inul '-n*/Tile.idx' '-n*/Tile.pak' '-n*.s32' '-n*.seg' client.rar source/ || [ $? -eq 10 ]
+            set +f
+          fi
+          git clone -q --depth 1 --filter=blob:none --no-checkout https://github.com/snowwayne1231/l1j-tw-elf-lineage-serversite l1j
+          git -C l1j checkout -q HEAD -- l1jserver/maps/0.txt l1jserver/maps/4.txt
+          client_dir="$(dirname "$(find source -maxdepth 3 -name Tile.idx | head -1)")"
+          python3 "$GITHUB_WORKSPACE/scripts/assets/build-client-map-bundle.py" "$client_dir" l1j/l1jserver/maps bundle
+          ls -l bundle
+      - name: Upload bundle to private R2
+        if: ${{ !inputs.check_site && (inputs.build_bundle && inputs.upload_r2) }}
+        working-directory: ${{ runner.temp }}/bundle
+        env:
+          AWS_ACCESS_KEY_ID: ${{ secrets.R2_ACCESS_KEY_ID }}
+          AWS_SECRET_ACCESS_KEY: ${{ secrets.R2_SECRET_ACCESS_KEY }}
+          AWS_DEFAULT_REGION: auto
+        run: |
+          sha="$(python3 -c "import json;print(json.load(open('manifest.json'))['sha256'])")"
+          endpoint=https://9bf17726da5739f20d3e5ec454ae3d91.r2.cloudflarestorage.com
+          aws --endpoint-url "$endpoint" s3 cp client-map-source.tar "s3://eternal-idle-v198-test-assets/client-map-source/v1/$sha.tar" --no-progress --only-show-errors
+          aws --endpoint-url "$endpoint" s3 cp manifest.json s3://eternal-idle-v198-test-assets/client-map-source/v1/manifest.json --no-progress --only-show-errors
+          aws --endpoint-url "$endpoint" s3api head-object --bucket eternal-idle-v198-test-assets --key "client-map-source/v1/$sha.tar" --query ContentLength
+      - name: Render preview regions without credentials
+        if: ${{ !inputs.check_site && (inputs.render_preview) }}
+        working-directory: ${{ runner.temp }}
+        run: |
+          python3 -m pip install --quiet --break-system-packages 'pillow==11.3.0'
+          client_dir="$(dirname "$(find source -maxdepth 3 -name Tile.idx | head -1)")"
+          python3 "$GITHUB_WORKSPACE/scripts/assets/render-client-map-preview.py" "$client_dir" preview
+      - name: Upload preview regions to private R2
+        if: ${{ !inputs.check_site && (inputs.render_preview) }}
+        working-directory: ${{ runner.temp }}/preview
+        env:
+          AWS_ACCESS_KEY_ID: ${{ secrets.R2_ACCESS_KEY_ID }}
+          AWS_SECRET_ACCESS_KEY: ${{ secrets.R2_SECRET_ACCESS_KEY }}
+          AWS_DEFAULT_REGION: auto
+        run: aws --endpoint-url https://9bf17726da5739f20d3e5ec454ae3d91.r2.cloudflarestorage.com s3 sync . s3://eternal-idle-v198-test-assets/client-map-preview/v1/ --no-progress --only-show-errors
       - name: Upload report
+        if: ${{ !inputs.check_site }}
         uses: actions/upload-artifact@v4
         with:
           name: client-map-report
           path: ${{ runner.temp }}/report
           retention-days: 3
       - name: Extract matching data files
-        if: ${{ inputs.upload_extracted }}
+        if: ${{ !inputs.check_site && (inputs.upload_extracted) }}
         working-directory: ${{ runner.temp }}
         run: |
           mkdir -p extracted
@@ -88,7 +199,7 @@ jobs:
           du -sh extracted
           find extracted -type f | wc -l
       - name: Upload extracted files
-        if: ${{ inputs.upload_extracted }}
+        if: ${{ !inputs.check_site && (inputs.upload_extracted) }}
         uses: actions/upload-artifact@v4
         with:
           name: client-map-data

@@ -34,6 +34,18 @@ export async function assetStorageFetch(request: Request, bucket?: Bucket): Prom
   // These pinned source atlases ship with the Worker. They must reach static
   // assets even when the unrelated R2 bucket or legacy index is unavailable.
   if (pathname.startsWith('/assets/four-dragons/') && ['GET', 'HEAD'].includes(request.method)) return null;
+  if(pathname.startsWith('/assets/client-map-preview/')&&['GET','HEAD'].includes(request.method)){
+    const match=/^\/assets\/client-map-preview\/v1\/([a-z]+)\/(manifest\.json|\d+_\d+\.webp)$/.exec(pathname);
+    if(!match)return new Response('Map preview not found',{status:404});
+    if(!bucket)return new Response('Asset storage unavailable',{status:503});
+    try{
+      const key='client-map-preview/v1/'+match[1]+'/'+match[2];
+      const object=request.method==='HEAD'?await bucket.head(key):await bucket.get(key);
+      if(!object)return new Response('Map preview not found',{status:404});
+      const headers=new Headers({'Content-Type':match[2].endsWith('.json')?'application/json':'image/webp','Content-Length':String(object.size),'Cache-Control':'private, max-age=3600','X-Content-Type-Options':'nosniff','X-Asset-Storage':'r2'});
+      return new Response(request.method==='HEAD'?null:(object as R2ObjectBody).body,{headers});
+    }catch{return new Response('Map preview temporarily unavailable',{status:503,headers:{'Retry-After':'5'}});}
+  }
   if(pathname.startsWith('/assets/lw-skills/')&&['GET','HEAD'].includes(request.method)){
     const entry=skillFiles.get(pathname);if(!entry)return new Response('Skill image not found',{status:404});
     if(!bucket)return new Response('Asset storage unavailable',{status:503});
