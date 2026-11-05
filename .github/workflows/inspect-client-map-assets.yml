@@ -59,13 +59,21 @@ jobs:
           sudo apt-get update -qq
           sudo apt-get install -y -qq unrar
           python3 -m pip install --quiet --break-system-packages 'gdown==5.2.0'
+      - name: Restore extracted map source
+        id: source_cache
+        uses: actions/cache@v4
+        with:
+          path: ${{ runner.temp }}/source
+          key: client-map-source-96877a41-v1
       - name: Download archive
+        if: ${{ steps.source_cache.outputs.cache-hit != 'true' }}
         working-directory: ${{ runner.temp }}
         run: |
           python3 -m gdown --id "$DRIVE_FILE_ID" -O client.rar
           ls -l client.rar
           sha256sum client.rar
       - name: List archive contents
+        if: ${{ steps.source_cache.outputs.cache-hit != 'true' }}
         working-directory: ${{ runner.temp }}
         run: |
           mkdir -p report
@@ -88,6 +96,7 @@ jobs:
           print(open('report/summary.txt').read())
           PY
       - name: Print index and data file names
+        if: ${{ steps.source_cache.outputs.cache-hit != 'true' }}
         working-directory: ${{ runner.temp }}
         run: |
           unrar lb -c- client.rar > names.txt
@@ -107,9 +116,11 @@ jobs:
         working-directory: ${{ runner.temp }}
         run: |
           python3 -m pip install --quiet --break-system-packages 'pillow==11.3.0'
-          set -f
-          unrar x -o+ -inul '-n*/Tile.idx' '-n*/Tile.pak' '-n*.s32' '-n*.seg' client.rar source/ || [ $? -eq 10 ]
-          set +f
+          if [ ! -d source ]; then
+            set -f
+            unrar x -o+ -inul '-n*/Tile.idx' '-n*/Tile.pak' '-n*.s32' '-n*.seg' client.rar source/ || [ $? -eq 10 ]
+            set +f
+          fi
           git clone -q --depth 1 --filter=blob:none --no-checkout https://github.com/snowwayne1231/l1j-tw-elf-lineage-serversite l1j
           git -C l1j checkout -q HEAD -- l1jserver/maps/0.txt l1jserver/maps/4.txt
           client_dir="$(dirname "$(find source -maxdepth 3 -name Tile.idx | head -1)")"

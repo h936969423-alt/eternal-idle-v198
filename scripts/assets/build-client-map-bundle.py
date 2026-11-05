@@ -60,25 +60,41 @@ def parse(path):
  return rec,attr
 INFO={0:(32256,32767,32768,33279),4:(32448,34303,32064,33599)}
 grids={m:[[int(v) for v in l.split(',') if v.strip()] for l in (l1j/f'{m}.txt').read_text().strip().split('\n')] for m in INFO}
-def walk(m,x,y):
- x0,_,y0,_=INFO[m];t=grids[m][x-x0][y-y0];return bool(t&3) and not t&128
-corr=collections.Counter();total=0
+def l1j_walk(m,x,y):
+ x0,x1,y0,y1=INFO[m]
+ if not(x0<=x<=x1 and y0<=y<=y1):return None
+ t=grids[m][x-x0][y-y0];return bool(t&3) and not t&128
+blocks_seen={}
+def attrs(m,bx,by):
+ k=(m,bx,by)
+ if k not in blocks_seen:
+  p=client/'map'/str(m)/f'{bx:04x}{by:04x}.s32'
+  blocks_seen[k]=parse(p)[1] if p.exists() else None
+ return blocks_seen[k]
+def attr(m,bx,by,a,b):
+ bx+=a//64;by+=b//64;g=attrs(m,bx,by)
+ return (1,1) if g is None else g[b%64][a%64]
+def exits(m,bx,by,a,b):
+ """Open directions from the MapTool rule: t1 is the y edge, t2 is the x edge."""
+ return [attr(m,bx,by,a,b+1)[0]&1==0,attr(m,bx,by,a,b)[0]&1==0,attr(m,bx,by,a-1,b)[1]&1==0,attr(m,bx,by,a,b)[1]&1==0]
 def render(m,block):
- rec,attr=parse(client/'map'/str(m)/block);bx,by=int(block[:4],16),int(block[4:8],16)
- X0=(bx-0x7fff)*64+0x7fff;Y0=(by-0x7fff)*64+0x7fff
+ rec,_=parse(client/'map'/str(m)/block);bx,by=int(block[:4],16),int(block[4:8],16)
+ X0=(bx-0x7fff)*64+0x7fff-63;Y0=(by-0x7fff)*64+0x7fff-63
  im=Image.new('RGBA',(3096,1560),(13,12,10,255));miss=0
  for x,y,i,n in rec:
   try:t=tile(n,i)
   except(KeyError,ValueError,IndexError,struct.error):miss+=1;continue
   im.alpha_composite(t,((x//2+y)*24+(x%2)*24,(y-x//2)*12+768))
- ov=Image.new('RGBA',im.size,(0,0,0,0));dr=ImageDraw.Draw(ov);global total
+ ov=Image.new('RGBA',im.size,(0,0,0,0));dr=ImageDraw.Draw(ov);same=seen=0;safe=0
  for a in range(64):
   for b in range(64):
-   w=walk(m,X0+a,Y0+b);total+=1;v=attr[b][a]
-   for s,val in enumerate(v):
-    for bit in range(8):corr[(s,bit)]+=((val>>bit)&1)==(1 if w else 0)
-   if not w:
-    px,py=(a+b)*24,(b-a)*12+768;dr.polygon([(px+24,py),(px+48,py+12),(px+24,py+24),(px,py+12)],fill=(255,40,40,110))
+   e=exits(m,bx,by,a,b);w=any(e);j=l1j_walk(m,X0+a,Y0+b);t1,t2=attr(m,bx,by,a,b);safe+=(t1&0xf) in(4,5,6,7,12,13,14,15)
+   if j is not None:seen+=1;same+=j==w
+   px,py=(a+b)*24,(b-a)*12+768;top,right,bottom,left=(px+24,py),(px+48,py+12),(px+24,py+24),(px,py+12)
+   if not w:dr.polygon([top,right,bottom,left],fill=(255,40,40,120))
+   if t1&1:dr.line([left,top],fill=(255,225,40,255),width=3)
+   if t2&1:dr.line([top,right],fill=(255,225,40,255),width=3)
+ print(name,'L1J agreement',round(same/max(seen,1),4),'cells',seen,'blocked',sum(not any(exits(m,bx,by,a,b)) for a in range(64) for b in range(64)),'safe',safe,flush=True)
  base=im.crop((850,350,2250,1250)).convert('RGB');mix=Image.alpha_composite(im,ov).crop((850,350,2250,1250)).convert('RGB')
  return base,mix,miss
 previews=out/'previews';previews.mkdir(exist_ok=True)
@@ -90,7 +106,6 @@ for name,m,block in [('town_talking',0,'7ffd8002.s32'),('town_gludio',4,'7fff7ff
  b=base64.b64encode(buf.getvalue()).decode();print(f'PREVIEW-BEGIN {name}')
  for i in range(0,len(b),3000):print('B64 '+b[i:i+3000])
  print(f'PREVIEW-END {name}',flush=True)
-print('cells',total,'attr-bit agreement with L1J walkability',[(k,round(v/total,3)) for k,v in corr.most_common(6)],[(k,round(v/total,3)) for k,v in corr.most_common()[-4:]])
 files=[p for p in (client/'map').rglob('*') if p.is_file() and p.suffix.lower() in('.s32','.seg') and re.fullmatch(r'\d+(_\d+)?',p.parent.name) and re.fullmatch(r'[0-9a-fA-F]{8}\.(s32|seg)',p.name,re.I)]
 bundle=out/'client-map-source.tar'
 with tarfile.open(bundle,'w') as tar:
