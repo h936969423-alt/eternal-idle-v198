@@ -1,0 +1,12 @@
+import test from 'node:test';
+import assert from 'node:assert/strict';
+import {canStep,cellBlocked,cellCenter,findMapPath,pixelCell} from '../lib/game/client-map-path.ts';
+const open=(n=8)=>({cols:n,rows:n,edges:Array.from({length:n},()=>'0'.repeat(n))});
+const set=(g,a,b,v)=>{g.edges[a]=g.edges[a].slice(0,b)+v+g.edges[a].slice(b+1);};
+test('x edge blocks both directions of the same border',()=>{const g=open();set(g,2,2,2);assert.equal(canStep(g,2,2,1,0),false);assert.equal(canStep(g,3,2,-1,0),false);assert.equal(canStep(g,2,2,-1,0),true);});
+test('y edge blocks both directions of the same border',()=>{const g=open();set(g,2,3,1);assert.equal(canStep(g,2,3,0,-1),false);assert.equal(canStep(g,2,2,0,1),false);});
+test('diagonals cannot cut a blocked corner',()=>{const g=open();set(g,2,2,2);assert.equal(canStep(g,2,2,1,1),false);assert.equal(canStep(g,2,2,-1,1),true);});
+test('path goes around a wall',()=>{const g=open();for(let b=0;b<7;b++)set(g,3,b,2);const p=findMapPath(g,{a:1,b:1},{a:6,b:1});assert.deepEqual(p.at(-1),{a:6,b:1});assert.ok(p.some(c=>c.b===7));let c={a:1,b:1};for(const n of p){assert.ok(canStep(g,c.a,c.b,n.a-c.a,n.b-c.b));c=n;}});
+test('unreachable target stops at the closest reachable cell',()=>{const g=open();for(let b=0;b<8;b++)set(g,3,b,2);const p=findMapPath(g,{a:1,b:1},{a:6,b:1});assert.equal(p.at(-1).a,3);assert.equal(p.at(-1).b,1);});
+test('fully enclosed cell is blocked and map edges stay closed',()=>{const g=open(2);g.edges=['33','33'];assert.equal(cellBlocked(g,0,0),true);assert.equal(canStep(open(2),1,1,1,0),false);});
+test('tap coordinates round-trip to the cell centre',()=>{for(const [a,b] of [[0,0],[10,40],[191,191],[96,12]]){const c=cellCenter(a,b,2292);assert.deepEqual(pixelCell(c.x,c.y,2292),{a,b});}});
