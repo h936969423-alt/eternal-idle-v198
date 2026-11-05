@@ -27,7 +27,12 @@ try{
  }
  const rule=hybrid.defaultHybridRule(99,'world');
  c.bossRooms[zone].dropDefinition={id:zone,timing:'complete',drops:[],hybrid:{...rule,pool:'custom',equipmentIds:blocked}};
- assert(preview(zone,c,undefined,1000000).equipment.some(g=>['hero','legend'].includes(g.rank)));
+ assert(preview(zone,c,undefined,1000000).equipment.length>0);
+ // Bosses keep their tuned per-item odds; a GM weight overrides one item; monsters draw equally.
+ {const h=load('hybrid-loot'),rule=h.defaultHybridRule(70,'world'),pool={normal:[],advanced:[],rare:[],hero:['a','b'],legend:['c'],mythic:['d']},rows=Object.fromEntries(h.hybridPreview({...rule,equipmentChance:100},pool).map(r=>[r.item,r.chance]));assert(Math.abs(rows.a-44.5)<1e-9);assert(Math.abs(rows.c-10.99)<1e-9);assert(Math.abs(rows.d-.01)<1e-9);
+  const edited=Object.fromEntries(h.hybridPreview({...rule,equipmentChance:100,weights:{...rule.weights},itemWeights:{d:100}},pool).map(r=>[r.item,r.chance]));assert(edited.d>rows.d*1000,'GM weight raises one item');
+  const mob=h.defaultHybridRule(60),flat=h.hybridPreview({...mob,equipmentChance:100},{normal:['x','y','z','w'],advanced:[],rare:[],hero:[],legend:[],mythic:[]});assert.deepEqual(flat.map(r=>r.chance),[25,25,25,25]);
+  assert.equal(h.validateHybridRule({...mob,itemWeights:{[Object.keys(load('engine').DATA.items).find(i=>i.startsWith('ap381_weapon'))]:5}}).pool,'map');assert.throws(()=>h.validateHybridRule({...mob,itemWeights:{missing:5}}),/單件/);}
  console.log('PASS: '+checked+' actual boss pools match preview with reference tables and restored custom rewards; custom pools, fixed drops and room snapshots');
 }finally{fs.rmSync(dir,{recursive:true,force:true});}
 

@@ -7,7 +7,7 @@ import {offlineBinomial,splitOfflineCount} from './offline-hunt';
 export {isProgressionEquipment} from './equipment-ranks';
 export type DropRank=typeof ITEM_RARITY_OPTIONS[number];
 export type HybridRole='normal'|'elite'|'boss'|'world';
-export type HybridRule={role:HybridRole;equipmentChance:number;weights:Record<DropRank,number>;pool:'map'|'custom';equipmentIds:string[];pityKills:number;legendShardChance:number;mythicShardChance:number};
+export type HybridRule={role:HybridRole;equipmentChance:number;weights:Record<DropRank,number>;pool:'map'|'custom';equipmentIds:string[];itemWeights?:Record<string,number>;pityKills:number;legendShardChance:number;mythicShardChance:number};
 export type PityRecord={signature:string;misses:number};
 const items=raw.items as Record<string,any>,mobs=raw.mobs as Record<string,any>,maps=raw.maps as Record<string,string[]>;
 const ranks=ITEM_RARITY_OPTIONS;
@@ -22,11 +22,12 @@ function finite(value:unknown,min:number,max:number,integer=false){if(typeof val
 export function validateHybridRule(input:any):HybridRule{
  if(!input||!['normal','elite','boss','world'].includes(input.role)||!['map','custom'].includes(input.pool))throw Error('混合掉落設定無效');
  const weights=Object.fromEntries(ranks.map(r=>[r,finite(input.weights?.[r],0,1000000)])) as Record<DropRank,number>;
- if(!Object.values(weights).some(n=>n>0))throw Error('至少一種分類權重需大於 0');
+ const itemWeights:Record<string,number>={};if(input.itemWeights!==undefined){if(!input.itemWeights||typeof input.itemWeights!=='object'||Object.keys(input.itemWeights).length>500)throw Error('單件掉落權重無效（最多 500 件）');for(const [id,value] of Object.entries(input.itemWeights)){if(!isProgressionEquipment(items[id]))throw Error('單件掉落權重的裝備無效');itemWeights[id]=finite(value,0,1000000);}}
+ const boss=input.role==='boss'||input.role==='world';if(boss&&!Object.values(weights).some(n=>n>0)&&!Object.values(itemWeights).some(n=>n>0))throw Error('至少一件裝備的機率需大於 0');
  if(!Array.isArray(input.equipmentIds)||input.equipmentIds.length>500||input.equipmentIds.some((id:unknown)=>typeof id!=='string'||!isProgressionEquipment(items[id])))throw Error('指定裝備清單無效（最多 500 件）');
  const equipmentIds=[...new Set(input.equipmentIds)] as string[];if(input.pool==='custom'&&!equipmentIds.length)throw Error('請至少指定一件裝備');
- if(input.role!=='world'&&weights.mythic>0)throw Error('神話成品僅開放世界王／四龍');
- return {role:input.role,pool:input.pool,equipmentIds,weights,equipmentChance:finite(input.equipmentChance,0,100),pityKills:finite(input.pityKills,0,1000000,true),legendShardChance:finite(input.legendShardChance,0,100),mythicShardChance:finite(input.mythicShardChance,0,100)};
+ if(boss&&input.role!=='world'&&weights.mythic>0)throw Error('神話成品僅開放世界王／四龍');
+ return {role:input.role,pool:input.pool,equipmentIds,weights,...(Object.keys(itemWeights).length?{itemWeights}:{}),equipmentChance:finite(input.equipmentChance,0,100),pityKills:finite(input.pityKills,0,1000000,true),legendShardChance:finite(input.legendShardChance,0,100),mythicShardChance:finite(input.mythicShardChance,0,100)};
 }
 export function hybridRoleForBoss(zone:string):HybridRole{const b=(raw.worldBosses as Record<string,any>)[zone],m=mobs[b?.mob];return m?.dragon381||b?.members?.length||b?.count>1||m?.lv>=65?'world':'boss';}
 export function progressionLevelBand(lv:number){return lv<30?'1–29':lv<45?'30–44':lv<55?'45–54':lv<65?'55–64':lv<75?'65–74':'75+';}
@@ -40,28 +41,33 @@ export function hybridCandidates(rule:HybridRule,mob:string,zone:string,lv:numbe
  else {const members=[...new Set([mob,...(mapMembers||maps[zone]||[])])];ids=members.flatMap(id=>[...(PUBLIC_LOOT[id]?.drops||[]),...(PUBLIC_DROP_RATES[id]||[]).map(d=>d.item)]);}
  // Only the safe, priced 3.81 catalog can fill an otherwise empty default map pool.
  if(rule.pool==='map'&&!ids.some(id=>isProgressionEquipment(items[id])))ids=standard;
- const ceiling=boss?rule.role==='world'?5:4:lv<30?1:lv<45?2:lv<75?3:4;
- const rankFloor:Record<DropRank,number>={normal:1,advanced:15,rare:30,hero:45,legend:75,mythic:75};
+ const ceiling=rule.role==='world'?5:4;
  const pool=Object.fromEntries(ranks.map(r=>[r,[] as string[]])) as Record<DropRank,string[]>;
- for(const id of new Set(ids)){const i=items[id];if(!isProgressionEquipment(i)||i.availFrom>now||i.minLv>(boss?Math.max(50,lv):lv))continue;const rarity=itemRarity(id,appearance);if(!ranks.includes(rarity as DropRank))continue;const rank=rarity as DropRank;if(ranks.indexOf(rank)>ceiling||!boss&&rankFloor[rank]>lv)continue;if(!boss&&rule.pool==='map'&&i.p>Math.max(500,lv*lv*150))continue;pool[rank].push(id);}
+ for(const id of new Set(ids)){const i=items[id];if(!isProgressionEquipment(i)||i.availFrom>now||i.minLv>(boss?Math.max(50,lv):lv))continue;const rarity=itemRarity(id,appearance);if(!ranks.includes(rarity as DropRank))continue;if(!boss){if(rule.pool==='map'&&i.p>Math.max(500,lv*lv*150))continue;pool.normal.push(id);continue;}const rank=rarity as DropRank;if(ranks.indexOf(rank)>ceiling)continue;pool[rank].push(id);}
  if(rule.pool==='map'){
   const fill=(rank:DropRank)=>{if(pool[rank].length||ranks.indexOf(rank)>ceiling)return;const candidates=standard.filter(id=>itemRarity(id,appearance)===rank&&(!items[id].availFrom||items[id].availFrom<=now)&&(items[id].minLv||0)<=(boss?Math.max(50,lv):lv)&&(boss||items[id].p<=Math.max(500,lv*lv*150)));if(!candidates.length)return;const start=parseInt(fingerprint(zone+':'+rank).split(':')[0],16)%candidates.length;pool[rank]=Array.from({length:Math.min(rank==='mythic'?1:3,candidates.length)},(_,n)=>candidates[(start+n)%candidates.length]);};
   if(boss){fill('hero');fill('legend');if(rule.role==='world')fill('mythic');}
-  else if(!ranks.some(rank=>rule.weights[rank]>0&&pool[rank].length))for(const rank of ranks)if(rule.weights[rank]>0)fill(rank);
+  else if(!pool.normal.length)pool.normal=standard.filter(id=>(!items[id].availFrom||items[id].availFrom<=now)&&(items[id].minLv||0)<=lv&&items[id].p<=Math.max(500,lv*lv*150));
  }
  if(cache.size>=256)cache.clear();cache.set(cacheKey,pool);return pool;
 }
-export function hybridPreview(rule:HybridRule,pool:Record<DropRank,string[]>){const total=Object.values(rule.weights).reduce((a,b)=>a+b,0);return ranks.map(rank=>({rank,count:pool[rank].length,weight:rule.weights[rank],chance:pool[rank].length&&total?rule.equipmentChance*rule.weights[rank]/total:0}));}
+/** Monsters draw every candidate equally. Bosses keep their tuned odds per item unless the GM sets an item's own weight. */
+export function hybridItemWeights(rule:HybridRule,pool:Record<DropRank,string[]>){
+ const out:Record<string,number>={},boss=rule.role==='boss'||rule.role==='world';
+ for(const rank of ranks)for(const id of pool[rank]){const weight=rule.itemWeights?.[id]??(boss?rule.weights[rank]/pool[rank].length:1);if(weight>0)out[id]=weight;}
+ return out;
+}
+export function hybridPreview(rule:HybridRule,pool:Record<DropRank,string[]>){const weights=hybridItemWeights(rule,pool),total=Object.values(weights).reduce((a,b)=>a+b,0);return Object.entries(weights).map(([item,weight])=>({item,weight,chance:total?rule.equipmentChance*weight/total:0})).sort((a,b)=>b.chance-a.chance);}
 const poolFingerprints=new WeakMap<object,string>();
 function fingerprint(value:string){let a=2166136261,b=5381;for(let n=0;n<value.length;n++){a=Math.imul(a^value.charCodeAt(n),16777619);b=Math.imul(b,33)^value.charCodeAt(n);}return (a>>>0).toString(16)+':'+(b>>>0).toString(16);}
 function hybridSignature(rule:HybridRule,pool:Record<DropRank,string[]>){let key=poolFingerprints.get(pool);if(!key){key=fingerprint(JSON.stringify(ranks.map(r=>pool[r])));poolFingerprints.set(pool,key);}return fingerprint(JSON.stringify(rule))+':'+key;}
 export function rollHybridLoot(rule:HybridRule,pool:Record<DropRank,string[]>,rng:()=>number,dropPct=0,prior?:PityRecord){
  const signature=hybridSignature(rule,pool),misses=prior?.signature===signature?prior.misses:0;
- const any=ranks.some(r=>rule.weights[r]>0&&pool[r].length>0),due=any&&rule.equipmentChance>0&&rule.pityKills>0&&misses+1>=rule.pityKills;
+ const weights=hybridItemWeights(rule,pool),candidates=Object.entries(weights),any=candidates.length>0,due=any&&rule.equipmentChance>0&&rule.pityKills>0&&misses+1>=rule.pityKills;
  const drops:{item:string;quantity:number}[]=[];let equipment:string|undefined;
  if(any&&rule.equipmentChance>0&&(due||rng()<Math.min(100,rule.equipmentChance*(1+Math.max(0,dropPct)/100))/100)){
-  const available:readonly DropRank[]=due?ranks.filter(r=>pool[r].length):ranks;const total=available.reduce<number>((n,r)=>n+rule.weights[r],0);let roll=rng()*total;let selected=available.at(-1)!;for(const r of available){roll-=rule.weights[r];if(roll<0){selected=r;break;}}
-  const entries=pool[selected];if(entries.length){equipment=entries[Math.min(entries.length-1,Math.floor(rng()*entries.length))];drops.push({item:equipment,quantity:1});}
+  let roll=rng()*candidates.reduce((n,[,w])=>n+w,0);equipment=candidates.at(-1)![0];for(const [id,w] of candidates){roll-=w;if(roll<0){equipment=id;break;}}
+  drops.push({item:equipment,quantity:1});
  }
  const shard=(item:string,chance:number)=>{if(chance>0&&rng()<Math.min(100,chance*(1+Math.max(0,dropPct)/100))/100)drops.push({item,quantity:1});};
  shard('mat_legend_shard',rule.legendShardChance);shard('mat_mythic_shard',rule.mythicShardChance);
@@ -71,8 +77,8 @@ export function rollHybridLoot(rule:HybridRule,pool:Record<DropRank,string[]>,rn
 /** Skip runs of misses and batch successful rank/item choices. Retains the
  * online pity counter without replaying combat or one full loot roll per kill. */
 export function rollHybridLootBatch(rule:HybridRule,pool:Record<DropRank,string[]>,count:number,rng:()=>number,dropPct=0,prior?:PityRecord){
- const signature=hybridSignature(rule,pool),available=ranks.filter(r=>pool[r].length&&rule.weights[r]>0),total=ranks.reduce((n,r)=>n+rule.weights[r],0),weight=available.reduce((n,r)=>n+rule.weights[r],0);
- const chance=Math.min(1,rule.equipmentChance*(1+Math.max(0,dropPct)/100)/100)*(total?weight/total:0);
+ const signature=hybridSignature(rule,pool),weights=hybridItemWeights(rule,pool),anyItem=Object.keys(weights).length>0;
+ const chance=anyItem?Math.min(1,rule.equipmentChance*(1+Math.max(0,dropPct)/100)/100):0;
  let remaining=Math.max(0,Math.floor(count)),misses=prior?.signature===signature?prior.misses:0,hits=0;
  if(chance===1||chance>0&&rule.pityKills===1){hits=remaining;remaining=0;misses=0;}
  else if(chance>0){
@@ -81,7 +87,7 @@ export function rollHybridLootBatch(rule:HybridRule,pool:Record<DropRank,string[
   }
  }else misses=0;
  const drops:Record<string,number>={};
- for(const [rank,n] of Object.entries(splitOfflineCount(hits,Object.fromEntries(available.map(r=>[r,rule.weights[r]])),rng))){const entries=pool[rank as DropRank];for(const [id,q] of Object.entries(splitOfflineCount(n,Object.fromEntries(entries.map(id=>[id,1])),rng)))drops[id]=(drops[id]||0)+q;}
+ for(const [id,q] of Object.entries(splitOfflineCount(hits,weights,rng)))drops[id]=(drops[id]||0)+q;
  for(const [id,rate] of [['mat_legend_shard',rule.legendShardChance],['mat_mythic_shard',rule.mythicShardChance]] as const){const n=offlineBinomial(count,Math.min(1,rate*(1+Math.max(0,dropPct)/100)/100),rng);if(n)drops[id]=(drops[id]||0)+n;}
  return {drops:Object.entries(drops).map(([item,quantity])=>({item,quantity})),pity:{signature,misses:!rule.pityKills||!chance?0:Math.min(misses,rule.pityKills-1)}};
 }

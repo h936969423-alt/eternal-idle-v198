@@ -1,9 +1,7 @@
-import {defaultEquipmentRank} from './equipment-ranks';
 
-/** Shared player weapon progression for rare (blue) through mythic (gold). */
+/** Every weapon can be enhanced without a cap, except GM weapons, which use their own configured cap. */
 export function hasUnlimitedWeaponGrowth(id:string,item:any){
- return !!item&&item.source!=='gm'&&item.type==='wpn'&&!item.isArrow&&!item.noEquip&&!item.noEnh&&
-  ['rare','hero','legend','mythic'].includes(defaultEquipmentRank(id.split('@')[0],item));
+ return !!item&&item.source!=='gm'&&item.type==='wpn'&&!item.isArrow&&!item.noEquip&&!item.noEnh;
 }
 /** Every weapon: each +1 adds exactly +1 hit and +1 flat damage on the final hit; dice ranges stay at +0. */
 export function weaponGrowth(en:number){

@@ -12,7 +12,7 @@ function money(c){return JSON.stringify({gold:c.gold,bag:c.bag,market:c.blackMar
 {
  const pools=market.blackMarketPools(undefined,now);for(const rank of market.BLACK_MARKET_RANKS){assert(pools[rank].length);for(const id of pools[rank]){assert.equal(loot.itemRarity(id),rank);assert(e.DATA.items[id].gachaWeight>0);assert(!e.DATA.items[id]._noGacha);}}
  assert.deepEqual(Object.keys(pools),['normal','advanced','rare']);
- const {s,c}=fixture();for(const [r,expected]of [[0,'normal'],[.33333334,'advanced'],[.66666667,'rare']]){let first=true;e.action(s,request(c),now,()=>first?(first=false,r):.5);assert.equal(c.blackMarket.history[0].items[0].rank,expected);}
+ const {s,c}=fixture();const prizes=market.BLACK_MARKET_RANKS.flatMap(rank=>pools[rank]);for(const r of [0,.5,.999]){let first=true;e.action(s,request(c),now,()=>first?(first=false,r):.5);assert.equal(c.blackMarket.history[0].items[0].item,prizes[Math.floor(r*prizes.length)],'every prize is equally likely');}
  const id=pools.normal[0],old=e.DATA.items[id].availFrom;e.DATA.items[id].availFrom=now+60000;try{assert(!market.blackMarketPools(undefined,now).normal.includes(id));}finally{if(old===undefined)delete e.DATA.items[id].availFrom;else e.DATA.items[id].availFrom=old;}
 }
 {
@@ -37,7 +37,7 @@ for(const kind of ['poor','level','away','hidden','wrong-npc','missing-id','stal
  const before=money(c);assert.throws(()=>e.action(s,a,now,rng),kind);assert.equal(money(c),before,kind+' cannot charge or grant items');
 }
 {
- const {s,c}=fixture(),pools=market.blackMarketPools(undefined,now);c.lootAppearance=loot.initialLootAppearance();for(const id of pools.rare)c.lootAppearance.items[id]={rarity:'normal'};
+ const {s,c}=fixture(),pools=market.blackMarketPools(undefined,now);c.lootAppearance=loot.initialLootAppearance();for(const id of market.BLACK_MARKET_RANKS.flatMap(rank=>pools[rank]))c.lootAppearance.items[id]={rarity:'hero'};
  const before=money(c);assert.throws(()=>e.action(s,request(c),now,()=>.5),/獎池/);assert.equal(money(c),before);
 }
 {

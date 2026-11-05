@@ -38,9 +38,9 @@ export function drawBlackMarket(c:Character,input:{npc:unknown;count:unknown;req
  const quote=blackMarketQuote(state?.progress||0,input.count);
  if(!Number.isSafeInteger(c.gold)||c.gold<quote.cost)throw Error('金幣不足，需要 '+quote.cost.toLocaleString()+' 金幣');
  const pools=blackMarketPools(c.lootAppearance,now);
- if(BLACK_MARKET_RANKS.some(rank=>!pools[rank].length))throw Error('三種品質獎池尚未完整，暫停抽獎');
+ const prizes=BLACK_MARKET_RANKS.flatMap(rank=>pools[rank]);if(!prizes.length)throw Error('獎池尚未準備完成，暫停抽獎');
  const unit=()=>{const n=rng();if(!Number.isFinite(n)||n<0||n>=1)throw Error('抽獎亂數無效');return n;};
- const awards=Array.from({length:input.count},()=>{const rank=BLACK_MARKET_RANKS[Math.floor(unit()*3)],pool=pools[rank];return {item:pool[Math.floor(unit()*pool.length)],rank};});
+ const awards=Array.from({length:input.count},()=>{const item=prizes[Math.floor(unit()*prizes.length)];return {item,rank:BLACK_MARKET_RANKS.find(rank=>pools[rank].includes(item))!};});
  const receipt:BlackMarketReceipt={id:crypto.randomUUID(),requestId:input.requestId,sequence:sequence+1,at:now,count:input.count,...quote,items:awards};
  for(const award of awards){const i=items[award.item];if(i.eff==='dollCard')acquireDollCard(c,i.cardMob,i.cardTier);else grantDroppedItem(c,award.item,1,rng);if(i.doll)c.dollCollection=[...new Set([...(c.dollCollection||[]),award.item])];}
  c.gold-=quote.cost;c.blackMarket={progress:quote.progress,sequence:sequence+1,history:[receipt,...(state?.history||[])].slice(0,32)};
