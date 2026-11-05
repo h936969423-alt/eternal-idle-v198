@@ -23,6 +23,16 @@ on:
         required: false
         default: false
         type: boolean
+      build_bundle:
+        description: Build map data bundle and previews
+        required: false
+        default: false
+        type: boolean
+      upload_r2:
+        description: Upload the verified bundle to isolated private R2
+        required: false
+        default: false
+        type: boolean
 permissions: {}
 jobs:
   inspect:
@@ -92,6 +102,32 @@ jobs:
           unrar x -o+ -inul '-n*.idx' '-n*.s32' '-n*.seg' '-n*.map' client.rar parsed/ || [ $? -eq 10 ]
           set +f
           python3 "$GITHUB_WORKSPACE/scripts/assets/parse-client-maps.py" parsed
+      - name: Build map bundle and previews without credentials
+        if: ${{ inputs.build_bundle }}
+        working-directory: ${{ runner.temp }}
+        run: |
+          python3 -m pip install --quiet --break-system-packages 'pillow==11.3.0'
+          set -f
+          unrar x -o+ -inul '-n*/Tile.idx' '-n*/Tile.pak' '-n*.s32' '-n*.seg' client.rar source/ || [ $? -eq 10 ]
+          set +f
+          git clone -q --depth 1 --filter=blob:none --no-checkout https://github.com/snowwayne1231/l1j-tw-elf-lineage-serversite l1j
+          git -C l1j checkout -q HEAD -- l1jserver/maps/0.txt l1jserver/maps/4.txt
+          client_dir="$(dirname "$(find source -maxdepth 3 -name Tile.idx | head -1)")"
+          python3 "$GITHUB_WORKSPACE/scripts/assets/build-client-map-bundle.py" "$client_dir" l1j/l1jserver/maps bundle
+          ls -l bundle
+      - name: Upload bundle to private R2
+        if: ${{ inputs.build_bundle && inputs.upload_r2 }}
+        working-directory: ${{ runner.temp }}/bundle
+        env:
+          AWS_ACCESS_KEY_ID: ${{ secrets.R2_ACCESS_KEY_ID }}
+          AWS_SECRET_ACCESS_KEY: ${{ secrets.R2_SECRET_ACCESS_KEY }}
+          AWS_DEFAULT_REGION: auto
+        run: |
+          sha="$(python3 -c "import json;print(json.load(open('manifest.json'))['sha256'])")"
+          endpoint=https://9bf17726da5739f20d3e5ec454ae3d91.r2.cloudflarestorage.com
+          aws --endpoint-url "$endpoint" s3 cp client-map-source.tar "s3://eternal-idle-v198-test-assets/client-map-source/v1/$sha.tar" --no-progress --only-show-errors
+          aws --endpoint-url "$endpoint" s3 cp manifest.json s3://eternal-idle-v198-test-assets/client-map-source/v1/manifest.json --no-progress --only-show-errors
+          aws --endpoint-url "$endpoint" s3api head-object --bucket eternal-idle-v198-test-assets --key "client-map-source/v1/$sha.tar" --query ContentLength
       - name: Upload report
         uses: actions/upload-artifact@v4
         with:
