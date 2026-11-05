@@ -4,7 +4,7 @@ import {isFourDragonZone,isDragonRewardItem,fourDragonPools} from './four-dragon
 import raw from './gamedata.json';
 import {bossMembers,playableBoss} from './boss-respawn';
 import {bossMemberDrops} from './boss-loot';
-import {defaultHybridRule,hybridRoleForBoss,hybridCandidates,isProgressionEquipment,type DropRank} from './hybrid-loot';
+import {defaultHybridRule,hybridRoleForBoss,hybridCandidates,hybridPreview,isProgressionEquipment,type DropRank} from './hybrid-loot';
 import {monsterData} from './monster-runtime';
 import {mapPool} from './map-pools';
 import type {Character,Encounter} from './engine';
@@ -32,11 +32,8 @@ export function bossDropPreview(zone:string,c?:Character,definition?:BossDropDef
   add(custom?m.definition!.drops:bossMemberDrops(zone,m.id),((raw.mobs as Record<string,any>)[m.id]?.n||m.id)+' · 第'+(index+1)+'隻',mixed);
  });
  const pool=hybrid?hybridCandidates(hybrid,targets[0]?.id||playableBoss(zone)?.mob||'',zone,level,c?.lootAppearance,now,mapPool(zone,c?.mapPools).map(m=>m.id)):undefined;
- const total=hybrid?Object.values(hybrid.weights).reduce((sum,n)=>sum+n,0):0;
- const equipment=!dragon&&pool&&hybrid?Object.entries(pool).flatMap(([rank,ids])=>{
-  const chance=total?hybrid.equipmentChance*hybrid.weights[rank as DropRank]/total:0;
-  return chance>0&&ids.length?[{rank:rank as DropRank,chance,items:ids.map(item=>({item,chance:chance/ids.length}))}]:[];
- }):[];
+ const rows=!dragon&&pool&&hybrid?hybridPreview(hybrid,pool):[];
+ const equipment=rows.length?[{rank:'normal' as DropRank,chance:rows.reduce((n,r)=>n+r.chance,0),items:rows.map(({item,chance})=>({item,chance}))}]:[];
  const shards=hybrid?[{item:'mat_legend_shard',chance:hybrid.legendShardChance},{item:'mat_mythic_shard',chance:hybrid.mythicShardChance}].filter(d=>d.chance>0&&bossDropAllowed(d.item,c?.lootAppearance,zone)):[];
  return {drops,equipment,shards,dragonGroups,conditionalHybrid:!dragon&&!!hybrid&&!configured&&targets.some(m=>m.definition?.dropsMode==='custom')};
 }

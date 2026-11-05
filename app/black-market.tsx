@@ -13,13 +13,13 @@ import './black-market.css';
 const items=raw.items as Record<string,any>,icons=assets.icons.items as Record<string,string>;
 type Pools=Record<BlackMarketRank,string[]>;
 export function BlackMarketPool({pools,appearance,inspect}:{pools:Pools;appearance?:LootAppearanceConfig;inspect:(id:string)=>void}){
- return <><p className="market-pool-note">普通、高級、稀有各占 1/3（約 33.33%）；同品質內每件物品等機率。</p><div className="market-pool-groups">{BLACK_MARKET_RANKS.map(rank=><details key={rank} style={{'--market-color':RARITY_COLORS[rank]} as CSSProperties}><summary><strong>{RARITY_NAMES[rank]} · 1/3</strong><span>{pools[rank].length} 種</span></summary><div className="market-pool-chips">{pools[rank].map(id=><button key={id} onClick={()=>inspect(id)}>{itemDisplayName(id,appearance)}</button>)}</div></details>)}</div></>;
+ return <><p className="market-pool-note">獎池內每件物品機率相同。</p><div className="market-pool-chips">{BLACK_MARKET_RANKS.flatMap(rank=>pools[rank]).map(id=><button key={id} onClick={()=>inspect(id)}>{itemDisplayName(id,appearance)}</button>)}</div></>;
 }
 export default function BlackMarket({c,npc,name='潘朵拉',busy,act,inspect,onClose}:{c:Character;npc:string;name?:string;busy:boolean;act:(a:any)=>Promise<any>;inspect:(id:string)=>void;onClose:()=>void}){
  const [poolOpen,setPoolOpen]=useState(false),[rolling,setRolling]=useState(false),[submitting,setSubmitting]=useState(false),[retry,setRetry]=useState(false),[preview,setPreview]=useState<string>(),[result,setResult]=useState<BlackMarketReceipt|null>(c.blackMarket?.history[0]||null);
  const pending=useRef<{requestId:string;sequence:number;count:1|10}|null>(null),locked=useRef(false),started=useRef(0),shown=useRef(''),timer=useRef<ReturnType<typeof setTimeout>|undefined>(undefined);
  const pools=useMemo(()=>blackMarketPools(c.lootAppearance),[c.lootAppearance]),all=useMemo(()=>BLACK_MARKET_RANKS.flatMap(rank=>pools[rank]),[pools]),progress=c.blackMarket?.progress||0;
- const one=blackMarketQuote(progress,1),ten=blackMarketQuote(progress,10),ready=BLACK_MARKET_RANKS.every(rank=>pools[rank].length>0),working=busy||submitting||rolling;
+ const one=blackMarketQuote(progress,1),ten=blackMarketQuote(progress,10),ready=all.length>0,working=busy||submitting||rolling;
  const finish=useCallback((receipt:BlackMarketReceipt)=>{
   if(shown.current===receipt.id)return;shown.current=receipt.id;pending.current=null;setRetry(false);
   clearTimeout(timer.current);timer.current=setTimeout(()=>{setResult(receipt);setRolling(false);},Math.max(0,started.current+900-performance.now()));
@@ -42,7 +42,7 @@ export default function BlackMarket({c,npc,name='潘朵拉',busy,act,inspect,onC
  const unavailable=(count:1|10,cost:number)=>working||c.lv<41||!ready||(!retry&&c.gold<cost)||!!pending.current&&pending.current.count!==count;
  return <section className="black-market" aria-busy={working}>
   <header className="market-header"><DialogTitle>{name}的黑市</DialogTitle><strong>💰 {c.gold.toLocaleString()}</strong></header>
-  <DialogDescription className="market-intro">普通／高級／稀有各占 1/3；同品質內等機率抽取。</DialogDescription>
+  <DialogDescription className="market-intro">獎池內每件物品機率相同。</DialogDescription>
   <div className="market-body">
    <div className={`market-stage ${rolling?'rolling':''}`} style={{'--market-color':rank?RARITY_COLORS[rank]:'#a38b58'} as CSSProperties}>
     {displayed&&(items[displayed]?.sourceIcon||icons[items[displayed]?.n])?<ItemIcon itemId={displayed} appearance={c.lootAppearance} src={items[displayed]?.sourceIcon||icons[items[displayed]?.n]} alt={rolling?'抽獎轉動中':itemDisplayName(displayed,c.lootAppearance)} size={88}/>:<span aria-hidden="true" className="market-emblem">✦</span>}
@@ -51,7 +51,7 @@ export default function BlackMarket({c,npc,name='潘朵拉',busy,act,inspect,onC
    {!!result&&!rolling&&<><div className="market-results">{prizes.map(prize=><button key={prize.item} style={{'--market-color':RARITY_COLORS[prize.rank]} as CSSProperties} onClick={()=>inspect(prize.item)}><ItemLabel item={prize.item} appearance={c.lootAppearance}/><b>×{prize.count}</b></button>)}</div><p className="market-receipt">已入帳 · 花費 {result.cost.toLocaleString()} 金幣{result.free?` · 免費 ${result.free} 次`:''}</p></>}
    <div className="market-progress"><p>累計付費抽獎 <b>{progress}/10</b></p><small>{progress===10?'下一抽免費！':'滿 10 次，下一抽免費'}</small><div role="progressbar" aria-label="免費抽獎進度" aria-valuemin={0} aria-valuemax={10} aria-valuenow={progress}><span style={{width:`${progress*10}%`}}/></div></div>
    {c.lv<41&&<p role="status">需要 Lv.41 才能抽獎；可先查看獎池。</p>}
-   {!ready&&<p role="status">三種品質獎池尚未完整，暫停抽獎。</p>}
+   {!ready&&<p role="status">獎池尚未準備完成，暫停抽獎。</p>}
   </div>
   <footer className="market-actions">
    <Button className="gold-button" data-draw-count="1" disabled={unavailable(1,one.cost)} onClick={()=>draw(1)}>{retry&&pending.current?.count===1?'確認單抽結果':one.free?'免費抽獎':`單抽 ${one.cost.toLocaleString()}`}</Button>

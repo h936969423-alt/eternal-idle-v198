@@ -12,7 +12,7 @@ function money(c){return JSON.stringify({gold:c.gold,bag:c.bag,market:c.blackMar
 {
  const pools=market.blackMarketPools(undefined,now);for(const rank of market.BLACK_MARKET_RANKS){assert(pools[rank].length);for(const id of pools[rank]){assert.equal(loot.itemRarity(id),rank);assert(e.DATA.items[id].gachaWeight>0);assert(!e.DATA.items[id]._noGacha);}}
  assert.deepEqual(Object.keys(pools),['normal','advanced','rare']);
- const {s,c}=fixture();for(const [r,expected]of [[0,'normal'],[.33333334,'advanced'],[.66666667,'rare']]){let first=true;e.action(s,request(c),now,()=>first?(first=false,r):.5);assert.equal(c.blackMarket.history[0].items[0].rank,expected);}
+ const {s,c}=fixture();const prizes=market.BLACK_MARKET_RANKS.flatMap(rank=>pools[rank]);for(const r of [0,.5,.999]){let first=true;e.action(s,request(c),now,()=>first?(first=false,r):.5);assert.equal(c.blackMarket.history[0].items[0].item,prizes[Math.floor(r*prizes.length)],'every prize is equally likely');}
  const id=pools.normal[0],old=e.DATA.items[id].availFrom;e.DATA.items[id].availFrom=now+60000;try{assert(!market.blackMarketPools(undefined,now).normal.includes(id));}finally{if(old===undefined)delete e.DATA.items[id].availFrom;else e.DATA.items[id].availFrom=old;}
 }
 {
@@ -37,7 +37,7 @@ for(const kind of ['poor','level','away','hidden','wrong-npc','missing-id','stal
  const before=money(c);assert.throws(()=>e.action(s,a,now,rng),kind);assert.equal(money(c),before,kind+' cannot charge or grant items');
 }
 {
- const {s,c}=fixture(),pools=market.blackMarketPools(undefined,now);c.lootAppearance=loot.initialLootAppearance();for(const id of pools.rare)c.lootAppearance.items[id]={rarity:'normal'};
+ const {s,c}=fixture(),pools=market.blackMarketPools(undefined,now);c.lootAppearance=loot.initialLootAppearance();for(const id of market.BLACK_MARKET_RANKS.flatMap(rank=>pools[rank]))c.lootAppearance.items[id]={rarity:'hero'};
  const before=money(c);assert.throws(()=>e.action(s,request(c),now,()=>.5),/獎池/);assert.equal(money(c),before);
 }
 {
@@ -53,7 +53,7 @@ for(const kind of ['poor','level','away','hidden','wrong-npc','missing-id','stal
  assert.deepEqual(market.blackMarketQuote(0,10),{paid:10,free:0,cost:3000000,progress:10});
  assert.deepEqual(market.blackMarketQuote(9,10),{paid:9,free:1,cost:2700000,progress:8});
 }
-console.log('PASS: three equal-probability qualities, pool eligibility, 1/10 draws, free progress, actual inventory/cost, eligibility failures, empty pools, persisted retries, stale-sequence fencing and receipt history.');
+console.log('PASS: equal-probability prizes, pool eligibility, 1/10 draws, free progress, actual inventory/cost, eligibility failures, empty pools, persisted retries, stale-sequence fencing and receipt history.');
 
 const React=require('react'),{renderToStaticMarkup}=require('react-dom/server');
 const tag=name=>({children,variant,...props})=>React.createElement(name,props,children);
@@ -75,8 +75,8 @@ const UI=moduleObject.exports.default,Pool=moduleObject.exports.BlackMarketPool;
  assert(html.includes('免費抽獎'));assert(!html.match(/<button[^>]*data-draw-count="1"[^>]*>/)[0].includes('disabled'));
  assert(html.match(/<button[^>]*data-draw-count="10"[^>]*>/)[0].includes('disabled'));
  const pools=market.blackMarketPools(undefined,now),poolHtml=renderToStaticMarkup(React.createElement(Pool,{pools,inspect:()=>{}}));
- assert.equal((poolHtml.match(/<details/g)||[]).length,3);
- for(const rank of market.BLACK_MARKET_RANKS){assert(poolHtml.includes(loot.RARITY_NAMES[rank]));for(const id of pools[rank])assert(poolHtml.includes(renderToStaticMarkup(React.createElement('span',null,e.DATA.items[id].n)).replace(/^<span>|<\/span>$/g,'')));}
- console.log('PASS: real black-market UI shows 1/10 controls, free progress, affordability and every prize in exactly three quality groups; no world-boss draw.');
+ assert(!/<details/.test(poolHtml),'no quality groups');
+ for(const rank of market.BLACK_MARKET_RANKS){for(const id of pools[rank])assert(poolHtml.includes(renderToStaticMarkup(React.createElement('span',null,e.DATA.items[id].n)).replace(/^<span>|<\/span>$/g,'')));}
+ console.log('PASS: real black-market UI shows 1/10 controls, free progress, affordability and every prize in one list; no world-boss draw.');
 }
 }finally{fs.rmSync(dir,{recursive:true,force:true});}

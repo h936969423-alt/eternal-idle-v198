@@ -35,7 +35,7 @@ try{
  // Rule: (1~16)+6, every weapon tier; dice range unchanged, +1 hit and +1 flat damage per level.
  for(const [wid,wi] of all.filter(([key,x])=>x.type==='wpn'&&!x.isArrow&&!x.noEquip&&!x.noEnh)){const b0=e.stats(fixture(wid,0),1000000),b6=e.stats(fixture(wid,6),1000000),p0=w.lineageWProfile(wi,0),p6=w.lineageWProfile(wi,6);assert.equal(b6.weaponDamageBonus-b0.weaponDamageBonus,6,wid);assert.equal(b6.hit-b0.hit-(Math.floor(b6.dex/2)-Math.floor(b0.dex/2)),6,wid);if(p0)for(const k of ['minS','maxS','minL','maxL','hit','damage'])assert.equal(p6[k],p0[k],wid+' '+k);}
  const low=all.find(([id,i])=>i.type==='wpn'&&!i.noEnh&&!i.isArrow&&require(path.join(dir,'equipment-ranks.js')).defaultEquipmentRank(id,i)==='advanced');
- assert(!p.hasUnlimitedWeaponGrowth(low[0],low[1]));assert.equal(g.enhancementInfo(fixture(low[0],6),low[0]).cap,Infinity);
+ assert(p.hasUnlimitedWeaponGrowth(low[0],low[1]),'every weapon has no cap');assert.equal(g.enhancementInfo(fixture(low[0],6),low[0]).cap,Infinity);
  for(const [id,i] of all.filter(([,i])=>i.type==='arm'||i.type==='acc'))assert(!p.hasUnlimitedWeaponGrowth(id,i));
  for(const en of [12,15,20,50,100])for(const blessed of [false,true]){
   const rate=r.enhancementRates('wpn',en,6,blessed,false);assert(rate.success>0&&rate.success<=1);assert(Math.abs(rate.success+rate.hold+rate.destroy-1)<1e-12);
