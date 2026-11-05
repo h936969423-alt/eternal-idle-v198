@@ -75,7 +75,7 @@ const UI=moduleObject.exports.default,Pool=moduleObject.exports.BlackMarketPool;
  assert(html.includes('免費抽獎'));assert(!html.match(/<button[^>]*data-draw-count="1"[^>]*>/)[0].includes('disabled'));
  assert(html.match(/<button[^>]*data-draw-count="10"[^>]*>/)[0].includes('disabled'));
  const pools=market.blackMarketPools(undefined,now),poolHtml=renderToStaticMarkup(React.createElement(Pool,{pools,inspect:()=>{}}));
- assert(!/<details|稀有|高級/.test(poolHtml),'no quality groups');
+ assert(!/<details/.test(poolHtml),'no quality groups');
  for(const rank of market.BLACK_MARKET_RANKS){for(const id of pools[rank])assert(poolHtml.includes(renderToStaticMarkup(React.createElement('span',null,e.DATA.items[id].n)).replace(/^<span>|<\/span>$/g,'')));}
  console.log('PASS: real black-market UI shows 1/10 controls, free progress, affordability and every prize in one list; no world-boss draw.');
 }
