@@ -33,6 +33,11 @@ on:
         required: false
         default: false
         type: boolean
+      render_preview:
+        description: Render preview regions and upload them to isolated private R2
+        required: false
+        default: false
+        type: boolean
 permissions: {}
 jobs:
   inspect:
@@ -139,6 +144,21 @@ jobs:
           aws --endpoint-url "$endpoint" s3 cp client-map-source.tar "s3://eternal-idle-v198-test-assets/client-map-source/v1/$sha.tar" --no-progress --only-show-errors
           aws --endpoint-url "$endpoint" s3 cp manifest.json s3://eternal-idle-v198-test-assets/client-map-source/v1/manifest.json --no-progress --only-show-errors
           aws --endpoint-url "$endpoint" s3api head-object --bucket eternal-idle-v198-test-assets --key "client-map-source/v1/$sha.tar" --query ContentLength
+      - name: Render preview regions without credentials
+        if: ${{ inputs.render_preview }}
+        working-directory: ${{ runner.temp }}
+        run: |
+          python3 -m pip install --quiet --break-system-packages 'pillow==11.3.0'
+          client_dir="$(dirname "$(find source -maxdepth 3 -name Tile.idx | head -1)")"
+          python3 "$GITHUB_WORKSPACE/scripts/assets/render-client-map-preview.py" "$client_dir" preview
+      - name: Upload preview regions to private R2
+        if: ${{ inputs.render_preview }}
+        working-directory: ${{ runner.temp }}/preview
+        env:
+          AWS_ACCESS_KEY_ID: ${{ secrets.R2_ACCESS_KEY_ID }}
+          AWS_SECRET_ACCESS_KEY: ${{ secrets.R2_SECRET_ACCESS_KEY }}
+          AWS_DEFAULT_REGION: auto
+        run: aws --endpoint-url https://9bf17726da5739f20d3e5ec454ae3d91.r2.cloudflarestorage.com s3 sync . s3://eternal-idle-v198-test-assets/client-map-preview/v1/ --no-progress --only-show-errors
       - name: Upload report
         uses: actions/upload-artifact@v4
         with:
