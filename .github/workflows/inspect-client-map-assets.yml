@@ -114,7 +114,7 @@ jobs:
           ls -l client.rar
           sha256sum client.rar
       - name: List archive contents
-        if: ${{ !inputs.check_site && (steps.source_cache.outputs.cache-hit != 'true') }}
+        if: ${{ !inputs.check_site && !inputs.render_walk && steps.source_cache.outputs.cache-hit != 'true' }}
         working-directory: ${{ runner.temp }}
         run: |
           mkdir -p report
@@ -137,7 +137,7 @@ jobs:
           print(open('report/summary.txt').read())
           PY
       - name: Print index and data file names
-        if: ${{ !inputs.check_site && (steps.source_cache.outputs.cache-hit != 'true') }}
+        if: ${{ !inputs.check_site && !inputs.render_walk && steps.source_cache.outputs.cache-hit != 'true' }}
         working-directory: ${{ runner.temp }}
         run: |
           unrar lb -c- client.rar > names.txt
