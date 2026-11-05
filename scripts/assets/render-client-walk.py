@@ -5,14 +5,18 @@ from PIL import Image
 spr_dir,sprites,out=map(pathlib.Path,sys.argv[1:4]);out.mkdir(parents=True,exist_ok=True)
 spec=importlib.util.spec_from_file_location('spr',pathlib.Path(__file__).resolve().parents[1]/'convert-dasu-spr.py');spr=importlib.util.module_from_spec(spec);spec.loader.exec_module(spr)
 # Client action numbers: sword 4, bow 20, staff 40, two-handed sword 50, claw 58. File id = action*8+direction.
-BASES={'knight_2hsword':(61,[50,4]),'knight_f':(48,[4]),'elf_m_melee':(138,[4]),'elf_m_ranged':(138,[20,4]),'elf_f_melee':(37,[4]),'elf_f_ranged':(37,[20,4]),'mage_m':(734,[40,4]),'mage_f':(1186,[40,4]),'royal_m':(0,[4]),'royal_f':(1,[4]),'darkelf_player':(2786,[58,4])}
+BASES={'knight_2hsword':(61,[50,4,0]),'knight_f':(48,[4,0]),'elf_m_melee':(138,[4,0]),'elf_m_ranged':(138,[20,0]),'elf_f_melee':(37,[4,0]),'elf_f_ranged':(37,[20,0]),'mage_m':(734,[40,0]),'mage_f':(1186,[40,0]),'royal_m':(0,[4,0]),'royal_f':(1,[4,0]),'darkelf_player':(2786,[58,0])}
+ASSET_FRAMES=json.loads((pathlib.Path(__file__).resolve().parents[2]/'lib/game/asset-map.json').read_text())['frames']
+PUBLIC=sprites.parents[1]
+MIN_FRAMES=4
 def load(gfx,fid):
  p=spr_dir/f'{gfx}-{fid}.spr'
  return spr.decode(p) if p.exists() else None
 manifest={};sheet=Image.new('RGB',(160*9,170*len(BASES)),(52,64,52))
 for row,(base,(gfx,actions)) in enumerate(BASES.items()):
- action=next((a for a in actions if (spr_dir/f'{gfx}-{a*8+2}.spr').exists()),None)
- idle_png=sorted((sprites/base/'idle').glob('*.png'),key=lambda p:int(p.stem)) if (sprites/base/'idle').exists() else []
+ action=next((a for a in actions if (spr_dir/f'{gfx}-{a*8+2}.spr').exists() and len(load(gfx,a*8+2)[0])>=MIN_FRAMES),None)
+ idle_png=[PUBLIC/p.lstrip('/') for p in ASSET_FRAMES.get(base+'/idle',[])]
+ idle_png=[p for p in idle_png if p.exists()]
  if action is None or not idle_png:print('SKIP',base,action,len(idle_png));continue
  existing=Image.open(idle_png[0]).convert('RGBA');ebox=existing.getbbox()
  ref=load(gfx,(action+3)*8+2) or load(gfx,action*8+2);frames,left,top=ref;rbox=frames[0].getbbox()
@@ -26,7 +30,7 @@ for row,(base,(gfx,actions)) in enumerate(BASES.items()):
   images,l,t=loaded;counts[str(direction)]=len(images)
   for i,im in enumerate(images):
    w,h=max(1,round(im.width*scale)),max(1,round(im.height*scale));r=im.resize((w,h),Image.LANCZOS)
-   c=Image.new('RGBA',existing.size);c.alpha_composite(r,(0,0)) if False else c.paste(r,(round(scale*l+tx),round(scale*t+ty)),r)
+   c=Image.new('RGBA',existing.size);c.paste(r,(round(scale*l+tx),round(scale*t+ty)),r)
    c.save(d/f'{direction}_{i}.webp','WEBP',quality=85,method=4)
    if i==1:
     thumb=c.copy();thumb.thumbnail((158,168));sheet.paste(thumb,((direction+1)*160,row*170),thumb)
