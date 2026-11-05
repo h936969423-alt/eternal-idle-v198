@@ -1,7 +1,9 @@
 'use client';
 import PlayerSpriteFrame from './player-sprite-frame';
 import {localHitOwner} from '@/lib/game/local-hit-sync';
-import {useMemo,useEffect} from 'react';
+import {useEffect,useMemo,useSyncExternalStore} from 'react';
+import {playerWalkStore,walkFrames} from '@/lib/game/field-walk';
+import clientWalk from '@/lib/game/client-walk.json';
 import raw from '@/lib/game/gamedata.json';
 import amap from '@/lib/game/asset-map.json';
 import castSpeeds from '@/lib/game/cast-animation.json';
@@ -29,7 +31,8 @@ export default function CombatSprite({c,view,interval,pendingCast,castInterval:s
  // sheets consistently instead of inferring direction from padded sprite boxes.
  const frame=Math.min(seq.length-1,pose.frame);
  const activeClip=pose.kind==='skill'?(castClip||attackClip):pose.kind==='attack'?attackClip:undefined;
- return seq.length?<PlayerSpriteFrame className="character-sprite" data-action={pose.kind} data-direction={direction} data-target-uid={pose.targetUid||contactTarget?.uid} data-mirrored={false} data-polymorph={poly?.id} formId={poly?.id} canvas={layoutClip?.layout.viewBox||attackClip?.layout.viewBox} src={seq[frame]} clip={activeClip} frame={frame} alt={c.name}/>:null;
+ const walkState=useSyncExternalStore(playerWalkStore.subscribe,playerWalkStore.get,playerWalkStore.get),walkSeq=useMemo(()=>poly?[]:walkFrames((clientWalk as Record<string,{counts:Record<string,number>}>)[base]?.counts,base,walkState.direction),[poly?.id,base,walkState.direction]);useEffect(()=>{for(const path of walkSeq){const image=new Image();image.src=path;}},[walkSeq]);const walkSrc=walkState.moving&&pose.kind==='idle'&&walkSeq.length?walkSeq[Math.floor(performance.now()/125)%walkSeq.length]:undefined;
+ return seq.length?<PlayerSpriteFrame className="character-sprite" data-action={walkSrc?'walk':pose.kind} data-direction={direction} data-target-uid={pose.targetUid||contactTarget?.uid} data-mirrored={false} data-polymorph={poly?.id} formId={poly?.id} canvas={layoutClip?.layout.viewBox||attackClip?.layout.viewBox} src={walkSrc||seq[frame]} clip={activeClip} frame={frame} alt={c.name}/>:null;
 }
 
 

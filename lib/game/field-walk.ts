@@ -15,3 +15,11 @@ export function playerWalkGoal(home:{x:number;y:number},target:{x:number;y:numbe
  return {x,y};
 }
 export function stepToward(from:{x:number;y:number},goal:{x:number;y:number},distance:number){const dx=goal.x-from.x,dy=goal.y-from.y,length=Math.hypot(dx,dy);return length<=distance?{...goal}:{x:from.x+dx/length*distance,y:from.y+dy/length*distance};}
+type WalkState={moving:boolean;direction:number};
+let walkState:WalkState={moving:false,direction:2};const walkListeners=new Set<()=>void>();
+/** Lets the sprite pick walk frames without the driver re-rendering the whole arena. */
+export const playerWalkStore={get:()=>walkState,subscribe(fn:()=>void){walkListeners.add(fn);return()=>{walkListeners.delete(fn);};},set(next:WalkState){if(next.moving===walkState.moving&&next.direction===walkState.direction)return;walkState=next;walkListeners.forEach(fn=>fn());}};
+/** Client directions: 0 up-right, then clockwise in 45 degree steps. */
+export function walkDirection(dx:number,dy:number){return (Math.round((Math.atan2(dx,-dy)*180/Math.PI+360)/45)+8)%8;}
+export function walkFrames(counts:Record<string,number>|undefined,base:string,direction:number){const count=counts?.[String(direction)]||0;return Array.from({length:count},(_,i)=>`/assets/client-walk/v1/${base}/${direction}_${i}.webp`);}
+
