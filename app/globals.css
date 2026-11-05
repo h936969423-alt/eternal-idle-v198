@@ -1150,3 +1150,6 @@ body:has(.game-root) :is(.game-dialog,.bian-dialog) :is([data-slot=dialog-descri
 .ce-pager{display:flex;align-items:center;justify-content:space-between;gap:8px;margin-top:8px;font-size:13px;text-align:center}.ce-classes{display:flex;flex-wrap:wrap;gap:6px 14px;margin:12px 0 0;padding:8px 10px;border:1px solid #42533e;border-radius:6px}.gm-custom-equipment .ce-classes label{display:flex;align-items:center;gap:6px;min-height:36px}
 .ce-row{display:grid;grid-template-columns:minmax(0,1fr) 76px auto;gap:6px;align-items:center;margin-bottom:6px}.gm-custom-equipment .ce-rate{display:flex;align-items:center;gap:3px}.ce-actions{display:flex;flex-wrap:wrap;gap:8px;margin-top:14px}.ce-actions button{flex:1}
 .ce-list article{display:grid;grid-template-columns:44px minmax(0,1fr);gap:4px 10px;padding:10px 0;border-top:1px solid #42533e}.ce-list small{display:block;line-height:1.45;overflow-wrap:anywhere}.ce-list-actions{grid-column:1/-1;display:flex;gap:8px}.ce-list-actions button{flex:1}
+
+/* Presentation-only field walking; set by FieldWalkDriver. */
+.static-arena .four-player,.static-arena .four-monster{translate:var(--walk-x,0px) var(--walk-y,0px)}
