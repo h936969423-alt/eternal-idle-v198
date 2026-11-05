@@ -1,6 +1,6 @@
 'use client';
 import {useEffect,useRef,type RefObject} from 'react';
-import {monsterWalk,playerWalkGoal,stepToward} from '@/lib/game/field-walk';
+import {monsterWalk,playerWalkGoal,playerWalkStore,stepToward,walkDirection} from '@/lib/game/field-walk';
 const PLAYER_SPEED=.11,FRAME_MS=33;
 /** Moves actors with CSS variables so combat state and React renders stay untouched. */
 export default function FieldWalkDriver({arena,enabled,targetUid,running,ranged}:{arena:RefObject<HTMLDivElement|null>;enabled:boolean;targetUid?:string;running:boolean;ranged:boolean}){
@@ -20,11 +20,12 @@ export default function FieldWalkDriver({arena,enabled,targetUid,running,ranged}
    });
    const actor=root.querySelector<HTMLElement>('.four-player');if(!actor)return;
    const r=actor.getBoundingClientRect(),home={x:r.left-box.left+r.width/2-player.x,y:r.top-box.top+r.height/2-player.y};
-   player=stepToward(player,playerWalkGoal(home,latest.current.running?target:undefined,box,latest.current.ranged),box.width*PLAYER_SPEED*seconds);
+   const before=player;player=stepToward(player,playerWalkGoal(home,latest.current.running?target:undefined,box,latest.current.ranged),box.width*PLAYER_SPEED*seconds);
+   const dx=player.x-before.x,dy=player.y-before.y,moved=Math.hypot(dx,dy)>.05;playerWalkStore.set({moving:moved,direction:moved?walkDirection(dx,dy):2});
    actor.style.setProperty('--walk-x',`${player.x.toFixed(1)}px`);actor.style.setProperty('--walk-y',`${player.y.toFixed(1)}px`);
   };
   frame=requestAnimationFrame(tick);
-  return()=>{cancelAnimationFrame(frame);clear();};
+  return()=>{cancelAnimationFrame(frame);clear();playerWalkStore.set({moving:false,direction:2});};
  },[arena,enabled]);
  return null;
 }

@@ -44,6 +44,16 @@ on:
         required: false
         default: false
         type: boolean
+      sprite_probe:
+        description: Probe player walk sprites and print results to the log
+        required: false
+        default: false
+        type: boolean
+      render_walk:
+        description: Render player walk frames and upload them to isolated private R2
+        required: false
+        default: false
+        type: boolean
 permissions: {}
 jobs:
   inspect:
@@ -59,7 +69,7 @@ jobs:
         if: ${{ inputs.check_site }}
         run: |
           base=https://eternal-idle-v198-test.h936969423.workers.dev
-          for path in /assets/client-map-preview/v1/giran/manifest.json /assets/client-map-preview/v1/giran/4_2.webp /assets/client-map-preview/v1/talking/manifest.json /assets/client-map-preview/v1/gludio/manifest.json; do
+          for path in /assets/client-walk/v1/knight_2hsword/2_0.webp /assets/client-walk/v1/darkelf_player/6_3.webp /assets/client-map-preview/v1/giran/manifest.json /assets/client-map-preview/v1/giran/4_2.webp /assets/client-map-preview/v1/talking/manifest.json /assets/client-map-preview/v1/gludio/manifest.json; do
             code=$(curl -sS -o /tmp/body -w '%{http_code} %{content_type} %{size_download}' "$base$path"); echo "$path $code"; [ "${code%% *}" = 200 ] || exit 1
           done
           curl -sS -o /dev/null -w 'page %{http_code}\n' "$base/map-preview"
@@ -68,6 +78,13 @@ jobs:
         if: ${{ !inputs.check_site }}
         with:
           persist-credentials: false
+      - name: Restore sprite probe output
+        if: ${{ !inputs.check_site && inputs.render_walk }}
+        id: sprite_cache
+        uses: actions/cache/restore@v4
+        with:
+          path: ${{ runner.temp }}/sprite-probe
+          key: client-player-sprites-v1
       - name: Validate input and free runner disk
         if: ${{ !inputs.check_site }}
         run: |
@@ -90,14 +107,14 @@ jobs:
           path: ${{ runner.temp }}/source
           key: client-map-source-96877a41-v1
       - name: Download archive
-        if: ${{ !inputs.check_site && (steps.source_cache.outputs.cache-hit != 'true') }}
+        if: ${{ !inputs.check_site && (((inputs.sprite_probe || inputs.render_walk) && steps.sprite_cache.outputs.cache-hit != 'true') || (!inputs.sprite_probe && !inputs.render_walk && steps.source_cache.outputs.cache-hit != 'true')) }}
         working-directory: ${{ runner.temp }}
         run: |
           python3 -m gdown --id "$DRIVE_FILE_ID" -O client.rar
           ls -l client.rar
           sha256sum client.rar
       - name: List archive contents
-        if: ${{ !inputs.check_site && (steps.source_cache.outputs.cache-hit != 'true') }}
+        if: ${{ !inputs.check_site && !inputs.render_walk && steps.source_cache.outputs.cache-hit != 'true' }}
         working-directory: ${{ runner.temp }}
         run: |
           mkdir -p report
@@ -120,7 +137,7 @@ jobs:
           print(open('report/summary.txt').read())
           PY
       - name: Print index and data file names
-        if: ${{ !inputs.check_site && (steps.source_cache.outputs.cache-hit != 'true') }}
+        if: ${{ !inputs.check_site && !inputs.render_walk && steps.source_cache.outputs.cache-hit != 'true' }}
         working-directory: ${{ runner.temp }}
         run: |
           unrar lb -c- client.rar > names.txt
@@ -178,6 +195,45 @@ jobs:
           AWS_SECRET_ACCESS_KEY: ${{ secrets.R2_SECRET_ACCESS_KEY }}
           AWS_DEFAULT_REGION: auto
         run: aws --endpoint-url https://9bf17726da5739f20d3e5ec454ae3d91.r2.cloudflarestorage.com s3 sync . s3://eternal-idle-v198-test-assets/client-map-preview/v1/ --no-progress --only-show-errors
+      - name: Probe player sprites without credentials
+        if: ${{ !inputs.check_site && (inputs.sprite_probe || inputs.render_walk) && steps.sprite_cache.outputs.cache-hit != 'true' }}
+        working-directory: ${{ runner.temp }}
+        run: |
+          python3 -m pip install --quiet --break-system-packages 'pillow==11.3.0'
+          rm -rf spr-source
+          set -f
+          unrar x -o+ -inul '-n*/Sprite*.idx' '-n*/Sprite*.pak' client.rar spr-source/ || [ $? -eq 10 ]
+          set +f
+          client_dir="$(dirname "$(find spr-source -maxdepth 3 -name Sprite.idx | head -1)")"
+          python3 "$GITHUB_WORKSPACE/scripts/assets/probe-client-sprites.py" "$client_dir" sprite-probe
+          rm -rf spr-source client.rar
+      - name: Save sprite probe output
+        if: ${{ !inputs.check_site && inputs.render_walk && steps.sprite_cache.outputs.cache-hit != 'true' }}
+        uses: actions/cache/save@v4
+        with:
+          path: ${{ runner.temp }}/sprite-probe
+          key: client-player-sprites-v1
+      - name: Restore existing idle sprites from private R2
+        if: ${{ !inputs.check_site && inputs.render_walk }}
+        env:
+          AWS_ACCESS_KEY_ID: ${{ secrets.R2_ACCESS_KEY_ID }}
+          AWS_SECRET_ACCESS_KEY: ${{ secrets.R2_SECRET_ACCESS_KEY }}
+          AWS_DEFAULT_REGION: auto
+        run: python3 scripts/restore-r2-bundles.py
+      - name: Render walk frames without credentials
+        if: ${{ !inputs.check_site && inputs.render_walk }}
+        working-directory: ${{ runner.temp }}
+        run: |
+          python3 -m pip install --quiet --break-system-packages 'pillow==11.3.0'
+          python3 "$GITHUB_WORKSPACE/scripts/assets/render-client-walk.py" sprite-probe/spr "$GITHUB_WORKSPACE/public/assets/sprites" walk-out
+      - name: Upload walk frames to private R2
+        if: ${{ !inputs.check_site && inputs.render_walk }}
+        working-directory: ${{ runner.temp }}/walk-out
+        env:
+          AWS_ACCESS_KEY_ID: ${{ secrets.R2_ACCESS_KEY_ID }}
+          AWS_SECRET_ACCESS_KEY: ${{ secrets.R2_SECRET_ACCESS_KEY }}
+          AWS_DEFAULT_REGION: auto
+        run: aws --endpoint-url https://9bf17726da5739f20d3e5ec454ae3d91.r2.cloudflarestorage.com s3 sync . s3://eternal-idle-v198-test-assets/client-walk/v1/ --no-progress --only-show-errors
       - name: Upload report
         if: ${{ !inputs.check_site }}
         uses: actions/upload-artifact@v4
