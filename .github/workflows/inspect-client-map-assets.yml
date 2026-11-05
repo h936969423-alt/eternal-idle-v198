@@ -1,5 +1,5 @@
 name: Inspect client map assets
-# Data-only inspection. No checkout, no secrets, read-only token. The archive is
+# Data-only inspection. No secrets, read-only token. The archive is
 # listed and matching data files are extracted; nothing inside it is executed.
 on:
   workflow_dispatch:
@@ -18,16 +18,25 @@ on:
         required: false
         default: false
         type: boolean
+      parse_maps:
+        description: Parse S32 and index files and print the result to the log
+        required: false
+        default: false
+        type: boolean
 permissions: {}
 jobs:
   inspect:
     runs-on: ubuntu-latest
     timeout-minutes: 90
-    permissions: {}
+    permissions:
+      contents: read
     env:
       DRIVE_FILE_ID: ${{ inputs.drive_file_id }}
       INCLUDE_PATTERNS: ${{ inputs.include_patterns }}
     steps:
+      - uses: actions/checkout@v4
+        with:
+          persist-credentials: false
       - name: Validate input and free runner disk
         run: |
           [[ "$DRIVE_FILE_ID" =~ ^[A-Za-z0-9_-]{20,80}$ ]] || { echo "::error::Invalid Drive file id"; exit 1; }
@@ -68,6 +77,21 @@ jobs:
               for e,n in folders.most_common(40):f.write(f'{e}\t{n} files\n')
           print(open('report/summary.txt').read())
           PY
+      - name: Print index and data file names
+        working-directory: ${{ runner.temp }}
+        run: |
+          unrar lb -c- client.rar > names.txt
+          grep -iE '\.(pak|idx)$' names.txt || true
+          grep -iE '(^|[\\/])map[\\/]' names.txt | grep -iE '\.map$' | head -5 || true
+      - name: Parse map data without executing client files
+        if: ${{ inputs.parse_maps }}
+        working-directory: ${{ runner.temp }}
+        run: |
+          mkdir -p parsed
+          set -f
+          unrar x -o+ -inul '-n*.idx' '-n*.s32' '-n*.seg' '-n*.map' client.rar parsed/ || [ $? -eq 10 ]
+          set +f
+          python3 "$GITHUB_WORKSPACE/scripts/assets/parse-client-maps.py" parsed
       - name: Upload report
         uses: actions/upload-artifact@v4
         with:
