@@ -16,7 +16,7 @@ export default function WorldMapLayer({zone,arena,targetUid,running,ranged,onSta
    walker.tick(uids,latest.current.targetUid,latest.current.running,latest.current.ranged,Date.now(),seconds);
    const camera=walker.pixel(walker.player),ax=box.width/2,ay=box.height*ANCHOR_Y;
    if(plane.current)plane.current.style.transform=`translate3d(${(ax-camera.x*ZOOM).toFixed(1)}px,${(ay-camera.y*ZOOM).toFixed(1)}px,0) scale(${ZOOM})`;
-   const size=map.chunk*ZOOM,minX=Math.floor((camera.x*ZOOM-ax)/size),maxX=Math.floor((camera.x*ZOOM+box.width-ax)/size),minY=Math.floor((camera.y*ZOOM-ay)/size),maxY=Math.floor((camera.y*ZOOM+box.height-ay)/size),key=`${minX},${maxX},${minY},${maxY}`;
+   const size=map.chunk*ZOOM,minX=Math.floor((camera.x*ZOOM-ax)/size)-1,maxX=Math.floor((camera.x*ZOOM+box.width-ax)/size)+1,minY=Math.floor((camera.y*ZOOM-ay)/size)-1,maxY=Math.floor((camera.y*ZOOM+box.height-ay)/size)+1,key=`${minX},${maxX},${minY},${maxY}`;
    if(key!==shown){shown=key;const next:[number,number][]=[];for(let x=minX;x<=maxX;x++)for(let y=minY;y<=maxY;y++)if(have.has(`${x}_${y}`))next.push([x,y]);setCells(next);}
    const actor=root.querySelector<HTMLElement>('.four-player');if(actor)place(actor,ax,ay,'');
    for(const el of alive){const m=walker.monsters.get(el.dataset.monsterUid||'');if(!m)continue;const p=walker.pixel(m);place(el,ax+(p.x-camera.x)*ZOOM,ay+(p.y-camera.y)*ZOOM,'.four-monster-art');}
