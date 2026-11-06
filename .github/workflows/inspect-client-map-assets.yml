@@ -84,7 +84,7 @@ jobs:
         if: ${{ inputs.check_site }}
         run: |
           base=https://eternal-idle-v198-test.h936969423.workers.dev
-          for path in /assets/client-walk/v1/mage_m/a6_0.webp /assets/client-walk/v1/darkelf_player/i6_0.webp /assets/client-world/v1/talking_island/manifest.json /assets/client-world/v1/zone_13/manifest.json /assets/client-world/v1/zone_06/manifest.json /assets/client-walk/v1/royal_m/2_0.webp /assets/client-walk/v1/m2773_172x246/sheet.webp /assets/client-walk/v1/knight_2hsword/2_0.webp /assets/client-walk/v1/darkelf_player/6_3.webp /assets/client-map-preview/v1/giran/manifest.json /assets/client-map-preview/v1/giran/4_2.webp /assets/client-map-preview/v1/talking/manifest.json /assets/client-map-preview/v1/gludio/manifest.json; do
+          for path in /assets/client-walk/v1/mage_m/h2_0.webp /assets/client-walk/v1/knight_f/d2_0.webp /assets/client-walk/v1/mage_m/a6_0.webp /assets/client-walk/v1/darkelf_player/i6_0.webp /assets/client-world/v1/talking_island/manifest.json /assets/client-world/v1/zone_13/manifest.json /assets/client-world/v1/zone_06/manifest.json /assets/client-walk/v1/royal_m/2_0.webp /assets/client-walk/v1/m2773_172x246/sheet.webp /assets/client-walk/v1/knight_2hsword/2_0.webp /assets/client-walk/v1/darkelf_player/6_3.webp /assets/client-map-preview/v1/giran/manifest.json /assets/client-map-preview/v1/giran/4_2.webp /assets/client-map-preview/v1/talking/manifest.json /assets/client-map-preview/v1/gludio/manifest.json; do
             code=$(curl -sS -o /tmp/body -w '%{http_code} %{content_type} %{size_download}' "$base$path"); echo "$path $code"; [ "${code%% *}" = 200 ] || exit 1
           done
           curl -sS -o /dev/null -w 'page %{http_code}\n' "$base/map-preview"
