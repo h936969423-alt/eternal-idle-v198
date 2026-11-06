@@ -84,7 +84,7 @@
 .display-mode-picker{display:flex;align-items:center;gap:8px;font-size:14px;color:#eadfc6;white-space:nowrap}.display-mode-picker select{background:#21180e;border:1px solid #9a793d;border-radius:6px;color:#f6d17a;font-size:14px;min-height:30px;padding:3px 7px}.reference-config .display-mode-picker{justify-content:space-between;margin:12px 0}.display-help{font-size:14px;color:#bbaa87;line-height:1.7}.play-stage{min-width:0}.display-portrait .portrait-stage-hidden{display:none}.play-stage .battle-scene{margin-bottom:0}.gm-edit-selection,.gm-edit-fields{min-width:0}
 .game-root.display-landscape{padding-bottom:0;height:100dvh;overflow:hidden}.game-root.display-landscape>.topbar{max-width:none;height:34px;padding-inline:max(12px,env(safe-area-inset-left))}.game-root.display-landscape .reference-hud{max-width:none;min-height:80px;height:80px;padding:8px 16px;grid-template-columns:48px minmax(0,1fr) auto auto;grid-template-rows:auto;gap:10px}.game-root.display-landscape .hud-avatar{width:46px;height:46px;grid-row:auto}.game-root.display-landscape .hud-identity{grid-row:auto;align-self:center}.game-root.display-landscape .hud-identity h2{font-size:18px}.game-root.display-landscape .hud-identity p{font-size:14px;margin:2px 0 4px}.game-root.display-landscape .hud-config{position:static;transform:none;font-size:14px}.game-root.display-landscape .hud-exp{height:14px}.game-root.display-landscape .hud-exp strong{font-size:12px;line-height:12px}.game-root.display-landscape .hud-currency{grid-row:auto;align-self:center}.game-root.display-landscape .hud-currency strong{font-size:18px}.game-root.display-landscape .hud-defense{grid-column:4;grid-row:auto;font-size:14px;flex-direction:column}.game-root.display-landscape .game-shell{max-width:none;height:calc(100dvh - 114px);min-height:0;margin:0}.game-root.display-landscape .main-panel{display:grid;grid-template-columns:minmax(0,65fr) minmax(0,35fr);gap:0;height:100%;padding:0;overflow:hidden}.game-root.display-landscape .play-stage{height:100%;overflow:auto;overscroll-behavior:contain;border-right:1px solid #876532;display:flex;flex-direction:column;padding-bottom:env(safe-area-inset-bottom)}.game-root.display-landscape .main-tabs{height:100%;min-width:0;overflow:auto;overscroll-behavior:contain;padding:0 10px calc(12px + env(safe-area-inset-bottom));display:block}.game-root.display-landscape .main-panel:not(:has(.play-stage)){grid-template-columns:1fr}.game-root.display-landscape .main-nav{position:sticky;top:0;left:auto;bottom:auto;transform:none;width:calc(100% + 20px)!important;margin:0 -10px 10px;height:auto!important;min-height:44px;padding:0!important;display:grid;grid-template-columns:repeat(3,minmax(0,1fr));z-index:20;overflow:visible}.game-root.display-landscape .main-nav [data-slot=tabs-trigger]{height:36px!important;font-size:14px!important;padding:4px;flex-direction:row}.game-root.display-landscape .main-nav [data-slot=tabs-trigger] svg{display:none}.game-root.display-landscape .portrait-status{display:none}.game-root.display-landscape .play-stage .active-status-bar{margin:0;flex-shrink:0;margin-top:auto;padding:6px 12px}.game-root.display-landscape .battle-scene{margin:0;border-radius:0;flex:1;display:flex;flex-direction:column;background-size:cover}.game-root.display-landscape .four-battle{flex:1;min-height:230px;padding:62px 16px 10px;gap:12px}.game-root.display-landscape .four-player{width:30%;max-width:200px}.game-root.display-landscape .four-player .character-sprite{width:clamp(100px,17vw,180px);height:clamp(100px,17vw,180px)}.game-root.display-landscape .four-monsters{width:65%;max-width:620px;gap:6px;grid-template-columns:repeat(3,minmax(0,1fr))}.game-root.display-landscape .four-target{padding:5px 3px}.game-root.display-landscape .four-target img{width:clamp(44px,7vw,90px);height:clamp(44px,7vw,90px)}.game-root.display-landscape .four-target>span{font-size:14px}.game-root.display-landscape .battle-vitals{top:8px;left:12px;width:180px;gap:5px}.game-root.display-landscape .battle-vital-bar{height:24px}.game-root.display-landscape .battle-vital-bar strong{font-size:14px}.game-root.display-landscape .scene-top{padding:6px 12px;flex-wrap:wrap;gap:6px;min-height:38px}.game-root.display-landscape .scene-top button{height:30px;font-size:14px}.game-root.display-landscape .battle-controls{padding:8px 12px;flex-wrap:wrap;gap:6px}.game-root.display-landscape .battle-controls button{min-height:38px}.game-root.display-landscape .hunt-context{display:none}.game-root.display-landscape .reference-lobby{margin:0;min-height:230px;height:auto;flex:1}.game-root.display-landscape .lobby-information{padding:44px 12px 12px}.game-root.display-landscape .lobby-information h2{font-size:22px}.game-root.display-landscape .lobby-information p{font-size:16px}.game-root.display-landscape .lobby-server{margin-top:12px}.game-root.display-landscape .lobby-server p:last-child span{font-size:14px}.game-root.display-landscape .compact-village{margin:0;max-height:none;flex:1;min-height:0}.game-root.display-landscape .reference-map-row,.game-root.display-landscape .reference-map-row .map-player-count{font-size:16px;min-height:48px;padding:10px}.game-root.display-landscape .reference-map-row>span:last-child{font-size:14px}.game-root.display-landscape .reference-maps .sub-tabs{flex-wrap:wrap}.game-root.display-landscape .reference-maps .sub-tabs button{font-size:14px!important;height:34px!important;padding:4px 8px}.game-root.display-landscape .reference-skill-search{flex-direction:column;align-items:stretch}.game-root.display-landscape .reference-skill-list article{flex-wrap:wrap;padding:12px;gap:10px}.game-root.display-landscape .reference-skill-list h3{font-size:18px}.game-root.display-landscape .reference-skill-list article>div{min-width:130px}.game-root.display-landscape .reference-dolls{grid-template-columns:repeat(2,minmax(0,1fr))}.game-root.display-landscape .gear-workshop-grid{grid-template-columns:1fr}.game-root.display-landscape .reference-metrics{grid-template-columns:1fr}.game-root.display-landscape .ability-attrs{padding:10px}.game-root.display-landscape .quick-magic{flex-wrap:wrap}.game-root.display-landscape .quick-potions{flex-wrap:wrap}.game-root.display-landscape .bank-items{grid-template-columns:1fr}.game-root.display-landscape .log-list{max-height:200px}
 .gm-root.display-landscape .gm-main{max-width:1600px}.gm-root.display-landscape .gm-edit-layout{display:grid;grid-template-columns:minmax(220px,28fr) minmax(0,72fr);gap:24px;align-items:start}.gm-root.display-landscape .gm-edit-selection{position:sticky;top:16px;max-height:calc(100dvh - 40px);overflow:auto;padding-right:12px;border-right:1px solid #65502a}.gm-root.display-landscape .gm-edit-fields{padding-left:4px}.gm-root .topbar .display-mode-picker{margin-left:auto;margin-right:16px}
-@media(max-width:699px){.game-root.display-landscape{overflow-x:auto}.game-root.display-landscape>.topbar,.game-root.display-landscape .reference-hud,.game-root.display-landscape .game-shell{min-width:700px}.gm-root.display-landscape .gm-edit-layout{grid-template-columns:1fr}.gm-root.display-landscape .gm-edit-selection{position:static;max-height:none;border-right:0}.game-root .header-right{gap:4px}.game-root .display-mode-picker>span{display:none}.game-root .header-right .cloud-status{max-width:90px;overflow:hidden;white-space:nowrap}}
+@media(max-width:699px){.gm-root.display-landscape .gm-edit-layout{grid-template-columns:1fr}.gm-root.display-landscape .gm-edit-selection{position:static;max-height:none;border-right:0}.game-root .header-right{gap:4px}.game-root .display-mode-picker>span{display:none}.game-root .header-right .cloud-status{max-width:90px;overflow:hidden;white-space:nowrap}}
 @media(orientation:landscape) and (max-height:500px){.game-root.display-landscape .reference-hud{height:64px;min-height:64px}.game-root.display-landscape .game-shell{height:calc(100dvh - 98px)}.game-root.display-landscape .four-battle{min-height:190px;padding-top:58px}.game-root.display-landscape .four-player .character-sprite{width:110px;height:110px}.game-root.display-landscape .four-target img{width:44px;height:44px}.game-root.display-landscape .four-target small{font-size:12px}.game-root.display-landscape .scene-region{display:none}.game-root.display-landscape .lobby-information p{margin:3px 0}.game-root.display-landscape .active-status-bar{min-height:34px}}
 .game-root.display-landscape:not(:has(.reference-hud)) .game-shell{height:calc(100dvh - 34px)}.game-root.display-landscape .source-bag-grid{grid-template-columns:repeat(3,minmax(0,1fr))}.game-root.display-landscape .source-eq-grid{grid-template-columns:repeat(2,minmax(0,1fr))}.game-root.display-landscape .auto-tabs [role=tab]{min-width:0;white-space:normal;font-size:14px;padding:4px}.game-root.display-landscape .reference-attributes{padding:12px}.game-root.display-landscape .reference-stat-row{font-size:16px}.game-root.display-landscape .main-tabs>[data-slot=tabs-content]>.compact-village{display:none}
 
@@ -1165,3 +1165,59 @@ body:has(.game-root) :is(.game-dialog,.bian-dialog) :is([data-slot=dialog-descri
  .eternal-gold{position:absolute;z-index:26;top:8px;left:50%;transform:translateX(-50%);background:#152024e8;color:#f2ce73;padding:3px 8px;border-radius:5px;font-size:13px;font-variant-numeric:tabular-nums;pointer-events:none}
  .game-root.map-first-layout.display-landscape:has(.eternal-combat-menu) .hud-currency strong{display:none}
  
+
+/* Match the map HUD to the available viewport in both orientations. */
+.game-root.screenshot-layout.map-first-layout {
+ box-sizing:border-box;
+ max-inline-size:100%!important;
+ -webkit-text-size-adjust:100%;
+ text-size-adjust:100%;
+}
+.game-root.screenshot-layout.map-first-layout :is(.reference-hud,.game-shell,.main-panel) {
+ box-sizing:border-box;
+ min-inline-size:0;
+ max-inline-size:100%!important;
+}
+.game-root.screenshot-layout.map-first-layout .hud-name-row {
+ min-inline-size:0;
+ flex-wrap:wrap;
+}
+.game-root.screenshot-layout.map-first-layout .hud-inline-defenses {
+ min-inline-size:0;
+ max-inline-size:100%;
+ flex-wrap:wrap;
+}
+.game-root.screenshot-layout.map-first-layout .eternal-combat-menu nav:not([hidden]) {
+ top:6px;
+ right:54px;
+ width:min(264px,calc(100% - 62px));
+ max-height:calc(100% - 12px);
+ box-sizing:border-box;
+}
+.game-root.screenshot-layout.map-first-layout .eternal-menu-toggle {
+ top:6px;
+ right:8px;
+}
+.game-root.screenshot-layout.map-first-layout .eternal-gold {
+ max-inline-size:calc(100% - 116px);
+ box-sizing:border-box;
+ overflow-wrap:anywhere;
+ text-align:center;
+}
+@media(max-width:480px){
+ .game-root.screenshot-layout.map-first-layout.display-portrait .reference-hud {
+  grid-template-columns:36px minmax(0,1fr)!important;
+  grid-template-rows:auto auto!important;
+  min-height:0!important;
+ }
+ .game-root.screenshot-layout.map-first-layout.display-portrait .hud-currency {
+  grid-column:2;
+  grid-row:2;
+  flex-wrap:wrap;
+  min-inline-size:0;
+ }
+ .game-root.screenshot-layout.map-first-layout.display-portrait .hud-currency strong {
+  white-space:normal;
+  overflow-wrap:anywhere;
+ }
+}
