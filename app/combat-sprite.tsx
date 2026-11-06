@@ -1,7 +1,7 @@
 'use client';
 import PlayerSpriteFrame from './player-sprite-frame';
 import {localHitOwner} from '@/lib/game/local-hit-sync';
-import {useEffect,useMemo,useSyncExternalStore} from 'react';
+import {useEffect,useMemo,useState,useSyncExternalStore} from 'react';
 import {directionalFrames,playerWalkStore,scaledFrame,walkFrames} from '@/lib/game/field-walk';
 import clientAttack from '@/lib/game/client-attack.json';
 import clientWalk from '@/lib/game/client-walk.json';
@@ -18,6 +18,7 @@ import {preloadSprites} from '@/lib/game/preload-sprites';
 import {useSunrisePlayerMotion} from './use-sunrise-player-motion';
 import {playerCastInterval,type CastIntent} from '@/lib/game/cast-feedback';
 import type {BattleView} from './use-combat-replay';
+const WALK_FRAME_MS=125;
 export default function CombatSprite({c,view,interval,pendingCast,castInterval:serverCastInterval}:{c:Character;view:BattleView;interval:number;pendingCast?:CastIntent;castInterval?:number}){const fixedDirection=playerBattleDirection(view.target),walkState=useSyncExternalStore(playerWalkStore.subscribe,playerWalkStore.get,playerWalkStore.get);const poly=c.polyLook!==false?activeForm(c):undefined,ranged=(raw.items as any)[baseItem(c.equipment.weapon?.id||'')]?.isBow,base=c.cls==='royal'?`royal_${c.gender==='f'?'f':'m'}`:c.cls==='knight'?(c.gender==='f'?'knight_f':'knight_2hsword'):c.cls==='elf'?`elf_${c.gender==='f'?'f':'m'}_${ranged?'ranged':'melee'}`:c.cls==='mage'?(c.gender==='f'?'mage_f':'mage_m'):'darkelf_player',frames=amap.frames as Record<string,string[]>;
  // Forms with directional clips face the target; others fall back to direction 2 inside the lookups.
  const direction=poly?(walkState.facing??fixedDirection):fixedDirection;
@@ -34,7 +35,7 @@ export default function CombatSprite({c,view,interval,pendingCast,castInterval:s
  // sheets consistently instead of inferring direction from padded sprite boxes.
  const frame=Math.min(seq.length-1,pose.frame);
  const activeClip=pose.kind==='skill'?(castClip||attackClip):pose.kind==='attack'?attackClip:undefined;
- const walkSeq=useMemo(()=>poly?[]:walkFrames((clientWalk as Record<string,{counts:Record<string,number>}>)[base]?.counts,base,walkState.direction),[poly?.id,base,walkState.direction]);useEffect(()=>{for(const path of walkSeq){const image=new Image();image.src=path;}},[walkSeq]);const walkSrc=walkState.moving&&pose.kind==='idle'&&walkSeq.length?walkSeq[Math.floor(performance.now()/125)%walkSeq.length]:undefined;
+ const walkSeq=useMemo(()=>poly?[]:walkFrames((clientWalk as Record<string,{counts:Record<string,number>}>)[base]?.counts,base,walkState.direction),[poly?.id,base,walkState.direction]);useEffect(()=>{for(const path of walkSeq){const image=new Image();image.src=path;}},[walkSeq]);const animatingWalk=walkState.moving&&pose.kind==='idle'&&walkSeq.length>0,[walkTick,setWalkTick]=useState(0);useEffect(()=>{if(!animatingWalk)return;const timer=setInterval(()=>setWalkTick(tick=>tick+1),WALK_FRAME_MS);return()=>clearInterval(timer);},[animatingWalk]);const walkSrc=animatingWalk?walkSeq[walkTick%walkSeq.length]:undefined;
  // Base characters use one complete client sprite set; timing still follows the existing clips.
  const facing=walkState.facing??2,spriteSet=poly?undefined:(clientAttack as Record<string,Record<'attack'|'idle'|'hurt'|'death',Record<string,number>>>)[base],fightingKind=pose.kind==='attack'||pose.kind==='skill',spriteKind=fightingKind?'attack':pose.kind==='hurt'||pose.kind==='death'?pose.kind:'idle',clientSeq=useMemo(()=>directionalFrames(spriteSet?.[spriteKind],base,({attack:'a',idle:'i',hurt:'h',death:'d'} as const)[spriteKind],facing),[spriteSet,spriteKind,base,facing]);useEffect(()=>{if(!spriteSet)return;for(const [kind,prefix] of [['attack','a'],['idle','i'],['hurt','h']] as const)for(const path of directionalFrames(spriteSet[kind],base,prefix,facing)){const image=new Image();image.src=path;}},[spriteSet,base,facing]);const clientSrc=walkSrc||!clientSeq.length?undefined:spriteKind==='idle'?clientSeq[Math.floor(performance.now()/180)%clientSeq.length]:clientSeq[scaledFrame(frame,seq.length,clientSeq.length)];
  return seq.length?<PlayerSpriteFrame className="character-sprite" data-action={walkSrc?'walk':pose.kind} data-direction={direction} data-target-uid={pose.targetUid||contactTarget?.uid} data-mirrored={false} data-polymorph={poly?.id} formId={poly?.id} canvas={layoutClip?.layout.viewBox||attackClip?.layout.viewBox} src={walkSrc||clientSrc||seq[frame]} clip={activeClip} frame={frame} alt={c.name}/>:null;
