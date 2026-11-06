@@ -4,7 +4,7 @@ const BASE='https://eternal-idle-v198-test.h936969423.workers.dev',ZONE=process.
 const username='qa_walk_'+crypto.randomBytes(4).toString('hex'),password=crypto.randomBytes(24).toString('base64url');
 const allocation=c=>{const out={};let left=c.pts;for(const k of ['str','dex','con','int','wis','cha']){out[k]=Math.min(left,20-c[k]);left-=out[k];}return out;};
 (async()=>{
- const browser=await chromium.launch(),context=await browser.newContext({...devices['iPhone 13']}),page=await context.newPage(),errors=[];
+ const browser=await chromium.launch({executablePath:process.env.CHROME_PATH||undefined,args:['--no-sandbox']}),context=await browser.newContext({...devices['iPhone 13']}),page=await context.newPage(),errors=[];
  page.on('pageerror',e=>errors.push(e.message));page.on('response',r=>{if(r.status()>=400&&r.url().includes('/assets/'))errors.push(r.status()+' '+r.url().replace(BASE,''));});
  await page.goto(BASE,{waitUntil:'domcontentloaded'});
  const api=async(path,data)=>{const r=await page.request.post(BASE+path,{data,headers:{Origin:BASE}});const j=await r.json();if(!r.ok())throw Error(path+' '+JSON.stringify(j).slice(0,200));return j;};
