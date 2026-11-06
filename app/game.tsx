@@ -190,16 +190,7 @@ function Game({signedIn,signIn,gmAllowed=false}:{signedIn:boolean;signIn:string;
  <button type="button" aria-current={tab==='chat'?'page':undefined} onClick={()=>{setCombatMenuOpen(false);setTab('chat');setHuntToolsOpen(false);setSearch('');setFilter('all');}}><ScrollText size={18} aria-hidden="true"/><span>聊天</span></button>
  <button type="button" aria-current={tab==='settings'?'page':undefined} onClick={()=>{setCombatMenuOpen(false);setTab('settings');setHuntToolsOpen(false);setSearch('');setFilter('all');}}><Settings2 size={18} aria-hidden="true"/><span>設定</span></button>
  </nav>
- <style>{`
- .eternal-combat-menu .eternal-menu-toggle,.eternal-combat-menu nav{position:absolute;z-index:43;top:max(6px,env(safe-area-inset-top));right:max(8px,env(safe-area-inset-right))}
- .eternal-menu-toggle{width:44px;height:44px;border:1px solid #ab8b65;border-radius:5px;background:#533628;color:#f7edd7;font-size:20px}
- .eternal-combat-menu nav:not([hidden]){display:grid;grid-template-columns:repeat(4,minmax(0,1fr));grid-template-rows:repeat(5,44px);right:calc(max(8px,env(safe-area-inset-right)) + 46px);width:min(264px,calc(100% - 64px));max-height:calc(100% - 14px);overflow:auto;padding:4px;background:#152024;border:1px solid #75634b}
- .eternal-combat-menu nav button{display:flex;flex-direction:column;align-items:center;justify-content:center;gap:3px;color:#f3d8cf;text-shadow:0 1px 2px #9c413b;font-size:11px}
- .eternal-combat-menu nav button svg{color:#f7edd7}
- .eternal-combat-menu nav button[aria-current=page] svg{outline:2px solid #57c6e2;outline-offset:2px;border-radius:50%}
- .eternal-gold{position:absolute;z-index:26;top:8px;left:50%;transform:translateX(-50%);background:#152024e8;color:#f2ce73;padding:3px 8px;border-radius:5px;font-size:13px;font-variant-numeric:tabular-nums;pointer-events:none}
- .game-root.map-first-layout.display-landscape:has(.eternal-combat-menu) .hud-currency strong{display:none}
- `}</style>
+
  </div>}<TabsList className="main-nav" aria-label="遊戲功能">{nav.map(n=><TabsTrigger key={n.id} value={n.id} onClick={()=>{if(mapFirst&&n.id==='hunt')setHuntToolsOpen(true);}} className={n.id==='ability'&&['skills','codex','mastery','pet'].includes(tab)?'ability-selected':undefined}><n.icon size={18}/><span>{n.label}</span></TabsTrigger>)}</TabsList><MapFunctionPanel enabled={mapFirst} open={tab!=='hunt'||huntToolsOpen} onClose={closeMapPanel} title={tab==='hunt'?'地圖、補給與戰鬥日誌':title} theme={theme} landscape={display.landscape}>{c&&tab!=='hunt'&&tab!=='settings'&&<div className="portrait-status"><DollCursor c={c}/><ActiveStatusBar c={c}/></div>}<div className="main-heading"><div><span className="eyebrow">{tab==='hunt'?'THE HUNT':'ADVENTURE JOURNAL'}</span><h1>{title}</h1></div>{c?<span className={`status-tag ${c.running?'running':''}`}><span className="status-dot"/>{c.running?'自動狩獵進行中':'準備冒險'}</span>:<span className="status-tag">五職業 · 自由配點</span>}</div>
  {offlinePending&&<div className="error-banner" role="status"><RefreshCw className="spin" size={18}/><div className="catchup-progress"><span>離線收益結算中：{catchupPercent}% · 完成後即可操作</span><Progress value={catchupPercent} aria-label="離線收益結算進度"/></div></div>}
  {error&&<div className="error-banner" role="alert">{error}<Button variant="outline" onClick={()=>request()}><RefreshCw size={15}/>重試</Button></div>}
