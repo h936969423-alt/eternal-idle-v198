@@ -1,0 +1,81 @@
+/* Landscape map HUD, layout B. Only active with .hud-b (landscape + map-first). */
+.hud-b .reference-hud,.hud-b .battle-vitals,.hud-b .scene-top,.hud-b .eternal-gold,.hud-b .map-skill-dock,.hud-b .landscape-exp,.hud-b .landscape-chat,.hud-b .battle-bottom-controls{display:none!important}
+.game-root.screenshot-layout.map-first-layout.display-landscape.hud-b>.reference-hud,.game-root.screenshot-layout.map-first-layout.display-landscape.hud-b>.topbar{display:none!important}
+.game-root.screenshot-layout.map-first-layout.display-landscape.hud-b .game-shell{height:100dvh!important;max-height:100dvh!important}
+.hud-b .battle-scene{position:relative}
+.lhud{position:absolute;inset:0;z-index:40;pointer-events:none;font-size:12px;color:#f1e6cc;--lhud-panel:rgba(16,13,9,.86);--lhud-line:#8a6d32;--lhud-gold:#e0b84a}
+.lhud>*{position:absolute;pointer-events:auto}
+.lhud button{font:inherit;color:inherit;-webkit-tap-highlight-color:transparent}
+.lhud button:disabled{opacity:.55}
+/* Status, top-left */
+.lhud-status{left:max(8px,env(safe-area-inset-left));top:8px;width:232px;box-sizing:border-box;padding:6px 8px;display:flex;gap:8px;align-items:center;background:var(--lhud-panel);border:1px solid var(--lhud-line);border-radius:6px}
+.lhud-avatar{position:relative;flex:none;width:46px;height:46px;padding:0;border-radius:50%;border:2px solid var(--lhud-gold);background:#3a3022;overflow:visible}
+.lhud-avatar img{width:100%;height:100%;object-fit:cover;border-radius:50%}
+.lhud-avatar b{position:absolute;right:-4px;bottom:-4px;min-width:18px;height:18px;padding:0 3px;box-sizing:border-box;border-radius:9px;background:#1a1712;border:1px solid var(--lhud-gold);color:var(--lhud-gold);font-size:11px;line-height:16px;text-align:center}
+.lhud-identity{flex:1;min-width:0;display:flex;flex-direction:column;gap:3px}
+.lhud-identity p{margin:0;display:flex;gap:6px;align-items:baseline;white-space:nowrap;overflow:hidden}
+.lhud-identity p strong{font-size:13px;overflow:hidden;text-overflow:ellipsis}
+.lhud-identity p span{font-size:10px;color:#c9b88f}
+.lhud-vital{position:relative;height:12px;border-radius:3px;overflow:hidden;background:#2b1414}
+.lhud-vital.mp{height:10px;background:#141a2b}
+.lhud-vital span{position:absolute;inset:0 auto 0 0;background:#c2312b;transition:width .25s}
+.lhud-vital.mp span{background:#2f63c9}
+.lhud-vital strong{position:absolute;inset:0;font-size:9px;line-height:12px;text-align:center;color:#fff;text-shadow:0 1px 1px #000;font-weight:500}
+.lhud-vital.mp strong{font-size:8px;line-height:10px}
+/* Big potion slots beside the status */
+.lhud-quick{left:calc(max(8px,env(safe-area-inset-left)) + 238px);top:8px;display:flex;gap:4px;padding:4px;background:var(--lhud-panel);border:1px solid var(--lhud-line);border-radius:6px}
+.lhud-quick button{position:relative;width:48px;height:50px;padding:0;display:flex;align-items:center;justify-content:center;background:#241e15;border:1px solid #5d4a26;border-radius:4px}
+.lhud-quick small,.lhud-slot small{position:absolute;right:3px;bottom:1px;font-size:10px;color:#fff;text-shadow:0 1px 2px #000}
+/* Buffs under the status */
+.hud-b .map-top-status{position:absolute!important;left:max(8px,env(safe-area-inset-left))!important;top:80px!important;right:auto!important;bottom:auto!important;z-index:41;width:auto!important;max-width:300px;margin:0!important;padding:0!important;background:transparent!important;border:0!important}
+.hud-b .map-top-status .active-status-bar{min-height:0!important;padding:0!important;margin:0!important;background:transparent!important;border:0!important;position:static!important}
+.hud-b .map-top-status .status-caption{display:none}
+.hud-b .map-top-status .active-status-icon{width:24px!important;height:24px!important;min-width:24px!important;min-height:24px!important;border:1px solid var(--lhud-line,#8a6d32)!important;border-radius:4px;background:rgba(16,13,9,.7)!important}
+.hud-b .map-top-status .active-status-icon img{width:22px!important;height:22px!important}
+.hud-b .map-top-status .no-active-status{display:none}
+/* Gold, top-centre between the potions and the shortcuts */
+.lhud-gold{left:calc(50% + 90px);top:8px;transform:translateX(-50%);padding:4px 12px;background:var(--lhud-panel);border:1px solid var(--lhud-line);border-radius:14px;color:var(--lhud-gold);font-size:13px;font-variant-numeric:tabular-nums;pointer-events:none!important;white-space:nowrap}
+/* Shortcuts left of the ☰ menu */
+.lhud-shortcuts{right:calc(max(8px,env(safe-area-inset-right)) + 52px);top:6px;display:flex;gap:4px}
+.lhud-shortcuts button{width:44px;height:44px;padding:0;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:1px;background:var(--lhud-panel);border:1px solid var(--lhud-line);border-radius:6px;font-size:9px}
+.lhud-shortcuts svg{color:var(--lhud-gold)}
+/* Map name and minimap, bottom-left */
+.lhud-place{left:max(8px,env(safe-area-inset-left));bottom:68px;display:flex;flex-direction:column;gap:4px;pointer-events:none!important}
+.lhud-place p{margin:0;display:flex;align-items:center;gap:4px;font-size:12px;font-weight:500;text-shadow:0 1px 2px #000,0 0 4px #000}
+.lhud-place svg{color:var(--lhud-gold)}
+.lhud-minimap{width:112px;height:72px;border:1px solid var(--lhud-line);border-radius:6px;background:#141a12}
+/* Chat with the EXP figure under it, bottom-left */
+.lhud-talk{left:max(8px,env(safe-area-inset-left));bottom:12px;display:flex;flex-direction:column;align-items:flex-start;gap:2px}
+.lhud-talk button{height:34px;padding:0 12px;display:flex;align-items:center;gap:4px;background:var(--lhud-panel);border:1px solid var(--lhud-line);border-radius:6px;font-size:12px}
+.lhud-exp-label{font-size:11px;font-weight:700;color:var(--lhud-gold);text-shadow:0 1px 2px #000;font-variant-numeric:tabular-nums}
+.lhud-exp{left:0;right:0;bottom:0;height:6px;background:rgba(10,8,5,.9);pointer-events:none!important}
+.lhud-exp span{display:block;height:4px;margin-top:1px;background:var(--lhud-gold)}
+/* Quick bar, bottom-centre: transparent slots */
+.lhud-hotbar{left:50%;bottom:12px;transform:translateX(-58%);display:flex;gap:3px;padding:3px;border:1px solid rgba(224,184,74,.45);border-radius:4px}
+.lhud-slot{position:relative;width:38px;height:38px;padding:0;display:flex;align-items:center;justify-content:center;background:transparent;border:1px solid rgba(224,184,74,.4);border-radius:3px;touch-action:manipulation;-webkit-user-select:none;user-select:none;-webkit-touch-callout:none}
+.lhud-slot.unusable :is(img,.asset-icon){filter:grayscale(1);opacity:.5}
+.lhud-slot em{position:absolute;inset:0;display:flex;align-items:center;justify-content:center;background:rgba(0,0,0,.55);font-style:normal;font-size:13px;font-weight:700;color:#fff}
+.lhud-slot :is(img,.asset-icon){width:24px;height:24px;object-fit:contain;pointer-events:none}
+/* Action pad, bottom-right */
+.lhud-pad{right:max(8px,env(safe-area-inset-right));bottom:12px;width:206px;height:112px;pointer-events:none!important}
+.lhud-pad button{position:absolute;pointer-events:auto;border-radius:50%;background:rgba(16,13,9,.88);border:2px solid var(--lhud-line);font-size:11px}
+.lhud-attack{right:0;bottom:0;width:80px;height:80px;background:rgba(60,22,18,.92)!important;border-color:var(--lhud-gold)!important;font-size:15px!important;font-weight:700}
+.lhud-auto{right:88px;bottom:0;width:52px;height:52px;color:var(--lhud-gold);font-weight:700;font-size:12px!important}
+.lhud-auto.on{background:#2a5a86!important;border-color:#8cc8f0!important;color:#fff;box-shadow:0 0 8px #4aa3e0}
+.lhud-self{right:88px;bottom:60px;width:46px;height:46px}
+.lhud-next{right:146px;bottom:28px;width:46px;height:46px;font-size:10px!important}
+/* Name above the head, and the town player in the middle */
+.game-root.display-landscape.hud-b .four-player>.actor-name{display:block!important;z-index:5;position:absolute;left:50%;bottom:100%;top:auto!important;transform:translate(-50%,-4px);white-space:nowrap}
+.hud-b .town-walk-actor{left:50%!important;top:58%!important}
+.hud-b .town-walk-actor>small{position:absolute;left:50%;bottom:100%;top:auto!important;transform:translate(-50%,-4px);white-space:nowrap}
+/* Quick bar picker */
+.lhud-picker{max-height:85dvh;overflow:auto}
+.lhud-picker h3{margin:10px 0 6px;font-size:14px}
+.lhud-picker-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(120px,1fr));gap:6px}
+.lhud-picker-grid button{display:flex;align-items:center;gap:6px;min-height:44px;padding:4px 8px;text-align:left;border:1px solid #6b542e;border-radius:6px;background:#241c12;color:#f1e6cc;font-size:13px}
+.lhud-picker-grid small{color:#b6a684}
+.lhud-picker-clear{margin-top:12px;width:100%;min-height:44px;border:1px solid #9c413b;border-radius:6px;background:transparent;color:#f3b0a8}
+/* Fixed-layout hunting maps: keep monsters above the quick bar. Real world maps place them around the player. */
+.hud-b .static-arena:not(.world-map-arena) .four-monsters{top:60px!important;bottom:64px!important;height:auto!important}
+.hud-b .map-top-status:has(.no-active-status){display:none!important}
+.hud-b .static-arena>p[role=status]{bottom:auto!important;top:96px!important;right:50%!important;transform:translateX(50%)}

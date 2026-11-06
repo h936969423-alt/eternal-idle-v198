@@ -4,6 +4,7 @@ import {playerWalkStore,walkDirection,worldCombatGate} from '@/lib/game/field-wa
 import {pixelCell} from '@/lib/game/client-map-path';
 import {cellCenter} from '@/lib/game/client-map-path';
 import {WorldWalker,pickSpawn,stripCovers,type WorldManifest} from '@/lib/game/world-walker';
+import {worldMinimap} from '@/lib/game/minimap-store';
 const ZOOM=1,ANCHOR_Y=.56,FRAME_MS=33,BASE='/assets/client-world/v1/';
 /** Shows the real map behind the arena and moves actors with CSS variables. Falls back by reporting failure. */
 export default function WorldMapLayer({zone,arena,targetUid,running,ranged,onState}:{zone:string;arena:RefObject<HTMLDivElement|null>;targetUid?:string;running:boolean;ranged:boolean;onState:(ready:boolean)=>void}){
@@ -29,8 +30,9 @@ export default function WorldMapLayer({zone,arena,targetUid,running,ranged,onSta
   const tap=(event:MouseEvent)=>{const element=event.target as Element|null;if(element?.closest('button,a,input,select,summary,.four-target,.battle-vitals,[role=button]'))return;const box=root.getBoundingClientRect(),camera=walker.pixel(walker.player);walker.moveTo(pixelCell(camera.x+(event.clientX-box.left-box.width/2)/ZOOM,camera.y+(event.clientY-box.top-box.height*ANCHOR_Y)/ZOOM,map.offsetY));};
   root.addEventListener('click',tap);
   worldCombatGate.current={blocks:uid=>walker.blocks(uid,latest.current.ranged),aim:uid=>{walker.aim=uid;},snap:uid=>walker.snap(uid),behind:ms=>{walker.speedBoost=1+Math.min(1,ms/2000);}};
+  worldMinimap.current={zone,map,walker,base:`${BASE}${zone}/`};
   frame=requestAnimationFrame(tick);
-  return()=>{worldCombatGate.current=null;root.removeEventListener('click',tap);root.classList.remove('world-walking');cancelAnimationFrame(frame);playerWalkStore.set({moving:false,direction:2,facing:2});root.querySelectorAll<HTMLElement>('.four-player,.four-monster').forEach(el=>{el.style.removeProperty('--walk-x');el.style.removeProperty('--walk-y');});};
+  return()=>{if(worldMinimap.current?.walker===walker)worldMinimap.current=null;worldCombatGate.current=null;root.removeEventListener('click',tap);root.classList.remove('world-walking');cancelAnimationFrame(frame);playerWalkStore.set({moving:false,direction:2,facing:2});root.querySelectorAll<HTMLElement>('.four-player,.four-monster').forEach(el=>{el.style.removeProperty('--walk-x');el.style.removeProperty('--walk-y');});};
  },[map,arena]);
  if(!map)return null;
  return <><div className="world-map-over" aria-hidden="true"><div ref={overPlane} className="world-map-plane">{strips.map(([bucket,col,x,y])=><img key={`${bucket}-${col}`} src={`${BASE}${zone}/o${bucket}_${col}.webp`} alt="" draggable={false} style={{left:x,top:y}}/>)}</div></div><div className="world-map-layer" aria-hidden="true"><div ref={plane} className="world-map-plane">{cells.map(([x,y])=><img key={`${x}-${y}`} src={`${BASE}${zone}/${x}_${y}.webp`} alt="" draggable={false} style={{left:x*map.chunk,top:y*map.chunk}}/>)}</div></div></>;
