@@ -2,7 +2,7 @@
 import {useEffect,useRef,useState} from 'react';
 export type DisplayMode='auto'|'portrait'|'landscape';
 const key='eternal-display-mode';
-export function resolveLandscape(mode:DisplayMode,width:number,height:number){return mode==='landscape'||mode==='auto'&&(width>=1100||width>=700&&width>height);}
+export function resolveLandscape(mode:DisplayMode,width:number,height:number){return mode==='landscape'||mode==='auto'&&(width>=1100||width>height);}
 function savedMode():DisplayMode{try{const value=localStorage.getItem(key);return value==='portrait'||value==='landscape'?value:'auto';}catch{return 'auto';}}
 export function useDisplayMode(){
  const [mode,setMode]=useState<DisplayMode>('auto');
