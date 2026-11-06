@@ -1,0 +1,125 @@
+body:has(.game-root.map-first-layout) .map-function-dialog.reference-backpack-dialog[data-slot=dialog-content] {
+  background: #100e0a;
+  border: 1px solid #a48646;
+  border-radius: 5px;
+}
+.reference-backpack-dialog .map-function-header {
+  padding: 4px 8px;
+  background: #18140e;
+  border-bottom: 1px solid #56462c;
+  color: #e5cb8d;
+}
+.reference-backpack-dialog .map-function-header button {
+  min-width: 30px;
+  min-height: 30px;
+  height: 30px;
+  padding: 0;
+  border-radius: 50%;
+  border: 1px solid #e0bb72;
+  background: radial-gradient(#c42632,#661317);
+  color: #fff1d1;
+}
+.reference-backpack .backpack-currency {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  color: #e8d6a4;
+  gap: 5px;
+  margin-bottom: 4px;
+}
+.backpack-currency > span {
+  border: 1px solid #695435;
+  border-radius: 16px;
+  padding: 2px 7px;
+}
+.reference-backpack .source-bag-categories,
+.reference-backpack .backpack-command-bar {
+  display: grid;
+  grid-template-columns: repeat(4,minmax(0,1fr));
+  gap: 3px;
+}
+.reference-backpack .bag-actions {
+  display: grid;
+  grid-template-columns: minmax(0,2fr) minmax(0,1fr);
+  gap: 4px;
+  margin: 4px 0;
+}
+.reference-backpack .bag-actions :is(input,select) {
+  height: 30px;
+  min-width: 0;
+  padding: 0 5px;
+  border: 1px solid #55452e;
+  background: #100e0b;
+  color: #e4d4ae;
+}
+.reference-backpack :is(.source-bag-categories,.backpack-command-bar) button {
+  min-width: 0;
+  min-height: 27px;
+  height: 27px;
+  padding: 0 2px;
+  font-size: 12px;
+  color: #e0d3b2;
+  border: 1px solid #594b32;
+  border-radius: 3px;
+  background: linear-gradient(#30271b,#19150f);
+}
+.reference-backpack .source-bag-categories button[aria-pressed=true] {
+  background: linear-gradient(#93743b,#49351b);
+  border-color: #ae8c49;
+}
+.game-root .reference-backpack .source-bag-grid {
+  grid-template-columns: repeat(4,minmax(0,1fr));
+  gap: 3px;
+  align-content: start;
+  padding: 0 0 4px;
+  max-height: 52dvh;
+  overflow-y: auto;
+}
+.backpack-slot-wrap { position: relative; min-width: 0; }
+.game-root .reference-backpack .source-bag-grid .source-bag-cell {
+  position: relative;
+  width: 100%;
+  aspect-ratio: 1.37;
+  min-height: 0;
+  padding: 5px;
+  border-radius: 2px;
+  border-color: #453a29 !important;
+  background: linear-gradient(#15120e,#100e0b) !important;
+  box-shadow: inset 0 0 0 1px #292319 !important;
+}
+.game-root .reference-backpack .source-bag-grid .source-bag-cell[aria-pressed=true] {
+  border-color: #e4c77e !important;
+  box-shadow: inset 0 0 0 1px #a38247 !important;
+}
+.game-root .reference-backpack .source-bag-cell > .item-plate {
+  inset: 50% auto auto 50%;
+  transform: translate(-50%,-50%);
+  width: 53%;
+  height: 82%;
+  background: transparent;
+  box-shadow: none;
+  outline: none !important;
+}
+.game-root .reference-backpack .source-bag-cell > .item-plate::before { content: none; }
+.game-root .reference-backpack .source-bag-cell .count { font-size: 10px; color: #f2e5bf; }
+.backpack-tooltip {
+  position: absolute;
+  top: 0;
+  left: 86%;
+  z-index: 3;
+  width: clamp(130px,43vw,215px);
+  display: grid;
+  gap: 2px;
+  padding: 6px;
+  background: #080808ef;
+  border: 1px solid #64553b;
+  color: #f1e7ce;
+  font-size: 11px;
+  line-height: 1.35;
+  overflow-wrap: anywhere;
+  pointer-events: none;
+}
+.backpack-tooltip-left { left: auto; right: 86%; }
+@media (orientation: landscape) {
+  .game-root .reference-backpack .source-bag-grid { max-height: 44dvh; }
+}

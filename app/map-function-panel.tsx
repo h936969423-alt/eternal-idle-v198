@@ -5,15 +5,15 @@ import {Button} from '@/components/ui/button';
 import {X} from 'lucide-react';
 
 /** Only tools enter the portal. BattleArena remains mounted outside this panel. */
-export default function MapFunctionPanel({enabled,open,onClose,title,theme,landscape,characterInfo,children}:{enabled:boolean;open:boolean;onClose:()=>void;title:string;theme:string;landscape:boolean;characterInfo?:boolean;children:ReactNode}){
+export default function MapFunctionPanel({enabled,open,onClose,title,theme,landscape,characterInfo,backpack,children}:{enabled:boolean;open:boolean;onClose:()=>void;title:string;theme:string;landscape:boolean;characterInfo?:boolean;backpack?:boolean;children:ReactNode}){
  if(!enabled)return <>{children}</>;
  return <Dialog open={open} onOpenChange={value=>{if(!value)onClose();}}>
-  <DialogContent className={`game-dialog map-function-dialog${characterInfo?" character-info-dialog":""}`} positioning="viewport" showCloseButton={false} onCloseAutoFocus={event=>{
+  <DialogContent className={`game-dialog map-function-dialog${characterInfo?" character-info-dialog":""}${backpack?" reference-backpack-dialog":""}`} positioning="viewport" showCloseButton={false} onCloseAutoFocus={event=>{
    event.preventDefault();document.querySelector<HTMLButtonElement>('.map-first-layout .main-nav [data-state="active"]')?.focus();
   }}>
    <header className="map-function-header">
-    <div><DialogTitle>{title}</DialogTitle><DialogDescription className={characterInfo?"sr-only":undefined}>關閉面板即可返回地圖，狩獵持續進行。</DialogDescription></div>
-    <Button variant="outline" onClick={onClose} aria-label="收合功能並返回地圖">{characterInfo?<><span>關閉</span><X size={16}/></>:<><X size={16}/>收合</>}</Button>
+    <div><DialogTitle>{title}</DialogTitle><DialogDescription className={characterInfo||backpack?"sr-only":undefined}>關閉面板即可返回地圖，狩獵持續進行。</DialogDescription></div>
+    <Button variant="outline" onClick={onClose} aria-label="收合功能並返回地圖">{characterInfo?<><span>關閉</span><X size={16}/></>:<><X size={16}/>{!backpack&&"收合"}</>}</Button>
    </header>
    <div className={`game-root screenshot-layout interface-${theme} ${landscape?'display-landscape':'display-portrait'} map-panel-scope main-tabs`}>{children}</div>
   </DialogContent>
