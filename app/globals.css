@@ -1153,3 +1153,15 @@ body:has(.game-root) :is(.game-dialog,.bian-dialog) :is([data-slot=dialog-descri
 
 /* Presentation-only field walking; set by FieldWalkDriver. */
 .static-arena .four-player,.static-arena .four-monster{translate:var(--walk-x,0px) var(--walk-y,0px)}
+
+/* Landscape function grid */
+
+ .eternal-combat-menu .eternal-menu-toggle,.eternal-combat-menu nav{position:absolute;z-index:43;top:max(6px,env(safe-area-inset-top));right:max(8px,env(safe-area-inset-right))}
+ .eternal-menu-toggle{width:44px;height:44px;border:1px solid #ab8b65;border-radius:5px;background:#533628;color:#f7edd7;font-size:20px}
+ .eternal-combat-menu nav:not([hidden]){display:grid;grid-template-columns:repeat(4,minmax(0,1fr));grid-template-rows:repeat(5,44px);right:calc(max(8px,env(safe-area-inset-right)) + 46px);width:min(264px,calc(100% - 64px));max-height:calc(100% - 14px);overflow:auto;padding:4px;background:#152024;border:1px solid #75634b}
+ .eternal-combat-menu nav button{display:flex;flex-direction:column;align-items:center;justify-content:center;gap:3px;color:#f3d8cf;text-shadow:0 1px 2px #9c413b;font-size:11px}
+ .eternal-combat-menu nav button svg{color:#f7edd7}
+ .eternal-combat-menu nav button[aria-current=page] svg{outline:2px solid #57c6e2;outline-offset:2px;border-radius:50%}
+ .eternal-gold{position:absolute;z-index:26;top:8px;left:50%;transform:translateX(-50%);background:#152024e8;color:#f2ce73;padding:3px 8px;border-radius:5px;font-size:13px;font-variant-numeric:tabular-nums;pointer-events:none}
+ .game-root.map-first-layout.display-landscape:has(.eternal-combat-menu) .hud-currency strong{display:none}
+ 

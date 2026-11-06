@@ -1,6 +1,8 @@
 name: Deploy v198 isolated Cloudflare test
 on:
   workflow_dispatch:
+  pull_request:
+    branches: [main]
   push:
     branches: [main]
     paths:
@@ -57,22 +59,25 @@ on:
 permissions:
   contents: read
 concurrency:
-  group: eternal-idle-v198-test-deploy
+  group: eternal-idle-v198-test-${{ github.event_name == 'pull_request' && format('pr-{0}', github.event.pull_request.number) || 'deploy' }}
   cancel-in-progress: false
 jobs:
   deploy:
+    if: github.event_name != 'pull_request' || github.event.pull_request.head.repo.full_name == github.repository
     runs-on: ubuntu-latest
     timeout-minutes: 45
     env:
       CLOUDFLARE_ACCOUNT_ID: 9bf17726da5739f20d3e5ec454ae3d91
-      CLOUDFLARE_API_TOKEN: ${{ secrets.CLOUDFLARE_API_TOKEN }}
+      CLOUDFLARE_API_TOKEN: ${{ github.event_name != 'pull_request' && secrets.CLOUDFLARE_API_TOKEN || '' }}
     steps:
       - uses: actions/checkout@v4
       - name: Check required deployment secrets
+        if: github.event_name != 'pull_request'
         shell: bash
         run: |
           if [ -z "$CLOUDFLARE_API_TOKEN" ]; then echo "::error::Missing CLOUDFLARE_API_TOKEN GitHub secret"; exit 1; fi
       - name: Verify Cloudflare API token before expensive build
+        if: github.event_name != 'pull_request'
         shell: bash
         run: |
           curl --silent --show-error --fail-with-body \
@@ -205,6 +210,7 @@ jobs:
       - name: Verify four-dragon atlases in final deployment output
         run: node scripts/verify-four-dragon-assets.mjs --built
       - name: Publish verified W skill icons to isolated R2
+        if: github.event_name != 'pull_request'
         env:
           AWS_ACCESS_KEY_ID: ${{ secrets.R2_ACCESS_KEY_ID }}
           AWS_SECRET_ACCESS_KEY: ${{ secrets.R2_SECRET_ACCESS_KEY }}
@@ -213,6 +219,7 @@ jobs:
       - name: Verify map routing and all backgrounds in final deployment
         run: CHECK_BUILT_MAPS=1 node --test tests/sunrise-maps.test.mjs tests/sunrise-map-storage.test.mjs
       - name: Publish verified maps to isolated R2 before deploying their routes
+        if: github.event_name != 'pull_request'
         env:
           AWS_ACCESS_KEY_ID: ${{ secrets.R2_ACCESS_KEY_ID }}
           AWS_SECRET_ACCESS_KEY: ${{ secrets.R2_SECRET_ACCESS_KEY }}
@@ -234,6 +241,7 @@ jobs:
           print('Isolated test D1 and R2 bindings checked; production not modified')
           PY
       - name: Retire legacy offline cron before activating login settlement
+        if: github.event_name != 'pull_request'
         run: |
           python3 - <<'PY'
           import json
@@ -247,14 +255,18 @@ jobs:
           PY
           pnpm exec wrangler deploy --config wrangler.offline-test.json
       - name: Deploy named test-only Worker
+        if: github.event_name != 'pull_request'
         run: pnpm exec wrangler deploy --config dist/server/wrangler.json --name eternal-idle-v198-test --keep-vars
       - name: Verify real test-account login and continuous live polls
+        if: github.event_name != 'pull_request'
         run: python3 scripts/test-live-http.py
       - name: Verify every deployed four-dragon atlas against source hash
+        if: github.event_name != 'pull_request'
         env:
           DRAGON_ASSET_ORIGIN: https://eternal-idle-v198-test.h936969423.workers.dev
         run: node scripts/verify-four-dragon-assets.mjs --live
       - name: Print deployment location
+        if: github.event_name != 'pull_request'
         run: echo 'Check Cloudflare Workers dashboard for eternal-idle-v198-test workers.dev URL'
 
 
