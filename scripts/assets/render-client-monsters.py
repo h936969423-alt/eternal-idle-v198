@@ -5,7 +5,7 @@ from PIL import Image,ImageOps
 spr_dir,site,out=pathlib.Path(sys.argv[1]),sys.argv[2],pathlib.Path(sys.argv[3]);out.mkdir(parents=True,exist_ok=True)
 root=pathlib.Path(__file__).resolve();spec=importlib.util.spec_from_file_location('spr',root.parents[1]/'convert-dasu-spr.py');spr=importlib.util.module_from_spec(spec);spec.loader.exec_module(spr)
 cands=json.loads(root.with_name('client-monster-candidates.json').read_text());anim=json.loads((root.parents[2]/'lib/game/combat-animation.json').read_text())
-THRESHOLD=.74
+THRESHOLD=.76
 def fetch(path):
  q=urllib.request.Request(site+urllib.parse.quote(path),headers={'User-Agent':'eternal-idle-asset-check'});return urllib.request.urlopen(q,timeout=40).read()
 def load(gfx,fid):
@@ -22,7 +22,7 @@ def norm(im):
 def score(x,y):
  if not x or not y:return 0
  gx,ax,rx,hx,dark_x=x;gy,ay,ry,hy,dark_y=y
- if max(rx,ry)/max(.01,min(rx,ry))>1.5 or dark_y-dark_x>.2 or sum(abs(p-q) for p,q in zip(hx,hy))>.9:return 0
+ if max(rx,ry)/max(.01,min(rx,ry))>1.5 or dark_y-dark_x>.1 or sum(abs(p-q) for p,q in zip(hx,hy))>.9:return 0
  both=sum(p and q for p,q in zip(ax,ay));iou=both/max(1,sum(p or q for p,q in zip(ax,ay)));mx=sum(gx)/len(gx);my=sum(gy)/len(gy);n=sum((p-mx)*(q-my) for p,q in zip(gx,gy));dx=math.sqrt(sum((p-mx)**2 for p in gx));dy=math.sqrt(sum((q-my)**2 for q in gy));return .5*iou+.25*(n/max(1,dx*dy)+1)
 walks={};rows=[];misses=[];cache={}
 for name,gfxs in sorted(cands.items()):
@@ -54,7 +54,7 @@ print('SCORES',[round(r[0],2) for r in sorted(rows,key=lambda r:r[0])][:40],flus
 blob=base64.b64encode(json.dumps(walks,ensure_ascii=False,separators=(',',':')).encode()).decode();print('MW-BEGIN')
 for i in range(0,len(blob),3000):print('MW '+blob[i:i+3000])
 print('MW-END',flush=True)
-worst=sorted(rows,key=lambda r:r[0])[:72];cell=90;board=Image.new('RGB',(cell*2*6,cell*math.ceil(len(worst)/6)),(52,64,52))
+worst=sorted(rows,key=lambda r:r[0])[:72];print('WORST',[f'{i}:{r[1]}' for i,r in enumerate(worst)],flush=True);cell=90;board=Image.new('RGB',(cell*2*6,cell*math.ceil(len(worst)/6)),(52,64,52))
 for i,(s,n,a,b) in enumerate(worst):
  for j,im in enumerate((a,b)):
   t=im.copy();t.thumbnail((cell-2,cell-2));board.paste(t,((i%6*2+j)*cell,i//6*cell),t)
