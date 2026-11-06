@@ -26,7 +26,7 @@ export class WorldWalker{
    const w=monsterWalk(uid,now),goal={a:m.home.a+Math.round(w.x/3.5),b:m.home.b+Math.round(w.y/3)};if(uid!==targetUid&&Math.max(Math.abs(goal.a-m.a),Math.abs(goal.b-m.b))>=1&&findMapPath(this.map,this.cell(m),goal,200).length<=5)this.route(m,goal,`${goal.a},${goal.b}`);this.advance(m,WORLD_MONSTER_SPEED,seconds);}
   const target=targetUid?this.monsters.get(targetUid):undefined,before={a:this.player.a,b:this.player.b};
   if(this.manual){if(!this.player.path.length){this.player.goal=undefined;this.manualRest+=seconds;if(this.manualRest>=WORLD_MANUAL_REST)this.manual=false;}}
-  else if(running&&target){const reach=ranged?6:2,distance=Math.hypot(target.a-this.player.a,target.b-this.player.b);if(distance>reach){const to=this.cell(target);this.route(this.player,to,`${to.a},${to.b}`);}else this.halt(this.player);}else this.halt(this.player);
+  else if(running&&target){const reach=ranged?6:1.2,distance=Math.hypot(target.a-this.player.a,target.b-this.player.b);if(distance>reach){const to=this.cell(target);this.route(this.player,to,`${to.a},${to.b}`);}else this.halt(this.player);}else this.halt(this.player);
   this.moving=this.advance(this.player,WORLD_PLAYER_SPEED,seconds);if(this.moving)this.direction={da:this.player.a-before.a,db:this.player.b-before.b};
  }
  facing(targetUid?:string){const t=targetUid?this.monsters.get(targetUid):undefined;return t?{x:(t.a-this.player.a+t.b-this.player.b)*24,y:(t.b-this.player.b-t.a+this.player.a)*12}:undefined;}
