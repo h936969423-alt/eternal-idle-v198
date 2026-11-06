@@ -1281,7 +1281,9 @@ body:has(.game-root) :is(.game-dialog,.bian-dialog) :is([data-slot=dialog-descri
 .world-map-layer{position:absolute;inset:0;z-index:0;overflow:hidden;background:#050505;pointer-events:none}
 .world-map-plane{position:absolute;left:0;top:0;transform-origin:0 0;will-change:transform}
 .world-map-plane img{position:absolute;max-width:none;width:auto;height:auto;pointer-events:none}
-.game-root.screenshot-layout.map-first-layout .static-arena.world-map-arena,.static-arena.world-map-arena{--map-mob-art:170px;--map-mob-width:150px}
+.game-root.screenshot-layout.map-first-layout .static-arena.world-map-arena,.static-arena.world-map-arena{--map-mob-art:150px;--map-mob-width:150px}
+.game-root.screenshot-layout.map-first-layout .battle-scene:not(.world-boss-scene) .static-arena.world-map-arena .four-monsters:has(>.four-monster:nth-child(5)){--map-mob-art:150px;--map-mob-width:150px}
+.static-arena.world-map-arena .four-monster-art{transform:scale(1.8);transform-origin:50% 100%}
 .static-arena.world-map-arena{background:#050505}
 
 
