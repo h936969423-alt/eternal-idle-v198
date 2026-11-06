@@ -1,55 +1,44 @@
-"""Build 8-direction attack and idle frames aligned to each existing attack sprite.
+"""Build 8-direction walk, attack and idle frames aligned to existing sprites.
 Usage: script <spr-dir> <public-dir> <out-dir>. Reads data files only; nothing from the client is executed."""
 import base64,importlib.util,io,json,pathlib,sys
 from PIL import Image
 spr_dir,public,out=map(pathlib.Path,sys.argv[1:4]);out.mkdir(parents=True,exist_ok=True)
 root=pathlib.Path(__file__).resolve();spec=importlib.util.spec_from_file_location('spr',root.parents[1]/'convert-dasu-spr.py');spr=importlib.util.module_from_spec(spec);spec.loader.exec_module(spr)
 frames_map=json.loads((root.parents[2]/'lib/game/asset-map.json').read_text())['frames']
-# Client attack actions: bare 1, sword 5, bow 21, staff 41, two-handed sword 51, claw 59. Idle is attack+2.
-BASES={'knight_2hsword':(61,[51,5,1]),'knight_f':(48,[5,1]),'elf_m_melee':(138,[5,1]),'elf_m_ranged':(138,[21,1]),'elf_f_melee':(37,[5,1]),'elf_f_ranged':(37,[21,1]),'mage_m':(734,[41,1]),'mage_f':(1186,[41,1]),'royal_m':(0,[5,1]),'royal_f':(1,[5,1]),'darkelf_player':(2786,[59,1])}
-MIN_FRAMES=4
+# Block numbers differ per graphic, so these were read off labelled contact sheets: (gfx, walk, attack, idle).
+BASES={'knight_2hsword':(61,3,4,3),'knight_f':(48,3,4,3),'elf_m_melee':(138,4,5,7),'elf_m_ranged':(138,22,23,21),'elf_f_melee':(37,3,4,3),'elf_f_ranged':(37,15,16,15),'mage_m':(734,22,26,23),'mage_f':(1186,23,26,22),'royal_m':(0,3,22,3),'royal_f':(1,18,20,18),'darkelf_player':(2786,23,25,24)}
 def load(g,fid):
  p=spr_dir/f'{g}-{fid}.spr'
  try:return spr.decode(p) if p.exists() else None
  except Exception:return None
-# Action survey: labelled contact sheet per graphic, showing the widest frame of each action.
-if len(sys.argv)>4:
- from PIL import ImageDraw
- for gfx in (734,1186,2786,61,48,37,0,1):
-  row=[]
-  for a in range(50):
-   d=load(gfx,a*8+2)
-   if d:row.append((a,len(d[0]),max(d[0],key=lambda f:(f.getbbox() or (0,0,0,0))[2]-(f.getbbox() or (0,0,0,0))[0])))
-  w=Image.new('RGB',(125*10,135*(len(row)//10+1)),(52,64,52));dr=ImageDraw.Draw(w)
-  for i,(a,n,f) in enumerate(row):
-   t=f.crop(f.getbbox()) if f.getbbox() else f;t.thumbnail((122,118));x,y=i%10*125,i//10*135;w.paste(t,(x+2,y+16),t);dr.text((x+3,y+2),f'{a}:{n}',fill=(255,240,120))
-  b0=io.BytesIO();w.save(b0,'JPEG',quality=70);b1=base64.b64encode(b0.getvalue()).decode();print(f'PREVIEW-BEGIN gfx{gfx}')
-  for i in range(0,len(b1),3000):print('B64 '+b1[i:i+3000])
-  print(f'PREVIEW-END gfx{gfx}',flush=True)
- sys.exit(0)
-manifest={};sheet=Image.new('RGB',(150*7,160*len(BASES)),(52,64,52))
-for row,(base,(g,actions)) in enumerate(BASES.items()):
- paths=[public/p.lstrip('/') for p in frames_map.get(base+'/attack',[])];paths=[p for p in paths if p.exists()]
- action=next((a for a in actions if (d:=load(g,a*8+2)) and len(d[0])>=MIN_FRAMES),None)
- if not paths or action is None:print('SKIP',base,'attack images',len(paths),'action',action);continue
- existing=[Image.open(p).convert('RGBA') for p in paths];ref=existing[0];rb=ref.getbbox();frames,l0,t0=load(g,action*8+2);cb=frames[0].getbbox()
- scale=max(.7,min(1.6,(rb[3]-rb[1])/max(1,cb[3]-cb[1])));tx=(rb[0]+rb[2])/2-scale*(l0+(cb[0]+cb[2])/2);ty=rb[3]-scale*(t0+cb[3]);d=out/base;d.mkdir(exist_ok=True);result={'action':action,'canvas':list(ref.size),'scale':round(scale,3),'attack':{},'idle':{}}
- def write(kind,prefix,fid,direction):
-  loaded=load(g,fid)
-  if not loaded:return None
-  images,l,t=loaded;result[kind][str(direction)]=len(images);rendered=[]
+def existing(base,kind):
+ paths=[public/p.lstrip('/') for p in frames_map.get(f'{base}/{kind}',[])];paths=[p for p in paths if p.exists()]
+ return [Image.open(p).convert('RGBA') for p in paths]
+def transform(ref,frames,left,top):
+ rb,cb=ref.getbbox(),frames[0].getbbox();scale=max(.7,min(1.6,(rb[3]-rb[1])/max(1,cb[3]-cb[1])));return scale,(rb[0]+rb[2])/2-scale*(left+(cb[0]+cb[2])/2),rb[3]-scale*(top+cb[3])
+manifest={};sheet=Image.new('RGB',(130*8,150*len(BASES)),(52,64,52))
+for row,(base,(g,walk,attack,idle)) in enumerate(BASES.items()):
+ ref_a,ref_i=existing(base,'attack'),existing(base,'idle')
+ if not ref_a or not ref_i:print('SKIP',base,len(ref_a),len(ref_i));continue
+ d=out/base;d.mkdir(exist_ok=True);result={'gfx':g,'walkBlock':walk,'attackBlock':attack,'idleBlock':idle,'walk':{},'attack':{},'idle':{}};samples={}
+ base_a=load(g,attack*8+2);base_i=load(g,idle*8+2)
+ if not base_a or not base_i:print('SKIP',base,'blocks');continue
+ ta=transform(ref_a[0],*base_a);ti=transform(ref_i[0],*base_i);result['attackCanvas']=list(ref_a[0].size);result['idleCanvas']=list(ref_i[0].size);result['attackScale']=round(ta[0],3)
+ def write(kind,prefix,block,direction,canvas,t,limit=None):
+  loaded=load(g,block*8+direction)
+  if not loaded:return []
+  images,l,top=loaded;images=images[:limit] if limit else images;result[kind][str(direction)]=len(images);out_frames=[]
   for i,im in enumerate(images):
-   r=im.resize((max(1,round(im.width*scale)),max(1,round(im.height*scale))),Image.LANCZOS);c=Image.new('RGBA',ref.size);c.paste(r,(round(scale*l+tx),round(scale*t+ty)),r);c.save(d/f'{prefix}{direction}_{i}.webp','WEBP',quality=85,method=4);rendered.append(c)
-  return rendered
- samples={}
+   r=im.resize((max(1,round(im.width*t[0])),max(1,round(im.height*t[0]))),Image.LANCZOS);c=Image.new('RGBA',canvas);c.paste(r,(round(t[0]*l+t[1]),round(t[0]*top+t[2])),r);c.save(d/f'{prefix}{direction}_{i}.webp','WEBP',quality=85,method=4);out_frames.append(c)
+  return out_frames
  for direction in range(8):
-  samples[direction]=write('attack','a',action*8+direction,direction);write('idle','i',(action+2)*8+direction,direction)
- manifest[base]=result;print('BASE',base,json.dumps(result),'existing',len(existing),ref.size,flush=True)
- cells=[existing[len(existing)//2]]+[(samples[k][len(samples[k])//2] if samples.get(k) else None) for k in (2,0,4,6,3,7)]
+  samples[direction]=write('attack','a',attack,direction,ref_a[0].size,ta);write('walk','',walk,direction,ref_i[0].size,ti);write('idle','i',idle,direction,ref_i[0].size,ti,1 if idle==walk else None)
+ manifest[base]=result;print('BASE',base,'attack frames',result['attack'].get('2'),'walk',result['walk'].get('2'),'idle',result['idle'].get('2'),'existing attack',len(ref_a),ref_a[0].size,flush=True)
+ cells=[ref_a[len(ref_a)//2]]+[samples[k][len(samples[k])//2] if samples.get(k) else None for k in (2,0,1,3,4,5,6)]
  for x,im in enumerate(cells):
   if im:
-   t=im.copy();t.thumbnail((148,158));sheet.paste(t,(x*150,row*160),t)
+   t=im.copy();t.thumbnail((128,148));sheet.paste(t,(x*130,row*150),t)
 print('ATTACK-MANIFEST '+json.dumps(manifest,separators=(',',':')),flush=True)
-buf=io.BytesIO();sheet.save(buf,'JPEG',quality=62);b=base64.b64encode(buf.getvalue()).decode();print('PREVIEW-BEGIN attack')
+buf=io.BytesIO();sheet.save(buf,'JPEG',quality=68);b=base64.b64encode(buf.getvalue()).decode();print('PREVIEW-BEGIN attack')
 for i in range(0,len(b),3000):print('B64 '+b[i:i+3000])
 print('PREVIEW-END attack',flush=True)

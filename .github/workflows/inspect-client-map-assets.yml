@@ -364,15 +364,17 @@ jobs:
         run: |
           python3 scripts/restore-r2-bundles.py
           for base in royal_m royal_f; do
-            mkdir -p "public/assets/sunrise-skills/$base/attack"
-            curl -fsS -A eternal-idle-asset-check -o "public/assets/sunrise-skills/$base/attack/0.png" "https://eternal-idle-v198-test.h936969423.workers.dev/assets/sunrise-skills/$base/attack/0.png"
+            for kind in attack idle; do
+              mkdir -p "public/assets/sunrise-skills/$base/$kind"
+              curl -fsS -A eternal-idle-asset-check -o "public/assets/sunrise-skills/$base/$kind/0.png" "https://eternal-idle-v198-test.h936969423.workers.dev/assets/sunrise-skills/$base/$kind/0.png"
+            done
           done
       - name: Render attacks without credentials
         if: ${{ !inputs.check_site && inputs.render_attack }}
         working-directory: ${{ runner.temp }}
         run: |
           python3 -m pip install --quiet --break-system-packages 'pillow==11.3.0'
-          python3 "$GITHUB_WORKSPACE/scripts/assets/render-client-attack.py" sprite-probe/spr "$GITHUB_WORKSPACE/public" attack-out survey
+          python3 "$GITHUB_WORKSPACE/scripts/assets/render-client-attack.py" sprite-probe/spr "$GITHUB_WORKSPACE/public" attack-out
       - name: Upload attacks to private R2
         if: ${{ !inputs.check_site && inputs.render_attack }}
         working-directory: ${{ runner.temp }}/attack-out
