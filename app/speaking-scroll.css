@@ -1,0 +1,39 @@
+.speaking-scroll[data-slot=dialog-content] {
+  display: grid;
+  grid-template-rows: auto auto minmax(0, 1fr) auto;
+  gap: 10px;
+  width: min(540px, calc(100vw - 24px));
+  height: min(760px, calc(100dvh - 28px));
+  max-height: none;
+  padding: 14px;
+  overflow: hidden;
+  color: #e6e7d8;
+  background: #132019;
+  border-color: #788264;
+}
+.speaking-scroll header, .speaking-scroll footer { color: #e8d7a1; }
+.speaking-scroll footer, .scroll-region-title, .scroll-map-row > button:first-child {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 8px;
+}
+.speaking-scroll footer { border-top: 1px solid #65705a; padding-top: 8px; font-size: 13px; }
+.scroll-modes, .scroll-regions { display: grid; gap: 6px; }
+.scroll-modes { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+.scroll-regions { grid-template-columns: repeat(3, minmax(0, 1fr)); }
+.scroll-destinations { position: relative; overflow-y: auto; overscroll-behavior: contain; }
+.scroll-destinations section { margin-top: 12px; }
+.scroll-region-title { color: #e8d7a1; margin-bottom: 6px; }
+.speaking-scroll :is(.scroll-modes,.scroll-destinations) button {
+  background: #1a2d23;
+  border: 1px solid #526752;
+  border-radius: 5px;
+  padding: 6px 8px;
+  min-height: 38px;
+}
+.speaking-scroll button[aria-pressed=true] { background: #34563c; color: #f4df9e; }
+.speaking-scroll button:disabled { opacity: .56; }
+.scroll-map-row { display: grid; grid-template-columns: minmax(0, 1fr) auto; gap: 5px; margin-bottom: 5px; }
+.scroll-map-row small { flex-shrink: 0; color: #c4d0b5; }
+.scroll-favorite { color: #f4df9e; }

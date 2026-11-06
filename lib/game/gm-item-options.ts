@@ -1,4 +1,5 @@
 import raw from './gamedata.json';
+import './scroll-map-data';
 import {RETIRED_ITEMS} from './retired-items';
 export type GiftCategory='weapon'|'equipment'|'potion'|'book'|'scroll'|'misc';
 /** GM can override player enhancement restrictions on equippable gear; ordinary scroll rules are unchanged. */
