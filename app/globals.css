@@ -1284,3 +1284,65 @@ body:has(.game-root) :is(.game-dialog,.bian-dialog) :is([data-slot=dialog-descri
 .game-root.screenshot-layout.map-first-layout .static-arena.world-map-arena,.static-arena.world-map-arena{--map-mob-art:112px;--map-mob-width:112px}
 .static-arena.world-map-arena{background:#050505}
 
+
+.hunt-auto-label{display:none}
+.game-root.screenshot-layout.map-first-layout.display-landscape{
+ --map-exp-height:18px;
+ --map-skill-height:48px;
+}
+.game-root.screenshot-layout.map-first-layout.display-landscape .reference-hud .hud-exp{display:none}
+.game-root.screenshot-layout.map-first-layout.display-landscape .map-top-status{
+ top:56px;left:8px;right:auto;width:min(208px,58%);max-height:56px;
+}
+.game-root.screenshot-layout.map-first-layout.display-landscape .map-top-status .active-status-icon{
+ flex-basis:24px;width:24px;height:24px;min-width:24px;min-height:24px;
+}
+.game-root.screenshot-layout.map-first-layout.display-landscape .map-top-status .active-status-icon :is(img,svg){width:18px;height:18px}
+.game-root.screenshot-layout.map-first-layout.display-landscape .battle-scene .static-arena .battle-vitals{
+ top:8px!important;left:8px!important;width:min(124px,34%)!important;gap:3px;
+}
+.game-root.screenshot-layout.map-first-layout.display-landscape .battle-vitals .battle-vital-bar{height:17px}
+.game-root.screenshot-layout.map-first-layout.display-landscape .battle-vital-bar strong{font-size:11px}
+.game-root.screenshot-layout.map-first-layout.display-landscape .map-skill-dock{
+ width:min(530px,calc(100% - 78px));bottom:calc(var(--map-nav-height) + var(--map-exp-height));
+ gap:5px;border:1px solid #8f784d66;border-radius:6px;
+}
+.game-root.screenshot-layout.map-first-layout.display-landscape .map-skill-dock .quick-magic>button{
+ height:40px;min-height:40px;flex-basis:40px;min-width:40px;
+}
+.landscape-supplies{display:flex;flex:none;gap:3px}
+.landscape-supplies button{
+ position:relative;display:grid;place-items:center;width:36px;height:40px;
+ border:1px solid #8f784d99;border-radius:4px;background:#171b1ee8;color:#f1d491;
+}
+.landscape-supplies button:disabled{opacity:.5}
+.landscape-supplies small{
+ position:absolute;right:1px;bottom:0;font-size:9px;line-height:12px;background:#101114df;
+}
+.landscape-exp{
+ position:absolute;left:8px;right:8px;bottom:var(--map-nav-height);
+ height:var(--map-exp-height);display:flex;flex-direction:column;justify-content:center;gap:2px;
+ color:#f7d581;font-size:10px;line-height:10px;text-shadow:0 1px 3px #000;z-index:35;
+ pointer-events:none;
+}
+.landscape-exp [data-slot=progress]{height:3px;background:#302515}
+.landscape-exp [data-slot=progress-indicator]{background:#e7bc4d}
+.landscape-chat{
+ position:absolute;left:8px;bottom:calc(var(--map-nav-height) + var(--map-exp-height) + 4px);
+ display:flex;align-items:center;gap:4px;min-height:40px;padding:4px 7px;
+ border:1px solid #8f784d99;border-radius:5px;color:#efd293;background:#171b1edb;z-index:35;
+}
+.game-root.screenshot-layout.map-first-layout.display-landscape .battle-scene .static-arena .battle-bottom-controls{
+ left:auto;right:10px;bottom:calc(var(--map-nav-height) + var(--map-exp-height) + var(--map-skill-height) + 6px);
+}
+.game-root.screenshot-layout.map-first-layout.display-landscape .world-boss-attack{
+ width:44px;height:44px;min-width:44px;padding:0;border-radius:50%;background:#1a2024df;color:#efd293;
+}
+.game-root.screenshot-layout.map-first-layout.display-landscape .world-boss-attack[aria-pressed=true]{
+ background:#6d5126df;border-color:#f4d37c;box-shadow:0 0 7px #efc76580;
+}
+.display-landscape .hunt-action-label{display:none}
+.display-landscape .hunt-auto-label{display:inline;font-size:11px;font-weight:700}
+@media(max-width:480px){
+ .landscape-supplies button{width:30px}
+}
