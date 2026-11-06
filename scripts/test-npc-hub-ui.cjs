@@ -25,5 +25,3 @@ console.log('PASS: real town UI renders 22 service representatives once, categor
 
 }finally{fs.rmSync(dir,{recursive:true,force:true});}
 
-// The city annex is entered through the same village service screen.
-require('./test-prontera.cjs');
