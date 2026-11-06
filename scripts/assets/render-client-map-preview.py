@@ -6,12 +6,18 @@ from pathlib import Path
 from PIL import Image
 client,out=Path(sys.argv[1]),Path(sys.argv[2])
 REGIONS=[('talking','說話之島村莊',0,0x7ffd,0x8002),('gludio','古魯丁村',4,0x7fff,0x7ffa),('giran','奇岩村',4,0x800a,0x8000)]
+if len(sys.argv)>3:
+ REGIONS=[(k,k,v['mapId'],v['blockX'],v['blockY']) for k,v in json.loads(Path(sys.argv[3]).read_text()).items()]
 CHUNK=1024
-idx=(client/'Tile.idx').read_bytes();count=struct.unpack_from('<i',idx)[0];tiles={}
-with open(client/'Tile.pak','rb') as pak:
- for i in range(count):
-  off,raw,size=struct.unpack_from('<i20si',idx,4+i*28);name=raw.split(b'\0')[0].decode('latin1').lower()
-  if name.endswith('.til') and name[:-4].isdigit():pak.seek(off&0xffffffff);tiles[int(name[:-4])]=pak.read(size)
+tiles={}
+if (client/'tiles').is_dir():
+ tiles={int(p.stem):p.read_bytes() for p in (client/'tiles').glob('*.til')}
+else:
+ idx=(client/'Tile.idx').read_bytes();count=struct.unpack_from('<i',idx)[0]
+ with open(client/'Tile.pak','rb') as pak:
+  for i in range(count):
+   off,raw,size=struct.unpack_from('<i20si',idx,4+i*28);name=raw.split(b'\0')[0].decode('latin1').lower()
+   if name.endswith('.til') and name[:-4].isdigit():pak.seek(off&0xffffffff);tiles[int(name[:-4])]=pak.read(size)
 @lru_cache(maxsize=512)
 def tile_data(n):
  b=tiles[n]
@@ -56,7 +62,7 @@ def parse(path):
  return ground,attr,upper
 for rid,label,m,cx,cy in REGIONS:
  SIZE=192;W=SIZE*48+48;H=SIZE*24+24;OY=(SIZE-1)*12
- im=Image.new('RGBA',(W,H),(0,0,0,0));edges=[[3]*SIZE for _ in range(SIZE)];upper=[];miss=0;found=0
+ print('RENDER',rid,flush=True);im=Image.new('RGBA',(W,H),(0,0,0,0));edges=[[3]*SIZE for _ in range(SIZE)];upper=[];miss=0;found=0
  def put(n,i,X,Y):
   global miss
   try:t=tile(n,i)

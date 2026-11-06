@@ -1,0 +1,14 @@
+import test from 'node:test';
+import assert from 'node:assert/strict';
+import {WorldWalker,pickSpawn,reachable} from '../lib/game/world-walker.ts';
+import {canStep} from '../lib/game/client-map-path.ts';
+const open=(n=40)=>({id:'t',cols:n,rows:n,width:1,height:1,chunk:1024,chunks:[],offsetY:468,spawn:[20,20],edges:Array.from({length:n},()=>'0'.repeat(n))});
+const walled=()=>{const m=open();for(let b=0;b<40;b++){m.edges[25]=m.edges[25].slice(0,b)+(b===30?'0':'2')+m.edges[25].slice(b+1);}return m;};
+const run=(w,uids,target,running,ranged,seconds=6)=>{for(let i=0,t=1000;i<seconds*20;i++,t+=50)w.tick(uids,target,running,ranged,t,.05);};
+test('monsters spawn on reachable ground near the player',()=>{const m=walled(),w=new WorldWalker(m);run(w,['a','b','c'],undefined,false,false,.1);const ground=new Set(reachable(m,{a:20,b:20},6000).map(c=>c.a*40+c.b));for(const x of w.monsters.values())assert.ok(ground.has(x.home.a*40+x.home.b));});
+test('melee player walks up to the target and stops',()=>{const w=new WorldWalker(open());run(w,['a'],'a',true,false,8);const t=w.monsters.get('a');assert.ok(Math.hypot(t.a-w.player.a,t.b-w.player.b)<=4);assert.equal(w.moving,false);});
+test('ranged player stops farther away than melee',()=>{const a=new WorldWalker(open()),b=new WorldWalker(open());run(a,['z'],'z',true,false,8);run(b,['z'],'z',true,true,8);assert.ok(Math.hypot(b.monsters.get('z').a-b.player.a,b.monsters.get('z').b-b.player.b)>=Math.hypot(a.monsters.get('z').a-a.player.a,a.monsters.get('z').b-a.player.b));});
+test('player does not move when not hunting',()=>{const w=new WorldWalker(open());const s={a:w.player.a,b:w.player.b};run(w,['a'],'a',false,false,2);assert.deepEqual({a:w.player.a,b:w.player.b},s);});
+test('dead monsters are forgotten',()=>{const w=new WorldWalker(open());run(w,['a','b'],'a',true,false,.2);run(w,['b'],'b',true,false,.2);assert.deepEqual([...w.monsters.keys()],['b']);});
+test('every player step obeys collision',()=>{const m=walled();m.spawn=[23,5];const w=new WorldWalker(m);w.monsters.set('far',{a:28,b:5,home:{a:28,b:5},path:[]});let p={a:Math.round(w.player.a),b:Math.round(w.player.b)};for(let i=0,t=1;i<600;i++,t+=50){w.tick(['far'],'far',true,false,t,.05);const n={a:Math.round(w.player.a),b:Math.round(w.player.b)};if(n.a!==p.a||n.b!==p.b){assert.ok(canStep(m,p.a,p.b,n.a-p.a,n.b-p.b)||Math.abs(n.a-p.a)+Math.abs(n.b-p.b)>1,`${p.a},${p.b}->${n.a},${n.b}`);assert.ok(!(p.a===25&&n.a===26&&p.b!==30));p=n;}}});
+test('small pockets are skipped when choosing a spawn',()=>{const m=open();m.spawn=[2,2];for(const [a,b,v] of [[2,2,3],[1,2,2],[2,3,1]]){m.edges[a]=m.edges[a].slice(0,b)+v+m.edges[a].slice(b+1);}const c=pickSpawn(m,100);assert.ok(reachable(m,c,101).length>100);});
