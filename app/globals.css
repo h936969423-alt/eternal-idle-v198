@@ -474,6 +474,7 @@ body .gear-name[data-custom-item-color],body .gear-name[data-custom-item-color]>
 .game-root .source-bag-grid > .source-bag-cell > .item-plate {
   background: transparent;
   box-shadow: none;
+  outline: none !important;
 }
 .game-root .source-bag-cell > .item-plate::before { content: none; }
 .game-root .source-bag-cell .count,.game-root .source-bag-cell .enhance,.game-root .source-bag-cell .locked,.game-root .source-bag-cell .worn,.game-root .source-bag-cell .auto-sale-mark{z-index:1}
