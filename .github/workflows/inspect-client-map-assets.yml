@@ -372,7 +372,7 @@ jobs:
         working-directory: ${{ runner.temp }}
         run: |
           python3 -m pip install --quiet --break-system-packages 'pillow==11.3.0'
-          python3 "$GITHUB_WORKSPACE/scripts/assets/render-client-attack.py" sprite-probe/spr "$GITHUB_WORKSPACE/public" attack-out
+          python3 "$GITHUB_WORKSPACE/scripts/assets/render-client-attack.py" sprite-probe/spr "$GITHUB_WORKSPACE/public" attack-out survey
       - name: Upload attacks to private R2
         if: ${{ !inputs.check_site && inputs.render_attack }}
         working-directory: ${{ runner.temp }}/attack-out

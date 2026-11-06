@@ -12,20 +12,21 @@ def load(g,fid):
  p=spr_dir/f'{g}-{fid}.spr'
  try:return spr.decode(p) if p.exists() else None
  except Exception:return None
-# Action survey: frame counts for direction 2 by action, plus one contact sheet per graphic.
-for gfx in sorted({v[0] for v in BASES.values()}|{2796}):
- row=[]
- for a in range(72):
-  d=load(gfx,a*8+2)
-  if d:row.append((a,len(d[0]),d[0][len(d[0])//2]))
- print('ACTIONS',gfx,[(a,n) for a,n,_ in row],flush=True)
- if gfx in (734,2786,61,37):
-  w=Image.new('RGB',(100*10,110*(len(row)//10+1)),(52,64,52))
+# Action survey: labelled contact sheet per graphic, showing the widest frame of each action.
+if len(sys.argv)>4:
+ from PIL import ImageDraw
+ for gfx in (734,1186,2786,61,48,37,0,1):
+  row=[]
+  for a in range(50):
+   d=load(gfx,a*8+2)
+   if d:row.append((a,len(d[0]),max(d[0],key=lambda f:(f.getbbox() or (0,0,0,0))[2]-(f.getbbox() or (0,0,0,0))[0])))
+  w=Image.new('RGB',(125*10,135*(len(row)//10+1)),(52,64,52));dr=ImageDraw.Draw(w)
   for i,(a,n,f) in enumerate(row):
-   t=f.copy();t.thumbnail((98,108));w.paste(t,(i%10*100,i//10*110),t)
-  b0=io.BytesIO();w.save(b0,'JPEG',quality=55);b1=base64.b64encode(b0.getvalue()).decode();print(f'PREVIEW-BEGIN gfx{gfx}')
+   t=f.crop(f.getbbox()) if f.getbbox() else f;t.thumbnail((122,118));x,y=i%10*125,i//10*135;w.paste(t,(x+2,y+16),t);dr.text((x+3,y+2),f'{a}:{n}',fill=(255,240,120))
+  b0=io.BytesIO();w.save(b0,'JPEG',quality=70);b1=base64.b64encode(b0.getvalue()).decode();print(f'PREVIEW-BEGIN gfx{gfx}')
   for i in range(0,len(b1),3000):print('B64 '+b1[i:i+3000])
   print(f'PREVIEW-END gfx{gfx}',flush=True)
+ sys.exit(0)
 manifest={};sheet=Image.new('RGB',(150*7,160*len(BASES)),(52,64,52))
 for row,(base,(g,actions)) in enumerate(BASES.items()):
  paths=[public/p.lstrip('/') for p in frames_map.get(base+'/attack',[])];paths=[p for p in paths if p.exists()]
