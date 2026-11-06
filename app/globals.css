@@ -1221,3 +1221,58 @@ body:has(.game-root) :is(.game-dialog,.bian-dialog) :is([data-slot=dialog-descri
   overflow-wrap:anywhere;
  }
 }
+
+/* Landscape keeps the map visible behind its floating controls. */
+.game-root.screenshot-layout.map-first-layout.display-landscape {
+ --map-nav-height: env(safe-area-inset-bottom);
+ --map-log-height: 0px;
+ --map-skill-height: 50px;
+}
+.game-root.screenshot-layout.map-first-layout.display-landscape > .reference-hud {
+ min-height: 44px !important;
+}
+.game-root.screenshot-layout.map-first-layout.display-landscape .main-panel {
+ padding-bottom: 0 !important;
+}
+.game-root.screenshot-layout.map-first-layout.display-landscape:has(.eternal-combat-menu) .main-nav {
+ display: none !important;
+}
+.game-root.screenshot-layout.map-first-layout.display-landscape .map-skill-dock {
+ background: #17181ad9;
+}
+.game-root.screenshot-layout.map-first-layout.display-landscape .battle-bottom-controls {
+ bottom: calc(var(--map-skill-height) + var(--map-nav-height) + 6px);
+}
+
+.game-root.screenshot-layout.map-first-layout.display-landscape .reference-hud .hud-exp {
+ height: 8px;
+ margin-top: 2px;
+}
+.game-root.screenshot-layout.map-first-layout.display-landscape .map-skill-dock {
+ left: auto;
+ right: 8px;
+ width: min(360px, calc(100% - 16px));
+ border-radius: 7px 7px 0 0;
+}
+.game-root.screenshot-layout.map-first-layout.display-landscape .map-skill-dock .quick-magic > button {
+ position: relative;
+ flex: 0 0 44px;
+ min-width: 44px;
+ min-height: 44px;
+ padding: 3px;
+ justify-content: center;
+}
+.game-root.screenshot-layout.map-first-layout.display-landscape .map-skill-dock .skill-cooldown-button > span {
+ font-size: 0;
+}
+.game-root.screenshot-layout.map-first-layout.display-landscape .map-skill-dock .skill-cooldown-button > span > small {
+ display: none;
+}
+.game-root.screenshot-layout.map-first-layout.display-landscape .map-skill-dock .skill-is-cooling .skill-cooldown-seconds {
+ display: block !important;
+ position: absolute;
+ inset: auto 1px 2px;
+ background: #111c;
+ text-align: center;
+ font-size: 9px;
+}
