@@ -1,6 +1,6 @@
 'use client';
 import {useEffect,useRef,useState,type RefObject} from 'react';
-import {playerWalkStore,walkDirection} from '@/lib/game/field-walk';
+import {playerWalkStore,walkDirection,worldCombatGate} from '@/lib/game/field-walk';
 import {pixelCell} from '@/lib/game/client-map-path';
 import {cellCenter} from '@/lib/game/client-map-path';
 import {WorldWalker,pickSpawn,stripCovers,type WorldManifest} from '@/lib/game/world-walker';
@@ -14,7 +14,7 @@ export default function WorldMapLayer({zone,arena,targetUid,running,ranged,onSta
   const place=(el:HTMLElement,x:number,y:number,foot:string)=>{const previous=offsets.get(el)||{x:0,y:0},r=(foot?el.querySelector<HTMLElement>(foot)||el:el).getBoundingClientRect(),box=root.getBoundingClientRect(),baseX=r.left-box.left+r.width/2-previous.x,baseY=r.bottom-box.top-previous.y,next={x:x-baseX,y:y-baseY};offsets.set(el,next);el.style.setProperty('--walk-x',`${next.x.toFixed(1)}px`);el.style.setProperty('--walk-y',`${next.y.toFixed(1)}px`);};
   const tick=(now:number)=>{frame=requestAnimationFrame(tick);if(now-last<FRAME_MS||document.hidden)return;const seconds=Math.min(.1,(now-last)/1000);last=now;const box=root.getBoundingClientRect();if(!box.width||!box.height)return;
    const monsters=[...root.querySelectorAll<HTMLElement>('.four-monster')],alive=monsters.filter(el=>el.dataset.dead!=='true'),uids=alive.map(el=>el.dataset.monsterUid||'');
-   walker.tick(uids,latest.current.targetUid,latest.current.running,latest.current.ranged,Date.now(),seconds);
+   if(walker.aim&&!uids.includes(walker.aim))walker.aim=undefined;const chase=walker.aim||latest.current.targetUid;walker.tick(uids,chase,latest.current.running,latest.current.ranged,Date.now(),seconds);
    const camera=walker.pixel(walker.player),ax=box.width/2,ay=box.height*ANCHOR_Y;
    const shift=`translate3d(${(ax-camera.x*ZOOM).toFixed(1)}px,${(ay-camera.y*ZOOM).toFixed(1)}px,0) scale(${ZOOM})`;if(plane.current)plane.current.style.transform=shift;if(overPlane.current)overPlane.current.style.transform=shift;
    const size=map.chunk*ZOOM,minX=Math.floor((camera.x*ZOOM-ax)/size)-1,maxX=Math.floor((camera.x*ZOOM+box.width-ax)/size)+1,minY=Math.floor((camera.y*ZOOM-ay)/size)-1,maxY=Math.floor((camera.y*ZOOM+box.height-ay)/size)+1,key=`${minX},${maxX},${minY},${maxY}`;
@@ -23,13 +23,14 @@ export default function WorldMapLayer({zone,arena,targetUid,running,ranged,onSta
    root.classList.toggle('world-walking',walker.moving);
    const actor=root.querySelector<HTMLElement>('.four-player');if(actor)place(actor,ax,ay,'');
    for(const el of alive){const m=walker.monsters.get(el.dataset.monsterUid||'');if(!m)continue;const p=walker.pixel(m);place(el,ax+(p.x-camera.x)*ZOOM,ay+(p.y-camera.y)*ZOOM,'.four-monster-art');}
-   const delta=walker.screenDelta(),face=walker.facing(latest.current.targetUid);playerWalkStore.set({moving:walker.moving,direction:walker.moving?walkDirection(delta.x,delta.y):2,facing:latest.current.running&&face&&!walker.manual?walkDirection(face.x,face.y):2});
+   const delta=walker.screenDelta(),face=walker.facing(chase);playerWalkStore.set({moving:walker.moving,direction:walker.moving?walkDirection(delta.x,delta.y):2,facing:latest.current.running&&face&&!walker.manual?walkDirection(face.x,face.y):2});
   };
   // Tapping open ground walks there; controls and monsters keep their own taps.
   const tap=(event:MouseEvent)=>{const element=event.target as Element|null;if(element?.closest('button,a,input,select,summary,.four-target,.battle-vitals,[role=button]'))return;const box=root.getBoundingClientRect(),camera=walker.pixel(walker.player);walker.moveTo(pixelCell(camera.x+(event.clientX-box.left-box.width/2)/ZOOM,camera.y+(event.clientY-box.top-box.height*ANCHOR_Y)/ZOOM,map.offsetY));};
   root.addEventListener('click',tap);
+  worldCombatGate.current={blocks:uid=>walker.blocks(uid,latest.current.ranged),aim:uid=>{walker.aim=uid;},snap:uid=>walker.snap(uid),behind:ms=>{walker.speedBoost=1+Math.min(1,ms/2000);}};
   frame=requestAnimationFrame(tick);
-  return()=>{root.removeEventListener('click',tap);root.classList.remove('world-walking');cancelAnimationFrame(frame);playerWalkStore.set({moving:false,direction:2,facing:2});root.querySelectorAll<HTMLElement>('.four-player,.four-monster').forEach(el=>{el.style.removeProperty('--walk-x');el.style.removeProperty('--walk-y');});};
+  return()=>{worldCombatGate.current=null;root.removeEventListener('click',tap);root.classList.remove('world-walking');cancelAnimationFrame(frame);playerWalkStore.set({moving:false,direction:2,facing:2});root.querySelectorAll<HTMLElement>('.four-player,.four-monster').forEach(el=>{el.style.removeProperty('--walk-x');el.style.removeProperty('--walk-y');});};
  },[map,arena]);
  if(!map)return null;
  return <><div className="world-map-over" aria-hidden="true"><div ref={overPlane} className="world-map-plane">{strips.map(([bucket,col,x,y])=><img key={`${bucket}-${col}`} src={`${BASE}${zone}/o${bucket}_${col}.webp`} alt="" draggable={false} style={{left:x,top:y}}/>)}</div></div><div className="world-map-layer" aria-hidden="true"><div ref={plane} className="world-map-plane">{cells.map(([x,y])=><img key={`${x}-${y}`} src={`${BASE}${zone}/${x}_${y}.webp`} alt="" draggable={false} style={{left:x*map.chunk,top:y*map.chunk}}/>)}</div></div></>;
