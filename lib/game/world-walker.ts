@@ -3,7 +3,7 @@ import {canStep,cellCenter,findMapPath,type ClientMapGrid,type MapCell} from './
 import {monsterWalk} from './field-walk.ts';
 export type WorldManifest=ClientMapGrid&{id:string;width:number;height:number;chunk:number;chunks:[number,number][];offsetY:number;spawn:[number,number]};
 type Mover={a:number;b:number;path:MapCell[];goal?:string};
-export const WORLD_PLAYER_SPEED=3.4,WORLD_MONSTER_SPEED=1.3,WORLD_MANUAL_REST=1.5;
+export const WORLD_PLAYER_SPEED=3,WORLD_MONSTER_SPEED=1.3,WORLD_MANUAL_REST=1.5;
 function hash(text:string){let h=2166136261;for(let i=0;i<text.length;i++){h^=text.charCodeAt(i);h=Math.imul(h,16777619);}return h>>>0;}
 /** Cells reachable from a start, up to a limit. */
 export function reachable(map:ClientMapGrid,from:MapCell,limit=4000){const seen=new Set([from.a*map.rows+from.b]),queue=[from];for(let i=0;i<queue.length&&queue.length<limit;i++){const c=queue[i];for(const [da,db] of [[1,0],[-1,0],[0,1],[0,-1]]){const k=(c.a+da)*map.rows+c.b+db;if(!seen.has(k)&&canStep(map,c.a,c.b,da,db)){seen.add(k);queue.push({a:c.a+da,b:c.b+db});}}}return queue;}
