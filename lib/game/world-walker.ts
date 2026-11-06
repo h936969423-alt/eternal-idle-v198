@@ -1,7 +1,7 @@
 /** Presentation only: places actors on client map cells. Combat, loot and saves never read this. */
 import {canStep,cellCenter,findMapPath,type ClientMapGrid,type MapCell} from './client-map-path.ts';
 import {monsterWalk} from './field-walk.ts';
-export type WorldManifest=ClientMapGrid&{id:string;width:number;height:number;chunk:number;chunks:[number,number][];offsetY:number;spawn:[number,number]};
+export type WorldManifest=ClientMapGrid&{id:string;width:number;height:number;chunk:number;chunks:[number,number][];offsetY:number;spawn:[number,number];over?:[number,number,number,number,number,number][]};
 type Mover={a:number;b:number;path:MapCell[];goal?:string};
 export const WORLD_PLAYER_SPEED=3,WORLD_MONSTER_SPEED=1.3,WORLD_MANUAL_REST=1.5;
 function hash(text:string){let h=2166136261;for(let i=0;i<text.length;i++){h^=text.charCodeAt(i);h=Math.imul(h,16777619);}return h>>>0;}
@@ -33,3 +33,5 @@ export class WorldWalker{
  screenDelta(){return {x:(this.direction.da+this.direction.db)*24,y:(this.direction.db-this.direction.da)*12};}
  pixel(m:{a:number;b:number}){return cellCenter(m.a,m.b,this.map.offsetY);}
 }
+/** Strips of tall objects standing nearer the viewer than this row must be drawn over actors. */
+export const stripCovers=(bucket:number,cols:number,row:number)=>bucket*2-cols>row;
