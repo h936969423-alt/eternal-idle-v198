@@ -2,7 +2,8 @@
 import PlayerSpriteFrame from './player-sprite-frame';
 import {localHitOwner} from '@/lib/game/local-hit-sync';
 import {useEffect,useMemo,useSyncExternalStore} from 'react';
-import {playerWalkStore,walkFrames} from '@/lib/game/field-walk';
+import {directionalFrames,playerWalkStore,scaledFrame,walkFrames} from '@/lib/game/field-walk';
+import clientAttack from '@/lib/game/client-attack.json';
 import clientWalk from '@/lib/game/client-walk.json';
 import raw from '@/lib/game/gamedata.json';
 import amap from '@/lib/game/asset-map.json';
@@ -32,7 +33,8 @@ export default function CombatSprite({c,view,interval,pendingCast,castInterval:s
  const frame=Math.min(seq.length-1,pose.frame);
  const activeClip=pose.kind==='skill'?(castClip||attackClip):pose.kind==='attack'?attackClip:undefined;
  const walkState=useSyncExternalStore(playerWalkStore.subscribe,playerWalkStore.get,playerWalkStore.get),walkSeq=useMemo(()=>poly?[]:walkFrames((clientWalk as Record<string,{counts:Record<string,number>}>)[base]?.counts,base,walkState.direction),[poly?.id,base,walkState.direction]);useEffect(()=>{for(const path of walkSeq){const image=new Image();image.src=path;}},[walkSeq]);const walkSrc=walkState.moving&&pose.kind==='idle'&&walkSeq.length?walkSeq[Math.floor(performance.now()/125)%walkSeq.length]:undefined;
- return seq.length?<PlayerSpriteFrame className="character-sprite" data-action={walkSrc?'walk':pose.kind} data-direction={direction} data-target-uid={pose.targetUid||contactTarget?.uid} data-mirrored={false} data-polymorph={poly?.id} formId={poly?.id} canvas={layoutClip?.layout.viewBox||attackClip?.layout.viewBox} src={walkSrc||seq[frame]} clip={activeClip} frame={frame} alt={c.name}/>:null;
+ const facing=walkState.facing??2,attackSet=poly?undefined:(clientAttack as Record<string,{attack:Record<string,number>;idle:Record<string,number>}>)[base],facingAttack=useMemo(()=>facing===2?[]:directionalFrames(attackSet?.attack,base,'a',facing),[attackSet,base,facing]),facingIdle=useMemo(()=>facing===2?[]:directionalFrames(attackSet?.idle,base,'i',facing),[attackSet,base,facing]);useEffect(()=>{for(const path of [...facingAttack,...facingIdle]){const image=new Image();image.src=path;}},[facingAttack,facingIdle]);const fightingKind=pose.kind==='attack'||pose.kind==='skill',facingSrc=!walkSrc&&fightingKind&&facingAttack.length?facingAttack[scaledFrame(frame,seq.length,facingAttack.length)]:!walkSrc&&pose.kind==='idle'&&facingIdle.length?facingIdle[Math.floor(performance.now()/180)%facingIdle.length]:undefined;
+ return seq.length?<PlayerSpriteFrame className="character-sprite" data-action={walkSrc?'walk':pose.kind} data-direction={direction} data-target-uid={pose.targetUid||contactTarget?.uid} data-mirrored={false} data-polymorph={poly?.id} formId={poly?.id} canvas={layoutClip?.layout.viewBox||attackClip?.layout.viewBox} src={walkSrc||facingSrc||seq[frame]} clip={activeClip} frame={frame} alt={c.name}/>:null;
 }
 
 

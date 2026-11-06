@@ -19,10 +19,10 @@ export default function WorldMapLayer({zone,arena,targetUid,running,ranged,onSta
    if(key!==shown){shown=key;const next:[number,number][]=[];for(let x=minX;x<=maxX;x++)for(let y=minY;y<=maxY;y++)if(have.has(`${x}_${y}`))next.push([x,y]);setCells(next);}
    const actor=root.querySelector<HTMLElement>('.four-player');if(actor)place(actor,ax,ay);
    for(const el of alive){const m=walker.monsters.get(el.dataset.monsterUid||'');if(!m)continue;const p=walker.pixel(m);place(el,ax+(p.x-camera.x)*ZOOM,ay+(p.y-camera.y)*ZOOM);}
-   const delta=walker.screenDelta();playerWalkStore.set({moving:walker.moving,direction:walker.moving?walkDirection(delta.x,delta.y):2});
+   const delta=walker.screenDelta(),face=walker.facing(latest.current.targetUid);playerWalkStore.set({moving:walker.moving,direction:walker.moving?walkDirection(delta.x,delta.y):2,facing:latest.current.running&&face?walkDirection(face.x,face.y):2});
   };
   frame=requestAnimationFrame(tick);
-  return()=>{cancelAnimationFrame(frame);playerWalkStore.set({moving:false,direction:2});root.querySelectorAll<HTMLElement>('.four-player,.four-monster').forEach(el=>{el.style.removeProperty('--walk-x');el.style.removeProperty('--walk-y');});};
+  return()=>{cancelAnimationFrame(frame);playerWalkStore.set({moving:false,direction:2,facing:2});root.querySelectorAll<HTMLElement>('.four-player,.four-monster').forEach(el=>{el.style.removeProperty('--walk-x');el.style.removeProperty('--walk-y');});};
  },[map,arena]);
  if(!map)return null;
  return <div className="world-map-layer" aria-hidden="true"><div ref={plane} className="world-map-plane">{cells.map(([x,y])=><img key={`${x}-${y}`} src={`${BASE}${zone}/${x}_${y}.webp`} alt="" draggable={false} style={{left:x*map.chunk,top:y*map.chunk}}/>)}</div></div>;

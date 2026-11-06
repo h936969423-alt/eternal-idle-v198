@@ -47,7 +47,7 @@ export async function assetStorageFetch(request: Request, bucket?: Bucket): Prom
     }catch{return new Response('World map temporarily unavailable',{status:503,headers:{'Retry-After':'5'}});}
   }
   if(pathname.startsWith('/assets/client-walk/')&&['GET','HEAD'].includes(request.method)){
-    const match=/^\/assets\/client-walk\/v1\/([a-z0-9_]+)\/([0-7]_\d+\.webp|sheet\.webp)$/.exec(pathname);
+    const match=/^\/assets\/client-walk\/v1\/([a-z0-9_]+)\/([ai]?[0-7]_\d+\.webp|sheet\.webp)$/.exec(pathname);
     if(!match)return new Response('Walk frame not found',{status:404});
     if(!bucket)return new Response('Asset storage unavailable',{status:503});
     try{
