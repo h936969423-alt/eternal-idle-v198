@@ -10,6 +10,9 @@ import { combatSound } from './combat-audio';
 import {localHitOwner,allowLocalHit,clearLocalHits,queueLocalHitTargets,syncLocalHitTargets,currentLocalSwing,settleLocalHit} from '@/lib/game/local-hit-sync';
 import {applyCombatViewEvent,drainCombatPresentation,enqueueSunriseReplay,prepareCombatHealth,type BattleView,type TimedCombatEvent} from '@/lib/game/combat-presentation';
 import {MONSTER_ANCHOR} from './monster-anchor';
+import {hitNeedsContact,worldCombatGate} from '@/lib/game/field-walk';
+/** Longest the display may fall behind while walking before it restores the true state. */
+const WALK_LAG_LIMIT_MS=8000,WALK_CATCH_UP=.25;
 export type {BattleView} from '@/lib/game/combat-presentation';
 export function useCombatReplay(c:Character|null,sound:boolean){
  const [view,setView]=useState<BattleView>({hp:0,mp:0,arena:[],floats:[]});const latest=useRef(c),soundOn=useRef(sound),owner=useRef(''),zone=useRef(''),seen=useRef(0),queue=useRef<TimedCombatEvent[]>([]),offset=useRef<number|null>(null),impacts=useRef<TimedCombatEvent[]>([]),health=useRef(new Map<string,number>());
@@ -24,6 +27,7 @@ export function useCombatReplay(c:Character|null,sound:boolean){
   let lastCleanup=0;
   let lastFrame:number|null=null;
   let restore=false;
+  let walkLag=0;
   const pause=()=>{if(document.visibilityState==='hidden'){restore=true;queue.current=[];impacts.current=[];}};
   document.addEventListener('visibilitychange',pause);
   const tick=()=>{
@@ -35,6 +39,17 @@ export function useCombatReplay(c:Character|null,sound:boolean){
     if(current)clearLocalHits(localHitOwner(current.id,current.zone));
     if(current){seen.current=current.eventSeq||0;health.current=new Map((current.arena||[]).map(m=>[m.uid,m.hp]));setView({petEntities:petSnapshot(current,Date.now()),summonEntities:current.summonContract?.entities||[],hp:current.hp,mp:current.mp,target:current.arenaTarget||0,arena:(current.arena||[]).map(m=>({...m})),floats:[]});}
    }
+   // Real maps: hold the replay while the player walks, so a hit is only shown once in contact.
+   const gate=worldCombatGate.current,frameMs=lastFrame===null?0:Math.max(0,now-lastFrame);
+   if(!queue.current.length)walkLag=0;
+   if(gate&&queue.current.length){
+    const waiting=queue.current.find(e=>e.due<=now&&hitNeedsContact(e)&&gate.blocks(e.uid!));
+    const shift=waiting?frameMs:-Math.min(walkLag,frameMs*WALK_CATCH_UP);
+    if(waiting)gate.aim(waiting.uid!);
+    if(shift){walkLag+=shift;for(const e of queue.current)e.due+=shift;if(offset.current!==null)offset.current+=shift;}
+    if(walkLag>WALK_LAG_LIMIT_MS&&waiting){gate.snap(waiting.uid!);walkLag=0;restore=true;}
+   }
+   gate?.behind(walkLag);
    lastFrame=now;
    const character=latest.current;
    if(character)syncLocalHitTargets(localHitOwner(character.id,character.zone),queue.current);
