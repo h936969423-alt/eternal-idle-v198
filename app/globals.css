@@ -1288,7 +1288,7 @@ body:has(.game-root) :is(.game-dialog,.bian-dialog) :is([data-slot=dialog-descri
 .hunt-auto-label{display:none}
 .game-root.screenshot-layout.map-first-layout.display-landscape{
  --map-exp-height:18px;
- --map-skill-height:48px;
+ --map-skill-height:48px!important;
 }
 .game-root.screenshot-layout.map-first-layout.display-landscape .reference-hud .hud-exp{display:none!important}
 .game-root.screenshot-layout.map-first-layout.display-landscape .map-top-status{
@@ -1305,10 +1305,26 @@ body:has(.game-root) :is(.game-dialog,.bian-dialog) :is([data-slot=dialog-descri
 .game-root.screenshot-layout.map-first-layout.display-landscape .battle-vital-bar strong{font-size:11px}
 .game-root.screenshot-layout.map-first-layout.display-landscape .map-skill-dock{
  width:min(530px,calc(100% - 78px));bottom:calc(var(--map-nav-height) + var(--map-exp-height));
- gap:5px;border:1px solid #8f784d66;border-radius:6px;
+ gap:5px;border:0;border-radius:5px;background:#12151666;
 }
-.game-root.screenshot-layout.map-first-layout.display-landscape .map-skill-dock .quick-magic>button{
- height:40px;min-height:40px;flex-basis:40px;min-width:40px;
+.game-root.screenshot-layout.map-first-layout.display-landscape .map-skill-dock .quick-magic{
+ gap:3px;scrollbar-width:none;scroll-snap-type:x proximity;
+}
+.game-root.screenshot-layout.map-first-layout.display-landscape .map-skill-dock .quick-magic>button.skill-cooldown-button{
+ display:grid;place-items:center;height:40px;min-height:40px;flex-basis:40px;min-width:40px;
+ padding:0;border:0;border-radius:3px;background:#10131680;box-shadow:none;scroll-snap-align:start;
+}
+.game-root.screenshot-layout.map-first-layout.display-landscape .map-skill-dock .skill-cooldown-button :is(img,.asset-icon){
+ width:36px;height:36px;
+}
+.game-root.screenshot-layout.map-first-layout.display-landscape .map-skill-dock .skill-cooldown-button>span{
+ position:absolute;inset:0;max-width:none;pointer-events:none;
+}
+.game-root.screenshot-layout.map-first-layout.display-landscape .map-skill-dock .skill-cooldown-button:active:not(:disabled){
+ filter:brightness(1.4);
+}
+.game-root.screenshot-layout.map-first-layout.display-landscape .map-skill-dock .skill-is-cooling>span{
+ background:#080a0b80;
 }
 .landscape-supplies{display:flex;flex:none;gap:3px}
 .landscape-supplies button{
