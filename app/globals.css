@@ -466,8 +466,16 @@ body .gear-name[data-custom-item-color],body .gear-name[data-custom-item-color]>
 .item-plate::before{content:"◇ ⋈ ◇";position:absolute;inset:0;display:flex;align-items:center;justify-content:center;white-space:nowrap;font-family:serif;font-size:calc(var(--plate-size)*.5);font-weight:400;letter-spacing:-.12em;color:rgba(var(--plate-rgb),.2);text-shadow:0 0 4px rgba(var(--plate-rgb),.25);pointer-events:none;z-index:-1}
 .item-plate>img[data-item-icon=true]{position:relative;z-index:0}
 .game-root .source-bag-cell>.item-plate{position:absolute;inset:0;width:100%;height:100%;max-width:none;border-radius:inherit;pointer-events:none}
-.game-root .source-bag-cell>.item-plate::before{font-size:clamp(20px,6vw,52px)}
-.game-root .source-bag-cell:has(>.item-plate){border-color:transparent!important;box-shadow:none}
+.game-root .source-bag-grid > .source-bag-cell {
+  background: #c7dfc1 !important;
+  border-color: #90ab89 !important;
+  box-shadow: none !important;
+}
+.game-root .source-bag-grid > .source-bag-cell > .item-plate {
+  background: transparent;
+  box-shadow: none;
+}
+.game-root .source-bag-cell > .item-plate::before { content: none; }
 .game-root .source-bag-cell .count,.game-root .source-bag-cell .enhance,.game-root .source-bag-cell .locked,.game-root .source-bag-cell .worn,.game-root .source-bag-cell .auto-sale-mark{z-index:1}
 .game-root .source-bag-cell .enhance{left:auto;top:auto;right:5px;bottom:3px;color:#ffd66c;font-weight:800}
 .game-root .source-bag-cell:has(.enhance) .count{right:5px;bottom:21px}
