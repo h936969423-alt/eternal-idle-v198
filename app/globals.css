@@ -1367,3 +1367,9 @@ body:has(.game-root) :is(.game-dialog,.bian-dialog) :is([data-slot=dialog-descri
 @media(max-width:480px){
  .landscape-supplies button{width:30px}
 }
+
+.game-root.map-first-layout.display-landscape .battle-scene > .town-walk-scene {
+  position: absolute;
+  inset: 0;
+  height: 100%;
+}
