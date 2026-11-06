@@ -6,6 +6,8 @@ client,out=pathlib.Path(sys.argv[1]),pathlib.Path(sys.argv[2]);(out/'spr').mkdir
 GFX={'prince':0,'princess':1,'knight_m':61,'knight_f':48,'elf_m':138,'elf_f':37,'mage_m':734,'mage_f':1186,'dark_m':2786,'dark_f':2796}
 spec=importlib.util.spec_from_file_location('spr',pathlib.Path(__file__).resolve().parents[1]/'convert-dasu-spr.py');spr=importlib.util.module_from_spec(spec);spec.loader.exec_module(spr)
 want=set(GFX.values());found={};lists={}
+monster_gfx={g for v in json.loads((pathlib.Path(__file__).with_name('client-monster-candidates.json')).read_text()).values() for g in v}-want
+MONSTER_IDS={*range(8),*range(24,32)}
 for idx in sorted(client.glob('Sprite*.idx')):
  b=idx.read_bytes();n=struct.unpack_from('<i',b)[0]
  if 4+n*28!=len(b):print('skip',idx.name);continue
@@ -13,7 +15,7 @@ for idx in sorted(client.glob('Sprite*.idx')):
   for i in range(n):
    off,raw,size=struct.unpack_from('<i20si',b,4+i*28);name=raw.split(b'\0')[0].decode('latin1').lower()
    m=re.fullmatch(r'(\d+)-(\d+)\.spr',name)
-   if (m and int(m[1]) in want) or name in('list.spr','wlist.spr') or re.fullmatch(r'list.*\.(spr|tbl|txt)',name):
+   if (m and (int(m[1]) in want or (int(m[1]) in monster_gfx and int(m[2]) in MONSTER_IDS))) or name in('list.spr','wlist.spr') or re.fullmatch(r'list.*\.(spr|tbl|txt)',name):
     pak.seek(off&0xffffffff);data=pak.read(size)
     if m:found.setdefault(int(m[1]),{}).setdefault(int(m[2]),[]).append(idx.name);(out/'spr'/name).write_bytes(data)
     else:lists[name+'@'+idx.name]=data;(out/name).write_bytes(data);print('LIST',name,idx.name,size,data[:60].hex())
