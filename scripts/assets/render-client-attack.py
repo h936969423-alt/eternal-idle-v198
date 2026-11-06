@@ -6,7 +6,7 @@ spr_dir,public,out=map(pathlib.Path,sys.argv[1:4]);out.mkdir(parents=True,exist_
 root=pathlib.Path(__file__).resolve();spec=importlib.util.spec_from_file_location('spr',root.parents[1]/'convert-dasu-spr.py');spr=importlib.util.module_from_spec(spec);spec.loader.exec_module(spr)
 frames_map=json.loads((root.parents[2]/'lib/game/asset-map.json').read_text())['frames']
 # Block numbers differ per graphic, so these were read off labelled contact sheets: (gfx, walk, attack, idle).
-BASES={'knight_2hsword':(61,3,4,3),'knight_f':(48,3,4,3),'elf_m_melee':(138,4,5,7),'elf_m_ranged':(138,22,23,21),'elf_f_melee':(37,3,4,3),'elf_f_ranged':(37,15,16,15),'mage_m':(734,22,26,23),'mage_f':(1186,23,26,22),'royal_m':(0,3,22,3),'royal_f':(1,18,20,18),'darkelf_player':(2786,23,25,24)}
+BASES={'knight_2hsword':(61,3,4,3),'knight_f':(48,3,4,3),'elf_m_melee':(138,4,5,7),'elf_m_ranged':(138,18,19,21),'elf_f_melee':(37,3,4,3),'elf_f_ranged':(37,15,16,15),'mage_m':(734,22,26,23),'mage_f':(1186,23,26,22),'royal_m':(0,3,22,3),'royal_f':(1,18,20,18),'darkelf_player':(2786,23,25,24)}
 def load(g,fid):
  p=spr_dir/f'{g}-{fid}.spr'
  try:return spr.decode(p) if p.exists() else None
