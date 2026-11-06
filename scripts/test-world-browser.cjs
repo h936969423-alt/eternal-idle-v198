@@ -1,0 +1,28 @@
+// Plays the isolated test Worker with a newly registered QA account in an iPhone-sized browser.
+const {chromium,devices}=require('playwright'),crypto=require('crypto');
+const BASE='https://eternal-idle-v198-test.h936969423.workers.dev',ZONE=process.env.WORLD_ZONE||'talking_island';
+const username='qa_walk_'+crypto.randomBytes(4).toString('hex'),password=crypto.randomBytes(24).toString('base64url');
+const allocation=c=>{const out={};let left=c.pts;for(const k of ['str','dex','con','int','wis','cha']){out[k]=Math.min(left,20-c[k]);left-=out[k];}return out;};
+(async()=>{
+ const browser=await chromium.launch({executablePath:process.env.CHROME_PATH||undefined,args:['--no-sandbox']}),context=await browser.newContext({...devices['iPhone 13']}),page=await context.newPage(),errors=[];
+ page.on('pageerror',e=>errors.push(e.message));page.on('response',r=>{if(r.status()>=400&&r.url().includes('/assets/'))errors.push(r.status()+' '+r.url().replace(BASE,''));});
+ await page.goto(BASE,{waitUntil:'domcontentloaded'});
+ const api=async(path,data)=>{const r=await page.request.post(BASE+path,{data,headers:{Origin:BASE}});const j=await r.json();if(!r.ok())throw Error(path+' '+JSON.stringify(j).slice(0,200));return j;};
+ await api('/api/account',{username,password,register:true});
+ const classes=require(require('path').resolve('lib/game/classes.json')),cls=process.env.WORLD_CLASS||'knight';
+ const made=await api('/api/game',{type:'create',name:'走路驗證',cls,gender:'m',allocation:allocation(classes[cls])});const cid=made.save.active;
+ await api('/api/game',{type:'select',id:cid});await api('/api/game',{type:'zone',zone:ZONE});await api('/api/game',{type:'run',value:true});
+ await page.goto(BASE,{waitUntil:'load'});await page.getByRole('button',{name:'進入遊戲'}).first().click({timeout:30000});try{await page.waitForSelector('.four-battle',{timeout:45000});}catch(error){console.log('RESULT NO BATTLE',page.url(),(await page.evaluate(()=>document.body.innerText)).slice(0,500).replace(/\n/g,' | '));const b=await page.screenshot({type:'jpeg',quality:45});console.log('PREVIEW-BEGIN nobattle');const t=b.toString('base64');for(let i=0;i<t.length;i+=3000)console.log('B64 '+t.slice(i,i+3000));console.log('PREVIEW-END nobattle');throw error;}
+ const burst=[];for(let i=0;i<48;i++){const started=Date.now();const info=await page.evaluate(()=>{const c=document.querySelector('.character-sprite'),r=c?.getBoundingClientRect();return {action:c?.getAttribute('data-action'),src:(c?.getAttribute('src')||'').split('/').slice(-2).join('/'),plane:document.querySelector('.world-map-plane')?.style.transform||'',x:r&&Math.round(r.x+r.width/2),y:r&&Math.round(r.y+r.height/2)};});const b=await page.screenshot({type:'jpeg',quality:60,clip:{x:115,y:170,width:160,height:170}});burst.push({info,t:Date.now(),b});const rest=120-(Date.now()-started);if(rest>0)await page.waitForTimeout(rest);}
+ console.log('BURST',JSON.stringify(burst.map(f=>[f.t-burst[0].t,f.info.action,f.info.src.replace(/^[^/]*\//,''),f.info.plane.replace(/translate3d\(|px|, 0, 0\).*| scale.*/g,'').replace(/, 0\)$/,'')])));
+ burst.forEach((f,i)=>{const t=f.b.toString('base64');console.log('PREVIEW-BEGIN burst'+i);for(let j=0;j<t.length;j+=3000)console.log('B64 '+t.slice(j,j+3000));console.log('PREVIEW-END burst'+i);});
+ const sample=()=>page.evaluate(()=>{const el=document.querySelector('.character-sprite'),p=document.querySelector('.four-player')?.getBoundingClientRect(),plane=document.querySelector('.world-map-plane');return {action:el?.getAttribute('data-action'),src:(el?.getAttribute('src')||'').split('/').slice(-2).join('/'),x:p&&Math.round(p.x),y:p&&Math.round(p.y),plane:plane?.style.transform||'',arena:document.querySelector('.static-arena')?.className.includes('world-map-arena'),monsters:document.querySelectorAll('.four-monster').length,w:el?.naturalWidth,h:el?.naturalHeight};});
+ const log=[];for(let i=0;i<200;i++){log.push(await sample());await page.waitForTimeout(100);}
+ console.log('TIMELINE',log.map(s=>({attack:'A',walk:'W',idle:'I',hurt:'H',skill:'S',death:'D'}[s.action]||'?')).join(''));console.log('SRCS',JSON.stringify([...new Set(log.map(s=>s.src))].slice(0,40)));
+ const actions={},walkSrc=new Set();let planeMoves=0;for(let i=0;i<log.length;i++){const s=log[i];actions[s.action]=(actions[s.action]||0)+1;if(s.action==='walk')walkSrc.add(s.src);if(i&&s.plane!==log[i-1].plane)planeMoves++;}
+ console.log('RESULT',JSON.stringify({zone:ZONE,cls,worldMap:log[0].arena,monsters:log[0].monsters,actions,walkFrames:[...walkSrc],planeMoves,first:log[0],errors:errors.slice(0,8)}));
+ const shot=async name=>{const b=await page.screenshot({type:'jpeg',quality:50,clip:{x:0,y:80,width:390,height:600}});console.log('PREVIEW-BEGIN '+name);const t=b.toString('base64');for(let i=0;i<t.length;i+=3000)console.log('B64 '+t.slice(i,i+3000));console.log('PREVIEW-END '+name);};
+ await shot('hunt');
+ const before=await sample();const under=await page.evaluate(()=>{const e=document.elementFromPoint(90,260);return e&&(e.tagName+'.'+(e.className.baseVal??e.className)+' in-arena:'+!!e.closest('.static-arena'));});console.log('UNDER',under);await page.mouse.click(90,260);await page.waitForTimeout(250);const moving=[];for(let i=0;i<30;i++){moving.push((await sample()).action);await page.waitForTimeout(100);}console.log('TAP',JSON.stringify({before:before.plane,after:(await sample()).plane,actions:moving.join(',')}));await shot('tap');
+ await api('/api/game',{type:'run',value:false}).catch(()=>{});await api('/api/account',{logout:true}).catch(()=>{});await browser.close();
+})().catch(e=>{console.error(e);process.exit(1);});

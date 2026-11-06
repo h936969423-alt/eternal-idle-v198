@@ -69,6 +69,11 @@ on:
         required: false
         default: false
         type: boolean
+      browser_zone:
+        description: Play this zone in a phone browser with a new QA account (blank skips)
+        required: false
+        default: ''
+        type: string
 permissions: {}
 jobs:
   inspect:
@@ -80,6 +85,20 @@ jobs:
       DRIVE_FILE_ID: ${{ inputs.drive_file_id }}
       INCLUDE_PATTERNS: ${{ inputs.include_patterns }}
     steps:
+      - uses: actions/checkout@v4
+        if: ${{ inputs.browser_zone != '' }}
+        with:
+          persist-credentials: false
+      - name: Play the test site in a phone browser
+        if: ${{ inputs.browser_zone != '' }}
+        env:
+          WORLD_ZONE: ${{ inputs.browser_zone }}
+        run: |
+          mkdir -p "$RUNNER_TEMP/pw" && cd "$RUNNER_TEMP/pw"
+          npm init -y > /dev/null
+          npm install --no-audit --no-fund playwright@1.54.2
+          cd "$GITHUB_WORKSPACE"
+          CHROME_PATH="$(command -v google-chrome || command -v chromium || command -v chromium-browser)" NODE_PATH="$RUNNER_TEMP/pw/node_modules" node scripts/test-world-browser.cjs
       - name: Check deployed preview assets
         if: ${{ inputs.check_site }}
         run: |
