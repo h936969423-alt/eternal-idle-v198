@@ -1,0 +1,21 @@
+// Landscape HUD check on the isolated test Worker: new QA account, iPhone 13 landscape, hunting on a real world map and in town.
+const {chromium,devices}=require('playwright'),crypto=require('crypto'),path=require('path');
+const BASE='https://eternal-idle-v198-test.h936969423.workers.dev',ZONE=process.env.WORLD_ZONE||'talking_island',cls=process.env.WORLD_CLASS||'knight';
+const allocation=c=>{const out={};let left=c.pts;for(const k of ['str','dex','con','int','wis','cha']){out[k]=Math.min(left,20-c[k]);left-=out[k];}return out;};
+const dump=(name,b)=>{const t=b.toString('base64');console.log('PREVIEW-BEGIN '+name);for(let i=0;i<t.length;i+=3000)console.log('B64 '+t.slice(i,i+3000));console.log('PREVIEW-END '+name);};
+(async()=>{
+ const browser=await chromium.launch({executablePath:process.env.CHROME_PATH||undefined,args:['--no-sandbox']}),context=await browser.newContext({...devices['iPhone 13 landscape']}),page=await context.newPage(),errors=[];
+ page.on('pageerror',e=>errors.push(e.message));page.on('response',r=>{if(r.status()>=400&&r.url().includes('/assets/'))errors.push(r.status()+' '+r.url().replace(BASE,''));});
+ await page.goto(BASE,{waitUntil:'domcontentloaded'});
+ const api=async(p,data)=>{const r=await page.request.post(BASE+p,{data,headers:{Origin:BASE}});const j=await r.json();if(!r.ok())throw Error(p+' '+JSON.stringify(j).slice(0,200));return j;};
+ await api('/api/account',{username:'qa_hud_'+crypto.randomBytes(4).toString('hex'),password:crypto.randomBytes(24).toString('base64url'),register:true});
+ const classes=require(path.resolve('lib/game/classes.json'));const made=await api('/api/game',{type:'create',name:'唉唉',cls,gender:'m',allocation:allocation(classes[cls])});const cid=made.save.active;
+ await api('/api/game',{type:'select',id:cid});await api('/api/game',{type:'zone',zone:ZONE});await api('/api/game',{type:'run',value:true});
+ await page.goto(BASE,{waitUntil:'load'});await page.getByRole('button',{name:'進入遊戲'}).first().click({timeout:30000});await page.waitForSelector('.lhud',{timeout:45000});await page.waitForTimeout(15000);
+ const probe=()=>page.evaluate(()=>{const rect=s=>{const e=document.querySelector(s);if(!e)return null;const r=e.getBoundingClientRect();return [r.x,r.y,r.width,r.height].map(Math.round);};const cv=document.querySelector('.lhud-minimap');let lit=0;if(cv&&cv.width){const d=cv.getContext('2d').getImageData(0,0,cv.width,cv.height).data;for(let i=0;i<d.length;i+=4)if(d[i]+d[i+1]+d[i+2]>120)lit++;}
+  return {viewport:[innerWidth,innerHeight],worldMap:!!document.querySelector('.world-map-arena'),hud:rect('.lhud'),status:rect('.lhud-status'),gold:rect('.lhud-gold'),shortcuts:rect('.lhud-shortcuts'),menu:rect('.eternal-menu-toggle'),place:rect('.lhud-place'),minimap:rect('.lhud-minimap'),minimapShown:cv?getComputedStyle(cv).display!=='none':false,minimapLitPixels:lit,talk:rect('.lhud-talk'),hotbar:rect('.lhud-hotbar'),pad:rect('.lhud-pad'),sprite:rect('.four-player .character-sprite'),name:rect('.four-player>.actor-name'),nameText:document.querySelector('.four-player>.actor-name')?.textContent,oldHeader:!!document.querySelector('.reference-hud')&&getComputedStyle(document.querySelector('.reference-hud')).display};});
+ console.log('HUNT',JSON.stringify(await probe()));dump('hunt',await page.screenshot({type:'jpeg',quality:70}));
+ await api('/api/game',{type:'run',value:false});await api('/api/game',{type:'zone',zone:'town_silver_knight'});await page.reload({waitUntil:'load'});await page.getByRole('button',{name:'進入遊戲'}).first().click({timeout:30000});await page.waitForSelector('.lhud',{timeout:45000});await page.waitForTimeout(8000);
+ console.log('TOWN',JSON.stringify(await page.evaluate(()=>{const r=s=>{const e=document.querySelector(s);if(!e)return null;const b=e.getBoundingClientRect();return [b.x,b.y,b.width,b.height].map(Math.round);};return {viewport:[innerWidth,innerHeight],actor:r('.town-walk-actor'),sprite:r('.town-player-sprite'),name:r('.town-walk-actor>small')};})));dump('town',await page.screenshot({type:'jpeg',quality:70}));
+ console.log('ERRORS',JSON.stringify(errors.slice(0,10)));await browser.close();
+})().catch(e=>{console.error(e);process.exit(1);});

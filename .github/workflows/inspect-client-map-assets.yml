@@ -104,7 +104,7 @@ jobs:
           npm init -y > /dev/null
           npm install --no-audit --no-fund playwright@1.54.2
           cd "$GITHUB_WORKSPACE"
-          CHROME_PATH="$(command -v google-chrome || command -v chromium || command -v chromium-browser)" NODE_PATH="$RUNNER_TEMP/pw/node_modules" node scripts/test-world-browser.cjs
+          CHROME_PATH="$(command -v google-chrome || command -v chromium || command -v chromium-browser)" NODE_PATH="$RUNNER_TEMP/pw/node_modules" node scripts/test-hud-landscape.cjs
       - name: Check deployed preview assets
         if: ${{ inputs.check_site }}
         run: |
