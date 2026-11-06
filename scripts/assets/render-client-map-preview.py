@@ -90,17 +90,17 @@ for rid,label,m,cx,cy in REGIONS:
  objects={}
  for Y,X,l,i,n,g in upper:objects.setdefault(g,[]).append((Y,X,l,i,n))
  strips={}
- for tiles in objects.values():
-  if len(tiles)<6:continue
-  bucket=(max(Y-X//2 for Y,X,*_ in tiles)+SIZE)//2
-  for Y,X,l,i,n in tiles:
+ for parts in objects.values():
+  if len(parts)<6:continue
+  bucket=(max(Y-X//2 for Y,X,*_ in parts)+SIZE)//2
+  for Y,X,l,i,n in parts:
    a,o=X//2,X%2;px=(a+Y)*24+o*24;py=(Y-a)*12+OY
    strips.setdefault((bucket,max(px,0)//CHUNK),[]).append((px,py,l,i,n,Y,X))
  over=[]
- for (bucket,col),tiles in sorted(strips.items()):
-  x0=min(t[0] for t in tiles);y0=min(t[1] for t in tiles);x1=max(t[0] for t in tiles)+24;y1=max(t[1] for t in tiles)+24
+ for (bucket,col),parts in sorted(strips.items()):
+  x0=min(t[0] for t in parts);y0=min(t[1] for t in parts);x1=max(t[0] for t in parts)+24;y1=max(t[1] for t in parts)+24
   strip=Image.new('RGBA',(x1-x0,y1-y0),(0,0,0,0))
-  for px,py,l,i,n,Y,X in sorted(tiles,key=lambda t:(t[5],t[6],t[2])):
+  for px,py,l,i,n,Y,X in sorted(parts,key=lambda t:(t[5],t[6],t[2])):
    try:strip.alpha_composite(tile(n,i),(px-x0,py-y0))
    except(KeyError,ValueError,IndexError,struct.error):pass
   if strip.getbbox() is None:continue
