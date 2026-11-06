@@ -1,0 +1,35 @@
+.character-info-tabs > [role=tablist] {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  width: 100%;
+  background: #18140e;
+  border: 1px solid #91713b;
+}
+.character-info-tabs > [role=tablist] [role=tab][data-state=active] {
+  color: #f3d594;
+  background: #514020;
+}
+.character-info-tabs .character-equipment-grid {
+  grid-template-columns: minmax(0, 1fr) minmax(0, 2fr) minmax(0, 1fr);
+  grid-auto-flow: row dense;
+}
+.character-equipment-portrait {
+  grid-column: 2;
+  grid-row: span 5;
+  display: grid;
+  align-content: center;
+  justify-items: center;
+  gap: 8px;
+  margin: 0;
+  color: #efd293;
+  text-align: center;
+}
+.character-equipment-portrait img {
+  width: min(100%, 150px);
+  max-height: 240px;
+  object-fit: contain;
+}
+.character-info-tabs .character-equipment-grid > .source-eq-slot {
+  min-width: 0;
+  overflow-wrap: anywhere;
+}
