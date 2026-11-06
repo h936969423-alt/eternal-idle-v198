@@ -1388,3 +1388,19 @@ body:has(.game-root) :is(.game-dialog,.bian-dialog) :is([data-slot=dialog-descri
   inset: 0;
   height: 100%;
 }
+
+/* Keep ordinary map monsters on the same baseline as their name and HP. */
+.game-root .battle-scene:not(.world-boss-scene) .world-map-arena .four-monster:not([data-dragon=true]):not([data-dragon-summon=true]) .four-monster-art {
+ align-items: flex-end;
+}
+.game-root .battle-scene:not(.world-boss-scene) .world-map-arena .four-monster:not([data-dragon=true]):not([data-dragon-summon=true]) .four-monster-art > img {
+ object-position: center bottom;
+}
+.game-root .battle-scene:not(.world-boss-scene) .world-map-arena .four-monster:not([data-dragon=true]):not([data-dragon-summon=true]) .four-monster-art > .sequence-art[data-stationary=true] {
+ width: var(--fit-w, var(--frame-w));
+ height: var(--fit-h, var(--frame-h));
+ max-width: none;
+ max-height: none;
+ flex: 0 0 auto;
+ transform: translateY(var(--fit-drop, 0px)) scale(var(--ordinary-monster-scale, 1));
+}
