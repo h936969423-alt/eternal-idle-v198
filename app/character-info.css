@@ -10,12 +10,12 @@
   background: #514020;
 }
 .character-info-tabs .character-equipment-grid {
-  grid-template-columns: minmax(0, 1fr) minmax(0, 2fr) minmax(0, 1fr);
+  grid-template-columns: minmax(0, 1fr) minmax(0, 1.65fr) minmax(0, 1fr) !important;
   grid-auto-flow: row dense;
 }
 .character-equipment-portrait {
   grid-column: 2;
-  grid-row: span 5;
+  grid-row: 1 / span 5;
   display: grid;
   align-content: center;
   justify-items: center;
@@ -59,15 +59,13 @@ body:has(.game-root.map-first-layout) .map-function-dialog.character-info-dialog
   padding: 4px;
   color: #fff1d1;
 }
-@media (orientation: portrait) {
-  body:has(.game-root.map-first-layout.display-portrait) .map-function-dialog.character-info-dialog[data-slot=dialog-content] {
+body:has(.game-root.map-first-layout.display-portrait) .game-dialog.map-function-dialog.character-info-dialog[data-slot=dialog-content] {
     top: max(124px, 29dvh) !important;
     left: max(5px, env(safe-area-inset-left)) !important;
     right: max(5px, env(safe-area-inset-right)) !important;
     bottom: calc(48px + env(safe-area-inset-bottom)) !important;
     width: auto !important;
     max-width: none !important;
-  }
 }
 .character-info-dialog .character-info-tabs > [role=tablist] {
   gap: 5px;
@@ -135,3 +133,24 @@ body:has(.game-root.map-first-layout) .map-function-dialog.character-info-dialog
   background: #1b1a1b;
 }
 .character-info-tabs .character-equipment-grid > .source-eq-slot strong { font-size: 11px; }
+
+.character-info-tabs .character-equipment-grid > .source-eq-slot { position: relative; overflow: visible; }
+.character-info-tabs .character-equipment-grid > .source-eq-slot[aria-pressed=true] { z-index: 1; border-color: #e3be78; }
+.character-equipment-preview {
+  display: grid;
+  gap: 3px;
+  position: absolute;
+  z-index: 2;
+  top: 85%;
+  left: 0;
+  width: clamp(100px, 30vw, 150px);
+  max-height: 110px;
+  overflow: auto;
+  border: 1px solid #80663b;
+  background: #0b0a09f5;
+  padding: 6px;
+  color: #f2e3be;
+  font-size: 11px;
+  text-align: left;
+}
+.character-equipment-grid > .source-eq-slot:nth-of-type(even) .character-equipment-preview { left: auto; right: 0; }
