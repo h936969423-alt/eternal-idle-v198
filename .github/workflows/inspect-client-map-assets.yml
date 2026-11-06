@@ -64,6 +64,11 @@ on:
         required: false
         default: false
         type: boolean
+      render_attack:
+        description: Render 8-direction player attacks and upload them to isolated private R2
+        required: false
+        default: false
+        type: boolean
 permissions: {}
 jobs:
   inspect:
@@ -79,7 +84,7 @@ jobs:
         if: ${{ inputs.check_site }}
         run: |
           base=https://eternal-idle-v198-test.h936969423.workers.dev
-          for path in /assets/client-world/v1/talking_island/manifest.json /assets/client-world/v1/zone_13/manifest.json /assets/client-world/v1/zone_06/manifest.json /assets/client-walk/v1/royal_m/2_0.webp /assets/client-walk/v1/m2773_172x246/sheet.webp /assets/client-walk/v1/knight_2hsword/2_0.webp /assets/client-walk/v1/darkelf_player/6_3.webp /assets/client-map-preview/v1/giran/manifest.json /assets/client-map-preview/v1/giran/4_2.webp /assets/client-map-preview/v1/talking/manifest.json /assets/client-map-preview/v1/gludio/manifest.json; do
+          for path in /assets/client-walk/v1/mage_m/a6_0.webp /assets/client-walk/v1/darkelf_player/i6_0.webp /assets/client-world/v1/talking_island/manifest.json /assets/client-world/v1/zone_13/manifest.json /assets/client-world/v1/zone_06/manifest.json /assets/client-walk/v1/royal_m/2_0.webp /assets/client-walk/v1/m2773_172x246/sheet.webp /assets/client-walk/v1/knight_2hsword/2_0.webp /assets/client-walk/v1/darkelf_player/6_3.webp /assets/client-map-preview/v1/giran/manifest.json /assets/client-map-preview/v1/giran/4_2.webp /assets/client-map-preview/v1/talking/manifest.json /assets/client-map-preview/v1/gludio/manifest.json; do
             code=$(curl -sS -o /tmp/body -w '%{http_code} %{content_type} %{size_download}' "$base$path"); echo "$path $code"; [ "${code%% *}" = 200 ] || exit 1
           done
           curl -sS -o /dev/null -w 'page %{http_code}\n' "$base/map-preview"
@@ -116,6 +121,21 @@ jobs:
           aws --endpoint-url "$endpoint" s3 cp "s3://eternal-idle-v198-test-assets/client-map-source/v1/$sha.tar" source.tar --no-progress --only-show-errors
           echo "$sha  source.tar" | sha256sum -c -
           mkdir -p world-source && tar -xf source.tar -C world-source && rm source.tar
+      - name: Fetch saved player sprites from private R2
+        id: player_spr
+        if: ${{ !inputs.check_site && inputs.render_attack }}
+        working-directory: ${{ runner.temp }}
+        env:
+          AWS_ACCESS_KEY_ID: ${{ secrets.R2_ACCESS_KEY_ID }}
+          AWS_SECRET_ACCESS_KEY: ${{ secrets.R2_SECRET_ACCESS_KEY }}
+          AWS_DEFAULT_REGION: auto
+        run: |
+          if aws --endpoint-url https://9bf17726da5739f20d3e5ec454ae3d91.r2.cloudflarestorage.com s3 cp s3://eternal-idle-v198-test-assets/client-player-spr/v1/spr.tar spr.tar --no-progress --only-show-errors; then
+            mkdir -p sprite-probe && tar -xf spr.tar -C sprite-probe
+            echo "hit=true" >> "$GITHUB_OUTPUT"
+          else
+            echo "hit=false" >> "$GITHUB_OUTPUT"
+          fi
       - name: Validate input and free runner disk
         if: ${{ !inputs.check_site }}
         run: |
@@ -138,14 +158,14 @@ jobs:
           path: ${{ runner.temp }}/source
           key: client-map-source-96877a41-v1
       - name: Download archive
-        if: ${{ !inputs.check_site && ((inputs.scan_monsters && steps.all_sprites.outputs.cache-hit != 'true') || (!inputs.scan_monsters && ((inputs.sprite_probe || inputs.render_walk) && steps.sprite_cache.outputs.cache-hit != 'true')) || (!inputs.render_world && !inputs.scan_monsters && !inputs.sprite_probe && !inputs.render_walk && steps.source_cache.outputs.cache-hit != 'true')) }}
+        if: ${{ !inputs.check_site && ((inputs.render_attack && steps.player_spr.outputs.hit != 'true') || (inputs.scan_monsters && steps.all_sprites.outputs.cache-hit != 'true') || (!inputs.scan_monsters && ((inputs.sprite_probe || inputs.render_walk) && steps.sprite_cache.outputs.cache-hit != 'true')) || (!inputs.render_attack && !inputs.render_world && !inputs.scan_monsters && !inputs.sprite_probe && !inputs.render_walk && steps.source_cache.outputs.cache-hit != 'true')) }}
         working-directory: ${{ runner.temp }}
         run: |
           python3 -m gdown --id "$DRIVE_FILE_ID" -O client.rar
           ls -l client.rar
           sha256sum client.rar
       - name: List archive contents
-        if: ${{ !inputs.check_site && !inputs.render_world && !inputs.render_walk && !inputs.scan_monsters && steps.source_cache.outputs.cache-hit != 'true' }}
+        if: ${{ !inputs.check_site && !inputs.render_attack && !inputs.render_world && !inputs.render_walk && !inputs.scan_monsters && steps.source_cache.outputs.cache-hit != 'true' }}
         working-directory: ${{ runner.temp }}
         run: |
           mkdir -p report
@@ -168,7 +188,7 @@ jobs:
           print(open('report/summary.txt').read())
           PY
       - name: Print index and data file names
-        if: ${{ !inputs.check_site && !inputs.render_world && !inputs.render_walk && !inputs.scan_monsters && steps.source_cache.outputs.cache-hit != 'true' }}
+        if: ${{ !inputs.check_site && !inputs.render_attack && !inputs.render_world && !inputs.render_walk && !inputs.scan_monsters && steps.source_cache.outputs.cache-hit != 'true' }}
         working-directory: ${{ runner.temp }}
         run: |
           unrar lb -c- client.rar > names.txt
@@ -315,6 +335,54 @@ jobs:
           AWS_SECRET_ACCESS_KEY: ${{ secrets.R2_SECRET_ACCESS_KEY }}
           AWS_DEFAULT_REGION: auto
         run: aws --endpoint-url https://9bf17726da5739f20d3e5ec454ae3d91.r2.cloudflarestorage.com s3 sync . s3://eternal-idle-v198-test-assets/client-world/v1/ --no-progress --only-show-errors
+      - name: Extract player sprites without credentials
+        if: ${{ !inputs.check_site && inputs.render_attack && steps.player_spr.outputs.hit != 'true' }}
+        working-directory: ${{ runner.temp }}
+        run: |
+          python3 -m pip install --quiet --break-system-packages 'pillow==11.3.0'
+          set -f
+          unrar x -o+ -inul '-n*/Sprite*.idx' '-n*/Sprite*.pak' client.rar spr-source/ || [ $? -eq 10 ]
+          set +f
+          client_dir="$(dirname "$(find spr-source -maxdepth 3 -name Sprite.idx | head -1)")"
+          python3 "$GITHUB_WORKSPACE/scripts/assets/probe-client-sprites.py" "$client_dir" sprite-probe > /dev/null
+          rm -rf spr-source client.rar
+          tar -cf spr.tar -C sprite-probe spr
+      - name: Save player sprites to private R2
+        if: ${{ !inputs.check_site && inputs.render_attack && steps.player_spr.outputs.hit != 'true' }}
+        working-directory: ${{ runner.temp }}
+        env:
+          AWS_ACCESS_KEY_ID: ${{ secrets.R2_ACCESS_KEY_ID }}
+          AWS_SECRET_ACCESS_KEY: ${{ secrets.R2_SECRET_ACCESS_KEY }}
+          AWS_DEFAULT_REGION: auto
+        run: aws --endpoint-url https://9bf17726da5739f20d3e5ec454ae3d91.r2.cloudflarestorage.com s3 cp spr.tar s3://eternal-idle-v198-test-assets/client-player-spr/v1/spr.tar --no-progress --only-show-errors
+      - name: Restore existing attack sprites from private R2
+        if: ${{ !inputs.check_site && inputs.render_attack }}
+        env:
+          AWS_ACCESS_KEY_ID: ${{ secrets.R2_ACCESS_KEY_ID }}
+          AWS_SECRET_ACCESS_KEY: ${{ secrets.R2_SECRET_ACCESS_KEY }}
+          AWS_DEFAULT_REGION: auto
+        run: |
+          python3 scripts/restore-r2-bundles.py
+          for base in royal_m royal_f; do
+            for kind in attack idle; do
+              mkdir -p "public/assets/sunrise-skills/$base/$kind"
+              curl -fsS -A eternal-idle-asset-check -o "public/assets/sunrise-skills/$base/$kind/0.png" "https://eternal-idle-v198-test.h936969423.workers.dev/assets/sunrise-skills/$base/$kind/0.png"
+            done
+          done
+      - name: Render attacks without credentials
+        if: ${{ !inputs.check_site && inputs.render_attack }}
+        working-directory: ${{ runner.temp }}
+        run: |
+          python3 -m pip install --quiet --break-system-packages 'pillow==11.3.0'
+          python3 "$GITHUB_WORKSPACE/scripts/assets/render-client-attack.py" sprite-probe/spr "$GITHUB_WORKSPACE/public" attack-out
+      - name: Upload attacks to private R2
+        if: ${{ !inputs.check_site && inputs.render_attack }}
+        working-directory: ${{ runner.temp }}/attack-out
+        env:
+          AWS_ACCESS_KEY_ID: ${{ secrets.R2_ACCESS_KEY_ID }}
+          AWS_SECRET_ACCESS_KEY: ${{ secrets.R2_SECRET_ACCESS_KEY }}
+          AWS_DEFAULT_REGION: auto
+        run: aws --endpoint-url https://9bf17726da5739f20d3e5ec454ae3d91.r2.cloudflarestorage.com s3 sync . s3://eternal-idle-v198-test-assets/client-walk/v1/ --no-progress --only-show-errors
       - name: Upload report
         if: ${{ !inputs.check_site }}
         uses: actions/upload-artifact@v4

@@ -24,6 +24,7 @@ export class WorldWalker{
   if(running&&target){const reach=ranged?6:2,distance=Math.hypot(target.a-this.player.a,target.b-this.player.b);if(distance>reach){const to=this.cell(target);this.route(this.player,to,`${to.a},${to.b}`);if(this.player.path.length&&distance-1<reach)this.player.path.length=Math.min(this.player.path.length,1);}else{this.player.path=[];this.player.goal=undefined;}}else{this.player.path=[];this.player.goal=undefined;}
   this.moving=this.advance(this.player,WORLD_PLAYER_SPEED,seconds);if(this.moving)this.direction={da:this.player.a-before.a,db:this.player.b-before.b};
  }
+ facing(targetUid?:string){const t=targetUid?this.monsters.get(targetUid):undefined;return t?{x:(t.a-this.player.a+t.b-this.player.b)*24,y:(t.b-this.player.b-t.a+this.player.a)*12}:undefined;}
  screenDelta(){return {x:(this.direction.da+this.direction.db)*24,y:(this.direction.db-this.direction.da)*12};}
  pixel(m:{a:number;b:number}){return cellCenter(m.a,m.b,this.map.offsetY);}
 }
