@@ -24,7 +24,7 @@ export default function WorldMapLayer({zone,arena,targetUid,running,ranged,onSta
    root.classList.toggle('world-walking',walker.moving);
    const actor=root.querySelector<HTMLElement>('.four-player');if(actor)place(actor,ax,ay,'');
    for(const el of alive){const m=walker.monsters.get(el.dataset.monsterUid||'');if(!m)continue;const p=walker.pixel(m);place(el,ax+(p.x-camera.x)*ZOOM,ay+(p.y-camera.y)*ZOOM,'.four-monster-art');}
-   const delta=walker.screenDelta(),face=walker.facing(chase);playerWalkStore.set({moving:walker.moving,direction:walker.moving?walkDirection(delta.x,delta.y):2,facing:latest.current.running&&face&&!walker.manual?walkDirection(face.x,face.y):2});
+   const delta=walker.screenDelta(),face=walker.facing(chase);playerWalkStore.set({moving:walker.moving,step:Math.floor(walker.walkDistance*3),direction:walker.moving?walkDirection(delta.x,delta.y):2,facing:latest.current.running&&face&&!walker.manual?walkDirection(face.x,face.y):2});
   };
   // Tapping open ground walks there; controls and monsters keep their own taps.
   const tap=(event:MouseEvent)=>{const element=event.target as Element|null;if(element?.closest('button,a,input,select,summary,.four-target,.battle-vitals,[role=button]'))return;const box=root.getBoundingClientRect(),camera=walker.pixel(walker.player);walker.moveTo(pixelCell(camera.x+(event.clientX-box.left-box.width/2)/ZOOM,camera.y+(event.clientY-box.top-box.height*ANCHOR_Y)/ZOOM,map.offsetY));};
