@@ -35,7 +35,7 @@ export async function assetStorageFetch(request: Request, bucket?: Bucket): Prom
   // assets even when the unrelated R2 bucket or legacy index is unavailable.
   if (pathname.startsWith('/assets/four-dragons/') && ['GET', 'HEAD'].includes(request.method)) return null;
   if(pathname.startsWith('/assets/client-walk/')&&['GET','HEAD'].includes(request.method)){
-    const match=/^\/assets\/client-walk\/v1\/([a-z0-9_]+)\/([0-7]_\d+\.webp)$/.exec(pathname);
+    const match=/^\/assets\/client-walk\/v1\/([a-z0-9_]+)\/([0-7]_\d+\.webp|sheet\.webp)$/.exec(pathname);
     if(!match)return new Response('Walk frame not found',{status:404});
     if(!bucket)return new Response('Asset storage unavailable',{status:503});
     try{

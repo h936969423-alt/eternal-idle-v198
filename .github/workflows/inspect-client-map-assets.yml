@@ -69,7 +69,7 @@ jobs:
         if: ${{ inputs.check_site }}
         run: |
           base=https://eternal-idle-v198-test.h936969423.workers.dev
-          for path in /assets/client-walk/v1/knight_2hsword/2_0.webp /assets/client-walk/v1/darkelf_player/6_3.webp /assets/client-map-preview/v1/giran/manifest.json /assets/client-map-preview/v1/giran/4_2.webp /assets/client-map-preview/v1/talking/manifest.json /assets/client-map-preview/v1/gludio/manifest.json; do
+          for path in /assets/client-walk/v1/royal_m/2_0.webp /assets/client-walk/v1/m2773_172x246/sheet.webp /assets/client-walk/v1/knight_2hsword/2_0.webp /assets/client-walk/v1/darkelf_player/6_3.webp /assets/client-map-preview/v1/giran/manifest.json /assets/client-map-preview/v1/giran/4_2.webp /assets/client-map-preview/v1/talking/manifest.json /assets/client-map-preview/v1/gludio/manifest.json; do
             code=$(curl -sS -o /tmp/body -w '%{http_code} %{content_type} %{size_download}' "$base$path"); echo "$path $code"; [ "${code%% *}" = 200 ] || exit 1
           done
           curl -sS -o /dev/null -w 'page %{http_code}\n' "$base/map-preview"
@@ -84,7 +84,7 @@ jobs:
         uses: actions/cache/restore@v4
         with:
           path: ${{ runner.temp }}/sprite-probe
-          key: client-player-sprites-v1
+          key: client-player-sprites-v2
       - name: Validate input and free runner disk
         if: ${{ !inputs.check_site }}
         run: |
@@ -212,20 +212,26 @@ jobs:
         uses: actions/cache/save@v4
         with:
           path: ${{ runner.temp }}/sprite-probe
-          key: client-player-sprites-v1
+          key: client-player-sprites-v2
       - name: Restore existing idle sprites from private R2
         if: ${{ !inputs.check_site && inputs.render_walk }}
         env:
           AWS_ACCESS_KEY_ID: ${{ secrets.R2_ACCESS_KEY_ID }}
           AWS_SECRET_ACCESS_KEY: ${{ secrets.R2_SECRET_ACCESS_KEY }}
           AWS_DEFAULT_REGION: auto
-        run: python3 scripts/restore-r2-bundles.py
+        run: |
+          python3 scripts/restore-r2-bundles.py
+          for base in royal_m royal_f; do
+            mkdir -p "public/assets/sunrise-skills/$base/idle"
+            curl -fsS -A eternal-idle-asset-check -o "public/assets/sunrise-skills/$base/idle/0.png" "https://eternal-idle-v198-test.h936969423.workers.dev/assets/sunrise-skills/$base/idle/0.png"
+          done
       - name: Render walk frames without credentials
         if: ${{ !inputs.check_site && inputs.render_walk }}
         working-directory: ${{ runner.temp }}
         run: |
           python3 -m pip install --quiet --break-system-packages 'pillow==11.3.0'
           python3 "$GITHUB_WORKSPACE/scripts/assets/render-client-walk.py" sprite-probe/spr "$GITHUB_WORKSPACE/public/assets/sprites" walk-out
+          python3 "$GITHUB_WORKSPACE/scripts/assets/render-client-monsters.py" sprite-probe/spr https://eternal-idle-v198-test.h936969423.workers.dev walk-out
       - name: Upload walk frames to private R2
         if: ${{ !inputs.check_site && inputs.render_walk }}
         working-directory: ${{ runner.temp }}/walk-out
