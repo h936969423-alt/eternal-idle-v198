@@ -1243,3 +1243,36 @@ body:has(.game-root) :is(.game-dialog,.bian-dialog) :is([data-slot=dialog-descri
 .game-root.screenshot-layout.map-first-layout.display-landscape .battle-bottom-controls {
  bottom: calc(var(--map-skill-height) + var(--map-nav-height) + 6px);
 }
+
+.game-root.screenshot-layout.map-first-layout.display-landscape .reference-hud .hud-exp {
+ height: 8px;
+ margin-top: 2px;
+}
+.game-root.screenshot-layout.map-first-layout.display-landscape .map-skill-dock {
+ left: auto;
+ right: 8px;
+ width: min(360px, calc(100% - 16px));
+ border-radius: 7px 7px 0 0;
+}
+.game-root.screenshot-layout.map-first-layout.display-landscape .map-skill-dock .quick-magic > button {
+ position: relative;
+ flex: 0 0 44px;
+ min-width: 44px;
+ min-height: 44px;
+ padding: 3px;
+ justify-content: center;
+}
+.game-root.screenshot-layout.map-first-layout.display-landscape .map-skill-dock .skill-cooldown-button > span {
+ font-size: 0;
+}
+.game-root.screenshot-layout.map-first-layout.display-landscape .map-skill-dock .skill-cooldown-button > span > small {
+ display: none;
+}
+.game-root.screenshot-layout.map-first-layout.display-landscape .map-skill-dock .skill-is-cooling .skill-cooldown-seconds {
+ display: block !important;
+ position: absolute;
+ inset: auto 1px 2px;
+ background: #111c;
+ text-align: center;
+ font-size: 9px;
+}
