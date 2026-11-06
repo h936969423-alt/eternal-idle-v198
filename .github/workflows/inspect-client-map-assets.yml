@@ -74,6 +74,11 @@ on:
         required: false
         default: ''
         type: string
+      browser_class:
+        description: Class for the phone browser check
+        required: false
+        default: knight
+        type: string
 permissions: {}
 jobs:
   inspect:
@@ -93,6 +98,7 @@ jobs:
         if: ${{ inputs.browser_zone != '' }}
         env:
           WORLD_ZONE: ${{ inputs.browser_zone }}
+          WORLD_CLASS: ${{ inputs.browser_class }}
         run: |
           mkdir -p "$RUNNER_TEMP/pw" && cd "$RUNNER_TEMP/pw"
           npm init -y > /dev/null

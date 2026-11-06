@@ -56,9 +56,9 @@ def parse(path):
  attr=[[struct.unpack_from('<HH',d,p+(y*64+x)*4) for x in range(64)] for y in range(64)];p+=16384
  g=struct.unpack_from('<i',d,p)[0];p+=4;upper=[]
  for _ in range(g):
-  _,c=struct.unpack_from('<hH',d,p);p+=4
+  gid,c=struct.unpack_from('<hH',d,p);p+=4
   for _ in range(c):
-   x,y,l,i,n,_u=struct.unpack_from('<BBBBhB',d,p);p+=7;upper.append((x,y,l,i,n))
+   x,y,l,i,n,_u=struct.unpack_from('<BBBBhB',d,p);p+=7;upper.append((x,y,l,i,n,gid))
  return ground,attr,upper
 for rid,label,m,cx,cy in REGIONS:
  SIZE=192;W=SIZE*48+48;H=SIZE*24+24;OY=(SIZE-1)*12
@@ -75,24 +75,43 @@ for rid,label,m,cx,cy in REGIONS:
    if not p.exists():continue
    found+=1;ground,attr,up=parse(p);ox,oy=(dx+1)*64,(dy+1)*64
    for x,y,i,n in ground:put(n,i,x+2*ox,y+oy)
-   upper+=[(y+oy,x+2*ox,l,i,n) for x,y,l,i,n in up]
+   upper+=[(y+oy,x+2*ox,l,i,n,(dx,dy,gid)) for x,y,l,i,n,gid in up]
    for a in range(64):
     for b in range(64):
      t1,t2=attr[b][a];edges[ox+a][oy+b]=(t1&1)|((t2&1)<<1)
- for Y,X,l,i,n in sorted(upper,key=lambda r:(r[0],r[1],r[2])):put(n,i,X,Y)
+ for Y,X,l,i,n,_g in sorted(upper,key=lambda r:(r[0],r[1],r[2])):put(n,i,X,Y)
  d=out/rid;d.mkdir(parents=True,exist_ok=True);chunks=[]
  for cyi in range(0,H,CHUNK):
   for cxi in range(0,W,CHUNK):
    c=im.crop((cxi,cyi,min(cxi+CHUNK,W),min(cyi+CHUNK,H)))
    if c.getbbox() is None:continue
    c.save(d/f'{cxi//CHUNK}_{cyi//CHUNK}.webp','WEBP',quality=78,method=4);chunks.append([cxi//CHUNK,cyi//CHUNK])
+ # Tall objects again, grouped by how near the viewer they stand, so actors behind them can be covered.
+ objects={}
+ for Y,X,l,i,n,g in upper:objects.setdefault(g,[]).append((Y,X,l,i,n))
+ strips={}
+ for parts in objects.values():
+  if len(parts)<6:continue
+  bucket=(max(Y-X//2 for Y,X,*_ in parts)+SIZE)//2
+  for Y,X,l,i,n in parts:
+   a,o=X//2,X%2;px=(a+Y)*24+o*24;py=(Y-a)*12+OY
+   strips.setdefault((bucket,max(px,0)//CHUNK),[]).append((px,py,l,i,n,Y,X))
+ over=[]
+ for (bucket,col),parts in sorted(strips.items()):
+  x0=min(t[0] for t in parts);y0=min(t[1] for t in parts);x1=max(t[0] for t in parts)+24;y1=max(t[1] for t in parts)+24
+  strip=Image.new('RGBA',(x1-x0,y1-y0),(0,0,0,0))
+  for px,py,l,i,n,Y,X in sorted(parts,key=lambda t:(t[5],t[6],t[2])):
+   try:strip.alpha_composite(tile(n,i),(px-x0,py-y0))
+   except(KeyError,ValueError,IndexError,struct.error):pass
+  if strip.getbbox() is None:continue
+  strip.save(d/f'o{bucket}_{col}.webp','WEBP',quality=80,method=4);over.append([bucket,col,x0,y0,x1-x0,y1-y0])
  X0=(cx-1-0x7fff)*64+0x7fff-63;Y0=(cy-1-0x7fff)*64+0x7fff-63
  spawn=next(([a,b] for r in range(96) for a in range(96-r,96+r+1) for b in range(96-r,96+r+1) if 0<a<191 and 0<b<191 and not edges[a][b] and not edges[a][b+1]&1 and not edges[a-1][b]&2),[96,96])
- manifest={'id':rid,'label':label,'mapId':m,'cols':SIZE,'rows':SIZE,'originX':X0,'originY':Y0,'width':W,'height':H,'chunk':CHUNK,'chunks':chunks,'offsetY':OY,'spawn':spawn,'edges':[''.join(str(v) for v in col) for col in edges]}
+ manifest={'id':rid,'label':label,'mapId':m,'cols':SIZE,'rows':SIZE,'originX':X0,'originY':Y0,'width':W,'height':H,'chunk':CHUNK,'chunks':chunks,'offsetY':OY,'spawn':spawn,'over':over,'edges':[''.join(str(v) for v in col) for col in edges]}
  (d/'manifest.json').write_text(json.dumps(manifest,ensure_ascii=False,separators=(',',':')))
  small=Image.new('RGB',(W,H),(0,0,0));small.paste(im,(0,0),im);small=small.resize((1100,1100*H//W))
  buf=io.BytesIO();small.save(buf,'JPEG',quality=55);b=base64.b64encode(buf.getvalue()).decode()
- print('REGION',rid,'blocks',found,'chunks',len(chunks),'missing',miss,'KB',sum(f.stat().st_size for f in d.iterdir())//1024,'spawn',spawn,flush=True)
+ print('REGION',rid,'strips',len(over),'blocks',found,'chunks',len(chunks),'missing',miss,'KB',sum(f.stat().st_size for f in d.iterdir())//1024,'spawn',spawn,flush=True)
  print(f'PREVIEW-BEGIN {rid}')
  for i in range(0,len(b),3000):print('B64 '+b[i:i+3000])
  print(f'PREVIEW-END {rid}',flush=True)

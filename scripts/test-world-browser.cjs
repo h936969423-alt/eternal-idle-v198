@@ -1,6 +1,6 @@
 // Plays the isolated test Worker with a newly registered QA account in an iPhone-sized browser.
 const {chromium,devices}=require('playwright'),crypto=require('crypto');
-const BASE='https://eternal-idle-v198-test.h936969423.workers.dev',ZONE=process.env.WORLD_ZONE||'talking_island';
+const CLASS_ENV=process.env.WORLD_CLASS;const BASE='https://eternal-idle-v198-test.h936969423.workers.dev',ZONE=process.env.WORLD_ZONE||'talking_island';
 const username='qa_walk_'+crypto.randomBytes(4).toString('hex'),password=crypto.randomBytes(24).toString('base64url');
 const allocation=c=>{const out={};let left=c.pts;for(const k of ['str','dex','con','int','wis','cha']){out[k]=Math.min(left,20-c[k]);left-=out[k];}return out;};
 (async()=>{
@@ -23,6 +23,7 @@ const allocation=c=>{const out={};let left=c.pts;for(const k of ['str','dex','co
  console.log('RESULT',JSON.stringify({zone:ZONE,cls,worldMap:log[0].arena,monsters:log[0].monsters,actions,walkFrames:[...walkSrc],planeMoves,first:log[0],errors:errors.slice(0,8)}));
  const shot=async name=>{const b=await page.screenshot({type:'jpeg',quality:50,clip:{x:0,y:80,width:390,height:600}});console.log('PREVIEW-BEGIN '+name);const t=b.toString('base64');for(let i=0;i<t.length;i+=3000)console.log('B64 '+t.slice(i,i+3000));console.log('PREVIEW-END '+name);};
  await shot('hunt');
- const before=await sample();const under=await page.evaluate(()=>{const e=document.elementFromPoint(90,260);return e&&(e.tagName+'.'+(e.className.baseVal??e.className)+' in-arena:'+!!e.closest('.static-arena'));});console.log('UNDER',under);await page.mouse.click(90,260);await page.waitForTimeout(250);const moving=[];for(let i=0;i<30;i++){moving.push((await sample()).action);await page.waitForTimeout(100);}console.log('TAP',JSON.stringify({before:before.plane,after:(await sample()).plane,actions:moving.join(',')}));await shot('tap');
+ const spot=await page.evaluate(()=>{const box=document.querySelector('.static-arena').getBoundingClientRect();for(let y=box.top+box.height*.8;y>box.top+90;y-=25)for(let x=box.left+30;x<box.right-30;x+=30){const e=document.elementFromPoint(x,y);if(e&&!e.closest('button,a,input,select,summary,.battle-vitals,.sequence-art'))return {x,y,tag:e.tagName+'.'+(e.className.baseVal??e.className)};}return null;});console.log('UNDER',JSON.stringify(spot));const before=await sample();await page.mouse.click(spot.x,spot.y);await page.waitForTimeout(250);const moving=[];for(let i=0;i<30;i++){moving.push((await sample()).action);await page.waitForTimeout(100);}console.log('TAP',JSON.stringify({before:before.plane,after:(await sample()).plane,actions:moving.join(',')}));await shot('tap');
+ console.log('COVER',await page.evaluate(()=>document.querySelectorAll('.world-map-over img').length));await page.waitForTimeout(6000);await shot('late');
  await api('/api/game',{type:'run',value:false}).catch(()=>{});await api('/api/account',{logout:true}).catch(()=>{});await browser.close();
 })().catch(e=>{console.error(e);process.exit(1);});
