@@ -9,6 +9,7 @@ import type {BattleView} from './use-combat-replay';
 import {skillReadyAt} from '@/lib/game/skill-cooldown';
 import {hotbarItemAction,nextTargetSlot,placeInHotbar,resolveHotbar,selfHealSkill,type HotbarSlot} from '@/lib/game/hotbar';
 import LandscapeMinimap from './landscape-minimap';
+import {useNameOnHead} from './name-on-head';
 import './landscape-hud.css';
 const items=raw.items as Record<string,{n:string;type?:string;eff?:string}>,skills=raw.skills as Record<string,{n:string;type?:string;mp?:number}>;
 type Icon=(name:string,group:'items'|'skills',size:number,itemId?:string)=>ReactNode;
@@ -59,6 +60,7 @@ function ActionPad({c,view,castable,busy,act}:{c:Character;view:BattleView;casta
 }
 
 export default function LandscapeHud({c,view,maxHp,maxMp,ac,mr,avatar,nameColor,zoneLabel,inTown,castable,busy,act,icon,serverOffset,openPanel,openCharacter,xpPct}:{xpPct:number;c:Character;view:BattleView;maxHp:number;maxMp:number;ac:number;mr:number;avatar:string;nameColor:string;zoneLabel:string;inTown:boolean;castable:string[];busy:boolean;act:Act;icon:Icon;serverOffset:number;openPanel:(tab:string)=>void;openCharacter:()=>void}){
+ useNameOnHead(true);
  return <div className="lhud">
   <section className="lhud-status" aria-label="角色狀態">
    <button type="button" className="lhud-avatar" aria-label="角色配置" onClick={openCharacter}><img src={avatar} alt=""/><b>{c.lv}</b></button>

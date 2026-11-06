@@ -79,3 +79,5 @@
 .hud-b .static-arena:not(.world-map-arena) .four-monsters{top:60px!important;bottom:64px!important;height:auto!important}
 .hud-b .map-top-status:has(.no-active-status){display:none!important}
 .hud-b .static-arena>p[role=status]{bottom:auto!important;top:96px!important;right:50%!important;transform:translateX(50%)}
+/* Measured head position (name-on-head.ts) replaces the box-top fallback above. */
+.game-root.display-landscape.hud-b .four-player>.actor-name[data-on-head],.hud-b .town-walk-actor>small[data-on-head]{top:var(--name-top)!important;left:var(--name-left)!important;bottom:auto!important;transform:translateX(-50%)!important}
