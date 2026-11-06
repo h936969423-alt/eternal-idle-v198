@@ -1221,3 +1221,25 @@ body:has(.game-root) :is(.game-dialog,.bian-dialog) :is([data-slot=dialog-descri
   overflow-wrap:anywhere;
  }
 }
+
+/* Landscape keeps the map visible behind its floating controls. */
+.game-root.screenshot-layout.map-first-layout.display-landscape {
+ --map-nav-height: env(safe-area-inset-bottom);
+ --map-log-height: 0px;
+ --map-skill-height: 50px;
+}
+.game-root.screenshot-layout.map-first-layout.display-landscape > .reference-hud {
+ min-height: 44px !important;
+}
+.game-root.screenshot-layout.map-first-layout.display-landscape .main-panel {
+ padding-bottom: 0 !important;
+}
+.game-root.screenshot-layout.map-first-layout.display-landscape:has(.eternal-combat-menu) .main-nav {
+ display: none !important;
+}
+.game-root.screenshot-layout.map-first-layout.display-landscape .map-skill-dock {
+ background: #17181ad9;
+}
+.game-root.screenshot-layout.map-first-layout.display-landscape .battle-bottom-controls {
+ bottom: calc(var(--map-skill-height) + var(--map-nav-height) + 6px);
+}
