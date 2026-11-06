@@ -1,3 +1,5 @@
+ tsconfig.tsbuildinfo | 2 +-
+ 2 files changed, 2 insertions(+), 2 deletions(-)
 @import "tailwindcss";
 @import "tw-animate-css";
 @theme inline { --color-background:var(--background); --color-foreground:var(--foreground); --color-card:var(--card); --color-card-foreground:var(--foreground); --color-popover:var(--popover); --color-popover-foreground:var(--foreground); --color-primary:var(--primary); --color-primary-foreground:var(--primary-foreground); --color-muted:var(--muted); --color-muted-foreground:var(--muted-foreground); --color-accent:var(--accent); --color-accent-foreground:var(--foreground); --color-border:var(--border); --color-input:var(--input); --color-ring:var(--primary); --color-destructive:#ce6f6d; --radius-sm:4px; --radius-md:6px; --radius-lg:8px; }
@@ -1290,7 +1292,7 @@ body:has(.game-root) :is(.game-dialog,.bian-dialog) :is([data-slot=dialog-descri
  --map-exp-height:18px;
  --map-skill-height:48px;
 }
-.game-root.screenshot-layout.map-first-layout.display-landscape .reference-hud .hud-exp{display:none}
+.game-root.screenshot-layout.map-first-layout.display-landscape .reference-hud .hud-exp{display:none!important}
 .game-root.screenshot-layout.map-first-layout.display-landscape .map-top-status{
  top:56px;left:8px;right:auto;width:min(208px,58%);max-height:56px;
 }
