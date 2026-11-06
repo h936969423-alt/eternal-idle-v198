@@ -94,10 +94,12 @@ jobs:
         env:
           WORLD_ZONE: ${{ inputs.browser_zone }}
         run: |
-          npm init -y >/dev/null
-          npm install --no-save --silent playwright@1.54.2
-          npx playwright install --with-deps chromium >/dev/null
-          node scripts/test-world-browser.cjs
+          mkdir -p "$RUNNER_TEMP/pw" && cd "$RUNNER_TEMP/pw"
+          npm init -y > /dev/null
+          npm install --no-audit --no-fund playwright@1.54.2
+          npx playwright install --with-deps chromium > /dev/null
+          cd "$GITHUB_WORKSPACE"
+          NODE_PATH="$RUNNER_TEMP/pw/node_modules" node scripts/test-world-browser.cjs
       - name: Check deployed preview assets
         if: ${{ inputs.check_site }}
         run: |
