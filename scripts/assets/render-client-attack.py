@@ -12,6 +12,20 @@ def load(g,fid):
  p=spr_dir/f'{g}-{fid}.spr'
  try:return spr.decode(p) if p.exists() else None
  except Exception:return None
+# Action survey: frame counts for direction 2 by action, plus one contact sheet per graphic.
+for gfx in sorted({v[0] for v in BASES.values()}|{2796}):
+ row=[]
+ for a in range(72):
+  d=load(gfx,a*8+2)
+  if d:row.append((a,len(d[0]),d[0][len(d[0])//2]))
+ print('ACTIONS',gfx,[(a,n) for a,n,_ in row],flush=True)
+ if gfx in (734,2786,61,37):
+  w=Image.new('RGB',(100*10,110*(len(row)//10+1)),(52,64,52))
+  for i,(a,n,f) in enumerate(row):
+   t=f.copy();t.thumbnail((98,108));w.paste(t,(i%10*100,i//10*110),t)
+  b0=io.BytesIO();w.save(b0,'JPEG',quality=55);b1=base64.b64encode(b0.getvalue()).decode();print(f'PREVIEW-BEGIN gfx{gfx}')
+  for i in range(0,len(b1),3000):print('B64 '+b1[i:i+3000])
+  print(f'PREVIEW-END gfx{gfx}',flush=True)
 manifest={};sheet=Image.new('RGB',(150*7,160*len(BASES)),(52,64,52))
 for row,(base,(g,actions)) in enumerate(BASES.items()):
  paths=[public/p.lstrip('/') for p in frames_map.get(base+'/attack',[])];paths=[p for p in paths if p.exists()]
