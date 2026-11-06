@@ -5,8 +5,8 @@ from PIL import Image
 spr_dir,public,out=map(pathlib.Path,sys.argv[1:4]);out.mkdir(parents=True,exist_ok=True)
 root=pathlib.Path(__file__).resolve();spec=importlib.util.spec_from_file_location('spr',root.parents[1]/'convert-dasu-spr.py');spr=importlib.util.module_from_spec(spec);spec.loader.exec_module(spr)
 frames_map=json.loads((root.parents[2]/'lib/game/asset-map.json').read_text())['frames']
-# Block numbers differ per graphic, so these were read off labelled contact sheets: (gfx, walk, attack, idle).
-BASES={'knight_2hsword':(61,3,4,3),'knight_f':(48,3,4,3),'elf_m_melee':(138,4,5,7),'elf_m_ranged':(138,18,19,21),'elf_f_melee':(37,3,4,3),'elf_f_ranged':(37,15,16,15),'mage_m':(734,22,26,23),'mage_f':(1186,23,26,22),'royal_m':(0,3,22,3),'royal_f':(1,18,20,18),'darkelf_player':(2786,23,25,24)}
+# Block numbers differ per graphic, so these were read off labelled contact sheets: (gfx, walk, attack, idle, hurt, death).
+BASES={'knight_2hsword':(61,3,4,3,5,6),'knight_f':(48,3,4,3,5,6),'elf_m_melee':(138,4,5,7,6,8),'elf_m_ranged':(138,18,19,21,20,8),'elf_f_melee':(37,3,4,3,5,6),'elf_f_ranged':(37,15,16,15,17,6),'mage_m':(734,22,26,23,25,6),'mage_f':(1186,23,26,22,25,6),'royal_m':(0,3,22,3,23,2),'royal_f':(1,18,20,18,19,2),'darkelf_player':(2786,23,25,24,26,10)}
 def load(g,fid):
  p=spr_dir/f'{g}-{fid}.spr'
  try:return spr.decode(p) if p.exists() else None
@@ -17,10 +17,10 @@ def existing(base,kind):
 def transform(ref,frames,left,top):
  rb,cb=ref.getbbox(),frames[0].getbbox();scale=max(.7,min(1.6,(rb[3]-rb[1])/max(1,cb[3]-cb[1])));return scale,(rb[0]+rb[2])/2-scale*(left+(cb[0]+cb[2])/2),rb[3]-scale*(top+cb[3])
 manifest={};sheet=Image.new('RGB',(130*8,150*len(BASES)),(52,64,52))
-for row,(base,(g,walk,attack,idle)) in enumerate(BASES.items()):
+for row,(base,(g,walk,attack,idle,hurt,death)) in enumerate(BASES.items()):
  ref_a,ref_i=existing(base,'attack'),existing(base,'idle')
  if not ref_a or not ref_i:print('SKIP',base,len(ref_a),len(ref_i));continue
- d=out/base;d.mkdir(exist_ok=True);result={'gfx':g,'walkBlock':walk,'attackBlock':attack,'idleBlock':idle,'walk':{},'attack':{},'idle':{}};samples={}
+ d=out/base;d.mkdir(exist_ok=True);result={'gfx':g,'walkBlock':walk,'attackBlock':attack,'idleBlock':idle,'walk':{},'attack':{},'idle':{},'hurt':{},'death':{}};samples={}
  base_a=load(g,attack*8+2);base_i=load(g,idle*8+2)
  if not base_a or not base_i:print('SKIP',base,'blocks');continue
  ta=transform(ref_a[0],*base_a);ti=transform(ref_i[0],*base_i);result['attackCanvas']=list(ref_a[0].size);result['idleCanvas']=list(ref_i[0].size);result['attackScale']=round(ta[0],3)
@@ -31,10 +31,12 @@ for row,(base,(g,walk,attack,idle)) in enumerate(BASES.items()):
   for i,im in enumerate(images):
    r=im.resize((max(1,round(im.width*t[0])),max(1,round(im.height*t[0]))),Image.LANCZOS);c=Image.new('RGBA',canvas);c.paste(r,(round(t[0]*l+t[1]),round(t[0]*top+t[2])),r);c.save(d/f'{prefix}{direction}_{i}.webp','WEBP',quality=85,method=4);out_frames.append(c)
   return out_frames
+ hurt_frames={};death_frames={}
  for direction in range(8):
-  samples[direction]=write('attack','a',attack,direction,ref_a[0].size,ta);write('walk','',walk,direction,ref_i[0].size,ti);write('idle','i',idle,direction,ref_i[0].size,ti,1 if idle==walk else None)
+  samples[direction]=write('attack','a',attack,direction,ref_a[0].size,ta);write('walk','',walk,direction,ref_i[0].size,ti);write('idle','i',idle,direction,ref_i[0].size,ti,1 if idle==walk else None);hurt_frames[direction]=write('hurt','h',hurt,direction,ref_i[0].size,ti);death_frames[direction]=write('death','d',death,direction,ref_i[0].size,ti)
  manifest[base]=result;print('BASE',base,'attack frames',result['attack'].get('2'),'walk',result['walk'].get('2'),'idle',result['idle'].get('2'),'existing attack',len(ref_a),ref_a[0].size,flush=True)
- cells=[ref_a[len(ref_a)//2]]+[samples[k][len(samples[k])//2] if samples.get(k) else None for k in (2,0,1,3,4,5,6)]
+ idle_view=load(g,idle*8+2)[0][0].copy() if load(g,idle*8+2) else None
+ cells=[ref_i[0],ref_a[len(ref_a)//2],samples[2][len(samples[2])//2] if samples.get(2) else None,samples[6][len(samples[6])//2] if samples.get(6) else None,idle_view,hurt_frames[2][0] if hurt_frames.get(2) else None,death_frames[2][-1] if death_frames.get(2) else None]
  for x,im in enumerate(cells):
   if im:
    t=im.copy();t.thumbnail((128,148));sheet.paste(t,(x*130,row*150),t)
