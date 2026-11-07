@@ -33,14 +33,17 @@ export default function FieldWalkDriver({arena,enabled,targetUid,running,ranged,
    const actor=root.querySelector<HTMLElement>('.four-player');if(actor)place(actor,walker.pixel(walker.player));
    for(const [i,el] of monsters.entries()){
     const m=walker.monsters.get(ids[i]);if(!m)continue;
-    el.dataset.gridMoving=String(!!m.moving);place(el,walker.pixel(m));
+    el.dataset.gridMoving=String(!!m.moving);
+    el.dataset.gridDistance=String(m.walkDistance||0);
+    const da=m.moving?(m.da||0):walker.player.a-m.a,db=m.moving?(m.db||0):walker.player.b-m.b;
+    if(da||db)el.dataset.gridDirection=String(walkDirection((da+db)*24,(db-da)*12));place(el,walker.pixel(m));
    }
    const direction=walker.moving?walker.screenDelta():running?walker.facing(targetUid):undefined;
    if(direction&&(direction.x||direction.y))heading=walkDirection(direction.x,direction.y);
    playerWalkStore.set({moving:walker.moving,direction:heading,facing:heading,step:Math.floor(walker.walkDistance*4)});
   };
   frame=requestAnimationFrame(tick);
-  return()=>{cancelAnimationFrame(frame);for(const el of offsets.keys()){delete el.dataset.gridMoving;el.style.removeProperty('--walk-x');el.style.removeProperty('--walk-y');}playerWalkStore.set({moving:false,direction:2,facing:2});};
+  return()=>{cancelAnimationFrame(frame);for(const el of offsets.keys()){delete el.dataset.gridMoving;delete el.dataset.gridDistance;delete el.dataset.gridDirection;el.style.removeProperty('--walk-x');el.style.removeProperty('--walk-y');}playerWalkStore.set({moving:false,direction:2,facing:2});};
  },[arena,enabled,identity]);
  return null;
 }

@@ -34,3 +34,19 @@ test('selected monsters close one grid cell at a time while stationary monsters 
  assert.equal(Math.max(Math.abs(mobile.a-w.player.a),Math.abs(mobile.b-w.player.b)),1);
  assert.deepEqual({a:fixed.a,b:fixed.b},start);
 });
+test('monster animation phase follows its movement distance and stops with the actor',()=>{
+ const w=new WorldWalker(open());
+ w.monsters.set('m',{a:22,b:20,home:{a:22,b:20},path:[{a:23,b:21}],nextWander:Infinity});
+ const intervals=new Map([['m',480]]);
+ w.tick(['m'],undefined,false,false,1,.12,640,intervals);
+ const m=w.monsters.get('m');
+ assert.equal(m.walkDistance,.25);
+ assert.equal(m.da,1);
+ assert.equal(m.db,1);
+ w.tick(['m'],undefined,false,false,2,.12,640,intervals);
+ assert.equal(m.walkDistance,.5);
+ w.tick(['m'],undefined,false,false,3,.24,640,intervals);
+ w.tick(['m'],undefined,false,false,4,.01,640,intervals);
+ assert.equal(m.moving,false);
+ assert.equal(m.walkDistance,0);
+});

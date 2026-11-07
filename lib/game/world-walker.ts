@@ -3,7 +3,7 @@ import {canStep,cellCenter,findMapPath,type ClientMapGrid,type MapCell} from './
 export const STEP_381_MS=640;
 const DIRECTIONS=[[0,-1],[1,-1],[1,0],[1,1],[0,1],[-1,1],[-1,0],[-1,-1]];
 export type WorldManifest=ClientMapGrid&{id:string;width:number;height:number;chunk:number;chunks:[number,number][];offsetY:number;spawn:[number,number];over?:[number,number,number,number,number,number][]};
-type Mover={a:number;b:number;path:MapCell[];goal?:string;nextWander?:number;moving?:boolean};
+type Mover={a:number;b:number;path:MapCell[];goal?:string;nextWander?:number;moving?:boolean;walkDistance?:number;da?:number;db?:number};
 export const WORLD_MANUAL_REST=1.5,WORLD_MELEE_REACH=1.5,WORLD_BOW_REACH=6;
 function hash(text:string){let h=2166136261;for(let i=0;i<text.length;i++){h^=text.charCodeAt(i);h=Math.imul(h,16777619);}return h>>>0;}
 /** Cells reachable from a start, up to a limit. */
@@ -14,7 +14,7 @@ export class WorldWalker{
  readonly map:WorldManifest;player:Mover;monsters=new Map<string,Mover&{home:MapCell}>();direction={da:0,db:0};moving=false;walkDistance=0;manual=false;aim?:string;private manualRest=0;private ground:MapCell[];
  constructor(map:WorldManifest){this.map=map;const spawn=pickSpawn(map);this.player={...spawn,path:[]};this.ground=reachable(map,spawn,6000);}
  private cellFor(uid:string){const seed=hash(uid),near=this.ground.filter(c=>{const d=Math.max(Math.abs(c.a-this.player.a),Math.abs(c.b-this.player.b));return d>=3&&d<=5;}),clear=near.filter(c=>[[1,0],[-1,0],[0,1],[0,-1],[1,1],[1,-1],[-1,1],[-1,-1]].every(([da,db])=>canStep(this.map,c.a,c.b,da,db))),pool=clear.length?clear:near.length?near:this.ground;return pool[seed%pool.length];}
- private advance(m:Mover,speed:number,seconds:number,byTile=false){let left=speed*seconds,moved=false;while(left>0&&m.path.length){const n=m.path[0],dx=n.a-m.a,dy=n.b-m.b,len=byTile?Math.max(Math.abs(dx),Math.abs(dy)):Math.hypot(dx,dy);if(m===this.player&&len>0){this.walkDistance+=Math.min(left,len);this.direction={da:dx,db:dy};}if(len<=left){m.a=n.a;m.b=n.b;left-=len;m.path.shift();moved=true;}else{m.a+=dx/len*left;m.b+=dy/len*left;left=0;moved=true;}}return moved;}
+ private advance(m:Mover,speed:number,seconds:number,byTile=false){let left=speed*seconds,moved=false;while(left>0&&m.path.length){const n=m.path[0],dx=n.a-m.a,dy=n.b-m.b,len=byTile?Math.max(Math.abs(dx),Math.abs(dy)):Math.hypot(dx,dy);if(len>0){m.walkDistance=(m.walkDistance||0)+Math.min(left,len);m.da=dx;m.db=dy;}if(m===this.player&&len>0){this.walkDistance+=Math.min(left,len);this.direction={da:dx,db:dy};}if(len<=left){m.a=n.a;m.b=n.b;left-=len;m.path.shift();moved=true;}else{m.a+=dx/len*left;m.b+=dy/len*left;left=0;moved=true;}}return moved;}
  private cell(m:Mover):MapCell{return {a:Math.round(m.a),b:Math.round(m.b)};}
  private route(m:Mover,to:MapCell,goal:string){if(m.goal===goal)return;m.goal=goal;const next=m.path[0];m.path=next?[next,...findMapPath(this.map,next,to,6000)]:findMapPath(this.map,this.cell(m),to,6000);}
  /** Stops at the next cell, so an actor never ends a move between two cells across a wall. */
@@ -44,7 +44,7 @@ export class WorldWalker{
      }
     }
    }
-   m.moving=this.advance(m,1000/ms,seconds,true);
+   m.moving=this.advance(m,1000/ms,seconds,true);if(!m.moving)m.walkDistance=0;
   }
   const target=targetUid?this.monsters.get(targetUid):undefined;
   if(this.manual){if(!this.player.path.length){this.player.goal=undefined;this.manualRest+=seconds;if(this.manualRest>=WORLD_MANUAL_REST)this.manual=false;}}

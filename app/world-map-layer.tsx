@@ -28,7 +28,10 @@ export default function WorldMapLayer({zone,arena,targetUid,running,ranged,playe
    const row=Math.round(walker.player.b-walker.player.a),left=camera.x-ax/ZOOM,right=camera.x+(box.width-ax)/ZOOM,top=camera.y-ay/ZOOM,bottom=camera.y+(box.height-ay)/ZOOM,covering=(map.over||[]).filter(([bucket,,x,y,w,h])=>stripCovers(bucket,map.cols,row)&&x<right&&x+w>left&&y<bottom&&y+h>top),coverKey=covering.map(strip=>`${strip[0]}_${strip[1]}`).join();if(coverKey!==coverShown){coverShown=coverKey;setStrips(covering);}
    root.classList.toggle('world-walking',walker.moving);
    const actor=root.querySelector<HTMLElement>('.four-player');if(actor)place(actor,ax+(player.x-camera.x)*ZOOM,ay+(player.y-camera.y)*ZOOM,'');
-   for(const el of alive){const m=walker.monsters.get(el.dataset.monsterUid||'');if(!m)continue;el.dataset.gridMoving=String(!!m.moving);const p=walker.pixel(m);place(el,ax+(p.x-camera.x)*ZOOM,ay+(p.y-camera.y)*ZOOM,'.four-monster-art');}
+   for(const el of alive){const m=walker.monsters.get(el.dataset.monsterUid||'');if(!m)continue;el.dataset.gridMoving=String(!!m.moving);
+    el.dataset.gridDistance=String(m.walkDistance||0);
+    const da=m.moving?(m.da||0):walker.player.a-m.a,db=m.moving?(m.db||0):walker.player.b-m.b;
+    if(da||db)el.dataset.gridDirection=String(walkDirection((da+db)*24,(db-da)*12));const p=walker.pixel(m);place(el,ax+(p.x-camera.x)*ZOOM,ay+(p.y-camera.y)*ZOOM,'.four-monster-art');}
    const delta=walker.screenDelta(),face=walker.facing(chase);if(walker.moving)heading=walkDirection(delta.x,delta.y);
    else if(latest.current.running&&face&&!walker.manual&&(face.x||face.y))heading=walkDirection(face.x,face.y);
    playerWalkStore.set({moving:walker.moving,step:Math.floor(walker.walkDistance*4),direction:heading,facing:heading});
@@ -39,7 +42,7 @@ export default function WorldMapLayer({zone,arena,targetUid,running,ranged,playe
   worldCombatGate.current={blocks:uid=>walker.blocks(uid,latest.current.ranged),aim:uid=>{walker.aim=uid;}};
   worldMinimap.current={zone,map,walker,base:`${BASE}${zone}/`};
   frame=requestAnimationFrame(tick);
-  return()=>{if(worldMinimap.current?.walker===walker)worldMinimap.current=null;worldCombatGate.current=null;root.removeEventListener('click',tap);root.classList.remove('world-walking');cancelAnimationFrame(frame);playerWalkStore.set({moving:false,direction:2,facing:2});root.querySelectorAll<HTMLElement>('.four-player,.four-monster').forEach(el=>{delete el.dataset.gridMoving;el.style.removeProperty('--walk-x');el.style.removeProperty('--walk-y');});};
+  return()=>{if(worldMinimap.current?.walker===walker)worldMinimap.current=null;worldCombatGate.current=null;root.removeEventListener('click',tap);root.classList.remove('world-walking');cancelAnimationFrame(frame);playerWalkStore.set({moving:false,direction:2,facing:2});root.querySelectorAll<HTMLElement>('.four-player,.four-monster').forEach(el=>{delete el.dataset.gridMoving;delete el.dataset.gridDistance;delete el.dataset.gridDirection;el.style.removeProperty('--walk-x');el.style.removeProperty('--walk-y');});};
  },[map,arena]);
  if(!map)return null;
  return <><div className="world-map-over" aria-hidden="true"><div ref={overPlane} className="world-map-plane">{strips.map(([bucket,col,x,y])=><img key={`${bucket}-${col}`} src={`${BASE}${zone}/o${bucket}_${col}.webp`} alt="" draggable={false} style={{left:x,top:y}}/>)}</div></div><div className="world-map-layer" aria-hidden="true"><div ref={plane} className="world-map-plane">{cells.map(([x,y])=><img key={`${x}-${y}`} src={`${BASE}${zone}/${x}_${y}.webp`} alt="" draggable={false} style={{left:x*map.chunk,top:y*map.chunk}}/>)}</div></div></>;
