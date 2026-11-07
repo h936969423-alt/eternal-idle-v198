@@ -1,0 +1,89 @@
+name: Inspect L1Justice client
+# Data-only inventory of the public L1Justice client download
+# (https://l1justice.com/lineage/download/). No secrets, read-only token.
+# The archive is listed and its .idx/.pak indexes are parsed; nothing inside it
+# is executed and executables are never extracted.
+on:
+  workflow_dispatch:
+  pull_request:
+    branches: [main]
+    paths:
+      - '.github/workflows/inspect-l1justice-client.yml'
+      - 'scripts/assets/inventory-client-paks.py'
+permissions:
+  contents: read
+jobs:
+  inventory:
+    runs-on: ubuntu-latest
+    timeout-minutes: 60
+    env:
+      CLIENT_URL: https://www.l1justice.com/static/Lineage_Justice.zip
+      TEXT_URL: http://updates.l1justice.com/Text.zip
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          persist-credentials: false
+      - name: Free runner disk
+        run: |
+          sudo rm -rf /usr/share/dotnet /usr/local/lib/android /opt/ghc /opt/hostedtoolcache/CodeQL
+          df -h "$RUNNER_TEMP"
+      - name: Download client archives
+        working-directory: ${{ runner.temp }}
+        run: |
+          mkdir -p report
+          curl -fL --retry 3 --retry-delay 10 -A eternal-idle-asset-inventory -o client.zip "$CLIENT_URL"
+          ls -l client.zip
+          sha256sum client.zip | tee report/client-sha256.txt
+          if curl -fL --retry 2 -A eternal-idle-asset-inventory -o text.zip "$TEXT_URL"; then
+            sha256sum text.zip | tee report/text-sha256.txt
+          else
+            echo "::warning::Text.zip could not be downloaded"; rm -f text.zip
+          fi
+      - name: List archive contents
+        working-directory: ${{ runner.temp }}
+        run: |
+          python3 - <<'PY'
+          import collections, zipfile
+          out = open('report/archive-list.tsv', 'w', encoding='utf-8')
+          out.write('archive\tname\tbytes\n')
+          for arc in ('client.zip', 'text.zip'):
+              try:
+                  z = zipfile.ZipFile(arc)
+              except FileNotFoundError:
+                  continue
+              ext = collections.Counter(); size = collections.Counter(); top = collections.Counter()
+              for i in z.infolist():
+                  if i.is_dir():
+                      continue
+                  out.write(f'{arc}\t{i.filename}\t{i.file_size}\n')
+                  base = i.filename.rsplit('/', 1)[-1]
+                  e = base.rsplit('.', 1)[-1].lower() if '.' in base else '(none)'
+                  ext[e] += 1; size[e] += i.file_size
+                  parts = i.filename.split('/')
+                  top['/'.join(parts[:2]) if len(parts) > 2 else parts[0]] += 1
+              with open('report/summary.txt', 'a', encoding='utf-8') as f:
+                  f.write(f'== {arc}: {sum(ext.values())} files, {sum(size.values()) / 1e6:.1f} MB\nBy extension\n')
+                  for e, n in size.most_common(40):
+                      f.write(f'{e}\t{ext[e]} files\t{n / 1e6:.1f} MB\n')
+                  f.write('By folder\n')
+                  for k, n in top.most_common(40):
+                      f.write(f'{k}\t{n} files\n')
+          print(open('report/summary.txt', encoding='utf-8').read())
+          PY
+      - name: Extract index and data files only
+        working-directory: ${{ runner.temp }}
+        run: |
+          mkdir -p client
+          unzip -q -o client.zip -x '*.exe' '*.dll' '*.bat' '*.cmd' '*.ps1' '*.scr' '*.msi' '*.sys' '*.vbs' '*.js' -d client
+          if [ -f text.zip ]; then mkdir -p text && unzip -q -o text.zip -x '*.exe' '*.dll' -d text; fi
+          rm -f client.zip text.zip
+          du -sh client text 2>/dev/null || true
+      - name: Inventory .idx/.pak indexes
+        working-directory: ${{ runner.temp }}
+        run: python3 -I "$GITHUB_WORKSPACE/scripts/assets/inventory-client-paks.py" . report
+      - name: Upload report
+        uses: actions/upload-artifact@v4
+        with:
+          name: l1justice-client-inventory
+          path: ${{ runner.temp }}/report
+          retention-days: 14
