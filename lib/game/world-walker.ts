@@ -13,26 +13,27 @@ export class WorldWalker{
  readonly map:WorldManifest;player:Mover;monsters=new Map<string,Mover&{home:MapCell}>();direction={da:0,db:0};moving=false;walkDistance=0;manual=false;aim?:string;speedBoost=1;private manualRest=0;private ground:MapCell[];
  constructor(map:WorldManifest){this.map=map;const spawn=pickSpawn(map);this.player={...spawn,path:[]};this.ground=reachable(map,spawn,6000);}
  private cellFor(uid:string){const seed=hash(uid),near=this.ground.filter(c=>{const d=Math.max(Math.abs(c.a-this.player.a),Math.abs(c.b-this.player.b));return d>=3&&d<=5;}),clear=near.filter(c=>[[1,0],[-1,0],[0,1],[0,-1],[1,1],[1,-1],[-1,1],[-1,-1]].every(([da,db])=>canStep(this.map,c.a,c.b,da,db))),pool=clear.length?clear:near.length?near:this.ground;return pool[seed%pool.length];}
- private advance(m:Mover,speed:number,seconds:number,byTile=false){let left=speed*seconds,moved=false;while(left>0&&m.path.length){const n=m.path[0],dx=n.a-m.a,dy=n.b-m.b,len=byTile?Math.max(Math.abs(dx),Math.abs(dy)):Math.hypot(dx,dy);if(len<=left){m.a=n.a;m.b=n.b;left-=len;m.path.shift();moved=true;}else{m.a+=dx/len*left;m.b+=dy/len*left;left=0;moved=true;}}return moved;}
+ private advance(m:Mover,speed:number,seconds:number,byTile=false){let left=speed*seconds,moved=false;while(left>0&&m.path.length){const n=m.path[0],dx=n.a-m.a,dy=n.b-m.b,len=byTile?Math.max(Math.abs(dx),Math.abs(dy)):Math.hypot(dx,dy);if(m===this.player&&len>0){this.walkDistance+=Math.min(left,len);this.direction={da:dx,db:dy};}if(len<=left){m.a=n.a;m.b=n.b;left-=len;m.path.shift();moved=true;}else{m.a+=dx/len*left;m.b+=dy/len*left;left=0;moved=true;}}return moved;}
  private cell(m:Mover):MapCell{return {a:Math.round(m.a),b:Math.round(m.b)};}
  private route(m:Mover,to:MapCell,goal:string){if(m.goal===goal)return;m.goal=goal;const next=m.path[0];m.path=next?[next,...findMapPath(this.map,next,to,6000)]:findMapPath(this.map,this.cell(m),to,6000);}
  /** Stops at the next cell, so an actor never ends a move between two cells across a wall. */
- private halt(m:Mover){m.path=m.path.slice(0,1);m.goal=undefined;}
+ private halt(m:Mover){const c=this.cell(m);m.path=m.a===c.a&&m.b===c.b?[]:m.path.slice(0,1);m.goal=undefined;}
+ private canMelee(m:Mover){const from=this.cell(this.player),to=this.cell(m),da=to.a-from.a,db=to.b-from.b;return Math.max(Math.abs(da),Math.abs(db))===1&&canStep(this.map,from.a,from.b,da,db);}
  /** Tap to move: walks there first, then hunting resumes. */
  moveTo(cell:MapCell){this.manual=true;this.manualRest=0;this.route(this.player,cell,`manual:${cell.a},${cell.b}`);}
  tick(uids:string[],targetUid:string|undefined,running:boolean,ranged:boolean,now:number,seconds:number,playerStepMs?:number){
   const alive=new Set(uids);for(const uid of this.monsters.keys())if(!alive.has(uid))this.monsters.delete(uid);
   for(const uid of uids){let m=this.monsters.get(uid);if(!m){const c=this.cellFor(uid);m={a:c.a,b:c.b,home:c,path:[]};this.monsters.set(uid,m);}
    const w=monsterWalk(uid,now),goal={a:m.home.a+Math.round(w.x/3.5),b:m.home.b+Math.round(w.y/3)};if(uid!==targetUid&&Math.max(Math.abs(goal.a-m.a),Math.abs(goal.b-m.b))>=1&&findMapPath(this.map,this.cell(m),goal,200).length<=5)this.route(m,goal,`${goal.a},${goal.b}`);this.advance(m,WORLD_MONSTER_SPEED,seconds);}
-  const target=targetUid?this.monsters.get(targetUid):undefined,before={a:this.player.a,b:this.player.b};
+  const target=targetUid?this.monsters.get(targetUid):undefined;
   if(this.manual){if(!this.player.path.length){this.player.goal=undefined;this.manualRest+=seconds;if(this.manualRest>=WORLD_MANUAL_REST)this.manual=false;}}
-  else if(running&&target){const reach=ranged?WORLD_BOW_REACH:WORLD_MELEE_REACH,distance=Math.hypot(target.a-this.player.a,target.b-this.player.b);if(distance>reach){const to=this.cell(target);const key=`${to.a},${to.b}:${ranged}`;if(this.player.goal!==key){this.route(this.player,to,key);if(!ranged&&this.player.path.length){const end=this.player.path.at(-1);if(end?.a===to.a&&end.b===to.b)this.player.path.pop();}}}else this.halt(this.player);}else this.halt(this.player);
-  this.moving=this.advance(this.player,playerStepMs?1000/playerStepMs:WORLD_PLAYER_SPEED*this.speedBoost,seconds,!!playerStepMs);if(this.moving){this.direction={da:this.player.a-before.a,db:this.player.b-before.b};this.walkDistance+=playerStepMs?Math.max(Math.abs(this.direction.da),Math.abs(this.direction.db)):Math.hypot(this.direction.da,this.direction.db);}else this.walkDistance=0;
+  else if(running&&target){const reach=ranged?WORLD_BOW_REACH:WORLD_MELEE_REACH,distance=Math.hypot(target.a-this.player.a,target.b-this.player.b);if(ranged?distance>reach:!this.canMelee(target)){const to=this.cell(target);const key=`${to.a},${to.b}:${ranged}`;if(this.player.goal!==key){this.route(this.player,to,key);if(!ranged&&this.player.path.length){const end=this.player.path.at(-1);if(end?.a===to.a&&end.b===to.b)this.player.path.pop();}}}else this.halt(this.player);}else this.halt(this.player);
+  this.moving=this.advance(this.player,playerStepMs?1000/playerStepMs:WORLD_PLAYER_SPEED*this.speedBoost,seconds,!!playerStepMs);if(!this.moving)this.walkDistance=0;
  }
  /** True while a hit on this monster would land from out of reach. Unknown monsters never block. */
- blocks(uid:string,ranged:boolean){const m=this.monsters.get(uid);if(!m)return false;if(this.manual||!ranged&&this.moving)return true;return Math.hypot(m.a-this.player.a,m.b-this.player.b)>(ranged?WORLD_BOW_REACH:WORLD_MELEE_REACH)+.35;}
+ blocks(uid:string,ranged:boolean){const m=this.monsters.get(uid);if(!m)return false;if(this.manual||!ranged&&this.moving)return true;return ranged?Math.hypot(m.a-this.player.a,m.b-this.player.b)>WORLD_BOW_REACH+.35:!this.canMelee(m);}
  /** Last resort for a monster that cannot be reached: bring it next to the player. */
- snap(uid:string){const m=this.monsters.get(uid);if(!m)return;const c=this.cell(this.player);for(const [da,db] of [[1,0],[-1,0],[0,1],[0,-1]])if(canStep(this.map,c.a,c.b,da,db)){m.a=c.a+da;m.b=c.b+db;m.path=[];m.goal=undefined;m.home={a:m.a,b:m.b};return;}}
+ snap(uid:string){if(this.moving||this.manual)return;const m=this.monsters.get(uid);if(!m)return;const c=this.cell(this.player);for(const [da,db] of [[1,0],[-1,0],[0,1],[0,-1]])if(canStep(this.map,c.a,c.b,da,db)){m.a=c.a+da;m.b=c.b+db;m.path=[];m.goal=undefined;m.home={a:m.a,b:m.b};return;}}
  facing(targetUid?:string){const t=targetUid?this.monsters.get(targetUid):undefined;return t?{x:(t.a-this.player.a+t.b-this.player.b)*24,y:(t.b-this.player.b-t.a+this.player.a)*12}:undefined;}
  screenDelta(){return {x:(this.direction.da+this.direction.db)*24,y:(this.direction.db-this.direction.da)*12};}
  pixel(m:{a:number;b:number}){return cellCenter(m.a,m.b,this.map.offsetY);}
