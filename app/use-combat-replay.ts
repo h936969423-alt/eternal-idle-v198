@@ -47,9 +47,8 @@ export function useCombatReplay(c:Character|null,sound:boolean){
     const shift=waiting?frameMs:-Math.min(walkLag,frameMs*WALK_CATCH_UP);
     if(waiting)gate.aim(waiting.uid!);
     if(shift){walkLag+=shift;for(const e of queue.current)e.due+=shift;if(offset.current!==null)offset.current+=shift;}
-    if(walkLag>WALK_LAG_LIMIT_MS&&waiting){gate.snap(waiting.uid!);walkLag=0;restore=true;}
+    if(walkLag>WALK_LAG_LIMIT_MS&&waiting){walkLag=0;restore=true;}
    }
-   gate?.behind(walkLag);
    lastFrame=now;
    const character=latest.current;
    if(character)syncLocalHitTargets(localHitOwner(character.id,character.zone),queue.current);

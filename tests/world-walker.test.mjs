@@ -12,7 +12,25 @@ test('player does not move when not hunting',()=>{const w=new WorldWalker(open()
 test('dead monsters are forgotten',()=>{const w=new WorldWalker(open());run(w,['a','b'],'a',true,false,.2);run(w,['b'],'b',true,false,.2);assert.deepEqual([...w.monsters.keys()],['b']);});
 test('every player step obeys collision',()=>{const m=walled();m.spawn=[23,5];const w=new WorldWalker(m);w.monsters.set('far',{a:28,b:5,home:{a:28,b:5},path:[]});let p={a:Math.round(w.player.a),b:Math.round(w.player.b)};for(let i=0,t=1;i<600;i++,t+=50){w.tick(['far'],'far',true,false,t,.05);const n={a:Math.round(w.player.a),b:Math.round(w.player.b)};if(n.a!==p.a||n.b!==p.b){assert.ok(canStep(m,p.a,p.b,n.a-p.a,n.b-p.b)||Math.abs(n.a-p.a)+Math.abs(n.b-p.b)>1,`${p.a},${p.b}->${n.a},${n.b}`);assert.ok(!(p.a===25&&n.a===26&&p.b!==30));p=n;}}});
 test('small pockets are skipped when choosing a spawn',()=>{const m=open();m.spawn=[2,2];for(const [a,b,v] of [[2,2,3],[1,2,2],[2,3,1]]){m.edges[a]=m.edges[a].slice(0,b)+v+m.edges[a].slice(b+1);}const c=pickSpawn(m,100);assert.ok(reachable(m,c,101).length>100);});
-test('tap to move walks there first and then hunting resumes',()=>{const w=new WorldWalker(open());run(w,['a'],'a',true,false,.1);const goal={a:Math.round(w.player.a)-6,b:Math.round(w.player.b)+4};w.moveTo(goal);run(w,['a'],'a',true,false,3.5);assert.deepEqual({a:w.player.a,b:w.player.b},goal);run(w,['a'],'a',true,false,5);assert.equal(w.manual,false);const t=w.monsters.get('a');assert.ok(Math.hypot(t.a-w.player.a,t.b-w.player.b)<=4);});
+test('tap to move walks there first and then hunting resumes',()=>{const w=new WorldWalker(open());run(w,['a'],'a',true,false,.1);const goal={a:Math.round(w.player.a)-6,b:Math.round(w.player.b)+4};w.moveTo(goal);run(w,['a'],'a',true,false,5);assert.deepEqual({a:w.player.a,b:w.player.b},goal);run(w,['a'],'a',true,false,5);assert.equal(w.manual,false);const t=w.monsters.get('a');assert.ok(Math.hypot(t.a-w.player.a,t.b-w.player.b)<=4);});
 test('stopping never leaves the player between cells',()=>{const w=new WorldWalker(open());run(w,['a'],'a',true,false,.31);run(w,['a'],'a',false,false,1);assert.ok(Number.isInteger(w.player.a)&&Number.isInteger(w.player.b));});
 test('monsters prefer open ground away from walls',()=>{const m=walled(),w=new WorldWalker(m);run(w,['a','b','c','d'],undefined,false,false,.05);for(const x of w.monsters.values())assert.ok([[1,0],[-1,0],[0,1],[0,-1]].every(([da,db])=>canStep(m,x.home.a,x.home.b,da,db)));});
 test('only objects nearer the viewer cover the player',()=>{assert.equal(stripCovers(100,192,10),false);assert.equal(stripCovers(102,192,10),true);assert.equal(stripCovers(101,192,10),false);});
+test('a 3.81 walk step finishes at the reached tile when the target is lost',()=>{
+ const w=new WorldWalker(open()),start={a:w.player.a,b:w.player.b};
+ w.tick(['a'],'a',true,false,0,.2);
+ w.tick([],undefined,false,false,640,.64);
+ const reached={a:w.player.a,b:w.player.b};
+ assert.ok(Math.max(Math.abs(reached.a-start.a),Math.abs(reached.b-start.b))===1);
+ w.tick([],undefined,false,false,1280,.64);
+ assert.deepEqual({a:w.player.a,b:w.player.b},reached);
+});
+test('selected monsters close one grid cell at a time while stationary monsters hold',()=>{
+ const w=new WorldWalker(open()),ids=['m','fixed'],steps=new Map([['m',480],['fixed',0]]);
+ w.tick(ids,undefined,false,false,0,0,640,steps,true);
+ const fixed=w.monsters.get('fixed'),start={a:fixed.a,b:fixed.b};
+ for(let i=1;i<=100;i++)w.tick(ids,'m',true,false,i*50,.05,640,steps,true);
+ const mobile=w.monsters.get('m');
+ assert.equal(Math.max(Math.abs(mobile.a-w.player.a),Math.abs(mobile.b-w.player.b)),1);
+ assert.deepEqual({a:fixed.a,b:fixed.b},start);
+});
