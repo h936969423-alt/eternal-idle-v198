@@ -1,0 +1,66 @@
+name: Private polymorph R2 smoke test
+on:
+  push:
+    branches: [test/private-polymorph-r2-smoke]
+    paths: [.github/workflows/private-polymorph-r2-smoke.yml]
+  workflow_dispatch:
+permissions:
+  contents: read
+jobs:
+  smoke:
+    if: github.ref == 'refs/heads/test/private-polymorph-r2-smoke'
+    runs-on: ubuntu-latest
+    timeout-minutes: 8
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '24'
+      - name: Verify existing Worker route, animation resolver and fallback
+        run: node --test tests/lineage-global-polymorph.test.mjs
+      - name: Verify the existing test bucket is private, then round-trip original test art
+        env:
+          AWS_ACCESS_KEY_ID: ${{ secrets.R2_ACCESS_KEY_ID }}
+          AWS_SECRET_ACCESS_KEY: ${{ secrets.R2_SECRET_ACCESS_KEY }}
+          AWS_DEFAULT_REGION: auto
+          AWS_EC2_METADATA_DISABLED: 'true'
+          CF_TOKEN: ${{ secrets.CLOUDFLARE_API_TOKEN }}
+          CF_ACCOUNT: 9bf17726da5739f20d3e5ec454ae3d91
+          BUCKET: eternal-idle-v198-test-assets
+        run: |
+          set -euo pipefail
+          : "${AWS_ACCESS_KEY_ID:?Missing existing R2 access key}"
+          : "${AWS_SECRET_ACCESS_KEY:?Missing existing R2 secret key}"
+          : "${CF_TOKEN:?Missing existing Cloudflare deployment token}"
+          endpoint="https://$CF_ACCOUNT.r2.cloudflarestorage.com"
+          aws --endpoint-url "$endpoint" s3api list-objects-v2 --bucket "$BUCKET" --max-keys 1 --query KeyCount --output text
+          for access in managed custom; do
+            curl --silent --show-error --fail-with-body --max-time 25 \
+              -H "Authorization: Bearer $CF_TOKEN" \
+              "https://api.cloudflare.com/client/v4/accounts/$CF_ACCOUNT/r2/buckets/$BUCKET/domains/$access" \
+              > "$RUNNER_TEMP/r2-$access.json" || {
+                jq -c '{errors: [.errors[]? | {code, message}]}' "$RUNNER_TEMP/r2-$access.json"
+                exit 1
+              }
+          done
+          jq -e '.success and (.result.enabled == false)' "$RUNNER_TEMP/r2-managed.json" >/dev/null
+          jq -e '.success and (.result.domains | type == "array" and all(.enabled == false))' "$RUNNER_TEMP/r2-custom.json" >/dev/null
+          python -m pip install --quiet Pillow
+          python - <<'PY'
+          from PIL import Image, ImageDraw
+          import os
+          image = Image.new("RGBA", (192, 112))
+          draw = ImageDraw.Draw(image)
+          draw.rectangle((24, 24, 71, 71), fill="#20c997")
+          draw.rectangle((120, 38, 167, 85), fill="#ff922b")
+          image.save(os.path.join(os.environ["RUNNER_TEMP"], "smoke.webp"), lossless=True)
+          PY
+          key="codex-smoke/private-polymorph/$GITHUB_RUN_ID-$GITHUB_RUN_ATTEMPT.webp"
+          atlas="$RUNNER_TEMP/smoke.webp"
+          aws --endpoint-url "$endpoint" s3api put-object --bucket "$BUCKET" --key "$key" --body "$atlas" --content-type image/webp >/dev/null
+          trap 'aws --endpoint-url "$endpoint" s3api delete-object --bucket "$BUCKET" --key "$key" >/dev/null' EXIT
+          aws --endpoint-url "$endpoint" s3api get-object --bucket "$BUCKET" --key "$key" "$RUNNER_TEMP/download.webp" >/dev/null
+          cmp "$atlas" "$RUNNER_TEMP/download.webp"
+          status=$(curl --silent --show-error --max-time 25 -o /dev/null -w '%{http_code}' "$endpoint/$BUCKET/$key")
+          case "$status" in 400|401|403|404) ;; *) exit 1 ;; esac
+          echo "Private R2 round-trip verified. Anonymous S3 request returned HTTP $status."
