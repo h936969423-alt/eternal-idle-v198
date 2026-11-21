@@ -19,7 +19,7 @@ function load(path, globals) {
 }
 const resolver = load('lib/game/lineage-global-polymorph.ts', { forms })
 const { assetStorageFetch } = load('lib/asset-storage.ts', {
-  globalPolymorphAssetPrefix: resolver.globalPolymorphAssetPrefix,
+  globalPolymorphAssetPrefix: vm.runInContext('globalPolymorphAssetPrefix', resolver),
   globalPolymorphAssetKeys: vm.runInContext('globalPolymorphAssetKeys', resolver),
   config: {}, sunriseMaps: {files: {}}, skillAssets: {files: {}}, Request, Response, Headers, URL,
 })
