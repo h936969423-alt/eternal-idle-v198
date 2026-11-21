@@ -1,6 +1,6 @@
 'use client';
 import {motionPilot,pilotPlayerAttackFrame} from '@/lib/game/motion-pilot';
-import {globalPolymorphFrame} from '@/lib/game/lineage-global-polymorph';
+import {globalPolymorphFrame,globalPolymorphFrameCounts} from '@/lib/game/lineage-global-polymorph';
 import PlayerSpriteFrame from './player-sprite-frame';
 import {localContactFrame,localHitOwner} from '@/lib/game/local-hit-sync';
 import {useEffect,useMemo,useState,useSyncExternalStore} from 'react';
@@ -35,7 +35,8 @@ export default function CombatSprite({c,view,interval,pendingCast,castInterval:s
  const weapon=(raw.items as Record<string,{wcat?:string}>)[baseItem(c.equipment.weapon?.id||'')];
  const pilot=poly?.id==='deathknight'?motionPilot.deathknight:!poly&&base==='royal_m'&&['sword','單手劍'].includes(weapon?.wcat||'')?motionPilot.royal:undefined;
  const attackSeconds=pilot===motionPilot.royal?0.96:pilot===motionPilot.deathknight?0.6:interval;
- const castInterval=playerCastInterval(serverCastInterval,(poly&&(castSpeeds as Record<string,number>)[poly.name])||({knight:1.3,elf:1.2,mage:1,dark:1.4,royal:1.4,dragon:1.3,warrior:1.4,illusion:1} as Record<string,number>)[c.cls]||1.2),pose=useSunrisePlayerMotion(`${c.id}:${c.zone}:${base}:${poly?.id||''}`,cues,{counts,attackSeconds,castSeconds:castInterval},view.hp,pendingCast?.characterId===c.id?pendingCast:undefined,local),seq=clips[pose.kind as keyof typeof clips]?.length?clips[pose.kind as keyof typeof clips]:clips.idle;
+ const globalCounts=useMemo(()=>globalPolymorphFrameCounts(poly?.id,direction),[poly?.id,direction]);
+ const castInterval=playerCastInterval(serverCastInterval,(poly&&(castSpeeds as Record<string,number>)[poly.name])||({knight:1.3,elf:1.2,mage:1,dark:1.4,royal:1.4,dragon:1.3,warrior:1.4,illusion:1} as Record<string,number>)[c.cls]||1.2),pose=useSunrisePlayerMotion(`${c.id}:${c.zone}:${base}:${poly?.id||''}`,cues,{counts,attackSeconds,castSeconds:castInterval},view.hp,pendingCast?.characterId===c.id?pendingCast:undefined,local,globalCounts),seq=clips[pose.kind as keyof typeof clips]?.length?clips[pose.kind as keyof typeof clips]:clips.idle;
  // The player stands on the left; use the matching right-facing attack/cast
  // sheets consistently instead of inferring direction from padded sprite boxes.
  const frame=Math.min(seq.length-1,pose.frame);
@@ -50,9 +51,9 @@ export default function CombatSprite({c,view,interval,pendingCast,castInterval:s
  const globalWalkFrame=walkState.step??walkTick;
  const globalWalk=walkState.moving&&(pose.kind==='idle'||pose.kind==='attack')
   ?globalPolymorphFrame(poly?.id,'walk',walkState.direction,globalWalkFrame):undefined;
- const globalFrame=globalWalk||globalPolymorphFrame(poly?.id,pose.kind,direction,frame,seq.length);
+ const globalFrame=globalWalk||globalPolymorphFrame(poly?.id,pose.kind,direction,pose.visualFrame??frame);
  const pilotSrc=pilotAttack?.[pilotPlayerAttackFrame(frame,seq.length,localContactFrame(seq.length,attackSeconds),poly?[2,2,4,1,1,5]:[4,4,4,3,4,5],poly?5:4)];
- return seq.length?<PlayerSpriteFrame className="character-sprite" data-action={walkSrc||globalWalk?'walk':pose.kind} data-direction={walkSrc||globalWalk?walkState.direction:direction} data-target-uid={pose.targetUid||contactTarget?.uid} data-mirrored={false} data-polymorph={poly?.id} formId={poly?.id} globalFrame={globalFrame} canvas={layoutClip?.layout.viewBox||attackClip?.layout.viewBox} src={walkSrc||pilotSrc||clientSrc||seq[frame]} clip={(walkSrc||pilotSrc)?undefined:activeClip} frame={frame} alt={c.name}/>:null;
+ return seq.length?<PlayerSpriteFrame className="character-sprite" data-action={walkSrc?'walk':pose.kind} data-direction={walkSrc?walkState.direction:direction} globalWalkingDirection={globalWalk?walkState.direction:undefined} data-target-uid={pose.targetUid||contactTarget?.uid} data-mirrored={false} data-polymorph={poly?.id} formId={poly?.id} globalFrame={globalFrame} canvas={layoutClip?.layout.viewBox||attackClip?.layout.viewBox} src={walkSrc||pilotSrc||clientSrc||seq[frame]} clip={(walkSrc||pilotSrc)?undefined:activeClip} frame={frame} alt={c.name}/>:null;
 }
 
 

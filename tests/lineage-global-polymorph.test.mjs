@@ -61,6 +61,37 @@ test('The sprite hook falls back while loading, on image errors and for cropped 
   assert.equal(image.onload, null);
 });
 
+test('A clip spanning two sheets waits for both and plays without falling back between frames', () => {
+  const images = [];
+  let ready;
+  let effect;
+  const hook = load('app/use-global-polymorph-frame.ts', {
+    Image: class {
+      naturalWidth = 96;
+      naturalHeight = 112;
+      constructor() { images.push(this); }
+    },
+    useEffect(callback) { effect = callback; },
+    useState() { return [ready, value => { ready = value; }]; },
+  });
+  const first = { src: path, x: 0, y: 0 };
+  const second = { ...first, src: path.replace('0.webp', '1.webp') };
+  const sheets = [first.src, second.src].join(' ');
+  const render = frame => hook.useGlobalPolymorphFrame({ ...frame, sheets });
+  assert.equal(render(first), undefined);
+  const cleanup = effect();
+  assert.deepEqual(images.map(image => image.src), [first.src, second.src]);
+  images[0].onload();
+  assert.equal(render(first), undefined);
+  images[1].onload();
+  assert.equal(render(first).src, first.src);
+  assert.equal(render(second).src, second.src);
+  images[1].onerror();
+  assert.equal(render(first), undefined);
+  cleanup();
+  assert.ok(images.every(image => image.onload === null && image.onerror === null));
+});
+
 test('The R2 route serves listed sheets and handles missing assets or storage', async () => {
   const [globalPolymorphAssetPrefix, globalPolymorphAssetKeys] =
     vm.runInContext('[globalPolymorphAssetPrefix, globalPolymorphAssetKeys]', resolved);

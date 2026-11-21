@@ -1,0 +1,7 @@
+# Lineage Global polymorph deployment
+
+The game uses the Moon Rabbit appearance while `lib/game/lineage-global-polymorph.json` is empty. Keep it empty until the project has permission to distribute the specific sprite sheets and has verified the mappings against the client. The account's selected form, bonuses and saved form ID stay the same when a visual mapping is added.
+
+- Manifest keys are canonical Starry Idle form IDs. Each entry carries the source `spriteId`, `actionTableId` and directional `actions`. A frame is `[sheet, cell, columns]` in a 96 × 112 pixel atlas. Only include complete clips whose direction and appearance match the game. Use `skill` for cast.
+- Place only approved sheets referenced by the manifest in the Worker's `BUCKET` binding, at `lineage-global/polymorph/<spriteId>/<sheet>.webp`. The game requests `/assets/lineage-global/polymorph/<spriteId>/<sheet>.webp` on its own origin. The Worker serves only keys referenced by the manifest. The test configuration uses `eternal-idle-v198-test-assets`.
+- Validate GET and HEAD in the target environment, then verify each approved form in combat and town, including facing changes and mobile rendering. During load, on a missing clip or direction, or if a required sheet fails to load, the existing Moon Rabbit renderer supplies the appearance. Removing entries from the manifest and redeploying reverts their visuals and removes access through the Worker route.

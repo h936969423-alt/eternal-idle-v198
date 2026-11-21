@@ -2,7 +2,7 @@ import type {GlobalPolymorphFrame} from '@/lib/game/lineage-global-polymorph';
 import {useGlobalPolymorphFrame} from './use-global-polymorph-frame';
 import {playerSpriteLayout,playerSpriteFootOffset,polymorphDisplayScale} from '@/lib/game/player-sprite-layout';
 import {morphCastLayers,type MorphCastClip} from '@/lib/game/morph-cast';
-export default function PlayerSpriteFrame({src,formId,canvas,clip,globalFrame,frame=0,...props}:{src:string;formId?:string;canvas?:number[];clip?:MorphCastClip;globalFrame?:GlobalPolymorphFrame;frame?:number;className:string;'data-action'?:string;'data-direction'?:number;'data-polymorph'?:string;'data-target-uid'?:string;'data-mirrored'?:boolean;alt:string}){
+export default function PlayerSpriteFrame({src,formId,canvas,clip,globalFrame,globalWalkingDirection,frame=0,...props}:{src:string;formId?:string;canvas?:number[];clip?:MorphCastClip;globalFrame?:GlobalPolymorphFrame;globalWalkingDirection?:number;frame?:number;className:string;'data-action'?:string;'data-direction'?:number;'data-polymorph'?:string;'data-target-uid'?:string;'data-mirrored'?:boolean;alt:string}){
  const global=useGlobalPolymorphFrame(globalFrame);
  const normalized=playerSpriteLayout(formId),scale=polymorphDisplayScale(formId);
  if(!formId&&!clip&&!normalized)return <img src={src} {...props}/>;
@@ -19,7 +19,7 @@ export default function PlayerSpriteFrame({src,formId,canvas,clip,globalFrame,fr
  const layers=clip?morphCastLayers(clip,frame):undefined;
  const content=layers?<g transform={`translate(0 ${playerSpriteFootOffset(formId,layers.body)})`}>{layers.shadow&&<image className="polymorph-cast-shadow" href={layers.shadow} {...clipRect}/>}<image className="polymorph-cast-body" href={layers.body} {...clipRect}/>{layers.weapon&&<image className="polymorph-cast-weapon" href={layers.weapon} {...clipRect}/>}</g>:null;
  // Nested coordinates preserve the same sheet scale for idle, attack and cast.
- return <span {...attributes} className={`${props.className} polymorph-cast-sprite`} style={hostStyle} role="img" aria-label={alt}><svg viewBox={`0 0 ${viewBox.join(' ')}`} preserveAspectRatio="xMidYMid meet" aria-hidden="true">{global?<svg width={96} height={112} overflow="hidden"><image href={global.src} x={-global.x} y={-global.y} width={global.width} height={global.height}/></svg>:clip?(normalized?<svg {...rect} viewBox={`0 0 ${clip.layout.viewBox.join(' ')}`} overflow="visible">{content}</svg>:content):<image href={src} {...rect}/>}</svg></span>;
+ return <span {...attributes} className={`${props.className} polymorph-cast-sprite`} style={hostStyle} role="img" aria-label={alt} data-action={global&&globalWalkingDirection!==undefined?'walk':attributes['data-action']} data-direction={global&&globalWalkingDirection!==undefined?globalWalkingDirection:attributes['data-direction']}><svg viewBox={`0 0 ${viewBox.join(' ')}`} preserveAspectRatio="xMidYMid meet" aria-hidden="true">{global?<svg width={96} height={112} overflow="hidden"><image href={global.src} x={-global.x} y={-global.y} width={global.width} height={global.height}/></svg>:clip?(normalized?<svg {...rect} viewBox={`0 0 ${clip.layout.viewBox.join(' ')}`} overflow="visible">{content}</svg>:content):<image href={src} {...rect}/>}</svg></span>;
 }
 
 
