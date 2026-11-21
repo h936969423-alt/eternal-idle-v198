@@ -47,6 +47,11 @@ const server = createServer(async (request, response) => {
   const result = await assetStorageFetch(new Request('http://localhost' + request.url, {
     method: request.method, headers: request.headers,
   }), undefined, storage)
+  if (!result) {
+    response.writeHead(404)
+    response.end()
+    return
+  }
   response.writeHead(result.status, Object.fromEntries(result.headers))
   response.end(Buffer.from(await result.arrayBuffer()))
 })
