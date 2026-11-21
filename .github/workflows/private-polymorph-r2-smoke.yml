@@ -9,7 +9,7 @@ permissions:
 jobs:
   smoke:
     if: github.ref == 'refs/heads/test/private-polymorph-r2-smoke'
-    runs-on: ubuntu-latest
+    runs-on: ubuntu-24.04
     timeout-minutes: 8
     steps:
       - uses: actions/checkout@v4
