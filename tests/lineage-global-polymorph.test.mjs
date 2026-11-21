@@ -102,13 +102,44 @@ test('The R2 route serves listed sheets and handles missing assets or storage', 
   const request = (pathname = path, method = 'GET') => new Request('https://game.test' + pathname, { method });
   const body = new Uint8Array([1, 2, 3]);
   const bucket = { async get() { return {body, size: body.length}; }, async head() { return {size: body.length}; } };
-  const get = await assetStorageFetch(request(), bucket);
+  const denyLegacy = { get() { throw new Error('must not read the legacy bucket'); } };
+  const authorize = async req => req.headers.get('cookie') === 'game_session=fixture';
+  const storage = { bucket, authorize };
+  const owner = () => new Request('https://game.test' + path, { headers: { cookie: 'game_session=fixture' } });
+  assert.equal((await assetStorageFetch(request(), denyLegacy, storage)).status, 404);
+  assert.equal((await assetStorageFetch(owner(), denyLegacy)).status, 404);
+  const get = await assetStorageFetch(owner(), denyLegacy, storage);
   assert.equal(get.status, 200);
   assert.equal(get.headers.get('content-type'), 'image/webp');
+  assert.equal(get.headers.get('cache-control'), 'private, no-store');
   assert.deepEqual(new Uint8Array(await get.arrayBuffer()), body);
-  assert.equal((await assetStorageFetch(request(path, 'HEAD'), bucket)).body, null);
-  assert.equal((await assetStorageFetch(request(path.replace('0.webp', '999.webp')), bucket)).status, 404);
-  assert.equal((await assetStorageFetch(request(), { async get() { return null; } })).status, 404);
-  assert.equal((await assetStorageFetch(request())).status, 503);
-  assert.equal((await assetStorageFetch(request(), { async get() { throw new Error('R2 offline'); } })).status, 503);
+  const head = await assetStorageFetch(new Request(owner(), { method: 'HEAD' }), denyLegacy, storage);
+  assert.equal(head.status, 200);
+  assert.equal(head.body, null);
+  assert.equal((await assetStorageFetch(request(path, 'POST'), denyLegacy, storage)).status, 405);
+  assert.equal((await assetStorageFetch(request(path.replace('0.webp', '999.webp')), denyLegacy, storage)).status, 404);
+  assert.equal((await assetStorageFetch(owner(), denyLegacy, { authorize })).status, 503);
+  assert.equal((await assetStorageFetch(owner(), denyLegacy, { authorize, bucket: { async get() { return null; } } })).status, 404);
+  assert.equal((await assetStorageFetch(owner(), denyLegacy, { authorize, bucket: { async get() { throw new Error('R2 offline'); } } })).status, 503);
+});
+
+test('Private polymorph sessions require the configured owner and a single valid cookie', async () => {
+  const token = 'a'.repeat(72);
+  const { ownsPrivatePolymorphSession } = load('lib/game/private-polymorph-session.ts', {
+    digest: async value => 'hash:' + value,
+  });
+  const db = {
+    prepare(sql) {
+      assert.match(sql, /owner=\? AND session_hash=\? AND session_until>\?/);
+      return { bind: (owner, hash, now) => ({
+        first: async () => owner === 'owner' && hash === 'hash:' + token && now <= Date.now() ? {} : null,
+      }) };
+    },
+  };
+  const request = cookie => new Request('https://game.test' + path, { headers: { cookie } });
+  assert.equal(await ownsPrivatePolymorphSession(request('game_session=' + token), db, 'owner'), true);
+  assert.equal(await ownsPrivatePolymorphSession(request('game_session=' + token), db, 'other'), false);
+  assert.equal(await ownsPrivatePolymorphSession(request('game_session=' + token), db), false);
+  assert.equal(await ownsPrivatePolymorphSession(request('game_session=' + token + '; game_session=bad'), db, 'owner'), false);
+  assert.equal(await ownsPrivatePolymorphSession(request('game_session=bad'), db, 'owner'), false);
 });

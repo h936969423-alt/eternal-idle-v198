@@ -26,7 +26,12 @@ function index(bucket: Bucket): Promise<Index> {
   return cachedIndex;
 }
 
-export async function assetStorageFetch(request: Request, bucket?: Bucket): Promise<Response | null> {
+type PrivatePolymorphStorage = {
+  bucket?: Bucket;
+  authorize: (request: Request) => Promise<boolean>;
+};
+
+export async function assetStorageFetch(request: Request, bucket?: Bucket, polymorph?: PrivatePolymorphStorage): Promise<Response | null> {
   const pathname = new URL(request.url).pathname;
   // This write endpoint relies on the Site's verified owner-only access policy.
   // Never make the Site public/shared without adding explicit upload authorization.
@@ -35,24 +40,26 @@ export async function assetStorageFetch(request: Request, bucket?: Bucket): Prom
   // These pinned source atlases ship with the Worker. They must reach static
   // assets even when the unrelated R2 bucket or legacy index is unavailable.
   if (pathname.startsWith('/assets/four-dragons/') && ['GET', 'HEAD'].includes(request.method)) return null;
-  if (pathname.startsWith(globalPolymorphAssetPrefix) && ['GET', 'HEAD'].includes(request.method)) {
+  if (pathname.startsWith(globalPolymorphAssetPrefix)) {
+    const headers = new Headers({'Cache-Control': 'private, no-store', 'X-Content-Type-Options': 'nosniff'});
+    const status = (code: number) => new Response(null, {status: code, headers});
+    if (request.method !== 'GET' && request.method !== 'HEAD') {
+      headers.set('Allow', 'GET, HEAD');
+      return status(405);
+    }
     const key = pathname.slice('/assets/'.length);
-    if (!globalPolymorphAssetKeys.has(key)) return new Response('Polymorph sheet not found', {status: 404});
-    if (!bucket) return new Response('Asset storage unavailable', {status: 503});
+    if (!polymorph || !globalPolymorphAssetKeys.has(key)) return status(404);
     try {
-      const object = request.method === 'HEAD' ? await bucket.head(key) : await bucket.get(key);
-      if (!object) return new Response('Polymorph sheet not found', {status: 404});
-      return new Response(request.method === 'HEAD' ? null : (object as R2ObjectBody).body, {
-        headers: {
-          'Content-Type': 'image/webp',
-          'Content-Length': String(object.size),
-          'Cache-Control': 'private, max-age=86400',
-          'X-Content-Type-Options': 'nosniff',
-          'X-Asset-Storage': 'r2',
-        },
-      });
+      if (!await polymorph.authorize(request)) return status(404);
+      if (!polymorph.bucket) return status(503);
+      const object = request.method === 'HEAD' ? await polymorph.bucket.head(key) : await polymorph.bucket.get(key);
+      if (!object) return status(404);
+      headers.set('Content-Type', 'image/webp');
+      headers.set('Content-Length', String(object.size));
+      headers.set('X-Asset-Storage', 'r2');
+      return new Response(request.method === 'HEAD' ? null : (object as R2ObjectBody).body, {headers});
     } catch {
-      return new Response('Polymorph sheet temporarily unavailable', {status: 503, headers: {'Retry-After': '5'}});
+      return status(503);
     }
   }
   if(pathname.startsWith('/assets/client-world/')&&['GET','HEAD'].includes(request.method)){
