@@ -6,14 +6,21 @@ import type {CastIntent} from '@/lib/game/cast-feedback';
 import {setLocalHitActive,clearLocalHits,recordLocalContact,localContactFrame,beginLocalSwing,type SwingTarget} from '@/lib/game/local-hit-sync';
 /** Browser-owned normal swings. Spell cues confirm auto-casts and deduplicate
  * manual previews. Neither path applies local HP, rewards or save mutations. */
-export function useSunrisePlayerMotion(identity:string,cues:SunriseCue[],timing:SunriseTiming,hp:number,intent:CastIntent|undefined,local:LocalAttackInput){
- const state=useRef(emptySunriseClock()),attackClock=useRef<LocalAttackClock>({elapsed:0,period:timing.attackSeconds}),seen=useRef(new Set<number>()),click=useRef<number|null>(null),previewTimes=useRef(new Set<number>()),previousHp=useRef<number|null>(null),latest=useRef({timing,hp,local});
+export function useSunrisePlayerMotion(identity:string,cues:SunriseCue[],timing:SunriseTiming,hp:number,intent:CastIntent|undefined,local:LocalAttackInput,visualCounts?:SunriseTiming['counts']){
+ const state=useRef(emptySunriseClock()),attackClock=useRef<LocalAttackClock>({elapsed:0,period:timing.attackSeconds}),seen=useRef(new Set<number>()),click=useRef<number|null>(null),previewTimes=useRef(new Set<number>()),previousHp=useRef<number|null>(null),latest=useRef({timing,hp,local,visualCounts});
  const facingTarget=useRef<string|undefined>(undefined);
  const contact=useRef(-Infinity),swing=useRef<SwingTarget|undefined>(undefined);
- const [pose,setPose]=useState<{kind:SunriseAction;frame:number;targetUid?:string}>({kind:'idle',frame:0});latest.current={timing,hp,local};
+ const [pose,setPose]=useState<{kind:SunriseAction;frame:number;visualFrame?:number;targetUid?:string}>({kind:'idle',frame:0});latest.current={timing,hp,local,visualCounts};
  // Publish action starts in the same React turn as their effects. The fixed
  // 125ms sampler advances frames; it must not delay the first visible pose.
- const publishPose=(now:number)=>{const next={...sunriseMotionPose(state.current,now,latest.current.timing),targetUid:facingTarget.current};setPose(p=>p.kind===next.kind&&p.frame===next.frame&&p.targetUid===next.targetUid?p:next);};
+ const readPose=(now:number)=>{
+  const {timing,visualCounts}=latest.current;
+  const pose=sunriseMotionPose(state.current,now,timing);
+  const visualCount=visualCounts?.[pose.kind];
+  const visualFrame=visualCount?sunriseMotionPose(state.current,now,{...timing,counts:{...timing.counts,[pose.kind]:visualCount}}).frame:undefined;
+  return {...pose,visualFrame,targetUid:facingTarget.current};
+ };
+ const publishPose=(now:number)=>{const next=readPose(now);setPose(p=>p.kind===next.kind&&p.frame===next.frame&&p.visualFrame===next.visualFrame&&p.targetUid===next.targetUid?p:next);};
  const castPose=(started:number,now:number,targetUid?:string,automatic=false)=>{
   const t=latest.current.timing;
   if(automatic&&autoCastYieldsToSwing(state.current,now,t))return;
@@ -72,13 +79,13 @@ export function useSunrisePlayerMotion(identity:string,cues:SunriseCue[],timing:
    if(document.hidden)return;
    const now=performance.now(),before=state.current;state.current=advanceSunriseMotion(before,now,latest.current.timing);
    if(state.current.act==='attack'&&(before.act!=='attack'||before.t!==state.current.t))bindSwing();
-   const next={...sunriseMotionPose(state.current,now,latest.current.timing),targetUid:facingTarget.current};
+   const next=readPose(now);
    const local=latest.current.local,count=latest.current.timing.counts.attack||1;
    if(local.ownerKey)setLocalHitActive(local.ownerKey,local.running&&local.hasTarget&&!local.blocked&&latest.current.hp>0,latest.current.timing.attackSeconds);
    if(local.ownerKey&&swing.current?.uid&&next.kind==='attack'&&next.frame>=localContactFrame(count,latest.current.timing.attackSeconds)&&contact.current!==state.current.t){
     contact.current=state.current.t;recordLocalContact(local.ownerKey,swing.current.uid,now,swing.current.seq,state.current.t);
    }
-   setPose(p=>p.kind===next.kind&&p.frame===next.frame&&p.targetUid===next.targetUid?p:next);
+   setPose(p=>p.kind===next.kind&&p.frame===next.frame&&p.visualFrame===next.visualFrame&&p.targetUid===next.targetUid?p:next);
   },SUNRISE_PLAYER_FRAME_MS);
   const visibility=()=>{
    if(ownerKey)clearLocalHits(ownerKey);swing.current=undefined;facingTarget.current=undefined;contact.current=-Infinity;

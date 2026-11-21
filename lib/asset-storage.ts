@@ -1,4 +1,5 @@
 // Files are immutable SHA-256 addressed objects. The manifest is pinned per deployment.
+import {globalPolymorphAssetKeys, globalPolymorphAssetPrefix} from './game/lineage-global-polymorph';
 import config from './asset-storage-config.json';
 import sunriseMaps from './game/sunrise-maps.json';
 import skillAssets from './game/lineagew-skill-assets.json';
@@ -34,6 +35,26 @@ export async function assetStorageFetch(request: Request, bucket?: Bucket): Prom
   // These pinned source atlases ship with the Worker. They must reach static
   // assets even when the unrelated R2 bucket or legacy index is unavailable.
   if (pathname.startsWith('/assets/four-dragons/') && ['GET', 'HEAD'].includes(request.method)) return null;
+  if (pathname.startsWith(globalPolymorphAssetPrefix) && ['GET', 'HEAD'].includes(request.method)) {
+    const key = pathname.slice('/assets/'.length);
+    if (!globalPolymorphAssetKeys.has(key)) return new Response('Polymorph sheet not found', {status: 404});
+    if (!bucket) return new Response('Asset storage unavailable', {status: 503});
+    try {
+      const object = request.method === 'HEAD' ? await bucket.head(key) : await bucket.get(key);
+      if (!object) return new Response('Polymorph sheet not found', {status: 404});
+      return new Response(request.method === 'HEAD' ? null : (object as R2ObjectBody).body, {
+        headers: {
+          'Content-Type': 'image/webp',
+          'Content-Length': String(object.size),
+          'Cache-Control': 'private, max-age=86400',
+          'X-Content-Type-Options': 'nosniff',
+          'X-Asset-Storage': 'r2',
+        },
+      });
+    } catch {
+      return new Response('Polymorph sheet temporarily unavailable', {status: 503, headers: {'Retry-After': '5'}});
+    }
+  }
   if(pathname.startsWith('/assets/client-world/')&&['GET','HEAD'].includes(request.method)){
     const match=/^\/assets\/client-world\/v1\/([a-z0-9_]+)\/(manifest\.json|o?\d+_\d+\.webp)$/.exec(pathname);
     if(!match)return new Response('World map not found',{status:404});
