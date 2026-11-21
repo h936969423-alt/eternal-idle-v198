@@ -6,7 +6,7 @@ import { runWithConnectorBinding } from "../lib/connector-context";
 import type { ConnectorBinding } from "../lib/connector-contract.mjs";
 
 export default {
-  async fetch(request: Request, env: Cloudflare.Env & { PRIVATE_POLYMORPH?: R2Bucket; PRIVATE_POLYMORPH_OWNER?: string }, ctx: ExecutionContext<{ CONNECTORS?: ConnectorBinding }>) {
+  async fetch(request: Request, env: Cloudflare.Env, ctx: ExecutionContext<{ CONNECTORS?: ConnectorBinding }>) {
     return protectGameApi(request,async()=>{
     const assetResponse = await assetStorageFetch(request, env.BUCKET, {
       bucket: env.PRIVATE_POLYMORPH,

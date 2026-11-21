@@ -13,6 +13,7 @@ jobs:
     runs-on: ubuntu-latest
     timeout-minutes: 45
     env:
+      PRIVATE_POLYMORPH_BUCKET: ${{ vars.PRIVATE_POLYMORPH_BUCKET }}
       CLOUDFLARE_ACCOUNT_ID: 9bf17726da5739f20d3e5ec454ae3d91
       CLOUDFLARE_API_TOKEN: ${{ secrets.CLOUDFLARE_API_TOKEN }}
     steps:
@@ -76,20 +77,7 @@ jobs:
       - name: Build complete Cloudflare Worker
         run: pnpm run build
       - name: Assert strict isolation from live resources
-        run: |
-          python3 - <<'PY'
-          import json
-          p='dist/server/wrangler.json'
-          c=json.load(open(p))
-          db=c.get('d1_databases',[])
-          r2=c.get('r2_buckets',[])
-          assert len(db)==1 and db[0].get('binding')=='DB'
-          assert db[0].get('database_id')=='827dd8d1-53b2-460c-9594-2435db824432'
-          assert db[0].get('database_name')=='eternal-idle-v198-test-db'
-          assert len(r2)==1 and r2[0].get('binding')=='BUCKET'
-          assert r2[0].get('bucket_name')=='eternal-idle-v198-test-assets'
-          print('Isolated test D1 and R2 bindings checked; production not modified')
-          PY
+        run: python3 scripts/verify-test-worker-bindings.py
       - name: Deploy named test-only Worker
         run: pnpm exec wrangler deploy --config dist/server/wrangler.json --name eternal-idle-v198-test --keep-vars
       - name: Print deployment location

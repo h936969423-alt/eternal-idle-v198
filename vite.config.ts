@@ -9,6 +9,14 @@ const TEST_DATABASE_ID =
   "827dd8d1-53b2-460c-9594-2435db824432";
 
 const { d1, r2 } = hostingConfig;
+const testAssetBucket = "eternal-idle-v198-test-assets";
+const privatePolymorphBucket = process.env.PRIVATE_POLYMORPH_BUCKET?.trim();
+if (privatePolymorphBucket && (
+  !/^[a-z0-9][a-z0-9-]{1,61}[a-z0-9]$/.test(privatePolymorphBucket)
+  || privatePolymorphBucket === testAssetBucket
+)) {
+  throw new Error("PRIVATE_POLYMORPH_BUCKET must name a separate R2 bucket");
+}
 
 // macOS Seatbelt blocks FSEvents, so Codex previews need polling for HMR.
 const isCodexSeatbeltSandbox = process.env.CODEX_SANDBOX === "seatbelt";
@@ -28,14 +36,12 @@ const localBindingConfig = {
         },
       ]
     : [],
-  r2_buckets: r2
-    ? [
-        {
-          binding: r2,
-          bucket_name: "eternal-idle-v198-test-assets",
-        },
-      ]
-    : [],
+  r2_buckets: [
+    ...(r2 ? [{ binding: r2, bucket_name: testAssetBucket }] : []),
+    ...(privatePolymorphBucket
+      ? [{ binding: "PRIVATE_POLYMORPH", bucket_name: privatePolymorphBucket }]
+      : []),
+  ],
 };
 
 export default defineConfig(async ({ command }) => {

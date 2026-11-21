@@ -7,6 +7,8 @@ jobs:
   build:
     runs-on: ubuntu-latest
     timeout-minutes: 45
+    env:
+      PRIVATE_POLYMORPH_BUCKET: ${{ vars.PRIVATE_POLYMORPH_BUCKET }}
     steps:
       - uses: actions/checkout@v4
       - name: Restore full v198 assets from private R2
@@ -24,16 +26,9 @@ jobs:
           cache: pnpm
       - name: Install dependencies
         run: pnpm install --frozen-lockfile
+      - name: Verify private polymorph routing and fallback
+        run: node --test tests/lineage-global-polymorph.test.mjs
       - name: Verify complete production build without deploying
         run: pnpm run build
       - name: Validate worker and storage mappings
-        run: |
-          python3 - <<'PY'
-          import json, pathlib
-          root=pathlib.Path('dist')
-          assert (root/'server'/'wrangler.json').is_file(), 'missing generated Worker config'
-          config=json.load(open(root/'server'/'wrangler.json'))
-          assert any(x.get('binding')=='DB' and x.get('database_name')=='eternal-idle-v198-test-db' for x in config.get('d1_databases',[]))
-          assert any(x.get('binding')=='BUCKET' and x.get('bucket_name')=='eternal-idle-v198-test-assets' for x in config.get('r2_buckets',[]))
-          print('Verified test D1 and R2 bindings; no deployment performed')
-          PY
+        run: python3 scripts/verify-test-worker-bindings.py
