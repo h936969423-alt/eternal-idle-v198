@@ -64,3 +64,21 @@ jobs:
           status=$(curl --silent --show-error --max-time 25 -o /dev/null -w '%{http_code}' "$endpoint/$BUCKET/$key")
           case "$status" in 400|401|403|404) ;; *) exit 1 ;; esac
           echo "Private R2 round-trip verified. Anonymous S3 request returned HTTP $status."
+      - name: Inspect current test Worker bindings
+        env:
+          CF_TOKEN: ${{ secrets.CLOUDFLARE_API_TOKEN }}
+        run: |
+          config="$RUNNER_TEMP/current-worker.json"
+          if curl --silent --show-error --fail-with-body --max-time 25 \
+            -H "Authorization: Bearer $CF_TOKEN" \
+            "https://api.cloudflare.com/client/v4/accounts/9bf17726da5739f20d3e5ec454ae3d91/workers/scripts/eternal-idle-v198-test/settings" > "$config"; then
+            jq -c '[.result.bindings[]? | select(.type == "r2_bucket" or .name == "PRIVATE_POLYMORPH_OWNER") | {name, type}]' "$config"
+          else
+            jq -c '{errors: [.errors[]? | {code, message}]}' "$config"
+          fi
+      - name: Decode and play the R2 download in Chromium
+        run: |
+          npm install --prefix "$RUNNER_TEMP/polymorph-browser" --no-audit --no-fund playwright@1.55.1
+          cp scripts/private-polymorph-browser-smoke.mjs "$RUNNER_TEMP/polymorph-browser/smoke.mjs"
+          "$RUNNER_TEMP/polymorph-browser/node_modules/.bin/playwright" install --with-deps chromium
+          node "$RUNNER_TEMP/polymorph-browser/smoke.mjs" "$RUNNER_TEMP/download.webp"
